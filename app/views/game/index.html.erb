@@ -1,0 +1,15 @@
+<h1>Game Listing Game#index</h1>
+
+<ul>
+<% @games.each do |game| %>
+  <li>
+     Spiel <%= game.id %>
+     <b><%= game.team1.title %></b> vs.
+     <b><%= game.team2.title %></b>  
+     
+     [<%= game.game_group.title %>] 
+     
+     <%= game.play_at.to_s(:rfc822) %>  // -:- (-:-)
+  </li>
+<% end %>
+</ul>
