@@ -1,0 +1,28 @@
+
+<h1><%= @user.name %> ### <%= @pool.title %> ###</h1>
+
+<p>Tipps Bearbeiten</p>
+
+<%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
+  
+<% @tips.each do |tip| %>
+  <li> (<%= tip.game.id %>)
+        <b><%= tip.game.team1.title %> vs. <%= tip.game.team2.title %></b>
+        (<%= tip.game.game_group.title %>) 
+  <%= f.fields_for 'tips[]', tip do |ff| %>
+     <%= ff.hidden_field :user_id %>
+     <%= ff.hidden_field :pool_id %>
+     <%= ff.hidden_field :game_id %>
+     <%= ff.text_field :score1, :size => 4 %> :
+     <%= ff.text_field :score2, :size => 4 %>   
+  <% end %>
+  </li>
+
+<% end %>
+  
+
+  <p><%= f.submit "Speichern" %></p>  
+<% end %>  
+  
+
+<%= link_to 'Zurück', pool_path( @pool ) %>

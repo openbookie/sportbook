@@ -1,0 +1,15 @@
+<h1><%= @user.name %> ### <%= @pool.title %> ###</h1>
+
+<p>Tips</p>
+
+<ul>
+<% @tips.each do |tip| %>
+  <li><b><%= tip.game.team1.title %> vs. <%= tip.game.team2.title %></b>
+      (<%= tip.game.game_group.title %>)  <%= tip.game.play_at.to_s(:rfc822) %>
+      // <%= tip.score1 %> : <%= tip.score1 %>
+      
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Zurück', pool_path( @pool ) %>

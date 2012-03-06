@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Euro2012</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% unless controller_name == 'sessions' %>
+<div>
+ <% if signed_in? %>
+    Willkommen, <%= current_user.name %>!  <%= link_to 'Abmelden', signout_path %>
+ <% else %>
+    <%= link_to 'Anmelden', signin_path %>
+ <% end %>
+</div>
+<% end %>
+
+
+<% flash.each do |key, value| %>
+  <div class="flash <%= key %>">
+    <%= value %>
+  </div>
+<% end %>
+
+<%= yield %>
+
+<!--
+<hr>
+<pre>
+params:
+<%= debug( params ) %>
+
+session:
+<%= debug( session ) %>
+</pre>
+-->
+
+</body>
+</html>

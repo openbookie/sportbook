@@ -21,11 +21,32 @@ create_table :games do |t|
 end
 
 create_table :users do |t|
+  t.string :name, :null => false
+  t.string :email
+  t.string :password
+  t.timestamps
 end
 
 create_table :pools do |t|
+  t.string :title, :null => false
+  t.references :user, :null => false  # owner/manager/admin of pool
+  t.timestamps
 end
 
+create_table :pools_users do |t|
+  t.references :user, :null => false
+  t.references :pool, :null => false
+  t.timestamps
+end
+
+create_table :tips do |t|
+  t.references :user, :null => false
+  t.references :pool, :null => false
+  t.references :game, :null => false
+  t.integer    :score1
+  t.integer    :score2
+  t.timestamps
+end
 
   end
 

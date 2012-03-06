@@ -1,0 +1,20 @@
+
+
+<h1>Wettpool Anmeldung</h1>
+
+
+<%= form_for @user, :url => sessions_path do |f| %>  
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+<!--
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+ -->
+  <div>
+    <%= f.submit "Anmelden" %>
+  </div>
+<% end %>

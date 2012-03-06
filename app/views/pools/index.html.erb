@@ -1,0 +1,12 @@
+<h1>Wettpools</h1>
+
+
+<ul>
+<% @pools.each do |pool| %>
+  <li><%= link_to pool.title, pool_path(pool) %></li>
+<% end %>
+</ul>
+
+<br />
+
+<%= link_to 'Neuer Pool', new_pool_path %>

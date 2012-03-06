@@ -1,3 +1,4 @@
+# encoding: utf-8
 
 # see http://en.wikipedia.org/wiki/UEFA_Euro_2012
 # or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
@@ -132,3 +133,35 @@ Team.create!( :id => 41, :title => 'Sieger Halbfinale 2' )  # Sieger Spiel 30
 GameGroup.create!( :id => 7, :title => 'Finale' )
 
 Game.create!( :id=>  31, :game_group_id=>7, :team1_id=> 40, :team2_id=>41, :play_at => '2012-07-01 21:45' )
+
+
+##############
+##  Pools und Users
+
+user1 = User.create!( :name => 'Behrooz SEIFI', :email => 'behrooz' )
+user2 = User.create!( :name => 'Gerald BAUER', :email => 'gerald' )
+user3 = User.create!( :name => 'Gürsel AYAZ', :email => 'gürsel'  )
+user4 = User.create!( :name => 'Richard TRAINDL', :email => 'richard' )
+user5 = User.create!( :name => 'Manfred KOPECEK', :email => 'manfred' )
+
+
+pool1 = Pool.create!( :title => 'Euro 2012 Fix', :user => user1 )
+pool2 = Pool.create!( :title => 'Euro 2012 Flex', :user => user1 )
+
+
+pool1.players << user1  # also add amin first
+pool1.players << user2
+pool1.players << user3
+pool1.players << user4
+pool1.players << user5
+
+
+Tip.create!( :user => user2, :pool => pool1, :game_id => 1, :score1 => 2, :score2 => 3 )
+Tip.create!( :user => user2, :pool => pool1, :game_id => 2, :score1 => 1, :score2 => 4 )
+Tip.create!( :user => user2, :pool => pool1, :game_id => 10, :score1 => 3, :score2 => 1 )
+Tip.create!( :user => user2, :pool => pool1, :game_id => 7, :score1 => 0, :score2 => 2 )
+
+
+Tip.create!( :user => user3, :pool => pool1, :game_id => 1, :score1 => 2, :score2 => 3 )
+Tip.create!( :user => user3, :pool => pool1, :game_id => 2, :score1 => 1, :score2 => 4 )
+
