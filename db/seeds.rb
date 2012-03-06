@@ -11,10 +11,10 @@
 #################################3
 # Gruppe A
 
-Team.create!( :id =>  1, :title => 'Polen',        :img => '22px-poland.png' )
-Team.create!( :id =>  2, :title => 'Griechenland', :img => '22px-greece.png' )
-Team.create!( :id =>  3, :title => 'Russland',     :img => '22px-russia.png' )
-Team.create!( :id =>  4, :title => 'Tschechien',   :img => '22px-czech_republic.png' )
+Team.create!( :id =>  1, :title => 'Polen',        :img => 'poland2.png' )
+Team.create!( :id =>  2, :title => 'Griechenland', :img => 'greece2.png' )
+Team.create!( :id =>  3, :title => 'Russland',     :img => 'russia2.png' )
+Team.create!( :id =>  4, :title => 'Tschechien',   :img => 'czech_republic2.png' )
 
 GameGroup.create!( :id => 1, :title => 'Gruppe A' )
 
@@ -31,10 +31,10 @@ Game.create!( :id=>18, :game_group_id=>1, :team1_id=>4, :team2_id=>1, :play_at =
 #################################3
 # Gruppe B
 
-Team.create!( :id =>  5, :title => 'Niederlande', :img => '22px-netherlands.png' )
-Team.create!( :id =>  6, :title => 'Dänemark',    :img => '22px-denmark.png' )
-Team.create!( :id =>  7, :title => 'Deutschland', :img => '22px-germany.png' )
-Team.create!( :id =>  8, :title => 'Portugal',    :img => '22px-portugal.png' )
+Team.create!( :id =>  5, :title => 'Niederlande', :img => 'netherlands2.png' )
+Team.create!( :id =>  6, :title => 'Dänemark',    :img => 'denmark2.png' )
+Team.create!( :id =>  7, :title => 'Deutschland', :img => 'germany2.png' )
+Team.create!( :id =>  8, :title => 'Portugal',    :img => 'portugal2.png' )
 
 GameGroup.create!( :id => 2, :title => 'Gruppe B' )
 
@@ -51,10 +51,10 @@ Game.create!( :id=> 20, :game_group_id=>2, :team1_id=> 6, :team2_id=>7, :play_at
 #################################3
 # Gruppe C
 
-Team.create!( :id =>  9, :title => 'Spanien',   :img => '22px-spain.png' )
-Team.create!( :id => 10, :title => 'Italien',   :img => '22px-italy.png' )
-Team.create!( :id => 11, :title => 'Irland',    :img => '22px-ireland.png' )
-Team.create!( :id => 12, :title => 'Kroatien',  :img => '22px-croatia.png' )
+Team.create!( :id =>  9, :title => 'Spanien',   :img => 'spain2.png' )
+Team.create!( :id => 10, :title => 'Italien',   :img => 'italy2.png' )
+Team.create!( :id => 11, :title => 'Irland',    :img => 'ireland2.png' )
+Team.create!( :id => 12, :title => 'Kroatien',  :img => 'croatia2.png' )
 
 GameGroup.create!( :id => 3, :title => 'Gruppe C' )
 
@@ -71,10 +71,10 @@ Game.create!( :id=> 22, :game_group_id=>3, :team1_id=> 10, :team2_id=>11, :play_
 #################################3
 # Gruppe D
 
-Team.create!( :id => 13, :title => 'Ukraine',     :img => '22px-ukraine.png' )
-Team.create!( :id => 14, :title => 'Schweden',    :img => '22px-sweden.png' )
-Team.create!( :id => 15, :title => 'Frankreich',  :img => '22px-france.png' )
-Team.create!( :id => 16, :title => 'England',     :img => '22px-england.png' )
+Team.create!( :id => 13, :title => 'Ukraine',     :img => 'ukraine2.png' )
+Team.create!( :id => 14, :title => 'Schweden',    :img => 'sweden2.png' )
+Team.create!( :id => 15, :title => 'Frankreich',  :img => 'france2.png' )
+Team.create!( :id => 16, :title => 'England',     :img => 'england2.png' )
 
 GameGroup.create!( :id => 4, :title => 'Gruppe D' )
 

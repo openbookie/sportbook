@@ -13,3 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(
+ function() {
+  $( 'input:text, select' ).each( function() {  
+     $(this)
+       .focus( function() { $(this).addClass( 'focus' ) })
+       .blur( function()  { $(this).removeClass( 'focus' ) });
+  });
+
+  $( 'input:radio, input:checkbox' ).each( function() {  
+     $(this)
+       .wrap( "<span></span>" )
+       .focus( function() { $(this.parentNode).addClass( 'focus' ) })
+       .blur( function()  { $(this.parentNode).removeClass( 'focus' ) });
+  }); 
+});

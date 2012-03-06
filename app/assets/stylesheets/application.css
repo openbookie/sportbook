@@ -13,6 +13,17 @@
 */
 
 
+/* yellow background for input controls w/ focus */
+
+input.focus, select.focus, textarea.focus, option.focus {
+    background-color: #F8F50F;
+}
+
+span.focus {
+    background-color: #F8F50F;
+    padding-top: 3px;
+}
+
 body
 {
   font-family:  Helvetica,Arial,sans-serif; 
