@@ -3,10 +3,14 @@
 
 <ul>
 <% @pools.each do |pool| %>
-  <li><%= link_to pool.title, pool_path(pool) %></li>
+  <li><%= link_to pool.title, pool_path(pool) %>
+    (gemanaged von <%= pool.user.name %>,
+      <%= pool.players.size %> machen mit.
+    )    
+  </li>
 <% end %>
 </ul>
 
 <br />
 
-<%= link_to 'Neuer Pool', new_pool_path %>
+<%= link_to 'Neuer Pool', new_pool_path, :class => 'btn-primary' %>

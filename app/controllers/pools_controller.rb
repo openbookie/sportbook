@@ -41,7 +41,7 @@ class PoolsController < ApplicationController
     @pool = Pool.find(params[:id])    
     @pool.players << current_user() 
     
-    flash[ :notice] = "Beim Pool dabei. Los geht's."         
+    flash[ :success ] = "Beim Pool dabei. Los geht's."         
     redirect_to edit_pool_player_path( @pool, current_user() )
   end
   

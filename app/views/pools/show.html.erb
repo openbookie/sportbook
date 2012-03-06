@@ -1,28 +1,28 @@
 
-<h1>Wettpool ### <%= @pool.title %>  ###</h1>
+<h1>Wettpool >>> <%= @pool.title %>  <<< </h1>
 
 <p>gemanaget von  <%= @pool.user.name %></p>
 
-<p>Mit tippen:</p>
+<p>Mittippen:</p>
 
 <% machmit = true %>
 <ul>
   <% @pool.players.each do |player| %>
   <li><%= link_to player.name, pool_player_path( @pool, player ) %>
-  
-  
       <% if current_user?( player ) %>
          <% machmit = false %>
-         <%= link_to '[Bearbeiten]', edit_pool_player_path( @pool, player ) %>
       <% end %>
   </li>
   <% end %>
 </ul>
 
+
+<div>
 <% if machmit %>
-<p>
-  <%= link_to 'Mach mit! Hier mittippen!', play_pool_path( @pool ) %>
-</p>
+  <%= link_to 'Mach mit! Mittippen!', play_pool_path( @pool ), :class => 'btn-primary' %>
+<% else %>
+  <%= link_to 'Tipps Bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
 <% end %>
 
-<%= link_to 'Zurück', pools_path %>
+<%= link_to 'Zurück', pools_path, :class => 'btn' %>
+</div>

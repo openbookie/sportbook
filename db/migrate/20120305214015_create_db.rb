@@ -4,6 +4,7 @@ class CreateDb < ActiveRecord::Migration
     
 create_table :teams do |t|
   t.string :title, :null => false
+  t.string :img
   t.timestamps
 end
 

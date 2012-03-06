@@ -5,8 +5,9 @@
 
 <%= form_for @user, :url => sessions_path do |f| %>  
   <div>
-    <%= f.label :email %>
+    <%= f.label :email, "Email:" %>
     <%= f.text_field :email %>
+    <%= f.submit "Anmelden", :class => 'btn-primary' %>
   </div>
 <!--
   <div>
@@ -14,7 +15,5 @@
     <%= f.password_field :password %>
   </div>
  -->
-  <div>
-    <%= f.submit "Anmelden" %>
-  </div>
+ 
 <% end %>

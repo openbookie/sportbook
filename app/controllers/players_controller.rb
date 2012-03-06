@@ -51,9 +51,8 @@ class PlayersController < ApplicationController
       tip.save!
    end
 
-
-    @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
+    flash[:success] = 'Tipps Erfolgreich gespeichert.'
         
-    render :action => 'edit'
+    redirect_to pool_player_path( @pool, @user )
   end
 end

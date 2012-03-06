@@ -9,9 +9,13 @@
 <body>
 
 <% unless controller_name == 'sessions' %>
-<div>
+<div class='navbar'>
  <% if signed_in? %>
-    Willkommen, <%= current_user.name %>!  <%= link_to 'Abmelden', signout_path %>
+    Willkommen, <%= current_user.name %>!
+
+    &nbsp;          
+    
+    <%= link_to 'Abmelden', signout_path %>
  <% else %>
     <%= link_to 'Anmelden', signin_path %>
  <% end %>
