@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
 
   create_table "pools", :force => true do |t|
     t.string   "title",      :null => false
+    t.text     "welcome"
     t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -47,10 +48,11 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   end
 
   create_table "teams", :force => true do |t|
-    t.string   "title",      :null => false
+    t.string   "title",                         :null => false
     t.string   "img"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "calc",       :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "tips", :force => true do |t|

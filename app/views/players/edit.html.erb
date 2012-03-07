@@ -3,22 +3,29 @@
 
 <%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
 
+<table>
 <% @groups.each do |group| %>
-<h3><%= group.title %></h3>
- <ul class='none'>
+<tr>
+  <td></td><td colspan='3'><b><%= group.title %></b></td>
+</tr>
   <% group.games.each do |game| %>
-     <li>
-       <!-- (<%= game.pos %>) -->
-     <% if game.team1.img.present? %>
-        <%= image_tag( game.team1.img ) %>
-     <% end %>          
+  <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
+   <tr>
+    <td style='text-align: right;'> 
         <b>
-       <%= game.team1.title %>
+          <% if game.team1.calc? %>
+             <em>[<%= game.team1.title %>]</em>
+          <% else %>  
+             <%= game.team1.title %>
+          <% end %>
+        </b>
+       <% if game.team1.img.present? %>
+          <%= image_tag( game.team1.img ) %>
+       <% end %>          
+    </td>
 
-       
-       <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
-
-              <% if tip.present? %>
+   <% if tip.present? %>
+     <td>
   <%= f.fields_for 'tips[]', tip do |ff| %>
      <%= ff.hidden_field :user_id %>
      <%= ff.hidden_field :pool_id %>
@@ -26,21 +33,28 @@
      <%= ff.text_field :score1, :size => 2 %> :
      <%= ff.text_field :score2, :size => 2 %>   
   <% end %>
+     </td>
        <% else %>
-          ## Fehler: Tip Datensatz fehlt!
+         <td>## Fehler: Tip Datensatz fehlt!
+         </td>
        <% end %>
 
+       <td>
       <% if game.team2.img.present? %>
          <%= image_tag( game.team2.img ) %>
       <% end %>
-       
-      <%= game.team2.title %>
+        <b>
+          <% if game.team2.calc? %>
+             <em>[<%= game.team2.title %>]</em>
+          <% else %>  
+             <%= game.team2.title %>
+          <% end %>
          </b>
-     </li>
-  <% end %>
- </ul>
-<% end %>
-
+       </td>
+   </tr>
+  <% end %><!-- game -->
+<% end %><!-- groups -->
+</table>
 
 <!--
 <ul class='none'>
@@ -75,7 +89,7 @@
 
 
 <p>
-  <%= f.submit "Tipps Speichern", :class => 'btn-primary' %>
+  <%= f.submit "Tipps speichern", :class => 'btn-primary' %>
   <%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>
 </p>  
 <% end %>  

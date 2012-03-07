@@ -12,5 +12,8 @@
 
 class Team < ActiveRecord::Base
 
+  def calc?
+    self.calc == true
+  end
   
 end

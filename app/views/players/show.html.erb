@@ -1,58 +1,87 @@
 <h1><%= @user.name %> <%= link_to ">>> #{@pool.title} <<<", pool_path(@pool)  %></h1>
 
+
+<table>
 <% @groups.each do |group| %>
-<h3><%= group.title %></h3>
- <ul class='none'>
+<tr>
+  <td colspan='3'></td><td colspan='4'><b><%= group.title %></b></td>
+</tr>
   <% group.games.each do |game| %>
-     <li>
-
-      <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
-
+  <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
+    <tr>
+      <td>
        <% if tip.present? %>      
           <% if tip.bingo? %>
-             BINGO!!!
+             <b>BINGO!!!</b>
           <% end %>
+       <% end %>
+      </td>
+      <td>
+       <% if tip.present? %>       
           (<%= tip.toto12x %>)
        <% end %>
-
-       <!-- (<%= game.pos %>) -->
+      </td>
+      
+       <td style='text-align: right;'>
+        <b>
+          <% if game.team1.calc? %>
+             <em>[<%= game.team1.title %>]</em>
+          <% else %>  
+             <%= game.team1.title %>
+          <% end %>
+        </b>
      <% if game.team1.img.present? %>
         <%= image_tag( game.team1.img ) %>
      <% end %>          
-        <b>
-       <%= game.team1.title %>
-
+       </td>
        
        <% if tip.present? %>
+        <td>
+          <b>
          <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>
          :
-         <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>          
+         <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>
+          </b>
+         </td>
        <% else %>
-          ## Fehler: Tip Datensatz fehlt!
+          <td>## Fehler: Tip Datensatz fehlt!</td>
        <% end %>
 
+         <td>
+          <b>
          (
          <%= if game.score1.blank? then "-" else "#{game.score1}" end %>
          :
          <%= if game.score2.blank? then "-" else "#{game.score2}" end %>
-         )       
+         )
+           </b>
+         </td>
        
+       <td>
       <% if game.team2.img.present? %>
          <%= image_tag( game.team2.img ) %>
       <% end %>
-       
-      <%= game.team2.title %>
+
+        <b>
+          <% if game.team2.calc? %>
+             <em>[<%= game.team2.title %>]</em>
+          <% else %>  
+             <%= game.team2.title %>
+          <% end %>
          </b>
+        </td>
 
-      <span class='light'>        
-        <%= game.play_at.to_s(:long_ordinal) %>
-      </span>      
-       
-     </li>
-  <% end %>
- </ul>
-<% end %>
-
+         <!--
+         <td>
+           <span class='light'>        
+           <%= game.play_at.to_s(:long_ordinal) %>
+           </span>
+         </td>
+          -->
+     </tr>     
+  <% end %> <!-- games -->
+<% end %> <!-- groups -->
+</table>
 
 <!--
 <ul class='none'>

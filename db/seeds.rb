@@ -78,61 +78,61 @@ t16 = Team.create!( :title => 'England',     :img => 'england2.png' )
 
 group4 = GameGroup.create!( :pos => 4, :title => 'Gruppe D' )
 
-g7 = Game.create!( :pos=>  7, :game_group=>group4, :team1=>t15, :team2=>t16, :play_at => '2012-06-11 19:00' )
+g7 = Game.create!( :pos=>  7, :game_group=>group4, :team1=>t15, :team2=>t16, :play_at => '2012-06-11 18:00' )
 g8 = Game.create!( :pos=>  8, :game_group=>group4, :team1=>t13, :team2=>t14, :play_at => '2012-06-11 20:45' )
 
-g16 = Game.create!( :pos=> 16, :game_group=>group4, :team1=>t13, :team2=>t15, :play_at => '2012-06-15 19:00' )
-g15 = Game.create!( :pos=> 15, :game_group=>group4, :team1=>t14, :team2=>t16, :play_at => '2012-06-15 21:45' )
+g16 = Game.create!( :pos=> 16, :game_group=>group4, :team1=>t13, :team2=>t15, :play_at => '2012-06-15 18:00' )
+g15 = Game.create!( :pos=> 15, :game_group=>group4, :team1=>t14, :team2=>t16, :play_at => '2012-06-15 20:45' )
 
-g23 = Game.create!( :pos=> 23, :game_group=>group4, :team1=>t16, :team2=>t13, :play_at => '2012-06-19 21:45' )
-g24 = Game.create!( :pos=> 24, :game_group=>group4, :team1=>t14, :team2=>t15, :play_at => '2012-06-19 21:45' )
+g23 = Game.create!( :pos=> 23, :game_group=>group4, :team1=>t16, :team2=>t13, :play_at => '2012-06-19 20:45' )
+g24 = Game.create!( :pos=> 24, :game_group=>group4, :team1=>t14, :team2=>t15, :play_at => '2012-06-19 20:45' )
 
 
 ################################################################
 # Viertelfinale
 
-t20 = Team.create!( :title => '1. Gruppe A' )
-t21 = Team.create!( :title => '2. Gruppe A' )
+t20 = Team.create!( :title => '1. Gruppe A', :calc => true )
+t21 = Team.create!( :title => '2. Gruppe A', :calc => true )
 
-t22 = Team.create!( :title => '1. Gruppe B' )
-t23 = Team.create!( :title => '2. Gruppe B' )
+t22 = Team.create!( :title => '1. Gruppe B', :calc => true )
+t23 = Team.create!( :title => '2. Gruppe B', :calc => true )
 
-t24 = Team.create!( :title => '1. Gruppe C' )
-t25 = Team.create!( :title => '2. Gruppe C' )
+t24 = Team.create!( :title => '1. Gruppe C', :calc => true )
+t25 = Team.create!( :title => '2. Gruppe C', :calc => true )
 
-t26 = Team.create!( :title => '1. Gruppe D' )
-t27 = Team.create!( :title => '2. Gruppe D' )
+t26 = Team.create!( :title => '1. Gruppe D', :calc => true )
+t27 = Team.create!( :title => '2. Gruppe D', :calc => true )
 
 group5 = GameGroup.create!( :pos => 5, :title => 'Viertelfinale' )
 
 g25 = Game.create!( :pos=> 25, :game_group=>group5, :team1=>t20, :team2=>t23, :play_at => '2012-06-21 20:45' )
 g26 = Game.create!( :pos=> 26, :game_group=>group5, :team1=>t22, :team2=>t21, :play_at => '2012-06-22 20:45' )
-g27 = Game.create!( :pos=> 27, :game_group=>group5, :team1=>t24, :team2=>t27, :play_at => '2012-06-23 21:45' )
-g28 = Game.create!( :pos=> 28, :game_group=>group5, :team1=>t26, :team2=>t25, :play_at => '2012-06-24 21:45' )
+g27 = Game.create!( :pos=> 27, :game_group=>group5, :team1=>t24, :team2=>t27, :play_at => '2012-06-23 20:45' )
+g28 = Game.create!( :pos=> 28, :game_group=>group5, :team1=>t26, :team2=>t25, :play_at => '2012-06-24 20:45' )
 
 ##############################################
 # Halbfinale
 
-t30 = Team.create!( :title => 'Sieger Viertelfinale 1' )  # Sieger Spiel 25
-t31 = Team.create!( :title => 'Sieger Viertelfinale 2' )  # Sieger Spiel 26
-t32 = Team.create!( :title => 'Sieger Viertelfinale 3' )  # Sieger Spiel 27
-t33 = Team.create!( :title => 'Sieger Viertelfinale 4' )  # Sieger Spiel 28
+t30 = Team.create!( :title => 'Sieger Viertelfinale 1', :calc => true )  # Sieger Spiel 25
+t31 = Team.create!( :title => 'Sieger Viertelfinale 2', :calc => true )  # Sieger Spiel 26
+t32 = Team.create!( :title => 'Sieger Viertelfinale 3', :calc => true )  # Sieger Spiel 27
+t33 = Team.create!( :title => 'Sieger Viertelfinale 4', :calc => true )  # Sieger Spiel 28
 
 group6 = GameGroup.create!( :pos => 6, :title => 'Halbfinale' )
 
-g29 = Game.create!( :pos=> 29, :game_group=>group6, :team1=>t30, :team2=>t32, :play_at => '2012-06-27 21:45' )
+g29 = Game.create!( :pos=> 29, :game_group=>group6, :team1=>t30, :team2=>t32, :play_at => '2012-06-27 20:45' )
 g30 = Game.create!( :pos=> 30, :game_group=>group6, :team1=>t31, :team2=>t33, :play_at => '2012-06-28 20:45' )
 
 
 ################################################
 # Finale
 
-t40 = Team.create!( :title => 'Sieger Halbfinale 1' )  # Sieger Spiel 29
-t41 = Team.create!( :title => 'Sieger Halbfinale 2' )  # Sieger Spiel 30
+t40 = Team.create!( :title => 'Sieger Halbfinale 1', :calc => true )  # Sieger Spiel 29
+t41 = Team.create!( :title => 'Sieger Halbfinale 2', :calc => true )  # Sieger Spiel 30
 
 group7 = GameGroup.create!( :pos => 7, :title => 'Finale' )
 
-g31 = Game.create!( :pos=> 31, :game_group=>group7, :team1=>t40, :team2=>t41, :play_at => '2012-07-01 21:45' )
+g31 = Game.create!( :pos=> 31, :game_group=>group7, :team1=>t40, :team2=>t41, :play_at => '2012-07-01 20:45' )
 
 
 ##############
@@ -145,8 +145,8 @@ user4 = User.create!( :name => 'Richard TRAINDL', :email => 'richard' )
 user5 = User.create!( :name => 'Manfred KOPECEK', :email => 'manfred' )
 user6 = User.create!( :name => 'Clemens HUBER', :email => 'clemens' )
 
-pool1 = Pool.create!( :title => 'Euro 2012 Fix', :user => user1 )
-pool2 = Pool.create!( :title => 'Euro 2012 Flex', :user => user1 )
+pool1 = Pool.create!( :title => 'Euro 2012 Fix', :user => user1, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
+pool2 = Pool.create!( :title => 'Euro 2012 Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
 
 
 pool1.players << user1  # also add amin first
@@ -154,6 +154,7 @@ pool1.players << user2
 pool1.players << user3
 pool1.players << user4
 pool1.players << user5
+pool1.players << user6
 
 
 Tip.create!( :user => user2, :pool => pool1, :game => g1,  :score1 => 2, :score2 => 3 )

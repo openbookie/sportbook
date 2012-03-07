@@ -6,8 +6,9 @@ class CreateDb < ActiveRecord::Migration
   def up
     
 create_table :teams do |t|
-  t.string :title, :null => false
-  t.string :img
+  t.string  :title, :null => false
+  t.string  :img
+  t.boolean :calc,  :default => false, :null => false   # placeholder team?/needs to get calculated
   t.timestamps
 end
 
@@ -37,6 +38,7 @@ end
 
 create_table :pools do |t|
   t.string :title, :null => false
+  t.text   :welcome          
   t.references :user, :null => false  # owner/manager/admin of pool
   t.timestamps
 end
@@ -59,6 +61,6 @@ end
   end
 
   def down
-    raise ActiveRecord::IrreversibleMigration
+    raise IrreversibleMigration
   end
 end

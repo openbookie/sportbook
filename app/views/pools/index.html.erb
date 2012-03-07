@@ -4,9 +4,11 @@
 <ul>
 <% @pools.each do |pool| %>
   <li><%= link_to pool.title, pool_path(pool) %>
-    (gemanaged von <%= pool.user.name %>,
-      <%= pool.players.size %> machen mit.
-    )    
+    (Manager <%= pool.user.name %>,
+      <%= pool.players.size %> Mitspieler
+    )
+    <br>
+    <span class='light' style='font-size: 80%'><%= pool.welcome %></span>
   </li>
 <% end %>
 </ul>

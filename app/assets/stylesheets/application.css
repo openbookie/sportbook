@@ -34,7 +34,7 @@ body
 h1, h1 a { font-size: 56px;  /* 16x3.5 */ }
 h2 { font-size: 48px;  /* 16x3  */ }
 h3 { font-size: 40px;  /* 16x2.5 */ }
-div, input, label, p, li, a { font-size: 32px; /*16x2*/ }
+td, div, input, label, p, li, a { font-size: 32px; /*16x2*/ }
 }
 
 @media print {
