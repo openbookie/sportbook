@@ -15,15 +15,19 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
 
   create_table "game_groups", :force => true do |t|
     t.string   "title",      :null => false
+    t.integer  "pos",        :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "games", :force => true do |t|
     t.integer  "game_group_id", :null => false
+    t.integer  "pos",           :null => false
     t.integer  "team1_id",      :null => false
     t.integer  "team2_id",      :null => false
     t.datetime "play_at",       :null => false
+    t.integer  "score1"
+    t.integer  "score2"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
