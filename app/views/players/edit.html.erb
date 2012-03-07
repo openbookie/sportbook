@@ -1,8 +1,48 @@
 
-<h1><%= @user.name %> >>> <%= @pool.title %> <<< </h1>
+<h1><%= @user.name %> <%= link_to ">>> #{@pool.title} <<<", pool_path(@pool)  %></h1>
 
 <%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
 
+<% @groups.each do |group| %>
+<h3><%= group.title %></h3>
+ <ul class='none'>
+  <% group.games.each do |game| %>
+     <li>
+       <!-- (<%= game.pos %>) -->
+     <% if game.team1.img.present? %>
+        <%= image_tag( game.team1.img ) %>
+     <% end %>          
+        <b>
+       <%= game.team1.title %>
+
+       
+       <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
+
+              <% if tip.present? %>
+  <%= f.fields_for 'tips[]', tip do |ff| %>
+     <%= ff.hidden_field :user_id %>
+     <%= ff.hidden_field :pool_id %>
+     <%= ff.hidden_field :game_id %>
+     <%= ff.text_field :score1, :size => 2 %> :
+     <%= ff.text_field :score2, :size => 2 %>   
+  <% end %>
+       <% else %>
+          ## Fehler: Tip Datensatz fehlt!
+       <% end %>
+
+      <% if game.team2.img.present? %>
+         <%= image_tag( game.team2.img ) %>
+      <% end %>
+       
+      <%= game.team2.title %>
+         </b>
+     </li>
+  <% end %>
+ </ul>
+<% end %>
+
+
+<!--
 <ul class='none'>
 <% @tips.each do |tip| %>
   <li> (<%= tip.game.id %>)
@@ -31,6 +71,8 @@
 
 <% end %>
 </ul>
+-->
+
 
 <p>
   <%= f.submit "Tipps Speichern", :class => 'btn-primary' %>

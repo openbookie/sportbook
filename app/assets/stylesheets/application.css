@@ -29,8 +29,23 @@ body
   font-family:  Helvetica,Arial,sans-serif; 
 }
 
-h1 { font-size: 56px;  /* 16x3.5 */ }
+@media screen {
+
+h1, h1 a { font-size: 56px;  /* 16x3.5 */ }
+h2 { font-size: 48px;  /* 16x3  */ }
+h3 { font-size: 40px;  /* 16x2.5 */ }
 div, input, label, p, li, a { font-size: 32px; /*16x2*/ }
+}
+
+@media print {
+
+/* use default font-size for now */
+
+  .navbar  { display: none; }
+  .buttons { display: none; }   /* todo: add buttons in div.buttons */
+}
+
+
 
 ul { list-style-type: square; }
 

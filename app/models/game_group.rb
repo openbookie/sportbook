@@ -10,5 +10,5 @@
 
 
 class GameGroup < ActiveRecord::Base
-
+  has_many :games, :order => 'pos' 
 end

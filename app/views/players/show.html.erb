@@ -1,5 +1,60 @@
-<h1><%= @user.name %> >>> <%= @pool.title %> <<< </h1>
+<h1><%= @user.name %> <%= link_to ">>> #{@pool.title} <<<", pool_path(@pool)  %></h1>
 
+<% @groups.each do |group| %>
+<h3><%= group.title %></h3>
+ <ul class='none'>
+  <% group.games.each do |game| %>
+     <li>
+
+      <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
+
+       <% if tip.present? %>      
+          <% if tip.bingo? %>
+             BINGO!!!
+          <% end %>
+          (<%= tip.toto12x %>)
+       <% end %>
+
+       <!-- (<%= game.pos %>) -->
+     <% if game.team1.img.present? %>
+        <%= image_tag( game.team1.img ) %>
+     <% end %>          
+        <b>
+       <%= game.team1.title %>
+
+       
+       <% if tip.present? %>
+         <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>
+         :
+         <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>          
+       <% else %>
+          ## Fehler: Tip Datensatz fehlt!
+       <% end %>
+
+         (
+         <%= if game.score1.blank? then "-" else "#{game.score1}" end %>
+         :
+         <%= if game.score2.blank? then "-" else "#{game.score2}" end %>
+         )       
+       
+      <% if game.team2.img.present? %>
+         <%= image_tag( game.team2.img ) %>
+      <% end %>
+       
+      <%= game.team2.title %>
+         </b>
+
+      <span class='light'>        
+        <%= game.play_at.to_s(:long_ordinal) %>
+      </span>      
+       
+     </li>
+  <% end %>
+ </ul>
+<% end %>
+
+
+<!--
 <ul class='none'>
 <% @tips.each do |tip| %>
   <li>
@@ -7,28 +62,20 @@
   
          <b>
 
-     <% if tip.game.team1.img.present? %>
-        <%= image_tag( tip.game.team1.img ) %>
-     <% end %>          
           <%= tip.game.team1.title %>
 
          <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>
          :
          <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>
 
-     <% if tip.game.team2.img.present? %>
-        <%= image_tag( tip.game.team2.img ) %>
-     <% end %>
        <%= tip.game.team2.title %>
               
          </b>
          
       (<%= tip.game.game_group.title %>)
-        <span class='light'>        
-        <%= tip.game.play_at.to_s(:long_ordinal) %>
-         </span>      
   </li>
 <% end %>
 </ul>
+-->
 
 <%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>
