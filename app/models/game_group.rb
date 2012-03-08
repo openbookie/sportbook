@@ -10,5 +10,6 @@
 
 
 class GameGroup < ActiveRecord::Base
-  has_many :games, :order => 'pos' 
+  has_many :games, :order => 'pos'
+  belongs_to :event
 end

@@ -46,6 +46,26 @@ td, div, input, label, p, li, a { font-size: 32px; /*16x2*/ }
 }
 
 
+.bingo {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: green;
+    font-size: 60%;
+    padding: 4px;
+    color: white;
+    font-weight: bold;
+}
+
+.missing {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: orange;
+    font-size: 60%;
+    padding: 4px;
+    color: white;
+    font-weight: bold;    
+}
+
 
 ul { list-style-type: square; }
 

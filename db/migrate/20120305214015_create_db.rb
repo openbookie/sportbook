@@ -12,9 +12,16 @@ create_table :teams do |t|
   t.timestamps
 end
 
+create_table :events do |t|
+ t.string      :title, :null => false
+ ## todo: add begin_at/start_at ??
+ t.timestamps  
+end
+
 create_table :game_groups do |t|
- t.string  :title, :null => false
- t.integer :pos,   :null => false
+ t.references :event, :null => false
+ t.string     :title, :null => false
+ t.integer    :pos,   :null => false
  t.timestamps
 end
 
@@ -37,9 +44,10 @@ create_table :users do |t|
 end
 
 create_table :pools do |t|
-  t.string :title, :null => false
-  t.text   :welcome          
-  t.references :user, :null => false  # owner/manager/admin of pool
+  t.references  :event, :null => false
+  t.string      :title, :null => false
+  t.references  :user,  :null => false  # owner/manager/admin of pool
+  t.text        :welcome          
   t.timestamps
 end
 

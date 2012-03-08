@@ -15,5 +15,7 @@ class Pool < ActiveRecord::Base
   
   has_many :pool_users, :class_name => 'PoolUser'
   has_many :players, :through => :pool_users, :source => :user  
+
+  belongs_to :event  
   
 end

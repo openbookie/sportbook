@@ -8,30 +8,33 @@ class PlayersController < ApplicationController
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
     
-    @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
+    ## @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
     
-    @groups = GameGroup.order( :pos ).all
+    @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
   end
 
   def edit
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
-        
-    Game.order( :pos ).all.each do |game|
-      # make sure all games exists as tips
-      tips = @user.tips.where( :pool_id => params[:pool_id] ).where( :game_id => game.id )
-      pp tips
-      if tips.empty?
-        Tip.create!( :user => @user, :pool => @pool, :game => game )
-        puts "*** adding tip for game #{game.id}"
-      else
-        puts "*** found tip for game #{game.id}"
+
+    
+    GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all.each do |group |
+      group.games.order( :pos ).all.each do |game|
+        # make sure all games exists as tips
+        tips = @user.tips.where( :pool_id => params[:pool_id] ).where( :game_id => game.id )
+        pp tips
+        if tips.empty?
+          Tip.create!( :user => @user, :pool => @pool, :game => game )
+          puts "*** adding tip for game #{game.id}"
+        else
+          puts "*** found tip for game #{game.id}"
+        end
       end
     end
 
-    @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
+    ## @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
     
-    @groups = GameGroup.order( :pos ).all
+    @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
   end
   
   def update

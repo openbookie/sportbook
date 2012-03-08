@@ -1,5 +1,4 @@
-<h1><%= @user.name %> <%= link_to ">>> #{@pool.title} <<<", pool_path(@pool)  %></h1>
-
+<h1><%= link_to "#{@pool.title} #{@pool.event.title}", pool_path(@pool)  %> / <%= @user.name %></h1>
 
 <table>
 <% @groups.each do |group| %>
@@ -12,7 +11,11 @@
       <td>
        <% if tip.present? %>      
           <% if tip.bingo? %>
-             <b>BINGO!!!</b>
+             <span class='bingo'>Bingo</span>
+          <% end %>
+          
+          <% if tip.score1.blank? || tip.score2.blank? %>
+             <span class='missing'>???</span>
           <% end %>
        <% end %>
       </td>
@@ -44,7 +47,7 @@
           </b>
          </td>
        <% else %>
-          <td>## Fehler: Tip Datensatz fehlt!</td>
+          <td>###<!-- fehler: datensatz fehlt! --></td>
        <% end %>
 
          <td>
@@ -71,40 +74,14 @@
          </b>
         </td>
 
-         <!--
          <td>
-           <span class='light'>        
-           <%= game.play_at.to_s(:long_ordinal) %>
+           <span class='light'>
+            <%= game.play_at.strftime( "%a. %d. %b. / %H:%M" ) %>
            </span>
          </td>
-          -->
      </tr>     
   <% end %> <!-- games -->
 <% end %> <!-- groups -->
 </table>
-
-<!--
-<ul class='none'>
-<% @tips.each do |tip| %>
-  <li>
-    (<%= tip.game.id %>)
-  
-         <b>
-
-          <%= tip.game.team1.title %>
-
-         <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>
-         :
-         <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>
-
-       <%= tip.game.team2.title %>
-              
-         </b>
-         
-      (<%= tip.game.game_group.title %>)
-  </li>
-<% end %>
-</ul>
--->
 
 <%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>

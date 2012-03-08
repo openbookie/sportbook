@@ -1,5 +1,5 @@
 
-<h1>Wettpool >>> <%= @pool.title %>  <<< </h1>
+<h1><%= link_to 'Wettpools', pools_path() %> / <%= "#{@pool.title} #{@pool.event.title}" %></h1>
 
 <p>Manager <%= @pool.user.name %></p>
 
@@ -26,5 +26,5 @@
   <%= link_to 'Tipps bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
 <% end %>
 
-<%= link_to 'Zurück', pools_path, :class => 'btn' %>
+<%= link_to 'Zurück', pools_path(), :class => 'btn' %>
 </div>
