@@ -31,10 +31,17 @@ body
 
 @media screen {
 
-h1, h1 a { font-size: 56px;  /* 16x3.5 */ }
-h2 { font-size: 48px;  /* 16x3  */ }
-h3 { font-size: 40px;  /* 16x2.5 */ }
-td, div, input, label, p, li, a { font-size: 32px; /*16x2*/ }
+h1, h1 a { font-size: 35px;  /* 10x3.5 */ }
+h2 { font-size: 30px;  /* 10x3  */ }
+h3 { font-size: 25px;  /* 10x2.5 */ }
+
+td, div, p, li, a,
+input, select, textarea, label  { font-size: 20px; /*10x2*/ }
+
+textarea {
+  font-family:  Helvetica,Arial,sans-serif;     
+}
+
 }
 
 @media print {
@@ -174,7 +181,7 @@ a:visited.btn
    padding: 4px 10px 4px;
    text-align: center;
    /* vertical-align: middle; */
-   color: #333;;
+   color: #333;
    background-color: #E6E6E6;
    background-image: -webkit-linear-gradient( top, white, #E6E6E6);
    background-image: -ms-linear-gradient( top, white, #E6E6E6);

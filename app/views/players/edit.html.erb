@@ -4,6 +4,7 @@
 <%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
 
 <table>
+<% first_field = true %>
 <% @groups.each do |group| %>
 <tr>
   <td></td><td colspan='3'><b><%= group.title %></b></td>
@@ -30,7 +31,13 @@
      <%= ff.hidden_field :user_id %>
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
-     <%= ff.text_field :score1, :size => 2 %> :
+     <% if first_field %>
+       <%= ff.text_field :score1, :size => 2, 'data-autofocus' => 'true' %>
+       <% first_field = false %>
+      <% else %>
+       <%= ff.text_field :score1, :size => 2 %>
+      <% end %>
+       :
      <%= ff.text_field :score2, :size => 2 %>   
   <% end %>
      </td>

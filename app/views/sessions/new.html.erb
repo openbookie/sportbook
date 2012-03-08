@@ -6,7 +6,7 @@
 <%= form_for @user, :url => sessions_path do |f| %>  
   <div>
     <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, 'data-autofocus' => 'true' %>
     <%= f.submit "Anmelden", :class => 'btn-primary' %>
   </div>
 <!--

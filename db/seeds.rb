@@ -171,6 +171,7 @@ user3 = User.create!( :name => 'Gürsel AYAZ', :email => 'gürsel'  )
 user4 = User.create!( :name => 'Richard TRAINDL', :email => 'richard' )
 user5 = User.create!( :name => 'Manfred KOPECEK', :email => 'manfred' )
 user6 = User.create!( :name => 'Clemens HUBER', :email => 'clemens' )
+user7 = User.create!( :name => 'Franz BAUER', :email => 'franz' )
 
 pool1 = Pool.create!( :event => e1, :title => 'UNIQA Fix', :user => user1, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
 pool2 = Pool.create!( :event => e1, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
@@ -183,6 +184,11 @@ pool1.players << user4
 pool1.players << user5
 pool1.players << user6
 
+pool3.players << user1  # also add amin first
+pool3.players << user2
+pool3.players << user7
+pool3.players << user5
+pool3.players << user6
 
 Tip.create!( :user => user2, :pool => pool1, :game => g1,  :score1 => 2, :score2 => 3 )
 Tip.create!( :user => user2, :pool => pool1, :game => g2,  :score1 => 1, :score2 => 4 )

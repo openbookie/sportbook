@@ -11,13 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title, 'Titel:' %>
-    <%= f.text_field :title %>
-  </div>
+  <table>
+    <tr>
+      <td><%= f.label :title, 'Titel:' %></td>
+      <td><%= f.text_field :title, 'data-autofocus' => 'true' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :event_ed, 'Veranstaltung:' %></td>
+      <td><%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :title) %></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><%= f.label :welcome, 'Willkommenstext:' %></td>
+      <td><%= f.text_area :welcome, :size=>'60x5' %></td>
+    </tr>
+  </table>
+  
   <div class="actions">
     <%= f.submit 'Speichern', :class => 'btn-primary' %>
     <%= link_to 'Zurück', pools_path, :class => 'btn' %>
-
   </div>
 <% end %>

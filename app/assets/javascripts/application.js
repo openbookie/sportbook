@@ -27,5 +27,10 @@ $(document).ready(
        .wrap( "<span></span>" )
        .focus( function() { $(this.parentNode).addClass( 'focus' ) })
        .blur( function()  { $(this.parentNode).removeClass( 'focus' ) });
-  }); 
+  });
+  
+  $( '[data-autofocus]' ).each( function() {
+     $(this).focus();
+  });
+  
 });
