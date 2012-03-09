@@ -4,11 +4,6 @@ class PoolsController < ApplicationController
   def index
     @pools = Pool.all
   end
-
-  # GET /pools/1
-  def show
-    @pool = Pool.find(params[:id])
-  end
   
   # GET /pools/new
   def new
@@ -21,9 +16,9 @@ class PoolsController < ApplicationController
     @pool.user = current_user()
 
     if @pool.save
-      redirect_to @pool, notice: 'Pool erfolgreich gespeichert.' 
+      redirect_to pools_path(), notice: 'Pool erfolgreich gespeichert.' 
     else
-      render action: "new"
+      render action: 'new'
     end
   end
   
@@ -37,28 +32,31 @@ class PoolsController < ApplicationController
     @pool = Pool.find(params[:id])
 
     if @pool.update_attributes(params[:pool])
-      redirect_to @pool, notice: 'Pool was successfully updated.' 
+      redirect_to pools_path(), notice: 'Pool erfolgreich gespeichert.' 
     else
-      render action: "edit" 
+      render action: 'edit'
     end
-  end
-  
+  end  
   
   def play
     @pool = Pool.find(params[:id])    
     @pool.players << current_user() 
     
-    flash[ :success ] = "Beim Pool dabei. Los geht's."         
+    flash[ :success ] = "Willkommen im Wettpool. Los geht's."         
     redirect_to edit_pool_player_path( @pool, current_user() )
   end
   
+  # GET /pools/1
+  def show
+    @pool = Pool.find(params[:id])
+  end
   
   # DELETE /pools/1
   def destroy
     @pool = Pool.find(params[:id])
     @pool.destroy
 
-    redirect_to pools_url 
+    redirect_to pools_path() 
   end
   
 end # class PoolsController

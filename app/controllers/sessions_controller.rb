@@ -10,20 +10,20 @@ class SessionsController < ApplicationController
     @user = User.find_by_email( params[:user][:email])
     
     if @user.nil?
-      flash.now[:error] = 'Unbekannte Email. Sorry.'
+      flash.now[:error] = 'Unbekannte Email. Tut leid.'
       @user = User.new( params[:user] )      
       render :action => 'new'
     else
       session[:user_id] = @user.id   
     
       flash[:notice] = 'Anmeldung erfolgreich.'
-      redirect_to pools_path      
+      redirect_to pools_path()      
     end    
   end
   
   def destroy
     session[:user_id] = nil
-    flash[:notice] = 'Tschüss'
-    redirect_to signin_path
+    flash[:notice] = 'Tschüss.'
+    redirect_to signin_path()
   end
 end

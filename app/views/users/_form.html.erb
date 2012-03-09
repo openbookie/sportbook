@@ -11,11 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+  
+  <table>
+    <tr>
+      <td><%= f.label :name, 'Name:' %></td>
+      <td><%= f.text_field :name, 'data-autofocus' => 'true' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :email, 'Email:' %></td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+  </table>  
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Speichern', :class => 'btn-primary' %>
+    <%= link_to 'Zurück', users_path(), :class => 'btn' %>
   </div>
 <% end %>

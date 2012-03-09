@@ -1,3 +1,4 @@
+## todo/fix: move require to startup env
 require 'pp'
 
 class PlayersController < ApplicationController
@@ -58,7 +59,7 @@ class PlayersController < ApplicationController
       tip.save!
    end
 
-    flash[:success] = 'Tipps Erfolgreich gespeichert.'
+    flash[:success] = 'Tipps erfolgreich gespeichert.'
         
     redirect_to pool_player_path( @pool, @user )
   end

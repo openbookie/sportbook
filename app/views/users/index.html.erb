@@ -1,23 +1,23 @@
-<h1>Listing users</h1>
+<h1>Benutzer</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Email</th>
+    <th><!-- Edit --></th>
+    <th><!-- Delete --></th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to user.name, user_path(user) %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Bearbeiten', edit_user_path(user), :class => 'btn' %></td>
+    <td><%= link_to 'Löschen', user_path(user), :confirm => 'Sicher?', :method =>'delete', :class => 'btn' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Neuer Benutzer', new_user_path(), :class => 'btn-primary' %>

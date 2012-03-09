@@ -4,9 +4,12 @@
 #
 #  id            :integer         not null, primary key
 #  game_group_id :integer         not null
+#  pos           :integer         not null
 #  team1_id      :integer         not null
 #  team2_id      :integer         not null
 #  play_at       :datetime        not null
+#  score1        :integer
+#  score2        :integer
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #
