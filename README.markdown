@@ -1,4 +1,9 @@
 
+## Tips for Annotate
+
+Annotate models via
+
+    bundle exec annotate --position before
 
 ## Tips for Heroku
 

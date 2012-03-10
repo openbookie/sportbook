@@ -21,6 +21,19 @@ t105 = Team.create!( :title => 'SSC Napoli',  :img => 'napoli.png')
 t106 = Team.create!( :title => 'Real Madrid CF', :img => 'madrid.png' )
 t107 = Team.create!( :title => 'PFC CSKA Moskva', :img => 'moskva.png' )
 
+# fix: change pos to 1
+
+group99 = GameGroup.create!( :event => e2, :pos => 0, :title => 'Achtelfinale' )
+
+g90 = Game.create!( :pos=>1, :game_group=>group99, :team1=>t107, :team2=>t106, :play_at => '2012-02-21 20:45', :score1 => 1, :score2 => 1 )
+g91 = Game.create!( :pos=>2, :game_group=>group99, :team1=>t105, :team2=>t104, :play_at => '2012-02-21 20:45', :score1 => 3, :score2 => 1 )
+
+g92 = Game.create!( :pos=>3, :game_group=>group99, :team1=>t101, :team2=>t100, :play_at => '2012-02-22 20:45', :score1 => 1, :score2 => 0 )
+g93 = Game.create!( :pos=>4, :game_group=>group99, :team1=>t103, :team2=>t102, :play_at => '2012-02-22 20:45', :score1 => 1, :score2 => 0 )
+
+
+# fix: change pos to 2 (or fold rueckspiele into achtelfinale)
+
 group100 = GameGroup.create!( :event => e2, :pos => 1, :title => 'Achtelfinale Rückspiele' )
 
 g100 = Game.create!( :pos=>1, :game_group=>group100, :team1=>t100, :team2=>t101, :play_at => '2012-03-13 20:45' )
@@ -165,14 +178,17 @@ g31 = Game.create!( :pos=> 31, :game_group=>group7, :team1=>t40, :team2=>t41, :p
 ##############
 ##  Pools und Users
 
-user1 = User.create!( :name => 'Behrooz SEIFI', :email => 'behrooz' )
-user2 = User.create!( :name => 'Gerald BAUER', :email => 'gerald' )
-user3 = User.create!( :name => 'Gürsel AYAZ', :email => 'gürsel'  )
-user4 = User.create!( :name => 'Richard TRAINDL', :email => 'richard' )
-user5 = User.create!( :name => 'Manfred KOPECEK', :email => 'manfred' )
-user6 = User.create!( :name => 'Clemens HUBER', :email => 'clemens' )
-user7 = User.create!( :name => 'Franz BAUER', :email => 'franz' )
-user8 = User.create!( :name => 'Andy SCHEIBELHOFER', :email => 'andy' )
+user1  = User.create!( :name => 'Behrooz SEIFI', :email => 'behrooz' )
+user2  = User.create!( :name => 'Gerald BAUER', :email => 'gerald' )
+user3  = User.create!( :name => 'Gürsel AYAZ', :email => 'gürsel'  )
+user4  = User.create!( :name => 'Richard TRAINDL', :email => 'richard' )
+user5  = User.create!( :name => 'Manfred KOPECEK', :email => 'manfred' )
+user6  = User.create!( :name => 'Clemens HUBER', :email => 'clemens' )
+user7  = User.create!( :name => 'Franz BAUER', :email => 'franz' )
+user8  = User.create!( :name => 'Andy SCHEIBELHOFER', :email => 'andy' )
+user9  = User.create!( :name => 'Thomas SCHOLZ', :email => 'thomas' )
+user10 = User.create!( :name => 'Dietmar BAYERL', :email => 'dietmar' )
+user11 = User.create!( :name => 'Harry PIETSCHMANN', :email => 'harry' )
 
 pool1 = Pool.create!( :event => e1, :title => 'UNIQA Fix', :user => user1, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
 pool2 = Pool.create!( :event => e1, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
@@ -185,14 +201,22 @@ pool1.players << user4
 pool1.players << user5
 pool1.players << user6
 pool1.players << user8
+pool1.players << user9
+pool1.players << user10
+pool1.players << user11
+
 
 pool3.players << user1  # also add amin first
 pool3.players << user2
-pool3.players << user7
 pool3.players << user5
 pool3.players << user6
+pool3.players << user7
 pool3.players << user8
+pool3.players << user9
+pool3.players << user10
+pool3.players << user11
 
+## note: diese tips nur zum testen; in produ entfernen
 
 Tip.create!( :user => user2, :pool => pool1, :game => g1,  :score1 => 2, :score2 => 3 )
 Tip.create!( :user => user2, :pool => pool1, :game => g2,  :score1 => 1, :score2 => 4 )

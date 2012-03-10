@@ -38,11 +38,14 @@ h3 { font-size: 25px;  /* 10x2.5 */ }
 td, div, p, li, a,
 input, select, textarea, label  { font-size: 20px; /*10x2*/ }
 
-textarea {
-  font-family:  Helvetica,Arial,sans-serif;     
-}
+textarea { font-family:  Helvetica,Arial,sans-serif; }    
 
 }
+
+.ranking1 td, .ranking1 a { font-size: 36px; /* 10x2 x 180% */ }
+.ranking2 td, .ranking2 a { font-size: 30px; /* 10x2 x 150% */ }
+.ranking3 td, .ranking3 a { font-size: 24px; /* 10x2 x 120% */ }
+
 
 @media print {
 

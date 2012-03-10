@@ -1,15 +1,20 @@
-## todo/fix: move require to startup env
-require 'pp'
 
 class PlayersController < ApplicationController
+  
+
+  # GET /pools/:pool_id/players  
   def index
+    @pool  = Pool.find(params[:pool_id])
+    @users = @pool.players
+
+    ## todo/fix: get groups via @pool.event.groups 
+    @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all    
   end
 
+  # GET/pools/:pool_id/players/:id
   def show
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
-    
-    ## @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
     
     @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
   end
@@ -33,8 +38,6 @@ class PlayersController < ApplicationController
       end
     end
 
-    ## @tips = @user.tips.where( :pool_id => params[:pool_id] ).order( :game_id )
-    
     @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
   end
   
