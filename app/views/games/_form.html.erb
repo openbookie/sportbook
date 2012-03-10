@@ -1,0 +1,50 @@
+
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <td><%= f.label :game_group_id, 'Spiel Gruppe:' %></td>
+      <td><%= f.object.game_group_id %> - <%= f.select :game_group_id, options_from_collection_for_select( GameGroup.all, :id, :title, f.object.game_group_id ) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :pos, 'Lfd#:' %></td>
+      <td><%= f.text_field :pos %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :team1_id, 'Team 1:' %></td>
+      <td><%= f.object.team1_id %> - <%= f.select :team1_id, options_from_collection_for_select( Team.all, :id, :title, f.object.team1_id) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :score1, 'Tore 1:' %></td>
+      <td><%= f.text_field :score1 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :score2, 'Tore 2:' %></td>
+      <td><%= f.text_field :score2 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :team2_id, 'Team 2:' %></td>
+      <td><%= f.object.team2_id %> - <%= f.select :team2_id, options_from_collection_for_select( Team.all, :id, :title, f.object.team2_id) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :play_at, 'Datum:' %></td>
+      <td><%= f.text_field :play_at %></td>
+    </tr>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit 'Speichern', :class => 'btn-primary' %>
+    <%= link_to 'Zurück', games_path, :class => 'btn' %>
+  </div>
+<% end %>

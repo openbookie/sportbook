@@ -3,10 +3,8 @@
 # see http://en.wikipedia.org/wiki/UEFA_Euro_2012
 # or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
 
-# todo: check dates and times (timezones?? +2 +3??)
 
-
-# add score colum to game??
+# note: timezone for games (play_at) is CET (central european time)
 
 
 e2 = Event.create!( :title => 'Champions League 2012' )

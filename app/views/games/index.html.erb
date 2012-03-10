@@ -1,0 +1,27 @@
+<h1>Spiele</h1>
+
+
+<table>
+<% @games.each do |game| %>
+ <tr>
+  <td><%= game.id %></td>
+  <td><%= game.game_group.title %></td>
+  <td><%= game.team1.title %></td>
+  <td><%= game.team2.title %></td>
+  <td>
+    (
+      <%= if game.score1.present? then game.score1 else '-' end %>
+       :
+      <%= if game.score2.present? then game.score2 else '-' end %>
+    )
+  </td>
+  <td><%= game.play_at %></td>
+  <td><%= link_to 'Bearbeiten', edit_game_path( game ), :class => 'btn' %></td>
+ </tr>
+<% end %>
+</table>
+
+<p></p>
+
+<%= link_to 'Neues Spiel', new_game_path(), :class => 'btn-primary' %>
+

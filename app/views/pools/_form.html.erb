@@ -17,7 +17,7 @@
       <td><%= f.text_field :title, 'data-autofocus' => 'true' %></td>
     </tr>
     <tr>
-      <td><%= f.label :event_ed, 'Veranstaltung:' %></td>
+      <td><%= f.label :event_id, 'Veranstaltung:' %></td>
       <td><%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :title) %></td>
     </tr>
     <tr>

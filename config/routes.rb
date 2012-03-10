@@ -1,12 +1,14 @@
 Euro2012::Application.routes.draw do
 
+
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :users
-
+  resources :games
+  
   resources :pools do
     get 'play', :on => :member    
 

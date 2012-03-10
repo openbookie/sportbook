@@ -25,6 +25,13 @@
        <% end %>          
     </td>
 
+   <% if game.over?  %>
+     <td style='text-align: center;'>
+      <b><%= game.score1 %></b>
+       :
+      <b><%= game.score2 %></b>
+     </td>
+   <% else %>
    <% if tip.present? %>
      <td>
   <%= f.fields_for 'tips[]', tip do |ff| %>
@@ -39,12 +46,13 @@
       <% end %>
        :
      <%= ff.text_field :score2, :size => 2 %>   
-  <% end %>
+  <% end %><!-- fields_for tips -->
      </td>
-       <% else %>
+       <% else %><!-- tip.present? -->
           <td>###<!-- fehler: datensatz fehlt! --></td>
        <% end %>
-
+   <% end %> <!-- game.over? -->
+    
        <td>
       <% if game.team2.img.present? %>
          <%= image_tag( game.team2.img ) %>
