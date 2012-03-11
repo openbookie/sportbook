@@ -1,0 +1,22 @@
+<h1><%= GameGroup.count %> Spielgruppen</h1>
+
+<table>
+<% @events.each do |event| %> 
+  <tr style='background-color: black; color: white; font-weight: bold; font-size: 120%;'>
+     <td>(<%= event.id %>)</td>
+     <td colspan='3'><%= event.title %></td>
+  </tr>
+ <% event.game_groups.each do |group| %>
+   <tr>
+     <td>(<%= group.id %>)</td>
+     <td><%= group.pos %></td>
+     <td><%= group.title %></td>
+     <td><%= link_to 'Bearbeiten', edit_game_group_path( group ), :class => 'btn' %></td>
+   </tr>
+ <% end %><!-- groups.each -->
+<% end %><!-- events.each -->
+</table>
+
+<p></p>
+
+<%= link_to 'Neue Spielgruppe', new_game_group_path(), :class => 'btn-primary' %>

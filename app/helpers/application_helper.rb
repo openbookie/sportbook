@@ -11,5 +11,13 @@ module ApplicationHelper
   def current_user?( user )
     session[:user_id] == user.id
   end
+  
+  def fmt_date( date )
+    if date.nil?
+      '-'
+    else
+      date.strftime( "%a. %d. %b. / %H:%M" )
+    end
+  end
 
 end

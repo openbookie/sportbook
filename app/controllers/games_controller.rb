@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.all
+    @events = Event.all
   end
 
  # GET /games/new

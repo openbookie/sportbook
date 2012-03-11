@@ -1,0 +1,36 @@
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <td><%= f.label :event_id, 'Veranstaltung:' %></td>
+      <td>(<%= f.object.event_id %>)</td>
+      <td><%= f.select :event_id, options_from_collection_for_select( Event.all, :id, :title, f.object.event_id ) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :pos, 'Lfd#:' %></td>
+      <td></td>
+      <td><%= f.text_field :pos, size: '3' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :title, 'Titel:' %></td>
+      <td></td>
+      <td><%= f.text_field :title %></td>
+    </tr>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit 'Speichern', :class => 'btn-primary' %>
+    <%= link_to 'Zurück', game_groups_path(), :class => 'btn' %>
+  </div>
+<% end %>
