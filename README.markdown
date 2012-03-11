@@ -2,13 +2,13 @@
 
 Use Ruby 1.9+ (required by Rails 3.2+)
 
-   rvm use 1.9.3
+    rvm use 1.9.3
 
 ## Tips for Bundler
 
 Setup without production env (needs PostgreSQL)
 
-   bundle install --without production
+    bundle install --without production
 
 ## Tips for Annotate
 
