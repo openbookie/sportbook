@@ -44,11 +44,18 @@
          
         <% if tip.present? %>
          <td>
+          <% if tip.bingo? %>
+             <span class='bingo'>
+          <% end %>
           <b>
           <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>
            :
           <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>
-          </b> |
+          </b>
+          <% if tip.bingo? %>
+             </span>
+          <% end %>
+           |
          </td>
         <% else %>
           <td>###<!-- fehler: datensatz fehlt! --> | </td>
