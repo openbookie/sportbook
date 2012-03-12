@@ -11,41 +11,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305214015) do
+ActiveRecord::Schema.define(:version => 20120312165907) do
 
   create_table "events", :force => true do |t|
     t.string   "title",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "start_at"
   end
 
   create_table "game_groups", :force => true do |t|
-    t.integer  "event_id",   :null => false
-    t.string   "title",      :null => false
-    t.integer  "pos",        :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "event_id",                      :null => false
+    t.string   "title",                         :null => false
+    t.integer  "pos",                           :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "calc",       :default => false
   end
 
   create_table "games", :force => true do |t|
-    t.integer  "game_group_id", :null => false
-    t.integer  "pos",           :null => false
-    t.integer  "team1_id",      :null => false
-    t.integer  "team2_id",      :null => false
-    t.datetime "play_at",       :null => false
+    t.integer  "game_group_id",                    :null => false
+    t.integer  "pos",                              :null => false
+    t.integer  "team1_id",                         :null => false
+    t.integer  "team2_id",                         :null => false
+    t.datetime "play_at",                          :null => false
     t.integer  "score1"
     t.integer  "score2"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "knockout",      :default => false
+    t.integer  "score3"
+    t.integer  "score4"
+    t.integer  "score5"
+    t.integer  "score6"
   end
 
   create_table "pools", :force => true do |t|
-    t.integer  "event_id",   :null => false
-    t.string   "title",      :null => false
-    t.integer  "user_id",    :null => false
+    t.integer  "event_id",                      :null => false
+    t.string   "title",                         :null => false
+    t.integer  "user_id",                       :null => false
     t.text     "welcome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "fix",        :default => false
   end
 
   create_table "pools_users", :force => true do |t|
@@ -71,6 +79,10 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.integer  "score2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "score3"
+    t.integer  "score4"
+    t.integer  "score5"
+    t.integer  "score6"
   end
 
   create_table "users", :force => true do |t|

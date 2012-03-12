@@ -44,6 +44,14 @@
       <td><%= f.select :team2_id, options_from_collection_for_select( Team.all, :id, :title, f.object.team2_id) %></td>
     </tr>
     <tr>
+      <td><%= f.label :knockout, 'Knockout Flag:' %></td>
+      <td></td>
+      <td>
+	<%= f.radio_button :knockout, 'true'  %><%= f.label :knockout_true, 'Ja' %>
+	<%= f.radio_button :knockout, 'false' %><%= f.label :knockout_false, 'Nein' %>
+      </td>
+    </tr>
+    <tr>
       <td><%= f.label :play_at, 'Datum:' %></td>
       <td></td>
       <td><%= f.text_field :play_at %></td>

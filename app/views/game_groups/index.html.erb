@@ -4,13 +4,14 @@
 <% @events.each do |event| %> 
   <tr style='background-color: black; color: white; font-weight: bold; font-size: 120%;'>
      <td>(<%= event.id %>)</td>
-     <td colspan='3'><%= event.title %></td>
+     <td colspan='4'><%= event.title %></td>
   </tr>
  <% event.game_groups.each do |group| %>
    <tr>
      <td>(<%= group.id %>)</td>
      <td><%= group.pos %></td>
      <td><%= group.title %></td>
+     <td><%= if group.calc == true then '(Calc Flag)' else '' end %></td>
      <td><%= link_to 'Bearbeiten', edit_game_group_path( group ), :class => 'btn' %></td>
    </tr>
  <% end %><!-- groups.each -->
