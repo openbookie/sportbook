@@ -8,6 +8,7 @@ Euro2012::Application.routes.draw do
   resources :users
   resources :game_groups
   resources :games
+  resources :events
   
   resources :pools do
     get 'play', :on => :member

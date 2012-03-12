@@ -47,7 +47,7 @@ create_table :pools do |t|
   t.references  :event, :null => false
   t.string      :title, :null => false
   t.references  :user,  :null => false  # owner/manager/admin of pool
-  t.text        :welcome          
+  t.text        :welcome
   t.timestamps
 end
 

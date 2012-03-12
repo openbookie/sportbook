@@ -30,9 +30,23 @@ class AddColumns < ActiveRecord::Migration
       t.integer :score6
     end
 
+    change_table :pools_users do |t|
+      t.references :team1   # winner (1st)
+      t.references :team2   # runnerup (2nd)
+      t.references :team3   # 2n runnerup (3nd)
+      t.integer :points      # cache players points
+    end
+
+    create_table :events_teams do |t|
+      t.references :event, :null => false
+      t.references :team, :null => false
+      t.timestamps
+    end
+
   end
 
   def down
     raise IrreversibleMigration
   end
+
 end 

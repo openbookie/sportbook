@@ -22,6 +22,16 @@ t105 = Team.create!( :title => 'SSC Napoli',  :img => 'napoli.png')
 t106 = Team.create!( :title => 'Real Madrid CF', :img => 'madrid.png' )
 t107 = Team.create!( :title => 'PFC CSKA Moskva', :img => 'moskva.png' )
 
+e2.teams << t100
+e2.teams << t101
+e2.teams << t102
+e2.teams << t103
+
+e2.teams << t104
+e2.teams << t105
+e2.teams << t106
+e2.teams << t107
+
 
 group99 = GameGroup.create!( :event => e2, :pos => 1, :title => 'Achtelfinale' )
 
@@ -53,6 +63,11 @@ t2 = Team.create!( :title => 'Griechenland', :img => 'greece2.png' )
 t3 = Team.create!( :title => 'Russland',     :img => 'russia2.png' )
 t4 = Team.create!( :title => 'Tschechien',   :img => 'czech_republic2.png' )
 
+e1.teams << t1
+e1.teams << t2
+e1.teams << t3
+e1.teams << t4
+
 group1 = GameGroup.create!( :event => e1, :pos => 1, :title => 'Gruppe A' )
 
 g1  = Game.create!( :pos=> 1, :game_group=>group1, :team1=>t1, :team2=>t2, :play_at => '2012-06-08 18:00', :score1=>1, :score2=>2 )
@@ -72,6 +87,11 @@ t5 = Team.create!( :title => 'Niederlande', :img => 'netherlands2.png' )
 t6 = Team.create!( :title => 'Dänemark',    :img => 'denmark2.png' )
 t7 = Team.create!( :title => 'Deutschland', :img => 'germany2.png' )
 t8 = Team.create!( :title => 'Portugal',    :img => 'portugal2.png' )
+
+e1.teams << t5
+e1.teams << t6
+e1.teams << t7
+e1.teams << t8
 
 group2 = GameGroup.create!( :event => e1, :pos => 2, :title => 'Gruppe B' )
 

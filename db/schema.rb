@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20120312165907) do
     t.datetime "start_at"
   end
 
+  create_table "events_teams", :force => true do |t|
+    t.integer  "event_id",   :null => false
+    t.integer  "team_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "game_groups", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
@@ -61,6 +68,10 @@ ActiveRecord::Schema.define(:version => 20120312165907) do
     t.integer  "pool_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "team1_id"
+    t.integer  "team2_id"
+    t.integer  "team3_id"
+    t.integer  "points"
   end
 
   create_table "teams", :force => true do |t|

@@ -1,0 +1,22 @@
+<h1><%= Event.count %> Veranstaltungen</h1>
+
+<table>
+<% @events.each do |event| %> 
+  <tr style='background-color: black; color: white; font-weight: bold; font-size: 120%;'>
+     <td>(<%= event.id %>)</td>
+     <td colspan='2'><%= event.title %></td>
+  </tr>
+ <% event.teams.each do |team| %>
+   <tr>
+     <td>(<%= team.id %>)</td>
+     <td>
+       <% if team.img.present? %>
+         <%= image_tag( team.img ) %>
+       <% end %>
+     </td>
+     <td><%= team.title %></td>
+   </tr>
+ <% end %><!-- teams.each -->
+<% end %><!-- events.each -->
+</table>
+
