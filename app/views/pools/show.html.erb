@@ -1,4 +1,4 @@
-<h1><%= link_to 'Wettpools', pools_path() %> / <%= "#{@pool.title} #{@pool.event.title}" %></h1>
+<h1><%= link_to 'Wettpools', pools_path() %> › <%= @pool.full_title %></h1>
 
 <p>Manager <%= @pool.user.name %>,
   <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", pool_players_path(@pool) %></p>
@@ -6,21 +6,21 @@
 <p><%= @pool.welcome %></p>
 
 
-<% machmit = true %>
 <table>
 <% @pool.players.each_with_index do |player,i| %>
-  <% if current_user?( player ) %>
-    <% machmit = false %>
-  <% end %>
   <tr class='<%= "ranking#{i+1}" %>'>
     <td>x. <!-- add ranking e.g. 1., 2. etc.--></td>
     <td><%= link_to player.name, pool_player_path( @pool, player ) %></td>
     <td>xx Punkte <!-- add points --></td>
-  </tr>  
+  </tr>
 <% end %>
 </table>
 
-<p></p>
+<% machmit = true
+   @pool.players.each_with_index do |player,i|
+     machmit = false if current_user?( player )
+   end
+ %>
 
 <div>
 <% if machmit %>
@@ -28,6 +28,6 @@
 <% else %>
   <%= link_to 'Meine Tipps bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
 <% end %>
-
+  
 <%= link_to 'Zurück', pools_path(), :class => 'btn' %>
 </div>

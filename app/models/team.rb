@@ -14,7 +14,15 @@
 class Team < ActiveRecord::Base
 
   def calc?
-    self.calc == true
+    calc == true
   end
   
-end
+  def title
+    if calc?
+      "[#{read_attribute(:title)}]"   # wrap title in []
+    else
+      read_attribute(:title)
+    end
+  end
+  
+end  # class Team

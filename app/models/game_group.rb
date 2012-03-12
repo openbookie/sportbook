@@ -14,4 +14,9 @@
 class GameGroup < ActiveRecord::Base
   has_many :games, :order => 'pos'
   belongs_to :event
-end
+  
+  def calc?
+    calc == true
+  end
+  
+end # class GameGroup

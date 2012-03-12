@@ -3,7 +3,7 @@
 
 <ul>
 <% @pools.each do |pool| %>
-  <li><%= link_to "#{pool.title} #{pool.event.title}", pool_path(pool) %>
+  <li><%= link_to pool.full_title, pool_path(pool) %>
     (Manager <%= pool.user.name %>,
       <%= pool.players.size %> Mitspieler
     )

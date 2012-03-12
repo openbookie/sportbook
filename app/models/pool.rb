@@ -18,6 +18,10 @@ class Pool < ActiveRecord::Base
   has_many :pool_users, :class_name => 'PoolUser'
   has_many :players, :through => :pool_users, :source => :user  
 
-  belongs_to :event  
+  belongs_to :event
+  
+  def full_title
+    "#{title} #{event.title}"
+  end
   
 end

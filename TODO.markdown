@@ -5,6 +5,7 @@
 * add knockout flag to game
 * add score3,4,5,6  if knockout (verlaengerung, elfmeter)
 * add next player/previous player nav
+* add indices to db schema for foreign keys
 
 ## Minor
 
@@ -21,3 +22,4 @@
 * Remove [] from view for calculated teams (is now part of team name)
 
 * Use autofocus and :focus (HTML5) instead of class .focus (does it work?)
+* Use new reader pool.full_title 

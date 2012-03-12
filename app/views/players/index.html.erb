@@ -1,4 +1,4 @@
-<h1><%= link_to "#{@pool.title} #{@pool.event.title}", pool_path(@pool)  %> / Alle </h1>
+<h1><%= link_to @pool.full_title, pool_path(@pool) %> › Alle </h1>
 
 <table>
 
@@ -29,14 +29,14 @@
        <td style='text-align: right;'>
         <b>
           <% if game.team1.calc? %>
-             <em>[<%= game.team1.title %>]</em>
-          <% else %>  
+             <em><%= game.team1.title %></em>
+          <% else %>
              <%= game.team1.title %>
           <% end %>
         </b>
      <% if game.team1.img.present? %>
         <%= image_tag( game.team1.img ) %>
-     <% end %>          
+     <% end %>
        </td>
        
       <% @users.each do |user| %>
@@ -58,7 +58,7 @@
            |
          </td>
         <% else %>
-          <td>###<!-- fehler: datensatz fehlt! --> | </td>
+          <td>♦<!-- fehler: datensatz fehlt! --> | </td>
         <% end %>
       <% end %><!-- users.each --> 
 
@@ -79,8 +79,8 @@
 
         <b>
           <% if game.team2.calc? %>
-             <em>[<%= game.team2.title %>]</em>
-          <% else %>  
+             <em><%= game.team2.title %></em>
+          <% else %>
              <%= game.team2.title %>
           <% end %>
          </b>
@@ -88,10 +88,10 @@
 
          <td>
            <span class='light'>
-            <%= game.play_at.strftime( "%a. %d. %b. / %H:%M" ) %>
+            <%= fmt_date( game.play_at ) %>
            </span>
          </td>
-     </tr>     
+     </tr>
   <% end %> <!-- games.each -->
 <% end %> <!-- groups.each -->
 
@@ -107,4 +107,4 @@
 
 </table>
 
-<%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>
+<%= link_to '« Zurück', pool_path( @pool ), :class => 'btn' %>

@@ -24,4 +24,9 @@ class Game < ActiveRecord::Base
     play_at <= Time.now
   end
   
-end
+  def knockout?
+    knockout == true
+  end
+  
+  
+end # class Game

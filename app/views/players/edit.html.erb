@@ -1,5 +1,5 @@
 
-<h1><%= link_to "#{@pool.title} #{@pool.event.title}", pool_path(@pool) %> / <%= @user.name %></h1>
+<h1><%= link_to @pool.full_title, pool_path(@pool) %> › <%= @user.name %></h1>
 
 <%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
 
@@ -15,14 +15,14 @@
     <td style='text-align: right;'> 
         <b>
           <% if game.team1.calc? %>
-             <em>[<%= game.team1.title %>]</em>
+             <em><%= game.team1.title %></em>
           <% else %>  
              <%= game.team1.title %>
           <% end %>
         </b>
        <% if game.team1.img.present? %>
           <%= image_tag( game.team1.img ) %>
-       <% end %>          
+       <% end %>
     </td>
 
    <% if game.over?  %>
@@ -59,15 +59,15 @@
       <% end %>
         <b>
           <% if game.team2.calc? %>
-             <em>[<%= game.team2.title %>]</em>
-          <% else %>  
+             <em><%= game.team2.title %></em>
+          <% else %>
              <%= game.team2.title %>
           <% end %>
          </b>
        </td>
        <td>
-           <span class='light'>        
-              <%= game.play_at.strftime( "%a. %d. %b. / %H:%M" ) %>
+           <span class='light'>
+              <%= fmt_date( game.play_at ) %>
            </span>
        </td>
    </tr>
