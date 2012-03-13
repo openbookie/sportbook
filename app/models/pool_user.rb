@@ -7,6 +7,10 @@
 #  pool_id    :integer         not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  team1_id   :integer
+#  team2_id   :integer
+#  team3_id   :integer
+#  points     :integer
 #
 
 

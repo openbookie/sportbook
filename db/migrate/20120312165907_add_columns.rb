@@ -46,7 +46,7 @@ class AddColumns < ActiveRecord::Migration
   end
 
   def down
-    raise IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration
   end
 
 end 

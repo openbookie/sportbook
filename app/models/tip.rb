@@ -10,6 +10,10 @@
 #  score2     :integer
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  score3     :integer
+#  score4     :integer
+#  score5     :integer
+#  score6     :integer
 #
 
 class Tip < ActiveRecord::Base

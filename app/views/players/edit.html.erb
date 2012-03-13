@@ -9,6 +9,11 @@
 <tr>
   <td></td><td colspan='3'><b><%= group.title %></b></td>
 </tr>
+  <% if @pool.flex? && group.calc? %>
+     <tr>
+       <td colspan='3' style='text-align: center;'>Spielaufstellungen noch nicht bekannt.</td>
+     </tr>
+  <% else %>
   <% group.games.each do |game| %>
   <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
    <tr>
@@ -72,6 +77,7 @@
        </td>
    </tr>
   <% end %><!-- game -->
+ <% end %> <!-- if pool.flex? && group.calc? -->  
 <% end %><!-- groups -->
 </table>
 

@@ -9,6 +9,7 @@
 #  welcome    :text
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  fix        :boolean         default(FALSE)
 #
 
 class Pool < ActiveRecord::Base
@@ -22,6 +23,14 @@ class Pool < ActiveRecord::Base
   
   def full_title
     "#{title} #{event.title}"
+  end
+  
+  def fix?
+    fix == true
+  end
+  
+  def flex?
+    fix != true
   end
   
 end
