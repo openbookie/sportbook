@@ -1,6 +1,49 @@
 <h1><%= link_to @pool.full_title, pool_path(@pool)  %> › <%= @user.name %></h1>
 
 <table>
+ <tr>
+   <td>1. Platz</td>
+   <td>
+       <!-- fix: use helper or partial -->
+     <% if @pool_user.team1.present? %>
+         <% if @pool_user.team1.img.present? %>
+           <%= image_tag( @pool_user.team1.img ) %>
+         <% end %>
+         <%= @pool_user.team1.title %>
+       <% else %>
+          ---
+       <% end %>
+   </td>
+ </tr>
+ <tr>
+   <td>2. Platz</td>
+   <td>
+       <% if @pool_user.team2.present? %>
+         <% if @pool_user.team2.img.present? %>
+           <%= image_tag( @pool_user.team2.img ) %>
+         <% end %>
+         <%= @pool_user.team2.title %>
+       <% else %>
+          ---
+       <% end %>
+   </td>
+ </tr>
+ <tr>
+   <td>3. Platz</td>
+   <td><% if @pool_user.team3.present? %>
+         <% if @pool_user.team3.img.present? %>
+           <%= image_tag( @pool_user.team3.img ) %>
+         <% end %>
+         <%= @pool_user.team3.title %>
+       <% else %>
+          ---
+       <% end %>
+   </td>
+ </tr>
+</table>
+
+
+<table>
 <% @groups.each do |group| %>
 <tr>
   <td colspan='3'></td><td colspan='4'><b><%= group.title %></b></td>

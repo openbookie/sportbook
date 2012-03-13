@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
   def index
     @pool  = Pool.find(params[:pool_id])
     @users = @pool.players
-
+    
     ## todo/fix: get groups via @pool.event.groups 
     @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all    
   end
@@ -15,6 +15,8 @@ class PlayersController < ApplicationController
   def show
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
+
+    @pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => @user.id ).first
     
     @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
   end
@@ -23,6 +25,9 @@ class PlayersController < ApplicationController
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
 
+    @pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    
+    @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
     
     GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all.each do |group |
       group.games.order( :pos ).all.each do |game|
@@ -44,8 +49,15 @@ class PlayersController < ApplicationController
   def update
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
+    
+    puts "*** updating pool_user"
+    ## fix/todo: check for error - exits update_attributes!
+    @pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    @pool_user.update_attributes( params[:user][:pool_user] )
         
-=begin    if @user.update_attributes( params[:user])
+=begin
+  ## fix: use save w/ nested attributes??
+if @user.update_attributes( params[:user])
       # success
       flash.now[:notice] = 'Tipps Erfolgreich gespeichert.'
     else

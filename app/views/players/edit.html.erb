@@ -3,6 +3,27 @@
 
 <%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
 
+<%= f.fields_for :pool_user, @pool_user do |pool_user_form| %>
+<table>
+ <tr>
+   <td><%= pool_user_form.label :team1_id, '1. Platz' %></td>
+   <td>(<%= @pool_user.team1_id %>)</td>
+   <td><%= pool_user_form.select :team1_id, @team_options %></td>
+ </tr>
+ <tr>
+   <td><%= pool_user_form.label :team2_id, '2. Platz' %></td>
+   <td>(<%= @pool_user.team2_id %>)</td>
+   <td><%= pool_user_form.select :team2_id, @team_options %></td>
+ </tr>
+ <tr>
+   <td><%= pool_user_form.label :team3_id, '3. Platz' %></td>
+   <td>(<%= @pool_user.team3_id %>)</td>
+   <td><%= pool_user_form.select :team3_id, @team_options %></td>
+ </tr>
+</table>
+<% end %><!-- fields_for pool_user -->
+
+
 <table>
 <% first_field = true %>
 <% @groups.each do |group| %>

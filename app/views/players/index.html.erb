@@ -1,7 +1,54 @@
 <h1><%= link_to @pool.full_title, pool_path(@pool) %> › Alle </h1>
 
 <table>
+  <tr>
+    <td></td>
+    <td>1. Platz</td>
+    <td>2. Platz</td>
+    <td>3. Platz</td>
+  </tr>
+  <% @users.each do |user| %>
+    <% pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => user.id ).first %>
+    <tr>
+       <td><%= user.name %></td>
+       <td>
+          <!-- fix: use helper or partial -->
+        <% if pool_user.team1.present? %>
+          <% if pool_user.team1.img.present? %>
+           <%= image_tag( pool_user.team1.img ) %>
+          <% end %>
+          <%= pool_user.team1.title %>
+        <% else %>
+          ---
+        <% end %>       
+       </td>
+       <td>
+        <% if pool_user.team2.present? %>
+          <% if pool_user.team2.img.present? %>
+           <%= image_tag( pool_user.team2.img ) %>
+          <% end %>
+          <%= pool_user.team2.title %>
+        <% else %>
+          ---
+        <% end %>       
+       </td>
+       <td>
+        <% if pool_user.team3.present? %>
+          <% if pool_user.team3.img.present? %>
+           <%= image_tag( pool_user.team3.img ) %>
+          <% end %>
+          <%= pool_user.team3.title %>
+        <% else %>
+          ---
+        <% end %>       
+       </td>
+    </tr>
+  <% end %><!-- users.each -->   
+</table>
 
+
+
+<table>
 
 <tr>
   <td colspan='3'></td>
