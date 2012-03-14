@@ -27,6 +27,24 @@ class Tip < ActiveRecord::Base
     recs.first
   end
     
+  def calc_points
+    pts = 0
+    if complete?
+      if((game.score1 == game.score2 && score1 == score2) ||
+         (game.score1 >  game.score2 && score1 >  score2) ||
+         (game.score2 <  game.score2 && score1 <  score2))
+          pts += 1
+      end
+
+      if game.score1 == score1 && game.score2 == score2
+        pts += 1
+      end
+      ## todo: add 1 point for guessing tordifferenz???
+    end
+    pts
+  end
+    
+    
   def toto12x
     if score1.nil? || score2.nil?
       '-'
@@ -44,7 +62,7 @@ class Tip < ActiveRecord::Base
   end
   
   def bingo?
-    return false unless complete?    
+    return false unless complete?
 
     if((game.score1 == game.score2 && score1 == score2) ||
        (game.score1 >  game.score2 && score1 >  score2) ||

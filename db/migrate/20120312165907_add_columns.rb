@@ -34,7 +34,7 @@ class AddColumns < ActiveRecord::Migration
       t.references :team1   # winner (1st)
       t.references :team2   # runnerup (2nd)
       t.references :team3   # 2n runnerup (3nd)
-      t.integer :points      # cache players points
+      t.integer :points, :default => 0     # cache players points
     end
 
     create_table :events_teams do |t|

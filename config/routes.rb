@@ -5,6 +5,10 @@ Euro2012::Application.routes.draw do
   
   resources :sessions, :only => [:new, :create, :destroy]
 
+  resources :jobs do
+    get 'calc', :on => :collection
+  end
+
   resources :users
   resources :game_groups
   resources :games

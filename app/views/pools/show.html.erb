@@ -7,12 +7,25 @@
 
 
 <table>
-<% @pool.players.each_with_index do |player,i| %>
-  <tr class='<%= "ranking#{i+1}" %>'>
-    <td>x. <!-- add ranking e.g. 1., 2. etc.--></td>
-    <td><%= link_to player.name, pool_player_path( @pool, player ) %></td>
-    <td>xx Punkte <!-- add points --></td>
+<% ranking=-1; last_points=-1 %>
+<% @pool.pool_users.order( 'points desc' ).each_with_index do |pool_user,i| %>
+  <% ranking=i+1 if pool_user.points != last_points %>
+  
+  <!-- don't add css class (ranking, that is, bigger) if all scores are 0 -->
+  <% if ranking == 1 && pool_user.points == 0 %>
+    <tr><!-- everyone is a winner #1 - all points 0 -->
+  <% else %>
+    <tr class='<%= "ranking#{ranking}" %>'>
+  <% end %>
+    <td>
+      <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
+      <%= if pool_user.points != last_points then "#{ranking}." else '' end %>
+    </td>
+    <td><%= link_to pool_user.user.name, pool_player_path( pool_user.pool_id, pool_user.user_id ) %></td>
+    <td><%= pool_user.points %></td>
+    <td>Punkte</td>
   </tr>
+  <% last_points = pool_user.points %>
 <% end %>
 </table>
 
