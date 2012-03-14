@@ -9,15 +9,15 @@ class JobsController < ApplicationController
     
     Pool.all.each do |pool|
       txt << "=== #{pool.full_title} ===\r\n"
-      pool.pool_users.each do |pool_user|
+      pool.plays.each do |play|
         pts = 0
-        pool_user.tips.each do |tip|
+        play.tips.each do |tip|
           pts += tip.calc_points
         end
-        pool_user.points = pts
-        txt << "  #{pts} points -- #{pool_user.user.name}\r\n"
-        pool_user.save!
-      end  # each pool_user
+        play.points = pts
+        txt << "  #{pts} points -- #{play.user.name}\r\n"
+        play.save!
+      end  # each play
     end  # each pool
     
     txt << "<< DONE"

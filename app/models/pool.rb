@@ -16,8 +16,10 @@ class Pool < ActiveRecord::Base
   
   belongs_to :user   # is owner/admin/manager  
   
-  has_many :pool_users, :class_name => 'PoolUser'
-  has_many :players, :through => :pool_users, :source => :user
+  has_many :plays   # pools_users join table
+  
+  ## rename to users from players??
+  has_many :players, :through => :plays, :source => :user
 
   belongs_to :event
   

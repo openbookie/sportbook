@@ -8,36 +8,36 @@
     <td>3. Platz</td>
   </tr>
   <% @users.each do |user| %>
-    <% pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => user.id ).first %>
+    <% play = Play.where( :pool_id => @pool.id, :user_id => user.id ).first %>
     <tr>
        <td><%= user.name %></td>
        <td>
           <!-- fix: use helper or partial -->
-        <% if pool_user.team1.present? %>
-          <% if pool_user.team1.img.present? %>
-           <%= image_tag( pool_user.team1.img ) %>
+        <% if play.team1.present? %>
+          <% if play.team1.img.present? %>
+           <%= image_tag( play.team1.img ) %>
           <% end %>
-          <%= pool_user.team1.title %>
+          <%= play.team1.title %>
         <% else %>
           ---
         <% end %>       
        </td>
        <td>
-        <% if pool_user.team2.present? %>
-          <% if pool_user.team2.img.present? %>
-           <%= image_tag( pool_user.team2.img ) %>
+        <% if play.team2.present? %>
+          <% if play.team2.img.present? %>
+           <%= image_tag( play.team2.img ) %>
           <% end %>
-          <%= pool_user.team2.title %>
+          <%= play.team2.title %>
         <% else %>
           ---
         <% end %>       
        </td>
        <td>
-        <% if pool_user.team3.present? %>
-          <% if pool_user.team3.img.present? %>
-           <%= image_tag( pool_user.team3.img ) %>
+        <% if play.team3.present? %>
+          <% if play.team3.img.present? %>
+           <%= image_tag( play.team3.img ) %>
           <% end %>
-          <%= pool_user.team3.title %>
+          <%= play.team3.title %>
         <% else %>
           ---
         <% end %>       

@@ -5,11 +5,11 @@
    <td>1. Platz</td>
    <td>
        <!-- fix: use helper or partial -->
-     <% if @pool_user.team1.present? %>
-         <% if @pool_user.team1.img.present? %>
-           <%= image_tag( @pool_user.team1.img ) %>
+     <% if @play.team1.present? %>
+         <% if @play.team1.img.present? %>
+           <%= image_tag( @play.team1.img ) %>
          <% end %>
-         <%= @pool_user.team1.title %>
+         <%= @play.team1.title %>
        <% else %>
           ---
        <% end %>
@@ -18,11 +18,11 @@
  <tr>
    <td>2. Platz</td>
    <td>
-       <% if @pool_user.team2.present? %>
-         <% if @pool_user.team2.img.present? %>
-           <%= image_tag( @pool_user.team2.img ) %>
+       <% if @play.team2.present? %>
+         <% if @play.team2.img.present? %>
+           <%= image_tag( @play.team2.img ) %>
          <% end %>
-         <%= @pool_user.team2.title %>
+         <%= @play.team2.title %>
        <% else %>
           ---
        <% end %>
@@ -30,11 +30,11 @@
  </tr>
  <tr>
    <td>3. Platz</td>
-   <td><% if @pool_user.team3.present? %>
-         <% if @pool_user.team3.img.present? %>
-           <%= image_tag( @pool_user.team3.img ) %>
+   <td><% if @play.team3.present? %>
+         <% if @play.team3.img.present? %>
+           <%= image_tag( @play.team3.img ) %>
          <% end %>
-         <%= @pool_user.team3.title %>
+         <%= @play.team3.title %>
        <% else %>
           ---
        <% end %>

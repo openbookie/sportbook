@@ -14,7 +14,9 @@
 #
 
 
-class PoolUser < ActiveRecord::Base
+class Play < ActiveRecord::Base
+  
+  ## todo/fix: rename table to plays!!  
   set_table_name 'pools_users'
   
   belongs_to :user

@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
 
-    @pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    @play = Play.where( :pool_id => @pool.id, :user_id => @user.id ).first
     
     @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
   end
@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
 
-    @pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    @play = Play.where( :pool_id => @pool.id, :user_id => @user.id ).first
     
     @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
     
@@ -50,10 +50,10 @@ class PlayersController < ApplicationController
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
     
-    puts "*** updating pool_user"
+    puts "*** updating play"
     ## fix/todo: check for error - exits update_attributes!
-    @pool_user = PoolUser.where( :pool_id => @pool.id, :user_id => @user.id ).first
-    @pool_user.update_attributes( params[:user][:pool_user] )
+    @play = Play.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    @play.update_attributes( params[:user][:play] )
         
 =begin
   ## fix: use save w/ nested attributes??

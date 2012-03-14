@@ -22,6 +22,7 @@ class Tip < ActiveRecord::Base
   belongs_to :pool
   belongs_to :game
   
+  ## todo: rename to find_by_play_and_game ????
   def self.find_by_user_and_pool_and_game( user_arg, pool_arg, game_arg )
     recs = self.where( :user_id => user_arg.id, :pool_id => pool_arg.id, :game_id => game_arg.id )
     recs.first
@@ -37,7 +38,7 @@ class Tip < ActiveRecord::Base
       end
 
       if game.score1 == score1 && game.score2 == score2
-        pts += 1
+        pts += 3
       end
       ## todo: add 1 point for guessing tordifferenz???
     end
