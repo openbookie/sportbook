@@ -67,11 +67,14 @@ if @user.update_attributes( params[:user])
     end
 =end
 
-   params[:user][:tips].each do |tip_key,tip_value|
+   # check for case w/ no tips
+   unless params[:user][:tips].nil?
+    params[:user][:tips].each do |tip_key,tip_value|
       tip = Tip.find( tip_key )
       puts "*** updating tip #{tip_key}"
       tip.update_attributes( tip_value )
       tip.save!
+    end
    end
 
     flash[:success] = 'Tipps erfolgreich gespeichert.'
