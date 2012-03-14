@@ -64,14 +64,14 @@ ActiveRecord::Schema.define(:version => 20120312165907) do
   end
 
   create_table "pools_users", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "pool_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",                   :null => false
+    t.integer  "pool_id",                   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "team1_id"
     t.integer  "team2_id"
     t.integer  "team3_id"
-    t.integer  "points"
+    t.integer  "points",     :default => 0
   end
 
   create_table "teams", :force => true do |t|

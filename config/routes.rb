@@ -12,7 +12,10 @@ Euro2012::Application.routes.draw do
   resources :users
   resources :game_groups
   resources :games
-  resources :events
+  
+  resources :events do
+    post 'add_team_to', :on => :member
+  end
   
   resources :pools do
     get 'play', :on => :member
