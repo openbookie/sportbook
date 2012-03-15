@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312165907) do
+ActiveRecord::Schema.define(:version => 20120315214401) do
 
   create_table "events", :force => true do |t|
-    t.string   "title",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "title",                        :null => false
     t.datetime "start_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "team3",      :default => true
   end
 
   create_table "events_teams", :force => true do |t|
@@ -31,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20120312165907) do
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
     t.integer  "pos",                           :null => false
+    t.boolean  "calc",       :default => false, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.boolean  "calc",       :default => false
   end
 
   create_table "games", :force => true do |t|
@@ -42,36 +43,36 @@ ActiveRecord::Schema.define(:version => 20120312165907) do
     t.integer  "team1_id",                         :null => false
     t.integer  "team2_id",                         :null => false
     t.datetime "play_at",                          :null => false
+    t.boolean  "knockout",      :default => false, :null => false
     t.integer  "score1"
     t.integer  "score2"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.boolean  "knockout",      :default => false
     t.integer  "score3"
     t.integer  "score4"
     t.integer  "score5"
     t.integer  "score6"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "pools", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
     t.integer  "user_id",                       :null => false
+    t.boolean  "fix",        :default => false, :null => false
     t.text     "welcome"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.boolean  "fix",        :default => false
   end
 
   create_table "pools_users", :force => true do |t|
     t.integer  "user_id",                   :null => false
     t.integer  "pool_id",                   :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
     t.integer  "team1_id"
     t.integer  "team2_id"
     t.integer  "team3_id"
     t.integer  "points",     :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "teams", :force => true do |t|
@@ -88,12 +89,12 @@ ActiveRecord::Schema.define(:version => 20120312165907) do
     t.integer  "game_id",    :null => false
     t.integer  "score1"
     t.integer  "score2"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.integer  "score3"
     t.integer  "score4"
     t.integer  "score5"
     t.integer  "score6"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

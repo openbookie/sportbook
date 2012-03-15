@@ -4,50 +4,71 @@
 # or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
 
 
-# note: timezone for games (play_at) is CET (central european time)
+# note: timezone for games (play_at) is *always* CET (central european time)
 
 
 #################################
 ### Champions League 2012
 
-e2 = Event.create!( :title => 'Champions League 2012' )
+## note :team3 => false   CL has no 3rd place (only final game)
+cl = Event.create!( :title => 'Champions League 2012', :team3 => false )
 
-t100 = Team.create!( :title => 'FC Internazionale Milano', :img => 'internazionale.png' )
-t101 = Team.create!( :title => 'Olympique Marseille', :img => 'marseille.png' )
-t102 = Team.create!( :title => 'FC Bayern München', :img => 'bayern.png' )
-t103 = Team.create!( :title => 'FC Basel 1893', :img => 'basel.png' )
+inter     = Team.create!( :title => 'FC Internazionale Milano', :img => 'internazionale.png' )
+marseille = Team.create!( :title => 'Olympique Marseille',      :img => 'marseille.png' )
+bayern    = Team.create!( :title => 'FC Bayern München',        :img => 'bayern.png' )
+basel     = Team.create!( :title => 'FC Basel 1893',            :img => 'basel.png' )
 
-t104 = Team.create!( :title => 'Chelsea FC', :img => 'chelsea.png' )
-t105 = Team.create!( :title => 'SSC Napoli',  :img => 'napoli.png')
-t106 = Team.create!( :title => 'Real Madrid CF', :img => 'madrid.png' )
-t107 = Team.create!( :title => 'PFC CSKA Moskva', :img => 'moskva.png' )
+chelsea   = Team.create!( :title => 'Chelsea FC',       :img => 'chelsea.png' )
+napoli    = Team.create!( :title => 'SSC Napoli',       :img => 'napoli.png')
+madrid    = Team.create!( :title => 'Real Madrid CF',   :img => 'madrid.png' )
+moskva    = Team.create!( :title => 'PFC CSKA Moskva',  :img => 'moskva.png' )
 
-e2.teams << t100
-e2.teams << t101
-e2.teams << t102
-e2.teams << t103
+milan     = Team.create!( :title => 'AC Milan',         :img => 'milan.png' )
+benfica   = Team.create!( :title => 'Benfica Lissabon', :img => 'benfica.png' )
+barcelona = Team.create!( :title => 'FC Barcelona',     :img => 'barcelona.png' )
+apoel     = Team.create!( :title => 'APOEL Nikosia',    :img => 'apoel.png' )
 
-e2.teams << t104
-e2.teams << t105
-e2.teams << t106
-e2.teams << t107
+cl.teams << milan
+cl.teams << benfica
+cl.teams << barcelona
+cl.teams << apoel
+
+cl.teams << chelsea
+cl.teams << madrid
+cl.teams << marseille
+cl.teams << bayern
 
 
-group99 = GameGroup.create!( :event => e2, :pos => 1, :title => 'Achtelfinale' )
+cl16   = GameGroup.create!( :event => cl, :pos => 1, :title => 'Achtelfinale' )
+cl16_2 = GameGroup.create!( :event => cl, :pos => 2, :title => 'Achtelfinale Rückspiele' )
+cl8    = GameGroup.create!( :event => cl, :pos => 3, :title => 'Viertelfinale : 27.+28. März 2012',           :calc => true )
+cl8_2  = GameGroup.create!( :event => cl, :pos => 4, :title => 'Viertelfinale Rückspiele : 3.+4. April 2012', :calc => true )
+cl4    = GameGroup.create!( :event => cl, :pos => 5, :title => 'Halbfinale : 17.+18. April 2012',             :calc => true )
+cl4_2  = GameGroup.create!( :event => cl, :pos => 6, :title => 'Halbfinale Rückspiele : 24.+25. April 2012',  :calc => true )
+cl1    = GameGroup.create!( :event => cl, :pos => 7, :title => 'Finale : 19. Mai 2012',                       :calc => true )
 
-Game.create!( :pos=>1, :game_group=>group99, :team1=>t105, :team2=>t104, :play_at => '2012-02-21 20:45', :score1 => 3, :score2 => 1 )
-Game.create!( :pos=>2, :game_group=>group99, :team1=>t107, :team2=>t106, :play_at => '2012-02-21 20:45', :score1 => 1, :score2 => 1 )
 
-Game.create!( :pos=>3, :game_group=>group99, :team1=>t101, :team2=>t100, :play_at => '2012-02-22 20:45', :score1 => 1, :score2 => 0 )
-Game.create!( :pos=>4, :game_group=>group99, :team1=>t103, :team2=>t102, :play_at => '2012-02-22 20:45', :score1 => 1, :score2 => 0 )
+GAMES_CL16 = [
+  [ napoli,    3, 1, chelsea, '2012-02-21 20:45' ],
+  [ moskva,    1, 1, madrid,  '2012-02-21 20:45' ],
+  [ marseille, 1, 0, inter,   '2012-02-22 20:45' ],
+  [ basel,     1, 0, bayern,  '2012-02-22 20:45' ]
+]
 
-group100 = GameGroup.create!( :event => e2, :pos => 2, :title => 'Achtelfinale Rückspiele' )
+GAMES_CL16_2 = [
+  [ inter,     2, 1, marseille, '2012-03-13 20:45' ],
+  [ bayern,    7, 0, basel,     '2012-03-13 20:45' ],
+  [ chelsea,   3, 1, napoli,    '2012-03-14 20:45' ],
+  [ madrid,    4, 1, moskva,    '2012-03-14 20:45' ]
+]
 
-Game.create!( :pos=>1, :game_group=>group100, :team1=>t100, :team2=>t101, :play_at => '2012-03-13 20:45' )
-Game.create!( :pos=>2, :game_group=>group100, :team1=>t102, :team2=>t103, :play_at => '2012-03-13 20:45' )
+GAMES_CL16.each_with_index do |game,i|
+  Game.create!( :pos=> i+1, :game_group=>cl16, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+end
 
-Game.create!( :pos=>3, :game_group=>group100, :team1=>t104, :team2=>t105, :play_at => '2012-03-14 20:45' )
-Game.create!( :pos=>4, :game_group=>group100, :team1=>t106, :team2=>t107, :play_at => '2012-03-14 20:45' )
+GAMES_CL16_2.each_with_index do |game,i|
+  Game.create!( :pos=> i+1, :game_group=>cl16_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+end
 
 
 #################################
@@ -195,21 +216,25 @@ g31 = Game.create!( :pos=> 31, :game_group=>group7, :team1=>t40, :team2=>t41, :p
 ##############
 ##  Pools und Users
 
-user1  = User.create!( :name => 'Behrooz SEIFI', :email => 'behrooz' )
-user2  = User.create!( :name => 'Gerald BAUER', :email => 'gerald' )
-user3  = User.create!( :name => 'Gürsel AYAZ', :email => 'gürsel'  )
-user4  = User.create!( :name => 'Richard TRAINDL', :email => 'richard' )
-user5  = User.create!( :name => 'Manfred KOPECEK', :email => 'manfred' )
-user6  = User.create!( :name => 'Clemens HUBER', :email => 'clemens' )
-user7  = User.create!( :name => 'Franz BAUER', :email => 'franz' )
+user1  = User.create!( :name => 'Behrooz SEIFI',      :email => 'behrooz' )
+user2  = User.create!( :name => 'Gerald BAUER',       :email => 'gerald' )
+user3  = User.create!( :name => 'Gürsel AYAZ',        :email => 'gürsel'  )
+user4  = User.create!( :name => 'Richard TRAINDL',    :email => 'richard' )
+user5  = User.create!( :name => 'Manfred KOPECEK',    :email => 'manfred' )
+user6  = User.create!( :name => 'Clemens HUBER',      :email => 'clemens' )
+user7  = User.create!( :name => 'Franz BAUER',        :email => 'franz' )
 user8  = User.create!( :name => 'Andy SCHEIBELHOFER', :email => 'andy' )
-user9  = User.create!( :name => 'Thomas SCHOLZ', :email => 'thomas' )
-user10 = User.create!( :name => 'Dietmar BAYERL', :email => 'dietmar' )
-user11 = User.create!( :name => 'Harry PIETSCHMANN', :email => 'harry' )
+user9  = User.create!( :name => 'Thomas SCHOLZ',      :email => 'thomas' )
+user10 = User.create!( :name => 'Dietmar BAYERL',     :email => 'dietmar' )
+user11 = User.create!( :name => 'Martina REININGER',  :email => 'martina' )
+user12 = User.create!( :name => 'Andreas VANOREK',    :email => 'andy.vanorek' )
+user13 = User.create!( :name => 'Franz RUPF',         :email => 'franz.rupf' )
+user14 = User.create!( :name => 'Stefan NEUBAUER',    :email => 'stefan' )
+
 
 pool1 = Pool.create!( :event => e1, :title => 'UNIQA Fix', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
 pool2 = Pool.create!( :event => e1, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
-pool3 = Pool.create!( :event => e2, :title => 'UNIQA Test', :user => user1, :welcome => '' )
+pool3 = Pool.create!( :event => cl, :title => 'UNIQA Test', :user => user1, :welcome => '' )
 
 pool1.players << user1  # also add amin first
 pool1.players << user2
