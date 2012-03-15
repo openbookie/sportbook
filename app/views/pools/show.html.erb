@@ -1,7 +1,7 @@
 <h1><%= link_to 'Wettpools', pools_path() %> › <%= @pool.full_title %></h1>
 
 <p>Manager <%= @pool.user.name %>,
-  <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", pool_players_path(@pool) %></p>
+  <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", pool_plays_path(@pool) %></p>
 
 <p><%= @pool.welcome %></p>
 
@@ -21,7 +21,7 @@
       <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
       <%= if play.points != last_points then "#{ranking}." else '' end %>
     </td>
-    <td><%= link_to play.user.name, pool_player_path( play.pool_id, play.user_id ) %></td>
+    <td><%= link_to play.user.name, pool_play_path( play.pool_id, play.user_id ) %></td>
     <td><%= play.points %></td>
     <td>Punkte</td>
   </tr>
@@ -37,9 +37,9 @@
 
 <div>
 <% if machmit %>
-  <%= link_to 'Mach mit! Mittippen!', play_pool_path( @pool ), :class => 'btn-primary' %>
+  <%= link_to 'Mach mit! Mittippen!', add_player_to_pool_path( @pool ), :class => 'btn-primary' %>
 <% else %>
-  <%= link_to 'Meine Tipps bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
+  <%= link_to 'Meine Tipps bearbeiten', edit_pool_play_path( @pool, current_user() ), :class => 'btn-primary' %>
 <% end %>
   
 <%= link_to 'Zurück', pools_path(), :class => 'btn' %>

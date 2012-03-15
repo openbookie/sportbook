@@ -19,8 +19,8 @@ Euro2012::Application.routes.draw do
   end
   
   resources :pools do
-    get 'play', :on => :member
-    resources :players
+    get 'add_player_to', :on => :member
+    resources :plays
   end
 
   root :to => 'sessions#new'

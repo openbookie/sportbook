@@ -32,18 +32,18 @@ class PoolsController < ApplicationController
     @pool = Pool.find(params[:id])
 
     if @pool.update_attributes(params[:pool])
-      redirect_to pools_path(), notice: 'Pool erfolgreich gespeichert.' 
+      redirect_to pools_path(), notice: 'Pool erfolgreich gespeichert.'
     else
       render action: 'edit'
     end
-  end  
-  
-  def play
-    @pool = Pool.find(params[:id])    
-    @pool.players << current_user() 
+  end
+
+  def add_player_to
+    @pool = Pool.find(params[:id])
+    @pool.players << current_user()
     
-    flash[ :success ] = "Willkommen im Wettpool. Los geht's."         
-    redirect_to edit_pool_player_path( @pool, current_user() )
+    flash[ :success ] = "Willkommen im Wettpool. Los geht's."
+    redirect_to edit_pool_play_path( @pool, current_user() )
   end
   
   # GET /pools/1

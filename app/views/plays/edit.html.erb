@@ -1,7 +1,7 @@
 
 <h1><%= link_to @pool.full_title, pool_path(@pool) %> › <%= @user.name %></h1>
 
-<%= form_for @user, :url => pool_player_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
+<%= form_for @user, :url => pool_play_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
 
 <%= f.fields_for :play, @play do |play_form| %>
 <table>

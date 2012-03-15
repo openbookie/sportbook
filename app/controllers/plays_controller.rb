@@ -1,8 +1,8 @@
 
-class PlayersController < ApplicationController
+class PlaysController < ApplicationController
   
 
-  # GET /pools/:pool_id/players  
+  # GET /pools/:pool_id/plays
   def index
     @pool  = Pool.find(params[:pool_id])
     @users = @pool.players
@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
     @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all    
   end
 
-  # GET/pools/:pool_id/players/:id
+  # GET/pools/:pool_id/plays/:id
   def show
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
@@ -79,6 +79,6 @@ if @user.update_attributes( params[:user])
 
     flash[:success] = 'Tipps erfolgreich gespeichert.'
         
-    redirect_to pool_player_path( @pool, @user )
+    redirect_to pool_play_path( @pool, @user )
   end
 end
