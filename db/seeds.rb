@@ -260,11 +260,11 @@ pool3.players << user11
 
 ## note: diese tips nur zum testen; in produ entfernen
 
-Tip.create!( :user => user2, :pool => pool1, :game => g1,  :score1 => 2, :score2 => 3 )
-Tip.create!( :user => user2, :pool => pool1, :game => g2,  :score1 => 1, :score2 => 4 )
-Tip.create!( :user => user2, :pool => pool1, :game => g10, :score1 => 3, :score2 => 1 )
-Tip.create!( :user => user2, :pool => pool1, :game => g7,  :score1 => 0, :score2 => 2 )
+Tip.create!( :user => user2, :pool => pool1, :game => g1,   :score1 => 2, :score2 => 4 )   # bingo
+Tip.create!( :user => user2, :pool => pool1, :game => g2,   :score1 => 1, :score2 => 1 )   # bingoo
+Tip.create!( :user => user2, :pool => pool1, :game => g9,   :score1 => 2, :score2 => 3 )   # bingooo
+Tip.create!( :user => user2, :pool => pool1, :game => g10,  :score1 => 0, :score2 => 2 )
 
 
 Tip.create!( :user => user3, :pool => pool1, :game => g1, :score1 => 2, :score2 => 3 )
-Tip.create!( :user => user3, :pool => pool1, :game => g2, :score1 => 1, :score2 => 4 )
+Tip.create!( :user => user3, :pool => pool1, :game => g2, :score1 => 1, :score2 => 4 ) 

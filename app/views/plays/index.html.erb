@@ -104,7 +104,7 @@
         <% if tip.present? %>
          <td>
           <% if tip.bingo? %>
-             <span class='bingo'>
+             <span class='<%= tip.bingo_style_class %>'>
           <% end %>
           <b>
           <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>

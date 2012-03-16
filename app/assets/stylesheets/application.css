@@ -56,21 +56,47 @@ textarea { font-family:  Helvetica,Arial,sans-serif; }
 }
 
 
+.smaller {
+    font-size: 60%;    
+}
+
 .bingo {
     display: inline-block;
     border-radius: 5px;
     background-color: green;
-    font-size: 60%;
     padding: 4px;
     color: white;
     font-weight: bold;
 }
 
+/* for web colors see
+  http://en.wikipedia.org/wiki/Web_colors
+*/
+
+.bingoo {
+    display: inline-block;
+    border-radius: 5px;
+    background-color:  limegreen; /* springgreen?? -- lighter green */
+    padding: 4px;
+    color: white; 
+    font-weight: bold;
+}
+
+.bingooo {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: lime;  /* lighter lighter green */
+    padding: 4px;
+    color: white; 
+    font-weight: bold;
+}
+
+
+
 .missing {
     display: inline-block;
     border-radius: 5px;
     background-color: orange;
-    font-size: 60%;
     padding: 4px;
     color: white;
     font-weight: bold;    

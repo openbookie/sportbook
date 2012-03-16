@@ -31,18 +31,53 @@ class Tip < ActiveRecord::Base
   def calc_points
     pts = 0
     if complete?
-      if((game.score1 == game.score2 && score1 == score2) ||
-         (game.score1 >  game.score2 && score1 >  score2) ||
-         (game.score2 <  game.score2 && score1 <  score2))
+      if(((game.score1 == game.score2) && (score1 == score2)) ||
+         ((game.score1 >  game.score2) && (score1 >  score2)) ||
+         ((game.score1 <  game.score2) && (score1 <  score2)))
           pts += 1
       end
 
-      if game.score1 == score1 && game.score2 == score2
-        pts += 3
+      # tordifferenz richtig? todo: auch fuer unentschieden???
+      if((game.score1-game.score2) == (score1-score2))
+        pts +=1
       end
-      ## todo: add 1 point for guessing tordifferenz???
+
+      # ergebnis richtig?      
+      if game.score1 == score1 && game.score2 == score2
+        pts += 1
+      end
     end
     pts
+  end
+  
+  def bingo_style_class
+    pts = calc_points()
+    if pts == 0
+      ''  # empty (css) class
+    elsif pts == 1
+      'bingo'
+    elsif pts == 2
+      'bingoo'
+    elsif pts == 3
+      'bingooo'
+    else
+      ''  # unknown state; return empty (css) class
+    end
+  end
+
+  def bingo_text
+    pts = calc_points()
+    if pts == 0
+      ''  # empty text
+    elsif pts == 1
+      'Bingo'
+    elsif pts == 2
+      'Bingooo'
+    elsif pts == 3
+      'Bingooooo'
+    else
+      ''  # unknown state; return empty (css) class
+    end
   end
     
     
@@ -62,14 +97,22 @@ class Tip < ActiveRecord::Base
     game.score1.present? && game.score2.present? && score1.present? && score2.present?
   end
   
+  def incomplete?
+    complete? == false
+  end
+  
   def bingo?
-    return false unless complete?
+    return false if incomplete?
 
-    if((game.score1 == game.score2 && score1 == score2) ||
-       (game.score1 >  game.score2 && score1 >  score2) ||
-       (game.score2 <  game.score2 && score1 <  score2))
+    puts "#{game.score1} - #{game.score2}, #{score1} - #{score2}"    
+    
+    if(((game.score1 == game.score2) && (score1 == score2)) ||
+       ((game.score1 >  game.score2) && (score1 >  score2)) ||
+       ((game.score1 <  game.score2) && (score1 <  score2)))
+      puts "*** [debug] bingo true"
       true
     else
+      puts "[debug] bingo false"
       false
     end
   end

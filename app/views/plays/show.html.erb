@@ -62,11 +62,11 @@
       <td>
        <% if tip.present? %>
           <% if tip.bingo? %>
-             <span class='bingo'>Bingo</span>
+             <span class='smaller <%= tip.bingo_style_class %>'><%= tip.bingo_text %></span>
           <% end %>
           
           <% if tip.score1.blank? || tip.score2.blank? %>
-             <span class='missing'>???</span>
+             <span class='smaller missing'>???</span>
           <% end %>
        <% end %>
       </td>
