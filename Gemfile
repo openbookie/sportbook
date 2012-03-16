@@ -24,3 +24,5 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem 'bourbon'   # scss mixins (see http://thoughtbot.com/bourbon)
