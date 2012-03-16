@@ -28,6 +28,7 @@
        <% end %>
    </td>
  </tr>
+ <% if @pool.team3? %>
  <tr>
    <td>3. Platz</td>
    <td><% if @play.team3.present? %>
@@ -40,6 +41,7 @@
        <% end %>
    </td>
  </tr>
+<% end %>
 </table>
 
 

@@ -5,7 +5,7 @@
     <td></td>
     <td>1. Platz</td>
     <td>2. Platz</td>
-    <td>3. Platz</td>
+    <% if @pool.team3? %><td>3. Platz</td><% end %>
   </tr>
   <% @users.each do |user| %>
     <% play = Play.where( :pool_id => @pool.id, :user_id => user.id ).first %>
@@ -32,6 +32,7 @@
           ---
         <% end %>       
        </td>
+       <% if @pool.team3? %>
        <td>
         <% if play.team3.present? %>
           <% if play.team3.img.present? %>
@@ -42,6 +43,7 @@
           ---
         <% end %>       
        </td>
+     <% end %>
     </tr>
   <% end %><!-- users.each -->   
 </table>

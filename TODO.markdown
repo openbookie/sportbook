@@ -22,4 +22,5 @@
 * Remove [] from view for calculated teams (is now part of team name)
 
 * Use autofocus and :focus (HTML5) instead of class .focus (does it work?)
-* Use new reader pool.full_title 
+* Use new reader pool.full_title
+* Rename pool.user to pool.manager

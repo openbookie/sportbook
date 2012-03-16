@@ -4,31 +4,30 @@ class PlaysController < ApplicationController
 
   # GET /pools/:pool_id/plays
   def index
-    @pool  = Pool.find(params[:pool_id])
-    @users = @pool.players
-    
-    ## todo/fix: get groups via @pool.event.groups 
-    @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all    
+    @pool   = Pool.find(params[:pool_id])
+    @users  = @pool.players
+    ## todo/fix: make order( :pos ) default in assoc; remove here
+    @groups = @pool.event.game_groups.order( :pos ).all    
   end
 
   # GET/pools/:pool_id/plays/:id
   def show
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
-
-    @play = Play.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    @play = Play.find_by_pool_id_and_user_id!( @pool.id, @user.id )
     
-    @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
+    ## todo/fix: make order( :pos ) default in assoc; remove here
+    @groups = @pool.event.game_groups.order( :pos ).all
   end
 
   def edit
     @pool = Pool.find(params[:pool_id])
     @user = User.find(params[:id])
-
-    @play = Play.where( :pool_id => @pool.id, :user_id => @user.id ).first
+    @play = Play.find_by_pool_id_and_user_id!( @pool.id, @user.id )
     
     @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
-    
+
+    ## todo/fix: use @pool.event.game_groups...    
     GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all.each do |group |
       group.games.order( :pos ).all.each do |game|
         # make sure all games exists as tips
@@ -43,7 +42,8 @@ class PlaysController < ApplicationController
       end
     end
 
-    @groups = GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all
+    ## todo/fix: make order( :pos ) default in assoc; remove here
+    @groups = @pool.event.game_groups.order( :pos ).all
   end
   
   def update

@@ -13,10 +13,12 @@
    <td><%= play_form.label :team2_id, '2. Platz' %></td>
    <td><%= play_form.select :team2_id, @team_options %></td>
  </tr>
+ <% if @pool.team3? %>
  <tr>
    <td><%= play_form.label :team3_id, '3. Platz' %></td>
    <td><%= play_form.select :team3_id, @team_options %></td>
  </tr>
+  <% end %><!-- if pool.team3? -->
 </table>
 <% end %><!-- fields_for play -->
 

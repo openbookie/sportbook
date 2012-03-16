@@ -35,4 +35,8 @@ class Pool < ActiveRecord::Base
     fix != true
   end
   
+  def team3?    # show tip for 3rd place?
+    event.team3 == true
+  end
+  
 end
