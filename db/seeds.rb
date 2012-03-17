@@ -41,8 +41,8 @@ cl.teams << bayern
 
 cl16   = GameGroup.create!( :event => cl, :pos => 1, :title => 'Achtelfinale' )
 cl16_2 = GameGroup.create!( :event => cl, :pos => 2, :title => 'Achtelfinale Rückspiele' )
-cl8    = GameGroup.create!( :event => cl, :pos => 3, :title => 'Viertelfinale : 27.+28. März 2012',           :calc => true )
-cl8_2  = GameGroup.create!( :event => cl, :pos => 4, :title => 'Viertelfinale Rückspiele : 3.+4. April 2012', :calc => true )
+cl8    = GameGroup.create!( :event => cl, :pos => 3, :title => 'Viertelfinale : 27.+28. März 2012' )
+cl8_2  = GameGroup.create!( :event => cl, :pos => 4, :title => 'Viertelfinale Rückspiele : 3.+4. April 2012' )
 cl4    = GameGroup.create!( :event => cl, :pos => 5, :title => 'Halbfinale : 17.+18. April 2012',             :calc => true )
 cl4_2  = GameGroup.create!( :event => cl, :pos => 6, :title => 'Halbfinale Rückspiele : 24.+25. April 2012',  :calc => true )
 cl1    = GameGroup.create!( :event => cl, :pos => 7, :title => 'Finale : 19. Mai 2012',                       :calc => true )
@@ -62,12 +62,35 @@ GAMES_CL16_2 = [
   [ madrid,    4, 1, moskva,    '2012-03-14 20:45' ]
 ]
 
+GAMES_CL8 = [
+  [  apoel,     nil, nil, madrid,    '2012-03-27 20:45' ],
+  [  benfica,   nil, nil, chelsea,   '2012-03-27 20:45' ],
+  [  marseille, nil, nil, bayern,    '2012-03-28 20:45' ],
+  [  milan,     nil, nil, barcelona, '2012-03-28 20:45' ]
+]
+
+GAMES_CL8_2 = [
+  [  barcelona, nil, nil, milan,     '2012-04-03 20:45' ],
+  [  bayern,    nil, nil, marseille, '2012-04-03 20:45' ],
+  [  chelsea,   nil, nil, benfica,   '2012-04-04 20:45' ],
+  [  madrid,    nil, nil, apoel,     '2012-04-04 20:45' ]
+]
+
+
 GAMES_CL16.each_with_index do |game,i|
   Game.create!( :pos=> i+1, :game_group=>cl16, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
 end
 
 GAMES_CL16_2.each_with_index do |game,i|
   Game.create!( :pos=> i+1, :game_group=>cl16_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+end
+
+GAMES_CL8.each_with_index do |game,i|
+  Game.create!( :pos=> i+1, :game_group=>cl8, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+end
+
+GAMES_CL8_2.each_with_index do |game,i|
+  Game.create!( :pos=> i+1, :game_group=>cl8_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
 end
 
 

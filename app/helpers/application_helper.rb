@@ -1,4 +1,14 @@
+# encoding: utf-8
+
 module ApplicationHelper
+
+  def title(*parts)
+    unless parts.empty?
+      content_for :title do
+        (parts << 'Wettpool').join( ' ‹ ' )
+      end
+    end
+  end
 
   def signed_in?
     session[:user_id].nil? == false
