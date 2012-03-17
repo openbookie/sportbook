@@ -23,38 +23,31 @@
 <% end %><!-- fields_for play -->
 
 
-<table>
+<table class='play'>
 <% first_field = true %>
 <% @groups.each do |group| %>
-<tr>
-  <td></td><td colspan='3'><b><%= group.title %></b></td>
+<tr class='game-group'>
+  <td></td>
+  <td colspan='3' class='game-group-title'><%= group.title %></td>
 </tr>
   <% if @pool.flex? && group.calc? %>
      <tr>
-       <td colspan='3' style='text-align: center;'>Spielaufstellungen noch nicht bekannt.</td>
+       <td colspan='3' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
      </tr>
   <% else %>
   <% group.games.each do |game| %>
   <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
    <tr>
-    <td style='text-align: right;'> 
-        <b>
-          <% if game.team1.calc? %>
-             <em><%= game.team1.title %></em>
-          <% else %>  
-             <%= game.team1.title %>
-          <% end %>
-        </b>
-       <% if game.team1.img.present? %>
-          <%= image_tag( game.team1.img ) %>
-       <% end %>
+    <td class='game-team1'> 
+         <span class='<%= game.team1_style_class %>'>
+           <%= game.team1.title %>
+         </span> 
+         <%= image_tag( game.team1.img ) if game.team1.img.present? %>
     </td>
 
    <% if game.over?  %>
-     <td style='text-align: center;'>
-      <b><%= game.score1 %></b>
-       :
-      <b><%= game.score2 %></b>
+     <td class='game-score'>
+      <%= game.score1 %> : <%= game.score2 %>
      </td>
    <% else %>
    <% if tip.present? %>
@@ -74,26 +67,18 @@
   <% end %><!-- fields_for tips -->
      </td>
        <% else %><!-- tip.present? -->
-          <td>###<!-- fehler: datensatz fehlt! --></td>
+          <td class='game-tip'>♦<!-- fehler: datensatz fehlt! --></td>
        <% end %>
    <% end %> <!-- game.over? -->
     
-       <td>
-      <% if game.team2.img.present? %>
-         <%= image_tag( game.team2.img ) %>
-      <% end %>
-        <b>
-          <% if game.team2.calc? %>
-             <em><%= game.team2.title %></em>
-          <% else %>
-             <%= game.team2.title %>
-          <% end %>
-         </b>
+       <td class='game-team2'>
+         <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+         <span class='<%= game.team2_style_class %>'>
+           <%= game.team2.title %>
+         </span>
        </td>
-       <td>
-           <span class='light'>
+       <td class='game-date'>
               <%= fmt_date( game.play_at ) %>
-           </span>
        </td>
    </tr>
   <% end %><!-- game -->

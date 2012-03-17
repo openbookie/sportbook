@@ -1,4 +1,4 @@
-<h1><%= link_to @pool.full_title, pool_path(@pool) %> › Alle </h1>
+<h1><%= link_to @pool.full_title, pool_path(@pool) %> › Alle</h1>
 
 <table>
   <tr>
@@ -8,147 +8,117 @@
     <% if @pool.team3? %><td>3. Platz</td><% end %>
   </tr>
   <% @users.each do |user| %>
-    <% play = Play.where( :pool_id => @pool.id, :user_id => user.id ).first %>
+    <% play = Play.find_by_pool_id_and_user_id!( @pool.id, user.id ) %>
     <tr>
        <td><%= user.name %></td>
        <td>
           <!-- fix: use helper or partial -->
         <% if play.team1.present? %>
-          <% if play.team1.img.present? %>
-           <%= image_tag( play.team1.img ) %>
-          <% end %>
-          <%= play.team1.title %>
+           <%= image_tag( play.team1.img ) if play.team1.img.present? %>
+           <%= play.team1.title %>
         <% else %>
           ---
-        <% end %>       
+        <% end %>
        </td>
        <td>
         <% if play.team2.present? %>
-          <% if play.team2.img.present? %>
-           <%= image_tag( play.team2.img ) %>
-          <% end %>
+          <%= image_tag( play.team2.img ) if play.team2.img.present? %>
           <%= play.team2.title %>
         <% else %>
           ---
-        <% end %>       
+        <% end %>
        </td>
        <% if @pool.team3? %>
        <td>
         <% if play.team3.present? %>
-          <% if play.team3.img.present? %>
-           <%= image_tag( play.team3.img ) %>
-          <% end %>
-          <%= play.team3.title %>
+           <%= image_tag( play.team3.img ) if play.team3.img.present? %>
+           <%= play.team3.title %>
         <% else %>
           ---
-        <% end %>       
+        <% end %>
        </td>
      <% end %>
     </tr>
-  <% end %><!-- users.each -->   
+  <% end %><!-- users.each -->
 </table>
 
 
 
-<table>
+<!-- table columns:
+        1    => toto12x
+        2    => team1
+        3..n => tip 
+       -3    => result
+       -2    => team2
+  last/-1    => date
+  -->
 
+<table class='plays'>
 <tr>
-  <td colspan='3'></td>
+  <td colspan='2'></td>
   <% @users.each do |user| %>
-   <td style='font-size: 60%;'>
-     <% names = user.name.split(' ') %>
-     <%= raw( names.join( '<br>' ) ) %>
+   <td class='player-name'>
+     <%= raw( user.name.split(' ').join( '<br>' ) ) %>
    </td>
-  <% end %><!-- users.each -->   
+  <% end %><!-- users.each -->
 </tr>
-
 
 
 <% @groups.each do |group| %>
-<tr>
-  <td colspan='3'></td><td colspan='4'><b><%= group.title %></b></td>
+<tr class='game-group'>
+  <td colspan='2'></td>
+  <td colspan='<%= 3+@users.count %>' class='game-group-title'><%= group.title %></td>
 </tr>
-
 
   <% if @pool.flex? && group.calc? %>
      <tr>
-       <td colspan='2'></td>
-       <td colspan='<%= 3+@users.count %>' style='text-align: center;'>
+       <td></td>
+       <td colspan='<%= 3+@users.count %>' class='game-no-fixtures'>
           Spielaufstellungen noch nicht bekannt.
        </td>
      </tr>
   <% else %>
   <% group.games.each do |game| %>
     <tr>
-      <td><!-- bingo -->
-      </td>
-      <td><!-- 12X -->
-      </td>
-      
-       <td style='text-align: right;'>
-        <b>
-          <% if game.team1.calc? %>
-             <em><%= game.team1.title %></em>
-          <% else %>
-             <%= game.team1.title %>
-          <% end %>
-        </b>
-     <% if game.team1.img.present? %>
-        <%= image_tag( game.team1.img ) %>
-     <% end %>
+       <td class='game-toto12x'>
+         <%= "(#{game.toto12x})" if game.complete? %>
+       </td>
+       <td class='game-team1'>
+         <span class='<%= game.team1_style_class %>'>
+          <%= game.team1.title %>
+         </span>
+         <%= image_tag( game.team1.img ) if game.team1.img.present? %>
        </td>
        
       <% @users.each do |user| %>
         <% tip = Tip.find_by_user_and_pool_and_game( user, @pool, game ) %>
-         
-        <% if tip.present? %>
-         <td>
-          <% if tip.bingo? %>
-             <span class='<%= tip.bingo_style_class %>'>
-          <% end %>
-          <b>
-          <%= if tip.score1.blank? then "-" else "#{tip.score1}" end %>
-           :
-          <%= if tip.score2.blank? then "-" else "#{tip.score2}" end %>
-          </b>
-          <% if tip.bingo? %>
-             </span>
-          <% end %>
-           |
+
+         <td class='game-tip'>
+          <% if tip.present? %>
+            <span class='<%= tip.bingo_style_class %>'>
+              <%= tip.score1_str %> : <%= tip.score2_str %>
+            </span>
+           <% else %>
+              ♦  <!-- fehler: datensatz fehlt! -->
+           <% end %>
          </td>
-        <% else %>
-          <td>♦<!-- fehler: datensatz fehlt! --> | </td>
-        <% end %>
+
       <% end %><!-- users.each --> 
 
-         <td>
-          <b>
-         (
-         <%= if game.score1.blank? then "-" else "#{game.score1}" end %>
-         :
-         <%= if game.score2.blank? then "-" else "#{game.score2}" end %>
-         )
-           </b>
+         <td class='game-score'>
+         ( <%= game.score1_str %> : <%= game.score2_str %> )
          </td>
        
-       <td>
-      <% if game.team2.img.present? %>
-         <%= image_tag( game.team2.img ) %>
-      <% end %>
-
-        <b>
-          <% if game.team2.calc? %>
-             <em><%= game.team2.title %></em>
-          <% else %>
+       <td class='game-team2'>
+          <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+          <span class='<%= game.team2_style_class %>'>
              <%= game.team2.title %>
-          <% end %>
-         </b>
+          </span>
         </td>
 
-         <td>
-           <span class='light'>
+         <td class='game-date'>
+            <!-- fix: use game.play_at_str -->
             <%= fmt_date( game.play_at ) %>
-           </span>
          </td>
      </tr>
   <% end %> <!-- games.each -->
@@ -156,13 +126,12 @@
 <% end %> <!-- groups.each -->
 
 <tr>
-  <td colspan='3'></td>
+  <td colspan='2'></td>
   <% @users.each do |user| %>
-   <td style='font-size: 60%;'>
-     <% names = user.name.split(' ') %>
-     <%= raw( names.join( '<br>' ) ) %>
+   <td class='player-name'>
+     <%= raw( user.name.split(' ').join( '<br>' ) ) %>
    </td>
-  <% end %><!-- users.each -->   
+  <% end %><!-- users.each -->
 </tr>
 
 </table>

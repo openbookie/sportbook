@@ -50,10 +50,14 @@ class Tip < ActiveRecord::Base
     pts
   end
   
+  ## todo: use tip-fail, tip-bingo, etc.
+  
   def bingo_style_class
+    return '' if incomplete?
+    
     pts = calc_points()
     if pts == 0
-      ''  # empty (css) class
+      'fail'
     elsif pts == 1
       'bingo'
     elsif pts == 2
@@ -66,15 +70,17 @@ class Tip < ActiveRecord::Base
   end
 
   def bingo_text
+    return '' if incomplete?
+    
     pts = calc_points()
     if pts == 0
-      ''  # empty text
+       "#{game.toto12x} - Leider, nein."  # return 1,2,X from game
     elsif pts == 1
-      'Bingo'
+      'Ja!'
     elsif pts == 2
-      'Bingooo'
+      'Jaaa!'
     elsif pts == 3
-      'Bingooooo'
+      'Jaaaaa!'
     else
       ''  # unknown state; return empty (css) class
     end
@@ -104,7 +110,7 @@ class Tip < ActiveRecord::Base
   def bingo?
     return false if incomplete?
 
-    puts "#{game.score1} - #{game.score2}, #{score1} - #{score2}"    
+    puts "#{game.score1} - #{game.score2}, #{score1} - #{score2}"
     
     if(((game.score1 == game.score2) && (score1 == score2)) ||
        ((game.score1 >  game.score2) && (score1 >  score2)) ||
@@ -115,6 +121,14 @@ class Tip < ActiveRecord::Base
       puts "[debug] bingo false"
       false
     end
+  end
+  
+  def score1_str
+    if score1.blank? then '-' else score1.to_s end
+  end
+
+  def score2_str
+    if score2.blank? then '-' else score2.to_s end
   end
     
 end # class Tip

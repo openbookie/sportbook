@@ -1,33 +1,131 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- *= require_self
- */
-
 
 @import "bourbon";
 
+/************************
+ *  global settings w/ variables
+ */
 
-/* yellow background for input controls w/ focus */
+/* note for web colors see
+     http://en.wikipedia.org/wiki/Web_colors
+ */
 
-input.focus, select.focus, textarea.focus, option.focus {
-    background-color: #F8F50F;
+/* todo: check if // posible for comments?? in scss */
+
+/** todo: add colors for btn and primar-btn  (use bootstrap variable names?)*/
+
+
+$bingoText:         white;
+$bingoBackground:   green;
+
+$bingooText:        white;
+$bingooBackground:  limegreen;  /* springgreen?? -- lighter green */
+
+$bingoooText:       white;
+$bingoooBackground: lime;      /* lighter lighter green */
+
+$missingText:       white;
+$missingBackground: orange;   /* tip missing label */
+
+
+$focusBackground: #F8F50F;
+
+
+/* colors for flash messages */
+
+/* todo/fix: add warn/warning?? flash box */
+$warningText:       white;     /* #c09853  */
+$warningBackground: white;    /* #f3edd2  */
+
+$errorText:         #B94A48;
+$errorBackground:   #F2DEDE;
+$errorBorder:       #EED3D7;
+
+$successText:       #468847; 
+$successBackground: #DFF0D8;
+$successBorder:     #D6E9C6;
+
+$noticeText:        #3A87AD;
+$noticeBackground:  #D9EDF7;
+$noticeBorder:      #BCE8F1;
+
+
+table.play,
+table.plays {
+
+  .game-team-winner {
+     font-weight: bold;
+     color: darkgreen;
+  }
+  
+  .game-team-draw {
+     font-weight: bold;
+     color: limegreen;
+  }
+
+  .game-team-calc {
+     font-style: italic;
+  }
+
+  tr {
+    &.game-group {
+      background-color: lightgrey;
+    }
+  }
+
+  td {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+        
+    &.player-name {
+     font-size: 60%;
+    }
+
+   &.game-toto12x {
+     text-align: center;
+   }
+    
+   &.game-group-title {
+     /* font-weight: bold;  */
+   }
+   
+   &.game-no-fixtures {
+     text-align: center;
+   }
+    
+   &.game-team1 {
+     text-align: right;
+     /* font-weight: bold; */
+   }
+   
+   &.game-tip {
+     text-align:  center;
+     /* font-weight: bold; */
+   }
+   
+   &.game-score {
+     text-align:  center;
+     /* font-weight: bold; */
+   }
+   
+   &.game-team2 {
+     /* font-weight: bold; */
+   }
+   
+   &.game-date {
+     color: gray;
+   }
+  }
 }
 
-span.focus {
-    background-color: #F8F50F;
-    padding-top: 3px;
-}
+
+
 
 body
 {
   font-family:  Helvetica,Arial,sans-serif;
-  
-  /* @include linear-gradient(#777, #444);  */
 }
 
 @media screen {
@@ -39,133 +137,152 @@ h3 { font-size: 25px;  /* 10x2.5 */ }
 td, div, p, li, a,
 input, select, textarea, label  { font-size: 20px; /*10x2*/ }
 
-textarea { font-family:  Helvetica,Arial,sans-serif; }    
+textarea { font-family:  Helvetica,Arial,sans-serif; }
 
 }
 
-.ranking1 td, .ranking1 a { font-size: 36px; /* 10x2 x 180% */ }
-.ranking2 td, .ranking2 a { font-size: 30px; /* 10x2 x 150% */ }
-.ranking3 td, .ranking3 a { font-size: 24px; /* 10x2 x 120% */ }
+.ranking1 {
+  td, a { font-size: 36px; /* 10x2 x 180% */ }  /* todo: use scss calc */
+}
+.ranking2 {
+  td, a { font-size: 30px; /* 10x2 x 150% */ }
+}
+.ranking3 {
+  td, a { font-size: 24px; /* 10x2 x 120% */ }
+}
 
 
 @media print {
 
 /* use default font-size for now */
 
-  .navbar  { display: none; }
-  .buttons { display: none; }   /* todo: add buttons in div.buttons */
+  .navbar            { display: none; }
+  .buttons, .actions { display: none; }   /* todo: add buttons in div.buttons */
 }
 
 
-.smaller {
-    font-size: 60%;    
-}
+.x-smaller {  font-size: 60%;  }
+.smaller   {  font-size: 80%;  }
+.larger    {  font-size: 120%; }
+.x-larger  {  font-size: 140%; }
+.xx-larger {  font-size: 160%; }
+
+.light {  color: grey; }
+
+
 
 .bingo {
     display: inline-block;
     border-radius: 5px;
-    background-color: green;
+    background-color: $bingoBackground;
+    color:            $bingoText;
     padding: 4px;
-    color: white;
     font-weight: bold;
 }
 
-/* for web colors see
-  http://en.wikipedia.org/wiki/Web_colors
-*/
 
 .bingoo {
     display: inline-block;
     border-radius: 5px;
-    background-color:  limegreen; /* springgreen?? -- lighter green */
+    background-color:  $bingooBackground;
+    color:             $bingooText;
     padding: 4px;
-    color: white; 
     font-weight: bold;
 }
 
 .bingooo {
     display: inline-block;
     border-radius: 5px;
-    background-color: lime;  /* lighter lighter green */
+    background-color: $bingoooBackground;
+    color:            $bingoooText;
     padding: 4px;
-    color: white; 
     font-weight: bold;
 }
 
-
+.fail {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: red;
+    color:            white;
+    padding: 4px;
+    font-weight: bold;
+}
 
 .missing {
     display: inline-block;
     border-radius: 5px;
-    background-color: orange;
+    background-color: $missingBackground;
+    color:            $missingText;
     padding: 4px;
-    color: white;
-    font-weight: bold;    
+    font-weight: bold;
 }
 
 
-ul { list-style-type: square; }
+ul {
+    list-style-type: square;
 
-ul.none { list-style-type: none; }
+    &.none {
+      list-style-type: none;
+    }
+}
+
 
 a {
-  color: black;  
-  text-decoration: none;  
-}
-a:hover {
+  color: black;
+  text-decoration: none;
+
+  &:hover {
    color: black; 
-   text-decoration: underline; 
+   text-decoration: underline;
+  }
+
+  &:visited { color: black; }
 }
-a:visited { color: black; }
 
 
-.light {  color: grey; }
 
-.navbar {    
-    background-color: #2C2C2C;
-    background-image: -ms-linear-gradient(top, #333, #222);    
-    background-image: -moz-linear-gradient(top, #333, #222);    
-    background-image: -webkit-linear-gradient(top, #333, #222);
+.navbar {
+    @include linear-gradient(top, #333, #222, $fallback: #2C2C2C);
 
     color: white;
     padding: 10px 20px;
     text-align: right;
     margin-bottom: 6px;
-}
 
-.navbar a,
-.navbar a:visited {
-    text-decoration: none;
-    color: white;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-    color: white;
+     a,
+     a:visited {
+       text-decoration: none;
+       color: white;
+     }
+     
+     a:hover {
+       text-decoration: underline;
+       color: white;
+     }
 }
 
 
 .flash {
    padding: 8px 14px;
    border-radius:  4px;
-}
 
-.flash.error {    
-    color: #B94A48;
-    background-color: #F2DEDE;
-    border: 1px solid #EED3D7;
-}
+   &.error {
+    color:            $errorText;
+    background-color: $errorBackground;
+    border: 1px solid $errorBorder;
+  }
 
-.flash.success {
-   color: #468847;
-   background-color: #DFF0D8;
-   border: 1px solid #D6E9C6;
-}
+   &.success {
+     color:            $successText;
+     background-color: $successBackground;
+     border: 1px solid $successBorder;
+   }
 
-.flash.notice {
-   color: #3A87AD;
-   background-color: #D9EDF7;
-   border: 1px solid #BCE8F1;
+   &.notice {
+     color:             $noticeText;
+     background-color:  $noticeBackground;
+     border: 1px solid  $noticeBorder;
+   }
 }
 
 
@@ -179,7 +296,7 @@ a.btn-primary,
 a:visited.btn-primary
 {
    color: white;
-   text-decoration: none;       
+   text-decoration: none;
 }
 
 .btn-primary
@@ -187,15 +304,11 @@ a:visited.btn-primary
    display: inline-block;
    padding: 4px 10px 4px;
    text-align: center;
-   /* vertical-align: middle; */
    color: white;
-   background-color: #04C;
-   background-image: -webkit-linear-gradient( top, #08C, #04C);
-   background-image: -ms-linear-gradient( top, #08C, #04C);
-   background-image: -moz-linear-gradient( top, #08C, #04C);
+   @include linear-gradient(top, #08C, #04C, $fallback: #04C);
+   @include border-radius(4px);
    cursor: pointer;
-   border-radius: 4px;
-   border: 1px solid rgba(0, 0, 0, 0.1);   
+   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 a:hover.btn
@@ -210,16 +323,25 @@ a:visited.btn
    display: inline-block;
    padding: 4px 10px 4px;
    text-align: center;
-   /* vertical-align: middle; */
    color: #333;
-   background-color: #E6E6E6;
-   background-image: -webkit-linear-gradient( top, white, #E6E6E6);
-   background-image: -ms-linear-gradient( top, white, #E6E6E6);
-   background-image: -moz-linear-gradient( top, white, #E6E6E6);
+   @include linear-gradient(top, white, #E6E6E6, $fallback: #E6E6E6);
+   @include border-radius(4px);
    cursor: pointer;
-   border-radius: 4px;
    border: 1px solid rgba(0, 0, 0, 0.1);
       
-   text-decoration: none;   
+   text-decoration: none;
 }
 
+
+/************************
+/* yellow background for input controls w/ focus
+ */
+
+input.focus, select.focus, textarea.focus, option.focus, textarea.focus {
+    background-color: $focusBackground;
+}
+
+span.focus {
+    background-color: $focusBackground;
+    padding-top: 3px;
+}

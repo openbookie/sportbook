@@ -33,5 +33,44 @@ class Game < ActiveRecord::Base
     knockout == true
   end
   
+  def complete?
+    score1.present? && score2.present?
+  end
+  
+  def score1_str
+    if score1.blank? then '-' else score1.to_s end
+  end
+
+  def score2_str
+    if score2.blank? then '-' else score2.to_s end
+  end
+
+  def team1_style_class
+    buf = ''
+    buf << 'game-team-calc '    if team1.calc? 
+    buf << 'game-team-winner '  if complete? && (score1 >  score2)
+    buf << 'game-team-draw '    if complete? && (score1 == score2)
+    buf
+  end
+  
+  def team2_style_class
+    buf = ''
+    buf << 'game-team-calc '    if team2.calc? 
+    buf << 'game-team-winner '  if complete? && (score2 >  score1)
+    buf << 'game-team-draw '    if complete? && (score2 == score1)
+    buf
+  end
+  
+  def toto12x
+    if score1.nil? || score2.nil?
+      '-'
+    elsif score1 == score2
+      'X'
+    elsif score1 > score2
+      '1'
+    elsif score1 < score2
+      '2'
+    end
+  end
   
 end # class Game
