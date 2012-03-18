@@ -1,9 +1,10 @@
 Euro2012::Application.routes.draw do
 
-  match '/signin', :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
+  match 'signin',  :to => 'sessions#new'
+  match 'signout', :to => 'sessions#destroy'
   
-  match '/about',  :to => 'pages#about'
+  match 'about',   :to => 'pages#about'
+  match 'home',    :to => 'pages#home'
   
   resources :sessions, :only => [:new, :create, :destroy]
 
@@ -26,5 +27,5 @@ Euro2012::Application.routes.draw do
     resources :plays
   end
 
-  root :to => 'sessions#new'
+  root :to => 'pages#home'
 end

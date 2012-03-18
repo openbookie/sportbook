@@ -1,11 +1,14 @@
 
 ## Major
 
+* add export to JobsController (use keys for export tips in csv/plain text)
 * Use de locale
 * add knockout flag to game
 * add score3,4,5,6  if knockout (verlaengerung, elfmeter)
 * add next player/previous player nav
 * add indices to db schema for foreign keys
+
+
 
 ## Minor
 

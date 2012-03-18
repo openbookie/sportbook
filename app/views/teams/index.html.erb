@@ -7,11 +7,9 @@
    <tr>
      <td>(<%= team.id %>)</td>
      <td>
-       <% if team.img.present? %>
-         <%= image_tag( team.img ) %>
-       <% end %>
+         <%= image_tag( team.img ) if team.img.present? %>
      </td>
-     <td><%= team.title %></td>
+     <td><%= team.title %> (<%= team.key %>)</td>
      <td><%= link_to 'Bearbeiten', edit_team_path( team.id ), :class => 'btn' %></td>
    </tr>
  <% end %><!-- teams.each -->

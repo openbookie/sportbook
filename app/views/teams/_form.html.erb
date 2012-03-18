@@ -14,15 +14,20 @@
 
   <table>
     <tr>
-      <td><%= f.label :title, 'Titel:' %></td>
+      <td><%= f.label :title, 'Titel' %></td>
       <td><%= f.text_field :title %></td>
     </tr>
     <tr>
-      <td><%= f.label :img, 'Bild:' %></td>
+      <td><%= f.label :img, 'Bild' %></td>
       <td><%= f.text_field :img %></td>
     </tr>
     <tr>
-      <td><%= f.label :calc, 'Calc Flag:' %></td>
+      <td><%= f.label :key, 'Key' %></td>    
+      <td><%= f.text_field :key %></td>
+    </tr>
+    
+    <tr>
+      <td><%= f.label :calc, 'Calc Flag' %></td>
       <td>
 	<%= f.radio_button :calc, 'true'  %><%= f.label :calc_true, 'Ja' %>
 	<%= f.radio_button :calc, 'false' %><%= f.label :calc_false, 'Nein' %>
