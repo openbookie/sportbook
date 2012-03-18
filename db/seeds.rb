@@ -11,14 +11,14 @@
 
 ofb = Event.create!( :title => 'ÖFB Cup 2011/12' )
 
-sturm    =  Team.create!( :title => 'SK Sturm Graz',          :img => 'cup-sturm.jpg' )
-hartberg =  Team.create!( :title => 'TSV Hartberg',           :img => 'cup-hartberg.jpg' )
-groedig  =  Team.create!( :title => 'SV Grödig',              :img => 'cup-groedig.jpg' )
-ried     =  Team.create!( :title => 'SV Ried',                :img => 'cup-ried.jpg' )
-salzburg =  Team.create!( :title => 'FC RB Salzburg',         :img => 'cup-salzburg.jpg' )
-juniors  =  Team.create!( :title => 'FC RB Juniors Salzburg', :img => 'cup-salzburg.jpg' )
-lustenau =  Team.create!( :title => 'SC Austria Lustenau',    :img => 'cup-lustenau.jpg' )
-austria  =  Team.create!( :title => 'FK Austria Wien',        :img => 'cup-austria.jpg' )
+sturm    =  Team.create!( :title => 'SK Sturm Graz',          :img => 'cup-sturm2.png' )
+hartberg =  Team.create!( :title => 'TSV Hartberg',           :img => 'cup-hartberg2.png' )
+groedig  =  Team.create!( :title => 'SV Grödig',              :img => 'cup-groedig2.png' )
+ried     =  Team.create!( :title => 'SV Ried',                :img => 'cup-ried2.png' )
+salzburg =  Team.create!( :title => 'FC RB Salzburg',         :img => 'cup-salzburg2.png' )
+juniors  =  Team.create!( :title => 'FC RB Juniors Salzburg', :img => 'cup-salzburg2.png' )
+lustenau =  Team.create!( :title => 'SC Austria Lustenau',    :img => 'cup-lustenau2.png' )
+austria  =  Team.create!( :title => 'FK Austria Wien',        :img => 'cup-austria2.png' )
 
 ofb.teams << sturm
 ofb.teams << hartberg
@@ -30,8 +30,8 @@ ofb.teams << lustenau
 ofb.teams << austria
 
 ofb8    = GameGroup.create!( :event => ofb, :pos => 1, :title => 'Viertelfinale : 10.+11. April 2012' )
-ofb4    = GameGroup.create!( :event => ofb, :pos => 2, :title => 'Halbfinale : ?? 2012',  :calc => true )
-ofb1    = GameGroup.create!( :event => ofb, :pos => 3, :title => 'Finale : ?? 2012',      :calc => true )
+ofb4    = GameGroup.create!( :event => ofb, :pos => 2, :title => 'Halbfinale : 1.+2. Mai 2012',  :calc => true )
+ofb1    = GameGroup.create!( :event => ofb, :pos => 3, :title => 'Finale : 20. Mai 2012',         :calc => true )
 
 GAMES_OFB8 = [
   [  groedig,  nil, nil, ried,     '2012-04-10 18:00' ],
@@ -41,9 +41,8 @@ GAMES_OFB8 = [
 ]
 
 GAMES_OFB8.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>ofb8, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+  Game.create!( :pos=> i+1, :game_group=>ofb8, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4], :knockout => true )
 end
-
 
 
 #################################
@@ -121,7 +120,7 @@ GAMES_CL16.each_with_index do |game,i|
 end
 
 GAMES_CL16_2.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>cl16_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+  Game.create!( :pos=> i+1, :game_group=>cl16_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4], :knockout => true )
 end
 
 GAMES_CL8.each_with_index do |game,i|
@@ -129,7 +128,7 @@ GAMES_CL8.each_with_index do |game,i|
 end
 
 GAMES_CL8_2.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>cl8_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+  Game.create!( :pos=> i+1, :game_group=>cl8_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4], :knockout => true )
 end
 
 
