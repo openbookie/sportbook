@@ -7,13 +7,15 @@ class CreateDb < ActiveRecord::Migration
 create_table :teams do |t|
   t.string  :title, :null => false
   t.string  :img
-  t.boolean :calc,  :default => false, :null => false   # placeholder team?/needs to get calculated
+  t.boolean :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
   t.timestamps
 end
 
 create_table :events do |t|
   t.string      :title, :null => false
   t.datetime    :start_at   #  :null => false   --todo/fix: make not nullable 
+  ## e.g. Champions League has no 3rd place (only 1st and 2nd/final)
+  t.boolean :team3, :default => true  ## fix/todo: add :null => false
   t.timestamps  
 end
 
@@ -38,6 +40,8 @@ create_table :games do |t|
   t.integer    :score4
   t.integer    :score5    # elfmeter (opt)
   t.integer    :score6
+  t.references :next_game  # for hinspiel bei rueckspiel in knockout game
+  t.references :prev_game
   t.timestamps
 end
 
