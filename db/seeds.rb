@@ -13,14 +13,14 @@
 
 ofb = Event.create!( :title => 'ÖFB Cup 2011/12', :key => 'ofb' )
 
-sturm    =  Team.create!( :title => 'SK Sturm Graz',          :img => 'cup-sturm2.png' )
-hartberg =  Team.create!( :title => 'TSV Hartberg',           :img => 'cup-hartberg2.png' )
-groedig  =  Team.create!( :title => 'SV Grödig',              :img => 'cup-groedig2.png' )
-ried     =  Team.create!( :title => 'SV Ried',                :img => 'cup-ried2.png' )
-salzburg =  Team.create!( :title => 'FC RB Salzburg',         :img => 'cup-salzburg2.png' )
-juniors  =  Team.create!( :title => 'FC RB Juniors Salzburg', :img => 'cup-salzburg2.png' )
-lustenau =  Team.create!( :title => 'SC Austria Lustenau',    :img => 'cup-lustenau2.png' )
-austria  =  Team.create!( :title => 'FK Austria Wien',        :img => 'cup-austria2.png' )
+sturm    =  Team.create!( :title => 'SK Sturm Graz',          :key => 'sturm',    :img => 'cup-sturm2.png' )
+hartberg =  Team.create!( :title => 'TSV Hartberg',           :key => 'hartberg', :img => 'cup-hartberg2.png' )
+groedig  =  Team.create!( :title => 'SV Grödig',              :key => 'groedig',  :img => 'cup-groedig2.png' )
+ried     =  Team.create!( :title => 'SV Ried',                :key => 'ried',     :img => 'cup-ried2.png' )
+salzburg =  Team.create!( :title => 'FC RB Salzburg',         :key => 'salzburg', :img => 'cup-salzburg2.png' )
+juniors  =  Team.create!( :title => 'FC RB Juniors Salzburg', :key => 'juniors',  :img => 'cup-salzburg2.png' )
+lustenau =  Team.create!( :title => 'SC Austria Lustenau',    :key => 'lustenau', :img => 'cup-lustenau2.png' )
+austria  =  Team.create!( :title => 'FK Austria Wien',        :key => 'austria',  :img => 'cup-austria2.png' )
 
 ofb.teams << sturm
 ofb.teams << hartberg
@@ -51,20 +51,20 @@ Game.create_knockouts_from_ary!( GAMES_OFB8, ofb8 )
 ## note :team3 => false   CL has no 3rd place (only final game)
 cl = Event.create!( :title => 'Champions League 2012', :key => 'cl', :team3 => false )
 
-inter     = Team.create!( :title => 'FC Internazionale Milano', :img => 'internazionale.png' )
-marseille = Team.create!( :title => 'Olympique Marseille',      :img => 'marseille.png' )
-bayern    = Team.create!( :title => 'FC Bayern München',        :img => 'bayern.png' )
-basel     = Team.create!( :title => 'FC Basel 1893',            :img => 'basel.png' )
+inter     = Team.create!( :title => 'FC Internazionale Milano', :key => 'inter',     :img => 'internazionale.png' )
+marseille = Team.create!( :title => 'Olympique Marseille',      :key => 'marseille', :img => 'marseille.png' )
+bayern    = Team.create!( :title => 'FC Bayern München',        :key => 'bayern',    :img => 'bayern.png' )
+basel     = Team.create!( :title => 'FC Basel 1893',            :key => 'basel',     :img => 'basel.png' )
 
-chelsea   = Team.create!( :title => 'Chelsea FC',       :img => 'chelsea.png' )
-napoli    = Team.create!( :title => 'SSC Napoli',       :img => 'napoli.png')
-madrid    = Team.create!( :title => 'Real Madrid CF',   :img => 'madrid.png' )
-moskva    = Team.create!( :title => 'PFC CSKA Moskva',  :img => 'moskva.png' )
+chelsea   = Team.create!( :title => 'Chelsea FC',       :key => 'chelsea', :img => 'chelsea.png' )
+napoli    = Team.create!( :title => 'SSC Napoli',       :key => 'napoli',  :img => 'napoli.png')
+madrid    = Team.create!( :title => 'Real Madrid CF',   :key => 'madrid',  :img => 'madrid.png' )
+moskva    = Team.create!( :title => 'PFC CSKA Moskva',  :key => 'moskva',  :img => 'moskva.png' )
 
-milan     = Team.create!( :title => 'AC Milan',         :img => 'milan.png' )
-benfica   = Team.create!( :title => 'Benfica Lissabon', :img => 'benfica.png' )
-barcelona = Team.create!( :title => 'FC Barcelona',     :img => 'barcelona.png' )
-apoel     = Team.create!( :title => 'APOEL Nikosia',    :img => 'apoel.png' )
+milan     = Team.create!( :title => 'AC Milan',         :key => 'milan',     :img => 'milan.png' )
+benfica   = Team.create!( :title => 'Benfica Lissabon', :key => 'benfica',   :img => 'benfica.png' )
+barcelona = Team.create!( :title => 'FC Barcelona',     :key => 'barcelona', :img => 'barcelona.png' )
+apoel     = Team.create!( :title => 'APOEL Nikosia',    :key => 'apoel',     :img => 'apoel.png' )
 
 cl.teams << milan
 cl.teams << benfica
@@ -116,6 +116,7 @@ Game.create_knockout_pairs_from_ary!( GAMES_CL8,  cl8,  cl8_2  )
 #################################
 ### Euro 2012
 
+## todo/fix: rename to euro=
 e1 = Event.create!( :title => 'Euro 2012', :key => 'euro' )
 
 #################################3

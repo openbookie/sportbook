@@ -4,9 +4,11 @@
 #
 #  id         :integer         not null, primary key
 #  title      :string(255)     not null
+#  start_at   :datetime
+#  team3      :boolean         default(TRUE)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  start_at   :datetime
+#  key        :string(255)
 #
 
 

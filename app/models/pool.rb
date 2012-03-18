@@ -6,10 +6,11 @@
 #  event_id   :integer         not null
 #  title      :string(255)     not null
 #  user_id    :integer         not null
+#  fix        :boolean         default(FALSE), not null
 #  welcome    :text
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  fix        :boolean         default(FALSE)
+#  key        :string(255)
 #
 
 class Pool < ActiveRecord::Base

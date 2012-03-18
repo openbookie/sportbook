@@ -13,11 +13,9 @@
    <tr>
      <td>(<%= team.id %>)</td>
      <td>
-       <% if team.img.present? %>
-         <%= image_tag( team.img ) %>
-       <% end %>
+         <%= image_tag( team.img ) if team.img.present? %>
      </td>
-     <td><%= team.title %></td>
+     <td><%= team.title %> (<%= team.key %>)</td>
    </tr>
  <% end %><!-- teams.each -->
 <% end %><!-- events.each -->

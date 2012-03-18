@@ -14,15 +14,14 @@ class EventsController < ApplicationController
   
   # POST /events
   def create
-    @event = Event.find( params[:id] )
+    @event = Event.new( params[:event] )
     
-    if @event.update_attributes(params[:event])
+    if @event.save
       redirect_to events_path(), notice: 'Veranstaltung erfolgreich gespeichert.' 
     else
-      render action: 'edit' 
+      render action: 'new' 
     end
-  end
-  
+  end  
   
   # GET /events/1/edit
   def edit

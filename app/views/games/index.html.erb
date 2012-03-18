@@ -1,5 +1,6 @@
 <h1><%= Game.count %> Spiele</h1>
 
+<%= link_to 'Neues Spiel', new_game_path(), :class => 'btn-primary' %>
 
 <table>
 <% @events.each do |event| %> 

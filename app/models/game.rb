@@ -8,15 +8,17 @@
 #  team1_id      :integer         not null
 #  team2_id      :integer         not null
 #  play_at       :datetime        not null
+#  knockout      :boolean         default(FALSE), not null
 #  score1        :integer
 #  score2        :integer
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
-#  knockout      :boolean         default(FALSE)
 #  score3        :integer
 #  score4        :integer
 #  score5        :integer
 #  score6        :integer
+#  next_game_id  :integer
+#  prev_game_id  :integer
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
 #
 
 class Game < ActiveRecord::Base
