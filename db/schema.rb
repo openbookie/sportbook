@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20120315214401) do
     t.integer  "score6"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.integer  "next_game_id"
+    t.integer  "prev_game_id"
   end
 
   create_table "pools", :force => true do |t|

@@ -34,15 +34,31 @@ ofb4    = GameGroup.create!( :event => ofb, :pos => 2, :title => 'Halbfinale : 1
 ofb1    = GameGroup.create!( :event => ofb, :pos => 3, :title => 'Finale : 20. Mai 2012',         :calc => true )
 
 GAMES_OFB8 = [
-  [  groedig,  nil, nil, ried,     '2012-04-10 18:00' ],
-  [  lustenau, nil, nil, austria,  '2012-04-11 18:00' ],
-  [  sturm,    nil, nil, hartberg, '2012-04-11 19:00' ],
-  [  salzburg, nil, nil, juniors,  '2012-04-11 19:00' ]
+  [ 1, groedig,  nil, nil, ried,     '2012-04-10 18:00' ],
+  [ 2, lustenau, nil, nil, austria,  '2012-04-11 18:00' ],
+  [ 3, sturm,    nil, nil, hartberg, '2012-04-11 19:00' ],
+  [ 4, salzburg, nil, nil, juniors,  '2012-04-11 19:00' ]
 ]
 
-GAMES_OFB8.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>ofb8, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4], :knockout => true )
+def create_knockout_games!( games, group )
+  create_games!( games, group, true )
 end
+
+def create_games!( games, group, knockout=false )
+  games.each do |values|
+    Game.create!(
+      :game_group=>group,
+      :pos       =>values[0],
+      :team1     =>values[1],
+      :score1    =>values[2],
+      :score2    =>values[3],
+      :team2     =>values[4],
+      :play_at   =>values[5],
+      :knockout  =>knockout )
+  end # each games
+end
+
+create_knockout_games!( GAMES_OFB8, ofb8 )
 
 
 #################################
@@ -87,49 +103,67 @@ cl1    = GameGroup.create!( :event => cl, :pos => 7, :title => 'Finale : 19. Mai
 
 
 GAMES_CL16 = [
-  [ napoli,    3, 1, chelsea, '2012-02-21 20:45' ],
-  [ moskva,    1, 1, madrid,  '2012-02-21 20:45' ],
-  [ marseille, 1, 0, inter,   '2012-02-22 20:45' ],
-  [ basel,     1, 0, bayern,  '2012-02-22 20:45' ]
-]
-
-GAMES_CL16_2 = [
-  [ inter,     2, 1, marseille, '2012-03-13 20:45' ],
-  [ bayern,    7, 0, basel,     '2012-03-13 20:45' ],
-  [ chelsea,   3, 1, napoli,    '2012-03-14 20:45' ],
-  [ madrid,    4, 1, moskva,    '2012-03-14 20:45' ]
+  [[ 1, napoli,    3, 1, chelsea,   '2012-02-21 20:45' ],
+   [ 3, chelsea,   3, 1, napoli,    '2012-03-14 20:45' ]],
+  [[ 2, moskva,    1, 1, madrid,    '2012-02-21 20:45' ],
+   [ 4, madrid,    4, 1, moskva,    '2012-03-14 20:45' ]],
+  [[ 3, marseille, 1, 0, inter,     '2012-02-22 20:45' ],
+   [ 1, inter,     2, 1, marseille, '2012-03-13 20:45' ]],
+  [[ 4, basel,     1, 0, bayern,    '2012-02-22 20:45' ],
+   [ 2, bayern,    7, 0, basel,     '2012-03-13 20:45' ]] 
 ]
 
 GAMES_CL8 = [
-  [  apoel,     nil, nil, madrid,    '2012-03-27 20:45' ],
-  [  benfica,   nil, nil, chelsea,   '2012-03-27 20:45' ],
-  [  marseille, nil, nil, bayern,    '2012-03-28 20:45' ],
-  [  milan,     nil, nil, barcelona, '2012-03-28 20:45' ]
+  [[ 1, apoel,     nil, nil, madrid,    '2012-03-27 20:45' ],
+   [ 4, madrid,    nil, nil, apoel,     '2012-04-04 20:45' ]],
+  [[ 2, benfica,   nil, nil, chelsea,   '2012-03-27 20:45' ],
+   [ 3, chelsea,   nil, nil, benfica,   '2012-04-04 20:45' ]],
+  [[ 3, marseille, nil, nil, bayern,    '2012-03-28 20:45' ],
+   [ 2, bayern,    nil, nil, marseille, '2012-04-03 20:45' ]],
+  [[ 4, milan,     nil, nil, barcelona, '2012-03-28 20:45' ],
+   [ 1, barcelona, nil, nil, milan,     '2012-04-03 20:45' ]]
 ]
 
-GAMES_CL8_2 = [
-  [  barcelona, nil, nil, milan,     '2012-04-03 20:45' ],
-  [  bayern,    nil, nil, marseille, '2012-04-03 20:45' ],
-  [  chelsea,   nil, nil, benfica,   '2012-04-04 20:45' ],
-  [  madrid,    nil, nil, apoel,     '2012-04-04 20:45' ]
-]
+def create_knockout_game_pairs!( pairs, group1, group2 )
 
+  pairs.each do |pair|
 
-GAMES_CL16.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>cl16, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+    game1_attribs = {
+      :game_group=>group1,
+      :pos       =>pair[0][0],
+      :team1     =>pair[0][1],
+      :score1    =>pair[0][2],
+      :score2    =>pair[0][3],
+      :team2     =>pair[0][4],
+      :play_at   =>pair[0][5]
+    }
+
+    game2_attribs = {
+      :game_group=>group2,
+      :pos       =>pair[1][0],
+      :team1     =>pair[1][1],
+      :score1    =>pair[1][2],
+      :score2    =>pair[1][3],
+      :team2     =>pair[1][4],
+      :play_at   =>pair[1][5],
+      :knockout  =>true
+    }
+  
+    game1 = Game.create!( game1_attribs )
+    game2 = Game.create!( game2_attribs )
+
+    # linkup games
+    game1.next_game_id = game2.id
+    game1.save!
+  
+    game2.prev_game_id = game1.id
+    game2.save!
+  end # each pair
 end
 
-GAMES_CL16_2.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>cl16_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4], :knockout => true )
-end
 
-GAMES_CL8.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>cl8, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
-end
-
-GAMES_CL8_2.each_with_index do |game,i|
-  Game.create!( :pos=> i+1, :game_group=>cl8_2, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4], :knockout => true )
-end
+create_knockout_game_pairs!( GAMES_CL16, cl16, cl16_2 )
+create_knockout_game_pairs!( GAMES_CL8,  cl8,  cl8_2  )
 
 
 #################################
@@ -177,15 +211,15 @@ e1.teams << t8
 
 group2 = GameGroup.create!( :event => e1, :pos => 2, :title => 'Gruppe B' )
 
-g3  = Game.create!( :pos=>  3, :game_group=>group2, :team1=>t5, :team2=>t6, :play_at => '2012-06-09 18:00' )
-g4  = Game.create!( :pos=>  4, :game_group=>group2, :team1=>t7, :team2=>t8, :play_at => '2012-06-09 20:45' )
+GAMES_EURO_B = [
+  [  3, t5, nil, nil, t6, '2012-06-09 18:00' ],
+  [  4, t7, nil, nil, t8, '2012-06-09 20:45' ],
+  [ 11, t6, nil, nil, t8, '2012-06-13 18:00' ],
+  [ 12, t5, nil, nil, t7, '2012-06-13 20:45' ],
+  [ 19, t8, nil, nil, t5, '2012-06-17 20:45' ],
+  [ 20, t6, nil, nil, t7, '2012-06-17 20:45' ]]
 
-g11 = Game.create!( :pos=> 11, :game_group=>group2, :team1=>t6, :team2=>t8, :play_at => '2012-06-13 18:00' )
-g12 = Game.create!( :pos=> 12, :game_group=>group2, :team1=>t5, :team2=>t7, :play_at => '2012-06-13 20:45' )
-
-g19 = Game.create!( :pos=> 19, :game_group=>group2, :team1=>t8, :team2=>t5, :play_at => '2012-06-17 20:45' )
-g20 = Game.create!( :pos=> 20, :game_group=>group2, :team1=>t6, :team2=>t7, :play_at => '2012-06-17 20:45' )
-
+create_games!( GAMES_EURO_B, group2 )
 
 #################################3
 # Gruppe C
@@ -197,15 +231,15 @@ t12 = Team.create!( :title => 'Kroatien',  :img => 'croatia2.png' )
 
 group3 = GameGroup.create!( :event => e1, :pos => 3, :title => 'Gruppe C' )
 
-g5 = Game.create!( :pos=>  5, :game_group=>group3, :team1=>t9,  :team2=>t10, :play_at => '2012-06-10 18:00' )
-g6 = Game.create!( :pos=>  6, :game_group=>group3, :team1=>t11, :team2=>t12, :play_at => '2012-06-10 20:45' )
+GAMES_EURO_C = [
+  [  5, t9,  nil, nil, t10, '2012-06-10 18:00' ],
+  [  6, t11, nil, nil, t12, '2012-06-10 20:45' ],
+  [ 13, t10, nil, nil, t12, '2012-06-14 18:00' ],
+  [ 14, t9,  nil, nil, t11, '2012-06-14 20:45' ],
+  [ 21, t12, nil, nil, t9,  '2012-06-18 20:45' ],
+  [ 22, t10, nil, nil, t11, '2012-06-18 20:45' ]]
 
-g13 = Game.create!( :pos=> 13, :game_group=>group3, :team1=>t10, :team2=>t12, :play_at => '2012-06-14 18:00' )
-g14 = Game.create!( :pos=> 14, :game_group=>group3, :team1=>t9,  :team2=>t11, :play_at => '2012-06-14 20:45' )
-
-g21 = Game.create!( :pos=> 21, :game_group=>group3, :team1=>t12, :team2=>t9,  :play_at => '2012-06-18 20:45' )
-g22 = Game.create!( :pos=> 22, :game_group=>group3, :team1=>t10, :team2=>t11, :play_at => '2012-06-18 20:45' )
-
+create_games!( GAMES_EURO_C, group3 )
 
 #################################3
 # Gruppe D
@@ -217,14 +251,15 @@ t16 = Team.create!( :title => 'England',     :img => 'england2.png' )
 
 group4 = GameGroup.create!( :event => e1, :pos => 4, :title => 'Gruppe D' )
 
-g7 = Game.create!( :pos=>  7, :game_group=>group4, :team1=>t15, :team2=>t16, :play_at => '2012-06-11 18:00' )
-g8 = Game.create!( :pos=>  8, :game_group=>group4, :team1=>t13, :team2=>t14, :play_at => '2012-06-11 20:45' )
+GAMES_EURO_D = [
+  [  7, t15, nil, nil, t16, '2012-06-11 18:00' ],
+  [  8, t13, nil, nil, t14, '2012-06-11 20:45' ],
+  [ 16, t13, nil, nil, t15, '2012-06-15 18:00' ],
+  [ 15, t14, nil, nil, t16, '2012-06-15 20:45' ],
+  [ 23, t16, nil, nil, t13, '2012-06-19 20:45' ],
+  [ 24, t14, nil, nil, t15, '2012-06-19 20:45' ]]
 
-g16 = Game.create!( :pos=> 16, :game_group=>group4, :team1=>t13, :team2=>t15, :play_at => '2012-06-15 18:00' )
-g15 = Game.create!( :pos=> 15, :game_group=>group4, :team1=>t14, :team2=>t16, :play_at => '2012-06-15 20:45' )
-
-g23 = Game.create!( :pos=> 23, :game_group=>group4, :team1=>t16, :team2=>t13, :play_at => '2012-06-19 20:45' )
-g24 = Game.create!( :pos=> 24, :game_group=>group4, :team1=>t14, :team2=>t15, :play_at => '2012-06-19 20:45' )
+create_games!( GAMES_EURO_D, group4 )
 
 
 ################################################################
@@ -244,10 +279,14 @@ t27 = Team.create!( :title => '2. Gruppe D', :calc => true )
 
 group5 = GameGroup.create!( :event => e1, :pos => 5, :title => 'Viertelfinale', :calc => true )
 
-g25 = Game.create!( :pos=> 25, :game_group=>group5, :team1=>t20, :team2=>t23, :play_at => '2012-06-21 20:45', :knockout => true )
-g26 = Game.create!( :pos=> 26, :game_group=>group5, :team1=>t22, :team2=>t21, :play_at => '2012-06-22 20:45', :knockout => true )
-g27 = Game.create!( :pos=> 27, :game_group=>group5, :team1=>t24, :team2=>t27, :play_at => '2012-06-23 20:45', :knockout => true )
-g28 = Game.create!( :pos=> 28, :game_group=>group5, :team1=>t26, :team2=>t25, :play_at => '2012-06-24 20:45', :knockout => true )
+GAMES_EURO_VIERTEL = [
+  [ 25, t20, nil, nil, t23, '2012-06-21 20:45' ],
+  [ 26, t22, nil, nil, t21, '2012-06-22 20:45' ],
+  [ 27, t24, nil, nil, t27, '2012-06-23 20:45' ],
+  [ 28, t26, nil, nil, t25, '2012-06-24 20:45' ]]
+
+create_knockout_games!( GAMES_EURO_VIERTEL, group5 )
+
 
 ##############################################
 # Halbfinale
@@ -259,8 +298,11 @@ t33 = Team.create!( :title => 'Sieger Viertelfinale 4', :calc => true )  # Siege
 
 group6 = GameGroup.create!( :event => e1, :pos => 6, :title => 'Halbfinale', :calc => true )
 
-g29 = Game.create!( :pos=> 29, :game_group=>group6, :team1=>t30, :team2=>t32, :play_at => '2012-06-27 20:45', :knockout => true )
-g30 = Game.create!( :pos=> 30, :game_group=>group6, :team1=>t31, :team2=>t33, :play_at => '2012-06-28 20:45', :knockout => true )
+GAMES_EURO_HALB = [
+  [ 29, t30, nil, nil, t32, '2012-06-27 20:45' ],
+  [ 30, t31, nil, nil, t33, '2012-06-28 20:45' ]]
+
+create_knockout_games!( GAMES_EURO_HALB, group6 )
 
 
 ################################################
@@ -271,7 +313,10 @@ t41 = Team.create!( :title => 'Sieger Halbfinale 2', :calc => true )  # Sieger S
 
 group7 = GameGroup.create!( :event => e1, :pos => 7, :title => 'Finale', :calc => true )
 
-g31 = Game.create!( :pos=> 31, :game_group=>group7, :team1=>t40, :team2=>t41, :play_at => '2012-07-01 20:45', :knockout => true )
+GAMES_EURO_FINAL = [[ 31, t40, nil, nil, t41, '2012-07-01 20:45' ]]
+
+create_knockout_games!( GAMES_EURO_FINAL, group7 )
+
 
 
 ##############
