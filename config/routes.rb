@@ -3,7 +3,10 @@ Euro2012::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   
+  match '/about',  :to => 'pages#about'
+  
   resources :sessions, :only => [:new, :create, :destroy]
+
 
   resources :jobs do
     get 'calc', :on => :collection

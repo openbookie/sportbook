@@ -1,0 +1,25 @@
+<% title( 'About' ) %>
+
+<h1>About</h1>
+
+<h3>Time Now</h3>
+
+<p><%= Time.now %></p>
+
+<h3>Stats</h3>
+
+<ul>
+  <li><%= Event.count %> Veranstaltungen</li>
+  <li><%= Game.count %> Spiele</li>
+  <li><%= Team.count %> Teams</li>
+</ul>
+  
+<ul>
+  <li><%= Pool.count %> Pools</li>
+  <li><%= Play.count %> Tippspiele</li><!-- pooltipps/tippreichen -->
+  <li><%= Tip.count %> Tipps</li><!-- einzeltipps -->
+</ul>
+
+<ul>
+  <li><%= User.count %> Benutzer</li>
+</ul>
