@@ -1,0 +1,22 @@
+.flash {
+   padding: 8px 14px;
+   border-radius:  4px;
+
+   &.error {
+    color:            $errorText;
+    background-color: $errorBackground;
+    border: 1px solid $errorBorder;
+  }
+
+   &.success {
+     color:            $successText;
+     background-color: $successBackground;
+     border: 1px solid $successBorder;
+   }
+
+   &.notice {
+     color:             $noticeText;
+     background-color:  $noticeBackground;
+     border: 1px solid  $noticeBorder;
+   }
+}

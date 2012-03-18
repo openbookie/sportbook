@@ -1,0 +1,117 @@
+.bingo {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: $bingoBackground;
+    color:            $bingoText;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.bingoo {
+    display: inline-block;
+    border-radius: 5px;
+    background-color:  $bingooBackground;
+    color:             $bingooText;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.bingooo {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: $bingoooBackground;
+    color:            $bingoooText;
+    padding: 4px;
+    font-weight: bold;
+}
+
+/** todo: use scss variables for colors */
+.fail {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: red;
+    color:            white;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.missing {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: $missingBackground;
+    color:            $missingText;
+    padding: 4px;
+    font-weight: bold;
+}
+
+
+table.play,
+table.plays {
+
+  .game-team-winner {
+     font-weight: bold;
+     color: darkgreen;
+  }
+  
+  .game-team-draw {
+     font-weight: bold;
+     color: limegreen;
+  }
+
+  .game-team-calc {
+     font-style: italic;
+  }
+
+  tr {
+    &.game-group {
+      background-color: lightgrey;
+    }
+  }
+
+  td {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+        
+    &.player-name {
+     font-size: 60%;
+    }
+
+   &.game-toto12x {
+     text-align: center;
+   }
+    
+   &.game-group-title {
+     /* font-weight: bold;  */
+   }
+   
+   &.game-no-fixtures {
+     text-align: center;
+   }
+    
+   &.game-team1 {
+     text-align: right;
+     /* font-weight: bold; */
+   }
+   
+   &.game-tip {
+     text-align:  center;
+     /* font-weight: bold; */
+   }
+   
+   &.game-score {
+     text-align:  center;
+     /* font-weight: bold; */
+   }
+   
+   &.game-team2 {
+     /* font-weight: bold; */
+   }
+   
+   &.game-date {
+     color: gray;
+   }
+  }
+}

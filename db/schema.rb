@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(:version => 20120318152924) do
 
   create_table "events", :force => true do |t|
     t.string   "title",                        :null => false
+    t.string   "key",                          :null => false
     t.datetime "start_at"
     t.boolean  "team3",      :default => true
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.string   "key"
   end
 
   create_table "events_teams", :force => true do |t|
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(:version => 20120318152924) do
     t.integer  "user_id",                       :null => false
     t.boolean  "fix",        :default => false, :null => false
     t.text     "welcome"
+    t.string   "key"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.string   "key"
   end
 
   create_table "pools_users", :force => true do |t|
@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(:version => 20120318152924) do
 
   create_table "teams", :force => true do |t|
     t.string   "title",                         :null => false
-    t.string   "img"
+    t.string   "key",                           :null => false
     t.boolean  "calc",       :default => false, :null => false
+    t.string   "img"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.string   "key"
   end
 
   create_table "tips", :force => true do |t|

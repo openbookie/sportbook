@@ -1,15 +1,12 @@
 
 @import "bourbon";
 
-/************************
- *  global settings w/ variables
- */
+/////////////////////////////////////
+// global settings w/ variables
+//
+//   note: for web colors see
+//     http://en.wikipedia.org/wiki/Web_colors
 
-/* note for web colors see
-     http://en.wikipedia.org/wiki/Web_colors
- */
-
-/* todo: check if // posible for comments?? in scss */
 
 /** todo: add colors for btn and primar-btn  (use bootstrap variable names?)*/
 
@@ -30,7 +27,8 @@ $missingBackground: orange;   /* tip missing label */
 $focusBackground: #F8F50F;
 
 
-/* colors for flash messages */
+////////////////////////////////////
+// colors for flash messages 
 
 /* todo/fix: add warn/warning?? flash box */
 $warningText:       white;     /* #c09853  */
@@ -49,77 +47,9 @@ $noticeBackground:  #D9EDF7;
 $noticeBorder:      #BCE8F1;
 
 
-table.play,
-table.plays {
 
-  .game-team-winner {
-     font-weight: bold;
-     color: darkgreen;
-  }
-  
-  .game-team-draw {
-     font-weight: bold;
-     color: limegreen;
-  }
-
-  .game-team-calc {
-     font-style: italic;
-  }
-
-  tr {
-    &.game-group {
-      background-color: lightgrey;
-    }
-  }
-
-  td {
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-        
-    &.player-name {
-     font-size: 60%;
-    }
-
-   &.game-toto12x {
-     text-align: center;
-   }
-    
-   &.game-group-title {
-     /* font-weight: bold;  */
-   }
-   
-   &.game-no-fixtures {
-     text-align: center;
-   }
-    
-   &.game-team1 {
-     text-align: right;
-     /* font-weight: bold; */
-   }
-   
-   &.game-tip {
-     text-align:  center;
-     /* font-weight: bold; */
-   }
-   
-   &.game-score {
-     text-align:  center;
-     /* font-weight: bold; */
-   }
-   
-   &.game-team2 {
-     /* font-weight: bold; */
-   }
-   
-   &.game-date {
-     color: gray;
-   }
-  }
-}
-
+@import "flash";
+@import "play";
 
 
 
@@ -171,54 +101,6 @@ textarea { font-family:  Helvetica,Arial,sans-serif; }
 
 
 
-.bingo {
-    display: inline-block;
-    border-radius: 5px;
-    background-color: $bingoBackground;
-    color:            $bingoText;
-    padding: 4px;
-    font-weight: bold;
-}
-
-
-.bingoo {
-    display: inline-block;
-    border-radius: 5px;
-    background-color:  $bingooBackground;
-    color:             $bingooText;
-    padding: 4px;
-    font-weight: bold;
-}
-
-.bingooo {
-    display: inline-block;
-    border-radius: 5px;
-    background-color: $bingoooBackground;
-    color:            $bingoooText;
-    padding: 4px;
-    font-weight: bold;
-}
-
-/** todo: use scss variables for colors */
-.fail {
-    display: inline-block;
-    border-radius: 5px;
-    background-color: red;
-    color:            white;
-    padding: 4px;
-    font-weight: bold;
-}
-
-.missing {
-    display: inline-block;
-    border-radius: 5px;
-    background-color: $missingBackground;
-    color:            $missingText;
-    padding: 4px;
-    font-weight: bold;
-}
-
-
 ul {
     list-style-type: square;
 
@@ -260,30 +142,6 @@ a {
        text-decoration: underline;
        color: white;
      }
-}
-
-
-.flash {
-   padding: 8px 14px;
-   border-radius:  4px;
-
-   &.error {
-    color:            $errorText;
-    background-color: $errorBackground;
-    border: 1px solid $errorBorder;
-  }
-
-   &.success {
-     color:            $successText;
-     background-color: $successBackground;
-     border: 1px solid $successBorder;
-   }
-
-   &.notice {
-     color:             $noticeText;
-     background-color:  $noticeBackground;
-     border: 1px solid  $noticeBorder;
-   }
 }
 
 

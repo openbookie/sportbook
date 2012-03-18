@@ -1,9 +1,5 @@
 # encoding: utf-8
 
-# see http://en.wikipedia.org/wiki/UEFA_Euro_2012
-# or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
-
-
 # note: timezone for games (play_at) is *always* CET (central european time)
 
 ##################################
@@ -116,23 +112,26 @@ Game.create_knockout_pairs_from_ary!( GAMES_CL8,  cl8,  cl8_2  )
 #################################
 ### Euro 2012
 
-## todo/fix: rename to euro=
-e1 = Event.create!( :title => 'Euro 2012', :key => 'euro' )
+# see http://en.wikipedia.org/wiki/UEFA_Euro_2012
+# or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
+
+
+euro = Event.create!( :title => 'Euro 2012', :key => 'euro' )
 
 #################################3
 # Gruppe A
 
-t1 = Team.create!( :title => 'Polen',        :img => 'poland2.png' )
-t2 = Team.create!( :title => 'Griechenland', :img => 'greece2.png' )
-t3 = Team.create!( :title => 'Russland',     :img => 'russia2.png' )
-t4 = Team.create!( :title => 'Tschechien',   :img => 'czech_republic2.png' )
+t1 = Team.create!( :title => 'Polen',        :key => 'poland', :img => 'poland2.png' )
+t2 = Team.create!( :title => 'Griechenland', :key => 'greece', :img => 'greece2.png' )
+t3 = Team.create!( :title => 'Russland',     :key => 'russia', :img => 'russia2.png' )
+t4 = Team.create!( :title => 'Tschechien',   :key => 'czech',  :img => 'czech_republic2.png' )
 
-e1.teams << t1
-e1.teams << t2
-e1.teams << t3
-e1.teams << t4
+euro.teams << t1
+euro.teams << t2
+euro.teams << t3
+euro.teams << t4
 
-group1 = GameGroup.create!( :event => e1, :pos => 1, :title => 'Gruppe A' )
+group1 = GameGroup.create!( :event => euro, :pos => 1, :title => 'Gruppe A' )
 
 g1  = Game.create!( :pos=> 1, :game_group=>group1, :team1=>t1, :team2=>t2, :play_at => '2012-06-08 18:00', :score1=>1, :score2=>2 )
 g2  = Game.create!( :pos=> 2, :game_group=>group1, :team1=>t3, :team2=>t4, :play_at => '2012-06-08 20:45', :score1=>0, :score2=>0 )
@@ -147,17 +146,17 @@ g18 = Game.create!( :pos=>18, :game_group=>group1, :team1=>t4, :team2=>t1, :play
 #################################3
 # Gruppe B
 
-t5 = Team.create!( :title => 'Niederlande', :img => 'netherlands2.png' )
-t6 = Team.create!( :title => 'Dänemark',    :img => 'denmark2.png' )
-t7 = Team.create!( :title => 'Deutschland', :img => 'germany2.png' )
-t8 = Team.create!( :title => 'Portugal',    :img => 'portugal2.png' )
+t5 = Team.create!( :title => 'Niederlande', :key => 'netherlands', :img => 'netherlands2.png' )
+t6 = Team.create!( :title => 'Dänemark',    :key => 'denmark',     :img => 'denmark2.png' )
+t7 = Team.create!( :title => 'Deutschland', :key => 'germany',     :img => 'germany2.png' )
+t8 = Team.create!( :title => 'Portugal',    :key => 'portugal',    :img => 'portugal2.png' )
 
-e1.teams << t5
-e1.teams << t6
-e1.teams << t7
-e1.teams << t8
+euro.teams << t5
+euro.teams << t6
+euro.teams << t7
+euro.teams << t8
 
-group2 = GameGroup.create!( :event => e1, :pos => 2, :title => 'Gruppe B' )
+group2 = GameGroup.create!( :event => euro, :pos => 2, :title => 'Gruppe B' )
 
 GAMES_EURO_B = [
   [  3, t5, nil, nil, t6, '2012-06-09 18:00' ],
@@ -172,12 +171,12 @@ Game.create_from_ary!( GAMES_EURO_B, group2 )
 #################################3
 # Gruppe C
 
-t9  = Team.create!( :title => 'Spanien',   :img => 'spain2.png' )
-t10 = Team.create!( :title => 'Italien',   :img => 'italy2.png' )
-t11 = Team.create!( :title => 'Irland',    :img => 'ireland2.png' )
-t12 = Team.create!( :title => 'Kroatien',  :img => 'croatia2.png' )
+t9  = Team.create!( :title => 'Spanien',  :key => 'spain',   :img => 'spain2.png' )
+t10 = Team.create!( :title => 'Italien',  :key => 'italy',   :img => 'italy2.png' )
+t11 = Team.create!( :title => 'Irland',   :key => 'ireland', :img => 'ireland2.png' )
+t12 = Team.create!( :title => 'Kroatien', :key => 'croatia', :img => 'croatia2.png' )
 
-group3 = GameGroup.create!( :event => e1, :pos => 3, :title => 'Gruppe C' )
+group3 = GameGroup.create!( :event => euro, :pos => 3, :title => 'Gruppe C' )
 
 GAMES_EURO_C = [
   [  5, t9,  nil, nil, t10, '2012-06-10 18:00' ],
@@ -192,12 +191,12 @@ Game.create_from_ary!( GAMES_EURO_C, group3 )
 #################################3
 # Gruppe D
 
-t13 = Team.create!( :title => 'Ukraine',     :img => 'ukraine2.png' )
-t14 = Team.create!( :title => 'Schweden',    :img => 'sweden2.png' )
-t15 = Team.create!( :title => 'Frankreich',  :img => 'france2.png' )
-t16 = Team.create!( :title => 'England',     :img => 'england2.png' )
+t13 = Team.create!( :title => 'Ukraine',    :key => 'ukraine', :img => 'ukraine2.png' )
+t14 = Team.create!( :title => 'Schweden',   :key => 'sweden',  :img => 'sweden2.png' )
+t15 = Team.create!( :title => 'Frankreich', :key => 'france',  :img => 'france2.png' )
+t16 = Team.create!( :title => 'England',    :key => 'england', :img => 'england2.png' )
 
-group4 = GameGroup.create!( :event => e1, :pos => 4, :title => 'Gruppe D' )
+group4 = GameGroup.create!( :event => euro, :pos => 4, :title => 'Gruppe D' )
 
 GAMES_EURO_D = [
   [  7, t15, nil, nil, t16, '2012-06-11 18:00' ],
@@ -213,19 +212,19 @@ Game.create_from_ary!( GAMES_EURO_D, group4 )
 ################################################################
 # Viertelfinale
 
-t20 = Team.create!( :title => '1. Gruppe A', :calc => true )
-t21 = Team.create!( :title => '2. Gruppe A', :calc => true )
+t20 = Team.create!( :title => '1. Gruppe A', :key => 'euro1a', :calc => true )
+t21 = Team.create!( :title => '2. Gruppe A', :key => 'euro2a', :calc => true )
 
-t22 = Team.create!( :title => '1. Gruppe B', :calc => true )
-t23 = Team.create!( :title => '2. Gruppe B', :calc => true )
+t22 = Team.create!( :title => '1. Gruppe B', :key => 'euro1b', :calc => true )
+t23 = Team.create!( :title => '2. Gruppe B', :key => 'euro2b', :calc => true )
 
-t24 = Team.create!( :title => '1. Gruppe C', :calc => true )
-t25 = Team.create!( :title => '2. Gruppe C', :calc => true )
+t24 = Team.create!( :title => '1. Gruppe C', :key => 'euro1c', :calc => true )
+t25 = Team.create!( :title => '2. Gruppe C', :key => 'euro2c', :calc => true )
 
-t26 = Team.create!( :title => '1. Gruppe D', :calc => true )
-t27 = Team.create!( :title => '2. Gruppe D', :calc => true )
+t26 = Team.create!( :title => '1. Gruppe D', :key => 'euro1d', :calc => true )
+t27 = Team.create!( :title => '2. Gruppe D', :key => 'euro2d', :calc => true )
 
-group5 = GameGroup.create!( :event => e1, :pos => 5, :title => 'Viertelfinale', :calc => true )
+group5 = GameGroup.create!( :event => euro, :pos => 5, :title => 'Viertelfinale', :calc => true )
 
 GAMES_EURO_VIERTEL = [
   [ 25, t20, nil, nil, t23, '2012-06-21 20:45' ],
@@ -239,12 +238,12 @@ Game.create_knockouts_from_ary!( GAMES_EURO_VIERTEL, group5 )
 ##############################################
 # Halbfinale
 
-t30 = Team.create!( :title => 'Sieger Viertelfinale 1', :calc => true )  # Sieger Spiel 25
-t31 = Team.create!( :title => 'Sieger Viertelfinale 2', :calc => true )  # Sieger Spiel 26
-t32 = Team.create!( :title => 'Sieger Viertelfinale 3', :calc => true )  # Sieger Spiel 27
-t33 = Team.create!( :title => 'Sieger Viertelfinale 4', :calc => true )  # Sieger Spiel 28
+t30 = Team.create!( :title => 'Sieger Viertelfinale 1', :key => 'euro25', :calc => true )  # Sieger Spiel 25
+t31 = Team.create!( :title => 'Sieger Viertelfinale 2', :key => 'euro26', :calc => true )  # Sieger Spiel 26
+t32 = Team.create!( :title => 'Sieger Viertelfinale 3', :key => 'euro27', :calc => true )  # Sieger Spiel 27
+t33 = Team.create!( :title => 'Sieger Viertelfinale 4', :key => 'euro28', :calc => true )  # Sieger Spiel 28
 
-group6 = GameGroup.create!( :event => e1, :pos => 6, :title => 'Halbfinale', :calc => true )
+group6 = GameGroup.create!( :event => euro, :pos => 6, :title => 'Halbfinale', :calc => true )
 
 GAMES_EURO_HALB = [
   [ 29, t30, nil, nil, t32, '2012-06-27 20:45' ],
@@ -256,10 +255,10 @@ Game.create_knockouts_from_ary!( GAMES_EURO_HALB, group6 )
 ################################################
 # Finale
 
-t40 = Team.create!( :title => 'Sieger Halbfinale 1', :calc => true )  # Sieger Spiel 29
-t41 = Team.create!( :title => 'Sieger Halbfinale 2', :calc => true )  # Sieger Spiel 30
+t40 = Team.create!( :title => 'Sieger Halbfinale 1', :key => 'euro29', :calc => true )  # Sieger Spiel 29
+t41 = Team.create!( :title => 'Sieger Halbfinale 2', :key => 'euro30', :calc => true )  # Sieger Spiel 30
 
-group7 = GameGroup.create!( :event => e1, :pos => 7, :title => 'Finale', :calc => true )
+group7 = GameGroup.create!( :event => euro, :pos => 7, :title => 'Finale', :calc => true )
 
 GAMES_EURO_FINAL = [[ 31, t40, nil, nil, t41, '2012-07-01 20:45' ]]
 
@@ -286,10 +285,10 @@ user13 = User.create!( :name => 'Franz RUPF',         :email => 'franz.rupf' )
 user14 = User.create!( :name => 'Stefan NEUBAUER',    :email => 'stefan' )
 
 
-pool1 = Pool.create!( :event => e1, :title => 'UNIQA Fix', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
-pool2 = Pool.create!( :event => e1, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
-pool3 = Pool.create!( :event => cl, :title => 'UNIQA Test', :user => user1, :welcome => '' )
-pool4 = Pool.create!( :event => ofb, :title => 'UNIQA Test', :user => user5, :welcome => '' )
+pool1 = Pool.create!( :event => euro, :title => 'UNIQA Fix', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
+pool2 = Pool.create!( :event => euro, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
+pool3 = Pool.create!( :event => cl,   :title => 'UNIQA Test', :user => user1, :welcome => '' )
+pool4 = Pool.create!( :event => ofb,  :title => 'UNIQA Test', :user => user5, :welcome => '' )
 
 pool1.players << user1  # also add amin first
 pool1.players << user2

@@ -1,6 +1,8 @@
 
 class PlaysController < ApplicationController
   
+### todo/fix: pass in play.id NOT user.id in PlaysControllerRoutes!
+##  make play controller top level (no need to nest inside pool??) 
 
   # GET /pools/:pool_id/plays
   def index
@@ -27,7 +29,7 @@ class PlaysController < ApplicationController
     
     @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
 
-    ## todo/fix: use @pool.event.game_groups...    
+    ## todo/fix: use @pool.event.game_groups...
     GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all.each do |group |
       group.games.order( :pos ).all.each do |game|
         # make sure all games exists as tips
