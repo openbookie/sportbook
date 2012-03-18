@@ -6,6 +6,45 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
+##################################
+### ÖFB Cup 2011/12
+
+ofb = Event.create!( :title => 'ÖFB Cup 2011/12' )
+
+sturm    =  Team.create!( :title => 'SK Sturm Graz',          :img => 'cup-sturm.jpg' )
+hartberg =  Team.create!( :title => 'TSV Hartberg',           :img => 'cup-hartberg.jpg' )
+groedig  =  Team.create!( :title => 'SV Grödig',              :img => 'cup-groedig.jpg' )
+ried     =  Team.create!( :title => 'SV Ried',                :img => 'cup-ried.jpg' )
+salzburg =  Team.create!( :title => 'FC RB Salzburg',         :img => 'cup-salzburg.jpg' )
+juniors  =  Team.create!( :title => 'FC RB Juniors Salzburg', :img => 'cup-salzburg.jpg' )
+lustenau =  Team.create!( :title => 'SC Austria Lustenau',    :img => 'cup-lustenau.jpg' )
+austria  =  Team.create!( :title => 'FK Austria Wien',        :img => 'cup-austria.jpg' )
+
+ofb.teams << sturm
+ofb.teams << hartberg
+ofb.teams << groedig
+ofb.teams << ried
+ofb.teams << salzburg
+ofb.teams << juniors
+ofb.teams << lustenau
+ofb.teams << austria
+
+ofb8    = GameGroup.create!( :event => ofb, :pos => 1, :title => 'Viertelfinale : 10.+11. April 2012' )
+ofb4    = GameGroup.create!( :event => ofb, :pos => 2, :title => 'Halbfinale : ?? 2012',  :calc => true )
+ofb1    = GameGroup.create!( :event => ofb, :pos => 3, :title => 'Finale : ?? 2012',      :calc => true )
+
+GAMES_OFB8 = [
+  [  groedig,  nil, nil, ried,     '2012-04-10 18:00' ],
+  [  lustenau, nil, nil, austria,  '2012-04-11 18:00' ],
+  [  sturm,    nil, nil, hartberg, '2012-04-11 19:00' ],
+  [  salzburg, nil, nil, juniors,  '2012-04-11 19:00' ]
+]
+
+GAMES_OFB8.each_with_index do |game,i|
+  Game.create!( :pos=> i+1, :game_group=>ofb8, :team1=>game[0], :score1 => game[1], :score2 => game[2], :team2=>game[3], :play_at => game[4] )
+end
+
+
 
 #################################
 ### Champions League 2012
@@ -258,6 +297,7 @@ user14 = User.create!( :name => 'Stefan NEUBAUER',    :email => 'stefan' )
 pool1 = Pool.create!( :event => e1, :title => 'UNIQA Fix', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
 pool2 = Pool.create!( :event => e1, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
 pool3 = Pool.create!( :event => cl, :title => 'UNIQA Test', :user => user1, :welcome => '' )
+pool4 = Pool.create!( :event => ofb, :title => 'UNIQA Test', :user => user5, :welcome => '' )
 
 pool1.players << user1  # also add amin first
 pool1.players << user2
