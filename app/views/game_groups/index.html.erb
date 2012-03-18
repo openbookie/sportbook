@@ -1,5 +1,7 @@
 <h1><%= GameGroup.count %> Spielgruppen</h1>
 
+<%= link_to 'Neue Spielgruppe', new_game_group_path(), :class => 'btn-primary' %>
+
 <table>
 <% @events.each do |event| %> 
   <tr style='background-color: black; color: white; font-weight: bold; font-size: 120%;'>

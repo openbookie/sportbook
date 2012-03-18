@@ -9,7 +9,9 @@
 ##################################
 ### ÖFB Cup 2011/12
 
-ofb = Event.create!( :title => 'ÖFB Cup 2011/12' )
+## todo: add link to oefb cup site (+ bundesliga.at??)
+
+ofb = Event.create!( :title => 'ÖFB Cup 2011/12', :key => 'ofb' )
 
 sturm    =  Team.create!( :title => 'SK Sturm Graz',          :img => 'cup-sturm2.png' )
 hartberg =  Team.create!( :title => 'TSV Hartberg',           :img => 'cup-hartberg2.png' )
@@ -40,32 +42,14 @@ GAMES_OFB8 = [
   [ 4, salzburg, nil, nil, juniors,  '2012-04-11 19:00' ]
 ]
 
-def create_knockout_games!( games, group )
-  create_games!( games, group, true )
-end
-
-def create_games!( games, group, knockout=false )
-  games.each do |values|
-    Game.create!(
-      :game_group=>group,
-      :pos       =>values[0],
-      :team1     =>values[1],
-      :score1    =>values[2],
-      :score2    =>values[3],
-      :team2     =>values[4],
-      :play_at   =>values[5],
-      :knockout  =>knockout )
-  end # each games
-end
-
-create_knockout_games!( GAMES_OFB8, ofb8 )
+Game.create_knockouts_from_ary!( GAMES_OFB8, ofb8 )
 
 
 #################################
 ### Champions League 2012
 
 ## note :team3 => false   CL has no 3rd place (only final game)
-cl = Event.create!( :title => 'Champions League 2012', :team3 => false )
+cl = Event.create!( :title => 'Champions League 2012', :key => 'cl', :team3 => false )
 
 inter     = Team.create!( :title => 'FC Internazionale Milano', :img => 'internazionale.png' )
 marseille = Team.create!( :title => 'Olympique Marseille',      :img => 'marseille.png' )
@@ -124,52 +108,15 @@ GAMES_CL8 = [
    [ 1, barcelona, nil, nil, milan,     '2012-04-03 20:45' ]]
 ]
 
-def create_knockout_game_pairs!( pairs, group1, group2 )
 
-  pairs.each do |pair|
-
-    game1_attribs = {
-      :game_group=>group1,
-      :pos       =>pair[0][0],
-      :team1     =>pair[0][1],
-      :score1    =>pair[0][2],
-      :score2    =>pair[0][3],
-      :team2     =>pair[0][4],
-      :play_at   =>pair[0][5]
-    }
-
-    game2_attribs = {
-      :game_group=>group2,
-      :pos       =>pair[1][0],
-      :team1     =>pair[1][1],
-      :score1    =>pair[1][2],
-      :score2    =>pair[1][3],
-      :team2     =>pair[1][4],
-      :play_at   =>pair[1][5],
-      :knockout  =>true
-    }
-  
-    game1 = Game.create!( game1_attribs )
-    game2 = Game.create!( game2_attribs )
-
-    # linkup games
-    game1.next_game_id = game2.id
-    game1.save!
-  
-    game2.prev_game_id = game1.id
-    game2.save!
-  end # each pair
-end
-
-
-create_knockout_game_pairs!( GAMES_CL16, cl16, cl16_2 )
-create_knockout_game_pairs!( GAMES_CL8,  cl8,  cl8_2  )
+Game.create_knockout_pairs_from_ary!( GAMES_CL16, cl16, cl16_2 )
+Game.create_knockout_pairs_from_ary!( GAMES_CL8,  cl8,  cl8_2  )
 
 
 #################################
 ### Euro 2012
 
-e1 = Event.create!( :title => 'Euro 2012' )
+e1 = Event.create!( :title => 'Euro 2012', :key => 'euro' )
 
 #################################3
 # Gruppe A
@@ -219,7 +166,7 @@ GAMES_EURO_B = [
   [ 19, t8, nil, nil, t5, '2012-06-17 20:45' ],
   [ 20, t6, nil, nil, t7, '2012-06-17 20:45' ]]
 
-create_games!( GAMES_EURO_B, group2 )
+Game.create_from_ary!( GAMES_EURO_B, group2 )
 
 #################################3
 # Gruppe C
@@ -239,7 +186,7 @@ GAMES_EURO_C = [
   [ 21, t12, nil, nil, t9,  '2012-06-18 20:45' ],
   [ 22, t10, nil, nil, t11, '2012-06-18 20:45' ]]
 
-create_games!( GAMES_EURO_C, group3 )
+Game.create_from_ary!( GAMES_EURO_C, group3 )
 
 #################################3
 # Gruppe D
@@ -259,7 +206,7 @@ GAMES_EURO_D = [
   [ 23, t16, nil, nil, t13, '2012-06-19 20:45' ],
   [ 24, t14, nil, nil, t15, '2012-06-19 20:45' ]]
 
-create_games!( GAMES_EURO_D, group4 )
+Game.create_from_ary!( GAMES_EURO_D, group4 )
 
 
 ################################################################
@@ -285,7 +232,7 @@ GAMES_EURO_VIERTEL = [
   [ 27, t24, nil, nil, t27, '2012-06-23 20:45' ],
   [ 28, t26, nil, nil, t25, '2012-06-24 20:45' ]]
 
-create_knockout_games!( GAMES_EURO_VIERTEL, group5 )
+Game.create_knockouts_from_ary!( GAMES_EURO_VIERTEL, group5 )
 
 
 ##############################################
@@ -302,7 +249,7 @@ GAMES_EURO_HALB = [
   [ 29, t30, nil, nil, t32, '2012-06-27 20:45' ],
   [ 30, t31, nil, nil, t33, '2012-06-28 20:45' ]]
 
-create_knockout_games!( GAMES_EURO_HALB, group6 )
+Game.create_knockouts_from_ary!( GAMES_EURO_HALB, group6 )
 
 
 ################################################
@@ -315,7 +262,7 @@ group7 = GameGroup.create!( :event => e1, :pos => 7, :title => 'Finale', :calc =
 
 GAMES_EURO_FINAL = [[ 31, t40, nil, nil, t41, '2012-07-01 20:45' ]]
 
-create_knockout_games!( GAMES_EURO_FINAL, group7 )
+Game.create_knockouts_from_ary!( GAMES_EURO_FINAL, group7 )
 
 
 

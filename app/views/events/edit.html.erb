@@ -1,21 +1,6 @@
 <h1>Veranstaltung Bearbeiten</h1>
 
-
-<%= form_for(@event) do |f| %>
-
-<table>
-  <tr>
-    <td><%= f.label :title, 'Titel' %></td>    
-    <td><%= f.text_field :title %></td>
-  </tr>
-</table>
-
-<div class="actions">
-    <%= f.submit 'Speichern', :class => 'btn-primary' %>
-    <%= link_to 'Zurück', events_path(), :class => 'btn' %>
-  </div>
-
-<% end %><!-- form_for event -->
+<%= render 'form' %>
 
 <h3>Teams</h3>
 

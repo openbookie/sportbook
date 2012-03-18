@@ -1,10 +1,12 @@
 <h1><%= Event.count %> Veranstaltungen</h1>
 
+<%= link_to 'Neue Veranstaltung', new_event_path(), :class => 'btn-primary' %>
+
 <table>
 <% @events.each do |event| %> 
   <tr style='background-color: black; color: white; font-weight: bold; font-size: 120%;'>
      <td>(<%= event.id %>)</td>
-     <td colspan='2'><%= event.title %></td>
+     <td colspan='2'><%= event.title %> (<%= event.key %>)</td>
      <td><%= link_to 'Bearbeiten', edit_event_path(event), :class => 'btn' %></td>
   </tr>
  <% event.teams.each do |team| %>
@@ -21,3 +23,4 @@
 <% end %><!-- events.each -->
 </table>
 
+<%= link_to 'Neue Veranstaltung', new_event_path(), :class => 'btn-primary' %>

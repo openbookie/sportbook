@@ -7,6 +7,23 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  # GET /events/new
+  def new
+    @event = Event.new
+  end
+  
+  # POST /events
+  def create
+    @event = Event.find( params[:id] )
+    
+    if @event.update_attributes(params[:event])
+      redirect_to events_path(), notice: 'Veranstaltung erfolgreich gespeichert.' 
+    else
+      render action: 'edit' 
+    end
+  end
+  
+  
   # GET /events/1/edit
   def edit
     @event = Event.find( params[:id] )  
