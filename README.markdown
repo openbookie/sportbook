@@ -1,4 +1,6 @@
-# Wettpool (Tippspiel für Euro 2012, Champions League 2012, ÖFB Cup 2012 etc.)
+# Wettpool
+
+Tippspiel für Euro 2012, Champions League 2012, ÖFB Cup 2012 etc.
 
 ## Tips for Ruby Version Manager
 
