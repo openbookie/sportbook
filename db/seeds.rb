@@ -285,10 +285,10 @@ user13 = User.create!( :name => 'Franz RUPF',         :email => 'franz.rupf' )
 user14 = User.create!( :name => 'Stefan NEUBAUER',    :email => 'stefan' )
 
 
-pool1 = Pool.create!( :event => euro, :title => 'UNIQA Fix', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
-pool2 = Pool.create!( :event => euro, :title => 'UNIQA Flex', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
-pool3 = Pool.create!( :event => cl,   :title => 'UNIQA Test', :user => user1, :welcome => '' )
-pool4 = Pool.create!( :event => ofb,  :title => 'UNIQA Test', :user => user5, :welcome => '' )
+pool1 = Pool.create!( :event => euro, :title => 'UNIQA USS EF Test', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
+pool2 = Pool.create!( :event => euro, :title => 'UNIQA USS EF Test', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
+pool3 = Pool.create!( :event => cl,   :title => 'UNIQA USS EF Test', :user => user1, :welcome => '' )
+pool4 = Pool.create!( :event => ofb,  :title => 'UNIQA USS EF Test', :user => user5, :welcome => '' )
 
 pool1.players << user1  # also add amin first
 pool1.players << user2

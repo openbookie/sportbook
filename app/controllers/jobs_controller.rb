@@ -5,25 +5,48 @@ class JobsController < ApplicationController
   end
   
   def calc
-    txt = ">> Recalc Points:\r\n"
+    txt = ">> Recalc Points (#{Time.now}), #{Pool.count} Pools / #{Play.count} Plays / #{Tip.count} Tips:\r\n"
     
     Pool.all.each do |pool|
-      txt << "=== #{pool.full_title} ===\r\n"
+      txt << "\r\n=== #{pool.full_title} (#{pool.key}) ===\r\n\r\n"
       pool.plays.each do |play|
+        txt << "#{play.user.name} (#{play.user.key}):  "
         pts = 0
         play.tips.each do |tip|
-          pts += tip.calc_points
+          tip_pts = tip.calc_points
+          pts += tip_pts
+          txt << "#{tip_pts} "
         end
         play.points = pts
-        txt << "  #{pts} points -- #{play.user.name}\r\n"
+        txt << " => #{pts} pts\r\n"
         play.save!
       end  # each play
     end  # each pool
     
-    txt << "<< DONE"
+    txt << "\r\n<< DONE"
     
     render :text => "<pre>#{txt}</pre>"
     # render :text => txt, :content_type => 'text/plain'
   end
   
-end
+  def export
+    ## todo/use csv for export ???
+    
+    txt = ">> Export (#{Time.now}), #{Play.count} Plays / #{Tip.count} Tips:\r\n\r\n"
+
+    Play.all.each do |play|
+      txt << "play,#{play.pool.key},#{play.user.key},#{play.team1_id},#{play.team2_id},#{play.team3_id}"
+      txt << "\r\n"
+    end
+
+    Tip.all.each do |tip|
+      txt << "tip,#{tip.pool.key},#{tip.user.key},#{tip.game.key},#{tip.score1},#{tip.score2},#{tip.score3},#{tip.score4},#{tip.score5},#{tip.score6}"
+      txt << "\r\n"
+    end
+
+    txt << "\r\n<< DONE"
+    
+    render :text => "<pre>#{txt}</pre>"
+  end
+  
+end  # class JobsController

@@ -82,7 +82,11 @@ class Game < ActiveRecord::Base
       game2.save!
     end # each pair
   end
-  
+ 
+
+  def key
+    "#{team1.key}+#{team2.key}+#{play_at.strftime( "%Y-%m-%d" )}"
+  end
   
   def over?   # game over?
     play_at <= Time.now

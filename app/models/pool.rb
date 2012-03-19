@@ -23,9 +23,19 @@ class Pool < ActiveRecord::Base
   has_many :players, :through => :plays, :source => :user
 
   belongs_to :event
+
+  def key
+     # generate key if necessary, that is, 
+     #   if key is nil use id plus fix/flex plus key from event
+     #   e.g "#{event.key}+fix|flex+#{id} e.g. euro+fix+1"
+     
+     value = read_attribute(:key)
+     value = "#{event.key}+#{fix? ? 'fix' : 'flex'}+#{id}"  if value.blank?
+     value
+  end
   
   def full_title
-    "#{title} #{event.title}"
+    "#{title} #{event.title} #{fix? ? 'Fix' : 'Flex'}"
   end
   
   def fix?
@@ -36,7 +46,7 @@ class Pool < ActiveRecord::Base
     fix != true
   end
   
-  def team3?    # show tip for 3rd place?
+  def team3?    # tip for 3rd place?
     event.team3 == true
   end
   

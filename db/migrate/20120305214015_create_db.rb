@@ -2,15 +2,6 @@ class CreateDb < ActiveRecord::Migration
 
   # todo: add index for foreign_keys
 
-    ## todo: game_group
-    # add "virtual" key field (read-only)
-    # -- use pos plus key from event e.g. "#{event.key}#{pos} e.g. euro1"
-    
-    ## todo: user
-    ## add "virtual" key field (read-only)
-    #  -- for now use email (shortend??)
-
-
   def up
     
 create_table :teams do |t|
@@ -71,7 +62,7 @@ create_table :pools do |t|
   t.references  :user,  :null => false  # owner/manager/admin of pool
   t.boolean     :fix,   :null => false, :default => false
   t.text        :welcome
-  t.string      :key        #  todo/fix: if nil use id plus key from event e.g "#{event.key}#{id} e.g. euro1"
+  t.string      :key
   t.timestamps
 end
 
@@ -99,7 +90,7 @@ create_table :tips do |t|
   t.timestamps
 end
 
-# todo: remove id from join table? why?? why not??
+# todo: remove id from join table (without extra fields)? why?? why not??
 create_table :events_teams do |t|
   t.references :event, :null => false
   t.references :team,  :null => false

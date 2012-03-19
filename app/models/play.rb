@@ -26,10 +26,10 @@ class Play < ActiveRecord::Base
   belongs_to :team2, :class_name => 'Team', :foreign_key => 'team2_id'
   belongs_to :team3, :class_name => 'Team', :foreign_key => 'team3_id'
   
-  ## todo/fix: can it be done w/ a has_many macro?  
+  ## todo/fix: can it be done w/ a has_many macro and a condition?
   def tips
     recs = Tip.where( :pool_id => pool.id, :user_id => user_id ).all
     recs
   end
   
-end
+end   # class Play
