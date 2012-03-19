@@ -30,6 +30,7 @@ create_table :events do |t|
   t.timestamps  
 end
 
+### fix/todo: rename table to rounds
 create_table :game_groups do |t|
   t.references :event, :null => false
   t.string     :title, :null => false
@@ -39,6 +40,7 @@ create_table :game_groups do |t|
 end
 
 create_table :games do |t|
+  ### fix/todo: rename references game_group to rounds
   t.references :game_group, :null => false
   t.integer    :pos,        :null => false
   t.references :team1,      :null => false

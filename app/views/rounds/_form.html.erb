@@ -1,10 +1,10 @@
-<%= form_for(@group) do |f| %>
-  <% if @group.errors.any? %>
+<%= form_for(@round) do |f| %>
+  <% if @round.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
 
       <ul>
-      <% @group.errors.full_messages.each do |msg| %>
+      <% @round.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -39,6 +39,6 @@
   
   <div class="actions">
     <%= f.submit 'Speichern', :class => 'btn-primary' %>
-    <%= link_to 'Zurück', game_groups_path(), :class => 'btn' %>
+    <%= link_to 'Zurück', rounds_path(), :class => 'btn' %>
   </div>
 <% end %>

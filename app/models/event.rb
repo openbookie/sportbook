@@ -14,7 +14,7 @@
 
 class Event < ActiveRecord::Base
   
-  has_many :game_groups
+  has_many :rounds
   
   has_many :event_teams, :class_name => 'EventTeam'
   has_many :teams, :through => :event_teams

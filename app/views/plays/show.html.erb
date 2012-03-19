@@ -53,19 +53,19 @@
 
 <table class='play'>
   
-<% @groups.each do |group| %>
-<tr class='game-group'>
+<% @rounds.each do |round| %>
+<tr class='game-round'>
   <td colspan='3'></td>
-  <td colspan='4' class='game-group-title'><%= group.title %></td>
+  <td colspan='4' class='game-round-title'><%= round.title %></td>
 </tr>
 
-  <% if @pool.flex? && group.calc? %>
+  <% if @pool.flex? && round.calc? %>
      <tr>
        <td colspan='2'></td>
        <td colspan='4' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
      </tr>
   <% else %>
-  <% group.games.each do |game| %>
+  <% round.games.each do |game| %>
   <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
     <tr>
       <td class='game-toto12x'>
@@ -117,8 +117,8 @@
          </td>
      </tr>     
   <% end %> <!-- games -->
-  <% end %> <!-- if pool.flex? && group.calc? -->
-<% end %> <!-- groups -->
+  <% end %> <!-- if pool.flex? && round.calc? -->
+<% end %> <!-- rounds -->
 
 </table>
 

@@ -15,7 +15,7 @@ Euro2012::Application.routes.draw do
   end
 
   resources :users
-  resources :game_groups
+  resources :rounds
   resources :games
   resources :teams
   resources :plays      

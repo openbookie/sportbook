@@ -8,13 +8,13 @@
      <td>(<%= event.id %>)</td>
      <td colspan='7'><%= event.title %></td>
   </tr>
- <% event.game_groups.each do |group| %>
+ <% event.rounds.each do |round| %>
    <tr style='font-size: 120%; font-weight: bold;'>
-     <td>(<%= group.id %>)</td>
-     <td><%= group.pos %></td>
-     <td colspan='6'><%= group.title %></td>
+     <td>(<%= round.id %>)</td>
+     <td><%= round.pos %></td>
+     <td colspan='6'><%= round.title %></td>
    </tr>
-   <% group.games.each do |game| %>
+   <% round.games.each do |game| %>
 
  <tr>
   <td>(<%= game.id %>)</td>
@@ -33,7 +33,7 @@
   <td><%= link_to 'Bearbeiten', edit_game_path( game ), :class => 'btn' %></td>
  </tr>
   <% end %><!-- games.each -->
- <% end %><!-- groups.each -->
+ <% end %><!-- rounds.each -->
 <% end %><!-- events.each -->
  
 

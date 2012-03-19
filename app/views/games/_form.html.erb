@@ -14,9 +14,9 @@
 
   <table>
     <tr>
-      <td><%= f.label :game_group_id, 'Spiel Gruppe:' %></td>
+      <td><%= f.label :game_group_id, 'Runde:' %></td>
       <td>(<%= f.object.game_group_id %>)</td>
-      <td><%= f.select :game_group_id, options_from_collection_for_select( GameGroup.all, :id, :title, f.object.game_group_id ) %></td>
+      <td><%= f.select :game_group_id, options_from_collection_for_select( Round.all, :id, :title, f.object.game_group_id ) %></td>
     </tr>
     <tr>
       <td><%= f.label :pos, 'Lfd#:' %></td>

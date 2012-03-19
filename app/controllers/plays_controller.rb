@@ -6,7 +6,7 @@ class PlaysController < ApplicationController
     @pool   = Pool.find( params[:pool_id] )
     @users  = @pool.players
     ## todo/fix: make order( :pos ) default in assoc; remove here
-    @groups = @pool.event.game_groups.order( :pos ).all    
+    @rounds = @pool.event.rounds.order( :pos ).all    
   end
 
   # GET /plays/:id
@@ -16,7 +16,7 @@ class PlaysController < ApplicationController
     @user = @play.user
     
     ## todo/fix: make order( :pos ) default in assoc; remove here
-    @groups = @pool.event.game_groups.order( :pos ).all
+    @rounds = @pool.event.rounds.order( :pos ).all
   end
 
   # GET /plays/:id/edit
@@ -27,9 +27,9 @@ class PlaysController < ApplicationController
     
     @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
 
-    ## todo/fix: use @pool.event.game_groups...
-    GameGroup.where( :event_id => @pool.event.id ).order( :pos ).all.each do |group |
-      group.games.order( :pos ).all.each do |game|
+    ## todo/fix: use @pool.event.rounds...
+    Round.where( :event_id => @pool.event.id ).order( :pos ).all.each do |round|
+      round.games.order( :pos ).all.each do |game|
         # make sure all games exists as tips
         tips = @user.tips.where( :pool_id => params[:pool_id] ).where( :game_id => game.id )
         pp tips
@@ -43,7 +43,7 @@ class PlaysController < ApplicationController
     end
 
     ## todo/fix: make order( :pos ) default in assoc; remove here
-    @groups = @pool.event.game_groups.order( :pos ).all
+    @rounds = @pool.event.rounds.order( :pos ).all
   end
 
   # PUT /plays/:id  

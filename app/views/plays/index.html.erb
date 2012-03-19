@@ -66,13 +66,13 @@
 </tr>
 
 
-<% @groups.each do |group| %>
-<tr class='game-group'>
+<% @rounds.each do |round| %>
+<tr class='game-round'>
   <td colspan='2'></td>
-  <td colspan='<%= 3+@users.count %>' class='game-group-title'><%= group.title %></td>
+  <td colspan='<%= 3+@users.count %>' class='game-round-title'><%= round.title %></td>
 </tr>
 
-  <% if @pool.flex? && group.calc? %>
+  <% if @pool.flex? && round.calc? %>
      <tr>
        <td></td>
        <td colspan='<%= 3+@users.count %>' class='game-no-fixtures'>
@@ -80,7 +80,7 @@
        </td>
      </tr>
   <% else %>
-  <% group.games.each do |game| %>
+  <% round.games.each do |game| %>
     <tr>
        <td class='game-toto12x'>
          <%= "(#{game.toto12x})" if game.complete? %>
@@ -124,8 +124,8 @@
          </td>
      </tr>
   <% end %> <!-- games.each -->
- <% end %> <!-- if pool.flex? && group.calc? -->  
-<% end %> <!-- groups.each -->
+ <% end %> <!-- if pool.flex? && round.calc? -->  
+<% end %> <!-- rounds.each -->
 
 <tr>
   <td colspan='2'></td>

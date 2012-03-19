@@ -63,7 +63,7 @@ table.plays {
   }
 
   tr {
-    &.game-group {
+    &.game-round {
       background-color: lightgrey;
     }
   }
@@ -83,7 +83,7 @@ table.plays {
      text-align: center;
    }
     
-   &.game-group-title {
+   &.game-round-title {
      /* font-weight: bold;  */
    }
    

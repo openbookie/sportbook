@@ -25,17 +25,20 @@ class Game < ActiveRecord::Base
 
   belongs_to :team1, :class_name => 'Team', :foreign_key => 'team1_id'
   belongs_to :team2, :class_name => 'Team', :foreign_key => 'team2_id'
-  belongs_to :game_group
+  
+  ## todo/fix: rename game_group_id to round_id!!!
+  belongs_to :round, :foreign_key => 'game_group_id'
 
+  
 
-  def self.create_knockouts_from_ary!( games, group )
-    Game.create_from_ary!( games, group, true )
+  def self.create_knockouts_from_ary!( games, round )
+    Game.create_from_ary!( games, round, true )
   end
 
-  def self.create_from_ary!( games, group, knockout=false )
+  def self.create_from_ary!( games, round, knockout=false )
     games.each do |values|
       Game.create!(
-        :game_group=>group,
+        :round     =>round,
         :pos       =>values[0],
         :team1     =>values[1],
         :score1    =>values[2],
@@ -46,11 +49,11 @@ class Game < ActiveRecord::Base
     end # each games
   end
 
-  def self.create_knockout_pairs_from_ary!( pairs, group1, group2 )
+  def self.create_knockout_pairs_from_ary!( pairs, round1, round2 )
     
     pairs.each do |pair|
       game1_attribs = {
-        :game_group=>group1,
+        :round     =>round1,
         :pos       =>pair[0][0],
         :team1     =>pair[0][1],
         :score1    =>pair[0][2],
@@ -59,7 +62,7 @@ class Game < ActiveRecord::Base
         :play_at   =>pair[0][5] }
 
       game2_attribs = {
-        :game_group=>group2,
+        :round     =>round2,
         :pos       =>pair[1][0],
         :team1     =>pair[1][1],
         :score1    =>pair[1][2],

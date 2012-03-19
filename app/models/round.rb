@@ -12,12 +12,17 @@
 #
 
 
-class GameGroup < ActiveRecord::Base
-  has_many :games, :order => 'pos'
+class Round < ActiveRecord::Base
+  
+  ## todo/fix: rename table to rounds!!  
+  set_table_name 'game_groups'
+  
+  ## todo/fix: rename game_group_id to round_id!!!  
+  has_many :games, :order => 'pos', :foreign_key => 'game_group_id'
   belongs_to :event
   
   def calc?
     calc == true
   end
   
-end # class GameGroup
+end # class Round
