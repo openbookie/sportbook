@@ -2,26 +2,24 @@
 
 <h1><%= link_to @pool.full_title, pool_path(@pool) %> › <%= @user.name %></h1>
 
-<%= form_for @user, :url => pool_play_path( @pool, @user ), :html => { :method => "put" } do |f| %>  
+<%= form_for @play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
 
-<%= f.fields_for :play, @play do |play_form| %>
 <table>
  <tr>
-   <td><%= play_form.label :team1_id, '1. Platz' %></td>
-   <td><%= play_form.select :team1_id, @team_options %></td>
+   <td><%= f.label :team1_id, '1. Platz' %></td>
+   <td><%= f.select :team1_id, @team_options %></td>
  </tr>
  <tr>
-   <td><%= play_form.label :team2_id, '2. Platz' %></td>
-   <td><%= play_form.select :team2_id, @team_options %></td>
+   <td><%= f.label :team2_id, '2. Platz' %></td>
+   <td><%= f.select :team2_id, @team_options %></td>
  </tr>
  <% if @pool.team3? %>
  <tr>
-   <td><%= play_form.label :team3_id, '3. Platz' %></td>
-   <td><%= play_form.select :team3_id, @team_options %></td>
+   <td><%= f.label :team3_id, '3. Platz' %></td>
+   <td><%= f.select :team3_id, @team_options %></td>
  </tr>
   <% end %><!-- if pool.team3? -->
 </table>
-<% end %><!-- fields_for play -->
 
 
 <table class='play'>

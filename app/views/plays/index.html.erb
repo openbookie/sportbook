@@ -12,7 +12,7 @@
   <% @users.each do |user| %>
     <% play = Play.find_by_pool_id_and_user_id!( @pool.id, user.id ) %>
     <tr>
-       <td><%= link_to user.name, pool_play_path(@pool.id, user.id) %></td>
+       <td><%= link_to user.name, play_path(play.id) %></td>
        <td>
           <!-- fix: use helper or partial -->
         <% if play.team1.present? %>

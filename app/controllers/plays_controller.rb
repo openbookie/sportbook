@@ -1,31 +1,29 @@
 
 class PlaysController < ApplicationController
   
-### todo/fix: pass in play.id NOT user.id in PlaysControllerRoutes!
-##  make play controller top level (no need to nest inside pool??) 
-
-  # GET /pools/:pool_id/plays
+  # GET /plays?pool_id=:id
   def index
-    @pool   = Pool.find(params[:pool_id])
+    @pool   = Pool.find( params[:pool_id] )
     @users  = @pool.players
     ## todo/fix: make order( :pos ) default in assoc; remove here
     @groups = @pool.event.game_groups.order( :pos ).all    
   end
 
-  # GET/pools/:pool_id/plays/:id
+  # GET /plays/:id
   def show
-    @pool = Pool.find(params[:pool_id])
-    @user = User.find(params[:id])
-    @play = Play.find_by_pool_id_and_user_id!( @pool.id, @user.id )
+    @play = Play.find( params[:id] )
+    @pool = @play.pool
+    @user = @play.user
     
     ## todo/fix: make order( :pos ) default in assoc; remove here
     @groups = @pool.event.game_groups.order( :pos ).all
   end
 
+  # GET /plays/:id/edit
   def edit
-    @pool = Pool.find(params[:pool_id])
-    @user = User.find(params[:id])
-    @play = Play.find_by_pool_id_and_user_id!( @pool.id, @user.id )
+    @play = Play.find( params[:id] )
+    @pool = @play.pool  
+    @user = @play.user
     
     @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
 
@@ -47,16 +45,21 @@ class PlaysController < ApplicationController
     ## todo/fix: make order( :pos ) default in assoc; remove here
     @groups = @pool.event.game_groups.order( :pos ).all
   end
-  
+
+  # PUT /plays/:id  
   def update
-    @pool = Pool.find(params[:pool_id])
-    @user = User.find(params[:id])
+    @play = Play.find( params[:id] )
+    @pool = @play.pool
+    @user = @play.user
     
     puts "*** updating play"
     ## fix/todo: check for error - exits update_attributes!
-    @play = Play.where( :pool_id => @pool.id, :user_id => @user.id ).first
-    @play.update_attributes( params[:user][:play] )
-        
+   
+    @play.team1_id = params[:play][:team1_id] if params[:play][:team1_id]
+    @play.team2_id = params[:play][:team2_id] if params[:play][:team2_id]
+    @play.team3_id = params[:play][:team3_id] if params[:play][:team3_id]
+    @play.save!
+    
 =begin
   ## fix: use save w/ nested attributes??
 if @user.update_attributes( params[:user])
@@ -70,8 +73,8 @@ if @user.update_attributes( params[:user])
 =end
 
    # check for case w/ no tips
-   unless params[:user][:tips].nil?
-    params[:user][:tips].each do |tip_key,tip_value|
+   if params[:play][:tips]
+    params[:play][:tips].each do |tip_key,tip_value|
       tip = Tip.find( tip_key )
       puts "*** updating tip #{tip_key}"
       tip.update_attributes( tip_value )
@@ -81,6 +84,7 @@ if @user.update_attributes( params[:user])
 
     flash[:success] = 'Tipps erfolgreich gespeichert.'
         
-    redirect_to pool_play_path( @pool, @user )
+    redirect_to play_path( @play.id )
   end
-end
+
+end  # class PlaysController

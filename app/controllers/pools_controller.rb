@@ -42,8 +42,11 @@ class PoolsController < ApplicationController
     @pool = Pool.find(params[:id])
     @pool.players << current_user()
     
+    ## todo: how to get play_id??  (form pool.players << current_user)
+    ##  use edit_play() route (otherwise flash message get lost (two redirects))
+    
     flash[ :success ] = "Willkommen im Wettpool. Los geht's."
-    redirect_to edit_pool_play_path( @pool, current_user() )
+    redirect_to edit_pool_player_path( @pool, current_user() )
   end
   
   # GET /pools/1

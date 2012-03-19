@@ -5,18 +5,20 @@ Euro2012::Application.routes.draw do
   
   match 'about',   :to => 'pages#about'
   match 'home',    :to => 'pages#home'
-  
+
+  ## todo?? use single resource??  
   resources :sessions, :only => [:new, :create, :destroy]
 
-
   resources :jobs do
-    get 'calc', :on => :collection
+    get 'calc',   :on => :collection
+    get 'export', :on => :collection
   end
 
   resources :users
   resources :game_groups
   resources :games
   resources :teams
+  resources :plays      
   
   resources :events do
     post 'add_team_to', :on => :member
@@ -24,7 +26,7 @@ Euro2012::Application.routes.draw do
   
   resources :pools do
     get 'add_player_to', :on => :member
-    resources :plays
+    resources :players, :only => [:show, :edit]
   end
 
   root :to => 'pages#home'

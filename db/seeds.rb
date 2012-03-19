@@ -7,7 +7,7 @@
 
 ## todo: add link to oefb cup site (+ bundesliga.at??)
 
-ofb = Event.create!( :title => 'ÖFB Cup 2011/12', :key => 'ofb' )
+ofb = Event.create!( :title => 'ÖFB Cup 2011/12', :key => 'ofb', :team3 => false )
 
 sturm    =  Team.create!( :title => 'SK Sturm Graz',          :key => 'sturm',    :img => 'cup-sturm2.png' )
 hartberg =  Team.create!( :title => 'TSV Hartberg',           :key => 'hartberg', :img => 'cup-hartberg2.png' )
