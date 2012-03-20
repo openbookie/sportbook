@@ -32,4 +32,11 @@ class Play < ActiveRecord::Base
     recs
   end
   
+  def export?
+    # check if user entered some data
+    # - do NOT export nil records (all teams blank)
+    
+    (team1_id.blank? && team2_id.blank? && team3_id.blank?)==false
+  end
+  
 end   # class Play

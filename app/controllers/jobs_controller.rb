@@ -34,14 +34,23 @@ class JobsController < ApplicationController
     
     txt = ">> Export (#{Time.now}), #{Play.count} Plays / #{Tip.count} Tips:\r\n\r\n"
 
+    ## todo: count nil records for stats
+
     Play.all.each do |play|
-      txt << "play,#{play.pool.key},#{play.user.key},#{play.team1_id},#{play.team2_id},#{play.team3_id}"
-      txt << "\r\n"
+      if play.export?
+        team1_key = play.team1_id.nil? ? '' : play.team1.key
+        team2_key = play.team2_id.nil? ? '' : play.team2.key
+        team3_key = play.team3_id.nil? ? '' : play.team3.key
+        txt << "play,#{play.pool.key},#{play.user.key},#{team1_key},#{team2_key},#{team3_key}"
+        txt << "\r\n"
+      end
     end
 
     Tip.all.each do |tip|
-      txt << "tip,#{tip.pool.key},#{tip.user.key},#{tip.game.key},#{tip.score1},#{tip.score2},#{tip.score3},#{tip.score4},#{tip.score5},#{tip.score6}"
-      txt << "\r\n"
+      if tip.export?
+        txt << "tip,#{tip.pool.key},#{tip.user.key},#{tip.game.key},#{tip.score1},#{tip.score2},#{tip.score3},#{tip.score4},#{tip.score5},#{tip.score6}"
+        txt << "\r\n"
+      end
     end
 
     txt << "\r\n<< DONE"

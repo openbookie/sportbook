@@ -28,6 +28,13 @@ class Tip < ActiveRecord::Base
     recs.first
   end
     
+  def export?
+    # check if user entered some data
+    # - do NOT export nil records (all scores blank)
+    
+    (score1.blank? && score2.blank? && score3.blank? && score4.blank? && score5.blank? && score6.blank?)==false
+  end
+    
   def calc_points
     pts = 0
     if complete?

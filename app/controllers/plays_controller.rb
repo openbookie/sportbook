@@ -74,10 +74,12 @@ if @user.update_attributes( params[:user])
 
    # check for case w/ no tips
    if params[:play][:tips]
-    params[:play][:tips].each do |tip_key,tip_value|
+    params[:play][:tips].each do |tip_key,tip_hash|
       tip = Tip.find( tip_key )
-      puts "*** updating tip #{tip_key}"
-      tip.update_attributes( tip_value )
+      puts "*** updating tip #{tip_key} (#{tip_hash[:score1]}:#{tip_hash[:score2]})"
+      # note: do NOT use update_attributes( tip_hash ) -> creates new records or leads to other bugs
+      tip.score1 = tip_hash[:score1]
+      tip.score2 = tip_hash[:score2]
       tip.save!
     end
    end
