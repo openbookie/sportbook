@@ -26,4 +26,12 @@ class Team < ActiveRecord::Base
     end
   end
   
+  def key
+     # generate key if necessary (for debugging only - should be not null field!)
+     value = read_attribute(:key)
+     value = "?#{title.downcase.gsub( /[^a-z0-9]/, '*' )}+#{id}?"  if value.blank?
+     value
+  end
+  
+  
 end  # class Team
