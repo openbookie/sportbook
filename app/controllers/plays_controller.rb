@@ -27,15 +27,14 @@ class PlaysController < ApplicationController
     
     @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
 
-    ## todo/fix: use @pool.event.rounds...
-    Round.where( :event_id => @pool.event.id ).order( :pos ).all.each do |round|
+    @pool.event.rounds.order( :pos ).each do |round|
       round.games.order( :pos ).all.each do |game|
         # make sure all games exists as tips
-        tips = @user.tips.where( :pool_id => params[:pool_id] ).where( :game_id => game.id )
+        tips = @user.tips.where( :pool_id => @pool.id, :game_id => game.id ).all
         pp tips
         if tips.empty?
-          Tip.create!( :user => @user, :pool => @pool, :game => game )
-          puts "*** adding tip for game #{game.id}"
+          tip = Tip.create!( :user => @user, :pool => @pool, :game => game )
+          puts "*** adding tip #{tip.id} for game #{game.id}"
         else
           puts "*** found tip for game #{game.id}"
         end
@@ -76,8 +75,7 @@ if @user.update_attributes( params[:user])
    if params[:play][:tips]
     params[:play][:tips].each do |tip_key,tip_hash|
       tip = Tip.find( tip_key )
-      puts "*** updating tip #{tip_key} (#{tip_hash[:score1]}:#{tip_hash[:score2]})"
-      # note: do NOT use update_attributes( tip_hash ) -> creates new records or leads to other bugs
+      puts "*** updating tip #{tip_key} (#{tip_hash[:score1]}:#{tip_hash[:score2]})"      
       tip.score1 = tip_hash[:score1]
       tip.score2 = tip_hash[:score2]
       tip.save!
