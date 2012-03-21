@@ -1,0 +1,29 @@
+.navbar {
+    @include linear-gradient(top, $navbar-gradient-top,
+                                  $navbar-gradient-bottom,
+                                  $fallback: $navbar-gradient-fallback);
+
+    color: $navbar-text;
+    padding: 10px 20px;
+    text-align: right;
+    margin-bottom: 6px;
+
+     a,
+     a:visited {
+       text-decoration: none;
+       color: $navbar-text;
+     }
+     
+     a:hover {
+       text-decoration: underline;
+       color: $navbar-text;
+     }
+}
+
+/////////////////////
+// color style classes for test page (use like <span class='color navbar-gradient-top'></span>)
+     
+.navbar-text              { background-color: $navbar-text;             }
+.navbar-gradient-top      { background-color: $navbar-gradient-top;      }
+.navbar-gradient-bottom   { background-color: $navbar-gradient-bottom;   }
+.navbar-gradient-fallback { background-color: $navbar-gradient-fallback; }

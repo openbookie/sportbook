@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Style Test Page</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>Style Test Page</h1>
+
+<h2>Colors</h2>
+
+<!-- fix/todo: use a helper to generate li or td entry for color (convert to camelcase etc.) -->
+<!-- fix/todo: use a helper to generate li or td entry for color (convert to camelcase etc.) -->
+<!-- fix/todo: use a helper to generate li or td entry for color (convert to camelcase etc.) -->
+
+<h2>Navbar</h2>
+
+<ul class='none'>
+  <li>$navbar-text             <span class='color navbar-text'></span></li>
+  <li>$navbar-gradient-top      <span class='color navbar-gradient-top'></span></li>
+  <li>$navbar-gradient-bottom   <span class='color navbar-gradient-bottom'></span></li>
+  <li>$navbar-gradient-fallback <span class='color navbar-gradient-fallback'></span></li>
+</ul>
+
+<div class='navbar'>
+  Navbar Navbar Navbar <a href='#'>Link</a> <a href='#'>Link</a> <a href='#'>Link</a>  Navbar Navbar Navbar
+</div>
+
+
+<h2>Breadcrumb</h2>
+
+<ul class='none'>
+  <li>$breadcrumb-background    <span class='color breadcrumb-background'></span></li>
+  <li>$breadcrumb-border        <span class='color breadcrumb-border'></span></li>
+</ul>
+
+<p class='breadcrumb'>
+  <a href='#'>One</a> › <a href='#'>Two</a> › <a href='#'>Three</a> › Four   
+</p>
+
+
+<h2>Buttons</h2>
+
+
+<ul class='none'>
+  <li>$btn-primary-text              <span class='color btn-primary-text'></span></li>
+  <li>$btn-primary-hover-background  <span class='color btn-primary-hover-background'></span></li>
+  <li>$btn-primary-gradient-top      <span class='color btn-primary-gradient-top'></span></li>
+  <li>$btn-primary-gradient-bottom   <span class='color btn-primary-gradient-bottom'></span></li>
+  <li>$btn-primary-gradient-fallback <span class='color btn-primary-gradient-fallback'></span></li>
+  <li>$btn-primary-border            <span class='color btn-primary-border'></span></li>
+</ul>
+
+<p>
+ <a href='#' class='btn-primary'>Primary Button</a>
+ <a href='#' class='btn-primary'>Another Primary Button</a>
+</p>
+  
+<ul class='none'>
+  <li>$btn-text              <span class='color btn-text'></span></li>
+  <li>$btn-hover-background  <span class='color btn-hover-background'></span></li>
+  <li>$btn-gradient-top      <span class='color btn-gradient-top'></span></li>
+  <li>$btn-gradient-bottom   <span class='color btn-gradient-bottom'></span></li>
+  <li>$btn-gradient-fallback <span class='color btn-gradient-fallback'></span></li>
+  <li>$btn-border            <span class='color btn-border'></span></li>
+</ul>
+
+<p>
+ <a href='#' class='btn'>Button</a>
+ <a href='#' class='btn'>Another Button</a>
+ <a href='#' class='btn'>Yet Another Button</a>
+</p>
+
+<h2>Flash</h2>
+
+<ul class='none'>
+  <li>$error-text                   <span class='color error-text'></span></li>
+  <li>$error-background             <span class='color error-background'></span></li>
+  <li>$error-border                  <span class='color error-border'></span></li>
+</ul>
+
+<div class='flash error'>
+<b>Error.</b> The flash is a special part of the session which is cleared with each request.
+This means that values stored there will only be available in the next request,
+which is useful for storing error messages etc. It is accessed in much the same
+way as the session, like a hash.
+</div>
+
+
+<ul class='none'>  
+  <li>$success-text                   <span class='color success-text'></span></li>
+  <li>$success-background             <span class='color success-background'></span></li>
+  <li>$success-border                  <span class='color success-border'></span></li>
+</ul>
+
+<div class='flash success'>
+<b>Success.</b> The flash is a special part of the session which is cleared with each request.
+This means that values stored there will only be available in the next request,
+which is useful for storing error messages etc. It is accessed in much the same
+way as the session, like a hash.
+</div>
+
+
+<ul class='none'>  
+  <li>$notice-text                   <span class='color notice-text'></span></li>
+  <li>$notice-background             <span class='color notice-background'></span></li>
+  <li>$notice-border                  <span class='color notice-border'></span></li>
+</ul>
+
+<div class='flash notice'>
+<b>Notice.</b> The flash is a special part of the session which is cleared with each request.
+This means that values stored there will only be available in the next request,
+which is useful for storing error messages etc. It is accessed in much the same
+way as the session, like a hash. 
+</div>
+
+
+<ul class='none'>
+  <li>$warning-text                   <span class='color warning-text'></span></li>
+  <li>$warning-background             <span class='color warning-background'></span></li>
+  <li>$warning-border                  <span class='color warning-border'></span></li>  
+</ul>
+
+<div class='flash warning'>
+<b>Warning.</b> The flash is a special part of the session which is cleared with each request.
+This means that values stored there will only be available in the next request,
+which is useful for storing error messages etc. It is accessed in much the same
+way as the session, like a hash. 
+</div>
+
+<h2>Bingo</h2>
+
+<p>
+<span class='bingo'>Bingo!</span>
+<span class='bingoo'>Bingoo!</span>
+<span class='bingooo'>Bingooo!</span>
+<span class='missing'>Missing???</span>
+<span class='fail'>Fail!</span>
+</p>
+
+
+<ul class='none'>
+  <li>$bingo-text                   <span class='color bingo-text'></span></li>
+  <li>$bingo-background             <span class='color bingo-background'></span></li>
+</ul>
+
+<div class='bingo'>
+Bingo is a game of chance played with randomly drawn numbers which players match against
+numbers that have been pre-printed on 5x5 matrices.
+The matrices may be printed on paper, card stock or electronically represented
+and are referred to as cards.  
+</div>
+
+
+<ul class='none'>
+  <li>$bingoo-text                   <span class='color bingoo-text'></span></li>
+  <li>$bingoo-background             <span class='color bingoo-background'></span></li>
+</ul>
+
+<div class='bingoo'>
+Bingo is a game of chance played with randomly drawn numbers which players match against
+numbers that have been pre-printed on 5x5 matrices.
+The matrices may be printed on paper, card stock or electronically represented
+and are referred to as cards.  
+</div>
+
+
+<ul class='none'>
+  <li>$bingooo-text                   <span class='color bingooo-text'></span></li>
+  <li>$bingooo-background             <span class='color bingooo-background'></span></li>
+</ul>
+  
+<div class='bingooo'>
+Bingo is a game of chance played with randomly drawn numbers which players match against
+numbers that have been pre-printed on 5x5 matrices.
+The matrices may be printed on paper, card stock or electronically represented
+and are referred to as cards.  
+</div>
+
+
+<ul class='none'>
+  <li>$missing-text                   <span class='color missing-text'></span></li>
+  <li>$missing-background             <span class='color missing-background'></span></li>
+</ul>
+
+<div class='missing'>
+Bingo is a game of chance played with randomly drawn numbers which players match against
+numbers that have been pre-printed on 5x5 matrices.
+The matrices may be printed on paper, card stock or electronically represented
+and are referred to as cards.  
+</div>
+
+
+<ul class='none'>
+  <li>$fail-text                   <span class='color fail-text'></span></li>
+  <li>$fail-background             <span class='color fail-background'></span></li>
+</ul>
+
+<div class='fail'>
+Bingo is a game of chance played with randomly drawn numbers which players match against
+numbers that have been pre-printed on 5x5 matrices.
+The matrices may be printed on paper, card stock or electronically represented
+and are referred to as cards.  
+</div>
+
+</body>
+</html>

@@ -1,93 +1,55 @@
 
-@import "bourbon";
+@import "bourbon";      // 3rd party css mixin library (see http://thoughtbot.com/bourbon)
 
-/////////////////////////////////////
-// global settings w/ variables
-//
-//   note: for web colors see
-//     http://en.wikipedia.org/wiki/Web_colors
-
-
-/** todo: add colors for btn and primar-btn  (use bootstrap variable names?)*/
-
-
-$bingoText:         white;
-$bingoBackground:   green;
-
-$bingooText:        white;
-$bingooBackground:  limegreen;  /* springgreen?? -- lighter green */
-
-$bingoooText:       white;
-$bingoooBackground: lime;      /* lighter lighter green */
-
-$missingText:       white;
-$missingBackground: orange;   /* tip missing label */
-
-
-$focusBackground: #F8F50F;
-
-
-////////////////////////////////////
-// colors for flash messages 
-
-/* todo/fix: add warn/warning?? flash box */
-$warningText:       white;     /* #c09853  */
-$warningBackground: white;    /* #f3edd2  */
-
-$errorText:         #B94A48;
-$errorBackground:   #F2DEDE;
-$errorBorder:       #EED3D7;
-
-$successText:       #468847; 
-$successBackground: #DFF0D8;
-$successBorder:     #D6E9C6;
-
-$noticeText:        #3A87AD;
-$noticeBackground:  #D9EDF7;
-$noticeBorder:      #BCE8F1;
-
-
+@import "settings";     // global color settings w/ scss variables
 
 @import "flash";
-@import "play";
+@import "navbar";
+@import "button";
+@import "breadcrumb";
+
+@import "plays";
+@import "bingo";
 
 
 
 body
 {
-  font-family:  Helvetica,Arial,sans-serif;
+  font-family: $base-font-family;
 }
 
 @media screen {
 
-h1, h1 a { font-size: 35px;  /* 10x3.5 */ }
-h2 { font-size: 30px;  /* 10x3  */ }
-h3 { font-size: 25px;  /* 10x2.5 */ }
+h1, h1 a { font-size: $base-font-size*1.75;  }
+h2 { font-size: $base-font-size*1.5; }
+h3 { font-size: $base-font-size*1.25; }
 
 td, div, p, li, a,
-input, select, textarea, label  { font-size: 20px; /*10x2*/ }
+input, select, textarea, label  { font-size: $base-font-size; }
 
-textarea { font-family:  Helvetica,Arial,sans-serif; }
+textarea { font-family: $base-font-family; }
 
-}
+} // @media screen
+
 
 .ranking1 {
-  td, a { font-size: 36px; /* 10x2 x 180% */ }  /* todo: use scss calc */
+  td, a { font-size: $base-font-size*1.75; }  // 175%  oder 180 (e.g. 1.8)??
 }
 .ranking2 {
-  td, a { font-size: 30px; /* 10x2 x 150% */ }
+  td, a { font-size: $base-font-size*1.5; } // 150%   oder 140??
 }
 .ranking3 {
-  td, a { font-size: 24px; /* 10x2 x 120% */ }
+  td, a { font-size: $base-font-size*1.25; }  // 125%  oder 120??
 }
 
 
+// todo: move to print.css and import???
 @media print {
 
-/* use default font-size for now */
+//use default font-size for now 
 
   .navbar            { display: none; }
-  .buttons, .actions { display: none; }   /* todo: add buttons in div.buttons */
+  .buttons, .actions { display: none; }   // todo: add buttons in div.buttons
 }
 
 
@@ -103,26 +65,13 @@ textarea { font-family:  Helvetica,Arial,sans-serif; }
 
 span.highlight-me {
   display: inline-block;
-  background-color: yellow;
+  background-color: $highlight-me-background;
   padding: 0 6px;
-  border-radius:  4px;
-}
-
-span.highlight-me:hover {
+  @include border-radius(4px);
+  
+  &:hover {
    text-decoration:blink; 
-}
-
-
-p.breadcrumb {
-  font-size: 15px; /*10x1.5*/
-  a {
-    font-size: 15px; /*10x1.5*/
   }
-  background-color: lightgrey;  // use gradient (see bootstrap?) 
-
-  padding: 8px 14px;
-  border-radius:  4px;
-  border: 1px solid silver;
 }
 
 
@@ -150,83 +99,28 @@ a {
 
 
 
-.navbar {
-    @include linear-gradient(top, #333, #222, $fallback: #2C2C2C);
-
-    color: white;
-    padding: 10px 20px;
-    text-align: right;
-    margin-bottom: 6px;
-
-     a,
-     a:visited {
-       text-decoration: none;
-       color: white;
-     }
-     
-     a:hover {
-       text-decoration: underline;
-       color: white;
-     }
-}
 
 
-a:hover.btn-primary
-{
-  background-color: #04C;
-  /* note: doesn't work; still display background-image gradient */
-}
-
-a.btn-primary,
-a:visited.btn-primary
-{
-   color: white;
-   text-decoration: none;
-}
-
-.btn-primary
-{
-   display: inline-block;
-   padding: 4px 10px 4px;
-   text-align: center;
-   color: white;
-   @include linear-gradient(top, #08C, #04C, $fallback: #04C);
-   @include border-radius(4px);
-   cursor: pointer;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-a:hover.btn
-{
-  color: #333;
-  background-color: #E6E6E6;
-}
-
-a.btn,
-a:visited.btn
-{
-   display: inline-block;
-   padding: 4px 10px 4px;
-   text-align: center;
-   color: #333;
-   @include linear-gradient(top, white, #E6E6E6, $fallback: #E6E6E6);
-   @include border-radius(4px);
-   cursor: pointer;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-      
-   text-decoration: none;
-}
-
-
-/************************
-/* yellow background for input controls w/ focus
- */
+//////////////////////////////////////////////////
+// yellow background for input controls w/ focus
 
 input.focus, select.focus, textarea.focus, option.focus, textarea.focus {
-    background-color: $focusBackground;
+    background-color: $focus-background;
 }
 
 span.focus {
-    background-color: $focusBackground;
+    background-color: $focus-background;
     padding-top: 3px;
+}
+
+
+////////////////////////
+// style for checking color variable (use like <span class='color navbar gradient-top'></span>)
+
+.color {
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
+  @include border-radius(3px);
 }

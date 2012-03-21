@@ -1,0 +1,55 @@
+.bingo,
+.bingoo,
+.bingooo,
+.fail,
+.missing
+{
+    display: inline-block;
+    padding: 4px 6px;
+    @include border-radius(5px);
+    font-weight: bold;
+}
+
+.bingo {
+    background-color: $bingo-background;
+    color:            $bingo-text;
+}
+
+.bingoo {
+    background-color: $bingoo-background;
+    color:            $bingoo-text;
+}
+
+.bingooo {
+    background-color: $bingooo-background;
+    color:            $bingooo-text;
+}
+
+.fail {
+    background-color: $fail-background;
+    color:            $fail-text;
+}
+
+.missing {
+    background-color: $missing-background;
+    color:            $missing-text;
+}
+
+
+/////////////////////
+// color style classes for test page (use like <span class='color bingo-background'></span>)
+    
+.bingo-background { background-color: $bingo-background; }
+.bingo-text       { background-color: $bingo-text; }
+
+.bingoo-background { background-color: $bingoo-background; }
+.bingoo-text       { background-color: $bingoo-text; }
+
+.bingooo-background { background-color: $bingooo-background; }
+.bingooo-text       { background-color: $bingooo-text; }
+
+.fail-background { background-color: $fail-background; }
+.fail-text       { background-color: $fail-text; }
+
+.missing-background  {  background-color: $missing-background; }
+.missing-text        {  background-color: $missing-text;} 

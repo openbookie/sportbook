@@ -13,6 +13,10 @@ class PagesController < ApplicationController
     end
   end
   
+  def style   # style testpage
+    render :action => 'style', :layout => false
+  end
+  
 end # class PagesController
 
 

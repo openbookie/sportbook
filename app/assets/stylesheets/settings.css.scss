@@ -1,0 +1,92 @@
+/////////////////////////////////////
+// global settings w/ variables
+//
+//   note: for web colors see http://en.wikipedia.org/wiki/Web_colors
+
+
+$base-font-size:   20px;
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;	
+
+
+///////////////////////
+// navbar
+
+$navbar-text:              white;
+$navbar-gradient-top:      #333;
+$navbar-gradient-bottom:   #222;
+$navbar-gradient-fallback: #2C2C2C;
+
+//////////////////////////
+// buttons
+
+// todo: use bootstrap variable names for btn and btn-primary?
+
+$btn-primary-text: white;
+$btn-primary-hover-background: #04C;
+$btn-primary-gradient-top: #08C;
+$btn-primary-gradient-bottom: #04C;
+$btn-primary-gradient-fallback: #04C;
+$btn-primary-border: rgba(0, 0, 0, 0.1);
+
+$btn-text: #333;
+$btn-hover-background: #E6E6E6;
+$btn-gradient-top: white;
+$btn-gradient-bottom: #E6E6E6;
+$btn-gradient-fallback: #E6E6E6;
+$btn-border: rgba(0, 0, 0, 0.1);
+
+
+///////////////////////
+// misc
+
+$highlight-me-background:   yellow;
+
+$focus-background: #F8F50F;
+
+//////////////////////////
+// breadcrumb
+
+// todo: fix breadcrumb - use gradient colors (see bootstrap)
+// $breadcrumbText:    
+$breadcrumb-background: lightgrey;
+$breadcrumb-border:     silver;
+
+
+//////////////////////////////////////////
+// bingo tip colors
+
+$bingo-text:         white;
+$bingo-background:   green;
+
+$bingoo-text:        white;
+$bingoo-background:  limegreen;  // springgreen?? -- lighter green 
+
+$bingooo-text:       white;
+$bingooo-background: lime;      // lighter lighter green 
+
+$missing-text:       white;
+$missing-background: orange;   // tip missing label 
+
+$fail-text:          white;    
+$fail-background:    red;
+
+
+
+////////////////////////////////////
+// flash messages colors 
+
+$error-text:         #B94A48;
+$error-background:   #F2DEDE;
+$error-border:       #EED3D7;
+
+$success-text:       #468847; 
+$success-background: #DFF0D8;
+$success-border:     #D6E9C6;
+
+$notice-text:        #3A87AD;
+$notice-background:  #D9EDF7;
+$notice-border:      #BCE8F1;
+
+$warning-text:       #C09853;
+$warning-background: #FCF8E3;
+$warning-border:     #FBEED5;

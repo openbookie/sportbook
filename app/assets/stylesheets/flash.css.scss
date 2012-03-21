@@ -1,22 +1,50 @@
 .flash {
-   padding: 8px 14px;
-   border-radius:  4px;
+   padding: 8px 14px;      //  (1) top,bottom  (2) right,left
+   @include border-radius(4px);
 
-   &.error {
-    color:            $errorText;
-    background-color: $errorBackground;
-    border: 1px solid $errorBorder;
+   &.error, &.fatal {
+    color:            $error-text;
+    background-color: $error-background;
+    border: 1px solid $error-border;
   }
 
    &.success {
-     color:            $successText;
-     background-color: $successBackground;
-     border: 1px solid $successBorder;
+     color:            $success-text;
+     background-color: $success-background;
+     border: 1px solid $success-border;
    }
 
-   &.notice {
-     color:             $noticeText;
-     background-color:  $noticeBackground;
-     border: 1px solid  $noticeBorder;
+   &.notice, &.info {
+     color:             $notice-text;
+     background-color:  $notice-background;
+     border: 1px solid  $notice-border;
    }
+   
+   &.warn, &.warning {
+     color:             $warning-text;
+     background-color:  $warning-background;
+     border: 1px solid  $warning-border;
+   }   
 }
+
+
+/////////////////////
+// color style classes for test page (use like <span class='color error-background'></span>)
+
+// todo: nest inside color (e.g. color { &.error-text {}} ) ???
+    
+.error-text        { background-color: $error-text; }
+.error-background  { background-color: $error-background; }
+.error-border      { background-color: $error-border; }
+
+.success-text        { background-color: $success-text; }
+.success-background  { background-color: $success-background; }
+.success-border      { background-color: $success-border; }
+
+.notice-text        { background-color: $notice-text; }
+.notice-background  { background-color: $notice-background; }
+.notice-border      { background-color: $notice-border; }
+
+.warning-text        { background-color: $warning-text; }
+.warning-background  { background-color: $warning-background; }
+.warning-border      { background-color: $warning-border; }

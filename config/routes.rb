@@ -1,11 +1,12 @@
 Euro2012::Application.routes.draw do
 
-  match 'signin',  :to => 'sessions#new'
-  match 'signout', :to => 'sessions#destroy'
+  match 'signin',   :to => 'sessions#new'
+  match 'signout',  :to => 'sessions#destroy'
   
-  match 'about',   :to => 'pages#about'
-  match 'home',    :to => 'pages#home'
-
+  match 'about',    :to => 'pages#about'
+  match 'home',     :to => 'pages#home'
+  match 'style',    :to => 'pages#style'     # testpage for styles (css)
+  
   ## todo?? use single resource??  
   resources :sessions, :only => [:new, :create, :destroy]
 

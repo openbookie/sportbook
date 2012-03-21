@@ -1,0 +1,20 @@
+
+.breadcrumb {
+  font-size: $base-font-size*0.75; 
+  a {
+    // try if it works w/ inherit???
+    font-size: $base-font-size*0.75; 
+  }
+  background-color:  $breadcrumb-background; // use gradient (see bootstrap?) 
+
+  padding: 8px 14px;
+  border: 1px solid $breadcrumb-border;
+  @include border-radius(4px);
+}
+
+
+/////////////////////
+// color style classes for test page (use like <span class='color bingo-background'></span>)
+
+.breadcrumb-background { background-color: $breadcrumb-background; }
+.breadcrumb-border     { background-color: $breadcrumb-border; } 

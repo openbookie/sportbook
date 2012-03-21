@@ -1,0 +1,82 @@
+//////////////////////////////////////
+// button primay (bnt-primary)
+
+.btn-primary
+{
+   display: inline-block;
+   padding: 4px 10px 4px;
+   text-align: center;
+   color: $btn-primary-text;
+   @include linear-gradient(top, $btn-primary-gradient-top,
+                                 $btn-primary-gradient-bottom,
+                                 $fallback: $btn-primary-gradient-fallback);
+   @include border-radius(4px);
+   cursor: pointer;
+   border: 1px solid $btn-primary-border; 
+}
+
+
+a {
+  &.btn-primary,
+  &.btn-primary:visited,
+  &.btn-primary:hover
+  {
+    color: $btn-primary-text;
+    text-decoration: none;
+  }
+
+  &.btn-primary:hover
+  {
+    background-color: $btn-primary-hover-background;   // note: doesn't work (may be inline w/o  background prop??)
+  }
+}
+
+//////////////////////
+// button (btn)
+
+.btn
+{
+   display: inline-block;
+   padding: 4px 10px 4px;
+   text-align: center;
+   color: $btn-text;
+   @include linear-gradient(top, $btn-gradient-top,
+                                 $btn-gradient-bottom,
+                                 $fallback: $btn-gradient-fallback);
+   @include border-radius(4px);
+   cursor: pointer;
+   border: 1px solid $btn-border;
+}
+
+a {
+  &.btn,
+  &.btn:visited,
+  &.btn:hover
+  {
+    color: $btn-text;
+    text-decoration: none;
+  }
+
+  &.btn:hover
+  {
+    background-color: $btn-hover-background;  // note: doesn't work (may be inline w/o  background prop??)
+  }
+}
+
+/////////////////////
+// color style classes for test page (use like <span class='color btn-primary-gradient-top'></span>)
+    
+
+.btn-primary-text               { background-color: $btn-primary-text; }
+.btn-primary-hover-background   { background-color: $btn-primary-hover-background; }
+.btn-primary-gradient-top       { background-color: $btn-primary-gradient-top; }
+.btn-primary-gradient-bottom    { background-color: $btn-primary-gradient-bottom; }
+.btn-primary-gradient-fallback  { background-color: $btn-primary-gradient-fallback; }
+.btn-primary-border             { background-color: $btn-primary-border; }
+
+.btn-text                       { background-color: $btn-text; }
+.btn-hover-background           { background-color: $btn-hover-background; }
+.btn-gradient-top               { background-color: $btn-gradient-top; }
+.btn-gradient-bottom            { background-color: $btn-gradient-bottom; }
+.btn-gradient-fallback          { background-color: $btn-gradient-fallback; }
+.btn-border                     { background-color: $btn-border; }
