@@ -1,6 +1,12 @@
 <% title( 'Alle', @pool.full_title ) %>
 
-<h1><%= link_to @pool.full_title, pool_path(@pool) %> › Alle</h1>
+<p class='breadcrumb'>
+ <%= link_to 'Wettpools', pools_path() %> ›
+ <%= link_to @pool.full_title, pool_path(@pool) %> ›
+ Alle Tipps
+</p>
+
+<h1><%= @pool.full_title %> Tipps</h1>
 
 <table>
   <tr>
@@ -12,14 +18,18 @@
   <% @users.each do |user| %>
     <% play = Play.find_by_pool_id_and_user_id!( @pool.id, user.id ) %>
     <tr>
-       <td><%= link_to user.name, play_path(play.id) %></td>
+       <td>
+         <span class='<%= hl_style_for_user(user) %>'>
+           <%= link_to user.name, play_path(play.id) %>
+         </span>
+       </td>
        <td>
           <!-- fix: use helper or partial -->
         <% if play.team1.present? %>
            <%= image_tag( play.team1.img ) if play.team1.img.present? %>
            <%= play.team1.title %>
         <% else %>
-          ---
+           <span class='missing'>?</span>
         <% end %>
        </td>
        <td>
@@ -27,7 +37,7 @@
           <%= image_tag( play.team2.img ) if play.team2.img.present? %>
           <%= play.team2.title %>
         <% else %>
-          ---
+           <span class='missing'>?</span>
         <% end %>
        </td>
        <% if @pool.team3? %>
@@ -36,7 +46,7 @@
            <%= image_tag( play.team3.img ) if play.team3.img.present? %>
            <%= play.team3.title %>
         <% else %>
-          ---
+           <span class='missing'>?</span>
         <% end %>
        </td>
      <% end %>
@@ -60,7 +70,9 @@
   <td colspan='2'></td>
   <% @users.each do |user| %>
    <td class='player-name'>
+    <span class='<%= hl_style_for_user(user) %>'>
      <%= raw( user.name.split(' ').join( '<br>' ) ) %>
+    </span>
    </td>
   <% end %><!-- users.each -->
 </tr>
@@ -82,6 +94,7 @@
   <% else %>
   <% round.games.each do |game| %>
     <tr>
+      <!-- todo/fix: use td partials -->
        <td class='game-toto12x'>
          <%= "(#{game.toto12x})" if game.complete? %>
        </td>
@@ -98,7 +111,7 @@
          <td class='game-tip'>
           <% if tip.present? %>
             <span class='<%= tip.bingo_style_class %>'>
-              <%= tip.score1_str %> : <%= tip.score2_str %>
+              <%= tip.score_str %>
             </span>
            <% else %>
               ♦  <!-- fehler: datensatz fehlt! -->

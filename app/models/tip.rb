@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # == Schema Information
 #
 # Table name: tips
@@ -60,36 +62,54 @@ class Tip < ActiveRecord::Base
   ## todo: use tip-fail, tip-bingo, etc.
   
   def bingo_style_class
-    return '' if incomplete?
-    
-    pts = calc_points()
-    if pts == 0
-      'fail'
-    elsif pts == 1
-      'bingo'
-    elsif pts == 2
-      'bingoo'
-    elsif pts == 3
-      'bingooo'
+    if incomplete?
+      # show missing label for upcoming games only
+      if game.over?
+        ''
+      elsif score1.blank? || score2.blank?
+        'missing'  # missing tip scores
+      else
+        ''  # tip scores filled in; game scores not yet available
+      end
     else
-      ''  # unknown state; return empty (css) class
+      pts = calc_points()
+      if pts == 0
+        'fail'
+      elsif pts == 1
+        'bingo'
+      elsif pts == 2
+        'bingoo'
+      elsif pts == 3
+        'bingooo'
+      else
+        ''  # unknown state; return empty (css) class
+      end
     end
   end
 
   def bingo_text
-    return '' if incomplete?
-    
-    pts = calc_points()
-    if pts == 0
-       "#{game.toto12x} - Leider, nein."  # return 1,2,X from game
-    elsif pts == 1
-      'Ja!'
-    elsif pts == 2
-      'Jaaa!'
-    elsif pts == 3
-      'Jaaaaa!'
+    if incomplete?
+      # show missing label for upcoming games only
+      if game.over?
+        ''
+      elsif score1.blank? || score2.blank?
+        '?'  # missing tip scores
+      else
+        ''  # tip scores filled in; game scores not yet available
+      end
     else
-      ''  # unknown state; return empty (css) class
+      pts = calc_points()
+      if pts == 0
+        "#{game.toto12x} - Leider, nein."  # return 1,2,X from game
+      elsif pts == 1
+        'Ja!'
+      elsif pts == 2
+        'Jaaa!'
+      elsif pts == 3
+        'Jaaaaa!'
+      else
+        ''  # unknown state; return empty (css) class
+      end
     end
   end
     
@@ -113,7 +133,29 @@ class Tip < ActiveRecord::Base
   def incomplete?
     complete? == false
   end
+
+
   
+  def score_str
+    if score1.blank? && score2.blank? && game.over?
+      # return no data marker (e.g. middot) if not touched by user
+      '·'
+    else
+      "#{score1_str} : #{score2_str}"
+    end
+  end
+  
+  def score1_str
+    if score1.blank? then '?' else score1.to_s end
+  end
+
+  def score2_str
+    if score2.blank? then '?' else score2.to_s end
+  end
+
+
+### todo: remove bingo? no longer used???
+## use calc_points?
   def bingo?
     return false if incomplete?
 
@@ -129,13 +171,6 @@ class Tip < ActiveRecord::Base
       false
     end
   end
-  
-  def score1_str
-    if score1.blank? then '-' else score1.to_s end
-  end
 
-  def score2_str
-    if score2.blank? then '-' else score2.to_s end
-  end
     
 end # class Tip

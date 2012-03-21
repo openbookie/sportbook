@@ -1,6 +1,12 @@
 <% title( @user.name, @pool.full_title ) %>
 
-<h1><%= link_to @pool.full_title, pool_path(@pool)  %> › <%= @user.name %></h1>
+<p class='breadcrumb'>
+ <%= link_to 'Wettpools', pools_path() %> ›
+ <%= link_to @pool.full_title, pool_path(@pool)  %> ›
+ <%= @user.name %>
+</p>
+
+<h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
 
 <table>
  <tr>
@@ -11,7 +17,7 @@
          <%= image_tag( @play.team1.img ) if @play.team1.img.present? %>
          <%= @play.team1.title %>
        <% else %>
-          ---
+           <span class='missing'>?</span>
        <% end %>
    </td>
  </tr>
@@ -22,7 +28,7 @@
          <%= image_tag( @play.team2.img ) if @play.team2.img.present? %>
          <%= @play.team2.title %>
        <% else %>
-          ---
+           <span class='missing'>?</span>
        <% end %>
    </td>
  </tr>
@@ -33,7 +39,7 @@
          <%= image_tag( @play.team3.img ) if @play.team3.img.present? %>
          <%= @play.team3.title %>
        <% else %>
-          ---
+           <span class='missing'>?</span>
        <% end %>
    </td>
  </tr>
@@ -44,11 +50,11 @@
 <!-- table columns:
         1    => toto12x
         2    => bingo
-        2    => team1
-        3    => tip 
-        4    => result
-        5    => team2
-        6    => date
+        3    => team1
+        4    => tip 
+        5    => result
+        6    => team2
+        7    => date
   -->
 
 <table class='play'>
@@ -65,61 +71,35 @@
        <td colspan='4' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
      </tr>
   <% else %>
-  <% round.games.each do |game| %>
-  <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
+   <% round.games.each do |game| 
+         tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game )
+    %>
     <tr>
-      <td class='game-toto12x'>
-       <% if tip.present? && tip.score1.present? && tip.score2.present? %>
-          (<%= tip.toto12x %>)
-       <% end %>
-      </td>
 
-      <td class='game-bingo'>
-       <% if tip.present? %>
-          <% if tip.complete? %>
-             <span class='smaller <%= tip.bingo_style_class %>'><%= tip.bingo_text %></span>
-          <% else %>
-             <span class='smaller missing'>?</span>
-          <% end %>
-       <% end %>
-      </td>
-      
-       <td class='game-team1'>
-         <span class='<%= game.team1_style_class %>'>
-             <%= game.team1.title %>
-         </span>
-         <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-       </td>
-       
-       <% if tip.present? %>
-        <td class='game-tip'>
-          <span class='<%= tip.bingo_style_class %>'>
-            <%= tip.score1_str %> : <%= tip.score2_str %>
-          </span>
-         </td>
-       <% else %>
-          <td class='game-tip'>♦<!-- fehler: datensatz fehlt! --></td>
-       <% end %>
+       <!-- todo: rename??? game_toto12x  => tip_toto12x
+                            game_bingo    => tip_bingo
+                            game_tip      => tip_score
+        -->
+        
+       <%= render :partial => 'td_game_toto12x', :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_game_bingo',   :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_tip',     :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_game_score',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_team2',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_date',    :locals => { :game => game } %>
 
-         <td class='game-score'>
-         ( <%= game.score1_str %> : <%= game.score2_str %> )
-         </td>
-       
-        <td class='game-team2'>
-          <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-          <span class='<%= game.team2_style_class %>'>
-             <%= game.team2.title %>
-         </span>
-        </td>
-
-         <td class='game-date'>
-            <%= fmt_date( game.play_at ) %>
-         </td>
-     </tr>     
+     </tr>
   <% end %> <!-- games -->
   <% end %> <!-- if pool.flex? && round.calc? -->
 <% end %> <!-- rounds -->
 
 </table>
 
-<%= link_to '« Zurück', pool_path( @pool ), :class => 'btn' %>
+
+<% if current_user?( @user ) %>
+  <%= link_to 'Meine Tipps bearbeiten', edit_play_path( @play ), :class => 'btn-primary' %>
+  <%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>
+<% else %>
+ <%= link_to '« Zurück', pool_path( @pool ), :class => 'btn' %>
+<% end %>

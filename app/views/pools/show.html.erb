@@ -1,9 +1,16 @@
 <% title( @pool.full_title ) %>
 
-<h1><%= link_to 'Wettpools', pools_path() %> › <%= @pool.full_title %></h1>
+<p class='breadcrumb'>
+ <%= link_to 'Wettpools', pools_path() %> ›
+ <%= @pool.full_title %>
+</p>
 
-<p>Manager <%= @pool.user.name %>,
-  <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", plays_path( :pool_id => @pool.id ) %></p>
+<h1><%= @pool.full_title %></h1>
+
+<p>
+  Manager <span class='<%= hl_style_for_user(@pool.user) %>'><%= @pool.user.name %></span>,
+  <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", plays_path( :pool_id => @pool.id ) %>
+</p>
 
 <p><%= @pool.welcome %></p>
 
@@ -24,7 +31,11 @@
       <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
       <%= "#{ranking}." if play.points != last_points %>
     </td>
-    <td><%= link_to play.user.name, play_path( play.id ) %></td>
+    <td>
+      <span class='<%= hl_style_for_user(play.user) %>'>
+        <%= link_to play.user.name, play_path( play.id ) %>
+      </span>
+    </td>
     <td><%= play.points %></td>
     <td>Punkte</td>
   </tr>

@@ -22,6 +22,14 @@ module ApplicationHelper
     session[:user_id] == user.id
   end
   
+  def hl_style_for_user( user )  # css style to highlight current user
+    if current_user?( user )
+      ' highlight-me '
+    else
+      ''
+    end
+  end
+  
   def fmt_date( date )
     if date.nil?
       '-'

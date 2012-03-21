@@ -1,10 +1,15 @@
-<h1>Wettpools</h1>
+<p class='breadcrumb'>
+  Wettpools
+</p>
 
+
+<h1>Wettpools</h1>
 
 <ul>
 <% @pools.each do |pool| %>
   <li><%= link_to pool.full_title, pool_path(pool) %>
-    (Manager <%= pool.user.name %>,
+    (
+      Manager <span class='<%= hl_style_for_user(pool.user) %>'><%= pool.user.name %></span>,
       <%= pool.players.size %> Mitspieler
     )
     <br>

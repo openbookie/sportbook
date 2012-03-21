@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
     
     if @user.nil?
       flash.now[:error] = 'Unbekannte Email. Tut leid.'
-      @user = User.new( params[:user] )      
+      @user = User.new( params[:user] )
       render :action => 'new'
     else
-      session[:user_id] = @user.id   
+      session[:user_id] = @user.id
     
       flash[:notice] = 'Anmeldung erfolgreich.'
-      redirect_to pools_path()      
+      redirect_to pools_path()
     end    
   end
   

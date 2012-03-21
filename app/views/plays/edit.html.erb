@@ -1,6 +1,14 @@
 <% title( @user.name, @pool.full_title ) %>
 
-<h1><%= link_to @pool.full_title, pool_path(@pool) %> › <%= @user.name %></h1>
+<p class='breadcrumb'>
+ <%= link_to 'Wettpools', pools_path() %> ›
+ <%= link_to @pool.full_title, pool_path(@pool) %> ›
+ <%= @user.name %>
+</p>
+
+<h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
+
+
 
 <%= form_for @play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
 
@@ -22,63 +30,71 @@
 </table>
 
 
+<!-- table columns:
+        1    => toto12x
+        2    => bingo
+        3    => team1
+        4    => tip 
+        5    => result
+        6    => team2
+        7    => date
+  -->
+
+
+
 <table class='play'>
 <% first_field = true %>
 <% @rounds.each do |round| %>
 <tr class='game-round'>
-  <td></td>
-  <td colspan='3' class='game-round-title'><%= round.title %></td>
+  <td colspan='3'></td>
+  <td colspan='4' class='game-round-title'><%= round.title %></td>
 </tr>
   <% if @pool.flex? && round.calc? %>
      <tr>
-       <td colspan='3' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
+       <td colspan='2'></td>
+       <td colspan='4' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
      </tr>
   <% else %>
   <% round.games.each do |game| %>
   <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
    <tr>
-    <td class='game-team1'> 
-         <span class='<%= game.team1_style_class %>'>
-           <%= game.team1.title %>
-         </span> 
-         <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-    </td>
-
-   <% if game.over?  %>
-     <td class='game-score'>
-      <%= game.score1 %> : <%= game.score2 %>
-     </td>
-   <% else %>
-   <% if tip.present? %>
-     <td>
+     <% if game.over?  %>
+       <%= render :partial => 'td_game_toto12x', :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_game_bingo',   :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_tip',     :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_game_score',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_team2',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_date',    :locals => { :game => game } %>
+     <% else %>
+       <td colspan='2'></td>
+       <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
+       <% if tip.present? %>
+         <td>
   <%= f.fields_for 'tips[]', tip do |ff| %>
      <%= ff.hidden_field :user_id %>
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
      <% if first_field %>
-       <%= ff.text_field :score1, :size => 2, 'data-autofocus' => 'true' %>
+       <%= ff.text_field :score1, :size => 2, :data => { :autofocus => 'true' } %>
        <% first_field = false %>
       <% else %>
        <%= ff.text_field :score1, :size => 2 %>
       <% end %>
        :
-     <%= ff.text_field :score2, :size => 2 %>   
+     <%= ff.text_field :score2, :size => 2 %>
   <% end %><!-- fields_for tips -->
-     </td>
+       </td>
        <% else %><!-- tip.present? -->
-          <td class='game-tip'>♦<!-- fehler: datensatz fehlt! --></td>
-       <% end %>
+          <td class='game-tip'>
+            ♦<!-- fehler: datensatz fehlt! -->
+          </td>
+       <% end %><!-- tip.present? -->
+       <td><!-- no game.scores yet --></td>
+       <%= render :partial => 'td_game_team2', :locals => { :game => game } %>
+       <%= render :partial => 'td_game_date', :locals => { :game => game } %>
    <% end %> <!-- game.over? -->
     
-       <td class='game-team2'>
-         <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-         <span class='<%= game.team2_style_class %>'>
-           <%= game.team2.title %>
-         </span>
-       </td>
-       <td class='game-date'>
-              <%= fmt_date( game.play_at ) %>
-       </td>
    </tr>
   <% end %><!-- game -->
  <% end %> <!-- if pool.flex? && round.calc? -->  
@@ -88,6 +104,6 @@
 
 <p>
   <%= f.submit "Tipps speichern", :class => 'btn-primary' %>
-  <%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>
+  <%= link_to 'Zurück', play_path( @play ), :class => 'btn' %>
 </p>  
-<% end %>  
+<% end %>

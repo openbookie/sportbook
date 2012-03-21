@@ -101,6 +101,32 @@ textarea { font-family:  Helvetica,Arial,sans-serif; }
 
 
 
+span.highlight-me {
+  display: inline-block;
+  background-color: yellow;
+  padding: 0 6px;
+  border-radius:  4px;
+}
+
+span.highlight-me:hover {
+   text-decoration:blink; 
+}
+
+
+p.breadcrumb {
+  font-size: 15px; /*10x1.5*/
+  a {
+    font-size: 15px; /*10x1.5*/
+  }
+  background-color: lightgrey;  // use gradient (see bootstrap?) 
+
+  padding: 8px 14px;
+  border-radius:  4px;
+  border: 1px solid silver;
+}
+
+
+
 ul {
     list-style-type: square;
 

@@ -1,12 +1,14 @@
+# encoding: utf-8
 
 class PlaysController < ApplicationController
   
   # GET /plays?pool_id=:id
   def index
     @pool   = Pool.find( params[:pool_id] )
-    @users  = @pool.players
+    @users  = @pool.players.order(:name)
+    
     ## todo/fix: make order( :pos ) default in assoc; remove here
-    @rounds = @pool.event.rounds.order( :pos ).all    
+    @rounds = @pool.event.rounds.order( :pos ).all
   end
 
   # GET /plays/:id
@@ -25,7 +27,7 @@ class PlaysController < ApplicationController
     @pool = @play.pool  
     @user = @play.user
     
-    @team_options = [[ '--Team--', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
+    @team_options = [[ '- Team wählen -', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
 
     @pool.event.rounds.order( :pos ).each do |round|
       round.games.order( :pos ).all.each do |game|
@@ -59,18 +61,6 @@ class PlaysController < ApplicationController
     @play.team3_id = params[:play][:team3_id] if params[:play][:team3_id]
     @play.save!
     
-=begin
-  ## fix: use save w/ nested attributes??
-if @user.update_attributes( params[:user])
-      # success
-      flash.now[:notice] = 'Tipps Erfolgreich gespeichert.'
-    else
-      # failure
-      flash.now[:error] = 'Fehler beim Speichern der Tipps.'
-      ## todo: use redirect etc.
-    end
-=end
-
    # check for case w/ no tips
    if params[:play][:tips]
     params[:play][:tips].each do |tip_key,tip_hash|
@@ -84,7 +74,7 @@ if @user.update_attributes( params[:user])
 
     flash[:success] = 'Tipps erfolgreich gespeichert.'
         
-    redirect_to play_path( @play.id )
+    redirect_to edit_play_path( @play.id )
   end
 
 end  # class PlaysController

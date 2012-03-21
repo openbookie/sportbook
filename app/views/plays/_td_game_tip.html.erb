@@ -1,0 +1,12 @@
+
+<% if tip.present? %>
+  <td class='game-tip'>
+    <span class='<%= tip.bingo_style_class %>'>
+      <%= tip.score_str %>
+    </span>
+  </td>
+<% else %>
+  <td class='game-tip'>
+    ♦<!-- fehler: datensatz fehlt! -->
+  </td>
+<% end %>
