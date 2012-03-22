@@ -9,6 +9,13 @@ module ApplicationHelper
       end
     end
   end
+  
+  # todo/fix: try/polish breadcrumb helper
+  def breadcrumb(*parts)
+    content_for :breadcrumb do
+      parts.join( ' › ' )
+    end
+  end
 
   def signed_in?
     session[:user_id].nil? == false

@@ -1,10 +1,10 @@
 <% title( @user.name, @pool.full_title ) %>
 
-<p class='breadcrumb'>
+<% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
  <%= link_to @pool.full_title, pool_path(@pool) %> ›
  <%= @user.name %>
-</p>
+<% end %>
 
 <h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
 
@@ -42,7 +42,7 @@
 
 
 
-<table class='play'>
+<table class='play' cellspacing=0>
 <% first_field = true %>
 <% @rounds.each do |round| %>
 <tr class='game-round'>
@@ -76,13 +76,13 @@
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
      <% if first_field %>
-       <%= ff.text_field :score1, :size => 2, :data => { :autofocus => 'true' } %>
+       <%= ff.text_field :score1, :size => 1, :data => { :autofocus => 'true' } %>
        <% first_field = false %>
       <% else %>
-       <%= ff.text_field :score1, :size => 2 %>
+       <%= ff.text_field :score1, :size => 1 %>
       <% end %>
        :
-     <%= ff.text_field :score2, :size => 2 %>
+     <%= ff.text_field :score2, :size => 1 %>
   <% end %><!-- fields_for tips -->
        </td>
        <% else %><!-- tip.present? -->

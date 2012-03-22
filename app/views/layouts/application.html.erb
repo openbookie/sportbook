@@ -17,7 +17,16 @@
 <body>
 
 <% unless controller_name == 'sessions' %>
+
+<!--
 <div class='navbar'>
+  <span>
+      [Logo]
+  </span>
+    &nbsp;&nbsp;&nbsp;
+      
+      
+  <span style='float: right;'>
  <% if signed_in? %>
     Willkommen, <%= current_user.name %>!
 
@@ -27,10 +36,46 @@
  <% else %>
     <%= link_to 'Anmelden', signin_path %>
  <% end %>
+ <span>
 </div>
+
+<!-- todo/fix: move to header!!!! -->
+<!-- todo:  two columns w/ background gradient - how to do it best? -->
+<div class='navbar'>
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+      <span class='logo'><%= link_to '[Logo]', pools_path() %></span> &nbsp;&nbsp;&nbsp;
+      <% if content_for? :breadcrumb  %>
+        <span class='breadcrumb-inline'>
+          <%= yield :breadcrumb %>
+        </span>
+      <% end %>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+ <% if signed_in? %>
+    Willkommen, <%= current_user.name %>!
+
+    &nbsp;
+    <span class='signout'>
+      <%= link_to 'Abmelden', signout_path %>
+    </span>
+ <% else %>
+    <span class='signin'>
+    <%= link_to 'Anmelden', signin_path %>
+    </span>
+ <% end %>
+    </td>
+  </tr>
+</table>
+</div>
+  
+
 <% end %>
 
-
+<div class='content' style='padding: 0px 20px 0px 20px;'>
 <% flash.each do |key, value| %>
   <div class="flash <%= key %>">
     <%= value %>
@@ -38,7 +83,7 @@
 <% end %>
 
 <%= yield %>
-
+</div>
 <!-- todo/fix: add is_debug? 
 <hr>
 <pre style='color: maroon;'>

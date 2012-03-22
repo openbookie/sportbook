@@ -1,16 +1,27 @@
-<p class='breadcrumb'>
+<% content_for :breadcrumb do %>
   Wettpools
-</p>
+<% end %>
 
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+      <h1>Wettpools</h1>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+      <%= link_to 'Neuer Pool', new_pool_path, :class => 'btn' %>
+    </td>
+  </tr>
+</table>
 
-<h1>Wettpools</h1>
 
 <ul>
 <% @pools.each do |pool| %>
   <li><%= link_to pool.full_title, pool_path(pool) %>
     (
-      Manager <span class='<%= hl_style_for_user(pool.user) %>'><%= pool.user.name %></span>,
-      <%= pool.players.size %> Mitspieler
+      Manager <%= pool.user.name %>,
+      <%= link_to "#{pool.players.size} Mitspieler", plays_path( :pool_id => pool.id ) %>
     )
     <br>
     <span class='light' style='font-size: 80%'><%= pool.welcome %></span>
@@ -18,6 +29,3 @@
 <% end %>
 </ul>
 
-<br />
-
-<%= link_to 'Neuer Pool', new_pool_path, :class => 'btn-primary' %>

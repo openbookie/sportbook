@@ -1,14 +1,44 @@
 <% title( @pool.full_title ) %>
 
-<p class='breadcrumb'>
+<% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
  <%= @pool.full_title %>
-</p>
+<% end %>
 
-<h1><%= @pool.full_title %></h1>
+
+<!-- todo:
+   use current_play = nil or obj  instead of machmit  => lets us use play route for edit!!
+  -->
+
+<% machmit = true
+   @pool.players.each do |player,i|
+     machmit = false if current_user?( player )
+   end
+ %>
+  
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+       <h1><%= @pool.full_title %></h1>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+<% if machmit %>
+  <%= link_to 'Mach mit! Mittippen!', add_player_to_pool_path( @pool ), :class => 'btn-primary' %>
+<% else %>
+  <%= link_to 'Meine Tipps bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
+<% end %>
+    </td>
+  </tr>
+</table>
+
+
+
+
 
 <p>
-  Manager <span class='<%= hl_style_for_user(@pool.user) %>'><%= @pool.user.name %></span>,
+  Manager <%= @pool.user.name %>,
   <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", plays_path( :pool_id => @pool.id ) %>
 </p>
 
@@ -42,23 +72,3 @@
   <% last_points = play.points %>
 <% end %><!-- each plays -->
 </table>
-
-<!-- todo:
-   use current_play = nil or obj  instead of machmit  => lets us use play route for edit!!
-  -->
-
-<% machmit = true
-   @pool.players.each_with_index do |player,i|
-     machmit = false if current_user?( player )
-   end
- %>
-
-<div>
-<% if machmit %>
-  <%= link_to 'Mach mit! Mittippen!', add_player_to_pool_path( @pool ), :class => 'btn-primary' %>
-<% else %>
-  <%= link_to 'Meine Tipps bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
-<% end %>
-  
-<%= link_to 'Zurück', pools_path(), :class => 'btn' %>
-</div>

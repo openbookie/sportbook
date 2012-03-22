@@ -12,6 +12,17 @@
   @include border-radius(4px);
 }
 
+/////////
+// breadcrumb-inline
+// - no border, no background
+
+.breadcrumb-inline {
+  font-size: $base-font-size*0.80; 
+  a {
+    // try if it works w/ inherit???
+    font-size: $base-font-size*0.80; 
+  }
+}
 
 /////////////////////
 // color style classes for test page (use like <span class='color bingo-background'></span>)

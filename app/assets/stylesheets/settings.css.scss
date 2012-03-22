@@ -4,7 +4,7 @@
 //   note: for web colors see http://en.wikipedia.org/wiki/Web_colors
 
 
-$base-font-size:   20px;
+$base-font-size:   18px;  // was 20px
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;	
 
 
@@ -15,6 +15,16 @@ $navbar-text:              white;
 $navbar-gradient-top:      #333;
 $navbar-gradient-bottom:   #222;
 $navbar-gradient-fallback: #2C2C2C;
+
+
+//////////////////////////
+// breadcrumb
+
+// todo: fix breadcrumb - use gradient colors (see bootstrap)
+// $breadcrumbText:    
+$breadcrumb-background: lightgrey;
+$breadcrumb-border:     silver;
+
 
 //////////////////////////
 // buttons
@@ -43,13 +53,6 @@ $highlight-me-background:   yellow;
 
 $focus-background: #F8F50F;
 
-//////////////////////////
-// breadcrumb
-
-// todo: fix breadcrumb - use gradient colors (see bootstrap)
-// $breadcrumbText:    
-$breadcrumb-background: lightgrey;
-$breadcrumb-border:     silver;
 
 
 //////////////////////////////////////////

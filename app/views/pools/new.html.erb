@@ -1,3 +1,8 @@
+<% content_for :breadcrumb do %>
+  <%= link_to 'Wettpools', pools_path() %> ›
+  Neuer Pool
+<% end %>
+
 <h1>Neuer Pool</h1>
 
 <%= render 'form' %>

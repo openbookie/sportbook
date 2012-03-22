@@ -1,6 +1,11 @@
 table.play,
 table.plays {
 
+  input[type=text] {
+    text-align: center;
+  }
+
+
   .game-team-winner {
      font-weight: bold;
      color: darkgreen;
@@ -27,6 +32,9 @@ table.plays {
     -o-text-overflow: ellipsis;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
+    
+    margin: 0;
+    padding: 2px;
         
    &.player-name {
      font-size: 60%;

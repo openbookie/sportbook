@@ -1,12 +1,26 @@
 <% title( @user.name, @pool.full_title ) %>
 
-<p class='breadcrumb'>
+<% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
  <%= link_to @pool.full_title, pool_path(@pool)  %> ›
  <%= @user.name %>
-</p>
+<% end %>
 
-<h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+      <h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+      <% if current_user?( @user ) %> 
+        <%= link_to 'Meine Tipps bearbeiten', edit_play_path( @play ), :class => 'btn-primary' %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
 
 <table>
  <tr>
@@ -57,7 +71,7 @@
         7    => date
   -->
 
-<table class='play'>
+<table class='play' cellspacing=0>
   
 <% @rounds.each do |round| %>
 <tr class='game-round'>
@@ -95,11 +109,3 @@
 <% end %> <!-- rounds -->
 
 </table>
-
-
-<% if current_user?( @user ) %>
-  <%= link_to 'Meine Tipps bearbeiten', edit_play_path( @play ), :class => 'btn-primary' %>
-  <%= link_to 'Zurück', pool_path( @pool ), :class => 'btn' %>
-<% else %>
- <%= link_to '« Zurück', pool_path( @pool ), :class => 'btn' %>
-<% end %>
