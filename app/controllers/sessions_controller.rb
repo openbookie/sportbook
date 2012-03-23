@@ -2,10 +2,12 @@
 
 class SessionsController < ApplicationController
   
+  # GET /session/new
   def new
     @user = User.new
   end
 
+  # POST /session
   def create
     @user = User.find_by_email( params[:user][:email])
     
@@ -21,6 +23,7 @@ class SessionsController < ApplicationController
     end    
   end
   
+  # DELETE /session
   def destroy
     session[:user_id] = nil
     flash[:notice] = 'Tschüss.'

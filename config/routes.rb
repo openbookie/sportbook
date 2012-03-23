@@ -7,8 +7,7 @@ Euro2012::Application.routes.draw do
   match 'home',     :to => 'pages#home'
   match 'style',    :to => 'pages#style'     # testpage for styles (css)
   
-  ## todo?? use single resource??  
-  resources :sessions, :only => [:new, :create, :destroy]
+  resource :session, :only => [:new, :create, :destroy]
 
   resources :jobs do
     get 'calc',   :on => :collection
