@@ -93,11 +93,11 @@
   <td colspan='2'></td>
   <% @users.each do |user| %>
    <td class='player-name'>
-    <%= link_to pool_player_path( @pool, user ) do %>
       <span class='<%= hl_style_for_user(user) %>'>
+    <%= link_to pool_player_path( @pool, user ) do %>
        <%= raw( user.name.split(' ').join( '<br>' ) ) %>
-      </span>
     <% end %>
+      </span>
    </td>
   <% end %><!-- users.each -->
 </tr>
@@ -127,11 +127,8 @@
        
       <% @users.each do |user| %>
         <% tip = Tip.find_by_user_and_pool_and_game( user, @pool, game ) %>
-
-       <!-- todo: rename???    game_tip      => tip_score
-        -->
         
-       <%= render :partial => 'td_game_tip',     :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_tip_score',     :locals => { :tip  => tip }  %>
       <% end %><!-- users.each --> 
 
        <%= render :partial => 'td_game_score',   :locals => { :game => game } %>
@@ -146,11 +143,11 @@
   <td colspan='2'></td>
   <% @users.each do |user| %>
    <td class='player-name'>
-    <%= link_to pool_player_path( @pool, user ) do %>
       <span class='<%= hl_style_for_user(user) %>'>
+    <%= link_to pool_player_path( @pool, user ) do %>
        <%= raw( user.name.split(' ').join( '<br>' ) ) %>
-      </span>
     <% end %>
+      </span>
    </td>
   <% end %><!-- users.each -->
 </tr>

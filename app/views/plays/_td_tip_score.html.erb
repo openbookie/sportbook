@@ -1,12 +1,12 @@
 
 <% if tip.present? %>
-  <td class='game-tip'>
+  <td class='tip-score'>
     <span class='<%= tip.bingo_style_class %>'>
       <%= tip.score_str %>
     </span>
   </td>
 <% else %>
-  <td class='game-tip'>
+  <td class='tip-score'>
     ♦<!-- fehler: datensatz fehlt! -->
   </td>
 <% end %>

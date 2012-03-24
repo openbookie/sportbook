@@ -59,10 +59,10 @@
   <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
    <tr>
      <% if game.over?  %>
-       <%= render :partial => 'td_game_toto12x', :locals => { :tip  => tip }  %>
-       <%= render :partial => 'td_game_bingo',   :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_tip_toto12x',  :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_tip_bingo',    :locals => { :tip  => tip }  %>
        <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
-       <%= render :partial => 'td_game_tip',     :locals => { :tip  => tip }  %>
+       <%= render :partial => 'td_tip_score',    :locals => { :tip  => tip }  %>
        <%= render :partial => 'td_game_score',   :locals => { :game => game } %>
        <%= render :partial => 'td_game_team2',   :locals => { :game => game } %>
        <%= render :partial => 'td_game_date',    :locals => { :game => game } %>
@@ -86,7 +86,7 @@
   <% end %><!-- fields_for tips -->
        </td>
        <% else %><!-- tip.present? -->
-          <td class='game-tip'>
+          <td class='tip-score'>
             ♦<!-- fehler: datensatz fehlt! -->
           </td>
        <% end %><!-- tip.present? -->
