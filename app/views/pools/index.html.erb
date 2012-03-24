@@ -10,11 +10,53 @@
     </td>
     <!-- right -->
     <td style='text-align: right;'>
-      <%= link_to 'Neuer Pool', new_pool_path, :class => 'btn' %>
+      <%= link_to 'Neuer Pool', new_pool_path(), :class => 'btn' %>
     </td>
   </tr>
 </table>
 
+
+<h3>Nächsten Spiele</h3>
+
+<table>
+<% @upcoming_games.each do |game| %>
+ <tr style='vertical-align: middle;'>
+  <td>
+    <%= game.play_at_str %>
+  </td>
+  <td style='text-align: right;'>
+    <%= game.team1.title %>
+  </td>
+  <td>
+    <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+  </td>
+  <td>-</td>
+  <td>
+    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+  </td>
+  <td>
+    <%= game.team2.title %>
+  </td>
+    <% tips = game.tips.where( :user_id => current_user_id() ).all %>
+  
+    <!-- <%= tips.count %> Tipps -->
+  
+    <% tips.each do |tip| %>
+     <td>
+       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+     </td>
+     <td style='text-align: center;'>
+      <span class='<%= tip.bingo_style_class %>'>
+        <%= tip.score_str %>
+      </span>
+     </td>
+     <% end %><!-- each tip -->
+  </td>
+ </tr> 
+<% end %><!-- each game -->
+</table>
+
+<h3>Wettpools</h3>
 
 <ul>
 <% @pools.each do |pool| %>
@@ -28,4 +70,3 @@
   </li>
 <% end %>
 </ul>
-

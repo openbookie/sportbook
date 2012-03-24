@@ -25,6 +25,10 @@ module ApplicationHelper
     User.find( session[:user_id] )
   end
   
+  def current_user_id
+    session[:user_id]
+  end
+  
   def current_user?( user )
     session[:user_id] == user.id
   end

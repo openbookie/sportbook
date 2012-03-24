@@ -29,6 +29,8 @@ class Game < ActiveRecord::Base
   ## todo/fix: rename game_group_id to round_id!!!
   belongs_to :round, :foreign_key => 'game_group_id'
 
+  has_many   :tips
+
   before_save :calc_toto12x
 
   def self.create_knockouts_from_ary!( games, round )
@@ -129,6 +131,10 @@ class Game < ActiveRecord::Base
     elsif score1 < score2
       self.toto12x = '2'
     end
+  end
+  
+  def play_at_str
+    play_at.strftime( "%a. %d. %b. / %H:%M" )
   end
 
 end # class Game

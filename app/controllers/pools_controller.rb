@@ -3,6 +3,13 @@ class PoolsController < ApplicationController
   # GET /pools
   def index
     @pools = Pool.all
+    
+    # find next upcoming games
+    
+    limit = params[:limit] || '4'
+    
+    @upcoming_games = Game.where( 'play_at > ?', Time.now ).order( 'play_at').limit(limit)
+    
   end
   
   # GET /pools/new
