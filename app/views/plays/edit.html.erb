@@ -3,7 +3,7 @@
 <% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
  <%= link_to @pool.full_title, pool_path(@pool) %> ›
- <%= @user.name %>
+ <%= link_to @user.name, edit_play_path( @play ) %>
 <% end %>
 
 <h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>

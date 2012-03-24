@@ -36,8 +36,8 @@ table.plays {
     margin: 0;
     padding: 2px;
         
-   &.player-name {
-     font-size: 60%;
+   &.player-name, &.player-name * {
+     font-size: $base-font-size*0.6;
     }
 
    &.game-toto12x {

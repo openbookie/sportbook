@@ -24,3 +24,16 @@
 <ul>
   <li><%= User.count %> Benutzer</li>
 </ul>
+
+<h3>Headers</h3><!-- http headers -->
+
+<table>
+<% request.env.each do |k,v|
+     next if k.starts_with?( 'rack') || k.starts_with?( 'action' )
+ %>
+  <tr>
+     <td><!-- <%= k.class %> --><%= k %></td>
+     <td><!-- <%= v.class %> --><%= v %></td>
+  </tr>
+<% end %>
+</table>

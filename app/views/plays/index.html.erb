@@ -3,7 +3,7 @@
 <% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
  <%= link_to @pool.full_title, pool_path(@pool) %> ›
- Alle Tipps
+ <%= link_to 'Alle Tipps', plays_path( :pool_id => @pool.id ) %>
 <% end %>
 
 
@@ -11,11 +11,7 @@
    use current_play = nil or obj  instead of machmit  => lets us use play route for edit!!
   -->
 
-<% machmit = true
-   @pool.players.each do |player,i|
-     machmit = false if current_user?( player )
-   end
- %>
+<% machmit = (@pool.players.include?( current_user ) == false) %>
 
 <table width='100%' cellspacing=0>
   <tr>
@@ -37,10 +33,10 @@
 
 <table>
   <tr>
-    <td></td>
-    <td>1. Platz</td>
-    <td>2. Platz</td>
-    <% if @pool.team3? %><td>3. Platz</td><% end %>
+    <td><!-- user --></td>
+    <td style='text-align: center;'>1. Platz</td>
+    <td style='text-align: center;'>2. Platz</td>
+    <% if @pool.team3? %><td style='text-align: center;'>3. Platz</td><% end %>
   </tr>
   <% @users.each do |user| %>
     <% play = Play.find_by_pool_id_and_user_id!( @pool.id, user.id ) %>
@@ -50,33 +46,33 @@
            <%= link_to user.name, play_path(play.id) %>
          </span>
        </td>
-       <td>
           <!-- fix: use helper or partial -->
-        <% if play.team1.present? %>
-           <%= image_tag( play.team1.img ) if play.team1.img.present? %>
-           <%= play.team1.title %>
+       <% if play.team1.present? %>
+        <td><%= image_tag( play.team1.img ) if play.team1.img.present? %>
+            <%= play.team1.title %>
+        </td>
         <% else %>
-           <span class='missing'>?</span>
-        <% end %>
-       </td>
-       <td>
-        <% if play.team2.present? %>
-          <%= image_tag( play.team2.img ) if play.team2.img.present? %>
-          <%= play.team2.title %>
+         <td style='text-align: center;'><span class='missing'>?</span></td>
+      <% end %>
+
+       <% if play.team2.present? %>
+        <td><%= image_tag( play.team2.img ) if play.team2.img.present? %>
+            <%= play.team2.title %>
+         </td>
         <% else %>
-           <span class='missing'>?</span>
-        <% end %>
-       </td>
-       <% if @pool.team3? %>
-       <td>
-        <% if play.team3.present? %>
-           <%= image_tag( play.team3.img ) if play.team3.img.present? %>
-           <%= play.team3.title %>
+         <td style='text-align: center;'><span class='missing'>?</span></td>
+      <% end %>
+
+    
+      <% if @pool.team3? %>
+       <% if play.team3.present? %>
+        <td><%= image_tag( play.team3.img ) if play.team3.img.present? %>
+             <%= play.team3.title %>
+        </td>
         <% else %>
-           <span class='missing'>?</span>
+         <td style='text-align: center;'><span class='missing'>?</span></td>
         <% end %>
-       </td>
-     <% end %>
+      <% end %>
     </tr>
   <% end %><!-- users.each -->
 </table>
@@ -97,9 +93,11 @@
   <td colspan='2'></td>
   <% @users.each do |user| %>
    <td class='player-name'>
-    <span class='<%= hl_style_for_user(user) %>'>
-     <%= raw( user.name.split(' ').join( '<br>' ) ) %>
-    </span>
+    <%= link_to pool_player_path( @pool, user ) do %>
+      <span class='<%= hl_style_for_user(user) %>'>
+       <%= raw( user.name.split(' ').join( '<br>' ) ) %>
+      </span>
+    <% end %>
    </td>
   <% end %><!-- users.each -->
 </tr>
@@ -120,48 +118,25 @@
      </tr>
   <% else %>
   <% round.games.each do |game| %>
-    <tr>
-      <!-- todo/fix: use td partials -->
+    <tr>  
        <td class='game-toto12x'>
          <%= "(#{game.toto12x})" if game.complete? %>
        </td>
-       <td class='game-team1'>
-         <span class='<%= game.team1_style_class %>'>
-          <%= game.team1.title %>
-         </span>
-         <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-       </td>
+
+       <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
        
       <% @users.each do |user| %>
         <% tip = Tip.find_by_user_and_pool_and_game( user, @pool, game ) %>
 
-         <td class='game-tip'>
-          <% if tip.present? %>
-            <span class='<%= tip.bingo_style_class %>'>
-              <%= tip.score_str %>
-            </span>
-           <% else %>
-              ♦  <!-- fehler: datensatz fehlt! -->
-           <% end %>
-         </td>
-
+       <!-- todo: rename???    game_tip      => tip_score
+        -->
+        
+       <%= render :partial => 'td_game_tip',     :locals => { :tip  => tip }  %>
       <% end %><!-- users.each --> 
 
-         <td class='game-score'>
-         ( <%= game.score1_str %> : <%= game.score2_str %> )
-         </td>
-       
-       <td class='game-team2'>
-          <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-          <span class='<%= game.team2_style_class %>'>
-             <%= game.team2.title %>
-          </span>
-        </td>
-
-         <td class='game-date'>
-            <!-- fix: use game.play_at_str -->
-            <%= fmt_date( game.play_at ) %>
-         </td>
+       <%= render :partial => 'td_game_score',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_team2',   :locals => { :game => game } %>
+       <%= render :partial => 'td_game_date',    :locals => { :game => game } %>
      </tr>
   <% end %> <!-- games.each -->
  <% end %> <!-- if pool.flex? && round.calc? -->  
@@ -171,9 +146,11 @@
   <td colspan='2'></td>
   <% @users.each do |user| %>
    <td class='player-name'>
-    <span class='<%= hl_style_for_user(user) %>'>
-     <%= raw( user.name.split(' ').join( '<br>' ) ) %>
-    </span>
+    <%= link_to pool_player_path( @pool, user ) do %>
+      <span class='<%= hl_style_for_user(user) %>'>
+       <%= raw( user.name.split(' ').join( '<br>' ) ) %>
+      </span>
+    <% end %>
    </td>
   <% end %><!-- users.each -->
 </tr>

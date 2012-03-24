@@ -2,7 +2,7 @@
 
 <% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
- <%= @pool.full_title %>
+ <%= link_to @pool.full_title, pool_path( @pool) %>
 <% end %>
 
 
@@ -10,11 +10,7 @@
    use current_play = nil or obj  instead of machmit  => lets us use play route for edit!!
   -->
 
-<% machmit = true
-   @pool.players.each do |player,i|
-     machmit = false if current_user?( player )
-   end
- %>
+<% machmit = (@pool.players.include?( current_user ) == false) %>
   
 <table width='100%' cellspacing=0>
   <tr>
