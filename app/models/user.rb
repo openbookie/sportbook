@@ -14,11 +14,5 @@ class User < ActiveRecord::Base
   
   has_many :pools
   has_many :tips
-  
-  def key
-    # for now email is same as key
-    "#{email}"
-  end
-  
-  
+    
 end

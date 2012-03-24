@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20120319220328) do
     t.integer  "prev_game_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.string   "toto12x"
+    t.string   "key"
   end
 
   create_table "groups", :force => true do |t|
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20120319220328) do
     t.integer  "score6"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "toto12x"
   end
 
   create_table "users", :force => true do |t|
@@ -123,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20120319220328) do
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "key"
   end
 
 end

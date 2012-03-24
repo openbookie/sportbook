@@ -23,6 +23,9 @@ class Tip < ActiveRecord::Base
   belongs_to :user
   belongs_to :pool
   belongs_to :game
+
+  before_save :calc_toto12x
+
   
   ## todo: rename to find_by_play_and_game ????
   def self.find_by_user_and_pool_and_game( user_arg, pool_arg, game_arg )
@@ -113,18 +116,18 @@ class Tip < ActiveRecord::Base
     end
   end
     
-    
-  def toto12x
+  def calc_toto12x
     if score1.nil? || score2.nil?
-      '-'
+      self.toto12x = nil
     elsif score1 == score2
-      'X'
+      self.toto12x = 'X'
     elsif score1 > score2
-      '1'
+      self.toto12x = '1'
     elsif score1 < score2
-      '2'
+      self.toto12x = '2'
     end
   end
+
 
   def complete?
     game.score1.present? && game.score2.present? && score1.present? && score2.present?
@@ -153,24 +156,4 @@ class Tip < ActiveRecord::Base
     if score2.blank? then '?' else score2.to_s end
   end
 
-
-### todo: remove bingo? no longer used???
-## use calc_points?
-  def bingo?
-    return false if incomplete?
-
-    puts "#{game.score1} - #{game.score2}, #{score1} - #{score2}"
-    
-    if(((game.score1 == game.score2) && (score1 == score2)) ||
-       ((game.score1 >  game.score2) && (score1 >  score2)) ||
-       ((game.score1 <  game.score2) && (score1 <  score2)))
-      puts "*** [debug] bingo true"
-      true
-    else
-      puts "[debug] bingo false"
-      false
-    end
-  end
-
-    
 end # class Tip

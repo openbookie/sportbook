@@ -29,7 +29,7 @@ class Game < ActiveRecord::Base
   ## todo/fix: rename game_group_id to round_id!!!
   belongs_to :round, :foreign_key => 'game_group_id'
 
-  
+  before_save :calc_toto12x
 
   def self.create_knockouts_from_ary!( games, round )
     Game.create_from_ary!( games, round, true )
@@ -82,12 +82,7 @@ class Game < ActiveRecord::Base
       game2.save!
     end # each pair
   end
- 
-
-  def key
-    "#{team1.key}+#{team2.key}+#{play_at.strftime( "%Y-%m-%d" )}"
-  end
-  
+   
   def over?   # game over?
     play_at <= Time.now
   end
@@ -123,17 +118,17 @@ class Game < ActiveRecord::Base
     buf << 'game-team-draw '    if complete? && (score2 == score1)
     buf
   end
-  
-  def toto12x
+
+  def calc_toto12x
     if score1.nil? || score2.nil?
-      '-'
+      self.toto12x = nil
     elsif score1 == score2
-      'X'
+      self.toto12x = 'X'
     elsif score1 > score2
-      '1'
+      self.toto12x = '1'
     elsif score1 < score2
-      '2'
+      self.toto12x = '2'
     end
   end
-  
+
 end # class Game

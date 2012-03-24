@@ -10,9 +10,13 @@ Euro2012::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
 
   resources :jobs do
-    get 'calc',   :on => :collection
-    get 'export', :on => :collection
+    get 'calc',     :on => :collection
+    get 'export',   :on => :collection
+    get 'keys',     :on => :collection
+    get 'wipe_out', :on => :collection
   end
+  
+  resource :import, :only => [:create]
 
   resources :users
   resources :rounds

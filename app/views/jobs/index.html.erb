@@ -2,4 +2,25 @@
 
 <p><%= link_to 'Punkte Neu Berechnen', calc_jobs_path(), :class => 'btn-primary' %></p>
 
-<p><%= link_to 'Tipps Exportieren', export_jobs_path(), :class => 'btn-primary' %></p>
+<h2>Import/Export</h2>
+
+<p><%= link_to 'Update Import/Export Keys (Pool,Game,User)', keys_jobs_path(), :class => 'btn' %>
+  (Run Before Import/Export)
+</p>
+
+<p><%= link_to 'Export Plays & Tips', export_jobs_path(), :class => 'btn' %></p>
+
+<p><%= link_to 'Delete All Plays & Tips (DANGER!!)', wipe_out_jobs_path(), :class => 'btn' %></p>
+
+
+<h3>Import/Restore Backup Data</h3>
+
+<%= form_tag import_path() do %>
+
+<div>
+  <%= text_area_tag 'data', '', :rows => 8, :cols => 80 %>
+</div>
+<div>
+  <%= submit_tag 'Start Import', :class => 'btn' %>
+</div>
+<% end %>
