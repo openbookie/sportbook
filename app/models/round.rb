@@ -13,12 +13,8 @@
 
 
 class Round < ActiveRecord::Base
-  
-  ## todo/fix: rename table to rounds!!  
-  set_table_name 'game_groups'
-  
-  ## todo/fix: rename game_group_id to round_id!!!  
-  has_many :games, :order => 'pos', :foreign_key => 'game_group_id'
+    
+  has_many :games, :order => 'pos'
   belongs_to :event
   
   def calc?

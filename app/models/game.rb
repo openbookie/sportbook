@@ -26,8 +26,7 @@ class Game < ActiveRecord::Base
   belongs_to :team1, :class_name => 'Team', :foreign_key => 'team1_id'
   belongs_to :team2, :class_name => 'Team', :foreign_key => 'team2_id'
   
-  ## todo/fix: rename game_group_id to round_id!!!
-  belongs_to :round, :foreign_key => 'game_group_id'
+  belongs_to :round
 
   has_many   :tips
 

@@ -1,28 +1,30 @@
 class CreateDb < ActiveRecord::Migration
 
-  # todo: add index for foreign_keys
-
   def up
     
 create_table :teams do |t|
   t.string  :title, :null => false
-  t.string  :key,   :null => false
+  t.string  :key,   :null => false   # import/export key
   t.boolean :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
   t.string  :img
   t.timestamps
 end
 
+add_index :teams, :key, :unique => true
+
+
 create_table :events do |t|
-  t.string      :title, :null => false
-  t.string      :key,   :null => false
+  t.string      :title,   :null => false
+  t.string      :key,     :null => false   # import/export key
+  t.boolean     :team3,   :null => false, :default => true   ## e.g. Champions League has no 3rd place (only 1st and 2nd/final)
   t.datetime    :start_at   #  :null => false   --todo/fix: make not nullable 
-  ## e.g. Champions League has no 3rd place (only 1st and 2nd/final)
-  t.boolean :team3, :default => true  ## fix/todo: add :null => false
   t.timestamps  
 end
 
-### fix/todo: rename table to rounds
-create_table :game_groups do |t|
+add_index :events, :key, :unique => true 
+
+
+create_table :rounds do |t|
   t.references :event, :null => false
   t.string     :title, :null => false
   t.integer    :pos,   :null => false
@@ -30,14 +32,16 @@ create_table :game_groups do |t|
   t.timestamps
 end
 
+add_index :rounds, :event_id  # fk event_id index
+
+
 create_table :games do |t|
-  ### fix/todo: rename references game_group to rounds
-  t.references :game_group, :null => false
-  t.integer    :pos,        :null => false
-  t.references :team1,      :null => false
-  t.references :team2,      :null => false
-  t.datetime   :play_at,    :null => false
-  t.boolean    :knockout,   :null => false, :default => false
+  t.references :round,    :null => false
+  t.integer    :pos,      :null => false
+  t.references :team1,    :null => false
+  t.references :team2,    :null => false
+  t.datetime   :play_at,  :null => false
+  t.boolean    :knockout, :null => false, :default => false
   t.integer    :score1
   t.integer    :score2
   t.integer    :score3    # verlaengerung (opt)
@@ -46,15 +50,28 @@ create_table :games do |t|
   t.integer    :score6
   t.references :next_game  # for hinspiel bei rueckspiel in knockout game
   t.references :prev_game
+  t.string     :toto12x      # 1,2,X,nil  calculate on save
+  t.string     :key          # import/export key
   t.timestamps
 end
+
+add_index :games, :key, :unique => true 
+add_index :games, :round_id      # fk round_id index
+add_index :games, :next_game_id  # fk next_game_id index
+add_index :games, :prev_game_id  # fk next_game_id index
+
 
 create_table :users do |t|
   t.string :name, :null => false
   t.string :email
   t.string :password
+  t.string :key   # import/export key
   t.timestamps
 end
+
+add_index :users, :key,   :unique => true 
+add_index :users, :email, :unique => true   # make email unique
+
 
 create_table :pools do |t|
   t.references  :event, :null => false
@@ -62,20 +79,29 @@ create_table :pools do |t|
   t.references  :user,  :null => false  # owner/manager/admin of pool
   t.boolean     :fix,   :null => false, :default => false
   t.text        :welcome
-  t.string      :key
+  t.string      :key   # import/export key
   t.timestamps
 end
 
-### fix/todo: rename table to plays
-create_table :pools_users do |t|
+add_index :pools, :key,   :unique => true 
+add_index :pools, :event_id
+add_index :pools, :user_id
+
+
+create_table :plays do |t|
   t.references :user, :null => false
   t.references :pool, :null => false
   t.references :team1   # winner (1st)
   t.references :team2   # runnerup (2nd)
   t.references :team3   # 2n runnerup (3nd)
-  t.integer    :points, :default => 0     # cache players points  
+  t.integer    :points, :null => false, :default => 0     # cache players points  
   t.timestamps
 end
+
+add_index :plays, [:user_id,:pool_id], :unique => true  # enforce only one play per user and pool
+add_index :plays, :user_id
+add_index :plays, :pool_id
+
 
 create_table :tips do |t|
   t.references :user, :null => false
@@ -86,9 +112,16 @@ create_table :tips do |t|
   t.integer    :score3    # verlaengerung (opt)
   t.integer    :score4
   t.integer    :score5    # elfmeter (opt)
-  t.integer    :score6  
+  t.integer    :score6
+  t.string     :toto12x      # 1,2,X,nil  calculate on save
   t.timestamps
 end
+
+add_index :tips, [:user_id,:pool_id,:game_id], :unique => true 
+add_index :tips, :user_id
+add_index :tips, :pool_id
+add_index :tips, :game_id
+
 
 # todo: remove id from join table (without extra fields)? why?? why not??
 create_table :events_teams do |t|
@@ -96,6 +129,9 @@ create_table :events_teams do |t|
   t.references :team,  :null => false
   t.timestamps
 end
+
+add_index :events_teams, [:event_id,:team_id], :unique => true 
+add_index :events_teams, :event_id
 
   end
 
