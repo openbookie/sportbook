@@ -18,11 +18,13 @@ Euro2012::Application.routes.draw do
   
   resource :import, :only => [:create]
 
+  resources :tips, :only => [:index]  # todo: move to games/and games to admin_games
+  
   resources :users
   resources :rounds
   resources :games
   resources :teams
-  resources :plays      
+  resources :plays
   
   resources :events do
     post 'add_team_to', :on => :member

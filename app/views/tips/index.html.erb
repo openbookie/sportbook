@@ -1,0 +1,93 @@
+<% content_for :breadcrumb do %>
+  <%= link_to 'Wettpools', pools_path() %> ›
+  <%= "#{@game.team1.title} - #{@game.team2.title}" %>
+<% end %>
+
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+      <h1><%= @game.team1.title %>
+          <%= image_tag( @game.team1.img ) if @game.team1.img.present? %>
+           -
+          <%= image_tag( @game.team2.img ) if @game.team2.img.present? %>
+          <%= @game.team2.title %>
+      </h1>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+    </td>
+  </tr>
+</table>
+
+<p><%= @game.play_at_str %></p>
+
+<p><%= @game.round.event.title %> / <%= @game.round.title %></p>
+
+<table style='border: 1px solid silver;' cellspacing='0' cellpadding='6px'>
+  <tr style='text-align: center; background-color: silver;'>
+    <td>1</td>
+    <td>X</td>
+    <td>2</td>
+    <td></td>
+  </tr>
+  <tr style='text-align: center;'>
+    <td><span class='larger'><%= @tip_1_count %></span></td>
+    <td><span class='larger'><%= @tip_x_count %></span></td>
+    <td><span class='larger'><%= @tip_2_count %></span></td>
+    <td><span class='smaller'>Tipps</span></td>
+  </tr>
+  <tr style='text-align: center;'>
+    <td><%= (@tip_1_count*100/@tip_12x_count) if @tip_12x_count > 0 %>%</td>
+    <td><%= (@tip_x_count*100/@tip_12x_count) if @tip_12x_count > 0 %>%</td>
+    <td><%= (@tip_2_count*100/@tip_12x_count) if @tip_12x_count > 0 %>%</td>
+  </tr>
+</table>
+
+<% if @complete_tips.count > 0 %>
+<p><%= @complete_tips.count %> Tipps</p>
+
+<table>
+  <% @complete_tips.each do |tip| %>
+    <tr>
+      <td>
+       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+      </td>
+      <td style='text-align: center;'>
+        <span class='<%= tip.bingo_style_class %>'>
+         <%= tip.score_str %>
+        </span>
+      </td>
+      <td>
+         <span class='<%= hl_style_for_user(tip.user) %>'>
+           <%= tip.user.name %>
+         </span>
+      </td>
+    </tr>
+  <% end %><!-- each tip -->
+</table>
+<% end %>
+
+<% if @incomplete_tips.count > 0 %>
+<p><%= @incomplete_tips.count %> Ungültige Tipps</p>
+
+<table>
+  <% @incomplete_tips.each do |tip| %>
+    <tr>
+      <td>
+       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+      </td>
+      <td style='text-align: center;'>
+        <span class='<%= tip.bingo_style_class %>'>
+         <%= tip.score_str %>
+        </span>
+      </td>
+      <td>
+         <span class='<%= hl_style_for_user(tip.user) %>'>
+           <%= tip.user.name %>
+         </span>
+      </td>
+    </tr>
+  <% end %><!-- each tip -->
+</table>
+<% end %>
