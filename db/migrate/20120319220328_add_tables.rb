@@ -16,7 +16,7 @@ change_table :users do |t|
   t.string  :key
 end
 
-
+=begin
 create_table :days do |t|    # Spieltage (1.Spieltag, 2.Spieltag, etc.)
   t.references :event,    :null => false
   t.integer    :pos,      :null => false     # 1,2,3,4, etc.
@@ -32,7 +32,8 @@ create_table :groups do |t|     # Teamgruppe (zB Gruppe A, Gruppe B, etc.)
 end
     
 #### todo: add posts or comments table
-    
+=end
+
   end
 
   def down
