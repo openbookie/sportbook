@@ -1,6 +1,9 @@
 
 ## Major
 
+* add styles for print for bingo classes
+* add index on tip.toto12x
+
 * add export to JobsController (use keys for export tips in csv/plain text)
 * Use de locale
 * add next player/previous player nav
@@ -13,6 +16,7 @@
 
 * add google analytics to layout
 * use class buttons plus div for buttons to remove in print 
+* change Key in form to Import/Export Key (only used for import/export)
 
 ## Cleanup
 

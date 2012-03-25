@@ -6,7 +6,36 @@
  <%= link_to @user.name, edit_play_path( @play ) %>
 <% end %>
 
-<h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
+<!-- add hotkey handler for quick tip autofill -->
+<script>
+ $(document).ready( function() {  
+  $(document).on( 'keydown', function( event ) {
+    if( (event.ctrlKey && event.which == 81) ||
+        (event.which == 81) )  // ASCII 81 = Q
+    {
+       event.preventDefault();
+       autofillPlayTips();
+       return false;  // todo: check if return false is  needed?
+     }
+  });
+});
+</script>
+
+
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+       <h1><%= @user.name %> - <%=  @pool.full_title %> Tipps</h1>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+        <%= link_to 'Quick Tipp (Auto-Fill)', '#', :class => 'btn', :onclick => 'autofillPlayTips();' %>
+    </td>
+  </tr>
+</table>
+
+
 
 
 
@@ -70,19 +99,19 @@
        <td colspan='2'></td>
        <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
        <% if tip.present? %>
-         <td>
+         <td class='tip-score-input'>
   <%= f.fields_for 'tips[]', tip do |ff| %>
      <%= ff.hidden_field :user_id %>
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
      <% if first_field %>
-       <%= ff.text_field :score1, :size => 1, :data => { :autofocus => 'true' } %>
+       <%= ff.text_field :score1, :size => 1, :data => { :autofocus => 'true', :knockout => game.knockout, :autofill => 'score1' } %>
        <% first_field = false %>
       <% else %>
-       <%= ff.text_field :score1, :size => 1 %>
+       <%= ff.text_field :score1, :size => 1, :data => { :knockout => game.knockout, :autofill => 'score1' } %>
       <% end %>
        :
-     <%= ff.text_field :score2, :size => 1 %>
+     <%= ff.text_field :score2, :size => 1, :data => { :knockout => game.knockout, :autofill => 'score2' } %>
   <% end %><!-- fields_for tips -->
        </td>
        <% else %><!-- tip.present? -->
