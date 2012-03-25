@@ -1,0 +1,48 @@
+
+<% if game.complete_tips.count > 0 %>
+<p><%= game.complete_tips.count %> Tipps</p>
+
+<table>
+  <% game.complete_tips.each do |tip| %>
+    <tr>
+      <td>
+       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+      </td>
+      <td style='text-align: center;'>
+        <span class='<%= tip.bingo_style_class %>'>
+         <%= tip.score_str %>
+        </span>
+      </td>
+      <td>
+         <span class='<%= hl_style_for_user(tip.user) %>'>
+           <%= tip.user.name %>
+         </span>
+      </td>
+    </tr>
+  <% end %><!-- each tip -->
+</table>
+<% end %>
+
+<% if game.incomplete_tips.count > 0 %>
+<p><%= game.incomplete_tips.count %> Ungültige Tipps</p>
+
+<table>
+  <% game.incomplete_tips.each do |tip| %>
+    <tr>
+      <td>
+       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+      </td>
+      <td style='text-align: center;'>
+        <span class='<%= tip.bingo_style_class %>'>
+         <%= tip.score_str %>
+        </span>
+      </td>
+      <td>
+         <span class='<%= hl_style_for_user(tip.user) %>'>
+           <%= tip.user.name %>
+         </span>
+      </td>
+    </tr>
+  <% end %><!-- each tip -->
+</table>
+<% end %>

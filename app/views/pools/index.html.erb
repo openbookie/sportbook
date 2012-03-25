@@ -25,7 +25,7 @@
     <%= game.play_at_str %>
   </td>
   <td style='text-align: right;'>
-    <%= link_to game.team1.title, tips_path( :game_id => game.id ) %>
+    <%= link_to game.team1.title, live_game_path( game.id ) %>
   </td>
   <td>
     <%= image_tag( game.team1.img ) if game.team1.img.present? %>
@@ -35,7 +35,7 @@
     <%= image_tag( game.team2.img ) if game.team2.img.present? %>
   </td>
   <td>
-    <%= link_to game.team2.title, tips_path( :game_id => game.id ) %>
+    <%= link_to game.team2.title, live_game_path( game.id ) %>
   </td>
     <% tips = game.tips.where( :user_id => current_user_id() ).all %>
   

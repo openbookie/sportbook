@@ -135,5 +135,31 @@ class Game < ActiveRecord::Base
   def play_at_str
     play_at.strftime( "%a. %d. %b. / %H:%M" )
   end
+  
+  ############ some methods for stats
+  
+  def complete_tips
+    tips.where( 'toto12x is not null' )
+  end
+  
+  def incomplete_tips
+    tips.where( 'toto12x is null' )
+  end
+  
+  def tip_1_count
+    complete_tips.where( :toto12x => '1' ).count()
+  end
+  
+  def tip_2_count
+    complete_tips.where( :toto12x => '2' ).count()
+  end
+  
+  def tip_x_count
+    complete_tips.where( :toto12x => 'X' ).count()
+  end
+  
+  def tip_12x_count
+    complete_tips.count()
+  end
 
 end # class Game

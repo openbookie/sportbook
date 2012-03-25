@@ -1,0 +1,14 @@
+<% content_for :breadcrumb do %>
+  <%= link_to 'Wettpools', pools_path() %> ›
+   Live
+<% end %>
+
+<% @games.each do |game| %>
+
+  <%= render :partial => 'game',     :locals => { :game  => game } %>
+  
+  <% if @show_tips %>
+    <%= render :partial => 'game_tips', :locals => { :game  => game } %>
+  <% end %>
+  
+<% end %><!-- each game -->

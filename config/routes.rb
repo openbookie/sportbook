@@ -6,6 +6,10 @@ Euro2012::Application.routes.draw do
   match 'about',    :to => 'pages#about'
   match 'home',     :to => 'pages#home'
   match 'style',    :to => 'pages#style'     # testpage for styles (css)
+
+  match 'live',          :to => 'live#index'
+  match 'live/:game_id', :to => 'live#show', :as => :live_game
+
   
   resource :session, :only => [:new, :create, :destroy]
 
@@ -17,8 +21,6 @@ Euro2012::Application.routes.draw do
   end
   
   resource :import, :only => [:create]
-
-  resources :tips, :only => [:index]  # todo: move to games/and games to admin_games
   
   resources :users
   resources :rounds

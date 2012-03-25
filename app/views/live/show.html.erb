@@ -1,0 +1,9 @@
+<% content_for :breadcrumb do %>
+  <%= link_to 'Wettpools', pools_path() %> ›
+   Live <%= "#{@game.team1.title} - #{@game.team2.title}" %>
+<% end %>
+
+<%= render :partial => 'game',     :locals => { :game  => @game } %>
+  
+<%= render :partial => 'game_tips', :locals => { :game  => @game } %>
+

@@ -1,0 +1,41 @@
+
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+      <h1><%= game.team1.title %>
+          <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+           -
+          <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+          <%= game.team2.title %>
+      </h1>
+    </td>
+    <!-- right -->
+    <td style='text-align: right;'>
+    </td>
+  </tr>
+</table>
+
+<p><%= game.play_at_str %></p>
+
+<p><%= game.round.event.title %> / <%= game.round.title %></p>
+
+<table style='border: 1px solid silver;' cellspacing='0' cellpadding='6px'>
+  <tr style='text-align: center; background-color: silver;'>
+    <td>1</td>
+    <td>X</td>
+    <td>2</td>
+    <td></td>
+  </tr>
+  <tr style='text-align: center;'>
+    <td><span class='larger'><%= game.tip_1_count %></span></td>
+    <td><span class='larger'><%= game.tip_x_count %></span></td>
+    <td><span class='larger'><%= game.tip_2_count %></span></td>
+    <td><span class='smaller'>Tipps</span></td>
+  </tr>
+  <tr style='text-align: center;'>
+    <td><%= (game.tip_1_count*100/game.tip_12x_count) if game.tip_12x_count > 0 %>%</td>
+    <td><%= (game.tip_x_count*100/game.tip_12x_count) if game.tip_12x_count > 0 %>%</td>
+    <td><%= (game.tip_2_count*100/game.tip_12x_count) if game.tip_12x_count > 0 %>%</td>
+  </tr>
+</table>
