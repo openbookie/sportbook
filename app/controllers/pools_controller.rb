@@ -9,7 +9,7 @@ class PoolsController < ApplicationController
     limit = params[:limit] || '4'
     
     @upcoming_games = Game.where( 'play_at > ?', Time.now ).order( 'play_at').limit(limit)
-    
+    @past_games     = Game.where( 'play_at < ?', Time.now ).order( 'play_at desc').limit(limit)
   end
   
   # GET /pools/new

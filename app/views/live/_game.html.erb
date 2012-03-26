@@ -6,18 +6,24 @@
 </p>
 
 <h1 class='live'>
+  <table>
+    <tr>
+      <td style='min-width: 360px; text-align: right;'>
   <span class='<%= game.team1_style_class %>'>
     <%= game.team1.title %>
   </span>
     <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-    
-    <%= game.score_str %>
-
+      </td>
+      <td>
+        <%= game.score_str %>
+      </td>
+    <td>
     <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-
     <span class='<%= game.team2_style_class %>'>
       <%= game.team2.title %>
     </span>
+    </td>
+  </table>
 </h1>
 
 
