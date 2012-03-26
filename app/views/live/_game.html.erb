@@ -1,41 +1,55 @@
 
-<table width='100%' cellspacing=0>
-  <tr>
-    <!-- left -->
-    <td>
-      <h1><%= game.team1.title %>
-          <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-           -
-          <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-          <%= game.team2.title %>
-      </h1>
-    </td>
-    <!-- right -->
-    <td style='text-align: right;'>
-    </td>
-  </tr>
-</table>
 
-<p><%= game.play_at_str %></p>
+<p><%= game.play_at_str %>, 
 
-<p><%= game.round.event.title %> / <%= game.round.title %></p>
+   <%= game.round.event.title %> / <%= game.round.title %>
+</p>
+
+<h1 class='live'>
+  <span class='<%= game.team1_style_class %>'>
+    <%= game.team1.title %>
+  </span>
+    <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+    
+    <%= game.score_str %>
+
+    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+
+    <span class='<%= game.team2_style_class %>'>
+      <%= game.team2.title %>
+    </span>
+</h1>
+
+
+<% if game.complete_tips.count > 0 %>
 
 <table style='border: 1px solid silver;' cellspacing='0' cellpadding='6px'>
   <tr style='text-align: center; background-color: silver;'>
-    <td>1</td>
-    <td>X</td>
-    <td>2</td>
+    <td style='min-width: 250px;'>1</td>
+    <td style='min-width: 250px;'>X</td>
+    <td style='min-width: 250px;'>2</td>
     <td></td>
   </tr>
   <tr style='text-align: center;'>
-    <td><span class='larger'><%= game.tip_1_count %></span></td>
-    <td><span class='larger'><%= game.tip_x_count %></span></td>
-    <td><span class='larger'><%= game.tip_2_count %></span></td>
-    <td><span class='smaller'>Tipps</span></td>
+    <td><span class='larger <%= game.tip_1_style_class %>'><%= game.tip_1_count %></span></td>
+    <td><span class='larger <%= game.tip_x_style_class %>'><%= game.tip_x_count %></span></td>
+    <td><span class='larger <%= game.tip_2_style_class %>'><%= game.tip_2_count %></span></td>
+    <td><span class='smaller'>(<%= game.tip_12x_count %> Tipps)</span></td>
   </tr>
   <tr style='text-align: center;'>
-    <td><%= (game.tip_1_count*100/game.tip_12x_count) if game.tip_12x_count > 0 %>%</td>
-    <td><%= (game.tip_x_count*100/game.tip_12x_count) if game.tip_12x_count > 0 %>%</td>
-    <td><%= (game.tip_2_count*100/game.tip_12x_count) if game.tip_12x_count > 0 %>%</td>
+    <td><span class='larger <%= game.tip_1_style_class %>'>
+           <%= (game.tip_1_count*100/game.tip_12x_count) %>%
+        </span>
+    </td>
+    <td><span class='larger <%= game.tip_x_style_class %>'>
+          <%= (game.tip_x_count*100/game.tip_12x_count) %>%
+        </span>
+    </td>
+    <td><span class='larger <%= game.tip_2_style_class %>'>
+        <%= (game.tip_2_count*100/game.tip_12x_count) %>%
+       </span>
+    </td>
   </tr>
 </table>
+
+<% end %><!-- if game.complete_tips.count > 0 -->

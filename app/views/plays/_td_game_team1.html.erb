@@ -1,6 +1,6 @@
 <td class='game-team1'>
   <span class='<%= game.team1_style_class %>'>
-    <%= game.team1.title %>
+    <%= link_to game.team1.title, live_game_path(game.id) %>
   </span>
   <%= image_tag( game.team1.img ) if game.team1.img.present? %>
 </td>

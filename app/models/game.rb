@@ -96,6 +96,10 @@ class Game < ActiveRecord::Base
     score1.present? && score2.present?
   end
   
+  def score_str
+    "#{score1_str} : #{score2_str}"
+  end
+  
   def score1_str
     if score1.blank? then '-' else score1.to_s end
   end
@@ -132,6 +136,19 @@ class Game < ActiveRecord::Base
     end
   end
   
+  def tip_1_style_class
+    toto12x == '1' ? ' bingo ' : ' '
+  end
+  
+  def tip_2_style_class
+    toto12x == '2' ? ' bingo ' : ' '
+  end
+  
+  def tip_x_style_class
+    toto12x == 'X' ? ' bingo ' : ' '
+  end
+  
+  
   def play_at_str
     play_at.strftime( "%a. %d. %b. / %H:%M" )
   end
@@ -141,6 +158,19 @@ class Game < ActiveRecord::Base
   def complete_tips
     tips.where( 'toto12x is not null' )
   end
+
+  def complete_tips_1
+    tips.where( 'toto12x is not null' ).where( :toto12x => '1' ).order( 'score1 desc,score2 desc')
+  end
+
+  def complete_tips_2
+    tips.where( 'toto12x is not null' ).where( :toto12x => '2' ).order( 'score2 desc,score1 desc')
+  end
+  
+  def complete_tips_x
+    tips.where( 'toto12x is not null' ).where( :toto12x => 'X' ).order( 'score1 desc,score2 desc')
+  end
+  
   
   def incomplete_tips
     tips.where( 'toto12x is null' )

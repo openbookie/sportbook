@@ -1,30 +1,61 @@
 
 <% if game.complete_tips.count > 0 %>
-<p><%= game.complete_tips.count %> Tipps</p>
 
-<table>
-  <% game.complete_tips.each do |tip| %>
-    <tr>
-      <td>
-       <%= "(#{tip.toto12x})" if tip.toto12x  %>
-      </td>
-      <td style='text-align: center;'>
-        <span class='<%= tip.bingo_style_class %>'>
-         <%= tip.score_str %>
-        </span>
-      </td>
-      <td>
-         <span class='<%= hl_style_for_user(tip.user) %>'>
-           <%= tip.user.name %>
-         </span>
-      </td>
-    </tr>
-  <% end %><!-- each tip -->
+<table cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td style='min-width: 250px;'>
+      <ul class='none'>
+         <% game.complete_tips_1.each do |tip| %>
+            <li>
+              <span class='<%= tip.bingo_style_class %>'>
+                <%= tip.score_str %>
+              </span>
+              <span class='<%= hl_style_for_user(tip.user) %>'>
+                <%= tip.user.name %>
+              </span>
+            </li>
+         <% end %>
+      </ul>
+    </td>
+    <!-- middle -->
+    <td style='min-width: 250px;'>
+      <ul class='none'>
+         <% game.complete_tips_x.each do |tip| %>
+            <li>
+              <span class='<%= tip.bingo_style_class %>'>
+                <%= tip.score_str %>
+              </span>
+              <span class='<%= hl_style_for_user(tip.user) %>'>
+                <%= tip.user.name %>
+              </span>
+            </li>
+         <% end %>
+      </ul>
+    </td>
+    <!-- right -->
+    <td style='min-width: 250px;'>
+      <ul class='none'>
+         <% game.complete_tips_2.each do |tip| %>
+            <li>
+              <span class='<%= tip.bingo_style_class %>'>
+                <%= tip.score_str %>
+              </span>
+              <span class='<%= hl_style_for_user(tip.user) %>'>
+                <%= tip.user.name %>
+              </span>
+            </li>
+         <% end %>
+      </ul>
+    </td>
+  </tr>
 </table>
-<% end %>
+
+<% end %><!-- if game.complete_tips.count > 0 -->
+
 
 <% if game.incomplete_tips.count > 0 %>
-<p><%= game.incomplete_tips.count %> Ungültige Tipps</p>
+<p><!-- <%= game.incomplete_tips.count %>--> Ungültige Tipps</p>
 
 <table>
   <% game.incomplete_tips.each do |tip| %>
@@ -45,4 +76,4 @@
     </tr>
   <% end %><!-- each tip -->
 </table>
-<% end %>
+<% end %><!-- if game.incomplete_tips.count > 0  -->
