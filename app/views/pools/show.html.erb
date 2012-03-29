@@ -68,3 +68,47 @@
   <% last_points = play.points %>
 <% end %><!-- each plays -->
 </table>
+
+<!-- todo/fix: use better lookup for rounds (e.g. use round.over? round.past? or similar??) -->
+<% @pool.event.rounds.where( :calc => false ).order( 'pos desc').each do |round| %>
+
+<h3>Runde <%= round.pos %> / <%= round.title %></h3>
+
+<table width='100%' cellspacing=0>
+  <tr>
+    <!-- left -->
+    <td>
+  <!-- runden ergebnis -->
+
+    <table>
+  <% Point.where( :pool_id => @pool.id, :round_id => round.id ).order( 'round_pts desc').each do |ranking| %>
+      <tr>
+        <td><%= ranking.round_pos %>.</td>
+        <td><%= ranking.user.name %></td>
+        <td><%= ranking.round_pts %> Punkte</td>
+      </tr>
+  <% end %>
+     </table>
+     
+    </td>
+    <!-- right -->
+    <td>
+  <!-- gesamt ergebnis -->
+
+    <table>
+  <% Point.where( :pool_id => @pool.id, :round_id => round.id ).order( 'total_pts desc').each do |ranking| %>
+      <tr>
+        <td><%= ranking.total_pos %>.</td>
+        <td><%= ranking.diff_total_pos_str %></td>
+        <td><%= ranking.user.name %></td>
+        <td><%= ranking.total_pts %> Punkte</td>
+      </tr>
+  <% end %>
+     </table>     
+      
+    </td>
+  </tr>
+</table>
+
+
+<% end %><!-- each rounds -->

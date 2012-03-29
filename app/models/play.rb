@@ -25,10 +25,16 @@ class Play < ActiveRecord::Base
   
   ## todo/fix: can it be done w/ a has_many macro and a condition?
   def tips
-    recs = Tip.where( :pool_id => pool.id, :user_id => user_id ).all
+    recs = Tip.where( :pool_id => pool_id, :user_id => user_id ).all
     recs
   end
-  
+
+  ## todo/fix: can it be done w/ a has_many macro and a condition?
+  def complete_rankings  # fix rename to points and remove points column from play table??
+    recs = Point.where( :pool_id => pool_id, :user_id => user_id ).joins( :round ).where('rounds.calc=?', false).order('rounds.pos').all
+    recs
+  end
+
   def export?
     # check if user entered some data
     # - do NOT export nil records (all teams blank)

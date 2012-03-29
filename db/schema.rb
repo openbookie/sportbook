@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325134340) do
+ActiveRecord::Schema.define(:version => 20120329002301) do
 
   create_table "days", :force => true do |t|
     t.integer  "event_id",   :null => false
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(:version => 20120325134340) do
   add_index "plays", ["pool_id"], :name => "index_plays_on_pool_id"
   add_index "plays", ["user_id", "pool_id"], :name => "index_plays_on_user_id_and_pool_id", :unique => true
   add_index "plays", ["user_id"], :name => "index_plays_on_user_id"
+
+  create_table "points", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.integer  "pool_id",                       :null => false
+    t.integer  "round_id",                      :null => false
+    t.integer  "round_pts",      :default => 0, :null => false
+    t.integer  "round_pos",      :default => 0, :null => false
+    t.integer  "total_pts",      :default => 0, :null => false
+    t.integer  "total_pos",      :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "diff_total_pos", :default => 0, :null => false
+    t.integer  "diff_total_pts", :default => 0, :null => false
+  end
 
   create_table "pools", :force => true do |t|
     t.integer  "event_id",                      :null => false
