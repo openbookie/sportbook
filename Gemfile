@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
+gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
+
 
 group :production do
   gem 'pg'
+  gem 'thin'    # use faster multiplexed (w/ eventmachine) web server 
 end
 
 group :development do
