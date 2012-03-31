@@ -10,6 +10,7 @@ Euro2012::Application.routes.draw do
   match 'live',          :to => 'live#index'
   match 'live/:game_id', :to => 'live#show', :as => :live_game
 
+  match 'time',          :to => 'time#index'
   
   resource :session, :only => [:new, :create, :destroy]
 

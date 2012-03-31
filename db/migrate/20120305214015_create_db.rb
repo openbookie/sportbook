@@ -170,6 +170,22 @@ create_table :groups do |t|     # Teamgruppe (zB Gruppe A, Gruppe B, etc.)
   t.timestamps
 end
 
+
+## todo: use polymorphic assoc?? for actions??
+##  what references to include?
+
+create_table :actions do |t|
+  t.text       :text
+  t.string     :tmpl  # template??
+  t.references :user
+  t.references :event
+  t.references :pool
+  t.references :game
+  t.references :tip
+  t.timestamps
+end
+
+
 #### todo: add posts or comments table
 
 

@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(:version => 20120305214015) do
 
+  create_table "actions", :force => true do |t|
+    t.text     "text"
+    t.string   "tmpl"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "pool_id"
+    t.integer  "game_id"
+    t.integer  "tip_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "days", :force => true do |t|
     t.integer  "event_id",   :null => false
     t.integer  "pos",        :null => false

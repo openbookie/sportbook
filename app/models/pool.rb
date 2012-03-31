@@ -24,6 +24,21 @@ class Pool < ActiveRecord::Base
 
   belongs_to :event
   
+  after_create :log_action_create
+  
+  def log_action_create
+    a = Action.new
+
+    a.user_id = user_id
+    a.pool_id = id
+    a.tmpl    = 'pool-create'
+    a.text    = "#{user.name} managt Wettpool >#{full_title}<. Mach mit! Tipp mit!"
+
+    a.save!
+  end
+  
+  
+  
   def full_title
     "#{title} #{event.title} #{fix? ? 'Fix' : 'Flex'}"
   end

@@ -26,6 +26,7 @@ class Tip < ActiveRecord::Base
   belongs_to :game
 
   before_save :calc_toto12x
+  after_save  :log_action
 
   
   ## todo: rename to find_by_play_and_game ????
@@ -33,6 +34,25 @@ class Tip < ActiveRecord::Base
     recs = self.where( :user_id => user_arg.id, :pool_id => pool_arg.id, :game_id => game_arg.id )
     recs.first
   end
+    
+    
+  def log_action
+    # add news feed item after save
+    
+    # only log complete tips
+    return if toto12x.nil?
+    
+    a = Action.new
+
+    a.user_id = user_id
+    a.tip_id  = id
+    a.tmpl    = 'tip'
+    a.text    = "#{user.name} tippt [#{toto12x}] #{game.team1.title} #{score1}:#{score2} #{game.team2.title}"
+
+    a.save!
+  end
+    
+    
     
   def export?
     # check if user entered some data
@@ -128,7 +148,7 @@ class Tip < ActiveRecord::Base
       self.toto12x = '2'
     end
   end
-
+  
 
   def complete?
     game.score1.present? && game.score2.present? && score1.present? && score2.present?

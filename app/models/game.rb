@@ -33,6 +33,7 @@ class Game < ActiveRecord::Base
   has_many   :tips
 
   before_save :calc_toto12x
+  after_save :log_action
 
   def self.create_knockouts_from_ary!( games, round )
     Game.create_from_ary!( games, round, true )
@@ -193,5 +194,22 @@ class Game < ActiveRecord::Base
   def tip_12x_count
     complete_tips.count()
   end
+
+  def log_action
+    # add news feed item after save
+    
+    # only log complete tips
+    return if toto12x.nil?
+    
+    a = Action.new
+
+    a.game_id = id
+    a.tmpl    = 'game'
+    a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score1}:#{score2} #{team2.title}"
+
+    a.save!
+  end
+
+
 
 end # class Game

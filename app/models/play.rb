@@ -24,6 +24,20 @@ class Play < ActiveRecord::Base
   belongs_to :team2, :class_name => 'Team', :foreign_key => 'team2_id'
   belongs_to :team3, :class_name => 'Team', :foreign_key => 'team3_id'
   
+  after_create :log_action_create
+  
+  def log_action_create
+    a = Action.new
+
+    a.user_id = user_id
+    a.pool_id = pool_id
+    a.tmpl    = 'play-create'
+    a.text    = "#{user.name} tippt mit im Wettpool >#{pool.full_title}<. Willkommen!"
+
+    a.save!
+  end
+  
+  
   ## todo/fix: can it be done w/ a has_many macro and a condition?
   def tips
     recs = Tip.where( :pool_id => pool_id, :user_id => user_id ).all
