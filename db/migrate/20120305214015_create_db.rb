@@ -94,7 +94,10 @@ create_table :plays do |t|
   t.references :team1   # winner (1st)
   t.references :team2   # runnerup (2nd)
   t.references :team3   # 2n runnerup (3nd)
-  t.integer    :points, :null => false, :default => 0     # cache players points  
+
+  t.integer    :total_pts, :null => false, :default => 0   # cached total player points 
+  t.integer    :total_pos, :null => false, :default => 0   # cached total ranking/position 
+
   t.timestamps
 end
 
@@ -132,6 +135,43 @@ end
 
 add_index :events_teams, [:event_id,:team_id], :unique => true 
 add_index :events_teams, :event_id
+
+
+create_table :points do |t|
+  t.references :user,  :null => false
+  t.references :pool,  :null => false
+  t.references :round, :null => false
+  
+  t.integer    :round_pts, :null => false, :default => 0   # points for this round
+  t.integer    :round_pos, :null => false, :default => 0   # ranking/position for this round
+
+  t.integer    :total_pts, :null => false, :default => 0   # total points up to(*) this round (including)  (* rounds sorted by pos)
+  t.integer    :total_pos, :null => false, :default => 0   # ranking/position for points up to this round
+
+  t.integer    :diff_total_pos, :null => false, :default => 0
+  
+  t.timestamps
+end
+
+add_index :points, [:user_id,:pool_id,:round_id], :unique => true 
+
+
+create_table :days do |t|    # Spieltage (1.Spieltag, 2.Spieltag, etc.)
+  t.references :event,    :null => false
+  t.integer    :pos,      :null => false     # 1,2,3,4, etc.
+  t.date       :play_on,  :null => false     # _at for datetime, _on for date ???
+  t.timestamps
+end
+    
+create_table :groups do |t|     # Teamgruppe (zB Gruppe A, Gruppe B, etc.)
+  t.references :event,    :null => false
+  t.string     :title,    :null => false
+  ## add pos ?? or key??  
+  t.timestamps
+end
+
+#### todo: add posts or comments table
+
 
   end
 

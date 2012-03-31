@@ -1,16 +1,17 @@
 # == Schema Information
 #
-# Table name: pools_users
+# Table name: plays
 #
 #  id         :integer         not null, primary key
 #  user_id    :integer         not null
 #  pool_id    :integer         not null
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
 #  team1_id   :integer
 #  team2_id   :integer
 #  team3_id   :integer
-#  points     :integer
+#  total_pts  :integer         default(0), not null
+#  total_pos  :integer         default(0), not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 

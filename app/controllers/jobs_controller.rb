@@ -99,7 +99,7 @@ class JobsController < ApplicationController
           
         end # each round
       
-        play.points = play_pts
+        play.total_pts = play_pts
         play.save!
       
       end # each play (that is, user)
@@ -169,7 +169,7 @@ class JobsController < ApplicationController
           ## get new ranking  --- find a better (simpler) way
           ranking2 = Point.find( ranking.id )
           ranking2.diff_total_pos = ranking.diff_total_pos
-          ranking2.save!     
+          ranking2.save!
 
           txt << "[#{i+1}] #{ranking.round_pts} #{ranking.diff_total_pos_str} "
           
@@ -185,31 +185,6 @@ class JobsController < ApplicationController
     render :text => "<pre>#{txt}</pre>"
   end
   
-  
-  def calc_old
-    txt = ">> Recalc Points (#{Time.now}):\r\n"
-    
-    Pool.all.each do |pool|
-      txt << "\r\n=== #{pool.full_title} (#{pool.key}) ===\r\n\r\n"
-      pool.plays.each do |play|
-        txt << "#{play.user.name} (#{play.user.key}):  "
-        pts = 0
-        play.tips.each do |tip|
-          tip_pts = tip.calc_points
-          pts += tip_pts
-          txt << "#{tip_pts} "
-        end
-        play.points = pts
-        txt << " => #{pts} pts\r\n"
-        play.save!
-      end  # each play
-    end  # each pool
-    
-    txt << "\r\n<< DONE - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips."
-    
-    render :text => "<pre>#{txt}</pre>"
-    # render :text => txt, :content_type => 'text/plain'
-  end
   
   def export
     ## todo/use csv for export ???

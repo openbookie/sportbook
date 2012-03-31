@@ -10,12 +10,13 @@
 #  game_id    :integer         not null
 #  score1     :integer
 #  score2     :integer
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
 #  score3     :integer
 #  score4     :integer
 #  score5     :integer
 #  score6     :integer
+#  toto12x    :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 class Tip < ActiveRecord::Base

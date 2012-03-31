@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330163625) do
+ActiveRecord::Schema.define(:version => 20120305214015) do
 
   create_table "days", :force => true do |t|
     t.integer  "event_id",   :null => false
@@ -81,7 +81,8 @@ ActiveRecord::Schema.define(:version => 20120330163625) do
     t.integer  "team1_id"
     t.integer  "team2_id"
     t.integer  "team3_id"
-    t.integer  "points",     :default => 0, :null => false
+    t.integer  "total_pts",  :default => 0, :null => false
+    t.integer  "total_pos",  :default => 0, :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -98,11 +99,12 @@ ActiveRecord::Schema.define(:version => 20120330163625) do
     t.integer  "round_pos",      :default => 0, :null => false
     t.integer  "total_pts",      :default => 0, :null => false
     t.integer  "total_pos",      :default => 0, :null => false
+    t.integer  "diff_total_pos", :default => 0, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.integer  "diff_total_pos", :default => 0, :null => false
-    t.integer  "diff_total_pts", :default => 0, :null => false
   end
+
+  add_index "points", ["user_id", "pool_id", "round_id"], :name => "index_points_on_user_id_and_pool_id_and_round_id", :unique => true
 
   create_table "pools", :force => true do |t|
     t.integer  "event_id",                      :null => false
