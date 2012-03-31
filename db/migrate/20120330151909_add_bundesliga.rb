@@ -4,7 +4,7 @@ class AddBundesliga < ActiveRecord::Migration
 
   def up
 
-bl = Event.create!( :title => 'Österreichische Bundesliga 2012', :key => 'bl' )
+bl = Event.create!( :title => 'Österr. Bundesliga 2012', :key => 'bl' )
 
 ## already setup in ofb cup 2012
 #

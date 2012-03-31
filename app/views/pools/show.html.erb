@@ -30,9 +30,6 @@
 </table>
 
 
-
-
-
 <p>
   Manager <%= @pool.user.name %>,
   <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", plays_path( :pool_id => @pool.id ) %>
@@ -41,53 +38,48 @@
 <p><%= @pool.welcome %></p>
 
 
-<table>
-<% ranking=-1; last_points=-1 
-   @pool.plays.order( 'points desc' ).each_with_index do |play,i| 
-    ranking=i+1 if play.points != last_points
- %>
-  
-  <!-- don't add css class (ranking, that is, bigger) if all scores are 0 -->
-  <% if ranking == 1 && play.points == 0 %>
-    <tr><!-- everyone is a winner #1 - all points 0 -->
-  <% else %>
-    <tr class='<%= "ranking#{ranking}" %>'>
-  <% end %>
-    <td>
-      <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
-      <%= "#{ranking}." if play.points != last_points %>
-    </td>
-    <td>
-      <span class='<%= hl_style_for_user(play.user) %>'>
-        <%= link_to play.user.name, play_path( play.id ) %>
-      </span>
-    </td>
-    <td><%= play.points %></td>
-    <td>Punkte</td>
-  </tr>
-  <% last_points = play.points %>
-<% end %><!-- each plays -->
-</table>
+
+<table width='100%' cellspacing=0>
 
 <!-- todo/fix: use better lookup for rounds (e.g. use round.over? round.past? or similar??) -->
 <% @pool.event.rounds.where( :calc => false ).order( 'pos desc').each do |round| %>
 
-<h3>Runde <%= round.pos %> / <%= round.title %></h3>
+<tr>
+  <td colspan='2' style='background-color: lightgrey;'><%= round.title %></td>
+</tr>
 
-<table width='100%' cellspacing=0>
   <tr>
     <!-- left -->
     <td>
   <!-- runden ergebnis -->
 
     <table>
-  <% Point.where( :pool_id => @pool.id, :round_id => round.id ).order( 'round_pts desc').each do |ranking| %>
-      <tr>
-        <td><%= ranking.round_pos %>.</td>
-        <td><%= ranking.user.name %></td>
+  <%
+     last_pts=-1
+     Point.where( :pool_id => @pool.id, :round_id => round.id ).order( 'round_pts desc').each do |ranking|
+   %>
+      
+     <!-- don't add css class (ranking, that is, bigger) if all scores are 0 -->
+     <% if ranking.round_pos == 1 && ranking.round_pts == 0 %>
+       <tr><!-- everyone is a winner #1 - all points 0 -->
+     <% else %>
+       <tr class='<%= "ranking#{ranking.round_pos}" %>'>
+     <% end %>
+        <td>
+          <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
+          <%= "#{ranking.round_pos}." if ranking.round_pts != last_pts %>
+        </td>
+        <td>
+          <span class='<%= hl_style_for_user(ranking.user) %>'>
+            <%= link_to ranking.user.name, pool_player_path( @pool.id, ranking.user ) %>
+          </span>
+        </td>
         <td><%= ranking.round_pts %> Punkte</td>
       </tr>
-  <% end %>
+  <%
+    last_pts = ranking.round_pts
+    end
+   %>
      </table>
      
     </td>
@@ -96,19 +88,39 @@
   <!-- gesamt ergebnis -->
 
     <table>
-  <% Point.where( :pool_id => @pool.id, :round_id => round.id ).order( 'total_pts desc').each do |ranking| %>
-      <tr>
-        <td><%= ranking.total_pos %>.</td>
-        <td><%= ranking.diff_total_pos_str %></td>
-        <td><%= ranking.user.name %></td>
+  <%  last_pts=-1
+      Point.where( :pool_id => @pool.id, :round_id => round.id ).order( 'total_pts desc').each do |ranking|
+   %>
+     <!-- don't add css class (ranking, that is, bigger) if all scores are 0 -->
+     <% if ranking.total_pos == 1 && ranking.total_pts == 0 %>
+       <tr><!-- everyone is a winner #1 - all points 0 -->
+     <% else %>
+       <tr class='<%= "ranking#{ranking.total_pos}" %>'>
+     <% end %>
+        <td>
+          <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
+          <%= "#{ranking.total_pos}." if ranking.total_pts != last_pts %>
+        </td>
+        <td>
+          <span class='<%= ranking.diff_total_pos_style_class %>'>
+            <%= ranking.diff_total_pos_str %>
+          </span>
+        </td>
+        <td>
+          <span class='<%= hl_style_for_user(ranking.user) %>'>
+            <%= link_to ranking.user.name, pool_player_path( @pool.id, ranking.user ) %>
+          </span>
+        </td>
         <td><%= ranking.total_pts %> Punkte</td>
       </tr>
-  <% end %>
-     </table>     
+  <%
+      last_pts = ranking.total_pts
+      end
+  %>
+     </table>
       
     </td>
   </tr>
-</table>
-
 
 <% end %><!-- each rounds -->
+</table>

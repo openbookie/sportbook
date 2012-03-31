@@ -103,7 +103,7 @@ class Tip < ActiveRecord::Base
     else
       pts = calc_points()
       if pts == 0
-        "#{game.toto12x} - Leider, nein."  # return 1,2,X from game
+        "Leider, nein. Richtig Tipp #{game.toto12x}."  # return 1,2,X from game
       elsif pts == 1
         'Ja!'
       elsif pts == 2

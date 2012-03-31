@@ -58,6 +58,29 @@ h3       { font-size: $base-font-size*1.20; }
 .light {  color: grey; }
 
 
+span.toto12x {
+  display: inline-block;
+  padding: 0 6px;
+  border: 2px solid black;
+  @include border-radius(2px);
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  background-color: whitesmoke;
+}
+
+span.ranking-up {
+  display: inline-block;
+  padding: 0 3px;
+  color: green;
+  font-weight: bold;
+}
+
+span.ranking-down {
+  display: inline-block;
+  padding: 0 3px;
+  color: red;
+  font-weight: bold;
+}
 
 span.highlight-me {
   display: inline-block;

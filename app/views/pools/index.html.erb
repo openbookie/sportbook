@@ -44,7 +44,9 @@
   
     <% tips.each do |tip| %>
      <td>
-       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+      <% if tip.toto12x %>
+       <span class='toto12x'><%= tip.toto12x %></span>
+      <% end %>
      </td>
      <td style='text-align: center;'>
       <span class='<%= tip.bingo_style_class %>'>
@@ -111,7 +113,9 @@
   
     <% tips.each do |tip| %>
      <td>
-       <%= "(#{tip.toto12x})" if tip.toto12x  %>
+      <% if tip.toto12x %>
+       <span class='toto12x'><%= tip.toto12x %></span>
+      <% end %>
      </td>
      <td style='text-align: center;'>
       <span class='<%= tip.bingo_style_class %>'>

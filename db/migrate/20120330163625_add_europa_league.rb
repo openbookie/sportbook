@@ -6,14 +6,14 @@ class AddEuropaLeague < ActiveRecord::Migration
 
 el = Event.create!( :title => 'Europa League 2012', :key => 'el', :team3 => false )
 
-az       = Team.create!( :title => 'AZ Alkmaar',              :key => 'az',       :img => 'az.png' )
-valencia = Team.create!( :title => 'Valencia CF',             :key => 'valencia', :img => 'valencia.png' )
-schalke  = Team.create!( :title => 'FC Schalke 04',           :key => 'schalke',  :img => 'schalke.png' )
-athletic = Team.create!( :title => 'Athletic Club Bilbao',    :key => 'athletic', :img => 'athletic.png' )
-sporting = Team.create!( :title => 'Sporting Clube Portugal', :key => 'sporting', :img => 'sporting.png' )
-metalist = Team.create!( :title => 'FC Metalist Kharkiv',     :key => 'metalist', :img => 'metalist.png' )
-atletico = Team.create!( :title => 'Club Atlético Madrid',    :key => 'atletico', :img => 'atletico.png' )
-hannover = Team.create!( :title => 'Hannover 96',             :key => 'hannover', :img => 'hannover.png' )
+az       = Team.create!( :title => 'AZ Alkmaar',          :key => 'az',       :img => 'az.png' )
+valencia = Team.create!( :title => 'Valencia CF',         :key => 'valencia', :img => 'valencia.png' )
+schalke  = Team.create!( :title => 'FC Schalke 04',       :key => 'schalke',  :img => 'schalke.png' )
+athletic = Team.create!( :title => 'Athletic Bilbao',     :key => 'athletic', :img => 'athletic.png' )
+sporting = Team.create!( :title => 'Sporting Lisboa',     :key => 'sporting', :img => 'sporting.png' )
+metalist = Team.create!( :title => 'FC Metalist Kharkiv', :key => 'metalist', :img => 'metalist.png' )
+atletico = Team.create!( :title => 'Atlético Madrid',     :key => 'atletico', :img => 'atletico.png' )
+hannover = Team.create!( :title => 'Hannover 96',         :key => 'hannover', :img => 'hannover.png' )
 
 el.teams << az
 el.teams << valencia
@@ -31,14 +31,14 @@ el4_2  = Round.create!( :event => el, :pos => 4, :title => 'Halbfinale Rückspie
 el1    = Round.create!( :event => el, :pos => 5, :title => 'Finale : 9. Mai 2012',                    :calc => true )
 
 games_el8 = [
-  [[ 1, az,          2,   1, valencia,   '2012-03-29 20:45' ],
-   [ 1, valencia,  nil, nil, az,         '2012-04-05 20:45' ]],
-  [[ 2, schalke,     2,   4, athletic,   '2012-03-29 20:45' ],
-   [ 2, athletic,  nil, nil, schalke,    '2012-04-05 20:45' ]],
-  [[ 3, sporting,    2,   1, metalist,   '2012-03-29 20:45' ],
-   [ 3, metalist,  nil, nil, sporting,   '2012-04-05 20:45' ]],
-  [[ 4, atletico,    2,   1, hannover,   '2012-03-29 20:45' ],
-   [ 4, hannover,  nil, nil, atletico,   '2012-04-05 20:45' ]]
+  [[ 1, az,          2,   1, valencia,   '2012-03-29 21:05' ],
+   [ 1, valencia,  nil, nil, az,         '2012-04-05 21:05' ]],
+  [[ 2, schalke,     2,   4, athletic,   '2012-03-29 21:05' ],
+   [ 2, athletic,  nil, nil, schalke,    '2012-04-05 21:05' ]],
+  [[ 3, sporting,    2,   1, metalist,   '2012-03-29 21:05' ],
+   [ 3, metalist,  nil, nil, sporting,   '2012-04-05 21:05' ]],
+  [[ 4, atletico,    2,   1, hannover,   '2012-03-29 21:05' ],
+   [ 4, hannover,  nil, nil, atletico,   '2012-04-05 21:05' ]]
 ]
 
 Game.create_knockout_pairs_from_ary!( games_el8, el8, el8_2 )
