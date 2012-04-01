@@ -44,16 +44,16 @@
 <table>
  <tr>
    <td><%= f.label :team1_id, '1. Platz' %></td>
-   <td><%= f.select :team1_id, @team_options %></td>
+   <td><%= f.select :team1_id, Lookup.team_options_for_event( @pool.event ) %></td>
  </tr>
  <tr>
    <td><%= f.label :team2_id, '2. Platz' %></td>
-   <td><%= f.select :team2_id, @team_options %></td>
+   <td><%= f.select :team2_id, Lookup.team_options_for_event( @pool.event ) %></td>
  </tr>
  <% if @pool.team3? %>
  <tr>
    <td><%= f.label :team3_id, '3. Platz' %></td>
-   <td><%= f.select :team3_id, @team_options %></td>
+   <td><%= f.select :team3_id, Lookup.team_options_for_event( @pool.event ) %></td>
  </tr>
   <% end %><!-- if pool.team3? -->
 </table>
@@ -72,8 +72,9 @@
 
 
 <table class='play' cellspacing=0>
-<% first_field = true %>
-<% @rounds.each do |round| %>
+<% first_field = true 
+   @rounds.each do |round|
+ %>
 <tr class='game-round'>
   <td colspan='3'></td>
   <td colspan='4' class='game-round-title'><%= round.title %></td>

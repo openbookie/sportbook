@@ -25,6 +25,8 @@ class Play < ActiveRecord::Base
   belongs_to :team3, :class_name => 'Team', :foreign_key => 'team3_id'
   
   after_create :log_action_create
+
+  ## after_update :log_action_update
   
   def log_action_create
     a = Action.new
@@ -36,6 +38,34 @@ class Play < ActiveRecord::Base
 
     a.save!
   end
+  
+  
+  def log_action_team_update!
+    
+    # note: cannot use after_update filter
+    #  - cached total_pts and total_pos updates also trigger filter!
+    #  todo: is there a way to check old and new values?
+    
+    # only log if we got at least one team
+    return if team1_id.blank? && team2_id.blank? && team3_id.blank?
+    
+    a = Action.new
+
+    a.user_id = user_id
+    a.pool_id = pool_id
+    a.tmpl    = 'play-update'
+    
+    buf = ""
+    buf << "#{user.name} tippt "
+    buf << "1. Platz => #{team1.title} " if team1.present?
+    buf << "2. Platz => #{team2.title} " if team2.present?
+    buf << "3. Platz => #{team3.title} " if team3.present?
+    buf << " im Wettpool >#{pool.full_title}<."
+    
+    a.text = buf
+    a.save!
+  end
+  
   
   
   ## todo/fix: can it be done w/ a has_many macro and a condition?

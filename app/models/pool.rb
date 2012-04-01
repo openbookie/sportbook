@@ -26,6 +26,8 @@ class Pool < ActiveRecord::Base
   
   after_create :log_action_create
   
+  
+  ## todo/fix: can we use log_action_create! in filter??
   def log_action_create
     a = Action.new
 
@@ -40,7 +42,7 @@ class Pool < ActiveRecord::Base
   
   
   def full_title
-    "#{title} #{event.title} #{fix? ? 'Fix' : 'Flex'}"
+    "#{title} #{event.title}#{fix? ? ' Fix' : ''}"
   end
   
   def fix?

@@ -7,8 +7,7 @@ class PlaysController < ApplicationController
     @pool   = Pool.find( params[:pool_id] )
     @users  = @pool.players.order(:name)
     
-    ## todo/fix: make order( :pos ) default in assoc; remove here
-    @rounds = @pool.event.rounds.order( :pos ).all
+    @rounds = @pool.event.rounds.all
   end
 
   # GET /plays/:id
@@ -17,20 +16,17 @@ class PlaysController < ApplicationController
     @pool = @play.pool
     @user = @play.user
     
-    ## todo/fix: make order( :pos ) default in assoc; remove here
-    @rounds = @pool.event.rounds.order( :pos ).all
+    @rounds = @pool.event.rounds.all
   end
 
   # GET /plays/:id/edit
   def edit
     @play = Play.find( params[:id] )
-    @pool = @play.pool  
+    @pool = @play.pool
     @user = @play.user
-    
-    @team_options = [[ '- Team wählen -', nil ]] + @pool.event.teams.all.map { |rec| [ rec.title, rec.id ] }
 
-    @pool.event.rounds.order( :pos ).each do |round|
-      round.games.order( :pos ).all.each do |game|
+    @pool.event.rounds.each do |round|
+      round.games.each do |game|
         # make sure all games exists as tips
         tips = @user.tips.where( :pool_id => @pool.id, :game_id => game.id ).all
         pp tips
@@ -43,38 +39,62 @@ class PlaysController < ApplicationController
       end
     end
 
-    ## todo/fix: make order( :pos ) default in assoc; remove here
-    @rounds = @pool.event.rounds.order( :pos ).all
+    @rounds = @pool.event.rounds.all
   end
 
-  # PUT /plays/:id  
+  # PUT /plays/:id
   def update
-    @play = Play.find( params[:id] )
-    @pool = @play.pool
-    @user = @play.user
-    
-    puts "*** updating play"
-    ## fix/todo: check for error - exits update_attributes!
+
+    ## fix/todo: check for errors on save (e.g. game over? no more changes allowed!)
+
+    play = Play.find( params[:id] )
+
+    # only update if has changes (to avoid duplicate/false action item in news feed)
    
-    @play.team1_id = params[:play][:team1_id] if params[:play][:team1_id]
-    @play.team2_id = params[:play][:team2_id] if params[:play][:team2_id]
-    @play.team3_id = params[:play][:team3_id] if params[:play][:team3_id]
-    @play.save!
-    
+    team1_id = params[:play][:team1_id].blank? ? nil : params[:play][:team1_id].to_i
+    team2_id = params[:play][:team2_id].blank? ? nil : params[:play][:team2_id].to_i
+    team3_id = params[:play][:team3_id].blank? ? nil : params[:play][:team3_id].to_i
+   
+    if( play.team1_id != team1_id || play.team2_id != team2_id || play.team3_id != team3_id )
+      
+      logger.info "*** updating play (#{team1_id},#{team2_id},#{team3_id})"
+      
+      play.team1_id = team1_id
+      play.team2_id = team2_id
+      play.team3_id = team3_id
+      play.save!
+      play.log_action_team_update!
+    else
+      logger.info "*** skip updating play - no changes"
+    end  
+      
+
    # check for case w/ no tips
    if params[:play][:tips]
     params[:play][:tips].each do |tip_key,tip_hash|
       tip = Tip.find( tip_key )
-      puts "*** updating tip #{tip_key} (#{tip_hash[:score1]}:#{tip_hash[:score2]})"      
-      tip.score1 = tip_hash[:score1]
-      tip.score2 = tip_hash[:score2]
-      tip.save!
+      
+      # only update if has changes (to avoid duplicate/false action item in news feed)
+      
+      score1 = tip_hash[:score1].blank? ? nil : tip_hash[:score1].to_i
+      score2 = tip_hash[:score2].blank? ? nil : tip_hash[:score2].to_i
+            
+      if tip.score1 != score1 || tip.score2 != score2
+
+        logger.info "*** updating tip #{tip_key} (#{score1}:#{score2})"
+
+        tip.score1 = score1
+        tip.score2 = score2
+        tip.save!
+      else
+        logger.info "*** skip updating tip #{tip_key} - no changes"
+      end
     end
    end
 
     flash[:success] = 'Tipps erfolgreich gespeichert.'
         
-    redirect_to edit_play_path( @play.id )
+    redirect_to edit_play_path( play )
   end
 
 end  # class PlaysController

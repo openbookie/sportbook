@@ -1,16 +1,14 @@
+# encoding: utf-8
+
 module Lookup
 
+  def self.team_options_for_event( event )
+    [[ '- Team wählen -', nil ]] + event.teams.all.map { |rec| [ rec.title, rec.id ] }
+  end
+
 =begin
-  def self.kuv_stat_hash
-    @@kuv_stat_hash ||= risbeskl_hash( 1001, 'KUV_STAT' )
-  end
-
   def self.status_hash
-    @@status_hash ||= risbeskl_hash( 126, 'STATUS' )
-  end
-
-  def self.zrhythmus_hash
-    @@zrhythmus_hash ||= risbeskl_hash( 13, 'ZRHYTHMUS' )
+    @@status_hash ||= find_status_hash( 111, 'STATUS' )
   end
 =end  
 

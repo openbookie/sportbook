@@ -44,10 +44,11 @@ class Tip < ActiveRecord::Base
     
     a = Action.new
 
+    ## todo: add pool_id
     a.user_id = user_id
     a.tip_id  = id
     a.tmpl    = 'tip'
-    a.text    = "#{user.name} tippt [#{toto12x}] #{game.team1.title} #{score1}:#{score2} #{game.team2.title}"
+    a.text    = "#{user.name} tippt [#{toto12x}] #{game.team1.title} #{score1}:#{score2} #{game.team2.title} im Wettpool >#{pool.full_title}<."
 
     a.save!
   end

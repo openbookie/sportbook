@@ -3,7 +3,9 @@
 class TimeController < ApplicationController
 
   def index
-    @items = Action.order( 'created_at desc' ).all
+    limit = params[:limit] || '100'
+    
+    @items = Action.order( 'created_at desc' ).limit( limit )
   end
     
 end # class TimeController
