@@ -20,7 +20,6 @@
 
 ## Cleanup
 
-* Rename module Euro2012 to Wettpool (to match new project name)
 * Move error_messages to shared partial
 * Use fmt_date helper for date display
 
@@ -40,3 +39,5 @@
 * todo/fix: pass in play.id NOT user.id in PlaysControllerRoutes!
   ** make play controller top level (no need to nest inside pool??)
   ** search for pool_play_path, pool_plays_path,etc.
+* Rename module Euro2012 to Wettpool (to match new project name)
+  

@@ -1,4 +1,4 @@
-Euro2012::Application.routes.draw do
+Wettpool::Application.routes.draw do
 
   match 'signin',   :to => 'sessions#new'
   match 'signout',  :to => 'sessions#destroy'

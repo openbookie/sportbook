@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Euro2012::Application.load_tasks
+Wettpool::Application.load_tasks
