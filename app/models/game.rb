@@ -35,6 +35,19 @@ class Game < ActiveRecord::Base
   before_save :calc_toto12x
   after_save :log_action
 
+  def job_running!
+    @job_running = true
+  end
+  
+  def job_done!
+    @job_running = false
+  end
+
+  def job_running?
+    (@job_running ||= false) == true
+  end
+
+
   def self.create_knockouts_from_ary!( games, round )
     Game.create_from_ary!( games, round, true )
   end
@@ -197,6 +210,9 @@ class Game < ActiveRecord::Base
 
   def log_action
     # add news feed item after save
+    
+    # only log if user action (not background job)
+    return if job_running?
     
     # only log complete tips
     return if toto12x.nil?

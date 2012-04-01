@@ -63,7 +63,6 @@ class PlaysController < ApplicationController
       play.team2_id = team2_id
       play.team3_id = team3_id
       play.save!
-      play.log_action_team_update!
     else
       logger.info "*** skip updating play - no changes"
     end  

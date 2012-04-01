@@ -42,7 +42,8 @@
 <table width='100%' cellspacing=0>
 
 <!-- todo/fix: use better lookup for rounds (e.g. use round.over? round.past? or similar??) -->
-<% @pool.event.rounds.where( :calc => false ).order( 'pos desc').each do |round| %>
+<!-- note: need to use reorder (to override default ordering!) -->
+<% @pool.event.rounds.where( :calc => false ).reorder( 'pos desc').each do |round| %>
 
 <tr>
   <td colspan='2' style='background-color: lightgrey;'><%= round.title %></td>

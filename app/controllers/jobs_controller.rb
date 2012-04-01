@@ -19,6 +19,18 @@ class JobsController < ApplicationController
     render :text => "<pre>#{txt}</pre>"
   end
   
+  def wipe_out_time
+    # delete/clear timeline (that is, all action items in news feed)
+
+    txt = ">> Delete #{Action.count} Actions (#{Time.now}):\r\n"
+
+    Action.delete_all
+
+    txt << "\r\n<< DONE"
+    
+    render :text => "<pre>#{txt}</pre>"
+  end
+  
   def keys
     txt = ">> Update Keys (#{Time.now}):\r\n"
 
@@ -32,7 +44,9 @@ class JobsController < ApplicationController
     txt << "\r\n## Games\r\n"
     Game.all.each do |game|
       game.key = "#{game.round.event.key}+#{game.round.pos}+#{game.team1.key}+#{game.team2.key}"
+      game.job_running!
       game.save!
+      game.job_done!
       txt << "  #{game.team1.title} vs. #{game.team2.title} => #{game.key}\r\n"
     end
 
@@ -40,7 +54,7 @@ class JobsController < ApplicationController
     Pool.all.each do |pool|
       # update key if nil or if auto-generated (assuming contains/includes +)
       if pool.key.nil? || pool.key.include?('+')
-        pool.key = "#{pool.event.key}+#{pool.fix? ? 'fix' : 'flex'}+#{pool.user.key}"
+        pool.key = "#{pool.event.key}+#{pool.fix? ? 'fix' : 'flex'}+#{pool.user.key}"        
         pool.save!
         txt << "  #{pool.full_title} by #{pool.user.name} => #{pool.key}\r\n"
       end
@@ -100,7 +114,9 @@ class JobsController < ApplicationController
         end # each round
       
         play.total_pts = play_pts
+        play.job_running!
         play.save!
+        play.job_done!
       
       end # each play (that is, user)
     end # each pool

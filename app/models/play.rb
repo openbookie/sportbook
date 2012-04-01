@@ -25,8 +25,22 @@ class Play < ActiveRecord::Base
   belongs_to :team3, :class_name => 'Team', :foreign_key => 'team3_id'
   
   after_create :log_action_create
+  after_update :log_action_update
 
-  ## after_update :log_action_update
+
+  def job_running!
+    @job_running = true
+  end
+  
+  def job_done!
+    @job_running = false
+  end
+
+  def job_running?
+    (@job_running ||= false) == true
+  end
+
+
   
   def log_action_create
     a = Action.new
@@ -38,13 +52,11 @@ class Play < ActiveRecord::Base
 
     a.save!
   end
-  
-  
-  def log_action_team_update!
     
-    # note: cannot use after_update filter
-    #  - cached total_pts and total_pos updates also trigger filter!
-    #  todo: is there a way to check old and new values?
+  def log_action_update
+    
+    # only log if user action (not background job e.g. for update on total_pts)
+    return if job_running?
     
     # only log if we got at least one team
     return if team1_id.blank? && team2_id.blank? && team3_id.blank?
@@ -65,7 +77,6 @@ class Play < ActiveRecord::Base
     a.text = buf
     a.save!
   end
-  
   
   
   ## todo/fix: can it be done w/ a has_many macro and a condition?
