@@ -83,6 +83,13 @@ class Tip < ActiveRecord::Base
     end
     pts
   end
+
+  def calc_points_str
+    buf = ''
+    calc_points.times { buf << '♣' }
+    buf
+  end
+
   
   ## todo: use tip-fail, tip-bingo, etc.
   
@@ -112,6 +119,33 @@ class Tip < ActiveRecord::Base
     end
   end
 
+  # like bingo_style_class but only for pts>0 (that is not for fail)
+  def bingo_win_style_class
+    if incomplete?
+      # show missing label for upcoming games only
+      if game.over?
+        ''
+      elsif score1.blank? || score2.blank?
+        'missing'  # missing tip scores
+      else
+        ''  # tip scores filled in; game scores not yet available
+      end
+    else
+      pts = calc_points()
+      if pts == 0
+        ''
+      elsif pts == 1
+        'bingo'
+      elsif pts == 2
+        'bingoo'
+      elsif pts == 3
+        'bingooo'
+      else
+        ''  # unknown state; return empty (css) class
+      end
+    end
+  end
+
   def bingo_text
     if incomplete?
       # show missing label for upcoming games only
@@ -125,13 +159,13 @@ class Tip < ActiveRecord::Base
     else
       pts = calc_points()
       if pts == 0
-        "Leider, nein. Richtig Tipp #{game.toto12x}."  # return 1,2,X from game
+        "× Leider, nein. Richtiger Tipp #{game.toto12x}."  # return 1,2,X from game
       elsif pts == 1
-        'Ja!'
+        '♣ 1 Pkt - Ja!'
       elsif pts == 2
-        'Jaaa!'
+        '♣♣ 2 Pkte - Jaaa!'
       elsif pts == 3
-        'Jaaaaa!'
+        '♣♣♣ 3 Pkte - Jaaaaa!'
       else
         ''  # unknown state; return empty (css) class
       end
@@ -162,6 +196,7 @@ class Tip < ActiveRecord::Base
 
   
   def score_str
+    ## fix: use new game.toto12x instead of game.over ??? (doesn't depend on time) 
     if score1.blank? && score2.blank? && game.over?
       # return no data marker (e.g. middot) if not touched by user
       '·'

@@ -7,6 +7,15 @@
 <% end %>
 
 
+<p>
+  View: <%= link_to 'Tipps', plays_path( :pool_id => @pool.id )  %>
+          ⋅
+        <%= link_to 'Punkte', plays_path( :pool_id => @pool.id, :pts => 't', :tips => 'f' ) %>
+          ⋅
+        <%= link_to 'Tipps+Punkte', plays_path( :pool_id => @pool.id, :pts => 't' ) %>
+        
+</p>
+
 <!-- todo:
    use current_play = nil or obj  instead of machmit  => lets us use play route for edit!!
   -->
@@ -132,7 +141,34 @@
       <% @users.each do |user| %>
         <% tip = Tip.find_by_user_and_pool_and_game( user, @pool, game ) %>
         
-       <%= render :partial => 'td_tip_score',     :locals => { :tip  => tip }  %>
+
+<% if tip.present? %>
+  <td class='tip-score'>
+
+    <% if @show_tips %>
+      <span class='<%= tip.bingo_style_class %>'>
+        <%= tip.score_str %>
+      </span>
+    <% end %>
+    
+    <% if @show_pts %>
+       <% if tip.calc_points > 0 %>
+         <span class='<%= tip.bingo_style_class %>'>
+          <%= tip.calc_points_str %> <%= tip.calc_points %> 
+         </span>
+       <% elsif game.toto12x.present? %>
+          ×
+       <% else %>
+         <!-- no game results (toto12x) yet available -->
+       <% end %>
+    <% end %>
+  </td>
+<% else %>
+  <td class='tip-score'>
+    ♦<!-- fehler: datensatz fehlt! -->
+  </td>
+<% end %>
+
       <% end %><!-- users.each --> 
 
        <%= render :partial => 'td_game_score',   :locals => { :game => game } %>

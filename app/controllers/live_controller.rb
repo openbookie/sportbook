@@ -6,7 +6,7 @@ class LiveController < ApplicationController
     
     limit = params[:limit] || '4'
     
-    if params[:past]
+    if params[:past].present? && ['1','t','true','yes', 'on'].include?( params[:past] )
       # find last past games
       @games = Game.where( 'play_at < ?', Time.now).order( 'play_at desc').limit( limit )
     else
@@ -14,8 +14,7 @@ class LiveController < ApplicationController
       @games = Game.where( 'play_at > ?', Time.now ).order( 'play_at').limit( limit )
     end
 
-    @show_tips = (params[:tips].nil? == false)
-    
+    @show_tips = (params[:tips].present? && ['1','t','true','yes', 'on'].include?( params[:tips] ))
   end
   
   def show

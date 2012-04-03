@@ -26,8 +26,9 @@
 }
 
 .fail {
-    background-color: $fail-background;
-    color:            $fail-text;
+    // background-color: $fail-background;
+    // color:            $fail-text;
+    text-decoration:     line-through;
 }
 
 .missing {

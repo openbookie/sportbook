@@ -6,6 +6,11 @@ class PlaysController < ApplicationController
   def index
     @pool   = Pool.find( params[:pool_id] )
     @users  = @pool.players.order(:name)
+
+    # do NOT show points by default
+    @show_pts  = (params[:pts].present? && ['1','t','true','yes', 'on'].include?( params[:pts]))
+    # show tips by default
+    @show_tips = (params[:tips].nil? || (params[:tips].present? && ['1','t','true','yes', 'on'].include?( params[:tips])))
     
     @rounds = @pool.event.rounds.all
   end
