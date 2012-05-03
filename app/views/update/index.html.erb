@@ -1,0 +1,48 @@
+<% content_for :breadcrumb do %>
+  <%= link_to 'Wettpools', pools_path() %> ›
+   Update
+<% end %>
+
+
+<p>
+  View: <%= link_to 'Alle', update_path( :all => 't' )  %>
+          ⋅ 
+        <%= link_to 'Spielergebnisse Null', update_path( :all => 'f' ) %>        
+</p>
+
+
+
+<%= form_for 'update', :url => 'update/update', :html => { :method => 'put' } do |f| %>  
+
+
+<p>
+  <%= f.submit "Ergebnisse speichern", :class => 'btn-primary' %>
+</p>  
+
+<table>
+<% last_play_at = Time.local( 1999, 1, 1 )
+   @games.each do |game|
+ %>
+
+  <% unless last_play_at.year   == game.play_at.year  &&
+            last_play_at.month  == game.play_at.month &&
+            last_play_at.day    == game.play_at.day %>
+        
+    <tr style='background-color: silver;'>
+      <td colspan='5'><%= game.play_at.strftime('%A, %d. %B %Y') %></td>      
+    </tr> 
+        
+  <% end %>
+ 
+  <%= render :partial => 'game',     :locals => { :game  => game } %>
+    
+<%   last_play_at = game.play_at
+   end
+ %><!-- each game -->
+</table>
+
+<p>
+  <%= f.submit "Ergebnisse speichern", :class => 'btn-primary' %>
+</p>  
+
+<% end %>

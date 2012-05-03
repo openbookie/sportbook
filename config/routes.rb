@@ -9,7 +9,10 @@ Wettpool::Application.routes.draw do
 
   match 'live',          :to => 'live#index'
   match 'live/:game_id', :to => 'live#show', :as => :live_game
-
+  
+  match 'update',         :to => 'update#index'
+  match 'update/update',  :to => 'update#update' # , :via => :get
+  
   match 'time',          :to => 'time#index'
   
   resource :session, :only => [:new, :create, :destroy]
