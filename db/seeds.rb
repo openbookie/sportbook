@@ -3,6 +3,10 @@
 # note: timezone for games (play_at) is *always* CET (central european time)
 
 
+## todo: add title2 ?? to round
+## add event.title to form in new games for round.title
+
+
 ######################################
 ## Oesterreichische Bundesliga 2012
 
@@ -41,51 +45,52 @@ bl35 = Round.create!( :event => bl, :pos => 35, :title => '35. Runde : 13. Mai 2
 bl36 = Round.create!( :event => bl, :pos => 36, :title => '36. Runde : 17. Mai 2012' )
 
 games_bl29 = [
-  [ 1, salzburg,    nil, nil, wacker,   '2012-04-07 16:00' ],
-  [ 2, ried,        nil, nil, austria,  '2012-04-07 18:30' ],
-  [ 3, ksv,         nil, nil, admira,   '2012-04-07 18:30' ],
-  [ 4, rapid,       nil, nil, neustadt, '2012-04-07 18:30' ],
-  [ 5, mattersburg, nil, nil, sturm,    '2012-04-08 16:00' ]
+  [ 1, salzburg,    2,  0, wacker,   '2012-04-07 16:00' ],
+  [ 2, ried,        0,  1, austria,  '2012-04-07 18:30' ],
+  [ 3, ksv,         2,  3, admira,   '2012-04-07 18:30' ],
+  [ 4, rapid,       2,  1, neustadt, '2012-04-07 18:30' ],
+  [ 5, mattersburg, 0,  2, sturm,    '2012-04-08 16:00' ]
 ]
 
 games_bl30 = [
-  [ 1, neustadt,   nil, nil, ksv,         '2012-04-14 16:00' ],
-  [ 2, admira,     nil, nil, wacker,      '2012-04-14 18:30' ],
-  [ 3, sturm,      nil, nil, salzburg,    '2012-04-14 18:30' ],
-  [ 4, ried,       nil, nil, mattersburg, '2012-04-14 18:30' ],
-  [ 5, austria,    nil, nil, rapid,       '2012-04-15 16:00' ]
+  [ 1, neustadt,    0,  0, ksv,         '2012-04-14 16:00' ],
+  [ 2, admira,      1,  1, wacker,      '2012-04-14 18:30' ],
+  [ 3, sturm,       2,  2, salzburg,    '2012-04-14 18:30' ],
+  [ 4, ried,        2,  0, mattersburg, '2012-04-14 18:30' ],
+  [ 5, austria,     0,  0, rapid,       '2012-04-15 16:00' ]
 ]
 
 games_bl31 = [
-  [ 1, wacker,      nil, nil, neustadt,   '2012-04-21 16:00' ],
-  [ 2, ksv,         nil, nil, austria,  '2012-04-21 18:30' ],
-  [ 3, mattersburg, nil, nil, admira,   '2012-04-21 18:30' ],
-  [ 4, salzburg,    nil, nil, ried,     '2012-04-21 18:30' ],
-  [ 5, rapid,       nil, nil, sturm,    '2012-04-22 16:00' ]
+  [ 1, wacker,      2,  0, neustadt, '2012-04-21 16:00' ],
+  [ 2, ksv,         1,  0, austria,  '2012-04-21 18:30' ],
+  [ 3, mattersburg, 1,  2, admira,   '2012-04-21 18:30' ],
+  [ 4, salzburg,    2,  0, ried,     '2012-04-21 18:30' ],
+  [ 5, rapid,       1,  1, sturm,    '2012-04-22 16:00' ]
 ]
 
 games_bl32 = [
-  [ 1, austria,     nil, nil, wacker,   '2012-04-28 16:00' ],
-  [ 2, neustadt,    nil, nil, admira,   '2012-04-28 18:30' ],
-  [ 3, mattersburg, nil, nil, salzburg, '2012-04-28 18:30' ],
-  [ 4, sturm,       nil, nil, ksv,      '2012-04-28 18:30' ],
-  [ 5, ried,        nil, nil, rapid,    '2012-04-29 16:00' ]
+  [ 1, austria,     3,  0, wacker,   '2012-04-28 16:00' ],
+  [ 2, neustadt,    1,  4, admira,   '2012-04-28 18:30' ],
+  [ 3, mattersburg, 0,  1, salzburg, '2012-04-28 18:30' ],
+  [ 4, sturm,       2,  1, ksv,      '2012-04-28 18:30' ],
+  [ 5, ried,        2,  3, rapid,    '2012-04-29 16:00' ]
 ]
 
+## todo: fix order (possible w/ import?? depends on pos? check)
 games_bl33 = [
-  [ 1, admira,    nil, nil, austria,     '2012-05-05 16:00' ],
-  [ 2, rapid,     nil, nil, salzburg,    '2012-05-05 16:00' ],
-  [ 3, ksv,       nil, nil, ried,        '2012-05-05 16:00' ],
+  [ 1, admira,    nil, nil, austria,     '2012-05-05 18:30' ],
+  [ 2, rapid,     nil, nil, salzburg,    '2012-06-05 16:00' ],
+  [ 3, ksv,       nil, nil, ried,        '2012-05-05 18:30' ],
   [ 4, neustadt,  nil, nil, sturm,       '2012-05-05 16:00' ],
   [ 5, wacker,    nil, nil, mattersburg, '2012-05-05 16:00' ]
 ]
 
 games_bl34 = [
-  [ 1, austria,     nil, nil, neustadt,     '2012-05-10 16:00' ],
-  [ 2, ried,        nil, nil, wacker,       '2012-05-10 16:00' ],
-  [ 3, salzburg,    nil, nil, ksv,          '2012-05-10 16:00' ],
-  [ 4, mattersburg, nil, nil, rapid,        '2012-05-10 16:00' ],
-  [ 5, sturm,       nil, nil, admira,       '2012-05-10 16:00' ]
+  [ 1, austria,     nil, nil, neustadt,     '2012-05-10 20:30' ],
+  [ 2, ried,        nil, nil, wacker,       '2012-05-10 20:30' ],
+  [ 3, salzburg,    nil, nil, ksv,          '2012-05-10 18:30' ],
+  [ 4, mattersburg, nil, nil, rapid,        '2012-05-10 20:30' ],
+  [ 5, sturm,       nil, nil, admira,       '2012-05-10 20:30' ]
 ]
 
 games_bl35 = [
@@ -137,17 +142,28 @@ ofb.teams << lustenau
 ofb.teams << austria
 
 ofb8    = Round.create!( :event => ofb, :pos => 1, :title => 'Viertelfinale : 10.+11. April 2012' )
-ofb4    = Round.create!( :event => ofb, :pos => 2, :title => 'Halbfinale : 1.+2. Mai 2012',  :calc => true )
-ofb1    = Round.create!( :event => ofb, :pos => 3, :title => 'Finale : 20. Mai 2012',        :calc => true )
+ofb4    = Round.create!( :event => ofb, :pos => 2, :title => 'Halbfinale : 1.+2. Mai 2012' )
+ofb1    = Round.create!( :event => ofb, :pos => 3, :title => 'Finale : 20. Mai 2012' )
 
 games_ofb8 = [
-  [ 1, groedig,  nil, nil, ried,     '2012-04-10 18:00' ],
-  [ 2, lustenau, nil, nil, austria,  '2012-04-11 18:00' ],
-  [ 3, sturm,    nil, nil, hartberg, '2012-04-11 19:00' ],
-  [ 4, salzburg, nil, nil, juniors,  '2012-04-11 19:00' ]
+  [ 1, groedig,  2, 3, ried,     '2012-04-10 18:00' ],
+  [ 2, lustenau, 1, 2, austria,  '2012-04-11 18:00' ],
+  [ 3, sturm,    2, 2, hartberg, '2012-04-11 19:00' ],  ### fix: add 2:4 n.V.
+  [ 4, salzburg, 4, 1, juniors,  '2012-04-11 19:00' ]
+]
+
+games_ofb4 = [
+  [ 1, hartberg,  0, 1, salzburg, '2012-05-01 18:00' ],
+  [ 2, ried,      2, 0, austria,  '2012-05-02 20:30' ]  
+]
+
+games_ofb1 = [
+  [ 1, salzburg,  nil, nil, ried, '2012-05-20 16:00' ]  
 ]
 
 Game.create_knockouts_from_ary!( games_ofb8, ofb8 )
+Game.create_knockouts_from_ary!( games_ofb4, ofb4 )
+Game.create_knockouts_from_ary!( games_ofb1, ofb1 )
 
 
 #################################
@@ -186,9 +202,9 @@ cl16   = Round.create!( :event => cl, :pos => 1, :title => 'Achtelfinale' )
 cl16_2 = Round.create!( :event => cl, :pos => 2, :title => 'Achtelfinale Rückspiele' )
 cl8    = Round.create!( :event => cl, :pos => 3, :title => 'Viertelfinale : 27.+28. März 2012' )
 cl8_2  = Round.create!( :event => cl, :pos => 4, :title => 'Viertelfinale Rückspiele : 3.+4. April 2012' )
-cl4    = Round.create!( :event => cl, :pos => 5, :title => 'Halbfinale : 17.+18. April 2012',             :calc => true )
-cl4_2  = Round.create!( :event => cl, :pos => 6, :title => 'Halbfinale Rückspiele : 24.+25. April 2012',  :calc => true )
-cl1    = Round.create!( :event => cl, :pos => 7, :title => 'Finale : 19. Mai 2012',                       :calc => true )
+cl4    = Round.create!( :event => cl, :pos => 5, :title => 'Halbfinale : 17.+18. April 2012' )
+cl4_2  = Round.create!( :event => cl, :pos => 6, :title => 'Halbfinale Rückspiele : 24.+25. April 2012' )
+cl1    = Round.create!( :event => cl, :pos => 7, :title => 'Finale : 19. Mai 2012' )
 
 
 games_cl16 = [
@@ -202,21 +218,34 @@ games_cl16 = [
    [ 2, bayern,    7, 0, basel,     '2012-03-13 20:45' ]] 
 ]
 
+## todo/fix: add results n.V und i.E
+
 games_cl8 = [
   [[ 1, apoel,       0,   3, madrid,    '2012-03-27 20:45' ],
-   [ 4, madrid,    nil, nil, apoel,     '2012-04-04 20:45' ]],
+   [ 4, madrid,      5,   2, apoel,     '2012-04-04 20:45' ]],
   [[ 2, benfica,     0,   1, chelsea,   '2012-03-27 20:45' ],
-   [ 3, chelsea,   nil, nil, benfica,   '2012-04-04 20:45' ]],
+   [ 3, chelsea,     2,   1, benfica,   '2012-04-04 20:45' ]],
   [[ 3, marseille,   0,   2, bayern,    '2012-03-28 20:45' ],
-   [ 2, bayern,    nil, nil, marseille, '2012-04-03 20:45' ]],
+   [ 2, bayern,      2,   0, marseille, '2012-04-03 20:45' ]],
   [[ 4, milan,       0,   0, barcelona, '2012-03-28 20:45' ],
-   [ 1, barcelona, nil, nil, milan,     '2012-04-03 20:45' ]]
+   [ 1, barcelona,   3,   1, milan,     '2012-04-03 20:45' ]]
 ]
+
+games_cl4 = [
+  [[ 1, bayern,      2,   1, madrid,     '2012-04-17 20:45' ],
+   [ 2, madrid,      2,   1, bayern,     '2012-04-25 20:45' ]],  ## add n.V und i.E. scores
+  [[ 2, chelsea,     1,   0, barcelona,  '2012-04-18 20:45' ],
+   [ 1, barcelona ,  2,   2, chelsea,    '2012-04-24 20:45' ]]
+]
+
+games_cl1 = [
+  [ 1, bayern,      nil,   nil, chelsea,     '2012-05-19 20:45' ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_cl16, cl16, cl16_2 )
 Game.create_knockout_pairs_from_ary!( games_cl8,  cl8,  cl8_2  )
-
+Game.create_knockout_pairs_from_ary!( games_cl4,  cl4,  cl4_2  )
+Game.create_knockouts_from_ary!( games_cl1,  cl1 )
 
 
 #################################
@@ -244,22 +273,38 @@ el.teams << hannover
 
 el8    = Round.create!( :event => el, :pos => 1, :title => 'Viertelfinale : 29. März 2012' )
 el8_2  = Round.create!( :event => el, :pos => 2, :title => 'Viertelfinale Rückspiele : 5. April 2012' )
-el4    = Round.create!( :event => el, :pos => 3, :title => 'Halbfinale : 19. April 2012',             :calc => true )
-el4_2  = Round.create!( :event => el, :pos => 4, :title => 'Halbfinale Rückspiele : 26. April 2012',  :calc => true )
-el1    = Round.create!( :event => el, :pos => 5, :title => 'Finale : 9. Mai 2012',                    :calc => true )
+el4    = Round.create!( :event => el, :pos => 3, :title => 'Halbfinale : 19. April 2012' )
+el4_2  = Round.create!( :event => el, :pos => 4, :title => 'Halbfinale Rückspiele : 26. April 2012' )
+el1    = Round.create!( :event => el, :pos => 5, :title => 'Finale : 9. Mai 2012' )
+
+## todo/fix: check for results n.V und i.E
+
 
 games_el8 = [
   [[ 1, az,          2,   1, valencia,   '2012-03-29 21:05' ],
-   [ 1, valencia,  nil, nil, az,         '2012-04-05 21:05' ]],
+   [ 1, valencia,    4,   0, az,         '2012-04-05 21:05' ]],
   [[ 2, schalke,     2,   4, athletic,   '2012-03-29 21:05' ],
-   [ 2, athletic,  nil, nil, schalke,    '2012-04-05 21:05' ]],
+   [ 2, athletic,    2,   2, schalke,    '2012-04-05 21:05' ]],
   [[ 3, sporting,    2,   1, metalist,   '2012-03-29 21:05' ],
-   [ 3, metalist,  nil, nil, sporting,   '2012-04-05 21:05' ]],
+   [ 3, metalist,    1,   1, sporting,   '2012-04-05 21:05' ]],
   [[ 4, atletico,    2,   1, hannover,   '2012-03-29 21:05' ],
-   [ 4, hannover,  nil, nil, atletico,   '2012-04-05 21:05' ]]
+   [ 4, hannover,    1,   2, atletico,   '2012-04-05 21:05' ]]
 ]
 
+games_el4 = [
+  [[ 1, atletico,    4,   2, valencia,   '2012-04-19 21:05' ],
+   [ 1, valencia,    0,   1, atletico,   '2012-04-26 21:05' ]],
+  [[ 2, sporting,    2,   1, athletic,   '2012-04-19 21:05' ],
+   [ 2, athletic,    3,   1, sporting,   '2012-04-26 21:05' ]]
+]
+
+games_el1 = [
+  [ 1, atletico,    nil,   nil, athletic,   '2012-05-09 20:45' ]]
+
+
 Game.create_knockout_pairs_from_ary!( games_el8, el8, el8_2 )
+Game.create_knockout_pairs_from_ary!( games_el4, el4, el4_2 )
+Game.create_knockouts_from_ary!( games_el1,  el1 )
 
 
 #################################
@@ -419,6 +464,81 @@ Game.create_knockouts_from_ary!( games_euro_final, round7 )
 
 
 
+
+######################################
+## NHL  2012
+
+nhl = Event.create!( :title => ' National Hockey League 2012', :key => 'nhl' )
+
+newjersey    = Team.create!( :title => 'New Jersey Devils (East/Atlantic)',    :key => 'newjersey', :img => 'devils.png' )
+nyislanders  = Team.create!( :title => 'New York Islanders (East/Atlantic)',   :key => 'nyislanders', :img => 'islanders.png' )
+nyrangers    = Team.create!( :title => 'New York Rangers (East/Atlantic)',     :key => 'nyrangers', :img => 'rangers.png' )
+philadelphia = Team.create!( :title => 'Philadelphia Flyers (East/Atlantic)',  :key => 'philadelphia', :img => 'flyers.png' )
+pittsburgh   = Team.create!( :title => 'Pittsburgh Penguins (East/Atlantic)',  :key => 'pittsburgh', :img => 'penguins.png' )
+
+boston       = Team.create!( :title => 'Boston Bruis (East/Northeast)',        :key => 'boston', :img => 'bruins.png' )
+buffalo      = Team.create!( :title => 'Buffalo Sabres (East/Northeast)',      :key => 'buffalo', :img => 'sabres.png' )
+montreal     = Team.create!( :title => 'Montreal Canadiens (East/Northeast)',  :key => 'montreal', :img => 'canadiens.png' )
+ottawa       = Team.create!( :title => 'Ottawa Senators (East/Northeast)',     :key => 'ottawa', :img => 'senators.png' )
+toronto      = Team.create!( :title => 'Toronto Maple Leafs (East/Northeast)', :key => 'toronto', :img => 'mapleleafs.png' )
+
+carolina     = Team.create!( :title => 'Carolina Hurricanes (East/Southeast)', :key => 'carolina', :img => 'hurricanes.png' )
+florida      = Team.create!( :title => 'Florida Panthers (East/Southeast)',    :key => 'florida', :img => 'panthers.png' )
+tampabay     = Team.create!( :title => 'Tampa Bay Lightning (East/Southeast)', :key => 'tampabay', :img => 'lightning.png' )
+washington   = Team.create!( :title => 'Washington Capitals (East/Southeast)', :key => 'washington', :img => 'capitals.png' )
+winnipeg     = Team.create!( :title => 'Winnipeg Jets (East/Southeast)',       :key => 'winnipeg', :img => 'jets.png' )
+
+chicago      = Team.create!( :title => 'Chicago Blackhawks (West/Central)',    :key => 'chicago', :img => 'blackhawks.png' )
+columbus     = Team.create!( :title => 'Columbus Blue Jackets (West/Central)', :key => 'columbus', :img => 'bluejackets.png' )
+detroit      = Team.create!( :title => 'Detroit Red Wings (West/Central)',     :key => 'detroit', :img => 'redwings.png' )
+nashville    = Team.create!( :title => 'Nashville Predators (West/Central)',   :key => 'nashville', :img => 'predators.png' )
+stlouis      = Team.create!( :title => 'St. Louis Blues (West/Central)',       :key => 'stlouis', :img => 'blues.png' )
+
+calgary      = Team.create!( :title => 'Calgary Flames (West/Northwest)',      :key => 'calgary', :img => 'flames.png' )
+colorado     = Team.create!( :title => 'Colorado Avalanche (West/Northwest)',  :key => 'colorado', :img => 'avalanche.png' )
+edmonton     = Team.create!( :title => 'Edmonton Oilers (West/Northwest)',     :key => 'edmonton', :img => 'oilers.png' )
+minnesota    = Team.create!( :title => 'Minnesota Wild (West/Northwest)',      :key => 'minnesota', :img => 'wild.png' )
+vancouver    = Team.create!( :title => 'Vancouver Canucks (West/Northwest)',   :key => 'vancouver', :img => 'canucks.png' )
+
+anaheim      = Team.create!( :title => 'Anaheim Ducks (West/Pacific)',         :key => 'anaheim', :img => 'ducks.png' )
+dallas       = Team.create!( :title => 'Dallas Stars (West/Pacific)',          :key => 'dallas', :img => 'stars.png' )
+losangeles   = Team.create!( :title => 'Los Angeles Kings (West/Pacific)',     :key => 'losangeles', :img => 'kings.png' )
+phoenix      = Team.create!( :title => 'Phoenix Coyotes (West/Pacific)',       :key => 'phoenix', :img => 'coyotes.png' )
+sanjose      = Team.create!( :title => 'San Jose Sharks (West/Pacific)',       :key => 'sanjose', :img => 'sharks.png' )
+
+
+nhl.teams << anaheim
+nhl.teams << boston 
+nhl.teams << buffalo
+nhl.teams << calgary
+nhl.teams << carolina
+nhl.teams << chicago
+nhl.teams << colorado
+nhl.teams << columbus
+nhl.teams << dallas
+nhl.teams << detroit
+nhl.teams << edmonton
+nhl.teams << florida
+nhl.teams << losangeles
+nhl.teams << minnesota
+nhl.teams << montreal
+nhl.teams << nashville
+nhl.teams << newjersey
+nhl.teams << nyislanders
+nhl.teams << nyrangers
+nhl.teams << ottawa
+nhl.teams << philadelphia
+nhl.teams << phoenix
+nhl.teams << pittsburgh
+nhl.teams << sanjose
+nhl.teams << stlouis
+nhl.teams << tampabay
+nhl.teams << toronto
+nhl.teams << vancouver
+nhl.teams << washington
+nhl.teams << winnipeg
+
+
 ##############
 ##  Pools und Users
 
@@ -429,7 +549,7 @@ user4  = User.create!( :name => 'Richard TRAINDL',    :email => 'richard' )
 user5  = User.create!( :name => 'Manfred KOPECEK',    :email => 'manfred' )
 user6  = User.create!( :name => 'Clemens HUBER',      :email => 'clemens' )
 user7  = User.create!( :name => 'Franz BAUER',        :email => 'franz' )
-user8  = User.create!( :name => 'Ande SCHEIBELHOFER', :email => 'ande' )
+user8  = User.create!( :name => 'Ande S.',            :email => 'ande' )
 user9  = User.create!( :name => 'Thomas SCHOLZ',      :email => 'thomas' )
 user10 = User.create!( :name => 'Dietmar BAYERL',     :email => 'dietmar' )
 user11 = User.create!( :name => 'Martina REININGER',  :email => 'martina' )
@@ -444,10 +564,12 @@ user19 = User.create!( :name => 'Dietmar PFUNDNER',   :email => 'didi' )
 user20 = User.create!( :name => 'Christian S.',       :email => 'christian.s' )
 user21 = User.create!( :name => 'Christian Z.',       :email => 'christian.z' )
 user22 = User.create!( :name => 'Dimy M.',            :email => 'dimy' )
+user23 = User.create!( :name => 'Claudia Kotzian',    :email => 'claudia' )
+user24 = User.create!( :name => 'Markus Brosch',      :email => 'markus' )
 
 
-pool1 = Pool.create!( :event => euro, :title => 'UNIQA USS EF', :user => user1, :fix => true, :welcome => 'Alles ist fix. Letzte Änderungen möglich Freitag, 8. Juni 6 Uhr abends d.h. bei Anpfiff des Eröffnungspiels.' )
-pool2 = Pool.create!( :event => euro, :title => 'UNIQA USS EF', :user => user1, :welcome => 'Nix is fix. Änderung bis vor Spielanpfiff möglich.' )
+pool1 = Pool.create!( :event => euro, :title => 'UNIQA USS EF', :user => user1, :fix => true, :welcome => '' )
+pool2 = Pool.create!( :event => euro, :title => 'UNIQA USS EF', :user => user1, :welcome => '' )
 pool3 = Pool.create!( :event => cl,   :title => 'UNIQA USS EF', :user => user1, :welcome => '' )
 pool4 = Pool.create!( :event => el,   :title => 'UNIQA USS EF', :user => user8, :welcome => '' )
 pool5 = Pool.create!( :event => bl,   :title => 'UNIQA USS EF', :user => user5, :welcome => '' )
