@@ -16,7 +16,7 @@
     <tr>
       <td><%= f.label :round_id, 'Runde:' %></td>
       <td>(<%= f.object.round_id %>)</td>
-      <td><%= f.select :round_id, options_from_collection_for_select( Round.all, :id, :title, f.object.round_id ) %></td>
+      <td><%= f.select :round_id, ([[ '- Runde wählen -', nil ]] + Round.all.map { |rec| [ "#{rec.event.title} / #{rec.title}", rec.id ] }) %></td>
     </tr>
     <tr>
       <td><%= f.label :pos, 'Lfd#:' %></td>

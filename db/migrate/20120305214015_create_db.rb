@@ -27,6 +27,7 @@ add_index :events, :key, :unique => true
 create_table :rounds do |t|
   t.references :event, :null => false
   t.string     :title, :null => false
+  t.string     :title2
   t.integer    :pos,   :null => false
   t.boolean    :calc,  :null => false, :default => false
   t.timestamps

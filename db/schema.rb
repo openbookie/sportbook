@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   create_table "rounds", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
+    t.string   "title2"
     t.integer  "pos",                           :null => false
     t.boolean  "calc",       :default => false, :null => false
     t.datetime "created_at",                    :null => false
