@@ -15,55 +15,8 @@
   </tr>
 </table>
 
+<%= render :partial => 'games_upcoming',  :locals => { :games  => @upcoming_games } %>
 
-<h3>Nächsten Spiele</h3>
-
-<table>
-<% @upcoming_games.each do |game| %>
- <tr style='vertical-align: middle;'>
-  <td>
-    <%= game.play_at_str %>
-  </td>
-  <td style='text-align: right;'>
-    <%= link_to game.team1.title, live_game_path( game.id ) %>
-  </td>
-  <td>
-    <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-  </td>
-  <td><%= game.score_str %>
-  </td>
-  <td>
-    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-  </td>
-  <td>
-    <%= link_to game.team2.title, live_game_path( game.id ) %>
-  </td>
-    <% tips = game.tips.where( :user_id => current_user_id() ).all %>
-  
-    <!-- <%= tips.count %> Tipps -->
-  
-    <% tips.each do |tip| %>
-     <td>
-      <% if tip.toto12x %>
-       <span class='toto12x'><%= tip.toto12x %></span>
-      <% end %>
-     </td>
-     <td style='text-align: center;'>
-      <span class='<%= tip.bingo_style_class %>'>
-        <%= tip.score_str %>
-      </span>
-     </td>
-     <td>
-        <%= link_to 'Bearbeiten', edit_pool_player_path( tip.pool_id, tip.user.id), :class => 'btn' %>
-      </td>
-     <% end %><!-- each tip -->
-  </td>
- </tr> 
-<% end %><!-- each game -->
-</table>
-
-<p><%= link_to 'Mehr Spiele »', live_path(:limit => 6, :tips=>true) %>
-</p>
 
 <h3>Wettpools</h3>
 
@@ -80,53 +33,5 @@
 <% end %>
 </ul>
 
+<%= render :partial => 'games_past',  :locals => { :games  => @past_games } %>
 
-<h3>Vergangene Spiele</h3>
-
-<!-- use partial for upcoming and past games?? -->
-<table class='live'>
-<% @past_games.each do |game| %>
- <tr style='vertical-align: middle;'>
-  <td>
-    <%= game.play_at_str %>
-  </td>
-  <td style='text-align: right;'>
-    <span class='<%= game.team1_style_class %>'>
-      <%= link_to game.team1.title, live_game_path( game.id ) %>
-    </span>
-  </td>
-  <td>
-    <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-  </td>
-  <td><%= game.score_str %></td>
-  <td>
-    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-  </td>
-  <td>
-    <span class='<%= game.team2_style_class %>'>
-      <%= link_to game.team2.title, live_game_path( game.id ) %>
-    </span>
-  </td>
-    <% tips = game.tips.where( :user_id => current_user_id() ).all %>
-  
-    <!-- <%= tips.count %> Tipps -->
-  
-    <% tips.each do |tip| %>
-     <td>
-      <% if tip.toto12x %>
-       <span class='toto12x'><%= tip.toto12x %></span>
-      <% end %>
-     </td>
-     <td style='text-align: center;'>
-      <span class='<%= tip.bingo_style_class %>'>
-        <%= tip.score_str %>
-      </span>
-     </td>
-     <% end %><!-- each tip -->
-  </td>
- </tr> 
-<% end %><!-- each game -->
-</table>
-
-<p><%= link_to 'Mehr Spiele »', live_path(:limit => 6, :tips=>true, :past=>true) %>
-</p>

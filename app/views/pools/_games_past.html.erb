@@ -1,0 +1,66 @@
+<h3>Vergangene Spiele</h3>
+
+<!-- use partial for upcoming and past games?? -->
+<table class='live'>
+<% last_play_at = Time.local( 1999, 1, 1 )
+   games.each do |game| %>
+   
+  <% unless last_play_at.year   == game.play_at.year  &&
+            last_play_at.month  == game.play_at.month &&
+            last_play_at.day    == game.play_at.day %>
+        
+    <tr style='background-color: silver;'>
+      <td colspan='10'><%= game.play_at.strftime('%A, %d. %B %Y') %></td>
+    </tr> 
+        
+  <% end %>
+      
+ <tr style='vertical-align: middle;'>
+  <td>
+    <%= game.play_at.strftime('%H:%M') %>
+  </td>
+  <td style='text-align: right;'>
+    <span class='<%= game.team1_style_class %>'>
+      <%= link_to game.team1.title, live_game_path( game.id ) %>
+    </span>
+  </td>
+  <td>
+    <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+  </td>
+  <td><%= game.score_str %></td>
+  <td>
+    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+  </td>
+  <td>
+    <span class='<%= game.team2_style_class %>'>
+      <%= link_to game.team2.title, live_game_path( game.id ) %>
+    </span>
+  </td>
+  <td>
+    (<%= game.round.event.title %> / <%= game.round.title %>)
+  </td>
+  
+    <% tips = game.tips.where( :user_id => current_user_id() ).all %>
+  
+    <!-- <%= tips.count %> Tipps -->
+  
+    <% tips.each do |tip| %>
+     <td>
+      <% if tip.toto12x %>
+       <span class='toto12x'><%= tip.toto12x %></span>
+      <% end %>
+     </td>
+     <td style='text-align: center;'>
+      <span class='<%= tip.bingo_style_class %>'>
+        <%= tip.score_str %>
+      </span>
+     </td>
+     <% end %><!-- each tip -->
+  </td>
+ </tr> 
+<% last_play_at = game.play_at
+   end %><!-- each game -->
+</table>
+
+<p><%= link_to 'Mehr Spiele »', live_path(:limit => 10, :tips=>true, :past=>true) %>
+</p>

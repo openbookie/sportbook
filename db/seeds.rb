@@ -79,7 +79,7 @@ games_bl32 = [
 ## todo: fix order (possible w/ import?? depends on pos? check)
 games_bl33 = [
   [ 1, admira,    nil, nil, austria,     '2012-05-05 18:30' ],
-  [ 2, rapid,     nil, nil, salzburg,    '2012-06-05 16:00' ],
+  [ 2, rapid,     nil, nil, salzburg,    '2012-05-06 16:00' ],
   [ 3, ksv,       nil, nil, ried,        '2012-05-05 18:30' ],
   [ 4, neustadt,  nil, nil, sturm,       '2012-05-05 16:00' ],
   [ 5, wacker,    nil, nil, mattersburg, '2012-05-05 16:00' ]

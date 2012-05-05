@@ -6,7 +6,7 @@ class PoolsController < ApplicationController
     
     # find next upcoming games
     
-    limit = params[:limit] || '4'
+    limit = params[:limit] || '8'
     
     @upcoming_games = Game.where( 'play_at > ?', Time.now ).order( 'play_at').limit(limit)
     @past_games     = Game.where( 'play_at < ?', Time.now ).order( 'play_at desc').limit(limit)

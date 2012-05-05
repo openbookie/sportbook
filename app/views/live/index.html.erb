@@ -3,7 +3,17 @@
    Live
 <% end %>
 
-<% @games.each do |game| %>
+<%  last_play_at = Time.local( 1999, 1, 1 )
+    @games.each do |game| %>
+
+  <% unless last_play_at.year   == game.play_at.year  &&
+            last_play_at.month  == game.play_at.month &&
+            last_play_at.day    == game.play_at.day %>
+        
+    <h2><%= game.play_at.strftime('%A, %d. %B %Y') %></h2>
+        
+  <% end %>
+  
 
   <%= render :partial => 'game',     :locals => { :game  => game } %>
   
@@ -11,4 +21,5 @@
     <%= render :partial => 'game_tips', :locals => { :game  => game } %>
   <% end %>
   
-<% end %><!-- each game -->
+<% last_play_at = game.play_at
+   end %><!-- each game -->
