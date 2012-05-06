@@ -206,7 +206,14 @@ function recalcPlayTips()
          var team = group[i];
          $debug.append( "<p>["+ i + "] => pts: " + team.pts + ", diff: " + (team.score1-team.score2) + ", score1: "+ team.score1  +"</p>" );
 
-         $tr = $( '#standing-t'+ team.team_id );
+
+         var $tr = $( '#standing-t'+ team.team_id );
+         
+         // get team title html snippet from group
+         team.title_html = $tr.find( 'td:nth-child(1)' ).html();
+         group[i] = team;
+         
+         
          $tr.find( 'td:nth-child(2)' ).html( team.played );
          $tr.find( 'td:nth-child(3)' ).html( team.won );
          $tr.find( 'td:nth-child(4)' ).html( team.drawn );
@@ -218,7 +225,158 @@ function recalcPlayTips()
          $tr.insertAfter( $('#standing-g'+ team.group_id) ); // insertAfter "header" group table row/tr
       }
     }
-  }
+  }  
+  
+  // for each game  - pass 2 - calculate/replace team titles 
+  $( '.play .tip-score-input' ).each( function( idx, el ) {
+
+    var $score1 = $(el).find( 'input[type=text][data-autofill=score1]');
+    var $score2 = $(el).find( 'input[type=text][data-autofill=score2]');
+
+    var calc        = $score1.attr( 'data-calc' );
+    var group_id    = $score1.attr( 'data-group' );
+    var game_id     = $score1.attr( 'data-game' );
+    
+    var team1_calcrule    = $score1.attr( 'data-calcrule' );
+    var team1_calcvalue   = $score1.attr( 'data-calcvalue' );
+    var team1_placeholder = $score1.attr( 'data-placeholder' );
+
+    var team2_calcrule    = $score2.attr( 'data-calcrule' );
+    var team2_calcvalue   = $score2.attr( 'data-calcvalue' );
+    var team2_placeholder = $score2.attr( 'data-placeholder' );
+
+    var team1_id    = $score1.attr( 'data-team1' );
+    var team2_id    = $score2.attr( 'data-team2' );
+
+    var score1 = parseInt( $score1.val(), 10 );
+    var score2 = parseInt( $score2.val(), 10 );
+    
+
+    if( calc == 'true' ) // skip knockout games (only calc standing for group games)
+    {
+       if( team1_calcrule == 'group-winner' )
+       {
+         var group = groups[ 'g'+ team1_calcvalue ];
+         var team  = group[0];
+         if( team.played > 0 )
+         {
+            $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team.title_html );
+         }
+         else // use (reset to) placeholder
+         {
+            $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+         }
+       }
+       else if( team1_calcrule == 'group-2nd' )
+       {
+         var group = groups[ 'g'+ team1_calcvalue ];
+         var team  = group[1];
+         if( team.played > 0 )
+         {
+            $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team.title_html );
+         }
+         else // use (reset to) placeholder
+         {
+            $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+         }
+       }
+       else if( team1_calcrule == 'game-winner' )
+       {
+          var $tr = $( '#game'+team1_calcvalue );
+          var $score1 = $tr.find( 'input[type=text][data-autofill=score1]');
+          var $score2 = $tr.find( 'input[type=text][data-autofill=score2]');
+
+          var score1 = parseInt( $score1.val(), 10 );
+          var score2 = parseInt( $score2.val(), 10 );
+          
+          if( isNaN(score1) || isNaN(score2) )  // skip games with invalid scores
+          {
+            // use (reset to placeholder)
+            $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+          }
+          else
+          {
+             if( score1 > score2 ) // team1 wins
+             {
+                $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html(
+                   $tr.find( '.game-team1 .game-team-calc' ).html() );
+             }
+             else  // assume team2 wins - todo: add some checks
+             {
+                $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html(
+                   $tr.find( '.game-team2 .game-team-calc' ).html() );
+             }
+          }
+       }
+       else
+       {
+         alert( 'unbekannte team1_calcrule: ' + team1_calcrule );
+       }
+
+
+       if( team2_calcrule == 'group-winner' )
+       {
+         var group = groups[ 'g'+ team2_calcvalue ];
+         var team  = group[0];
+         if( team.played > 0 )
+         {
+            $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team.title_html );
+         }
+         else // use (reset to) placeholder
+         {
+            $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+         }
+       }
+       else if( team2_calcrule == 'group-2nd' )
+       {
+         var group = groups[ 'g'+ team2_calcvalue ];
+         var team  = group[1];
+         if( team.played > 0 )
+         {
+            $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team.title_html );
+         }
+         else // use (reset to) placeholder
+         {
+            $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+         }
+       }
+       else if( team2_calcrule == 'game-winner' )
+       {
+          var $tr = $( '#game'+team2_calcvalue );
+          var $score1 = $tr.find( 'input[type=text][data-autofill=score1]');
+          var $score2 = $tr.find( 'input[type=text][data-autofill=score2]');
+
+          var score1 = parseInt( $score1.val(), 10 );
+          var score2 = parseInt( $score2.val(), 10 );
+          
+          if( isNaN(score1) || isNaN(score2) )  // skip games with invalid scores
+          {
+            // use (reset to placeholder)
+            $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+          }
+          else
+          {
+             if( score1 > score2 ) // team1 wins
+             {
+                $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html(
+                   $tr.find( '.game-team1 .game-team-calc' ).html() );
+             }
+             else  // assume team2 wins - todo: add some checks
+             {
+                $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html(
+                   $tr.find( '.game-team2 .game-team-calc' ).html() );
+             }
+          }
+       }
+       else
+       {
+         alert( 'unbekannte team2_calcrule: ' + team2_calcrule );
+       }
+    }
+    
+  } );  // end each game
+  
+  
   
 } // function recalPlayTips
 

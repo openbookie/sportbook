@@ -6,6 +6,8 @@ create_table :teams do |t|
   t.string  :title, :null => false
   t.string  :key,   :null => false   # import/export key
   t.boolean :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
+  t.string  :calc_rule     # e.g. group-winner, group-2nd, game-winner, etc.
+  t.string  :calc_value    # e.g. <group_id>, <game_id>, etc.
   t.string  :img
   t.timestamps
 end

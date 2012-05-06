@@ -62,6 +62,8 @@
 
 <%= form_for @play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
 
+<% if @pool.flex? %>
+ <!-- NB: only needed for flex - in fixed winner gets calculated automatically -->
 <table>
  <tr>
    <td><%= f.label :team1_id, '1. Platz' %></td>
@@ -78,7 +80,7 @@
  </tr>
   <% end %><!-- if pool.team3? -->
 </table>
-
+<% end %><!-- if pool.flex? -->
 
 
 
@@ -113,7 +115,7 @@
   <% else %>
   <% round.games.each do |game| %>
   <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
-   <tr>
+   <tr id='game<%= game.id %>'>
      <% if game.over?  %>
        <%= render :partial => 'td_tip_toto12x',  :locals => { :tip  => tip }  %>
        <%= render :partial => 'td_tip_bingo',    :locals => { :tip  => tip }  %>
@@ -131,26 +133,43 @@
      <%= ff.hidden_field :user_id %>
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
-     <% if first_field %>
-       <%= ff.text_field :score1, :size => 1,
-            :data => { :autofocus => 'true',
-                       :knockout => game.knockout,
-                       :autofill => 'score1',
-                       :team1    => game.team1_id } %>
-       <% first_field = false %>
-      <% else %>
-       <%= ff.text_field :score1, :size => 1,
-             :data => { :knockout => game.knockout,
-                        :autofill => 'score1',
-                        :team1    => game.team1_id } %>
-      <% end %>
+
+     <%  data_hash_team1 = { :knockout => game.knockout,
+                             :autofill => 'score1',
+                             :team1    => game.team1_id,
+                             :game  => game.id,
+                             :group => game.group_id }
+         
+         if game.team1.calc?
+           data_hash_team1[ :calc ] = true
+           data_hash_team1[ :calcrule ]    = game.team1.calc_rule
+           data_hash_team1[ :calcvalue ]   = game.team1.calc_value
+           data_hash_team1[ :placeholder ] = game.team1.title
+         end
+         
+         data_hash_team2 = { :knockout => game.knockout,
+                             :autofill => 'score2',
+                             :team2 => game.team2_id,
+                             :game  => game.id,
+                             :group => game.group_id }
+
+         if game.team2.calc?
+           data_hash_team2[ :calc ] = true
+           data_hash_team2[ :calcrule ]    = game.team2.calc_rule
+           data_hash_team2[ :calcvalue ]   = game.team2.calc_value
+           data_hash_team2[ :placeholder ] = game.team2.title
+         end
+
+         
+         if first_field
+            data_hash_team1[ :autofocus ] = true
+            first_field = false 
+         end
+        %> 
+
+       <%= ff.text_field :score1, :size => 1, :data => data_hash_team1 %>
        :
-     <%= ff.text_field :score2, :size => 1,
-          :data => { :knockout => game.knockout,
-                     :autofill => 'score2',
-                     :team2 => game.team2_id,
-                     :game  => game.id,
-                     :group => game.group_id } %>
+       <%= ff.text_field :score2, :size => 1, :data => data_hash_team2 %>
   <% end %><!-- fields_for tips -->
        </td>
        <% else %><!-- tip.present? -->
@@ -214,4 +233,4 @@
 </p>  
 <% end %>
 
-<div id='debug'></div>
+<div id='debug' style='display: none;'></div>

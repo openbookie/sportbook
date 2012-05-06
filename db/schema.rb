@@ -156,6 +156,8 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "title",                         :null => false
     t.string   "key",                           :null => false
     t.boolean  "calc",       :default => false, :null => false
+    t.string   "calc_rule"
+    t.string   "calc_value"
     t.string   "img"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
