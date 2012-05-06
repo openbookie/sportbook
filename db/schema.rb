@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "days", :force => true do |t|
-    t.integer  "event_id",   :null => false
-    t.integer  "pos",        :null => false
-    t.date     "play_on",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "events", :force => true do |t|
     t.string   "title",                        :null => false
     t.string   "key",                          :null => false
@@ -57,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   create_table "games", :force => true do |t|
     t.integer  "round_id",                        :null => false
     t.integer  "pos",                             :null => false
+    t.integer  "group_id"
     t.integer  "team1_id",                        :null => false
     t.integer  "team2_id",                        :null => false
     t.datetime "play_at",                         :null => false
@@ -75,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at",                      :null => false
   end
 
+  add_index "games", ["group_id"], :name => "index_games_on_group_id"
   add_index "games", ["key"], :name => "index_games_on_key", :unique => true
   add_index "games", ["next_game_id"], :name => "index_games_on_next_game_id"
   add_index "games", ["prev_game_id"], :name => "index_games_on_prev_game_id"
@@ -83,9 +77,22 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   create_table "groups", :force => true do |t|
     t.integer  "event_id",   :null => false
     t.string   "title",      :null => false
+    t.integer  "pos",        :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "groups", ["event_id"], :name => "index_groups_on_event_id"
+
+  create_table "groups_teams", :force => true do |t|
+    t.integer  "group_id",   :null => false
+    t.integer  "team_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "groups_teams", ["group_id", "team_id"], :name => "index_groups_teams_on_group_id_and_team_id", :unique => true
+  add_index "groups_teams", ["group_id"], :name => "index_groups_teams_on_group_id"
 
   create_table "plays", :force => true do |t|
     t.integer  "user_id",                   :null => false

@@ -8,16 +8,37 @@
 
 <!-- add hotkey handler for quick tip autofill -->
 <script>
+
+ // function testTimer()
+ // {
+ //   $( '#debug').append( '<p>' + new Date().toString() + '</p>' );
+ // }
+
  $(document).ready( function() {  
+  
+  recalcPlayTips();
+  
   $(document).on( 'keydown', function( event ) {
-    if( (event.ctrlKey && event.which == 81) ||
-        (event.which == 81) )  // ASCII 81 = Q
+    if( (event.ctrlKey && event.which == 81) || (event.which == 81) )  // ASCII 81 = Q
     {
        event.preventDefault();
        autofillPlayTips();
+       recalcPlayTips();
+       return false;  // todo: check if return false is  needed?
+     }
+     else if( (event.ctrlKey && event.which == 67) || (event.which == 67) )  // ASCII 67 = C
+     {
+       event.preventDefault();
+       recalcPlayTips();
        return false;  // todo: check if return false is  needed?
      }
   });
+  
+  // quick and dirty hack
+  //  do a recalc every ~2 seconds (e.g. 1500 ms)
+  
+  var recalcTimer = setInterval( recalcPlayTips, 1500 );
+  
 });
 </script>
 
@@ -59,6 +80,9 @@
 </table>
 
 
+
+
+
 <!-- table columns:
         1    => toto12x
         2    => bingo
@@ -69,7 +93,9 @@
         7    => date
   -->
 
-
+<table>
+ <tr>
+  <td><!-- begin column 1 -->
 
 <table class='play' cellspacing=0>
 <% first_field = true 
@@ -106,13 +132,25 @@
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
      <% if first_field %>
-       <%= ff.text_field :score1, :size => 1, :data => { :autofocus => 'true', :knockout => game.knockout, :autofill => 'score1' } %>
+       <%= ff.text_field :score1, :size => 1,
+            :data => { :autofocus => 'true',
+                       :knockout => game.knockout,
+                       :autofill => 'score1',
+                       :team1    => game.team1_id } %>
        <% first_field = false %>
       <% else %>
-       <%= ff.text_field :score1, :size => 1, :data => { :knockout => game.knockout, :autofill => 'score1' } %>
+       <%= ff.text_field :score1, :size => 1,
+             :data => { :knockout => game.knockout,
+                        :autofill => 'score1',
+                        :team1    => game.team1_id } %>
       <% end %>
        :
-     <%= ff.text_field :score2, :size => 1, :data => { :knockout => game.knockout, :autofill => 'score2' } %>
+     <%= ff.text_field :score2, :size => 1,
+          :data => { :knockout => game.knockout,
+                     :autofill => 'score2',
+                     :team2 => game.team2_id,
+                     :game  => game.id,
+                     :group => game.group_id } %>
   <% end %><!-- fields_for tips -->
        </td>
        <% else %><!-- tip.present? -->
@@ -122,6 +160,7 @@
        <% end %><!-- tip.present? -->
        <td><!-- no game.scores yet --></td>
        <%= render :partial => 'td_game_team2', :locals => { :game => game } %>
+       <td><%= "(#{game.group.title})" if game.group %></td>
        <%= render :partial => 'td_game_date', :locals => { :game => game } %>
    <% end %> <!-- game.over? -->
     
@@ -131,9 +170,48 @@
 <% end %><!-- rounds -->
 </table>
 
+  <!-- end column 1 -->
+  </td>
+ <td style='vertical-align: top;'>
+   <!-- begin column 2 -->
+   
+<table>
+   <% @groups.each do |group| %>
+      <tr id='standing-g<%= group.id %>' style='background-color: silver;'>
+       <td>Tabelle <%= group.title %></td>
+       <td>Spiele</td>
+       <td>S</td>
+       <td>U</td>
+       <td>N</td>
+       <td>Tore</td>
+       <td>+/-</td>
+       <td>Punkte</td>
+      </tr>
+      <% group.teams.each do |team| %>
+        <tr id='standing-t<%= team.id %>'>
+          <td><%= team.title %></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0 - 0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      <% end %>
+   <% end %>
+</table>
+
+   <!-- end column 2 -->
+ </td>
+</tr>
+</table>
+
 
 <p>
   <%= f.submit "Tipps speichern", :class => 'btn-primary' %>
   <%= link_to 'Zurück', play_path( @play ), :class => 'btn' %>
 </p>  
 <% end %>
+
+<div id='debug'></div>

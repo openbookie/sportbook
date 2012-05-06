@@ -45,6 +45,7 @@ class PlaysController < ApplicationController
     end
 
     @rounds = @pool.event.rounds.all
+    @groups = @pool.event.groups.all
   end
 
   # PUT /plays/:id

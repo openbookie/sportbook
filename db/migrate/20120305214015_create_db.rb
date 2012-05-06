@@ -36,9 +36,20 @@ end
 add_index :rounds, :event_id  # fk event_id index
 
 
+create_table :groups do |t|     # Teamgruppe (zB Gruppe A, Gruppe B, etc.)
+  t.references :event,    :null => false
+  t.string     :title,    :null => false
+  t.integer    :pos,      :null => false
+  t.timestamps
+end
+
+add_index :groups, :event_id  # fk event_id index
+
+
 create_table :games do |t|
   t.references :round,    :null => false
   t.integer    :pos,      :null => false
+  t.references :group      # note: group is optional
   t.references :team1,    :null => false
   t.references :team2,    :null => false
   t.datetime   :play_at,  :null => false
@@ -58,6 +69,7 @@ end
 
 add_index :games, :key, :unique => true 
 add_index :games, :round_id      # fk round_id index
+add_index :games, :group_id      # fk group_id index
 add_index :games, :next_game_id  # fk next_game_id index
 add_index :games, :prev_game_id  # fk next_game_id index
 
@@ -138,6 +150,17 @@ add_index :events_teams, [:event_id,:team_id], :unique => true
 add_index :events_teams, :event_id
 
 
+create_table :groups_teams do |t|
+  t.references :group, :null => false
+  t.references :team,  :null => false
+  t.timestamps
+end
+
+add_index :groups_teams, [:group_id,:team_id], :unique => true 
+add_index :groups_teams, :group_id
+
+
+
 create_table :points do |t|
   t.references :user,  :null => false
   t.references :pool,  :null => false
@@ -157,19 +180,7 @@ end
 add_index :points, [:user_id,:pool_id,:round_id], :unique => true 
 
 
-create_table :days do |t|    # Spieltage (1.Spieltag, 2.Spieltag, etc.)
-  t.references :event,    :null => false
-  t.integer    :pos,      :null => false     # 1,2,3,4, etc.
-  t.date       :play_on,  :null => false     # _at for datetime, _on for date ???
-  t.timestamps
-end
     
-create_table :groups do |t|     # Teamgruppe (zB Gruppe A, Gruppe B, etc.)
-  t.references :event,    :null => false
-  t.string     :title,    :null => false
-  ## add pos ?? or key??  
-  t.timestamps
-end
 
 
 ## todo: use polymorphic assoc?? for actions??

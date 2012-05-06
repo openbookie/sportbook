@@ -29,6 +29,7 @@ class Game < ActiveRecord::Base
   belongs_to :team2, :class_name => 'Team', :foreign_key => 'team2_id'
   
   belongs_to :round
+  belongs_to :group   # group is optional
 
   has_many   :tips
 
@@ -62,6 +63,7 @@ class Game < ActiveRecord::Base
         :score2    =>values[3],
         :team2     =>values[4],
         :play_at   =>values[5],
+        :group     =>values[6],    # Note: group is optional (may be null/nil)
         :knockout  =>knockout )
     end # each games
   end
