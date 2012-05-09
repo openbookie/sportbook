@@ -5,10 +5,15 @@ class CreateDb < ActiveRecord::Migration
 create_table :teams do |t|
   t.string  :title, :null => false
   t.string  :key,   :null => false   # import/export key
+  t.string  :img
+
+  t.string  :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
+  
   t.boolean :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
   t.string  :calc_rule     # e.g. group-winner, group-2nd, game-winner, etc.
   t.string  :calc_value    # e.g. <group_id>, <game_id>, etc.
-  t.string  :img
+  t.string  :calc_team_id  # e.g. optional team_id of "real" team when known
+
   t.timestamps
 end
 
@@ -31,7 +36,11 @@ create_table :rounds do |t|
   t.string     :title, :null => false
   t.string     :title2
   t.integer    :pos,   :null => false
+
+  t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
+
   t.boolean    :calc,  :null => false, :default => false
+  
   t.timestamps
 end
 

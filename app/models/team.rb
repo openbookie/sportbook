@@ -17,15 +17,7 @@ class Team < ActiveRecord::Base
   def calc?
     calc == true
   end
-  
-  def title
-    if calc?
-      "[#{read_attribute(:title)}]"   # wrap title in []
-    else
-      read_attribute(:title)
-    end
-  end
-  
+    
   def key
      # generate key if necessary (for debugging only - should be not null field!)
      value = read_attribute(:key)

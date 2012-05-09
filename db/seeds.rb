@@ -435,62 +435,71 @@ Game.create_from_ary!( games_euro_round2, euro_round2 )
 Game.create_from_ary!( games_euro_round3, euro_round3 )
 
 
-################################################################
-# Viertelfinale
+euro8 = Round.create!( :event => euro, :pos => 4, :title => 'Viertelfinale' )
+euro4 = Round.create!( :event => euro, :pos => 5, :title => 'Halbfinale' )
+euro1 = Round.create!( :event => euro, :pos => 6, :title => 'Finale' )
 
-## todo/fix: make calc team into a subclass (using single table inheritance STI)
-
-t20 = Team.create!( :title => '1. Gruppe A', :key => 'euro1a', :calc => true, :calc_rule => 'group-winner', :calc_value => euroa.id )
-t21 = Team.create!( :title => '2. Gruppe A', :key => 'euro2a', :calc => true, :calc_rule => 'group-2nd',    :calc_value => euroa.id )
-
-t22 = Team.create!( :title => '1. Gruppe B', :key => 'euro1b', :calc => true, :calc_rule => 'group-winner', :calc_value => eurob.id )
-t23 = Team.create!( :title => '2. Gruppe B', :key => 'euro2b', :calc => true, :calc_rule => 'group-2nd'   , :calc_value => eurob.id )
-
-t24 = Team.create!( :title => '1. Gruppe C', :key => 'euro1c', :calc => true, :calc_rule => 'group-winner', :calc_value => euroc.id )
-t25 = Team.create!( :title => '2. Gruppe C', :key => 'euro2c', :calc => true, :calc_rule => 'group-2nd',    :calc_value => euroc.id )
-
-t26 = Team.create!( :title => '1. Gruppe D', :key => 'euro1d', :calc => true, :calc_rule => 'group-winner', :calc_value => eurod.id )
-t27 = Team.create!( :title => '2. Gruppe D', :key => 'euro2d', :calc => true, :calc_rule => 'group-2nd',    :calc_value => eurod.id )
-
-euro8 = Round.create!( :event => euro, :pos => 4, :title => 'Viertelfinale', :calc => true )
-
-games_euro8 = [
-  [ 25, t20, nil, nil, t23, '2012-06-21 20:45' ],
-  [ 26, t22, nil, nil, t21, '2012-06-22 20:45' ],
-  [ 27, t24, nil, nil, t27, '2012-06-23 20:45' ],
-  [ 28, t26, nil, nil, t25, '2012-06-24 20:45' ]]
-
-Game.create_knockouts_from_ary!( games_euro8, euro8 )
 
 
 ##############################################
-# Halbfinale
+## Calc Rounds for **Fix** Style Pool
 
-t30 = Team.create!( :title => 'Sieger Viertelfinale 1', :key => 'euro25', :calc => true, :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( euro8.id, 25 ).id )  # Sieger Spiel 25
-t31 = Team.create!( :title => 'Sieger Viertelfinale 2', :key => 'euro26', :calc => true, :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( euro8.id, 26 ).id )  # Sieger Spiel 26
-t32 = Team.create!( :title => 'Sieger Viertelfinale 3', :key => 'euro27', :calc => true, :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( euro8.id, 27 ).id )  # Sieger Spiel 27
-t33 = Team.create!( :title => 'Sieger Viertelfinale 4', :key => 'euro28', :calc => true, :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( euro8.id, 28 ).id )  # Sieger Spiel 28
 
-euro4 = Round.create!( :event => euro, :pos => 5, :title => 'Halbfinale', :calc => true )
+################################################################
+# Viertelfinale (Calc) 
 
-games_euro4 = [
-  [ 29, t30, nil, nil, t32, '2012-06-27 20:45' ],
-  [ 30, t31, nil, nil, t33, '2012-06-28 20:45' ]]
+c1a = CalcTeam.create!( :title => '1. Gruppe A', :key => 'euro1a', :calc_rule => 'group-winner', :calc_value => euroa.id )
+c2a = CalcTeam.create!( :title => '2. Gruppe A', :key => 'euro2a', :calc_rule => 'group-2nd',    :calc_value => euroa.id )
 
-Game.create_knockouts_from_ary!( games_euro4, euro4 )
+c1b = CalcTeam.create!( :title => '1. Gruppe B', :key => 'euro1b', :calc_rule => 'group-winner', :calc_value => eurob.id )
+c2b = CalcTeam.create!( :title => '2. Gruppe B', :key => 'euro2b', :calc_rule => 'group-2nd'   , :calc_value => eurob.id )
+
+c1c = CalcTeam.create!( :title => '1. Gruppe C', :key => 'euro1c', :calc_rule => 'group-winner', :calc_value => euroc.id )
+c2c = CalcTeam.create!( :title => '2. Gruppe C', :key => 'euro2c', :calc_rule => 'group-2nd',    :calc_value => euroc.id )
+
+c1d = CalcTeam.create!( :title => '1. Gruppe D', :key => 'euro1d', :calc_rule => 'group-winner', :calc_value => eurod.id )
+c2d = CalcTeam.create!( :title => '2. Gruppe D', :key => 'euro2d', :calc_rule => 'group-2nd',    :calc_value => eurod.id )
+
+
+calc_euro8 = CalcRound.create!( :event => euro, :pos => 4, :title => 'Viertelfinale' )
+
+calc_games_euro8 = [
+  [ 25, c1a, nil, nil, c2b, '2012-06-21 20:45' ],
+  [ 26, c1b, nil, nil, c2a, '2012-06-22 20:45' ],
+  [ 27, c1c, nil, nil, c2d, '2012-06-23 20:45' ],
+  [ 28, c1d, nil, nil, c2c, '2012-06-24 20:45' ]]
+
+Game.create_knockouts_from_ary!( calc_games_euro8, calc_euro8 )
+
+
+##############################################
+# Halbfinale (Calc)
+
+cv1 = CalcTeam.create!( :title => 'Sieger Viertelfinale 1', :key => 'euro25', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 25 ).id )  # Sieger Spiel 25
+cv2 = CalcTeam.create!( :title => 'Sieger Viertelfinale 2', :key => 'euro26', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 26 ).id )  # Sieger Spiel 26
+cv3 = CalcTeam.create!( :title => 'Sieger Viertelfinale 3', :key => 'euro27', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 27 ).id )  # Sieger Spiel 27
+cv4 = CalcTeam.create!( :title => 'Sieger Viertelfinale 4', :key => 'euro28', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 28 ).id )  # Sieger Spiel 28
+
+calc_euro4 = CalcRound.create!( :event => euro, :pos => 5, :title => 'Halbfinale' )
+
+calc_games_euro4 = [
+  [ 29, cv1, nil, nil, cv3, '2012-06-27 20:45' ],
+  [ 30, cv2, nil, nil, cv4, '2012-06-28 20:45' ]]
+
+Game.create_knockouts_from_ary!( calc_games_euro4, calc_euro4 )
 
 
 ################################################
-# Finale
+# Finale (Calc)
 
-t40 = Team.create!( :title => 'Sieger Halbfinale 1', :key => 'euro29', :calc => true, :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( euro4.id, 29 ).id )  # Sieger Spiel 29
-t41 = Team.create!( :title => 'Sieger Halbfinale 2', :key => 'euro30', :calc => true, :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( euro4.id, 30 ).id )  # Sieger Spiel 30
+ch1 = CalcTeam.create!( :title => 'Sieger Halbfinale 1', :key => 'euro29', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro4.id, 29 ).id )  # Sieger Spiel 29
+ch2 = CalcTeam.create!( :title => 'Sieger Halbfinale 2', :key => 'euro30', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro4.id, 30 ).id )  # Sieger Spiel 30
 
-euro1 = Round.create!( :event => euro, :pos => 6, :title => 'Finale', :calc => true )
+calc_euro1 = CalcRound.create!( :event => euro, :pos => 6, :title => 'Finale' )
 
-games_euro1 = [[ 31, t40, nil, nil, t41, '2012-07-01 20:45' ]]
+calc_games_euro1 = [[ 31, ch1, nil, nil, ch2, '2012-07-01 20:45' ]]
 
-Game.create_knockouts_from_ary!( games_euro1, euro1 )
+Game.create_knockouts_from_ary!( calc_games_euro1, calc_euro1 )
 
 
 
