@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.integer  "team2_id",                        :null => false
     t.datetime "play_at",                         :null => false
     t.boolean  "knockout",     :default => false, :null => false
+    t.boolean  "home",         :default => true,  :null => false
     t.integer  "score1"
     t.integer  "score2"
     t.integer  "score3"
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "title",                           :null => false
     t.string   "key",                             :null => false
     t.string   "img"
+    t.string   "tag"
     t.string   "type"
     t.boolean  "calc",         :default => false, :null => false
     t.string   "calc_rule"

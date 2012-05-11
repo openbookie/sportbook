@@ -76,7 +76,7 @@ games_bl32 = [
   [ 5, ried,        2,  3, rapid,    '2012-04-29 16:00' ]
 ]
 
-## todo: fix order (possible w/ import?? depends on pos? check)
+## todo: fix order (possible w/ import?? depends on pos? check -- no, doesn't depend on pos)
 games_bl33 = [
   [ 1, admira,      3,   2, austria,     '2012-05-05 18:30' ],
   [ 2, rapid,       0,   1, salzburg,    '2012-05-06 16:00' ],
@@ -86,11 +86,11 @@ games_bl33 = [
 ]
 
 games_bl34 = [
-  [ 1, austria,     nil, nil, neustadt,     '2012-05-10 20:30' ],
-  [ 2, ried,        nil, nil, wacker,       '2012-05-10 20:30' ],
-  [ 3, salzburg,    nil, nil, ksv,          '2012-05-10 18:30' ],
-  [ 4, mattersburg, nil, nil, rapid,        '2012-05-10 20:30' ],
-  [ 5, sturm,       nil, nil, admira,       '2012-05-10 20:30' ]
+  [ 1, austria,     3,   1, neustadt,     '2012-05-10 20:30' ],
+  [ 2, ried,        1,   1, wacker,       '2012-05-10 20:30' ],
+  [ 3, salzburg,    2,   0, ksv,          '2012-05-10 18:30' ],
+  [ 4, mattersburg, 0,   1, rapid,        '2012-05-10 20:30' ],
+  [ 5, sturm,       0,   3, admira,       '2012-05-10 20:30' ]
 ]
 
 games_bl35 = [
@@ -299,7 +299,7 @@ games_el4 = [
 ]
 
 games_el1 = [
-  [ 1, atletico,    nil,   nil, athletic,   '2012-05-09 20:45' ]]
+  [ 1, atletico,     3,   0, athletic,   '2012-05-09 20:45' ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_el8, el8, el8_2 )
@@ -324,10 +324,10 @@ eurod = Group.create!( :event => euro, :pos => 4, :title => 'Gruppe D' )
 #################################3
 # Gruppe A
 
-t1 = Team.create!( :title => 'Polen',        :key => 'poland', :img => 'poland2.png' )
-t2 = Team.create!( :title => 'Griechenland', :key => 'greece', :img => 'greece2.png' )
-t3 = Team.create!( :title => 'Russland',     :key => 'russia', :img => 'russia2.png' )
-t4 = Team.create!( :title => 'Tschechien',   :key => 'czech',  :img => 'czech_republic2.png' )
+t1 = Team.create!( :title => 'Polen',        :tag => 'POL', :key => 'poland', :img => 'poland2.png' )
+t2 = Team.create!( :title => 'Griechenland', :tag => 'GRE', :key => 'greece', :img => 'greece2.png' )
+t3 = Team.create!( :title => 'Russland',     :tag => 'RUS', :key => 'russia', :img => 'russia2.png' )
+t4 = Team.create!( :title => 'Tschechien',   :tag => 'CZE', :key => 'czech',  :img => 'czech_republic2.png' )
 
 euroa.teams << t1
 euroa.teams << t2
@@ -338,10 +338,10 @@ euroa.teams << t4
 #################################3
 # Gruppe B
 
-t5 = Team.create!( :title => 'Niederlande', :key => 'netherlands', :img => 'netherlands2.png' )
-t6 = Team.create!( :title => 'Dänemark',    :key => 'denmark',     :img => 'denmark2.png' )
-t7 = Team.create!( :title => 'Deutschland', :key => 'germany',     :img => 'germany2.png' )
-t8 = Team.create!( :title => 'Portugal',    :key => 'portugal',    :img => 'portugal2.png' )
+t5 = Team.create!( :title => 'Niederlande', :tag => 'NED', :key => 'netherlands', :img => 'netherlands2.png' )
+t6 = Team.create!( :title => 'Dänemark',    :tag => 'DEN', :key => 'denmark',     :img => 'denmark2.png' )
+t7 = Team.create!( :title => 'Deutschland', :tag => 'GER', :key => 'germany',     :img => 'germany2.png' )
+t8 = Team.create!( :title => 'Portugal',    :tag => 'POR', :key => 'portugal',    :img => 'portugal2.png' )
 
 eurob.teams << t5
 eurob.teams << t6
@@ -352,10 +352,10 @@ eurob.teams << t8
 #################################3
 # Gruppe C
 
-t9  = Team.create!( :title => 'Spanien',  :key => 'spain',   :img => 'spain2.png' )
-t10 = Team.create!( :title => 'Italien',  :key => 'italy',   :img => 'italy2.png' )
-t11 = Team.create!( :title => 'Irland',   :key => 'ireland', :img => 'ireland2.png' )
-t12 = Team.create!( :title => 'Kroatien', :key => 'croatia', :img => 'croatia2.png' )
+t9  = Team.create!( :title => 'Spanien',  :tag => 'ESP', :key => 'spain',   :img => 'spain2.png' )
+t10 = Team.create!( :title => 'Italien',  :tag => 'ITA', :key => 'italy',   :img => 'italy2.png' )
+t11 = Team.create!( :title => 'Irland',   :tag => 'IRL', :key => 'ireland', :img => 'ireland2.png' )
+t12 = Team.create!( :title => 'Kroatien', :tag => 'CRO', :key => 'croatia', :img => 'croatia2.png' )
 
 euroc.teams << t9
 euroc.teams << t10
@@ -365,10 +365,10 @@ euroc.teams << t12
 #################################3
 # Gruppe D
 
-t13 = Team.create!( :title => 'Ukraine',    :key => 'ukraine', :img => 'ukraine2.png' )
-t14 = Team.create!( :title => 'Schweden',   :key => 'sweden',  :img => 'sweden2.png' )
-t15 = Team.create!( :title => 'Frankreich', :key => 'france',  :img => 'france2.png' )
-t16 = Team.create!( :title => 'England',    :key => 'england', :img => 'england2.png' )
+t13 = Team.create!( :title => 'Ukraine',    :tag => 'UKR', :key => 'ukraine', :img => 'ukraine2.png' )
+t14 = Team.create!( :title => 'Schweden',   :tag => 'SWE', :key => 'sweden',  :img => 'sweden2.png' )
+t15 = Team.create!( :title => 'Frankreich', :tag => 'FRA', :key => 'france',  :img => 'france2.png' )
+t16 = Team.create!( :title => 'England',    :tag => 'ENG', :key => 'england', :img => 'england2.png' )
 
 eurod.teams << t13
 eurod.teams << t14
@@ -607,12 +607,12 @@ user23 = User.create!( :name => 'Claudia KOTZIAN',    :email => 'claudia' )
 user24 = User.create!( :name => 'Markus BROSCH',      :email => 'markus' )
 
 
-pool1 = Pool.create!( :event => euro, :title => 'UNIQA USS EF', :user => user1, :fix => true, :welcome => '' )
-pool2 = Pool.create!( :event => euro, :title => 'UNIQA USS EF', :user => user1, :welcome => '' )
-pool3 = Pool.create!( :event => cl,   :title => 'UNIQA USS EF', :user => user1, :welcome => '' )
-pool4 = Pool.create!( :event => el,   :title => 'UNIQA USS EF', :user => user8, :welcome => '' )
-pool5 = Pool.create!( :event => bl,   :title => 'UNIQA USS EF', :user => user5, :welcome => '' )
-pool6 = Pool.create!( :event => ofb,  :title => 'UNIQA USS EF', :user => user5, :welcome => '' )
+pool1 = Pool.create!( :event => euro, :title => 'USS EF', :user => user1, :fix => true, :welcome => '' )
+pool2 = Pool.create!( :event => euro, :title => 'USS EF', :user => user1, :welcome => '' )
+pool3 = Pool.create!( :event => cl,   :title => 'USS EF', :user => user1, :welcome => '' )
+pool4 = Pool.create!( :event => el,   :title => 'USS EF', :user => user8, :welcome => '' )
+pool5 = Pool.create!( :event => bl,   :title => 'USS EF', :user => user5, :welcome => '' )
+pool6 = Pool.create!( :event => ofb,  :title => 'USS EF', :user => user5, :welcome => '' )
 
 
 

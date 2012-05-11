@@ -6,6 +6,7 @@ create_table :teams do |t|
   t.string  :title, :null => false
   t.string  :key,   :null => false   # import/export key
   t.string  :img
+  t.string  :tag     # make it not null?  - three letter tag (short title)
 
   t.string  :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
   
@@ -65,6 +66,7 @@ create_table :games do |t|
   t.references :team2,    :null => false
   t.datetime   :play_at,  :null => false
   t.boolean    :knockout, :null => false, :default => false
+  t.boolean    :home,     :null => false, :default => true    # is team1 play at home (that is, at its home stadium)
   t.integer    :score1
   t.integer    :score2
   t.integer    :score3    # verlaengerung (opt)
