@@ -77,6 +77,10 @@ create_table :games do |t|
   t.references :prev_game
   t.string     :toto12x      # 1,2,X,nil  calculate on save
   t.string     :key          # import/export key
+
+  t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
+  t.boolean    :calc,  :null => false, :default => false
+
   t.timestamps
 end
 
@@ -143,6 +147,10 @@ create_table :tips do |t|
   t.integer    :score5    # elfmeter (opt)
   t.integer    :score6
   t.string     :toto12x      # 1,2,X,nil  calculate on save
+
+  t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
+  t.boolean    :calc,  :null => false, :default => false
+
   t.timestamps
 end
 
