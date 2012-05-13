@@ -3,9 +3,6 @@
 # note: timezone for games (play_at) is *always* CET (central european time)
 
 
-# todo: add event.title to form in new games for round.title
-
-
 ######################################
 ## Oesterreichische Bundesliga 2012
 
@@ -45,68 +42,68 @@ bl36 = Round.create!( :event => bl, :pos => 36, :title => '36. Runde', :title2 =
 
 
 games_bl29 = [
-  [ 1, salzburg,    2,  0, wacker,   '2012-04-07 16:00' ],
-  [ 2, ried,        0,  1, austria,  '2012-04-07 18:30' ],
-  [ 3, ksv,         2,  3, admira,   '2012-04-07 18:30' ],
-  [ 4, rapid,       2,  1, neustadt, '2012-04-07 18:30' ],
-  [ 5, mattersburg, 0,  2, sturm,    '2012-04-08 16:00' ]
+  [ 1, salzburg,    [2, 0], wacker,   '2012-04-07 16:00' ],
+  [ 2, ried,        [0, 1], austria,  '2012-04-07 18:30' ],
+  [ 3, ksv,         [2, 3], admira,   '2012-04-07 18:30' ],
+  [ 4, rapid,       [2, 1], neustadt, '2012-04-07 18:30' ],
+  [ 5, mattersburg, [0, 2], sturm,    '2012-04-08 16:00' ]
 ]
 
 games_bl30 = [
-  [ 1, neustadt,    0,  0, ksv,         '2012-04-14 16:00' ],
-  [ 2, admira,      1,  1, wacker,      '2012-04-14 18:30' ],
-  [ 3, sturm,       2,  2, salzburg,    '2012-04-14 18:30' ],
-  [ 4, ried,        2,  0, mattersburg, '2012-04-14 18:30' ],
-  [ 5, austria,     0,  0, rapid,       '2012-04-15 16:00' ]
+  [ 1, neustadt,    [0, 0], ksv,         '2012-04-14 16:00' ],
+  [ 2, admira,      [1, 1], wacker,      '2012-04-14 18:30' ],
+  [ 3, sturm,       [2, 2], salzburg,    '2012-04-14 18:30' ],
+  [ 4, ried,        [2, 0], mattersburg, '2012-04-14 18:30' ],
+  [ 5, austria,     [0, 0], rapid,       '2012-04-15 16:00' ]
 ]
 
 games_bl31 = [
-  [ 1, wacker,      2,  0, neustadt, '2012-04-21 16:00' ],
-  [ 2, ksv,         1,  0, austria,  '2012-04-21 18:30' ],
-  [ 3, mattersburg, 1,  2, admira,   '2012-04-21 18:30' ],
-  [ 4, salzburg,    2,  0, ried,     '2012-04-21 18:30' ],
-  [ 5, rapid,       1,  1, sturm,    '2012-04-22 16:00' ]
+  [ 1, wacker,      [2, 0], neustadt, '2012-04-21 16:00' ],
+  [ 2, ksv,         [1, 0], austria,  '2012-04-21 18:30' ],
+  [ 3, mattersburg, [1, 2], admira,   '2012-04-21 18:30' ],
+  [ 4, salzburg,    [2, 0], ried,     '2012-04-21 18:30' ],
+  [ 5, rapid,       [1, 1], sturm,    '2012-04-22 16:00' ]
 ]
 
 games_bl32 = [
-  [ 1, austria,     3,  0, wacker,   '2012-04-28 16:00' ],
-  [ 2, neustadt,    1,  4, admira,   '2012-04-28 18:30' ],
-  [ 3, mattersburg, 0,  1, salzburg, '2012-04-28 18:30' ],
-  [ 4, sturm,       2,  1, ksv,      '2012-04-28 18:30' ],
-  [ 5, ried,        2,  3, rapid,    '2012-04-29 16:00' ]
+  [ 1, austria,     [3, 0], wacker,   '2012-04-28 16:00' ],
+  [ 2, neustadt,    [1, 4], admira,   '2012-04-28 18:30' ],
+  [ 3, mattersburg, [0, 1], salzburg, '2012-04-28 18:30' ],
+  [ 4, sturm,       [2, 1], ksv,      '2012-04-28 18:30' ],
+  [ 5, ried,        [2, 3], rapid,    '2012-04-29 16:00' ]
 ]
 
 ## todo: fix order (possible w/ import?? depends on pos? check -- no, doesn't depend on pos)
 games_bl33 = [
-  [ 1, admira,      3,   2, austria,     '2012-05-05 18:30' ],
-  [ 2, rapid,       0,   1, salzburg,    '2012-05-06 16:00' ],
-  [ 3, ksv,         0,   0, ried,        '2012-05-05 18:30' ],
-  [ 4, neustadt,    0,   0, sturm,       '2012-05-05 16:00' ],
-  [ 5, wacker,      3,   6, mattersburg, '2012-05-05 16:00' ]
+  [ 1, admira,      [3, 2], austria,     '2012-05-05 18:30' ],
+  [ 2, rapid,       [0, 1], salzburg,    '2012-05-06 16:00' ],
+  [ 3, ksv,         [0, 0], ried,        '2012-05-05 18:30' ],
+  [ 4, neustadt,    [0, 0], sturm,       '2012-05-05 16:00' ],
+  [ 5, wacker,      [3, 6], mattersburg, '2012-05-05 16:00' ]
 ]
 
 games_bl34 = [
-  [ 1, austria,     3,   1, neustadt,     '2012-05-10 20:30' ],
-  [ 2, ried,        1,   1, wacker,       '2012-05-10 20:30' ],
-  [ 3, salzburg,    2,   0, ksv,          '2012-05-10 18:30' ],
-  [ 4, mattersburg, 0,   1, rapid,        '2012-05-10 20:30' ],
-  [ 5, sturm,       0,   3, admira,       '2012-05-10 20:30' ]
+  [ 1, austria,     [3, 1], neustadt,     '2012-05-10 20:30' ],
+  [ 2, ried,        [1, 1], wacker,       '2012-05-10 20:30' ],
+  [ 3, salzburg,    [2, 0], ksv,          '2012-05-10 18:30' ],
+  [ 4, mattersburg, [0, 1], rapid,        '2012-05-10 20:30' ],
+  [ 5, sturm,       [0, 3], admira,       '2012-05-10 20:30' ]
 ]
 
 games_bl35 = [
-  [ 1, ksv,       nil, nil, rapid,       '2012-05-13 16:00' ],
-  [ 2, wacker,    nil, nil, sturm,       '2012-05-13 16:00' ],
-  [ 3, neustadt,  nil, nil, salzburg,    '2012-05-13 16:00' ],
-  [ 4, admira,    nil, nil, ried,        '2012-05-13 16:00' ],
-  [ 5, austria,   nil, nil, mattersburg, '2012-05-13 16:00' ]
+  [ 1, ksv,       [], rapid,       '2012-05-13 16:00' ],
+  [ 2, wacker,    [], sturm,       '2012-05-13 16:00' ],
+  [ 3, neustadt,  [], salzburg,    '2012-05-13 16:00' ],
+  [ 4, admira,    [], ried,        '2012-05-13 16:00' ],
+  [ 5, austria,   [], mattersburg, '2012-05-13 16:00' ]
 ]
 
 games_bl36 = [
-  [ 1, rapid,       nil, nil, wacker,      '2012-05-17 16:00' ],
-  [ 2, ried,        nil, nil, neustadt,    '2012-05-17 16:00' ],
-  [ 3, mattersburg, nil, nil, ksv,         '2012-05-17 16:00' ],
-  [ 4, sturm,       nil, nil, austria,     '2012-05-17 16:00' ],
-  [ 5, salzburg,    nil, nil, admira,      '2012-05-17 16:00' ]
+  [ 1, rapid,       [], wacker,      '2012-05-17 16:00' ],
+  [ 2, ried,        [], neustadt,    '2012-05-17 16:00' ],
+  [ 3, mattersburg, [], ksv,         '2012-05-17 16:00' ],
+  [ 4, sturm,       [], austria,     '2012-05-17 16:00' ],
+  [ 5, salzburg,    [], admira,      '2012-05-17 16:00' ]
 ]
 
 Game.create_from_ary!( games_bl29, bl29 )
@@ -146,19 +143,19 @@ ofb4    = Round.create!( :event => ofb, :pos => 2, :title => 'Halbfinale',    :t
 ofb1    = Round.create!( :event => ofb, :pos => 3, :title => 'Finale',        :title2 => '20. Mai 2012' )
 
 games_ofb8 = [
-  [ 1, groedig,  2, 3, ried,     '2012-04-10 18:00' ],
-  [ 2, lustenau, 1, 2, austria,  '2012-04-11 18:00' ],
-  [ 3, sturm,    2, 2, hartberg, '2012-04-11 19:00' ],  ### fix: add 2:4 n.V.
-  [ 4, salzburg, 4, 1, juniors,  '2012-04-11 19:00' ]
+  [ 1, groedig,  [2, 3], ried,     '2012-04-10 18:00' ],
+  [ 2, lustenau, [1, 2], austria,  '2012-04-11 18:00' ],
+  [ 3, sturm,    [2, 2], hartberg, '2012-04-11 19:00' ],  ### fix: add 2:4 n.V.
+  [ 4, salzburg, [4, 1], juniors,  '2012-04-11 19:00' ]
 ]
 
 games_ofb4 = [
-  [ 1, hartberg,  0, 1, salzburg, '2012-05-01 18:00' ],
-  [ 2, ried,      2, 0, austria,  '2012-05-02 20:30' ]  
+  [ 1, hartberg,  [0, 1], salzburg, '2012-05-01 18:00' ],
+  [ 2, ried,      [2, 0], austria,  '2012-05-02 20:30' ]  
 ]
 
 games_ofb1 = [
-  [ 1, salzburg,  nil, nil, ried, '2012-05-20 16:00' ]  
+  [ 1, salzburg, [], ried, '2012-05-20 16:00' ]  
 ]
 
 Game.create_knockouts_from_ary!( games_ofb8, ofb8 )
@@ -208,38 +205,38 @@ cl1    = Round.create!( :event => cl, :pos => 7, :title => 'Finale',            
 
 
 games_cl16 = [
-  [[ 1, napoli,    3, 1, chelsea,   '2012-02-21 20:45' ],
-   [ 3, chelsea,   3, 1, napoli,    '2012-03-14 20:45' ]],
-  [[ 2, moskva,    1, 1, madrid,    '2012-02-21 20:45' ],
-   [ 4, madrid,    4, 1, moskva,    '2012-03-14 20:45' ]],
-  [[ 3, marseille, 1, 0, inter,     '2012-02-22 20:45' ],
-   [ 1, inter,     2, 1, marseille, '2012-03-13 20:45' ]],
-  [[ 4, basel,     1, 0, bayern,    '2012-02-22 20:45' ],
-   [ 2, bayern,    7, 0, basel,     '2012-03-13 20:45' ]] 
+  [[ 1, napoli,    [3, 1], chelsea,   '2012-02-21 20:45' ],
+   [ 3, chelsea,   [3, 1], napoli,    '2012-03-14 20:45' ]],
+  [[ 2, moskva,    [1, 1], madrid,    '2012-02-21 20:45' ],
+   [ 4, madrid,    [4, 1], moskva,    '2012-03-14 20:45' ]],
+  [[ 3, marseille, [1, 0], inter,     '2012-02-22 20:45' ],
+   [ 1, inter,     [2, 1], marseille, '2012-03-13 20:45' ]],
+  [[ 4, basel,     [1, 0], bayern,    '2012-02-22 20:45' ],
+   [ 2, bayern,    [7, 0], basel,     '2012-03-13 20:45' ]] 
 ]
 
 ## todo/fix: add results n.V und i.E
 
 games_cl8 = [
-  [[ 1, apoel,       0,   3, madrid,    '2012-03-27 20:45' ],
-   [ 4, madrid,      5,   2, apoel,     '2012-04-04 20:45' ]],
-  [[ 2, benfica,     0,   1, chelsea,   '2012-03-27 20:45' ],
-   [ 3, chelsea,     2,   1, benfica,   '2012-04-04 20:45' ]],
-  [[ 3, marseille,   0,   2, bayern,    '2012-03-28 20:45' ],
-   [ 2, bayern,      2,   0, marseille, '2012-04-03 20:45' ]],
-  [[ 4, milan,       0,   0, barcelona, '2012-03-28 20:45' ],
-   [ 1, barcelona,   3,   1, milan,     '2012-04-03 20:45' ]]
+  [[ 1, apoel,       [0, 3], madrid,    '2012-03-27 20:45' ],
+   [ 4, madrid,      [5, 2], apoel,     '2012-04-04 20:45' ]],
+  [[ 2, benfica,     [0, 1], chelsea,   '2012-03-27 20:45' ],
+   [ 3, chelsea,     [2, 1], benfica,   '2012-04-04 20:45' ]],
+  [[ 3, marseille,   [0, 2], bayern,    '2012-03-28 20:45' ],
+   [ 2, bayern,      [2, 0], marseille, '2012-04-03 20:45' ]],
+  [[ 4, milan,       [0, 0], barcelona, '2012-03-28 20:45' ],
+   [ 1, barcelona,   [3, 1], milan,     '2012-04-03 20:45' ]]
 ]
 
 games_cl4 = [
-  [[ 1, bayern,      2,   1, madrid,     '2012-04-17 20:45' ],
-   [ 2, madrid,      2,   1, bayern,     '2012-04-25 20:45' ]],  ## add n.V und i.E. scores
-  [[ 2, chelsea,     1,   0, barcelona,  '2012-04-18 20:45' ],
-   [ 1, barcelona ,  2,   2, chelsea,    '2012-04-24 20:45' ]]
+  [[ 1, bayern,      [2, 1], madrid,     '2012-04-17 20:45' ],
+   [ 2, madrid,      [2, 1], bayern,     '2012-04-25 20:45' ]],  ## add n.V und i.E. scores
+  [[ 2, chelsea,     [1, 0], barcelona,  '2012-04-18 20:45' ],
+   [ 1, barcelona ,  [2, 2], chelsea,    '2012-04-24 20:45' ]]
 ]
 
 games_cl1 = [
-  [ 1, bayern,      nil,   nil, chelsea,     '2012-05-19 20:45' ]]
+  [ 1, bayern,      [], chelsea,     '2012-05-19 20:45' ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_cl16, cl16, cl16_2 )
@@ -281,25 +278,25 @@ el1    = Round.create!( :event => el, :pos => 5, :title => 'Finale',            
 
 
 games_el8 = [
-  [[ 1, az,          2,   1, valencia,   '2012-03-29 21:05' ],
-   [ 1, valencia,    4,   0, az,         '2012-04-05 21:05' ]],
-  [[ 2, schalke,     2,   4, athletic,   '2012-03-29 21:05' ],
-   [ 2, athletic,    2,   2, schalke,    '2012-04-05 21:05' ]],
-  [[ 3, sporting,    2,   1, metalist,   '2012-03-29 21:05' ],
-   [ 3, metalist,    1,   1, sporting,   '2012-04-05 21:05' ]],
-  [[ 4, atletico,    2,   1, hannover,   '2012-03-29 21:05' ],
-   [ 4, hannover,    1,   2, atletico,   '2012-04-05 21:05' ]]
+  [[ 1, az,          [2, 1], valencia,   '2012-03-29 21:05' ],
+   [ 1, valencia,    [4, 0], az,         '2012-04-05 21:05' ]],
+  [[ 2, schalke,     [2, 4], athletic,   '2012-03-29 21:05' ],
+   [ 2, athletic,    [2, 2], schalke,    '2012-04-05 21:05' ]],
+  [[ 3, sporting,    [2, 1], metalist,   '2012-03-29 21:05' ],
+   [ 3, metalist,    [1, 1], sporting,   '2012-04-05 21:05' ]],
+  [[ 4, atletico,    [2, 1], hannover,   '2012-03-29 21:05' ],
+   [ 4, hannover,    [1, 2], atletico,   '2012-04-05 21:05' ]]
 ]
 
 games_el4 = [
-  [[ 1, atletico,    4,   2, valencia,   '2012-04-19 21:05' ],
-   [ 1, valencia,    0,   1, atletico,   '2012-04-26 21:05' ]],
-  [[ 2, sporting,    2,   1, athletic,   '2012-04-19 21:05' ],
-   [ 2, athletic,    3,   1, sporting,   '2012-04-26 21:05' ]]
+  [[ 1, atletico,    [4, 2], valencia,   '2012-04-19 21:05' ],
+   [ 1, valencia,    [0, 1], atletico,   '2012-04-26 21:05' ]],
+  [[ 2, sporting,    [2, 1], athletic,   '2012-04-19 21:05' ],
+   [ 2, athletic,    [3, 1], sporting,   '2012-04-26 21:05' ]]
 ]
 
 games_el1 = [
-  [ 1, atletico,     3,   0, athletic,   '2012-05-09 20:45' ]]
+  [ 1, atletico,     [3, 0], athletic,   '2012-05-09 20:45' ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_el8, el8, el8_2 )
@@ -398,36 +395,36 @@ euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Runde 2', :ti
 euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Runde 3', :title2 => '16.-19. Juni' )
 
 games_euro_round1 = [
-  [  1, t1,  nil, nil, t2,  '2012-06-08 18:00', euroa ],
-  [  2, t3,  nil, nil, t4,  '2012-06-08 20:45', euroa ],
-  [  3, t5,  nil, nil, t6,  '2012-06-09 18:00', eurob ],
-  [  4, t7,  nil, nil, t8,  '2012-06-09 20:45', eurob ],
-  [  5, t9,  nil, nil, t10, '2012-06-10 18:00', euroc ],
-  [  6, t11, nil, nil, t12, '2012-06-10 20:45', euroc ],
-  [  7, t15, nil, nil, t16, '2012-06-11 18:00', eurod ],
-  [  8, t13, nil, nil, t14, '2012-06-11 20:45', eurod ]
+  [  1, t1,  [], t2,  '2012-06-08 18:00', euroa ],
+  [  2, t3,  [], t4,  '2012-06-08 20:45', euroa ],
+  [  3, t5,  [], t6,  '2012-06-09 18:00', eurob ],
+  [  4, t7,  [], t8,  '2012-06-09 20:45', eurob ],
+  [  5, t9,  [], t10, '2012-06-10 18:00', euroc ],
+  [  6, t11, [], t12, '2012-06-10 20:45', euroc ],
+  [  7, t15, [], t16, '2012-06-11 18:00', eurod ],
+  [  8, t13, [], t14, '2012-06-11 20:45', eurod ]
 ]
 
 games_euro_round2 = [
-  [  9, t2,  nil, nil, t4,  '2012-06-12 18:00', euroa ],
-  [ 10, t1,  nil, nil, t3,  '2012-06-12 20:45', euroa ],
-  [ 11, t6,  nil, nil, t8,  '2012-06-13 18:00', eurob ],
-  [ 12, t5,  nil, nil, t7,  '2012-06-13 20:45', eurob ],
-  [ 13, t10, nil, nil, t12, '2012-06-14 18:00', euroc ],
-  [ 14, t9,  nil, nil, t11, '2012-06-14 20:45', euroc ],
-  [ 16, t13, nil, nil, t15, '2012-06-15 18:00', eurod ],
-  [ 15, t14, nil, nil, t16, '2012-06-15 20:45', eurod ]
+  [  9, t2,  [], t4,  '2012-06-12 18:00', euroa ],
+  [ 10, t1,  [], t3,  '2012-06-12 20:45', euroa ],
+  [ 11, t6,  [], t8,  '2012-06-13 18:00', eurob ],
+  [ 12, t5,  [], t7,  '2012-06-13 20:45', eurob ],
+  [ 13, t10, [], t12, '2012-06-14 18:00', euroc ],
+  [ 14, t9,  [], t11, '2012-06-14 20:45', euroc ],
+  [ 16, t13, [], t15, '2012-06-15 18:00', eurod ],
+  [ 15, t14, [], t16, '2012-06-15 20:45', eurod ]
 ]
 
 games_euro_round3 = [
-  [ 17, t2,  nil, nil, t3,  '2012-06-16 20:45', euroa ],
-  [ 18, t4,  nil, nil, t1,  '2012-06-16 20:45', euroa ],
-  [ 19, t8,  nil, nil, t5,  '2012-06-17 20:45', eurob ],
-  [ 20, t6,  nil, nil, t7,  '2012-06-17 20:45', eurob ],
-  [ 21, t12, nil, nil, t9,  '2012-06-18 20:45', euroc ],
-  [ 22, t10, nil, nil, t11, '2012-06-18 20:45', euroc ],
-  [ 23, t16, nil, nil, t13, '2012-06-19 20:45', eurod ],
-  [ 24, t14, nil, nil, t15, '2012-06-19 20:45', eurod ]
+  [ 17, t2,  [], t3,  '2012-06-16 20:45', euroa ],
+  [ 18, t4,  [], t1,  '2012-06-16 20:45', euroa ],
+  [ 19, t8,  [], t5,  '2012-06-17 20:45', eurob ],
+  [ 20, t6,  [], t7,  '2012-06-17 20:45', eurob ],
+  [ 21, t12, [], t9,  '2012-06-18 20:45', euroc ],
+  [ 22, t10, [], t11, '2012-06-18 20:45', euroc ],
+  [ 23, t16, [], t13, '2012-06-19 20:45', eurod ],
+  [ 24, t14, [], t15, '2012-06-19 20:45', eurod ]
 ]
 
 Game.create_from_ary!( games_euro_round1, euro_round1 )
@@ -435,13 +432,16 @@ Game.create_from_ary!( games_euro_round2, euro_round2 )
 Game.create_from_ary!( games_euro_round3, euro_round3 )
 
 
+##############################################
+##  Flex Only Rounds for **Flex** Style Pool
+
 euro8 = Round.create!( :event => euro, :pos => 4, :title => 'Viertelfinale', :fix => false )
 euro4 = Round.create!( :event => euro, :pos => 5, :title => 'Halbfinale',    :fix => false )
 euro1 = Round.create!( :event => euro, :pos => 6, :title => 'Finale',        :fix => false )
 
 
 ##############################################
-## Calc Rounds for **Fix** Style Pool
+## Fix (Calc) Rounds for **Fix** Style Pool
 
 
 ################################################################
@@ -463,12 +463,12 @@ c2d = CalcTeam.create!( :title => '2. Gruppe D', :key => 'euro2d', :calc_rule =>
 calc_euro8 = CalcRound.create!( :event => euro, :pos => 4, :title => 'Viertelfinale' )
 
 calc_games_euro8 = [
-  [ 25, c1a, nil, nil, c2b, '2012-06-21 20:45' ],
-  [ 26, c1b, nil, nil, c2a, '2012-06-22 20:45' ],
-  [ 27, c1c, nil, nil, c2d, '2012-06-23 20:45' ],
-  [ 28, c1d, nil, nil, c2c, '2012-06-24 20:45' ]]
+  [ 25, c1a, [], c2b, '2012-06-21 20:45' ],
+  [ 26, c1b, [], c2a, '2012-06-22 20:45' ],
+  [ 27, c1c, [], c2d, '2012-06-23 20:45' ],
+  [ 28, c1d, [], c2c, '2012-06-24 20:45' ]]
 
-Game.create_knockouts_from_ary!( calc_games_euro8, calc_euro8 )
+CalcGame.create_knockouts_from_ary!( calc_games_euro8, calc_euro8 )
 
 
 ##############################################
@@ -482,10 +482,10 @@ cv4 = CalcTeam.create!( :title => 'Sieger Viertelfinale 4', :key => 'euro28', :c
 calc_euro4 = CalcRound.create!( :event => euro, :pos => 5, :title => 'Halbfinale' )
 
 calc_games_euro4 = [
-  [ 29, cv1, nil, nil, cv3, '2012-06-27 20:45' ],
-  [ 30, cv2, nil, nil, cv4, '2012-06-28 20:45' ]]
+  [ 29, cv1, [], cv3, '2012-06-27 20:45' ],
+  [ 30, cv2, [], cv4, '2012-06-28 20:45' ]]
 
-Game.create_knockouts_from_ary!( calc_games_euro4, calc_euro4 )
+CalcGame.create_knockouts_from_ary!( calc_games_euro4, calc_euro4 )
 
 
 ################################################
@@ -496,9 +496,9 @@ ch2 = CalcTeam.create!( :title => 'Sieger Halbfinale 2', :key => 'euro30', :calc
 
 calc_euro1 = CalcRound.create!( :event => euro, :pos => 6, :title => 'Finale' )
 
-calc_games_euro1 = [[ 31, ch1, nil, nil, ch2, '2012-07-01 20:45' ]]
+calc_games_euro1 = [[ 31, ch1, [], ch2, '2012-07-01 20:45' ]]
 
-Game.create_knockouts_from_ary!( calc_games_euro1, calc_euro1 )
+CalcGame.create_knockouts_from_ary!( calc_games_euro1, calc_euro1 )
 
 
 

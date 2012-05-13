@@ -37,8 +37,13 @@ class PlaysController < ApplicationController
         tips = @user.tips.where( :pool_id => @pool.id, :game_id => game.id ).all
         pp tips
         if tips.empty?
-          tip = Tip.create!( :user => @user, :pool => @pool, :game => game )
-          puts "*** adding tip #{tip.id} for game #{game.id}"
+          if game.calc?
+            tip = CalcTip.create!( :user => @user, :pool => @pool, :game => game )
+            puts "*** adding calc tip #{tip.id} for calc game #{game.id}"
+          else
+            tip = Tip.create!( :user => @user, :pool => @pool, :game => game )
+            puts "*** adding tip #{tip.id} for game #{game.id}"
+          end
         else
           puts "*** found tip for game #{game.id}"
         end

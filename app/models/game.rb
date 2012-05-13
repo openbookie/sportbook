@@ -59,11 +59,15 @@ class Game < ActiveRecord::Base
         :round     =>round,
         :pos       =>values[0],
         :team1     =>values[1],
-        :score1    =>values[2],
-        :score2    =>values[3],
-        :team2     =>values[4],
-        :play_at   =>values[5],
-        :group     =>values[6],    # Note: group is optional (may be null/nil)
+        :score1    =>values[2][0],
+        :score2    =>values[2][1],
+        :score3    =>values[2][2],
+        :score4    =>values[2][3],
+        :score5    =>values[2][4],
+        :score6    =>values[2][5],
+        :team2     =>values[3],
+        :play_at   =>values[4],
+        :group     =>values[5],    # Note: group is optional (may be null/nil)
         :knockout  =>knockout )
     end # each games
   end
@@ -75,19 +79,23 @@ class Game < ActiveRecord::Base
         :round     =>round1,
         :pos       =>pair[0][0],
         :team1     =>pair[0][1],
-        :score1    =>pair[0][2],
-        :score2    =>pair[0][3],
-        :team2     =>pair[0][4],
-        :play_at   =>pair[0][5] }
+        :score1    =>pair[0][2][0],
+        :score2    =>pair[0][2][1],
+        :team2     =>pair[0][3],
+        :play_at   =>pair[0][4] }
 
       game2_attribs = {
         :round     =>round2,
         :pos       =>pair[1][0],
         :team1     =>pair[1][1],
-        :score1    =>pair[1][2],
-        :score2    =>pair[1][3],
-        :team2     =>pair[1][4],
-        :play_at   =>pair[1][5],
+        :score1    =>pair[1][2][0],
+        :score2    =>pair[1][2][1],
+        :score3    =>pair[1][2][2],
+        :score4    =>pair[1][2][3],
+        :score5    =>pair[1][2][4],
+        :score6    =>pair[1][2][5],
+        :team2     =>pair[1][3],
+        :play_at   =>pair[1][4],
         :knockout  =>true }
   
       game1 = Game.create!( game1_attribs )
@@ -115,7 +123,13 @@ class Game < ActiveRecord::Base
   end
   
   def score_str
-    "#{score1_str} : #{score2_str}"
+    if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
+      "#{score5} : #{score6} i.E."
+    elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
+      "#{score3} : #{score4} n.V."
+    else
+      "#{score1_str} : #{score2_str}"
+    end
   end
   
   def score1_str
@@ -223,11 +237,16 @@ class Game < ActiveRecord::Base
 
     a.game_id = id
     a.tmpl    = 'game'
-    a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score1}:#{score2} #{team2.title}"
+    
+    if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
+      a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score5}:#{score6} i.E. #{team2.title}"
+    elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
+      a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score3}:#{score4} n.V. #{team2.title}"
+    else  # assume regular result 
+      a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score1}:#{score2} #{team2.title}"
+    end
 
     a.save!
   end
-
-
 
 end # class Game

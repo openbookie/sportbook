@@ -201,7 +201,13 @@ class Tip < ActiveRecord::Base
       # return no data marker (e.g. middot) if not touched by user
       '·'
     else
-      "#{score1_str} : #{score2_str}"
+      if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
+        "#{score5} : #{score6} i.E."
+      elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
+        "#{score3} : #{score4} n.V."
+      else
+        "#{score1_str} : #{score2_str}"
+      end
     end
   end
   
