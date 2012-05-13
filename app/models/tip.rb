@@ -48,7 +48,7 @@ class Tip < ActiveRecord::Base
     a.user_id = user_id
     a.tip_id  = id
     a.tmpl    = 'tip'
-    a.text    = "#{user.name} tippt [#{toto12x}] #{game.team1.title} #{score1}:#{score2} #{game.team2.title} im Wettpool >#{pool.full_title}<."
+    a.text    = "#{user.name} tippt [#{toto12x}] #{game.team1.title} #{score_str} #{game.team2.title} (#{game.round.title}) im Wettpool >#{pool.full_title}<."
 
     a.save!
   end
@@ -201,13 +201,21 @@ class Tip < ActiveRecord::Base
       # return no data marker (e.g. middot) if not touched by user
       '·'
     else
+      str = ''
       if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
-        "#{score5} : #{score6} i.E."
+        str = "#{score5} : #{score6} i.E."
       elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
-        "#{score3} : #{score4} n.V."
+        str = "#{score3} : #{score4} n.V."
       else
-        "#{score1_str} : #{score2_str}"
+        str = "#{score1_str} : #{score2_str}"
       end
+      
+      if calc
+        str_calc_team1 = calc_team1_id.blank? ? '' : calc_team1.tag
+        str_calc_team2 = calc_team2_id.blank? ? '' : calc_team2.tag
+        str = "(#{str_calc_team1}) #{str} (#{str_calc_team2})"
+      end
+      str
     end
   end
   

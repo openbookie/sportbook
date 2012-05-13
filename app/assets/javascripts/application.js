@@ -226,12 +226,16 @@ function recalcPlayTips()
       }
     }
   }  
-  
+ 
+ 
   // for each game  - pass 2 - calculate/replace team titles 
   $( '.play .tip-score-input' ).each( function( idx, el ) {
 
     var $score1 = $(el).find( 'input[type=text][data-autofill=score1]');
     var $score2 = $(el).find( 'input[type=text][data-autofill=score2]');
+    
+    var $calc_team1_id =  $(el).find( 'input[type=hidden][data-autofill=calcteam1id]');
+    var $calc_team2_id =  $(el).find( 'input[type=hidden][data-autofill=calcteam2id]');
 
     var calc        = $score1.attr( 'data-calc' );
     var group_id    = $score1.attr( 'data-group' );
@@ -261,10 +265,12 @@ function recalcPlayTips()
          if( team.played > 0 )
          {
             $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team.title_html );
+            $calc_team1_id.val( team.team_id );
          }
          else // use (reset to) placeholder
          {
             $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+            $calc_team1_id.val( '' );
          }
        }
        else if( team1_calcrule == 'group-2nd' )
@@ -274,10 +280,12 @@ function recalcPlayTips()
          if( team.played > 0 )
          {
             $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team.title_html );
+            $calc_team1_id.val( team.team_id );
          }
          else // use (reset to) placeholder
          {
             $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+            $calc_team1_id.val( '' );
          }
        }
        else if( team1_calcrule == 'game-winner' )
@@ -289,6 +297,9 @@ function recalcPlayTips()
           var $score4 = $tr.find( 'input[type=text][data-autofill=score4]');
           var $score5 = $tr.find( 'input[type=text][data-autofill=score5]');
           var $score6 = $tr.find( 'input[type=text][data-autofill=score6]');
+          
+          var $game_winner_calc_team1_id = $tr.find( 'input[type=hidden][data-autofill=calcteam1id]');
+          var $game_winner_calc_team2_id = $tr.find( 'input[type=hidden][data-autofill=calcteam2id]');
 
 
           var score1 = parseInt( $score1.val(), 10 );
@@ -304,6 +315,7 @@ function recalcPlayTips()
           {
             // use (reset to placeholder)
             $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+            $calc_team1_id.val( '' );
           }
           else
           {
@@ -313,6 +325,7 @@ function recalcPlayTips()
              {
                 $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html(
                    $tr.find( '.game-team1 .game-team-calc' ).html() );
+               $calc_team1_id.val( $game_winner_calc_team1_id.val() );
              }
              else if( (score1 < score2) ||
                       (score1 == score2 && score3 < score4) ||
@@ -320,10 +333,12 @@ function recalcPlayTips()
              {
                 $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html(
                    $tr.find( '.game-team2 .game-team-calc' ).html() );
+               $calc_team1_id.val( $game_winner_calc_team2_id.val() );
              }
              else  // unknow state - use (reset to placeholder)
              {
                 $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
+                $calc_team1_id.val( '' );
              }
           }
        }
@@ -340,10 +355,12 @@ function recalcPlayTips()
          if( team.played > 0 )
          {
             $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team.title_html );
+            $calc_team2_id.val( team.team_id );
          }
          else // use (reset to) placeholder
          {
             $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+            $calc_team2_id.val( '' );
          }
        }
        else if( team2_calcrule == 'group-2nd' )
@@ -353,10 +370,12 @@ function recalcPlayTips()
          if( team.played > 0 )
          {
             $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team.title_html );
+            $calc_team2_id.val( team.team_id );
          }
          else // use (reset to) placeholder
          {
             $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+            $calc_team2_id.val( '' );
          }
        }
        else if( team2_calcrule == 'game-winner' )
@@ -368,6 +387,9 @@ function recalcPlayTips()
           var $score4 = $tr.find( 'input[type=text][data-autofill=score4]');
           var $score5 = $tr.find( 'input[type=text][data-autofill=score5]');
           var $score6 = $tr.find( 'input[type=text][data-autofill=score6]');
+
+          var $game_winner_calc_team1_id = $tr.find( 'input[type=hidden][data-autofill=calcteam1id]');
+          var $game_winner_calc_team2_id = $tr.find( 'input[type=hidden][data-autofill=calcteam2id]');
 
           var score1 = parseInt( $score1.val(), 10 );
           var score2 = parseInt( $score2.val(), 10 );
@@ -383,6 +405,7 @@ function recalcPlayTips()
           {
             // use (reset to placeholder)
             $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+            $calc_team2_id.val( '' );
           }
           else
           {
@@ -392,6 +415,7 @@ function recalcPlayTips()
              {
                 $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html(
                    $tr.find( '.game-team1 .game-team-calc' ).html() );
+                $calc_team2_id.val( $game_winner_calc_team1_id.val() );
              }
              else if( (score1 < score2) ||
                       (score1 == score2 && score3 < score4) ||
@@ -399,10 +423,12 @@ function recalcPlayTips()
              {
                 $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html(
                    $tr.find( '.game-team2 .game-team-calc' ).html() );
+                $calc_team2_id.val( $game_winner_calc_team2_id.val() );
              }
              else  // unknow state - use (reset to placeholder)
              {
                 $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
+                $calc_team2_id.val( '' );
              }
           }
        }
@@ -414,8 +440,67 @@ function recalcPlayTips()
     
   } );  // end each game
   
-  
-  
+ 
+   ///////////////////////////////////////////////////////
+   // process last game (assume it's the final) to get 1st and 2nd if game fixture is calc(ulated)
+ 
+   $final = $( '.play .tip-score-input' ).last(); 
+
+   var $score1 = $final.find( 'input[type=text][data-autofill=score1]');
+
+   var calc  = $score1.attr( 'data-calc' );
+   if( calc == 'true' )
+   {
+     var $score2 = $final.find( 'input[type=text][data-autofill=score2]');
+     var $score3 = $final.find( 'input[type=text][data-autofill=score3]');
+     var $score4 = $final.find( 'input[type=text][data-autofill=score4]');
+     var $score5 = $final.find( 'input[type=text][data-autofill=score5]');
+     var $score6 = $final.find( 'input[type=text][data-autofill=score6]');
+
+     var $calc_team1_id = $final.find( 'input[type=hidden][data-autofill=calcteam1id]');
+     var $calc_team2_id = $final.find( 'input[type=hidden][data-autofill=calcteam2id]');
+
+     var score1 = parseInt( $score1.val(), 10 );
+     var score2 = parseInt( $score2.val(), 10 );
+     var score3 = parseInt( $score3.val(), 10 );
+     var score4 = parseInt( $score4.val(), 10 );
+     var score5 = parseInt( $score5.val(), 10 );
+     var score6 = parseInt( $score6.val(), 10 );
+
+     var $play_team1_id = $( '#play_team1_id' ); // get hidden fields for winning teams for play record 
+     var $play_team2_id = $( '#play_team2_id' );
+
+ 
+     if( (isNaN(score1) || isNaN(score2)) ||
+         (score1 == score2 && (isNaN(score3) || isNaN(score4))) ||
+         (score3 == score4 && (isNaN(score5) || isNaN(score6))) )  // skip games with invalid scores
+     {
+        $play_team1_id.val( '' );
+        $play_team2_id.val( '' );
+     }
+     else
+     {
+        if( (score1 > score2) ||
+            (score1 == score2 && score3 > score4) ||
+            (score1 == score2 && score3 == score4 && score5 > score6 ))  // team1 wins
+        { 
+          $play_team1_id.val( $calc_team1_id.val() );
+          $play_team2_id.val( $calc_team2_id.val() );
+        }
+        else if( (score1 < score2) ||
+                 (score1 == score2 && score3 < score4) ||
+                 (score1 == score2 && score3 == score4 && score5 < score6 ))  // team2 wins
+        {
+          $play_team1_id.val( $calc_team2_id.val() );
+          $play_team2_id.val( $calc_team1_id.val() );
+        }
+        else  // unknow state - use (reset to placeholder)
+        {
+          $play_team1_id.val( '' );
+          $play_team2_id.val( '' );
+        }
+     }
+   }
 } // function recalPlayTips
 
 function autofillPlayTips()

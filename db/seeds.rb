@@ -8,16 +8,16 @@
 
 bl = Event.create!( :title => 'Österr. Bundesliga 2012', :key => 'bl' )
 
-sturm       = Team.create!( :title => 'SK Sturm Graz',       :key => 'sturm',       :img => 'sturm.png' )
-ried        = Team.create!( :title => 'SV Ried',             :key => 'ried',        :img => 'ried.png' )
-salzburg    = Team.create!( :title => 'FC RB Salzburg',      :key => 'salzburg',    :img => 'salzburg.png' )
-austria     = Team.create!( :title => 'FK Austria Wien',     :key => 'austria',     :img => 'austria.png' )
-rapid       = Team.create!( :title => 'SK Rapid Wien',       :key => 'rapid',       :img => 'rapid.png' )
-wacker      = Team.create!( :title => 'FC Wacker Innsbruck', :key => 'wacker',      :img => 'wacker.png' )
-neustadt    = Team.create!( :title => 'SC Wiener Neustadt',  :key => 'neustadt',    :img => 'neustadt.png' )
-ksv         = Team.create!( :title => 'KSV 1919',            :key => 'ksv',         :img => 'ksv.png' )
-mattersburg = Team.create!( :title => 'SV Mattersburg',      :key => 'mattersburg', :img => 'mattersburg.png' )
-admira      = Team.create!( :title => 'FC Admira',           :key => 'admira',      :img => 'admira.png' )
+sturm       = Team.create!( :title => 'SK Sturm Graz',       :tag => 'STU',  :key => 'sturm',       :img => 'sturm.png' )
+ried        = Team.create!( :title => 'SV Ried',             :tag => 'RIED', :key => 'ried',        :img => 'ried.png' )
+salzburg    = Team.create!( :title => 'FC RB Salzburg',      :tag => 'RBS',  :key => 'salzburg',    :img => 'salzburg.png' )
+austria     = Team.create!( :title => 'FK Austria Wien',     :tag => 'FAK',  :key => 'austria',     :img => 'austria.png' )
+rapid       = Team.create!( :title => 'SK Rapid Wien',       :tag => 'RAP',  :key => 'rapid',       :img => 'rapid.png' )
+wacker      = Team.create!( :title => 'FC Wacker Innsbruck', :tag => 'IBK',  :key => 'wacker',      :img => 'wacker.png' )
+neustadt    = Team.create!( :title => 'SC Wiener Neustadt',  :tag => 'WRN',  :key => 'neustadt',    :img => 'neustadt.png' )
+ksv         = Team.create!( :title => 'KSV 1919',            :tag => 'KSV',  :key => 'ksv',         :img => 'ksv.png' )
+mattersburg = Team.create!( :title => 'SV Mattersburg',      :tag => 'SVM',  :key => 'mattersburg', :img => 'mattersburg.png' )
+admira      = Team.create!( :title => 'FC Admira',           :tag => 'ADM',  :key => 'admira',      :img => 'admira.png' )
 
 bl.teams << sturm
 bl.teams << salzburg
@@ -311,7 +311,7 @@ Game.create_knockouts_from_ary!( games_el1,  el1 )
 # or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
 
 
-euro = Event.create!( :title => 'Euro 2012', :key => 'euro' )
+euro = Event.create!( :title => 'Euro 2012', :key => 'euro', :team3 => false )
 
 euroa = Group.create!( :event => euro, :pos => 1, :title => 'Gruppe A' )
 eurob = Group.create!( :event => euro, :pos => 2, :title => 'Gruppe B' )
@@ -390,9 +390,9 @@ euro.teams << t15
 euro.teams << t16
 
 
-euro_round1 = Round.create!( :event => euro, :pos => 1, :title => 'Runde 1', :title2 => '8.-11. Juni' )
-euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Runde 2', :title2 => '12.-15. Juni' )
-euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Runde 3', :title2 => '16.-19. Juni' )
+euro_round1 = Round.create!( :event => euro, :pos => 1, :title => 'Gruppenphase 1. Runde', :title2 => '8.-11. Juni' )
+euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Gruppenphase 2. Runde', :title2 => '12.-15. Juni' )
+euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Gruppenphase 3. Runde', :title2 => '16.-19. Juni' )
 
 games_euro_round1 = [
   [  1, t1,  [], t2,  '2012-06-08 18:00', euroa ],

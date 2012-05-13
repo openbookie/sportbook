@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.boolean  "calc",         :default => false, :null => false
     t.string   "calc_rule"
     t.string   "calc_value"
-    t.string   "calc_team_id"
+    t.integer  "calc_team_id"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -175,9 +175,9 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   add_index "teams", ["key"], :name => "index_teams_on_key", :unique => true
 
   create_table "tips", :force => true do |t|
-    t.integer  "user_id",                       :null => false
-    t.integer  "pool_id",                       :null => false
-    t.integer  "game_id",                       :null => false
+    t.integer  "user_id",                          :null => false
+    t.integer  "pool_id",                          :null => false
+    t.integer  "game_id",                          :null => false
     t.integer  "score1"
     t.integer  "score2"
     t.integer  "score3"
@@ -186,9 +186,11 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.integer  "score6"
     t.string   "toto12x"
     t.string   "type"
-    t.boolean  "calc",       :default => false, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "calc",          :default => false, :null => false
+    t.integer  "calc_team1_id"
+    t.integer  "calc_team2_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "tips", ["game_id"], :name => "index_tips_on_game_id"

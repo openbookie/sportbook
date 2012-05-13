@@ -80,6 +80,12 @@
  </tr>
   <% end %><!-- if pool.team3? -->
 </table>
+
+<% else %>
+  
+  <%= f.hidden_field :team1_id %>
+  <%= f.hidden_field :team2_id %>
+
 <% end %><!-- if pool.flex? -->
 
 
@@ -133,6 +139,11 @@
      <%= ff.hidden_field :user_id %>
      <%= ff.hidden_field :pool_id %>
      <%= ff.hidden_field :game_id %>
+     
+     <% if tip.calc? %> <!-- only for calc games/tips add teams -->
+       <%= ff.hidden_field :calc_team1_id, :data => { :autofill => 'calcteam1id' } %>
+       <%= ff.hidden_field :calc_team2_id, :data => { :autofill => 'calcteam2id' } %>
+     <% end %>
 
      <%  data_hash_team1 = { :knockout => game.knockout,
                              :home     => game.home,

@@ -10,10 +10,10 @@ create_table :teams do |t|
 
   t.string  :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
   
-  t.boolean :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
-  t.string  :calc_rule     # e.g. group-winner, group-2nd, game-winner, etc.
-  t.string  :calc_value    # e.g. <group_id>, <game_id>, etc.
-  t.string  :calc_team_id  # e.g. optional team_id of "real" team when known
+  t.boolean     :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
+  t.string      :calc_rule     # e.g. group-winner, group-2nd, game-winner, etc.
+  t.string      :calc_value    # e.g. <group_id>, <game_id>, etc.
+  t.references  :calc_team     # e.g. optional team_id of "real" team when known
 
   t.timestamps
 end
@@ -157,7 +157,9 @@ create_table :tips do |t|
   t.string     :toto12x      # 1,2,X,nil  calculate on save
 
   t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
-  t.boolean    :calc,  :null => false, :default => false
+  t.boolean     :calc,  :null => false, :default => false
+  t.references  :calc_team1   # optional ref for team1 guess from user
+  t.references  :calc_team2   # optional ref for team2 guess from user
 
   t.timestamps
 end

@@ -237,14 +237,7 @@ class Game < ActiveRecord::Base
 
     a.game_id = id
     a.tmpl    = 'game'
-    
-    if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
-      a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score5}:#{score6} i.E. #{team2.title}"
-    elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
-      a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score3}:#{score4} n.V. #{team2.title}"
-    else  # assume regular result 
-      a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score1}:#{score2} #{team2.title}"
-    end
+    a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score_str} #{team2.title}"
 
     a.save!
   end

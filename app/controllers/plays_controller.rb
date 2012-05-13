@@ -93,10 +93,15 @@ class PlaysController < ApplicationController
       score4 = tip_hash[:score4].blank? ? nil : tip_hash[:score4].to_i
       score5 = tip_hash[:score5].blank? ? nil : tip_hash[:score5].to_i
       score6 = tip_hash[:score6].blank? ? nil : tip_hash[:score6].to_i
+      
+      calc_team1_id = tip_hash[:calc_team1_id].blank? ? nil : tip_hash[:calc_team1_id].to_i
+      calc_team2_id = tip_hash[:calc_team2_id].blank? ? nil : tip_hash[:calc_team2_id].to_i
             
       if (tip.score1 != score1 || tip.score2 != score2 ||
           tip.score3 != score3 || tip.score4 != score4 ||
-          tip.score5 != score5 || tip.score6 != score6)
+          tip.score5 != score5 || tip.score6 != score6 ||
+          (tip.calc? && tip.calc_team1_id != calc_team1_id) ||
+          (tip.calc? && tip.calc_team2_id != calc_team2_id))
 
         logger.info "*** updating tip #{tip_key} (#{score1}:#{score2})"
 
@@ -106,6 +111,12 @@ class PlaysController < ApplicationController
         tip.score4 = score4
         tip.score5 = score5
         tip.score6 = score6
+        
+        if tip.calc?
+          tip.calc_team1_id = calc_team1_id
+          tip.calc_team2_id = calc_team2_id
+        end
+        
         tip.save!
       else
         logger.info "*** skip updating tip #{tip_key} - no changes"
