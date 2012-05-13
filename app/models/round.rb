@@ -17,7 +17,7 @@ class Round < ActiveRecord::Base
   has_many :games, :order => 'pos'
   belongs_to :event
   
-  def calc?
+  def calc?    # todo/fix: already supported by default by framework? check
     calc == true
   end
   

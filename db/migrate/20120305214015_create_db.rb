@@ -38,6 +38,14 @@ create_table :rounds do |t|
   t.string     :title2
   t.integer    :pos,   :null => false
 
+  # to avoid duplicates allow (re)use of rounds for fix/flex pools by default
+  #  use :flex => true,  :fix => false   for flex only rounds
+  #  use :flex => false, :fix => true    for fix only rounds
+  #  use :flex => true,  :fix => true    default use for flex and fix
+ 
+  t.boolean    :flex,  :null => false, :default => true
+  t.boolean    :fix,   :null => false, :default => true 
+
   t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
 
   t.boolean    :calc,  :null => false, :default => false

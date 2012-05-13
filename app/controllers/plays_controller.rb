@@ -12,7 +12,7 @@ class PlaysController < ApplicationController
     # show tips by default
     @show_tips = (params[:tips].nil? || (params[:tips].present? && ['1','t','true','yes', 'on'].include?( params[:tips])))
     
-    @rounds = @pool.event.rounds.all
+    @rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
   end
 
   # GET /plays/:id
@@ -21,7 +21,7 @@ class PlaysController < ApplicationController
     @pool = @play.pool
     @user = @play.user
     
-    @rounds = @pool.event.rounds.all
+    @rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
   end
 
   # GET /plays/:id/edit
@@ -30,7 +30,8 @@ class PlaysController < ApplicationController
     @pool = @play.pool
     @user = @play.user
 
-    @pool.event.rounds.each do |round|
+    pool_rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
+    pool_rounds.each do |round|
       round.games.each do |game|
         # make sure all games exists as tips
         tips = @user.tips.where( :pool_id => @pool.id, :game_id => game.id ).all
@@ -44,7 +45,7 @@ class PlaysController < ApplicationController
       end
     end
 
-    @rounds = @pool.event.rounds.all
+    @rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
     @groups = @pool.event.groups.all
   end
 
@@ -83,13 +84,23 @@ class PlaysController < ApplicationController
       
       score1 = tip_hash[:score1].blank? ? nil : tip_hash[:score1].to_i
       score2 = tip_hash[:score2].blank? ? nil : tip_hash[:score2].to_i
+      score3 = tip_hash[:score3].blank? ? nil : tip_hash[:score3].to_i
+      score4 = tip_hash[:score4].blank? ? nil : tip_hash[:score4].to_i
+      score5 = tip_hash[:score5].blank? ? nil : tip_hash[:score5].to_i
+      score6 = tip_hash[:score6].blank? ? nil : tip_hash[:score6].to_i
             
-      if tip.score1 != score1 || tip.score2 != score2
+      if (tip.score1 != score1 || tip.score2 != score2 ||
+          tip.score3 != score3 || tip.score4 != score4 ||
+          tip.score5 != score5 || tip.score6 != score6)
 
         logger.info "*** updating tip #{tip_key} (#{score1}:#{score2})"
 
         tip.score1 = score1
         tip.score2 = score2
+        tip.score3 = score3
+        tip.score4 = score4
+        tip.score5 = score5
+        tip.score6 = score6
         tip.save!
       else
         logger.info "*** skip updating tip #{tip_key} - no changes"

@@ -435,10 +435,9 @@ Game.create_from_ary!( games_euro_round2, euro_round2 )
 Game.create_from_ary!( games_euro_round3, euro_round3 )
 
 
-euro8 = Round.create!( :event => euro, :pos => 4, :title => 'Viertelfinale' )
-euro4 = Round.create!( :event => euro, :pos => 5, :title => 'Halbfinale' )
-euro1 = Round.create!( :event => euro, :pos => 6, :title => 'Finale' )
-
+euro8 = Round.create!( :event => euro, :pos => 4, :title => 'Viertelfinale', :fix => false )
+euro4 = Round.create!( :event => euro, :pos => 5, :title => 'Halbfinale',    :fix => false )
+euro1 = Round.create!( :event => euro, :pos => 6, :title => 'Finale',        :fix => false )
 
 
 ##############################################

@@ -111,7 +111,7 @@ function recalcPlayTips()
             $debug.append( "<p>team1 wins => "+ score1 + ":" + score2 + "</p>" );
             
             team1.won  += 1;
-            team1.pts  += 2;
+            team1.pts  += 3;
             
             team2.lost += 1;
          }
@@ -122,7 +122,7 @@ function recalcPlayTips()
             team1.lost += 1;
             
             team2.won  += 1;
-            team2.pts  += 2;
+            team2.pts  += 3;
          }
          else // assume draw
          {
@@ -252,7 +252,7 @@ function recalcPlayTips()
     var score2 = parseInt( $score2.val(), 10 );
     
 
-    if( calc == 'true' ) // skip knockout games (only calc standing for group games)
+    if( calc == 'true' ) 
     {
        if( team1_calcrule == 'group-winner' )
        {
@@ -285,26 +285,45 @@ function recalcPlayTips()
           var $tr = $( '#game'+team1_calcvalue );
           var $score1 = $tr.find( 'input[type=text][data-autofill=score1]');
           var $score2 = $tr.find( 'input[type=text][data-autofill=score2]');
+          var $score3 = $tr.find( 'input[type=text][data-autofill=score3]');
+          var $score4 = $tr.find( 'input[type=text][data-autofill=score4]');
+          var $score5 = $tr.find( 'input[type=text][data-autofill=score5]');
+          var $score6 = $tr.find( 'input[type=text][data-autofill=score6]');
+
 
           var score1 = parseInt( $score1.val(), 10 );
           var score2 = parseInt( $score2.val(), 10 );
+          var score3 = parseInt( $score3.val(), 10 );
+          var score4 = parseInt( $score4.val(), 10 );
+          var score5 = parseInt( $score5.val(), 10 );
+          var score6 = parseInt( $score6.val(), 10 );
           
-          if( isNaN(score1) || isNaN(score2) )  // skip games with invalid scores
+          if( (isNaN(score1) || isNaN(score2)) ||
+              (score1 == score2 && (isNaN(score3) || isNaN(score4))) ||
+              (score3 == score4 && (isNaN(score5) || isNaN(score6))) )  // skip games with invalid scores
           {
             // use (reset to placeholder)
             $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
           }
           else
           {
-             if( score1 > score2 ) // team1 wins
+             if( (score1 > score2) ||
+                 (score1 == score2 && score3 > score4) ||
+                 (score1 == score2 && score3 == score4 && score5 > score6 ))  // team1 wins
              {
                 $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html(
                    $tr.find( '.game-team1 .game-team-calc' ).html() );
              }
-             else  // assume team2 wins - todo: add some checks
+             else if( (score1 < score2) ||
+                      (score1 == score2 && score3 < score4) ||
+                      (score1 == score2 && score3 == score4 && score5 < score6 ))  // team2 wins
              {
                 $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html(
                    $tr.find( '.game-team2 .game-team-calc' ).html() );
+             }
+             else  // unknow state - use (reset to placeholder)
+             {
+                $( '#game'+game_id ).find( '.game-team1 .game-team-calc' ).html( team1_placeholder );
              }
           }
        }
@@ -345,26 +364,45 @@ function recalcPlayTips()
           var $tr = $( '#game'+team2_calcvalue );
           var $score1 = $tr.find( 'input[type=text][data-autofill=score1]');
           var $score2 = $tr.find( 'input[type=text][data-autofill=score2]');
+          var $score3 = $tr.find( 'input[type=text][data-autofill=score3]');
+          var $score4 = $tr.find( 'input[type=text][data-autofill=score4]');
+          var $score5 = $tr.find( 'input[type=text][data-autofill=score5]');
+          var $score6 = $tr.find( 'input[type=text][data-autofill=score6]');
 
           var score1 = parseInt( $score1.val(), 10 );
           var score2 = parseInt( $score2.val(), 10 );
+          var score3 = parseInt( $score3.val(), 10 );
+          var score4 = parseInt( $score4.val(), 10 );
+          var score5 = parseInt( $score5.val(), 10 );
+          var score6 = parseInt( $score6.val(), 10 );
+
           
-          if( isNaN(score1) || isNaN(score2) )  // skip games with invalid scores
+          if( (isNaN(score1) || isNaN(score2)) ||
+              (score1 == score2 && (isNaN(score3) || isNaN(score4))) ||
+              (score3 == score4 && (isNaN(score5) || isNaN(score6))) )  // skip games with invalid scores
           {
             // use (reset to placeholder)
             $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
           }
           else
           {
-             if( score1 > score2 ) // team1 wins
+             if( (score1 > score2) ||
+                 (score1 == score2 && score3 > score4) ||
+                 (score1 == score2 && score3 == score4 && score5 > score6 ))  // team1 wins
              {
                 $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html(
                    $tr.find( '.game-team1 .game-team-calc' ).html() );
              }
-             else  // assume team2 wins - todo: add some checks
+             else if( (score1 < score2) ||
+                      (score1 == score2 && score3 < score4) ||
+                      (score1 == score2 && score3 == score4 && score5 < score6 ))  // team2 wins
              {
                 $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html(
                    $tr.find( '.game-team2 .game-team-calc' ).html() );
+             }
+             else  // unknow state - use (reset to placeholder)
+             {
+                $( '#game'+game_id ).find( '.game-team2 .game-team-calc' ).html( team2_placeholder );
              }
           }
        }

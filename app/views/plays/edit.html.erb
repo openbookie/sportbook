@@ -51,7 +51,7 @@
     </td>
     <!-- right -->
     <td style='text-align: right;'>
-        <%= link_to 'Quick Tipp (Auto-Fill)', '#', :class => 'btn', :onclick => 'autofillPlayTips();' %>
+        <%= link_to 'Quicktipp', '#', :class => 'btn', :onclick => 'autofillPlayTips();' %>
     </td>
   </tr>
 </table>
@@ -107,7 +107,7 @@
   <td colspan='3'></td>
   <td colspan='4' class='game-round-title'><%= round.title %></td>
 </tr>
-  <% if @pool.flex? && round.calc? %>
+  <% if round.games.count == 0 %>
      <tr>
        <td colspan='2'></td>
        <td colspan='4' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
@@ -135,6 +135,7 @@
      <%= ff.hidden_field :game_id %>
 
      <%  data_hash_team1 = { :knockout => game.knockout,
+                             :home     => game.home,
                              :autofill => 'score1',
                              :team1    => game.team1_id,
                              :game  => game.id,
@@ -170,6 +171,18 @@
        <%= ff.text_field :score1, :size => 1, :data => data_hash_team1 %>
        :
        <%= ff.text_field :score2, :size => 1, :data => data_hash_team2 %>
+       
+       <% if game.knockout? %>
+           /
+         <%= ff.text_field :score3, :size => 1, :data => { :autofill => 'score3' } %>
+          :
+         <%= ff.text_field :score4, :size => 1, :data => { :autofill => 'score4' } %> n.V.
+           
+         <%= ff.text_field :score5, :size => 1, :data => { :autofill => 'score5' }  %>
+          :
+         <%= ff.text_field :score6, :size => 1, :data => { :autofill => 'score6' } %> i.E.
+       <% end %>
+       
   <% end %><!-- fields_for tips -->
        </td>
        <% else %><!-- tip.present? -->
@@ -185,7 +198,7 @@
     
    </tr>
   <% end %><!-- game -->
- <% end %> <!-- if pool.flex? && round.calc? -->  
+ <% end %> <!-- if round.games.count == 0 -->
 <% end %><!-- rounds -->
 </table>
 
