@@ -73,29 +73,28 @@ games_bl32 = [
   [ 5, ried,        [2, 3], rapid,    '2012-04-29 16:00' ]
 ]
 
-## todo: fix order (possible w/ import?? depends on pos? check -- no, doesn't depend on pos)
 games_bl33 = [
-  [ 1, admira,      [3, 2], austria,     '2012-05-05 18:30' ],
-  [ 2, rapid,       [0, 1], salzburg,    '2012-05-06 16:00' ],
+  [ 1, neustadt,    [0, 0], sturm,       '2012-05-05 16:00' ],
+  [ 2, admira,      [3, 2], austria,     '2012-05-05 18:30' ],
   [ 3, ksv,         [0, 0], ried,        '2012-05-05 18:30' ],
-  [ 4, neustadt,    [0, 0], sturm,       '2012-05-05 16:00' ],
-  [ 5, wacker,      [3, 6], mattersburg, '2012-05-05 16:00' ]
+  [ 4, wacker,      [3, 6], mattersburg, '2012-05-05 18:30' ],
+  [ 5, rapid,       [0, 1], salzburg,    '2012-05-06 16:00' ]
 ]
 
 games_bl34 = [
-  [ 1, austria,     [3, 1], neustadt,     '2012-05-10 20:30' ],
-  [ 2, ried,        [1, 1], wacker,       '2012-05-10 20:30' ],
-  [ 3, salzburg,    [2, 0], ksv,          '2012-05-10 18:30' ],
+  [ 1, salzburg,    [2, 0], ksv,          '2012-05-10 18:30' ],
+  [ 2, austria,     [3, 1], neustadt,     '2012-05-10 20:30' ],
+  [ 3, ried,        [1, 1], wacker,       '2012-05-10 20:30' ],
   [ 4, mattersburg, [0, 1], rapid,        '2012-05-10 20:30' ],
   [ 5, sturm,       [0, 3], admira,       '2012-05-10 20:30' ]
 ]
 
 games_bl35 = [
-  [ 1, ksv,       [], rapid,       '2012-05-13 16:00' ],
-  [ 2, wacker,    [], sturm,       '2012-05-13 16:00' ],
-  [ 3, neustadt,  [], salzburg,    '2012-05-13 16:00' ],
-  [ 4, admira,    [], ried,        '2012-05-13 16:00' ],
-  [ 5, austria,   [], mattersburg, '2012-05-13 16:00' ]
+  [ 1, ksv,       [0,2], rapid,       '2012-05-13 16:00' ],
+  [ 2, wacker,    [1,1], sturm,       '2012-05-13 16:00' ],
+  [ 3, neustadt,  [1,5], salzburg,    '2012-05-13 16:00' ],
+  [ 4, admira,    [1,1], ried,        '2012-05-13 16:00' ],
+  [ 5, austria,   [1,0], mattersburg, '2012-05-13 16:00' ]
 ]
 
 games_bl36 = [
@@ -143,10 +142,10 @@ ofb4    = Round.create!( :event => ofb, :pos => 2, :title => 'Halbfinale',    :t
 ofb1    = Round.create!( :event => ofb, :pos => 3, :title => 'Finale',        :title2 => '20. Mai 2012' )
 
 games_ofb8 = [
-  [ 1, groedig,  [2, 3], ried,     '2012-04-10 18:00' ],
-  [ 2, lustenau, [1, 2], austria,  '2012-04-11 18:00' ],
-  [ 3, sturm,    [2, 2], hartberg, '2012-04-11 19:00' ],  ### fix: add 2:4 n.V.
-  [ 4, salzburg, [4, 1], juniors,  '2012-04-11 19:00' ]
+  [ 1, groedig,  [2, 3],       ried,     '2012-04-10 18:00' ],
+  [ 2, lustenau, [1, 2],       austria,  '2012-04-11 18:00' ],
+  [ 3, sturm,    [2, 2, 2, 4], hartberg, '2012-04-11 19:00' ], 
+  [ 4, salzburg, [4, 1],       juniors,  '2012-04-11 19:00' ]
 ]
 
 games_ofb4 = [
@@ -205,17 +204,15 @@ cl1    = Round.create!( :event => cl, :pos => 7, :title => 'Finale',            
 
 
 games_cl16 = [
-  [[ 1, napoli,    [3, 1], chelsea,   '2012-02-21 20:45' ],
-   [ 3, chelsea,   [3, 1], napoli,    '2012-03-14 20:45' ]],
-  [[ 2, moskva,    [1, 1], madrid,    '2012-02-21 20:45' ],
-   [ 4, madrid,    [4, 1], moskva,    '2012-03-14 20:45' ]],
-  [[ 3, marseille, [1, 0], inter,     '2012-02-22 20:45' ],
-   [ 1, inter,     [2, 1], marseille, '2012-03-13 20:45' ]],
-  [[ 4, basel,     [1, 0], bayern,    '2012-02-22 20:45' ],
-   [ 2, bayern,    [7, 0], basel,     '2012-03-13 20:45' ]] 
+  [[ 1, napoli,    [3, 1],       chelsea,   '2012-02-21 20:45' ],
+   [ 3, chelsea,   [3, 1, 4, 1], napoli,    '2012-03-14 20:45' ]],
+  [[ 2, moskva,    [1, 1],       madrid,    '2012-02-21 20:45' ],
+   [ 4, madrid,    [4, 1],       moskva,    '2012-03-14 20:45' ]],
+  [[ 3, marseille, [1, 0],       inter,     '2012-02-22 20:45' ],
+   [ 1, inter,     [2, 1],       marseille, '2012-03-13 20:45' ]],
+  [[ 4, basel,     [1, 0],       bayern,    '2012-02-22 20:45' ],
+   [ 2, bayern,    [7, 0],       basel,     '2012-03-13 20:45' ]] 
 ]
-
-## todo/fix: add results n.V und i.E
 
 games_cl8 = [
   [[ 1, apoel,       [0, 3], madrid,    '2012-03-27 20:45' ],
@@ -229,10 +226,10 @@ games_cl8 = [
 ]
 
 games_cl4 = [
-  [[ 1, bayern,      [2, 1], madrid,     '2012-04-17 20:45' ],
-   [ 2, madrid,      [2, 1], bayern,     '2012-04-25 20:45' ]],  ## add n.V und i.E. scores
-  [[ 2, chelsea,     [1, 0], barcelona,  '2012-04-18 20:45' ],
-   [ 1, barcelona ,  [2, 2], chelsea,    '2012-04-24 20:45' ]]
+  [[ 1, bayern,      [2, 1],             madrid,     '2012-04-17 20:45' ],
+   [ 2, madrid,      [2, 1, 2, 1, 3, 4], bayern,     '2012-04-25 20:45' ]],
+  [[ 2, chelsea,     [1, 0],             barcelona,  '2012-04-18 20:45' ],
+   [ 1, barcelona ,  [2, 2],             chelsea,    '2012-04-24 20:45' ]]
 ]
 
 games_cl1 = [
@@ -273,8 +270,6 @@ el8_2  = Round.create!( :event => el, :pos => 2, :title => 'Viertelfinale Rücks
 el4    = Round.create!( :event => el, :pos => 3, :title => 'Halbfinale',               :title2 => '19. April 2012' )
 el4_2  = Round.create!( :event => el, :pos => 4, :title => 'Halbfinale Rückspiele',    :title2 => '26. April 2012' )
 el1    = Round.create!( :event => el, :pos => 5, :title => 'Finale',                   :title2 => '9. Mai 2012' )
-
-## todo/fix: check for results n.V und i.E
 
 
 games_el8 = [
