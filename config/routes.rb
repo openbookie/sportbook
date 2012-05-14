@@ -13,7 +13,9 @@ Wettpool::Application.routes.draw do
   match 'update',         :to => 'update#index'
   match 'update/update',  :to => 'update#update' # , :via => :get
   
-  match 'time',          :to => 'time#index'
+  match 'time',            :to => 'time#index'
+  
+  match 'ical/:play_id',   :to => 'ical#index'
   
   resource :session, :only => [:new, :create, :destroy]
 
