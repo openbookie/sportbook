@@ -18,6 +18,8 @@ Wettpool::Application.routes.draw do
   match 'ical/:play_id',   :to => 'ical#index'
   
   resource :session, :only => [:new, :create, :destroy]
+  
+  resource :password, :only => [:new, :create, :destroy]
 
   resources :jobs do
     get 'calc',          :on => :collection

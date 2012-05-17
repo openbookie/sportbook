@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(params[:user])
+    @user.password = 'tipp'   # default password change later
 
     if @user.save
       redirect_to users_path(), notice: 'Benutzer erfolgreich gespeichert.' 

@@ -1,17 +1,30 @@
 
 <h1>Wettpool Anmeldung</h1>
 
-<%= form_for @user, :url => session_path() do |f| %>  
-  <div>
-    <%= f.label :email, 'Email:' %>
+<% if request.host == 'wettpool.herokuapp.com' || request.host == 'localhost' %>
+<div class='flash info'>
+  <b>Zur Info:</b> Der USS EF Wettpool ist nach <a href='http://tipp.herokuapp.com'>tipp.herokuapp.com</a> gewandert.
+  Alle Tipps wurden nach <a href='http://tipp.herokuapp.com'>tipp.herokuapp.com</a> überspielt.
+  Bitte alle Links updaten und unter <a href='http://tipp.herokuapp.com'>tipp.herokuapp.com</a>
+  anmelden.
+</div>
+<% end %>
+
+
+<%= form_for @user, :url => session_path() do |f| %>
+ <div>
+    <%= f.label :email, 'Email' %><br/>
     <%= f.text_field :email, :data => { :autofocus => true } %>
+ </div>
+ 
+  <div>
+     <%= f.label :password, 'Passwort' %><br/>
+     <%= f.password_field :password %>
+  </div>
+  
+  <div>
     <%= f.submit 'Anmelden', :class => 'btn-primary' %>
   </div>
-<!--
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
- -->
- 
 <% end %>
+
+

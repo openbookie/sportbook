@@ -1,0 +1,33 @@
+
+<%= form_for :user, :url => password_path() do |f| %>
+
+      <% if @user.errors.any? %>
+        <div class='flash error'>
+          <b>Neues Passwort ungültig.</b>
+            <% @user.errors.full_messages.each do |message| %>
+              <span><%= message %>. </span>
+            <% end %>
+        </div>
+      <% end %>
+
+  <h1>Neues Passwort</h1>
+
+  <div class='flash notice'>
+   <b>Sicherheitsempfehlung.</b> Standardpasswort 'tipp' ändern.
+  </div>
+
+  <div>
+     <%= f.label :password, 'Neues Passwort' %><br/>
+     <%= f.password_field :password, :data => { :autofocus => true } %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation, 'Neues Passwort (Bestätigung)' %><br/>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <div>
+    <%= f.submit 'Speichern', :class => 'btn-primary' %>
+    <%= link_to 'Später ändern. Jetzt nicht. Weiter.', pools_path(), :class => 'btn' %>
+  </div>
+<% end %>

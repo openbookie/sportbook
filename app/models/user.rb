@@ -15,5 +15,6 @@ class User < ActiveRecord::Base
   
   has_many :pools
   has_many :tips
-    
+  
+  has_secure_password   # use built-in rails macro for password to password_digest machinery
 end

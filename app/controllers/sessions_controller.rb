@@ -11,17 +11,26 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email( params[:user][:email])
     
-    if @user.nil?
-      flash.now[:error] = 'Unbekannte Email. Tut leid.'
+    if @user.present? && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      flash[:notice] = 'Anmeldung erfolgreich.'
+    
+      if params[:user][:password] == 'tipp'
+        redirect_to new_password_path()
+      else
+        redirect_to pools_path()
+      end
+    else
+      if @user.present?
+        flash.now[:error] = 'Falsches Passwort.'
+      else
+        flash.now[:error] = 'Unbekannte Email. Tut leid.'
+      end
       @user = User.new( params[:user] )
       render :action => 'new'
-    else
-      session[:user_id] = @user.id
-    
-      flash[:notice] = 'Anmeldung erfolgreich.'
-      redirect_to pools_path()
-    end    
+    end
   end
+  
   
   # DELETE /session
   def destroy

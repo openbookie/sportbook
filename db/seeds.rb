@@ -98,11 +98,11 @@ games_bl35 = [
 ]
 
 games_bl36 = [
-  [ 1, rapid,       [], wacker,      '2012-05-17 16:00' ],
-  [ 2, ried,        [], neustadt,    '2012-05-17 16:00' ],
-  [ 3, mattersburg, [], ksv,         '2012-05-17 16:00' ],
-  [ 4, sturm,       [], austria,     '2012-05-17 16:00' ],
-  [ 5, salzburg,    [], admira,      '2012-05-17 16:00' ]
+  [ 1, rapid,       [2,0], wacker,      '2012-05-17 16:00' ],
+  [ 2, ried,        [2,2], neustadt,    '2012-05-17 16:00' ],
+  [ 3, mattersburg, [2,0], ksv,         '2012-05-17 16:00' ],
+  [ 4, sturm,       [3,1], austria,     '2012-05-17 16:00' ],
+  [ 5, salzburg,    [2,0], admira,      '2012-05-17 16:00' ]
 ]
 
 Game.create_from_ary!( games_bl29, bl29 )
@@ -575,30 +575,30 @@ nhl.teams << winnipeg
 ##############
 ##  Pools und Users
 
-user1  = User.create!( :name => 'Behrooz SEIFI',      :email => 'behrooz' )
-user2  = User.create!( :name => 'Gerald BAUER',       :email => 'gerald' )
-user3  = User.create!( :name => 'Gürsel AYAZ',        :email => 'gürsel'  )
-user4  = User.create!( :name => 'Richard TRAINDL',    :email => 'richard' )
-user5  = User.create!( :name => 'Manfred KOPECEK',    :email => 'manfred' )
-user6  = User.create!( :name => 'Clemens HUBER',      :email => 'clemens' )
-user7  = User.create!( :name => 'Franz BAUER',        :email => 'franz' )
-user8  = User.create!( :name => 'Ande S.',            :email => 'ande' )
-user9  = User.create!( :name => 'Thomas SCHOLZ',      :email => 'thomas' )
-user10 = User.create!( :name => 'Dietmar BAYERL',     :email => 'dietmar' )
-user11 = User.create!( :name => 'Martina REININGER',  :email => 'martina' )
-user12 = User.create!( :name => 'Andreas VANOREK',    :email => 'andy.vanorek' )
-user13 = User.create!( :name => 'Franz RUPF',         :email => 'franz.rupf' )
-user14 = User.create!( :name => 'Stefan NEUBAUER',    :email => 'stefan' )
-user15 = User.create!( :name => 'Andreas KLAAR',      :email => 'andy.klaar' )
-user16 = User.create!( :name => 'Mike KOITZ',         :email => 'mike' )
-user17 = User.create!( :name => 'Harry PIETSCHMANN',  :email => 'harry' )
-user18 = User.create!( :name => 'Wolfgang SKALA',     :email => 'wolfgang' )
-user19 = User.create!( :name => 'Dietmar PFUNDNER',   :email => 'didi' )
-user20 = User.create!( :name => 'Christian S.',       :email => 'christian.s' )
-user21 = User.create!( :name => 'Christian Z.',       :email => 'christian.z' )
-user22 = User.create!( :name => 'Dimy M.',            :email => 'dimy' )
-user23 = User.create!( :name => 'Claudia KOTZIAN',    :email => 'claudia' )
-user24 = User.create!( :name => 'Markus BROSCH',      :email => 'markus' )
+user1  = User.create!( :name => 'Behrooz SEIFI',      :email => 'behrooz',      :password => 'tipp' )
+user2  = User.create!( :name => 'Gerald BAUER',       :email => 'gerald',       :password => 'tipp' )
+user3  = User.create!( :name => 'Gürsel AYAZ',        :email => 'gürsel',       :password => 'tipp' )
+user4  = User.create!( :name => 'Richard TRAINDL',    :email => 'richard',      :password => 'tipp' )
+user5  = User.create!( :name => 'Manfred KOPECEK',    :email => 'manfred',      :password => 'tipp' )
+user6  = User.create!( :name => 'Clemens HUBER',      :email => 'clemens',      :password => 'tipp' )
+user7  = User.create!( :name => 'Franz BAUER',        :email => 'franz',        :password => 'tipp' )
+user8  = User.create!( :name => 'Ande S.',            :email => 'ande',         :password => 'tipp' )
+user9  = User.create!( :name => 'Thomas SCHOLZ',      :email => 'thomas',       :password => 'tipp' )
+user10 = User.create!( :name => 'Dietmar BAYERL',     :email => 'dietmar',      :password => 'tipp' )
+user11 = User.create!( :name => 'Martina REININGER',  :email => 'martina',      :password => 'tipp' )
+user12 = User.create!( :name => 'Andreas VANOREK',    :email => 'andy.vanorek', :password => 'tipp' )
+user13 = User.create!( :name => 'Franz RUPF',         :email => 'franz.rupf',   :password => 'tipp' )
+user14 = User.create!( :name => 'Stefan NEUBAUER',    :email => 'stefan',       :password => 'tipp' )
+user15 = User.create!( :name => 'Andreas KLAAR',      :email => 'andy.klaar',   :password => 'tipp' )
+user16 = User.create!( :name => 'Mike KOITZ',         :email => 'mike',         :password => 'tipp' )
+user17 = User.create!( :name => 'Harry PIETSCHMANN',  :email => 'harry',        :password => 'tipp' )
+user18 = User.create!( :name => 'Wolfgang SKALA',     :email => 'wolfgang',     :password => 'tipp' )
+user19 = User.create!( :name => 'Dietmar PFUNDNER',   :email => 'didi',         :password => 'tipp' )
+user20 = User.create!( :name => 'Christian S.',       :email => 'christian.s',  :password => 'tipp' )
+user21 = User.create!( :name => 'Christian Z.',       :email => 'christian.z',  :password => 'tipp' )
+user22 = User.create!( :name => 'Dimy M.',            :email => 'dimy',         :password => 'tipp' )
+user23 = User.create!( :name => 'Claudia KOTZIAN',    :email => 'claudia',      :password => 'tipp' )
+user24 = User.create!( :name => 'Markus BROSCH',      :email => 'markus',       :password => 'tipp' )
 
 
 pool1 = Pool.create!( :event => euro, :title => 'USS EF', :user => user1, :fix => true, :welcome => '' )
