@@ -17,6 +17,8 @@ class Event < ActiveRecord::Base
   has_many :rounds, :order => 'pos'  # all (fix and flex) rounds
   
   has_many :fix_rounds,  :conditions => { :fix => true },  :order => 'pos', :class_name => 'Round', :foreign_key => 'event_id'
+  has_many :fix_playoff_rounds, :conditions => { :fix => true , :playoff => true }, :order => 'pos', :class_name => 'Round', :foreign_key => 'event_id'
+
   has_many :flex_rounds, :conditions => { :flex => true }, :order => 'pos', :class_name => 'Round', :foreign_key => 'event_id'
   
   has_many :groups, :order => 'pos'

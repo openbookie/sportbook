@@ -1,0 +1,66 @@
+<!-- requires: tip, tabindex, f (form) -->
+
+<!-- NB: assume tabindex == 1000 for 1st field that gets autofocus attrib  -->
+<!-- NB  assume tabindex gets incremented by 10  on each iteration -->
+
+ 
+<td class='tip-score-input'>
+  <%= f.fields_for 'tips[]', tip do |ff| %>
+    <%= ff.hidden_field :user_id %>
+    <%= ff.hidden_field :pool_id %>
+    <%= ff.hidden_field :game_id %>
+     
+    <% if tip.calc? %> <!-- only for calc games/tips add teams -->
+      <%= ff.hidden_field :calc_team1_id, :data => { :autofill => 'calcteam1id' } %>
+      <%= ff.hidden_field :calc_team2_id, :data => { :autofill => 'calcteam2id' } %>
+    <% end %>
+
+    <%  game = tip.game
+        data_hash_team1 = { :knockout => game.knockout,
+                            :home     => game.home,
+                            :autofill => 'score1',
+                            :team1    => game.team1_id,
+                            :game  => game.id,
+                            :group => game.group_id }
+         
+         if game.team1.calc?
+           data_hash_team1[ :calc ] = true
+           data_hash_team1[ :calcrule ]    = game.team1.calc_rule
+           data_hash_team1[ :calcvalue ]   = game.team1.calc_value
+           data_hash_team1[ :placeholder ] = game.team1.title
+         end
+         
+         data_hash_team2 = { :knockout => game.knockout,
+                             :autofill => 'score2',
+                             :team2 => game.team2_id,
+                             :game  => game.id,
+                             :group => game.group_id }
+
+         if game.team2.calc?
+           data_hash_team2[ :calc ] = true
+           data_hash_team2[ :calcrule ]    = game.team2.calc_rule
+           data_hash_team2[ :calcvalue ]   = game.team2.calc_value
+           data_hash_team2[ :placeholder ] = game.team2.title
+         end
+
+         
+         data_hash_team1[ :autofocus ] = true   if tabindex == 1010  # (1000+=10) NB: needs to add +10
+        %> 
+
+       <%= ff.text_field :score1, :size => 1, :tabindex => (tabindex+=1), :data => data_hash_team1 %>
+       :
+       <%= ff.text_field :score2, :size => 1, :tabindex => (tabindex+=1), :data => data_hash_team2 %>
+       
+       <% if game.knockout? %>
+           /
+         <%= ff.text_field :score3, :size => 1, :tabindex => (tabindex+=1), :data => { :autofill => 'score3' } %>
+          :
+         <%= ff.text_field :score4, :size => 1, :tabindex => (tabindex+=1), :data => { :autofill => 'score4' } %> n.V.
+           
+         <%= ff.text_field :score5, :size => 1, :tabindex => (tabindex+=1), :data => { :autofill => 'score5' }  %>
+          :
+         <%= ff.text_field :score6, :size => 1, :tabindex => (tabindex+=1), :data => { :autofill => 'score6' } %> i.E.
+       <% end %>
+       
+  <% end %><!-- fields_for tips -->
+</td>

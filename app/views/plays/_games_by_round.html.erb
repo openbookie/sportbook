@@ -1,0 +1,39 @@
+<!-- requires: rounds, user, pool, f (form) -->
+
+<!-- table columns:
+        1    => toto12x
+        2    => bingo
+        3    => team1
+        4    => tip 
+        5    => result
+        6    => team2
+        7    => group
+        8    => date
+  -->
+
+<table class='play' cellspacing=0>
+<% rounds.each do |round| %>
+<tr class='game-round'>
+  <td colspan='3'></td>
+  <td colspan='6' class='game-round-title'><%= round.title %></td>
+</tr>
+  <% if round.games.count == 0 %>
+     <tr>
+       <td colspan='2'></td>
+       <td colspan='6' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
+     </tr>
+  <% else %>
+  <% round.games.each do |game| %>
+
+    <%= render :partial => 'tr_game_with_tip',
+               :locals  => { :game => game,
+                             :tip  => Tip.find_by_user_and_pool_and_game( user, pool, game ),
+                             :show_round => false,
+                             :show_group => true,
+                             :f => f,
+                             :tabindex => (tabindex+=10) }  %>
+
+  <% end %><!-- game -->
+ <% end %> <!-- if round.games.count == 0 -->
+<% end %><!-- rounds -->
+</table>

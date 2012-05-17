@@ -1,0 +1,70 @@
+<!-- NB: only use for fix pools -->
+
+<!-- requires: groups, user, pool, f (form) -->
+
+
+<!-- table columns:
+        1    => toto12x
+        2    => bingo
+        3    => team1
+        4    => tip 
+        5    => result
+        6    => team2
+        7    => round title
+        8    => date
+        
+        9    => table/standing (n rowspan)
+  -->
+
+<table class='play' cellspacing=0>
+<% groups.each do |group| %>
+<tr class='game-group'>
+  <td colspan='3'></td>
+  <td colspan='6' class='game-group-title'><%= group.title %></td>
+</tr>
+  
+<tr>
+  <td colspan='9'>
+
+<table>
+    <tr id='standing-g<%= group.id %>'>
+       <td>Tabelle</td>
+       <td>Spiele</td>
+       <td>S</td>
+       <td>U</td>
+       <td>N</td>
+       <td>Tore</td>
+       <td>+/-</td>
+       <td>Punkte</td>
+     </tr>
+    <% group.teams.each do |team| %>
+        <tr id='standing-t<%= team.id %>'>
+          <td><%= team.title %></td>
+          <td class='right'>0</td>
+          <td class='right'>0</td>
+          <td class='right'>0</td>
+          <td class='right'>0</td>
+          <td class='right'>0 - 0</td>
+          <td class='right'>0</td>
+          <td class='right'>0</td>
+        </tr>
+    <% end %>
+</table>
+  
+  </td>
+</tr>
+  
+  
+  <% group.games.each do |game| %>
+  
+    <%= render :partial => 'tr_game_with_tip',
+               :locals  => { :game => game,
+                             :tip  => Tip.find_by_user_and_pool_and_game( user, pool, game ),
+                             :show_round => true,
+                             :show_group => false,
+                             :f => f,
+                             :tabindex => (tabindex+=10) }  %>
+
+  <% end %><!-- game -->
+<% end %><!-- groups -->
+</table>

@@ -33,10 +33,11 @@ add_index :events, :key, :unique => true
 
 
 create_table :rounds do |t|
-  t.references :event, :null => false
-  t.string     :title, :null => false
+  t.references :event,   :null => false
+  t.string     :title,   :null => false
   t.string     :title2
-  t.integer    :pos,   :null => false
+  t.integer    :pos,     :null => false
+  t.boolean    :playoff, :null => false, :default => false  # "regular" season (group) games or post-season (playoff) knockouts (k.o's)
 
   # to avoid duplicates allow (re)use of rounds for fix/flex pools by default
   #  use :flex => true,  :fix => false   for flex only rounds

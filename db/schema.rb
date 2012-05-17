@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "title",                         :null => false
     t.string   "title2"
     t.integer  "pos",                           :null => false
+    t.boolean  "playoff",    :default => false, :null => false
     t.boolean  "flex",       :default => true,  :null => false
     t.boolean  "fix",        :default => true,  :null => false
     t.string   "type"

@@ -19,14 +19,21 @@
   recalcPlayTips();
   
   $(document).on( 'keydown', function( event ) {
-    if( (event.ctrlKey && event.which == 81) || (event.which == 81) )  // ASCII 81 = Q
+    if( (event.ctrlKey && event.which == 81) || (event.which == 81) )  // ASCII 81 = Q (Quicktipp)
     {
        event.preventDefault();
        autofillPlayTips();
        recalcPlayTips();
        return false;  // todo: check if return false is  needed?
      }
-     else if( (event.ctrlKey && event.which == 67) || (event.which == 67) )  // ASCII 67 = C
+     else if( (event.ctrlKey && event.which == 67) || (event.which == 67) )  // ASCII 67 = C (Clean/Clear)
+     {
+       event.preventDefault();
+       clearPlayTips();
+       recalcPlayTips();
+       return false;  // todo: check if return false is  needed?      
+     }
+     else if( (event.ctrlKey && event.which == 82) || (event.which == 82) )  // ASCII 82 = R (Refresh/Recalcuate)
      {
        event.preventDefault();
        recalcPlayTips();
@@ -89,166 +96,14 @@
 <% end %><!-- if pool.flex? -->
 
 
+<% if @pool.flex? %>
+  <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.flex_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 1000 } %>
+  <!-- todo: include group tables if groups exist -->
+<% else %>
+  <%= render :partial => 'games_by_group',  :locals => { :groups => @pool.event.groups, :user => @user, :pool => @pool, :f => f, :tabindex => 1000 } %>
+  <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.fix_playoff_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 2000 } %>
+<% end %>
 
-
-<!-- table columns:
-        1    => toto12x
-        2    => bingo
-        3    => team1
-        4    => tip 
-        5    => result
-        6    => team2
-        7    => date
-  -->
-
-<table>
- <tr>
-  <td><!-- begin column 1 -->
-
-<table class='play' cellspacing=0>
-<% first_field = true 
-   @rounds.each do |round|
- %>
-<tr class='game-round'>
-  <td colspan='3'></td>
-  <td colspan='4' class='game-round-title'><%= round.title %></td>
-</tr>
-  <% if round.games.count == 0 %>
-     <tr>
-       <td colspan='2'></td>
-       <td colspan='4' class='game-no-fixtures'>Spielaufstellungen noch nicht bekannt.</td>
-     </tr>
-  <% else %>
-  <% round.games.each do |game| %>
-  <% tip = Tip.find_by_user_and_pool_and_game( @user, @pool, game ) %>
-   <tr id='game<%= game.id %>'>
-     <% if game.over?  %>
-       <%= render :partial => 'td_tip_toto12x',  :locals => { :tip  => tip }  %>
-       <%= render :partial => 'td_tip_bingo',    :locals => { :tip  => tip }  %>
-       <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
-       <%= render :partial => 'td_tip_score',    :locals => { :tip  => tip }  %>
-       <%= render :partial => 'td_game_score',   :locals => { :game => game } %>
-       <%= render :partial => 'td_game_team2',   :locals => { :game => game } %>
-       <%= render :partial => 'td_game_date',    :locals => { :game => game } %>
-     <% else %>
-       <td colspan='2'></td>
-       <%= render :partial => 'td_game_team1',   :locals => { :game => game } %>
-       <% if tip.present? %>
-         <td class='tip-score-input'>
-  <%= f.fields_for 'tips[]', tip do |ff| %>
-     <%= ff.hidden_field :user_id %>
-     <%= ff.hidden_field :pool_id %>
-     <%= ff.hidden_field :game_id %>
-     
-     <% if tip.calc? %> <!-- only for calc games/tips add teams -->
-       <%= ff.hidden_field :calc_team1_id, :data => { :autofill => 'calcteam1id' } %>
-       <%= ff.hidden_field :calc_team2_id, :data => { :autofill => 'calcteam2id' } %>
-     <% end %>
-
-     <%  data_hash_team1 = { :knockout => game.knockout,
-                             :home     => game.home,
-                             :autofill => 'score1',
-                             :team1    => game.team1_id,
-                             :game  => game.id,
-                             :group => game.group_id }
-         
-         if game.team1.calc?
-           data_hash_team1[ :calc ] = true
-           data_hash_team1[ :calcrule ]    = game.team1.calc_rule
-           data_hash_team1[ :calcvalue ]   = game.team1.calc_value
-           data_hash_team1[ :placeholder ] = game.team1.title
-         end
-         
-         data_hash_team2 = { :knockout => game.knockout,
-                             :autofill => 'score2',
-                             :team2 => game.team2_id,
-                             :game  => game.id,
-                             :group => game.group_id }
-
-         if game.team2.calc?
-           data_hash_team2[ :calc ] = true
-           data_hash_team2[ :calcrule ]    = game.team2.calc_rule
-           data_hash_team2[ :calcvalue ]   = game.team2.calc_value
-           data_hash_team2[ :placeholder ] = game.team2.title
-         end
-
-         
-         if first_field
-            data_hash_team1[ :autofocus ] = true
-            first_field = false 
-         end
-        %> 
-
-       <%= ff.text_field :score1, :size => 1, :data => data_hash_team1 %>
-       :
-       <%= ff.text_field :score2, :size => 1, :data => data_hash_team2 %>
-       
-       <% if game.knockout? %>
-           /
-         <%= ff.text_field :score3, :size => 1, :data => { :autofill => 'score3' } %>
-          :
-         <%= ff.text_field :score4, :size => 1, :data => { :autofill => 'score4' } %> n.V.
-           
-         <%= ff.text_field :score5, :size => 1, :data => { :autofill => 'score5' }  %>
-          :
-         <%= ff.text_field :score6, :size => 1, :data => { :autofill => 'score6' } %> i.E.
-       <% end %>
-       
-  <% end %><!-- fields_for tips -->
-       </td>
-       <% else %><!-- tip.present? -->
-          <td class='tip-score'>
-            ♦<!-- fehler: datensatz fehlt! -->
-          </td>
-       <% end %><!-- tip.present? -->
-       <td><!-- no game.scores yet --></td>
-       <%= render :partial => 'td_game_team2', :locals => { :game => game } %>
-       <td><%= "(#{game.group.title})" if game.group %></td>
-       <%= render :partial => 'td_game_date', :locals => { :game => game } %>
-   <% end %> <!-- game.over? -->
-    
-   </tr>
-  <% end %><!-- game -->
- <% end %> <!-- if round.games.count == 0 -->
-<% end %><!-- rounds -->
-</table>
-
-  <!-- end column 1 -->
-  </td>
- <td style='vertical-align: top;'>
-   <!-- begin column 2 -->
-   
-<table>
-   <% @groups.each do |group| %>
-      <tr id='standing-g<%= group.id %>' style='background-color: silver;'>
-       <td>Tabelle <%= group.title %></td>
-       <td>Spiele</td>
-       <td>S</td>
-       <td>U</td>
-       <td>N</td>
-       <td>Tore</td>
-       <td>+/-</td>
-       <td>Punkte</td>
-      </tr>
-      <% group.teams.each do |team| %>
-        <tr id='standing-t<%= team.id %>'>
-          <td><%= team.title %></td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0 - 0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      <% end %>
-   <% end %>
-</table>
-
-   <!-- end column 2 -->
- </td>
-</tr>
-</table>
 
 
 <p>

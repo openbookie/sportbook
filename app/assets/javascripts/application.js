@@ -34,6 +34,29 @@ $(document).ready(
   });
 });
 
+
+function clearPlayTips()
+{
+  // for each game 
+  $( '.play .tip-score-input' ).each( function( idx, el ) {
+
+    var $score1 = $(el).find( 'input[type=text][data-autofill=score1]');
+    var $score2 = $(el).find( 'input[type=text][data-autofill=score2]');
+    var $score3 = $(el).find( 'input[type=text][data-autofill=score3]');
+    var $score4 = $(el).find( 'input[type=text][data-autofill=score4]');
+    var $score5 = $(el).find( 'input[type=text][data-autofill=score5]');
+    var $score6 = $(el).find( 'input[type=text][data-autofill=score6]');
+
+    $score1.val( '' );
+    $score2.val( '' );
+    $score3.val( '' );
+    $score4.val( '' );
+    $score5.val( '' );
+    $score6.val( '' );
+  } );
+}
+
+
 function recalcPlayTips()
 {
   var $debug = $( '#debug' );

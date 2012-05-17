@@ -23,7 +23,11 @@ table.plays {
   tr {
     &.game-round {
       background-color: lightgrey;
-    }    
+    }
+    
+    &.game-group {
+      background-color: lightgrey;
+    }
   }
 
   td {
@@ -35,6 +39,10 @@ table.plays {
     
     margin: 0;
     padding: 2px;
+       
+   &.right {
+     text-align: right;
+   }    
         
    &.player-name, &.player-name * {
      font-size: $base-font-size*0.6;

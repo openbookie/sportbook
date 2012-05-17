@@ -47,12 +47,10 @@ class PlaysController < ApplicationController
         else
           puts "*** found tip for game #{game.id}"
         end
-      end
-    end
-
-    @rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
-    @groups = @pool.event.groups.all
-  end
+      end # each game
+    end # each round
+    
+  end # method edit
 
   # PUT /plays/:id
   def update
