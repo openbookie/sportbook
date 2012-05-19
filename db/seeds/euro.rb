@@ -199,3 +199,7 @@ calc_euro1 = CalcRound.create!( :event => euro, :pos => 6, :title => 'Finale', :
 calc_games_euro1 = [[ 31, ch1, [], ch2, '2012-07-01 20:45' ]]
 
 CalcGame.create_knockouts_from_ary!( calc_games_euro1, calc_euro1 )
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.euro.version', :value => '1' )
+

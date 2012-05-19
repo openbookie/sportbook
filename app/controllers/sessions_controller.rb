@@ -15,7 +15,10 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = 'Anmeldung erfolgreich.'
     
-      if params[:user][:password] == 'tipp'
+      # "force" change password for em2012 and tipp subdomains only
+      if (params[:user][:password] == 'tipp' &&
+          (request.host == 'em2012.herokuapp.com' ||
+           request.host == 'tipp.herokuapp.com'))
         redirect_to new_password_path()
       else
         redirect_to pools_path()

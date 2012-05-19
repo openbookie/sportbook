@@ -59,3 +59,6 @@ games_el1 = [
 Game.create_knockout_pairs_from_ary!( games_el8, el8, el8_2 )
 Game.create_knockout_pairs_from_ary!( games_el4, el4, el4_2 )
 Game.create_knockouts_from_ary!( games_el1,  el1 )
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.el.version', :value => '1' )

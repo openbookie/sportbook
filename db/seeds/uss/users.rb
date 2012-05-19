@@ -31,3 +31,6 @@ user23 = User.create!( :name => 'Claudia KOTZIAN',    :email => 'claudia',      
 user24 = User.create!( :name => 'Markus BROSCH',      :email => 'markus',       :password => 'tipp' )
 
 
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.uss.users.version', :value => '1' )
+

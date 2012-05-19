@@ -18,3 +18,6 @@ Pool.create!( :event => cl,  :title => 'USS EF', :user => behrooz, :welcome => '
 Pool.create!( :event => el,  :title => 'USS EF', :user => ande,    :welcome => '' )
 Pool.create!( :event => bl,  :title => 'USS EF', :user => manfred, :welcome => '' )
 Pool.create!( :event => ofb, :title => 'USS EF', :user => manfred, :welcome => '' )
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.uss.pools.others.version', :value => '1' )

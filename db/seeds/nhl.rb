@@ -76,3 +76,6 @@ nhl.teams << toronto
 nhl.teams << vancouver
 nhl.teams << washington
 nhl.teams << winnipeg
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.nhl.version', :value => '1' )

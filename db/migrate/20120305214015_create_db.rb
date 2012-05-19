@@ -1,6 +1,12 @@
 class CreateDb < ActiveRecord::Migration
 
   def up
+
+create_table :props do |t|
+  t.string :key,   :null => false
+  t.string :value, :null => false
+  t.timestamps
+end
     
 create_table :teams do |t|
   t.string  :title, :null => false
@@ -232,6 +238,9 @@ end
 
 #### todo: add posts or comments table
 
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+   Prop.create!( :key => 'db.schema.version', :value => '1' )
 
   end
 

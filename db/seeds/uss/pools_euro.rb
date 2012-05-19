@@ -14,3 +14,7 @@ pool2 = Pool.create!( :event => euro, :title => 'USS EF', :user => behrooz,     
 
 pool1.players << behrooz   # also auto add admin as first player
 pool2.players << behrooz
+
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.uss.pools.euro.version', :value => '1' )

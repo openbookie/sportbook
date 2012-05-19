@@ -82,3 +82,6 @@ Game.create_knockout_pairs_from_ary!( games_cl16, cl16, cl16_2 )
 Game.create_knockout_pairs_from_ary!( games_cl8,  cl8,  cl8_2  )
 Game.create_knockout_pairs_from_ary!( games_cl4,  cl4,  cl4_2  )
 Game.create_knockouts_from_ary!( games_cl1,  cl1 )
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.cl.version', :value => '1' )

@@ -28,3 +28,15 @@
 <% end %>
 
 
+<div style='color: grey;'>
+<hr>
+<p style='font-size: 12px;'>Version Info</p>
+<table>
+<% Prop.order( 'created_at asc' ).all.each do |prop| %>
+  <tr>
+    <td style='font-size: 12px;'><%= "#{prop.key}/#{prop.value}" %></td>
+    <td style='font-size: 12px;'><%= "(#{prop.created_at})" %></td>
+  </tr>
+<% end %>
+</table>
+</div>

@@ -23,4 +23,8 @@ pool2.players << demo
 
 pool3.players << cristiano
 
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.pools.version', :value => '1' )
+
+
 

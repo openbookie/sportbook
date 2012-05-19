@@ -34,3 +34,6 @@ Tip.create!( :user => gerald, :pool => pool1, :game => g10,  :score1 => 0, :scor
 
 Tip.create!( :user => guersel, :pool => pool1, :game => g1, :score1 => 2, :score2 => 3 )
 Tip.create!( :user => guersel, :pool => pool1, :game => g2, :score1 => 1, :score2 => 4 ) 
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.uss.euro.tips.version', :value => '1' )

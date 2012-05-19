@@ -143,6 +143,13 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   add_index "pools", ["key"], :name => "index_pools_on_key", :unique => true
   add_index "pools", ["user_id"], :name => "index_pools_on_user_id"
 
+  create_table "props", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "value",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rounds", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false

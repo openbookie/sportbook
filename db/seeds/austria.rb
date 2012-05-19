@@ -162,3 +162,7 @@ games_ofb1 = [
 Game.create_knockouts_from_ary!( games_ofb8, ofb8 )
 Game.create_knockouts_from_ary!( games_ofb4, ofb4 )
 Game.create_knockouts_from_ary!( games_ofb1, ofb1 )
+
+
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.austria.version', :value => '1' )
