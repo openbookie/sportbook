@@ -34,33 +34,9 @@ class JobsController < ApplicationController
   def keys
     txt = ">> Update Keys (#{Time.now}):\r\n"
 
-    txt << "\r\n## Users\r\n"
-    User.all.each do |user|
-      user.key = "#{user.email}"  # for now email is same as key
-      user.save!
-      txt << "  #{user.name} => #{user.key}\r\n"
-    end
+    update_import_export_keys()
 
-    txt << "\r\n## Games\r\n"
-    Game.all.each do |game|
-      game.key = "#{game.round.event.key}+#{game.round.pos}+#{game.team1.key}+#{game.team2.key}"
-      game.job_running!
-      game.save!
-      game.job_done!
-      txt << "  #{game.team1.title} vs. #{game.team2.title} => #{game.key}\r\n"
-    end
-
-    txt << "\r\n## Pools\r\n"
-    Pool.all.each do |pool|
-      # update key if nil or if auto-generated (assuming contains/includes +)
-      if pool.key.nil? || pool.key.include?('+')
-        pool.key = "#{pool.event.key}+#{pool.fix? ? 'fix' : 'flex'}+#{pool.user.key}"        
-        pool.save!
-        txt << "  #{pool.full_title} by #{pool.user.name} => #{pool.key}\r\n"
-      end
-    end
-
-    txt << "\r\n<< DONE - #{User.count} Users, #{Game.count} Games, #{Pool.count} Pools."
+    txt << ">> DONE (#{Time.now}) - #{User.count} Users, #{Game.count} Games, #{Pool.count} Pools."
     
     render :text => "<pre>#{txt}</pre>"
   end

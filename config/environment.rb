@@ -7,4 +7,4 @@ Wettpool::Application.initialize!
 
 # load our lookups  (todo: is there a better location/way??)
 require "#{Rails.root}/lib/lookups.rb"
-
+require "#{Rails.root}/lib/backup.rb"
