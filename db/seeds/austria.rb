@@ -156,7 +156,7 @@ games_ofb4 = [
 ]
 
 games_ofb1 = [
-  [ 1, salzburg, [], ried, '2012-05-20 16:00' ]  
+  [ 1, salzburg, [3,0], ried, '2012-05-20 16:00' ]  
 ]
 
 Game.create_knockouts_from_ary!( games_ofb8, ofb8 )

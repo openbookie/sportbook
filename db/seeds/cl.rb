@@ -75,7 +75,7 @@ games_cl4 = [
 ]
 
 games_cl1 = [
-  [ 1, bayern,      [], chelsea,     '2012-05-19 20:45' ]]
+  [ 1, bayern,      [1,1,1,1,3,4], chelsea,     '2012-05-19 20:45' ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_cl16, cl16, cl16_2 )
