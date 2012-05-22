@@ -1,7 +1,16 @@
-# Wettpool
+# Welcome to Wettpool.
 
-Free, Open Source Sports Betting Pool (Euro 2012, Champions League 2012, ÖFB Cup 2012, etc.)
-in Ruby on Rails (Version 3.2 and up).
+A free, open source sports betting pool in Ruby on Rails (version 3.2 and up).
+
+Example events include:
+
+* UEFA Champions League 2012
+* UEFA Europa League 2012
+* Österreichische Bundesliga 2012
+* ÖFB Cup 2012
+* UEFA European Football Championship aka Euro 2012
+* National Hockey League (NHL) 2012 (in progress)
+
 
 ## Demo
 
