@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class JobsController < ApplicationController
+class Admin::JobsController < ApplicationController
   
   
   def index

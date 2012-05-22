@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class Admin::TeamsController < ApplicationController
 
   # GET /teams
   def index

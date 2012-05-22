@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class EventsController < ApplicationController
+class Admin::EventsController < ApplicationController
 
   # GET /events
   def index

@@ -1,26 +1,24 @@
 # Wettpool
 
-Tippspiel für Euro 2012, Champions League 2012, ÖFB Cup 2012 etc.
+Free, Open Source Sports Betting Pool (Euro 2012, Champions League 2012, ÖFB Cup 2012, etc.)
+in Ruby on Rails (Version 3.2 and up).
 
-## Tips for Ruby Version Manager
+## Demo
 
-Use Ruby 1.9+ (required by Rails 3.2+)
+Try the demo install running on Heroku [wettpool.herokuapp.com](http://wettpool.herokuapp.com).
 
-    rvm use 1.9.3
+Use the login credentials demo/demo. 
 
-## Tips for Bundler
 
-Setup without production env (needs PostgreSQL)
+## Setup on Heroku 
 
-    bundle install --without production
+Clone the Wettpool git repo
 
-## Tips for Annotate
+    git clone ???
+    
+Create app on Heroku e.g.
 
-Annotate models via
-
-    bundle exec annotate --position before
-
-## Tips for Heroku
+    heroku create <your_app_name_here> --cedar ???
 
 Upload via
 
@@ -30,16 +28,11 @@ Create DB on first upload via
 
     heroku run rake db:migrate db:seed
 
-Drop and recreate DB on later uploads via
+or all-in-one alternative
 
-    heroku pg:reset SHARED_DATABASE --confirm wettpool
-    heroku run rake db:migrate db:seed
-    heroku restart
+    heroku run rake db:setup
 
-Debugging. Get latest logs via
-
-    heroku logs
-
+That's it.
 
 ## License
 

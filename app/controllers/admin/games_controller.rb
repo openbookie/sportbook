@@ -1,4 +1,4 @@
-class GamesController < ApplicationController
+class Admin::GamesController < ApplicationController
 
   # GET /games
   def index

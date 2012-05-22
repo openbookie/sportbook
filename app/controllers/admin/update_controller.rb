@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class UpdateController < ApplicationController
+class Admin::UpdateController < ApplicationController
 
   def index
     limit = params[:limit] || '30'

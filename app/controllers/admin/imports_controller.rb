@@ -1,4 +1,4 @@
-class ImportsController < ApplicationController
+class Admin::ImportsController < ApplicationController
   
   # POST /import
   def create
