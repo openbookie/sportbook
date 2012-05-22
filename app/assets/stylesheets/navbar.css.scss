@@ -36,6 +36,48 @@
     }
 }
 
+
+$admin-navbar-gradient-top:    red;
+$admin-navbar-gradient-bottom: maroon;
+$admin-navbar-text:            white;
+
+.admin.navbar {
+    @include linear-gradient(top, $admin-navbar-gradient-top, $admin-navbar-gradient-bottom);
+
+/*    @include linear-gradient(top, blue,
+                                  navy);
+*/
+
+    color: $admin-navbar-text;
+    padding: 10px 20px;
+    /* text-align: right; */
+    margin-bottom: 6px;
+
+     a,
+     a:visited {
+       text-decoration: none;
+       color: $admin-navbar-text;
+     }
+     
+     a:hover {
+       text-decoration: underline;
+       color: $admin-navbar-text;
+     }
+     
+     .signin, .signin *,
+     .signout, .signout * {
+       font-size: $base-font-size*0.80; 
+     }
+     
+     .logo {
+        a,a:visited,a:hover {
+           text-decoration: none;
+           color: $admin-navbar-text;
+        }
+    }
+}
+
+
 /////////////////////
 // color style classes for test page (use like <span class='color navbar-gradient-top'></span>)
      

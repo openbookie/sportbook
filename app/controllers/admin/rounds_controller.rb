@@ -1,4 +1,4 @@
-class Admin::RoundsController < ApplicationController
+class Admin::RoundsController < Admin::BaseController
 
   # GET /rounds
   def index
