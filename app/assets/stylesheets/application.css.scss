@@ -117,8 +117,20 @@ a {
 }
 
 
+/////////////////////////
+// version / powered_by
 
-
+.version
+{
+   text-align: center;
+   margin-top: 10px;
+   color: grey;
+   
+   a, span {
+     font-size: 12px;
+     color: grey
+   }
+}
 
 //////////////////////////////////////////////////
 // yellow background for input controls w/ focus

@@ -2,28 +2,86 @@
 
 <h1>About</h1>
 
-<h3>Time Now</h3>
+<h3>Time</h3>
 
-<p><%= Time.now %></p>
+<pre>
+Time.now.utc                              <%= Time.now.utc %>
+Time.now.utc.dst? (daylight saving time)  <%= Time.now.utc.dst? %>
+Time.now                                  <%= Time.now %>
+Time.zone.now                             <%= Time.zone.now %>
+Time.zone.name                            <%= Time.zone.name %>
+Time.zone.now.zone                        <%= Time.zone.now.zone %>
+Time.zone.now.dst? (daylight saving time) <%= Time.zone.now.dst? %>
+</pre>
+
+<pre>
+ActiveSupport::TimeZone['Vienna'].to_s                          <%= ActiveSupport::TimeZone['Vienna'].to_s %>
+ActiveSupport::TimeZone['Vienna'].parse('2012-12-25 11:11')     <%= ActiveSupport::TimeZone['Vienna'].parse('2012-12-25 11:11') %>
+ActiveSupport::TimeZone['Vienna'].parse('2012-12-25 11:11').utc <%= ActiveSupport::TimeZone['Vienna'].parse('2012-12-25 11:11').utc %>
+ActiveSupport::TimeZone['Vienna'].parse('2012-08-25 11:11')     <%= ActiveSupport::TimeZone['Vienna'].parse('2012-08-25 11:11') %>
+ActiveSupport::TimeZone['Vienna'].parse('2012-08-25 11:11').utc <%= ActiveSupport::TimeZone['Vienna'].parse('2012-08-25 11:11').utc %>
+Time.zone.parse('2012-12-25 11:11')                             <%= Time.zone.parse('2012-12-25 11:11') %>
+Time.zone.parse('2012-12-25 11:11').utc                         <%= Time.zone.parse('2012-12-25 11:11').utc %>
+Time.zone.parse('2012-08-25 11:11')                             <%= Time.zone.parse('2012-08-25 11:11') %>
+Time.zone.parse('2012-08-25 11:11').utc                         <%= Time.zone.parse('2012-08-25 11:11').utc %>
+</pre>
+
 
 <h3>Stats</h3>
 
 <ul>
-  <li><%= Event.count %> Veranstaltungen</li>
-  <li><%= Round.count %> Runden</li>
-  <li><%= Game.count %> Spiele</li>
+  <li><%= Event.count %> Events</li>
+  <li><%= Round.count %> Rounds</li>
+  <li><%= Group.count %> Groups</li>
+  <li><%= Game.count %> Games</li>
   <li><%= Team.count %> Teams</li>
 </ul>
   
 <ul>
   <li><%= Pool.count %> Pools</li>
-  <li><%= Play.count %> Tippspiele</li><!-- pooltipps/tippreichen -->
-  <li><%= Tip.count %> Tipps</li><!-- einzeltipps -->
+  <li><%= Play.count %> Plays</li><!-- pooltipps/tippreichen -->
+  <li><%= Tip.count %> Tips</li><!-- einzeltipps -->
+  <li><%= Point.count %> Points</li>
+  <li><%= Action.count %> Actions</li>
 </ul>
 
 <ul>
-  <li><%= User.count %> Benutzer</li>
+  <li><%= User.count %> Users</li>
 </ul>
+
+<h3>Props</h3>
+
+<table>
+<% Prop.order( 'created_at asc' ).all.each do |prop| %>
+  <tr>
+    <td><%= "#{prop.key}/#{prop.value}" %></td>
+    <td><%= "(#{prop.created_at})" %></td>
+  </tr>
+<% end %>
+</table>
+
+<h3>Ruby Version</h3>
+
+<pre>
+RUBY_VERSION:      <%= RUBY_VERSION %>
+RUBY_RELEASE_DATE: <%= RUBY_RELEASE_DATE %>
+RUBY_PLATFORM:     <%= RUBY_PLATFORM %>
+</pre>
+
+<h3>Rails Version</h3>
+
+<pre>
+Rails.version: <%= Rails.version %>
+Rails.root:    <%= Rails.root %>
+Rails.env:     <%= Rails.env %>
+</pre>
+
+
+<h3>Server Version</h3>
+
+<pre>
+Server: <%= request.headers['SERVER_SOFTWARE'] || request.headers['SERVER'] %>
+</pre>
 
 <h3>Headers</h3><!-- http headers -->
 

@@ -1,17 +1,25 @@
 
 <h1>Wettpool Anmeldung</h1>
 
+<table>
+<tr>
+  <td><!-- begin 1st column -->
 <% if request.host == 'wettpool.herokuapp.com' || request.host == 'localhost' %>
-<div class='flash info'>
-  <b>Zur Info:</b> Der USS EF Wettpool ist nach <a href='http://tipp.herokuapp.com'>tipp.herokuapp.com</a> gewandert.
-  Alle Tipps wurden nach <a href='http://tipp.herokuapp.com'>tipp.herokuapp.com</a> überspielt.
-  Bitte alle Links updaten und unter <a href='http://tipp.herokuapp.com'>tipp.herokuapp.com</a>
-  anmelden.
+<div>
+  <b>Welcome.</b> Wettpool - A Free, Open Source Sports Betting Pool
+      (Euro 2012, Champions League 2012, etc.) in Ruby on Rails.
+      
+   <a href="http://geraldb.github.com/wettpool">More &raquo;</a>      
 </div>
 <% end %>
-
+    <!-- end 1st column -->
+  </td>
+  
+  <td><!-- begin 2nd column -->
 
 <%= form_for @user, :url => session_path() do |f| %>
+
+<div style='padding: 20px; background-color: #F1F1F1;'>
  <div>
     <%= f.label :email, 'Email' %><br/>
     <%= f.text_field :email, :data => { :autofocus => true } %>
@@ -22,10 +30,20 @@
      <%= f.password_field :password %>
   </div>
   
-  <div>
+  <div style='padding-top: 15px;' >
     <%= f.submit 'Anmelden', :class => 'btn-primary' %>
   </div>
+</div>  
+
 <% end %>
+  
+   <!-- end 2nd column -->
+  </td>
+</tr>    
+</table>
+
+
+
 
 
 <div style='color: grey;'>

@@ -41,15 +41,15 @@
 
 <div>
  
-  <!-- add update path first  /update -->
- 
+ <div>
+  <%= link_to 'Update', update_path() %> &bull;  
   <%= link_to 'Users', users_path() %> &bull; 
   <%= link_to 'Jobs',  jobs_path() %>  &bull; 
   <%= link_to 'Events', events_path() %>  &bull; 
   <%= link_to 'Teams', teams_path() %>  &bull; 
-  <%= link_to 'Games', games_path() %> 
- 
-</div>  
+  <%= link_to 'Games', games_path() %>
+  <!-- todo: add some more links -->
+ </div>
 
 <div class='content' style='padding: 0px 20px 0px 20px;'>
 
@@ -59,7 +59,8 @@
 
 </div>
 
-<%= render :partial => 'layouts/debug' %>    
+<%= render :partial => 'layouts/debug' %>
+<%= render :partial => 'layouts/version' %>    
 
 </body>
 </html>
