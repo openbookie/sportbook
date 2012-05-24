@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: actions
+#
+#  id         :integer         not null, primary key
+#  text       :text
+#  tmpl       :string(255)
+#  user_id    :integer
+#  event_id   :integer
+#  pool_id    :integer
+#  game_id    :integer
+#  tip_id     :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 
 class Action < ActiveRecord::Base
 

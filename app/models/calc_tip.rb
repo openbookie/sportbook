@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: tips
+#
+#  id            :integer         not null, primary key
+#  user_id       :integer         not null
+#  pool_id       :integer         not null
+#  game_id       :integer         not null
+#  score1        :integer
+#  score2        :integer
+#  score3        :integer
+#  score4        :integer
+#  score5        :integer
+#  score6        :integer
+#  toto12x       :string(255)
+#  type          :string(255)
+#  calc          :boolean         default(FALSE), not null
+#  calc_team1_id :integer
+#  calc_team2_id :integer
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#
+
 
 class CalcTip < Tip
 
