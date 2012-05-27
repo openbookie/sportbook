@@ -150,6 +150,17 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "quotes", :force => true do |t|
+    t.integer  "service_id", :null => false
+    t.integer  "game_id",    :null => false
+    t.decimal  "odds1",      :null => false
+    t.decimal  "oddsx",      :null => false
+    t.decimal  "odds2",      :null => false
+    t.string   "comments"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rounds", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
@@ -165,6 +176,22 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   end
 
   add_index "rounds", ["event_id"], :name => "index_rounds_on_event_id"
+
+  create_table "services", :force => true do |t|
+    t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "team_quotes", :force => true do |t|
+    t.integer  "service_id", :null => false
+    t.integer  "event_id",   :null => false
+    t.integer  "team_id",    :null => false
+    t.decimal  "odds",       :null => false
+    t.string   "comments"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "teams", :force => true do |t|
     t.string   "title",                           :null => false

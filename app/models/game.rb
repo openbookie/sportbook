@@ -36,6 +36,7 @@ class Game < ActiveRecord::Base
   belongs_to :group   # group is optional
 
   has_many   :tips
+  has_many   :quotes
 
   before_save :calc_toto12x
   after_save :log_action
