@@ -46,67 +46,67 @@ bl36 = Round.create!( :event => bl, :pos => 36, :title => '36. Runde', :title2 =
 
 
 games_bl29 = [
-  [ 1, salzburg,    [2, 0], wacker,   '2012-04-07 16:00' ],
-  [ 2, ried,        [0, 1], austria,  '2012-04-07 18:30' ],
-  [ 3, ksv,         [2, 3], admira,   '2012-04-07 18:30' ],
-  [ 4, rapid,       [2, 1], neustadt, '2012-04-07 18:30' ],
-  [ 5, mattersburg, [0, 2], sturm,    '2012-04-08 16:00' ]
+  [ 1, salzburg,    [2, 0], wacker,   Time.cet('2012-04-07 16:00') ],
+  [ 2, ried,        [0, 1], austria,  Time.cet('2012-04-07 18:30') ],
+  [ 3, ksv,         [2, 3], admira,   Time.cet('2012-04-07 18:30') ],
+  [ 4, rapid,       [2, 1], neustadt, Time.cet('2012-04-07 18:30') ],
+  [ 5, mattersburg, [0, 2], sturm,    Time.cet('2012-04-08 16:00') ]
 ]
 
 games_bl30 = [
-  [ 1, neustadt,    [0, 0], ksv,         '2012-04-14 16:00' ],
-  [ 2, admira,      [1, 1], wacker,      '2012-04-14 18:30' ],
-  [ 3, sturm,       [2, 2], salzburg,    '2012-04-14 18:30' ],
-  [ 4, ried,        [2, 0], mattersburg, '2012-04-14 18:30' ],
-  [ 5, austria,     [0, 0], rapid,       '2012-04-15 16:00' ]
+  [ 1, neustadt,    [0, 0], ksv,         Time.cet('2012-04-14 16:00') ],
+  [ 2, admira,      [1, 1], wacker,      Time.cet('2012-04-14 18:30') ],
+  [ 3, sturm,       [2, 2], salzburg,    Time.cet('2012-04-14 18:30') ],
+  [ 4, ried,        [2, 0], mattersburg, Time.cet('2012-04-14 18:30') ],
+  [ 5, austria,     [0, 0], rapid,       Time.cet('2012-04-15 16:00') ]
 ]
 
 games_bl31 = [
-  [ 1, wacker,      [2, 0], neustadt, '2012-04-21 16:00' ],
-  [ 2, ksv,         [1, 0], austria,  '2012-04-21 18:30' ],
-  [ 3, mattersburg, [1, 2], admira,   '2012-04-21 18:30' ],
-  [ 4, salzburg,    [2, 0], ried,     '2012-04-21 18:30' ],
-  [ 5, rapid,       [1, 1], sturm,    '2012-04-22 16:00' ]
+  [ 1, wacker,      [2, 0], neustadt, Time.cet('2012-04-21 16:00') ],
+  [ 2, ksv,         [1, 0], austria,  Time.cet('2012-04-21 18:30') ],
+  [ 3, mattersburg, [1, 2], admira,   Time.cet('2012-04-21 18:30') ],
+  [ 4, salzburg,    [2, 0], ried,     Time.cet('2012-04-21 18:30') ],
+  [ 5, rapid,       [1, 1], sturm,    Time.cet('2012-04-22 16:00') ]
 ]
 
 games_bl32 = [
-  [ 1, austria,     [3, 0], wacker,   '2012-04-28 16:00' ],
-  [ 2, neustadt,    [1, 4], admira,   '2012-04-28 18:30' ],
-  [ 3, mattersburg, [0, 1], salzburg, '2012-04-28 18:30' ],
-  [ 4, sturm,       [2, 1], ksv,      '2012-04-28 18:30' ],
-  [ 5, ried,        [2, 3], rapid,    '2012-04-29 16:00' ]
+  [ 1, austria,     [3, 0], wacker,   Time.cet('2012-04-28 16:00') ],
+  [ 2, neustadt,    [1, 4], admira,   Time.cet('2012-04-28 18:30') ],
+  [ 3, mattersburg, [0, 1], salzburg, Time.cet('2012-04-28 18:30') ],
+  [ 4, sturm,       [2, 1], ksv,      Time.cet('2012-04-28 18:30') ],
+  [ 5, ried,        [2, 3], rapid,    Time.cet('2012-04-29 16:00') ]
 ]
 
 games_bl33 = [
-  [ 1, neustadt,    [0, 0], sturm,       '2012-05-05 16:00' ],
-  [ 2, admira,      [3, 2], austria,     '2012-05-05 18:30' ],
-  [ 3, ksv,         [0, 0], ried,        '2012-05-05 18:30' ],
-  [ 4, wacker,      [3, 6], mattersburg, '2012-05-05 18:30' ],
-  [ 5, rapid,       [0, 1], salzburg,    '2012-05-06 16:00' ]
+  [ 1, neustadt,    [0, 0], sturm,       Time.cet('2012-05-05 16:00') ],
+  [ 2, admira,      [3, 2], austria,     Time.cet('2012-05-05 18:30') ],
+  [ 3, ksv,         [0, 0], ried,        Time.cet('2012-05-05 18:30') ],
+  [ 4, wacker,      [3, 6], mattersburg, Time.cet('2012-05-05 18:30') ],
+  [ 5, rapid,       [0, 1], salzburg,    Time.cet('2012-05-06 16:00') ]
 ]
 
 games_bl34 = [
-  [ 1, salzburg,    [2, 0], ksv,          '2012-05-10 18:30' ],
-  [ 2, austria,     [3, 1], neustadt,     '2012-05-10 20:30' ],
-  [ 3, ried,        [1, 1], wacker,       '2012-05-10 20:30' ],
-  [ 4, mattersburg, [0, 1], rapid,        '2012-05-10 20:30' ],
-  [ 5, sturm,       [0, 3], admira,       '2012-05-10 20:30' ]
+  [ 1, salzburg,    [2, 0], ksv,          Time.cet('2012-05-10 18:30') ],
+  [ 2, austria,     [3, 1], neustadt,     Time.cet('2012-05-10 20:30') ],
+  [ 3, ried,        [1, 1], wacker,       Time.cet('2012-05-10 20:30') ],
+  [ 4, mattersburg, [0, 1], rapid,        Time.cet('2012-05-10 20:30') ],
+  [ 5, sturm,       [0, 3], admira,       Time.cet('2012-05-10 20:30') ]
 ]
 
 games_bl35 = [
-  [ 1, ksv,       [0,2], rapid,       '2012-05-13 16:00' ],
-  [ 2, wacker,    [1,1], sturm,       '2012-05-13 16:00' ],
-  [ 3, neustadt,  [1,5], salzburg,    '2012-05-13 16:00' ],
-  [ 4, admira,    [1,1], ried,        '2012-05-13 16:00' ],
-  [ 5, austria,   [1,0], mattersburg, '2012-05-13 16:00' ]
+  [ 1, ksv,       [0,2], rapid,       Time.cet('2012-05-13 16:00') ],
+  [ 2, wacker,    [1,1], sturm,       Time.cet('2012-05-13 16:00') ],
+  [ 3, neustadt,  [1,5], salzburg,    Time.cet('2012-05-13 16:00') ],
+  [ 4, admira,    [1,1], ried,        Time.cet('2012-05-13 16:00') ],
+  [ 5, austria,   [1,0], mattersburg, Time.cet('2012-05-13 16:00') ]
 ]
 
 games_bl36 = [
-  [ 1, rapid,       [2,0], wacker,      '2012-05-17 16:00' ],
-  [ 2, ried,        [2,2], neustadt,    '2012-05-17 16:00' ],
-  [ 3, mattersburg, [2,0], ksv,         '2012-05-17 16:00' ],
-  [ 4, sturm,       [3,1], austria,     '2012-05-17 16:00' ],
-  [ 5, salzburg,    [2,0], admira,      '2012-05-17 16:00' ]
+  [ 1, rapid,       [2,0], wacker,      Time.cet('2012-05-17 16:00') ],
+  [ 2, ried,        [2,2], neustadt,    Time.cet('2012-05-17 16:00') ],
+  [ 3, mattersburg, [2,0], ksv,         Time.cet('2012-05-17 16:00') ],
+  [ 4, sturm,       [3,1], austria,     Time.cet('2012-05-17 16:00') ],
+  [ 5, salzburg,    [2,0], admira,      Time.cet('2012-05-17 16:00') ]
 ]
 
 Game.create_from_ary!( games_bl29, bl29 )
@@ -144,19 +144,19 @@ ofb4    = Round.create!( :event => ofb, :pos => 2, :title => 'Halbfinale',    :t
 ofb1    = Round.create!( :event => ofb, :pos => 3, :title => 'Finale',        :title2 => '20. Mai 2012' )
 
 games_ofb8 = [
-  [ 1, groedig,  [2, 3],       ried,     '2012-04-10 18:00' ],
-  [ 2, lustenau, [1, 2],       austria,  '2012-04-11 18:00' ],
-  [ 3, sturm,    [2, 2, 2, 4], hartberg, '2012-04-11 19:00' ], 
-  [ 4, salzburg, [4, 1],       juniors,  '2012-04-11 19:00' ]
+  [ 1, groedig,  [2, 3],       ried,     Time.cet('2012-04-10 18:00') ],
+  [ 2, lustenau, [1, 2],       austria,  Time.cet('2012-04-11 18:00') ],
+  [ 3, sturm,    [2, 2, 2, 4], hartberg, Time.cet('2012-04-11 19:00') ], 
+  [ 4, salzburg, [4, 1],       juniors,  Time.cet('2012-04-11 19:00') ]
 ]
 
 games_ofb4 = [
-  [ 1, hartberg,  [0, 1], salzburg, '2012-05-01 18:00' ],
-  [ 2, ried,      [2, 0], austria,  '2012-05-02 20:30' ]  
+  [ 1, hartberg,  [0, 1], salzburg, Time.cet('2012-05-01 18:00') ],
+  [ 2, ried,      [2, 0], austria,  Time.cet('2012-05-02 20:30') ]
 ]
 
 games_ofb1 = [
-  [ 1, salzburg, [3,0], ried, '2012-05-20 16:00' ]  
+  [ 1, salzburg, [3,0], ried, Time.cet('2012-05-20 16:00') ]
 ]
 
 Game.create_knockouts_from_ary!( games_ofb8, ofb8 )

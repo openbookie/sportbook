@@ -35,25 +35,25 @@ el1    = Round.create!( :event => el, :pos => 5, :title => 'Finale',            
 
 
 games_el8 = [
-  [[ 1, az,          [2, 1], valencia,   '2012-03-29 21:05' ],
-   [ 1, valencia,    [4, 0], az,         '2012-04-05 21:05' ]],
-  [[ 2, schalke,     [2, 4], athletic,   '2012-03-29 21:05' ],
-   [ 2, athletic,    [2, 2], schalke,    '2012-04-05 21:05' ]],
-  [[ 3, sporting,    [2, 1], metalist,   '2012-03-29 21:05' ],
-   [ 3, metalist,    [1, 1], sporting,   '2012-04-05 21:05' ]],
-  [[ 4, atletico,    [2, 1], hannover,   '2012-03-29 21:05' ],
-   [ 4, hannover,    [1, 2], atletico,   '2012-04-05 21:05' ]]
+  [[ 1, az,          [2, 1], valencia,   Time.cet('2012-03-29 21:05') ],
+   [ 1, valencia,    [4, 0], az,         Time.cet('2012-04-05 21:05') ]],
+  [[ 2, schalke,     [2, 4], athletic,   Time.cet('2012-03-29 21:05') ],
+   [ 2, athletic,    [2, 2], schalke,    Time.cet('2012-04-05 21:05') ]],
+  [[ 3, sporting,    [2, 1], metalist,   Time.cet('2012-03-29 21:05') ],
+   [ 3, metalist,    [1, 1], sporting,   Time.cet('2012-04-05 21:05') ]],
+  [[ 4, atletico,    [2, 1], hannover,   Time.cet('2012-03-29 21:05') ],
+   [ 4, hannover,    [1, 2], atletico,   Time.cet('2012-04-05 21:05') ]]
 ]
 
 games_el4 = [
-  [[ 1, atletico,    [4, 2], valencia,   '2012-04-19 21:05' ],
-   [ 1, valencia,    [0, 1], atletico,   '2012-04-26 21:05' ]],
-  [[ 2, sporting,    [2, 1], athletic,   '2012-04-19 21:05' ],
-   [ 2, athletic,    [3, 1], sporting,   '2012-04-26 21:05' ]]
+  [[ 1, atletico,    [4, 2], valencia,   Time.cet('2012-04-19 21:05') ],
+   [ 1, valencia,    [0, 1], atletico,   Time.cet('2012-04-26 21:05') ]],
+  [[ 2, sporting,    [2, 1], athletic,   Time.cet('2012-04-19 21:05') ],
+   [ 2, athletic,    [3, 1], sporting,   Time.cet('2012-04-26 21:05') ]]
 ]
 
 games_el1 = [
-  [ 1, atletico,     [3, 0], athletic,   '2012-05-09 20:45' ]]
+  [ 1, atletico,     [3, 0], athletic,   Time.cet('2012-05-09 20:45') ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_el8, el8, el8_2 )

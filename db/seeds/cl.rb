@@ -46,36 +46,36 @@ cl1    = Round.create!( :event => cl, :pos => 7, :title => 'Finale',            
 
 
 games_cl16 = [
-  [[ 1, napoli,    [3, 1],       chelsea,   '2012-02-21 20:45' ],
-   [ 3, chelsea,   [3, 1, 4, 1], napoli,    '2012-03-14 20:45' ]],
-  [[ 2, moskva,    [1, 1],       madrid,    '2012-02-21 20:45' ],
-   [ 4, madrid,    [4, 1],       moskva,    '2012-03-14 20:45' ]],
-  [[ 3, marseille, [1, 0],       inter,     '2012-02-22 20:45' ],
-   [ 1, inter,     [2, 1],       marseille, '2012-03-13 20:45' ]],
-  [[ 4, basel,     [1, 0],       bayern,    '2012-02-22 20:45' ],
-   [ 2, bayern,    [7, 0],       basel,     '2012-03-13 20:45' ]] 
+  [[ 1, napoli,    [3, 1],       chelsea,   Time.cet('2012-02-21 20:45') ],
+   [ 3, chelsea,   [3, 1, 4, 1], napoli,    Time.cet('2012-03-14 20:45') ]],
+  [[ 2, moskva,    [1, 1],       madrid,    Time.cet('2012-02-21 20:45') ],
+   [ 4, madrid,    [4, 1],       moskva,    Time.cet('2012-03-14 20:45') ]],
+  [[ 3, marseille, [1, 0],       inter,     Time.cet('2012-02-22 20:45') ],
+   [ 1, inter,     [2, 1],       marseille, Time.cet('2012-03-13 20:45') ]],
+  [[ 4, basel,     [1, 0],       bayern,    Time.cet('2012-02-22 20:45') ],
+   [ 2, bayern,    [7, 0],       basel,     Time.cet('2012-03-13 20:45') ]] 
 ]
 
 games_cl8 = [
-  [[ 1, apoel,       [0, 3], madrid,    '2012-03-27 20:45' ],
-   [ 4, madrid,      [5, 2], apoel,     '2012-04-04 20:45' ]],
-  [[ 2, benfica,     [0, 1], chelsea,   '2012-03-27 20:45' ],
-   [ 3, chelsea,     [2, 1], benfica,   '2012-04-04 20:45' ]],
-  [[ 3, marseille,   [0, 2], bayern,    '2012-03-28 20:45' ],
-   [ 2, bayern,      [2, 0], marseille, '2012-04-03 20:45' ]],
-  [[ 4, milan,       [0, 0], barcelona, '2012-03-28 20:45' ],
-   [ 1, barcelona,   [3, 1], milan,     '2012-04-03 20:45' ]]
+  [[ 1, apoel,       [0, 3], madrid,    Time.cet('2012-03-27 20:45') ],
+   [ 4, madrid,      [5, 2], apoel,     Time.cet('2012-04-04 20:45') ]],
+  [[ 2, benfica,     [0, 1], chelsea,   Time.cet('2012-03-27 20:45') ],
+   [ 3, chelsea,     [2, 1], benfica,   Time.cet('2012-04-04 20:45') ]],
+  [[ 3, marseille,   [0, 2], bayern,    Time.cet('2012-03-28 20:45') ],
+   [ 2, bayern,      [2, 0], marseille, Time.cet('2012-04-03 20:45') ]],
+  [[ 4, milan,       [0, 0], barcelona, Time.cet('2012-03-28 20:45') ],
+   [ 1, barcelona,   [3, 1], milan,     Time.cet('2012-04-03 20:45') ]]
 ]
 
 games_cl4 = [
-  [[ 1, bayern,      [2, 1],             madrid,     '2012-04-17 20:45' ],
-   [ 2, madrid,      [2, 1, 2, 1, 3, 4], bayern,     '2012-04-25 20:45' ]],
-  [[ 2, chelsea,     [1, 0],             barcelona,  '2012-04-18 20:45' ],
-   [ 1, barcelona ,  [2, 2],             chelsea,    '2012-04-24 20:45' ]]
+  [[ 1, bayern,      [2, 1],             madrid,     Time.cet('2012-04-17 20:45') ],
+   [ 2, madrid,      [2, 1, 2, 1, 3, 4], bayern,     Time.cet('2012-04-25 20:45') ]],
+  [[ 2, chelsea,     [1, 0],             barcelona,  Time.cet('2012-04-18 20:45') ],
+   [ 1, barcelona ,  [2, 2],             chelsea,    Time.cet('2012-04-24 20:45') ]]
 ]
 
 games_cl1 = [
-  [ 1, bayern,      [1,1,1,1,3,4], chelsea,     '2012-05-19 20:45' ]]
+  [ 1, bayern,      [1,1,1,1,3,4], chelsea,     Time.cet('2012-05-19 20:45') ]]
 
 
 Game.create_knockout_pairs_from_ary!( games_cl16, cl16, cl16_2 )

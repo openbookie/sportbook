@@ -95,36 +95,36 @@ euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Gruppenphase 
 euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Gruppenphase 3. Spieltag', :title2 => '16.-19. Juni' )
 
 games_euro_round1 = [
-  [  1, t1,  [], t2,  '2012-06-08 18:00', euroa ],
-  [  2, t3,  [], t4,  '2012-06-08 20:45', euroa ],
-  [  3, t5,  [], t6,  '2012-06-09 18:00', eurob ],
-  [  4, t7,  [], t8,  '2012-06-09 20:45', eurob ],
-  [  5, t9,  [], t10, '2012-06-10 18:00', euroc ],
-  [  6, t11, [], t12, '2012-06-10 20:45', euroc ],
-  [  7, t15, [], t16, '2012-06-11 18:00', eurod ],
-  [  8, t13, [], t14, '2012-06-11 20:45', eurod ]
+  [  1, t1,  [], t2,  Time.cet('2012-06-08 18:00'), euroa ],
+  [  2, t3,  [], t4,  Time.cet('2012-06-08 20:45'), euroa ],
+  [  3, t5,  [], t6,  Time.cet('2012-06-09 18:00'), eurob ],
+  [  4, t7,  [], t8,  Time.cet('2012-06-09 20:45'), eurob ],
+  [  5, t9,  [], t10, Time.cet('2012-06-10 18:00'), euroc ],
+  [  6, t11, [], t12, Time.cet('2012-06-10 20:45'), euroc ],
+  [  7, t15, [], t16, Time.cet('2012-06-11 18:00'), eurod ],
+  [  8, t13, [], t14, Time.cet('2012-06-11 20:45'), eurod ]
 ]
 
 games_euro_round2 = [
-  [  9, t2,  [], t4,  '2012-06-12 18:00', euroa ],
-  [ 10, t1,  [], t3,  '2012-06-12 20:45', euroa ],
-  [ 11, t6,  [], t8,  '2012-06-13 18:00', eurob ],
-  [ 12, t5,  [], t7,  '2012-06-13 20:45', eurob ],
-  [ 13, t10, [], t12, '2012-06-14 18:00', euroc ],
-  [ 14, t9,  [], t11, '2012-06-14 20:45', euroc ],
-  [ 16, t13, [], t15, '2012-06-15 18:00', eurod ],
-  [ 15, t14, [], t16, '2012-06-15 20:45', eurod ]
+  [  9, t2,  [], t4,  Time.cet('2012-06-12 18:00'), euroa ],
+  [ 10, t1,  [], t3,  Time.cet('2012-06-12 20:45'), euroa ],
+  [ 11, t6,  [], t8,  Time.cet('2012-06-13 18:00'), eurob ],
+  [ 12, t5,  [], t7,  Time.cet('2012-06-13 20:45'), eurob ],
+  [ 13, t10, [], t12, Time.cet('2012-06-14 18:00'), euroc ],
+  [ 14, t9,  [], t11, Time.cet('2012-06-14 20:45'), euroc ],
+  [ 16, t13, [], t15, Time.cet('2012-06-15 18:00'), eurod ],
+  [ 15, t14, [], t16, Time.cet('2012-06-15 20:45'), eurod ]
 ]
 
 games_euro_round3 = [
-  [ 17, t2,  [], t3,  '2012-06-16 20:45', euroa ],
-  [ 18, t4,  [], t1,  '2012-06-16 20:45', euroa ],
-  [ 19, t8,  [], t5,  '2012-06-17 20:45', eurob ],
-  [ 20, t6,  [], t7,  '2012-06-17 20:45', eurob ],
-  [ 21, t12, [], t9,  '2012-06-18 20:45', euroc ],
-  [ 22, t10, [], t11, '2012-06-18 20:45', euroc ],
-  [ 23, t16, [], t13, '2012-06-19 20:45', eurod ],
-  [ 24, t14, [], t15, '2012-06-19 20:45', eurod ]
+  [ 17, t2,  [], t3,  Time.cet('2012-06-16 20:45'), euroa ],
+  [ 18, t4,  [], t1,  Time.cet('2012-06-16 20:45'), euroa ],
+  [ 19, t8,  [], t5,  Time.cet('2012-06-17 20:45'), eurob ],
+  [ 20, t6,  [], t7,  Time.cet('2012-06-17 20:45'), eurob ],
+  [ 21, t12, [], t9,  Time.cet('2012-06-18 20:45'), euroc ],
+  [ 22, t10, [], t11, Time.cet('2012-06-18 20:45'), euroc ],
+  [ 23, t16, [], t13, Time.cet('2012-06-19 20:45'), eurod ],
+  [ 24, t14, [], t15, Time.cet('2012-06-19 20:45'), eurod ]
 ]
 
 Game.create_from_ary!( games_euro_round1, euro_round1 )
@@ -163,10 +163,10 @@ c2d = CalcTeam.create!( :title => '2. Gruppe D', :key => 'euro2d', :calc_rule =>
 calc_euro8 = CalcRound.create!( :event => euro, :pos => 4, :title => 'Viertelfinale', :playoff => true )
 
 calc_games_euro8 = [
-  [ 25, c1a, [], c2b, '2012-06-21 20:45' ],
-  [ 26, c1b, [], c2a, '2012-06-22 20:45' ],
-  [ 27, c1c, [], c2d, '2012-06-23 20:45' ],
-  [ 28, c1d, [], c2c, '2012-06-24 20:45' ]]
+  [ 25, c1a, [], c2b, Time.cet('2012-06-21 20:45') ],
+  [ 26, c1b, [], c2a, Time.cet('2012-06-22 20:45') ],
+  [ 27, c1c, [], c2d, Time.cet('2012-06-23 20:45') ],
+  [ 28, c1d, [], c2c, Time.cet('2012-06-24 20:45') ]]
 
 CalcGame.create_knockouts_from_ary!( calc_games_euro8, calc_euro8 )
 
@@ -182,8 +182,8 @@ cv4 = CalcTeam.create!( :title => 'Sieger Viertelfinale 4', :key => 'euro28', :c
 calc_euro4 = CalcRound.create!( :event => euro, :pos => 5, :title => 'Halbfinale', :playoff => true )
 
 calc_games_euro4 = [
-  [ 29, cv1, [], cv3, '2012-06-27 20:45' ],
-  [ 30, cv2, [], cv4, '2012-06-28 20:45' ]]
+  [ 29, cv1, [], cv3, Time.cet('2012-06-27 20:45') ],
+  [ 30, cv2, [], cv4, Time.cet('2012-06-28 20:45') ]]
 
 CalcGame.create_knockouts_from_ary!( calc_games_euro4, calc_euro4 )
 
@@ -196,7 +196,7 @@ ch2 = CalcTeam.create!( :title => 'Sieger Halbfinale 2', :key => 'euro30', :calc
 
 calc_euro1 = CalcRound.create!( :event => euro, :pos => 6, :title => 'Finale', :playoff => true )
 
-calc_games_euro1 = [[ 31, ch1, [], ch2, '2012-07-01 20:45' ]]
+calc_games_euro1 = [[ 31, ch1, [], ch2, Time.cet('2012-07-01 20:45') ]]
 
 CalcGame.create_knockouts_from_ary!( calc_games_euro1, calc_euro1 )
 

@@ -6,5 +6,6 @@ require File.expand_path('../application', __FILE__)
 Wettpool::Application.initialize!
 
 # load our lookups  (todo: is there a better location/way??)
+require "#{Rails.root}/lib/utils.rb"
 require "#{Rails.root}/lib/lookups.rb"
 require "#{Rails.root}/lib/backup.rb"
