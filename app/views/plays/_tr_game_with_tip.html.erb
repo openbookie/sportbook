@@ -3,6 +3,7 @@
 <!-- options:
       - show_group
       - show_round  -->
+
       
 <tr id='game<%= game.id %>'>
 
@@ -44,3 +45,31 @@
   <%= render :partial => 'td_game_date',    :locals => { :game => game } %>
 
 </tr>
+
+
+
+<tr>
+  <td colspan='2'></td>
+  <td colspan='3'>
+    <table>
+      <tr>
+        <td>1</td>
+        <td>X</td>
+        <td>2</td>
+        <td></td>
+      </tr>
+
+<% game.quotes.each do |quote| %>
+<tr>
+  <td><%= quote.odds1 %></td>
+  <td><%= quote.oddsx %></td>
+  <td><%= quote.odds2 %></td>
+  <td>(<%= quote.service.title %>)</td>
+    <!-- add last updated? -->
+</tr>
+<% end %>
+
+     </table>
+  </td>
+</tr>
+
