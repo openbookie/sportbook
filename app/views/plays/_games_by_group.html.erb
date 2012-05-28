@@ -27,6 +27,9 @@
   <td colspan='9'>
 
 <table>
+ <tr>
+  <td><!-- begin 1st column -->
+<table>
     <tr id='standing-g<%= group.id %>'>
        <td>Tabelle</td>
        <td>Spiele</td>
@@ -49,6 +52,23 @@
           <td class='right'>0</td>
         </tr>
     <% end %>
+</table>
+</td><!-- end 1st column -->
+<td><!-- begin 2nd column -->
+<table>
+ <tr>
+<% Service.all.each do |srv| %>
+   <td>
+    <%= srv.title %><br>
+  <% srv.group_quotes.where( :group_id => group.id ).each do |quote| %>
+     <%= quote.team.tag %> <%= fmt_quote( quote.odds ) %><br>
+  <% end %><!-- each qoute -->
+  </td>
+<% end %><!-- each service -->
+</tr>
+</table>
+</td><!-- end 2nd column -->
+</tr>
 </table>
   
   </td>

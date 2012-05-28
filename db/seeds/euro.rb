@@ -243,7 +243,7 @@ betathome = Service.find_by_key!( 'betathome' )
 tipp3     = Service.find_by_key!( 'tipp3'     )
 
 
-tipico_team_odds = [   # tipico quotes  27/may
+tipico_winner_odds = [   # tipico quotes  27/may
   [ esp, 3.6 ],
   [ ger, 4 ],
   [ ned, 8 ],
@@ -261,10 +261,10 @@ tipico_team_odds = [   # tipico quotes  27/may
   [ den, 100 ],
   [ irl, 100 ]]
 
-EventQuote.create_from_ary!( tipico_team_odds, tipico, euro )
+EventQuote.create_from_ary!( tipico_winner_odds, tipico, euro )
 
 
-betathome_team_odds = [
+betathome_winner_odds = [
   [ esp, 3.5 ],
   [ ger, 3.9 ],
   [ ned, 7.5 ],
@@ -282,10 +282,10 @@ betathome_team_odds = [
   [ den, 80 ],
   [ irl, 80 ]] 
 
-EventQuote.create_from_ary!( betathome_team_odds, betathome, euro )
+EventQuote.create_from_ary!( betathome_winner_odds, betathome, euro )
 
 
-tipp3_team_odds = [
+tipp3_winner_odds = [
   [ esp, 3.5 ],
   [ ger, 3.8 ],
   [ ned, 8 ],
@@ -303,8 +303,59 @@ tipp3_team_odds = [
   [ den, 90 ],
   [ irl, 90 ]]
 
-EventQuote.create_from_ary!( tipp3_team_odds, tipp3, euro )
+EventQuote.create_from_ary!( tipp3_winner_odds, tipp3, euro )
 
+tipp3_groupa_winner_odds = [
+  [ rus, 2.3  ],
+  [ pol, 3.4  ],
+  [ cze, 4.5  ],
+  [ gre, 5    ]]
+tipp3_groupb_winner_odds = [
+  [ ger, 2.1  ],
+  [ ned, 2.6  ],
+  [ por, 4.5  ],
+  [ den, 15   ]]
+tipp3_groupc_winner_odds = [
+  [ esp, 1.45 ],
+  [ ita, 4    ],
+  [ cro, 6.5  ],
+  [ irl, 18   ]]
+tipp3_groupd_winner_odds = [
+  [ eng, 2.6  ],
+  [ fra, 2.6  ],
+  [ ukr, 5    ],
+  [ swe, 6    ]]
+
+GroupQuote.create_from_ary!( tipp3_groupa_winner_odds, tipp3, euroa )
+GroupQuote.create_from_ary!( tipp3_groupb_winner_odds, tipp3, eurob )
+GroupQuote.create_from_ary!( tipp3_groupc_winner_odds, tipp3, euroc )
+GroupQuote.create_from_ary!( tipp3_groupd_winner_odds, tipp3, eurod )
+
+tipico_groupa_winner_odds = [
+  [ rus, 2.5  ],
+  [ pol, 3.6  ],
+  [ cze, 4.7  ],
+  [ gre, 5.5  ]]
+tipico_groupb_winner_odds = [
+  [ ger, 2.05 ],
+  [ ned, 2.9  ],
+  [ por, 5    ],
+  [ den, 20   ]]
+tipico_groupc_winner_odds = [
+  [ esp, 1.55 ],
+  [ ita, 4    ],
+  [ cro, 8    ],
+  [ irl, 18   ]]
+tipico_groupd_winner_odds = [
+  [ fra, 2.6  ],
+  [ eng, 2.7  ],
+  [ ukr, 5.5  ],
+  [ swe, 7    ]]
+
+GroupQuote.create_from_ary!( tipico_groupa_winner_odds, tipico, euroa )
+GroupQuote.create_from_ary!( tipico_groupb_winner_odds, tipico, eurob )
+GroupQuote.create_from_ary!( tipico_groupc_winner_odds, tipico, euroc )
+GroupQuote.create_from_ary!( tipico_groupd_winner_odds, tipico, eurod )
 
 
 tipp3_odds = [
