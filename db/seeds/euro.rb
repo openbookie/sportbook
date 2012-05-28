@@ -90,9 +90,9 @@ euro.teams << swe
 euro.teams << fra
 euro.teams << eng
 
-euro_round1 = Round.create!( :event => euro, :pos => 1, :title => 'Gruppenphase 1. Spieltag', :title2 => '8.-11. Juni' )
-euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Gruppenphase 2. Spieltag', :title2 => '12.-15. Juni' )
-euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Gruppenphase 3. Spieltag', :title2 => '16.-19. Juni' )
+euro_round1 = Round.create!( :event => euro, :pos => 1, :title => 'Vorrunde 1. Spieltag', :title2 => '8.-11. Juni' )
+euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Vorrunde 2. Spieltag', :title2 => '12.-15. Juni' )
+euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Vorrunde 3. Spieltag', :title2 => '16.-19. Juni' )
 
 
 games_euro_round1 = [

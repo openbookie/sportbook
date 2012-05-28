@@ -23,6 +23,9 @@
   </table>
 
 
+<table>
+ <tr>
+  <td><!-- begin column 1 -->
 <% if game.complete_tips.count > 0 %>
 
 <table style='border: 1px solid silver;' cellspacing='0' cellpadding='6px'>
@@ -55,3 +58,29 @@
 </table>
 
 <% end %><!-- if game.complete_tips.count > 0 -->
+  </td><!-- end column 1 -->
+  <td><!-- begin column 2 -->
+
+    <table class='odds'>
+      <tr>
+        <td>1</td>
+        <td>X</td>
+        <td>2</td>
+        <td></td>
+      </tr>
+
+<% game.quotes.each do |quote| %>
+<tr>
+  <td><%= fmt_quote( quote.odds1 ) %></td>
+  <td><%= fmt_quote( quote.oddsx ) %></td>
+  <td><%= fmt_quote( quote.odds2 ) %></td>
+  <td>(<%= quote.service.title %>)</td>
+    <!-- add last updated? -->
+</tr>
+<% end %>
+
+     </table>
+  
+  </td><!-- end column 2 -->
+ </tr>
+</table>

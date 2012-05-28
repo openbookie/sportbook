@@ -79,8 +79,14 @@ table.plays {
      /* font-weight: bold; */
    }
    
+   &.game-group,&.game-round {
+     color: gray;
+     font-size: $base-font-size*0.8;
+   }
+      
    &.game-date {
      color: gray;
+     font-size: $base-font-size*0.8;
    }
   }
 }

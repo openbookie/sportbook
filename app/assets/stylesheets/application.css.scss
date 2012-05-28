@@ -33,6 +33,11 @@ h3       { font-size: $base-font-size*1.20; }
 
 } // @media screen
 
+.odds  {
+  background-color: powderblue;
+  * { font-size: $base-font-size*0.8; }
+  .center { text-align: center; }
+}
 
 .pool.welcome-header * { font-size: $base-font-size*0.8;  }
 
