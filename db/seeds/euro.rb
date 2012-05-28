@@ -113,13 +113,13 @@ games_euro_round2 = [
   [ 12, ned, [], ger, Time.cet('2012-06-13 20:45'), eurob ],
   [ 13, ita, [], cro, Time.cet('2012-06-14 18:00'), euroc ],
   [ 14, esp, [], irl, Time.cet('2012-06-14 20:45'), euroc ],
-  [ 16, ukr, [], fra, Time.cet('2012-06-15 18:00'), eurod ],
-  [ 15, swe, [], eng, Time.cet('2012-06-15 20:45'), eurod ]
+  [ 15, swe, [], eng, Time.cet('2012-06-15 20:45'), eurod ],
+  [ 16, ukr, [], fra, Time.cet('2012-06-15 18:00'), eurod ]
 ]
 
 games_euro_round3 = [
-  [ 17, gre, [], rus, Time.cet('2012-06-16 20:45'), euroa ],
-  [ 18, cze, [], pol, Time.cet('2012-06-16 20:45'), euroa ],
+  [ 17, cze, [], pol, Time.cet('2012-06-16 20:45'), euroa ],
+  [ 18, gre, [], rus, Time.cet('2012-06-16 20:45'), euroa ],
   [ 19, por, [], ned, Time.cet('2012-06-17 20:45'), eurob ],
   [ 20, den, [], ger, Time.cet('2012-06-17 20:45'), eurob ],
   [ 21, cro, [], esp, Time.cet('2012-06-18 20:45'), euroc ],
@@ -232,8 +232,8 @@ c22_ita_irl = Game.find_by_pos_and_round_id!(22,euro_round3.id)
 
 d7_fra_eng  = Game.find_by_pos_and_round_id!( 7,euro_round1.id)
 d8_ukr_swe  = Game.find_by_pos_and_round_id!( 8,euro_round1.id)
-d15_ukr_fra = Game.find_by_pos_and_round_id!(15,euro_round2.id)
-d16_swe_eng = Game.find_by_pos_and_round_id!(16,euro_round2.id)
+d15_swe_eng = Game.find_by_pos_and_round_id!(15,euro_round2.id)
+d16_ukr_fra = Game.find_by_pos_and_round_id!(16,euro_round2.id)
 d23_eng_ukr = Game.find_by_pos_and_round_id!(23,euro_round3.id)
 d24_swe_fra = Game.find_by_pos_and_round_id!(24,euro_round3.id)
 
@@ -373,8 +373,8 @@ tipp3_odds = [
  [ b12_ned_ger, 2.8,  3,   2.2  ],
  [ c13_ita_cro, 2,    2.9, 3.3  ],
  [ c14_esp_irl, 1.3,  4.0, 7.4  ],
- [ d15_ukr_fra, 3,    2.9, 2.1  ],
- [ d16_swe_eng, 3.8,  3,   1.75 ],
+ [ d15_swe_eng, 3,    2.9, 2.1  ],
+ [ d16_ukr_fra, 3.8,  3,   1.75 ],
  [ a17_cze_pol, 2.4,  2.9, 2.4  ],
  [ a18_gre_rus, 3.2,  3,   1.9  ],
  [ b19_por_ned, 3,    2.9, 2    ],
@@ -401,8 +401,8 @@ tipico_odds = [
  [ b12_ned_ger,  3.3, 3.4, 2.25 ],
  [ c13_ita_cro,  2.1, 3.3,  3.7 ], 
  [ c14_esp_irl,  1.3,   5,   12 ], 
- [ d15_ukr_fra,  4.3, 3.3, 1.95 ],
- [ d16_swe_eng,  3.5, 3.2,  2.2 ], 
+ [ d15_swe_eng,  4.3, 3.3, 1.95 ],
+ [ d16_ukr_fra,  3.5, 3.2,  2.2 ], 
  [ a17_cze_pol,  2.8, 3.3,  2.6 ],
  [ a18_gre_rus,    4, 3.4,    2 ], 
  [ b19_por_ned,    7, 4.3,  1.5 ],

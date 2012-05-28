@@ -10,9 +10,9 @@ el  = Event.find_by_key!( 'el' )
 bl  = Event.find_by_key!( 'bl' )
 ofb = Event.find_by_key!( 'ofb' )
 
-behrooz =  User.find_by_email!( 'behrooz' )
-ande    =  User.find_by_email!( 'ande' )
-manfred =  User.find_by_email!( 'manfred' )
+behrooz =  User.find_by_key!( 'behrooz' )
+ande    =  User.find_by_key!( 'ande' )
+manfred =  User.find_by_key!( 'manfred' )
 
 Pool.create!( :event => cl,  :title => 'USS EF', :user => behrooz, :welcome => '' )
 Pool.create!( :event => el,  :title => 'USS EF', :user => ande,    :welcome => '' )

@@ -7,7 +7,7 @@ puts "*** loading seed data in seeds/uss/pools_euro.rb"
 
 euro    =  Event.find_by_key!( 'euro' )
 
-behrooz =  User.find_by_email!( 'behrooz' )
+behrooz =  User.find_by_key!( 'behrooz' )
 
 pool1 = Pool.create!( :event => euro, :title => '(1) USS EF', :user => behrooz, :public => false, :fix => true,
                        :welcome => <<EOS )

@@ -3,9 +3,9 @@
 puts "*** loading seed data in seeds/uss/tips_euro.rb"
 
 
-gerald  = User.find_by_email!( 'gerald' )
-guersel = User.find_by_email!( 'gürsel' )
-behrooz = User.find_by_email!( 'behrooz' )
+gerald  = User.find_by_key!( 'gerald' )
+guersel = User.find_by_key!( 'gürsel' )
+behrooz = User.find_by_key!( 'behrooz' )
 
 euro  = Event.find_by_key!( 'euro')
 
