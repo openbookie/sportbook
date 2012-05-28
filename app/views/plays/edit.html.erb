@@ -96,6 +96,23 @@
 <% end %><!-- if pool.flex? -->
 
 
+<table>
+ <tr>
+<% Service.all.each do |srv| %>
+   <td>
+    <%= srv.title %><br>
+  <% srv.event_quotes.where( :event_id => @pool.event.id ).each do |quote| %>
+     <%= quote.team.tag %> <%= fmt_quote( quote.odds ) %><br>
+  <% end %><!-- each qoute -->
+  </td>
+<% end %><!-- each service -->
+</tr>
+</table>
+
+
+
+
+
 <% if @pool.flex? %>
   <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.flex_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 1000 } %>
   <!-- todo: include group tables if groups exist -->

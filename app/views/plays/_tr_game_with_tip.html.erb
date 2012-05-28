@@ -61,9 +61,9 @@
 
 <% game.quotes.each do |quote| %>
 <tr>
-  <td><%= quote.odds1 %></td>
-  <td><%= quote.oddsx %></td>
-  <td><%= quote.odds2 %></td>
+  <td><%= fmt_quote( quote.odds1 ) %></td>
+  <td><%= fmt_quote( quote.oddsx ) %></td>
+  <td><%= fmt_quote( quote.odds2 ) %></td>
   <td>(<%= quote.service.title %>)</td>
     <!-- add last updated? -->
 </tr>

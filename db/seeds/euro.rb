@@ -18,13 +18,13 @@ eurob = Group.create!( :event => euro, :pos => 2, :title => 'Gruppe B' )
 euroc = Group.create!( :event => euro, :pos => 3, :title => 'Gruppe C' )
 eurod = Group.create!( :event => euro, :pos => 4, :title => 'Gruppe D' )
 
-#################################3
+#################################
 # Gruppe A
 
-t1 = pol = Team.create!( :title => 'Polen',        :tag => 'POL', :key => 'poland', :img => 'poland2.png' )
-t2 = gre = Team.create!( :title => 'Griechenland', :tag => 'GRE', :key => 'greece', :img => 'greece2.png' )
-t3 = rus = Team.create!( :title => 'Russland',     :tag => 'RUS', :key => 'russia', :img => 'russia2.png' )
-t4 = cze = Team.create!( :title => 'Tschechien',   :tag => 'CZE', :key => 'czech',  :img => 'czech_republic2.png' )
+pol = Team.create!( :title => 'Polen',        :tag => 'POL', :key => 'poland', :img => 'poland2.png' )
+gre = Team.create!( :title => 'Griechenland', :tag => 'GRE', :key => 'greece', :img => 'greece2.png' )
+rus = Team.create!( :title => 'Russland',     :tag => 'RUS', :key => 'russia', :img => 'russia2.png' )
+cze = Team.create!( :title => 'Tschechien',   :tag => 'CZE', :key => 'czech',  :img => 'czech_republic2.png' )
 
 euroa.teams << pol
 euroa.teams << gre
@@ -32,13 +32,13 @@ euroa.teams << rus
 euroa.teams << cze
 
 
-#################################3
+#################################
 # Gruppe B
 
-t5 = ned = Team.create!( :title => 'Niederlande', :tag => 'NED', :key => 'netherlands', :img => 'netherlands2.png' )
-t6 = den = Team.create!( :title => 'Dänemark',    :tag => 'DEN', :key => 'denmark',     :img => 'denmark2.png' )
-t7 = ger = Team.create!( :title => 'Deutschland', :tag => 'GER', :key => 'germany',     :img => 'germany2.png' )
-t8 = por = Team.create!( :title => 'Portugal',    :tag => 'POR', :key => 'portugal',    :img => 'portugal2.png' )
+ned = Team.create!( :title => 'Niederlande', :tag => 'NED', :key => 'netherlands', :img => 'netherlands2.png' )
+den = Team.create!( :title => 'Dänemark',    :tag => 'DEN', :key => 'denmark',     :img => 'denmark2.png' )
+ger = Team.create!( :title => 'Deutschland', :tag => 'GER', :key => 'germany',     :img => 'germany2.png' )
+por = Team.create!( :title => 'Portugal',    :tag => 'POR', :key => 'portugal',    :img => 'portugal2.png' )
 
 eurob.teams << ned
 eurob.teams << den
@@ -49,10 +49,10 @@ eurob.teams << por
 #################################3
 # Gruppe C
 
-t9  = esp = Team.create!( :title => 'Spanien',  :tag => 'ESP', :key => 'spain',   :img => 'spain2.png' )
-t10 = ita = Team.create!( :title => 'Italien',  :tag => 'ITA', :key => 'italy',   :img => 'italy2.png' )
-t11 = irl = Team.create!( :title => 'Irland',   :tag => 'IRL', :key => 'ireland', :img => 'ireland2.png' )
-t12 = cro = Team.create!( :title => 'Kroatien', :tag => 'CRO', :key => 'croatia', :img => 'croatia2.png' )
+esp = Team.create!( :title => 'Spanien',  :tag => 'ESP', :key => 'spain',   :img => 'spain2.png' )
+ita = Team.create!( :title => 'Italien',  :tag => 'ITA', :key => 'italy',   :img => 'italy2.png' )
+irl = Team.create!( :title => 'Irland',   :tag => 'IRL', :key => 'ireland', :img => 'ireland2.png' )
+cro = Team.create!( :title => 'Kroatien', :tag => 'CRO', :key => 'croatia', :img => 'croatia2.png' )
 
 euroc.teams << esp
 euroc.teams << ita
@@ -62,10 +62,10 @@ euroc.teams << cro
 #################################3
 # Gruppe D
 
-t13 = ukr = Team.create!( :title => 'Ukraine',    :tag => 'UKR', :key => 'ukraine', :img => 'ukraine2.png' )
-t14 = swe = Team.create!( :title => 'Schweden',   :tag => 'SWE', :key => 'sweden',  :img => 'sweden2.png' )
-t15 = fra = Team.create!( :title => 'Frankreich', :tag => 'FRA', :key => 'france',  :img => 'france2.png' )
-t16 = eng = Team.create!( :title => 'England',    :tag => 'ENG', :key => 'england', :img => 'england2.png' )
+ukr = Team.create!( :title => 'Ukraine',    :tag => 'UKR', :key => 'ukraine', :img => 'ukraine2.png' )
+swe = Team.create!( :title => 'Schweden',   :tag => 'SWE', :key => 'sweden',  :img => 'sweden2.png' )
+fra = Team.create!( :title => 'Frankreich', :tag => 'FRA', :key => 'france',  :img => 'france2.png' )
+eng = Team.create!( :title => 'England',    :tag => 'ENG', :key => 'england', :img => 'england2.png' )
 
 eurod.teams << ukr
 eurod.teams << swe
@@ -94,40 +94,38 @@ euro_round1 = Round.create!( :event => euro, :pos => 1, :title => 'Gruppenphase 
 euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Gruppenphase 2. Spieltag', :title2 => '12.-15. Juni' )
 euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Gruppenphase 3. Spieltag', :title2 => '16.-19. Juni' )
 
-#### todo:
-##  remove t1, t2, etc. replace with team tag
 
 games_euro_round1 = [
-  [  1, t1,  [], t2,  Time.cet('2012-06-08 18:00'), euroa ],
-  [  2, t3,  [], t4,  Time.cet('2012-06-08 20:45'), euroa ],
-  [  3, t5,  [], t6,  Time.cet('2012-06-09 18:00'), eurob ],
-  [  4, t7,  [], t8,  Time.cet('2012-06-09 20:45'), eurob ],
-  [  5, t9,  [], t10, Time.cet('2012-06-10 18:00'), euroc ],
-  [  6, t11, [], t12, Time.cet('2012-06-10 20:45'), euroc ],
-  [  7, t15, [], t16, Time.cet('2012-06-11 18:00'), eurod ],
-  [  8, t13, [], t14, Time.cet('2012-06-11 20:45'), eurod ]
+  [  1, pol, [], gre, Time.cet('2012-06-08 18:00'), euroa ],
+  [  2, rus, [], cze, Time.cet('2012-06-08 20:45'), euroa ],
+  [  3, ned, [], den, Time.cet('2012-06-09 18:00'), eurob ],
+  [  4, ger, [], por, Time.cet('2012-06-09 20:45'), eurob ],
+  [  5, esp, [], ita, Time.cet('2012-06-10 18:00'), euroc ],
+  [  6, irl, [], cro, Time.cet('2012-06-10 20:45'), euroc ],
+  [  7, fra, [], eng, Time.cet('2012-06-11 18:00'), eurod ],
+  [  8, ukr, [], swe, Time.cet('2012-06-11 20:45'), eurod ]
 ]
 
 games_euro_round2 = [
-  [  9, t2,  [], t4,  Time.cet('2012-06-12 18:00'), euroa ],
-  [ 10, t1,  [], t3,  Time.cet('2012-06-12 20:45'), euroa ],
-  [ 11, t6,  [], t8,  Time.cet('2012-06-13 18:00'), eurob ],
-  [ 12, t5,  [], t7,  Time.cet('2012-06-13 20:45'), eurob ],
-  [ 13, t10, [], t12, Time.cet('2012-06-14 18:00'), euroc ],
-  [ 14, t9,  [], t11, Time.cet('2012-06-14 20:45'), euroc ],
-  [ 16, t13, [], t15, Time.cet('2012-06-15 18:00'), eurod ],
-  [ 15, t14, [], t16, Time.cet('2012-06-15 20:45'), eurod ]
+  [  9, gre, [], cze, Time.cet('2012-06-12 18:00'), euroa ],
+  [ 10, pol, [], rus, Time.cet('2012-06-12 20:45'), euroa ],
+  [ 11, den, [], por, Time.cet('2012-06-13 18:00'), eurob ],
+  [ 12, ned, [], ger, Time.cet('2012-06-13 20:45'), eurob ],
+  [ 13, ita, [], cro, Time.cet('2012-06-14 18:00'), euroc ],
+  [ 14, esp, [], irl, Time.cet('2012-06-14 20:45'), euroc ],
+  [ 16, ukr, [], fra, Time.cet('2012-06-15 18:00'), eurod ],
+  [ 15, swe, [], eng, Time.cet('2012-06-15 20:45'), eurod ]
 ]
 
 games_euro_round3 = [
-  [ 17, t2,  [], t3,  Time.cet('2012-06-16 20:45'), euroa ],
-  [ 18, t4,  [], t1,  Time.cet('2012-06-16 20:45'), euroa ],
-  [ 19, t8,  [], t5,  Time.cet('2012-06-17 20:45'), eurob ],
-  [ 20, t6,  [], t7,  Time.cet('2012-06-17 20:45'), eurob ],
-  [ 21, t12, [], t9,  Time.cet('2012-06-18 20:45'), euroc ],
-  [ 22, t10, [], t11, Time.cet('2012-06-18 20:45'), euroc ],
-  [ 23, t16, [], t13, Time.cet('2012-06-19 20:45'), eurod ],
-  [ 24, t14, [], t15, Time.cet('2012-06-19 20:45'), eurod ]
+  [ 17, gre, [], rus, Time.cet('2012-06-16 20:45'), euroa ],
+  [ 18, cze, [], pol, Time.cet('2012-06-16 20:45'), euroa ],
+  [ 19, por, [], ned, Time.cet('2012-06-17 20:45'), eurob ],
+  [ 20, den, [], ger, Time.cet('2012-06-17 20:45'), eurob ],
+  [ 21, cro, [], esp, Time.cet('2012-06-18 20:45'), euroc ],
+  [ 22, ita, [], irl, Time.cet('2012-06-18 20:45'), euroc ],
+  [ 23, eng, [], ukr, Time.cet('2012-06-19 20:45'), eurod ],
+  [ 24, swe, [], fra, Time.cet('2012-06-19 20:45'), eurod ]
 ]
 
 Game.create_from_ary!( games_euro_round1, euro_round1 )
@@ -211,68 +209,156 @@ Prop.create!( :key => 'db.seeds.euro.version', :value => '1' )
 #
 #  Add some quotes
 
-# tipico quotes  27/may
+a1_pol_gre  = Game.find_by_pos_and_round_id!( 1,euro_round1.id)
+a2_rus_cze  = Game.find_by_pos_and_round_id!( 2,euro_round1.id)
+a9_gre_cze  = Game.find_by_pos_and_round_id!( 9,euro_round2.id)
+a10_pol_rus = Game.find_by_pos_and_round_id!(10,euro_round2.id)
+a17_cze_pol = Game.find_by_pos_and_round_id!(17,euro_round3.id)
+a18_gre_rus = Game.find_by_pos_and_round_id!(18,euro_round3.id)
 
-tipico = Service.find_by_title!( 'tipico' )
+b3_ned_den  = Game.find_by_pos_and_round_id!( 3,euro_round1.id)
+b4_ger_por  = Game.find_by_pos_and_round_id!( 4,euro_round1.id)
+b11_den_por = Game.find_by_pos_and_round_id!(11,euro_round2.id)
+b12_ned_ger = Game.find_by_pos_and_round_id!(12,euro_round2.id)
+b19_por_ned = Game.find_by_pos_and_round_id!(19,euro_round3.id)
+b20_den_ger = Game.find_by_pos_and_round_id!(20,euro_round3.id)
 
-TeamQuote.create!( :service => tipico, :event => euro, :team => esp, :odds => 3.6)
-TeamQuote.create!( :service => tipico, :event => euro, :team => ger, :odds => 4.0)
-TeamQuote.create!( :service => tipico, :event => euro, :team => ned, :odds => 8.0)
-TeamQuote.create!( :service => tipico, :event => euro, :team => fra, :odds => 12)
-TeamQuote.create!( :service => tipico, :event => euro, :team => eng, :odds => 12)
-TeamQuote.create!( :service => tipico, :event => euro, :team => ita, :odds => 15)
-TeamQuote.create!( :service => tipico, :event => euro, :team => por, :odds => 20)
-TeamQuote.create!( :service => tipico, :event => euro, :team => rus, :odds => 25)
-TeamQuote.create!( :service => tipico, :event => euro, :team => pol, :odds => 45)
-TeamQuote.create!( :service => tipico, :event => euro, :team => cro, :odds => 50)
-TeamQuote.create!( :service => tipico, :event => euro, :team => ukr, :odds => 50)
-TeamQuote.create!( :service => tipico, :event => euro, :team => swe, :odds => 60)
-TeamQuote.create!( :service => tipico, :event => euro, :team => gre, :odds => 70)
-TeamQuote.create!( :service => tipico, :event => euro, :team => cze, :odds => 70)
-TeamQuote.create!( :service => tipico, :event => euro, :team => den, :odds => 100)
-TeamQuote.create!( :service => tipico, :event => euro, :team => irl, :odds => 100)
+c5_esp_ita  = Game.find_by_pos_and_round_id!( 5,euro_round1.id)
+c6_irl_cro  = Game.find_by_pos_and_round_id!( 6,euro_round1.id)
+c13_ita_cro = Game.find_by_pos_and_round_id!(13,euro_round2.id)
+c14_esp_irl = Game.find_by_pos_and_round_id!(14,euro_round2.id)
+c21_cro_esp = Game.find_by_pos_and_round_id!(21,euro_round3.id)
+c22_ita_irl = Game.find_by_pos_and_round_id!(22,euro_round3.id)
 
-# group a
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 1,euro_round1.id), :odds1 =>2,   :oddsx =>3.3, :odds2 =>4   )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 2,euro_round1.id), :odds1 =>2.1, :oddsx =>3.3, :odds2 =>3.7 )
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 9,euro_round2.id), :odds1 =>3,   :oddsx =>3.2, :odds2 =>2.5 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(10,euro_round2.id), :odds1 =>3.1, :oddsx =>3.2, :odds2 =>2.4 )
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(17,euro_round3.id), :odds1 =>2.8, :oddsx =>3.3, :odds2 =>2.6 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(18,euro_round3.id), :odds1 =>4,   :oddsx =>3.4, :odds2 =>2 )
+d7_fra_eng  = Game.find_by_pos_and_round_id!( 7,euro_round1.id)
+d8_ukr_swe  = Game.find_by_pos_and_round_id!( 8,euro_round1.id)
+d15_ukr_fra = Game.find_by_pos_and_round_id!(15,euro_round2.id)
+d16_swe_eng = Game.find_by_pos_and_round_id!(16,euro_round2.id)
+d23_eng_ukr = Game.find_by_pos_and_round_id!(23,euro_round3.id)
+d24_swe_fra = Game.find_by_pos_and_round_id!(24,euro_round3.id)
 
 
-# group b
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 3,euro_round1.id), :odds1 =>1.6, :oddsx =>3.8, :odds2 =>6 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 4,euro_round1.id), :odds1 =>1.8, :oddsx =>3.5, :odds2 =>4.7 )
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(11,euro_round2.id), :odds1 =>4,   :oddsx =>3.5, :odds2 =>1.95 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(12,euro_round2.id), :odds1 =>3.3, :oddsx =>3.4, :odds2 =>2.25 )
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(19,euro_round3.id), :odds1 =>7,   :oddsx =>4.3, :odds2 =>1.5 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(20,euro_round3.id), :odds1 =>3.4, :oddsx =>3.4, :odds2 =>2.2 )
-
-# group c
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 5,euro_round1.id), :odds1 =>1.8, :oddsx =>3.5, :odds2 =>4.8 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 6,euro_round1.id), :odds1 =>3.5, :oddsx =>3.3, :odds2 =>2.15 )
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(13,euro_round2.id), :odds1 =>2.1, :oddsx =>3.3, :odds2 =>3.7 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(14,euro_round2.id), :odds1 =>1.3, :oddsx =>5,   :odds2 =>12 )
-
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(21,euro_round3.id), :odds1 =>6.5,  :oddsx =>4,   :odds2 =>1.55 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(22,euro_round3.id), :odds1 =>1.75, :oddsx =>3.6, :odds2 =>5 )
+tipico    = Service.find_by_key!( 'tipico'    )
+betathome = Service.find_by_key!( 'betathome' )
+tipp3     = Service.find_by_key!( 'tipp3'     )
 
 
-# group d
+tipico_team_odds = [   # tipico quotes  27/may
+  [ esp, 3.6 ],
+  [ ger, 4 ],
+  [ ned, 8 ],
+  [ fra, 12 ],
+  [ eng, 12 ],
+  [ ita, 15 ],
+  [ por, 20 ],
+  [ rus, 25 ],
+  [ pol, 45 ],
+  [ cro, 50 ],
+  [ ukr, 50 ],
+  [ swe, 60 ],
+  [ gre, 70 ],
+  [ cze, 70 ],
+  [ den, 100 ],
+  [ irl, 100 ]]
 
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 7,euro_round1.id), :odds1 =>2.7, :oddsx =>3.2, :odds2 =>2.7 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!( 8,euro_round1.id), :odds1 =>2.3, :oddsx =>3.2, :odds2 =>3.4 )
+EventQuote.create_from_ary!( tipico_team_odds, tipico, euro )
 
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(15,euro_round2.id), :odds1 =>4.3, :oddsx =>3.3, :odds2 =>1.95 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(16,euro_round2.id), :odds1 =>3.5, :oddsx =>3.2, :odds2 =>2.2 )
 
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(23,euro_round3.id), :odds1 =>2.15, :oddsx =>3.3, :odds2 =>3.6 )
-Quote.create!( :service => tipico, :game => Game.find_by_pos_and_round_id!(24,euro_round3.id), :odds1 =>3.7,  :oddsx =>3.3, :odds2 =>2.1 )
+betathome_team_odds = [
+  [ esp, 3.5 ],
+  [ ger, 3.9 ],
+  [ ned, 7.5 ],
+  [ eng, 10 ],
+  [ fra, 15 ],
+  [ ita, 15 ],
+  [ por, 18 ],
+  [ rus, 20 ],
+  [ cro, 40 ],
+  [ ukr, 40 ],
+  [ cze, 50 ],
+  [ gre, 50 ],
+  [ pol, 50 ],
+  [ swe, 65 ],
+  [ den, 80 ],
+  [ irl, 80 ]] 
+
+EventQuote.create_from_ary!( betathome_team_odds, betathome, euro )
+
+
+tipp3_team_odds = [
+  [ esp, 3.5 ],
+  [ ger, 3.8 ],
+  [ ned, 8 ],
+  [ eng, 12 ],
+  [ ita, 12 ],
+  [ fra, 12 ],
+  [ por, 20 ],
+  [ rus, 25 ],
+  [ cro, 50 ],
+  [ ukr, 50 ],
+  [ pol, 60 ],
+  [ cze, 70 ],
+  [ gre, 70 ],
+  [ swe, 75 ],
+  [ den, 90 ],
+  [ irl, 90 ]]
+
+EventQuote.create_from_ary!( tipp3_team_odds, tipp3, euro )
+
+
+
+tipp3_odds = [
+ [ a1_pol_gre,  2,    2.9, 3.2  ],
+ [ a2_rus_cze,  2.1,  2.9, 3    ],
+ [ b3_ned_den,  1.55, 3.3, 4.9  ],
+ [ b4_ger_por,  1.7,  3.1, 3.9  ],
+ [ c5_esp_ita,  1.7,  3.1, 3.9  ],
+ [ c6_irl_cro,  3.1,  2.9, 2.0  ],
+ [ d7_fra_eng,  2.4,  2.9, 2.4  ],
+ [ d8_ukr_swe,  2.2,  2.9, 2.8  ],
+ [ a9_gre_cze,  2.6,  2.9, 2.3  ],
+ [ a10_pol_rus, 2.7,  3,   2.2  ],
+ [ b11_den_por, 3.5,  3.1, 1.8  ],
+ [ b12_ned_ger, 2.8,  3,   2.2  ],
+ [ c13_ita_cro, 2,    2.9, 3.3  ],
+ [ c14_esp_irl, 1.3,  4.0, 7.4  ],
+ [ d15_ukr_fra, 3,    2.9, 2.1  ],
+ [ d16_swe_eng, 3.8,  3,   1.75 ],
+ [ a17_cze_pol, 2.4,  2.9, 2.4  ],
+ [ a18_gre_rus, 3.2,  3,   1.9  ],
+ [ b19_por_ned, 3,    2.9, 2    ],
+ [ b20_den_ger, 5.9,  3.4, 1.45 ],
+ [ c21_cro_esp, 5.2,  3.4, 1.5  ],
+ [ c22_ita_irl, 1.65, 3.1, 4.2  ],
+ [ d23_eng_ukr, 2,    3,   3.1  ],
+ [ d24_swe_fra, 3.3,  3,   1.9  ]]
+
+Quote.create_from_ary!( tipp3_odds, tipp3 )
+
+tipico_odds = [
+ [ a1_pol_gre,     2, 3.3,    4 ],
+ [ a2_rus_cze,   2.1, 3.3,  3.7 ],
+ [ b3_ned_den,   1.6, 3.8,    6 ], 
+ [ b4_ger_por,   1.8, 3.5,  4.7 ], 
+ [ c5_esp_ita,   1.8, 3.5,  4.8 ],
+ [ c6_irl_cro,   3.5, 3.3, 2.15 ],
+ [ d7_fra_eng,   2.7, 3.2,  2.7 ],
+ [ d8_ukr_swe,   2.3, 3.2,  3.4 ],
+ [ a9_gre_cze,     3, 3.2,  2.5 ],
+ [ a10_pol_rus,  3.1, 3.2,  2.4 ],
+ [ b11_den_por,    4, 3.5, 1.95 ],
+ [ b12_ned_ger,  3.3, 3.4, 2.25 ],
+ [ c13_ita_cro,  2.1, 3.3,  3.7 ], 
+ [ c14_esp_irl,  1.3,   5,   12 ], 
+ [ d15_ukr_fra,  4.3, 3.3, 1.95 ],
+ [ d16_swe_eng,  3.5, 3.2,  2.2 ], 
+ [ a17_cze_pol,  2.8, 3.3,  2.6 ],
+ [ a18_gre_rus,    4, 3.4,    2 ], 
+ [ b19_por_ned,    7, 4.3,  1.5 ],
+ [ b20_den_ger,  3.4, 3.4,  2.2 ],
+ [ c21_cro_esp,  6.5,   4, 1.55 ],
+ [ c22_ita_irl, 1.75, 3.6,    5 ],
+ [ d23_eng_ukr, 2.15, 3.3,  3.6 ],
+ [ d24_swe_fra,  3.7, 3.3,  2.1 ]]
+
+Quote.create_from_ary!( tipico_odds, tipico )

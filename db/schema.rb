@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "event_quotes", :force => true do |t|
+    t.integer  "service_id", :null => false
+    t.integer  "event_id",   :null => false
+    t.integer  "team_id",    :null => false
+    t.decimal  "odds",       :null => false
+    t.string   "comments"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title",                        :null => false
     t.string   "key",                          :null => false
@@ -76,6 +86,16 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   add_index "games", ["next_game_id"], :name => "index_games_on_next_game_id"
   add_index "games", ["prev_game_id"], :name => "index_games_on_prev_game_id"
   add_index "games", ["round_id"], :name => "index_games_on_round_id"
+
+  create_table "group_quotes", :force => true do |t|
+    t.integer  "service_id", :null => false
+    t.integer  "group_id",   :null => false
+    t.integer  "team_id",    :null => false
+    t.decimal  "odds",       :null => false
+    t.string   "comments"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.integer  "event_id",   :null => false
@@ -179,16 +199,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
 
   create_table "services", :force => true do |t|
     t.string   "title",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "team_quotes", :force => true do |t|
-    t.integer  "service_id", :null => false
-    t.integer  "event_id",   :null => false
-    t.integer  "team_id",    :null => false
-    t.decimal  "odds",       :null => false
-    t.string   "comments"
+    t.string   "key",        :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
