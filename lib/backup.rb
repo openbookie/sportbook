@@ -80,8 +80,13 @@ def import_backup_data( data )   # data as all-in-one string
         
         tip = Tip.find_by_user_id_and_pool_id_and_game_id( user.id, pool.id, game.id )
         if tip.nil?
-          puts "   *** Adding Tip"
-          tip = Tip.new
+          if game.calc?
+            puts "   *** Adding CalcTip"
+            tip = CalcTip.new
+          else
+            puts "   *** Adding Tip"
+            tip = Tip.new
+          end
           tip.user = user
           tip.pool = pool
           tip.game = game

@@ -17,7 +17,7 @@
    <% round.games.each do |game| %>
 
  <tr>
-  <td>(<%= game.id %>)</td>
+  <td>(<%= game.id %>) <%= game.key %></td>
   <td><%= game.pos %></td>
   <td><%= game.team1.title %></td>
   <td><%= game.team2.title %></td>
