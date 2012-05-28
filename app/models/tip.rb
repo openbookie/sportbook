@@ -196,8 +196,26 @@ class Tip < ActiveRecord::Base
   def incomplete?
     complete? == false
   end
+  
+  def public?
+    return true if pool.public?
+    
+    ## todo: use builtin utc.past? method ???
+    Time.now.utc > game.play_at.utc
+  end
 
 
+  def public_user_name_str
+    public? ? user.name : 'Anonymous'
+  end
+
+  def public_score_str
+    public? ? score_str : '# : #'
+  end
+  
+  def public_toto12x_str
+    public? ? toto12x : '#'
+  end
   
   def score_str
     ## fix: use new game.toto12x instead of game.over ??? (doesn't depend on time) 

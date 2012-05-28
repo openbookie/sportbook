@@ -7,7 +7,7 @@ puts "*** loading seed data in seeds/el.rb"
 #################################
 ##  Europa League 2012
 
-el = Event.create!( :title => 'Europa League 2012', :key => 'el', :team3 => false )
+el = Event.create!( :title => 'Europa League 2012', :key => 'el', :team3 => false, :start_at => Time.cet( '2011-10-10 17:00' ))
 
 az       = Team.create!( :title => 'AZ Alkmaar',          :key => 'az',       :img => 'az.png' )
 valencia = Team.create!( :title => 'Valencia CF',         :key => 'valencia', :img => 'valencia.png' )

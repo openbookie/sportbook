@@ -123,7 +123,7 @@ Game.create_from_ary!( games_bl36, bl36 )
 ##################################
 ### ÖFB Cup 2012
 
-ofb = Event.create!( :title => 'ÖFB Cup 2012', :key => 'ofb', :team3 => false )
+ofb = Event.create!( :title => 'ÖFB Cup 2012', :key => 'ofb', :team3 => false, :start_at => Time.cet( '2011-10-10 17:00' ) )
 
 hartberg =  Team.create!( :title => 'TSV Hartberg',           :key => 'hartberg', :img => 'hartberg.png' )
 groedig  =  Team.create!( :title => 'SV Grödig',              :key => 'groedig',  :img => 'groedig.png' )

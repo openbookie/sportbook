@@ -9,7 +9,7 @@ euro    =  Event.find_by_key!( 'euro' )
 
 behrooz =  User.find_by_email!( 'behrooz' )
 
-pool1 = Pool.create!( :event => euro, :title => '(1) USS EF', :user => behrooz, :fix => true,
+pool1 = Pool.create!( :event => euro, :title => '(1) USS EF', :user => behrooz, :public => false, :fix => true,
                        :welcome => <<EOS )
 Spielart Variante 1)  Man tippt vor Anpfiff alle Spiele bis zum Finale durch.
 Ein Ausdruck ist bei Behrooz SEIFI
@@ -33,7 +33,7 @@ Alle Tipps und die Auswertungen werden ab Do. 7. Juni Nachmittag freigeschaltet.
 EOS
 
 
-pool2 = Pool.create!( :event => euro, :title => '(2) USS EF', :user => behrooz,
+pool2 = Pool.create!( :event => euro, :title => '(2) USS EF', :user => behrooz, :public => false,
                      :welcome => <<EOS )
 Spielart Variante 2) Man tippt am Anfang den Europameister und Vizemeister und danach
 __jedes Spiel spätestens am Spieltag bis 17 Uhr__[^1].

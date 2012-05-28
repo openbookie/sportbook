@@ -59,9 +59,7 @@ class Pool < ActiveRecord::Base
 
     a.save!
   end
-  
-  
-  
+    
   def full_title
     "#{title} #{event.title}#{fix? ? ' Fix' : ''}"
   end

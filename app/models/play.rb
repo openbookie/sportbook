@@ -40,7 +40,13 @@ class Play < ActiveRecord::Base
     (@job_running ||= false) == true
   end
 
+  def public?
+    return true if pool.public?
 
+    # team1, team2 public after kickoff of event
+    ## use past?
+    Time.now.utc > pool.event.start_at.utc
+  end
   
   def log_action_create
     a = Action.new

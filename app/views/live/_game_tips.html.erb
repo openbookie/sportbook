@@ -9,10 +9,10 @@
          <% game.complete_tips_1.each do |tip| %>
             <li>
               <span class='<%= tip.bingo_style_class %>'>
-                <%= tip.score_str %>
+                <%= tip.public_score_str %>
               </span>
               <span class='<%= hl_style_for_user(tip.user) %>'>
-                <%= tip.user.name %>
+                <%= tip.public_user_name_str %>
               </span>
             </li>
          <% end %>
@@ -24,10 +24,10 @@
          <% game.complete_tips_x.each do |tip| %>
             <li>
               <span class='<%= tip.bingo_style_class %>'>
-                <%= tip.score_str %>
+                <%= tip.public_score_str %>
               </span>
               <span class='<%= hl_style_for_user(tip.user) %>'>
-                <%= tip.user.name %>
+                <%= tip.public_user_name_str %>
               </span>
             </li>
          <% end %>
@@ -39,10 +39,10 @@
          <% game.complete_tips_2.each do |tip| %>
             <li>
               <span class='<%= tip.bingo_style_class %>'>
-                <%= tip.score_str %>
+                <%= tip.public_score_str %>
               </span>
               <span class='<%= hl_style_for_user(tip.user) %>'>
-                <%= tip.user.name %>
+                <%= tip.public_user_name_str %>
               </span>
             </li>
          <% end %>

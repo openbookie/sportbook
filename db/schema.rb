@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "title",                        :null => false
     t.string   "key",                          :null => false
     t.boolean  "team3",      :default => true, :null => false
-    t.datetime "start_at"
+    t.datetime "start_at",                     :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "title",                           :null => false
     t.integer  "user_id",                         :null => false
     t.boolean  "fix",          :default => false, :null => false
+    t.boolean  "public",       :default => true,  :null => false
     t.text     "welcome"
     t.text     "welcome_html"
     t.string   "key"

@@ -5,7 +5,7 @@ puts "*** loading seed data in seeds/nhl.rb"
 ######################################
 ## NHL  2012
 
-nhl = Event.create!( :title => ' National Hockey League 2012', :key => 'nhl' )
+nhl = Event.create!( :title => ' National Hockey League 2012', :key => 'nhl', :start_at => '2011-10-10' )
 
 newjersey    = Team.create!( :title => 'New Jersey Devils (East/Atlantic)',    :key => 'newjersey', :img => 'devils.png' )
 nyislanders  = Team.create!( :title => 'New York Islanders (East/Atlantic)',   :key => 'nyislanders', :img => 'islanders.png' )

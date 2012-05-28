@@ -28,10 +28,10 @@ add_index :teams, :key, :unique => true
 
 
 create_table :events do |t|
-  t.string      :title,   :null => false
-  t.string      :key,     :null => false   # import/export key
-  t.boolean     :team3,   :null => false, :default => true   ## e.g. Champions League has no 3rd place (only 1st and 2nd/final)
-  t.datetime    :start_at   #  :null => false   --todo/fix: make not nullable 
+  t.string      :title,    :null => false
+  t.string      :key,      :null => false   # import/export key
+  t.boolean     :team3,    :null => false, :default => true   ## e.g. Champions League has no 3rd place (only 1st and 2nd/final)
+  t.datetime    :start_at, :null => false
   t.timestamps  
 end
 
@@ -119,10 +119,11 @@ add_index :users, :email, :unique => true   # make email unique
 
 
 create_table :pools do |t|
-  t.references  :event, :null => false
-  t.string      :title, :null => false
-  t.references  :user,  :null => false  # owner/manager/admin of pool
-  t.boolean     :fix,   :null => false, :default => false
+  t.references  :event,  :null => false
+  t.string      :title,  :null => false
+  t.references  :user,   :null => false  # owner/manager/admin of pool
+  t.boolean     :fix,    :null => false, :default => false
+  t.boolean     :public, :null => false, :default => true   # make all tips public (not private/secret)
   t.text        :welcome
   t.text        :welcome_html
   t.string      :key   # import/export key
