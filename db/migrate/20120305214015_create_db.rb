@@ -124,6 +124,7 @@ create_table :pools do |t|
   t.references  :user,  :null => false  # owner/manager/admin of pool
   t.boolean     :fix,   :null => false, :default => false
   t.text        :welcome
+  t.text        :welcome_html
   t.string      :key   # import/export key
   t.timestamps
 end

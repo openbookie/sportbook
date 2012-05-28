@@ -6,3 +6,9 @@ class Time
   end
   
 end # class Time
+
+
+def markdown_to_html( content )
+  Kramdown::Document.new( content ).to_html
+end
+

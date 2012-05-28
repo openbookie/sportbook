@@ -26,6 +26,27 @@ class Pool < ActiveRecord::Base
   
   after_create :log_action_create
   
+  before_save :on_before_save
+  
+  def on_before_save
+    if welcome.blank?
+      self.welcome_html = ''
+    else
+      self.welcome_html = markdown_to_html( welcome )
+    end
+  end
+  
+  def welcome_header_html
+    return '' if welcome_html.blank?
+    
+    ## return everything up to (optional) <!-- more
+    pos = welcome_html.index('<!-- more')
+    if pos.nil?
+      welcome_html
+    else
+      welcome_html[0...pos]  # NB: three point range (that is, ... => exlude the end value)
+    end
+  end
   
   ## todo/fix: can we use log_action_create! in filter??
   def log_action_create

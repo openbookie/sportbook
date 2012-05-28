@@ -28,7 +28,7 @@
       <%= link_to "#{pool.players.size} Mitspieler", plays_path( :pool_id => pool.id ) %>
     )
     <br>
-    <span class='light' style='font-size: 80%'><%= pool.welcome %></span>
+    <div class='pool welcome-header'><%= raw( pool.welcome_header_html ) %></div>
   </li>
 <% end %>
 </ul>

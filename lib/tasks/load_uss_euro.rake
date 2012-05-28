@@ -2,7 +2,7 @@
 desc "load seed data for uss euro pools"
 task :load_uss_euro => [:environment] do |t|
   
-  ['euro', 'uss/users', 'uss/euro_pools' ].each do |seed|
+  ['services', 'euro', 'uss/users', 'uss/euro_pools' ].each do |seed|
     require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
   

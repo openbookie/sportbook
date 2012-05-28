@@ -149,14 +149,15 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   add_index "points", ["user_id", "pool_id", "round_id"], :name => "index_points_on_user_id_and_pool_id_and_round_id", :unique => true
 
   create_table "pools", :force => true do |t|
-    t.integer  "event_id",                      :null => false
-    t.string   "title",                         :null => false
-    t.integer  "user_id",                       :null => false
-    t.boolean  "fix",        :default => false, :null => false
+    t.integer  "event_id",                        :null => false
+    t.string   "title",                           :null => false
+    t.integer  "user_id",                         :null => false
+    t.boolean  "fix",          :default => false, :null => false
     t.text     "welcome"
+    t.text     "welcome_html"
     t.string   "key"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "pools", ["event_id"], :name => "index_pools_on_event_id"

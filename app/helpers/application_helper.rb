@@ -66,5 +66,5 @@ module ApplicationHelper
       date.strftime( "%a. %d. %b. / %H:%M" )
     end
   end
-
+  
 end

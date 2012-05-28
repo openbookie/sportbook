@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt-ruby'
+gem 'kramdown'     # all ruby markdown processor/engine
 
 gem 'rails', '3.2.1'
 gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n

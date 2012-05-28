@@ -35,7 +35,7 @@
   <%= link_to "#{@pool.players.size} Mitspieler (Alle Tipps)", plays_path( :pool_id => @pool.id ) %>
 </p>
 
-<p><%= @pool.welcome %></p>
+<p><%= raw( @pool.welcome_html ) %></p>
 
 
 
