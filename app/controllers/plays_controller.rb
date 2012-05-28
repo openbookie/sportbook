@@ -7,10 +7,8 @@ class PlaysController < ApplicationController
     @pool   = Pool.find( params[:pool_id] )
     @users  = @pool.players.order(:name)
 
-    # do NOT show points by default
-    @show_pts  = (params[:pts].present? && ['1','t','true','yes', 'on'].include?( params[:pts]))
-    # show tips by default
-    @show_tips = (params[:tips].nil? || (params[:tips].present? && ['1','t','true','yes', 'on'].include?( params[:tips])))
+    @show_pts  = param_show_pts?
+    @show_tips = param_show_tips?
     
     @rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
   end
@@ -29,6 +27,10 @@ class PlaysController < ApplicationController
     @play = Play.find( params[:id] )
     @pool = @play.pool
     @user = @play.user
+
+    # do NOT show odds by default
+    @show_odds  = param_show_odds?
+
 
     pool_rounds = @pool.flex? ? @pool.event.flex_rounds.all : @pool.event.fix_rounds.all
     pool_rounds.each do |round|
@@ -126,5 +128,21 @@ class PlaysController < ApplicationController
         
     redirect_to edit_play_path( play )
   end
+  
+  private
+  def param_show_pts?
+    # do NOT show points by default
+    params[:pts].present? && ['1','t','true','yes', 'on'].include?( params[:pts])
+  end
+  
+  def param_show_tips?
+    # show tips by default
+    params[:tips].nil? || (params[:tips].present? && ['1','t','true','yes', 'on'].include?( params[:tips]))
+  end
+
+  def param_show_odds?
+    # do NOT show odds (quotes) by default
+    params[:odds].present? && ['1','t','true','yes', 'on'].include?( params[:odds])
+  end  
 
 end  # class PlaysController

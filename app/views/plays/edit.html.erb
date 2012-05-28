@@ -6,6 +6,13 @@
  <%= link_to @user.name, edit_play_path( @play ) %>
 <% end %>
 
+<p>
+  View: <%= link_to 'Tipps', edit_play_path( @play, :odds => 'f' ) %>
+          ⋅
+        <%= link_to 'Tipps+Quoten', edit_play_path( @play, :odds => 't' ) %>
+</p>
+
+
 <!-- add hotkey handler for quick tip autofill -->
 <script>
 
@@ -96,6 +103,7 @@
 <% end %><!-- if pool.flex? -->
 
 
+<% if @show_odds %>
 <table>
  <tr>
 <% Service.all.each do |srv| %>
@@ -108,17 +116,17 @@
 <% end %><!-- each service -->
 </tr>
 </table>
-
+<% end %><!-- show odds? -->
 
 
 
 
 <% if @pool.flex? %>
-  <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.flex_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 1000 } %>
+  <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.flex_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 1000, :show_odds => @show_odds } %>
   <!-- todo: include group tables if groups exist -->
 <% else %>
-  <%= render :partial => 'games_by_group',  :locals => { :groups => @pool.event.groups, :user => @user, :pool => @pool, :f => f, :tabindex => 1000 } %>
-  <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.fix_playoff_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 2000 } %>
+  <%= render :partial => 'games_by_group',  :locals => { :groups => @pool.event.groups, :user => @user, :pool => @pool, :f => f, :tabindex => 1000, :show_odds => @show_odds } %>
+  <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.fix_playoff_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 2000, :show_odds => @show_odds } %>
 <% end %>
 
 
