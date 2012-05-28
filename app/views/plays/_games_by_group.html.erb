@@ -16,8 +16,8 @@
         9    => table/standing (n rowspan)
   -->
 
-<table class='play' cellspacing=0>
 <% groups.each do |group| %>
+<table class='play keep-together' cellspacing=0>
 <tr class='game-group'>
   <td colspan='3'></td>
   <td colspan='6' class='game-group-title'><%= group.title %></td>
@@ -90,5 +90,5 @@
                              :tabindex => (tabindex+=10) }  %>
 
   <% end %><!-- game -->
-<% end %><!-- groups -->
 </table>
+<% end %><!-- groups -->

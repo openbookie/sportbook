@@ -107,10 +107,11 @@ add_index :games, :prev_game_id  # fk next_game_id index
 
 
 create_table :users do |t|
-  t.string :name,            :null => false
-  t.string :email,           :null => false
-  t.string :password_digest
-  t.string :key   # import/export key
+  t.string  :name,            :null => false
+  t.string  :email,           :null => false
+  t.string  :password_digest
+  t.string  :key,             :null => false   # import/export key
+  t.boolean :admin,           :null => false, :default => false
   t.timestamps
 end
 

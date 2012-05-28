@@ -17,4 +17,16 @@ class User < ActiveRecord::Base
   has_many :tips
   
   has_secure_password   # use built-in rails macro for password to password_digest machinery
-end
+
+  before_save :on_before_save
+  
+  def on_before_save
+    if email.blank?
+      self.key = ''
+    else
+      ## remove whitespace and (.-+_) and downcase
+      self.key = email.gsub( /[\s\.\-+_]/, '' ).downcase
+    end
+  end
+
+end  # class User

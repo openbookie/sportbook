@@ -5,15 +5,6 @@ def update_import_export_keys
   puts ">> Update Keys (#{Time.now}):"
 
   puts ""
-  puts "## Users"
-    
-    User.all.each do |user|
-      user.key = "#{user.email}"  # for now email is same as key
-      user.save!
-      puts "  #{user.name} => #{user.key}"
-    end
-
-  puts ""
   puts "## Games"
   
     Game.all.each do |game|

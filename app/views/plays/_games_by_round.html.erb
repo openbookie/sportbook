@@ -11,8 +11,8 @@
         8    => date
   -->
 
-<table class='play' cellspacing=0>
 <% rounds.each do |round| %>
+<table class='play keep-together' cellspacing=0>
 <tr class='game-round'>
   <td colspan='3'></td>
   <td colspan='6' class='game-round-title'><%= round.title %></td>
@@ -36,5 +36,5 @@
 
   <% end %><!-- game -->
  <% end %> <!-- if round.games.count == 0 -->
-<% end %><!-- rounds -->
 </table>
+<% end %><!-- rounds -->

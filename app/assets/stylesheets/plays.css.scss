@@ -63,6 +63,7 @@ table.plays {
    &.game-team1 {
      text-align: right;
      /* font-weight: bold; */
+     min-width: 200px;
    }
    
    &.tip-score {
@@ -77,6 +78,7 @@ table.plays {
    
    &.game-team2 {
      /* font-weight: bold; */
+     min-width: 200px;
    }
    
    &.game-group,&.game-round {

@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Key</th>
     <th><!-- Edit --></th>
     <th><!-- Delete --></th>
   </tr>
@@ -12,6 +13,7 @@
   <tr>
     <td><%= link_to user.name, user_path(user) %></td>
     <td><%= user.email %></td>
+    <td><%= user.key %></td>
     <td><%= link_to 'Bearbeiten', edit_user_path(user), :class => 'btn' %></td>
     <td><%= link_to 'Löschen', user_path(user), :confirm => 'Sicher?', :method =>'delete', :class => 'btn' %></td>
   </tr>

@@ -6,7 +6,7 @@
  <%= link_to @user.name, edit_play_path( @play ) %>
 <% end %>
 
-<p>
+<p class='view'>
   View: <%= link_to 'Tipps', edit_play_path( @play, :odds => 'f' ) %>
           ⋅
         <%= link_to 'Tipps+Quoten', edit_play_path( @play, :odds => 't' ) %>

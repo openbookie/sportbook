@@ -29,7 +29,8 @@
     )
   </td>
   <td><%= if game.knockout == true then '(Knockout Flag)' else '' end %></td>
-  <td><%= fmt_date( game.play_at ) %></td>
+  <td><%= game.play_at %></td>
+  <td><%= game.play_at.utc %></td>
   <td><%= link_to 'Bearbeiten', edit_game_path( game ), :class => 'btn' %></td>
  </tr>
   <% end %><!-- games.each -->

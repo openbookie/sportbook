@@ -5,14 +5,15 @@ puts "*** loading seed data in seeds/uss/users.rb"
 ##############
 ##  Users
 
-user1  = User.create!( :name => 'Behrooz SEIFI',      :email => 'behrooz',      :password => 'tipp' )
-user2  = User.create!( :name => 'Gerald BAUER',       :email => 'gerald',       :password => 'tipp' )
+user1  = User.create!( :name => 'Behrooz SEIFI',      :email => 'behrooz',      :password => 'tipp', :admin => true )
+user2  = User.create!( :name => 'Gerald BAUER',       :email => 'gerald',       :password => 'tipp', :admin => true )
+user8  = User.create!( :name => 'Ande S.',            :email => 'ande',         :password => 'tipp', :admin => true )
+
 user3  = User.create!( :name => 'Gürsel AYAZ',        :email => 'gürsel',       :password => 'tipp' )
 user4  = User.create!( :name => 'Richard TRAINDL',    :email => 'richard',      :password => 'tipp' )
 user5  = User.create!( :name => 'Manfred KOPECEK',    :email => 'manfred',      :password => 'tipp' )
 user6  = User.create!( :name => 'Clemens HUBER',      :email => 'clemens',      :password => 'tipp' )
 user7  = User.create!( :name => 'Franz BAUER',        :email => 'franz',        :password => 'tipp' )
-user8  = User.create!( :name => 'Ande S.',            :email => 'ande',         :password => 'tipp' )
 user9  = User.create!( :name => 'Thomas SCHOLZ',      :email => 'thomas',       :password => 'tipp' )
 user10 = User.create!( :name => 'Dietmar BAYERL',     :email => 'dietmar',      :password => 'tipp' )
 user11 = User.create!( :name => 'Martina REININGER',  :email => 'martina',      :password => 'tipp' )

@@ -247,12 +247,13 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name",            :null => false
-    t.string   "email",           :null => false
+    t.string   "name",                               :null => false
+    t.string   "email",                              :null => false
     t.string   "password_digest"
-    t.string   "key"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "key",                                :null => false
+    t.boolean  "admin",           :default => false, :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -51,8 +51,19 @@ h3       { font-size: $base-font-size*1.20; }
 
 //use default font-size for now 
 
+  h1 {
+    font-size: $base-font-size*1.2; // 120%
+  }
+
   .navbar            { display: none; }
   .buttons, .actions { display: none; }   // todo: add buttons in div.buttons
+  .view  { display: none;}  // view selector bar
+  
+  .btn, .btn-primary { display: none; }
+  .flash { display: none; } // remove flash message from printout 
+  
+  .keep-together { page-break-inside: avoid; }
+  
 }
 
 
