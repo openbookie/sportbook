@@ -21,7 +21,14 @@
       <td><%= f.label :email, 'Email:' %></td>
       <td><%= f.text_field :email %></td>
     </tr>
-  </table>  
+    <tr>
+      <td><%= f.label :active, 'Active Flag:' %></td>
+      <td>
+        <%= f.radio_button :active, 'true'  %><%= f.label :active_true, 'Ja' %>
+        <%= f.radio_button :active, 'false' %><%= f.label :active_false, 'Nein' %>
+      </td>
+    </tr>
+  </table>
   
   <div class="actions">
     <%= f.submit 'Speichern', :class => 'btn-primary' %>

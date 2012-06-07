@@ -9,9 +9,18 @@ class SessionsController < ApplicationController
 
   # POST /session
   def create
-    @user = User.find_by_email( params[:user][:email])
+
+    ## remove whitespace and (.-+_) and downcase
+    email = params[:user][:email]
+    if email.blank?
+      key = 'xxx'
+    else
+      key = email.gsub( /[\s\.\-+_]/, '' ).downcase
+    end
     
-    if @user.present? && @user.authenticate(params[:user][:password])
+    @user = User.find_by_key( key )
+    
+    if @user.present? && @user.active? && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       flash[:notice] = 'Anmeldung erfolgreich.'
     
@@ -25,7 +34,11 @@ class SessionsController < ApplicationController
       end
     else
       if @user.present?
-        flash.now[:error] = 'Falsches Passwort.'
+        if @user.active == false
+          flash.now[:error] = 'Konto gesperrt. Tut leid.'
+        else
+          flash.now[:error] = 'Falsches Passwort.'
+        end
       else
         flash.now[:error] = 'Unbekannte Email. Tut leid.'
       end
