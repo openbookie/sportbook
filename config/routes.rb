@@ -25,8 +25,15 @@ Wettpool::Application.routes.draw do
     resources :players, :only => [:show, :edit]
   end
 
-  ##############################
+  #############
   ## routes for admin
+  
+  namespace :admin do
+    resources :pools
+  end
+
+  ##############################
+  ## routes for admin via module (admin not in url -- todo/fix)
   
   scope :module => 'admin' do
 

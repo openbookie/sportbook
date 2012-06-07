@@ -197,8 +197,14 @@ class Tip < ActiveRecord::Base
     complete? == false
   end
   
+  def locked?
+    return true if pool.fix? && pool.locked?  # if fix pool is locked all games are (automatically) locked too
+    game.locked?
+  end
+  
   def public?
-    return true if pool.public?
+    return true if pool.public? 
+    return true if locked?       # if fix pool is locked or game (make tip public)
     
     ## todo: use builtin utc.past? method ???
     Time.now.utc > game.play_at.utc

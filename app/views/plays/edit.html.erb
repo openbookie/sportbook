@@ -76,6 +76,45 @@
 
 <%= form_for @play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
 
+<% if @pool.locked? %>
+  <% if @pool.flex? %>
+    <p class='flash notice'><b>Hinweis.</b> Team Abgabefrist abgelaufen. Team Bonustipps gesperrt.</p>
+  <% else %>
+    <p class='flash notice'><b>Hinweis.</b> Abgabefrist abgelaufen. Tippabgabe gesperrt.</p>
+  <% end %>
+  
+  <%= f.hidden_field :team1_id %>
+  <%= f.hidden_field :team2_id %>
+<table>
+ <tr>
+   <td>1. Platz</td>
+       <!-- fix: use helper or partial -->
+     <% if @play.team1.present? %>
+         <td>
+            <%= image_tag( @play.team1.img ) if @play.team1.img.present? %>
+            <%= @play.team1.title %>
+         </td>
+       <% else %>
+         <td style='text-align: center;'>
+           <span class='missing'>?</span>
+         </td>
+       <% end %>
+ </tr>
+ <tr>
+   <td>2. Platz</td>
+       <% if @play.team2.present? %>
+        <td>
+            <%= image_tag( @play.team2.img ) if @play.team2.img.present? %>
+            <%= @play.team2.title %>
+        </td>
+       <% else %>
+         <td style='text-align: center;'>
+           <span class='missing'>?</span>
+          </td>
+       <% end %>
+ </tr>
+</table>
+<% else %><!-- pool.locked? clause -->
 <% if @pool.flex? %>
  <!-- NB: only needed for flex - in fixed winner gets calculated automatically -->
 <table>
@@ -95,12 +134,12 @@
   <% end %><!-- if pool.team3? -->
 </table>
 
-<% else %>
-  
+<% else %><!-- pool fix clause -->
   <%= f.hidden_field :team1_id %>
   <%= f.hidden_field :team2_id %>
+<% end %><!-- pool.flex? -->
+<% end %><!-- pool.locked? -->
 
-<% end %><!-- if pool.flex? -->
 
 
 <% if @show_odds %>

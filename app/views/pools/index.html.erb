@@ -2,21 +2,9 @@
   <%= link_to 'Wettpools', pools_path() %>
 <% end %>
 
-<table width='100%' cellspacing=0>
-  <tr>
-    <!-- left -->
-    <td>
-      <h1>Wettpools</h1>
-    </td>
-    <!-- right -->
-    <td style='text-align: right;'>
-      <%= link_to 'Neuer Pool', new_pool_path(), :class => 'btn' %>
-    </td>
-  </tr>
-</table>
+
 
 <%= render :partial => 'games_upcoming',  :locals => { :games  => @upcoming_games } %>
-
 
 <h3>Wettpools</h3>
 

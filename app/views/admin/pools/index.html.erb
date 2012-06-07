@@ -1,0 +1,25 @@
+
+<h3><%= @pools.count %> Wettpools</h3>
+
+<%= link_to 'Neuer Pool', new_admin_pool_path(), :class => 'btn-primary' %>
+
+<table>
+<% @pools.each do |pool| %>
+  <tr>
+    <td style='background-color: black; color: white;'><%= pool.full_title %>
+    /
+      Manager <%= pool.user.name %>,
+      <%= pool.players.size %> Mitspieler
+    
+     <%= pool.public? ? '' : '(Private Flag)' %>
+     <%= pool.locked? ? '(Locked Flag)' : '' %>
+    </td>
+    <td><%= link_to 'Bearbeiten', edit_admin_pool_path(pool), :class => 'btn' %>
+    </td>
+  </tr>
+  <tr>
+    <!-- fix: use safe_html in attribute getter -->
+    <td><%= raw( pool.welcome_html ) %></td>
+  </tr>
+<% end %>
+</table>

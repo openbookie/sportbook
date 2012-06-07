@@ -28,7 +28,9 @@
       <%= if game.score2.present? then game.score2 else '-' end %>
     )
   </td>
-  <td><%= if game.knockout == true then '(Knockout Flag)' else '' end %></td>
+  <td><%= game.knockout? ? '(Knockout Flag)' : '' %>
+      <%= game.locked?   ? '(Locked Flag)' : '' %>
+  </td>
   <td><%= game.play_at %></td>
   <td><%= game.play_at.utc %></td>
   <td><%= link_to 'Bearbeiten', edit_game_path( game ), :class => 'btn' %></td>

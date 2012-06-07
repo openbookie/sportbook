@@ -62,5 +62,9 @@
    end %><!-- each game -->
 </table>
 
+<% if games.count > 0 %>
 <p><%= link_to 'Mehr Spiele »', live_path(:limit => 10, :tips=>true, :past=>true) %>
 </p>
+<% else %>
+<p>Noch keine Spiele bekannt.</p>
+<% end %>
