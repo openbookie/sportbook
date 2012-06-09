@@ -1,4 +1,4 @@
-class Admin::TeamsController < Admin::BaseController
+class Db::TeamsController < Db::BaseController
 
   # GET /teams
   def index

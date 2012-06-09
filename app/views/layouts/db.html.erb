@@ -6,13 +6,13 @@
 <body>
 
 
-<div class='navbar admin'>
+<div class='navbar db'>
 <table width='100%' cellspacing=0>
   <tr>
     <!-- left -->
     <td>
       <span class='logo'><%= link_to '[Logo]', pools_path() %></span>
-      <span> - Admin - </span>
+      <span> - DB Setup - </span>
       &nbsp;&nbsp;&nbsp;
       <% if content_for? :breadcrumb  %>
         <span class='breadcrumb-inline'>
@@ -38,12 +38,13 @@
   </tr>
 </table>
 </div>
+
  
  <div>
-  <%= link_to 'Update', update_path() %> &bull;
-  <%= link_to 'Users', users_path() %> &bull;
-  <%= link_to 'Pools', admin_pools_path() %> &bull;
-  <%= link_to 'Jobs',  jobs_path() %>
+  <%= link_to 'Events', events_path() %>  &bull;
+  <%= link_to 'Teams', teams_path() %>  &bull;
+  <%= link_to 'Rounds', rounds_path() %>  &bull;
+  <%= link_to 'Games', games_path() %>
   <!-- todo: add some more links -->
  </div>
 

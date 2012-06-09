@@ -78,6 +78,48 @@ $admin-navbar-text:            white;
 }
 
 
+$db-navbar-gradient-top:    lime;
+$db-navbar-gradient-bottom: green;
+$db-navbar-text:            white;
+
+.db.navbar {
+    @include linear-gradient(top, $db-navbar-gradient-top, $db-navbar-gradient-bottom);
+
+/*    @include linear-gradient(top, blue,
+                                  navy);
+*/
+
+    color: $db-navbar-text;
+    padding: 10px 20px;
+    /* text-align: right; */
+    margin-bottom: 6px;
+
+     a,
+     a:visited {
+       text-decoration: none;
+       color: $db-navbar-text;
+     }
+     
+     a:hover {
+       text-decoration: underline;
+       color: $db-navbar-text;
+     }
+     
+     .signin, .signin *,
+     .signout, .signout * {
+       font-size: $base-font-size*0.80; 
+     }
+     
+     .logo {
+        a,a:visited,a:hover {
+           text-decoration: none;
+           color: $db-navbar-text;
+        }
+    }
+}
+
+
+
 /////////////////////
 // color style classes for test page (use like <span class='color navbar-gradient-top'></span>)
      

@@ -51,14 +51,21 @@ Wettpool::Application.routes.draw do
     resource :import, :only => [:create]
   
     resources :users
+  end
+  
+  ##############################
+  ## routes for db via module (db not in url -- todo/fix)
+
+  scope :module => 'db' do
     resources :rounds
     resources :games
     resources :teams
 
     resources :events do
       post 'add_team_to', :on => :member
-    end    
+    end
   end
+  
   
   #######################
   ## home route
