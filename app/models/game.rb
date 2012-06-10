@@ -235,14 +235,17 @@ class Game < ActiveRecord::Base
     # only log if user action (not background job)
     return if job_running?
     
-    # only log complete tips
-    return if toto12x.nil?
-    
-    a = Action.new
 
+    a = Action.new
     a.game_id = id
     a.tmpl    = 'game'
-    a.text    = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score_str} #{team2.title}"
+
+    if toto12x.nil?
+      a.text = "*** NEWS - Spiel #{team1.title} - #{team2.title} #{locked? ? '(Locked Flag)':''}"
+    else
+      ## todo: add locked flag?
+      a.text = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score_str} #{team2.title}"
+    end
 
     a.save!
   end

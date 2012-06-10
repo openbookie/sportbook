@@ -77,7 +77,8 @@ class Tip < ActiveRecord::Base
 
       # tordifferenz richtig? todo: auch fuer unentschieden???
       if((game.score1-game.score2) == (score1-score2))
-        pts +=1
+        ## nb: for now now points for tordifferenz
+        ### pts +=1
       end
 
       # ergebnis richtig?      

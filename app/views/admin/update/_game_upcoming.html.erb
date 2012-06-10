@@ -9,13 +9,8 @@
      <%= image_tag( game.team1.img ) if game.team1.img.present? %>
    </td>
 
-   <td style='white-space: nowrap;'>
-  <%= fields_for 'games[]', game do |ff| %>
-     <%= ff.hidden_field :id %>
-     <%= ff.text_field :score1, :size => 1 %>
-       :
-     <%= ff.text_field :score2, :size => 1 %>
-  <% end %><!-- fields_for games -->
+   <td>
+    - 
    </td>
 
    <td>
@@ -24,6 +19,17 @@
       <%= game.team2.title %>
     </span>
    </td>
+
+
+   <td style='white-space: nowrap;'>
+  <%= fields_for 'games[]', game do |ff| %>
+     <%= ff.hidden_field :id %>
+     <%= ff.label :locked, 'Locked?' %>
+     <%= ff.radio_button :locked, 'true'  %><%= ff.label :locked_true, 'Ja' %>
+     <%= ff.radio_button :locked, 'false' %><%= ff.label :locked_false, 'Nein' %>
+  <% end %><!-- fields_for games -->
+   </td>
+
   
    <td>
      (<%= game.round.event.title %> / <%= game.round.title %>)

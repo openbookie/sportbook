@@ -3,15 +3,22 @@
 class Admin::UpdateController < Admin::BaseController
 
   def index
-    limit = params[:limit] || '30'
+    limit = params[:limit] || '6'
     
-    # find last past games
-    
+=begin
     if params[:all].present? && ['0','f','false','no', 'off'].include?( params[:all] )
       @games = Game.where( 'play_at < ?', Time.now).where( 'score1 is null or score2 is null' ).order( 'play_at desc').limit( limit )
     else
       @games = Game.where( 'play_at < ?', Time.now).order( 'play_at desc').limit( limit )
     end
+=end
+
+    # find next upcoming games 
+    
+    @upcoming_games = Game.where( 'play_at > ?', Time.now ).order( 'play_at').limit(limit)
+    @past_games     = Game.where( 'play_at < ?', Time.now ).order( 'play_at desc').limit(limit)
+    
+    
   end
   
   
@@ -27,19 +34,27 @@ class Admin::UpdateController < Admin::BaseController
       
       score1 = game_hash[:score1].blank? ? nil : game_hash[:score1].to_i
       score2 = game_hash[:score2].blank? ? nil : game_hash[:score2].to_i
-            
-      if game.score1 != score1 || game.score2 != score2
+      if game_hash[:locked].nil?
+        locked = nil
+      else
+        locked = (['1','t','true','yes','on'].include?( game_hash[:locked] ))
+      end
+      
+      if((score1.present? && game.score1 != score1) ||
+         (score2.present? && game.score2 != score2) ||
+         (locked.nil? == false && game.locked != locked))
 
-        logger.info "*** updating game #{game_id} (#{score1}:#{score2})"
+        logger.info "*** updating game #{game_id} (score1: #{score1}, score2: #{score2}, locked: #{locked})"
 
-        game.score1 = score1
-        game.score2 = score2
+        game.score1 = score1  if score1.present?
+        game.score2 = score2  if score2.present?
+        game.locked = locked  if locked.nil? == false   # nb: can't use locked.present? because false fails
         game.save!
       else
         logger.info "*** skip updating game #{game_id} - no changes"
       end
     end
-    flash[:success] = 'Spielergebnisse erfolgreich gespeichert.'
+    flash[:success] = 'Spiele erfolgreich gespeichert.'
    end
   
     redirect_to update_path()

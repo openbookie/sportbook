@@ -174,6 +174,11 @@ class Admin::JobsController < Admin::BaseController
 
     txt << "\r\n<< DONE - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips."
     
+    a = Action.new
+    a.tmpl = 'recalc'
+    a.text = "*** NEWS - Punkte Neu Berechnet!"
+    a.save!
+    
     render :text => "<pre>#{txt}</pre>"
   end
   
