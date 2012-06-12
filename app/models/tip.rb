@@ -83,7 +83,7 @@ class Tip < ActiveRecord::Base
 
       # ergebnis richtig?      
       if game.score1 == score1 && game.score2 == score2
-        pts += 1
+        pts += 2
       end
     end
     pts
