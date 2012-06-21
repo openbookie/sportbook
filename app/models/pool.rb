@@ -17,6 +17,8 @@ class Pool < ActiveRecord::Base
   
   belongs_to :user   # is owner/admin/manager  
   
+  has_many :bonus_rounds
+  
   has_many :plays   # pools_users join table
     
   ## rename to users from players??

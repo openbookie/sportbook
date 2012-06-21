@@ -1,2 +1,30 @@
 
-<h1> form for bonus updates here </h1>
+
+<% @pools.each do |pool| %>
+<h2><%= pool.full_title %></h2>
+ <% pool.bonus_rounds.each do |round| %>
+   <h3><%= round.title %></h3>
+   <% round.questions.each do |question| %>
+     <h4>Q: <%= question.title %></h4>
+      <%= form_for 'bonus', :url => admin_bonus_update_path(), :html => { :method => 'put' } do |f| %>
+      <table>
+     <% question.tips.each do |tip| %>
+      <tr>
+        <td><%= tip.user.name %></td>
+        <td>
+         <%= fields_for 'tips[]', tip do |ff| %>
+           <%= ff.hidden_field :id %>
+           <%= ff.text_field :pts, :size => 1 %>
+         <% end %><!-- fields_for tips[] -->
+         Punkte
+        </td>
+      </tr>
+     <% end %><!-- each tip -->
+      </table>
+       <p>
+        <%= f.submit "Update '#{question.title}'", :class => 'btn-primary' %>
+       </p>
+      <% end %><!-- form bonus -->
+   <% end %><!-- each question -->
+ <% end %><!-- each round -->
+<% end %><!-- each pool -->
