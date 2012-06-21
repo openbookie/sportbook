@@ -8,6 +8,17 @@ task :load_uss_euro => [:environment] do |t|
   
 end
 
+desc "load seed data for uss euro bonus questions"
+task :load_uss_euro_bonus => [:environment] do |t|
+  
+  ['uss/euro_bonus' ].each do |seed|
+    require "#{Rails.root}/db/seeds/#{seed}.rb"
+  end
+  
+end
+
+
+
 desc "load seed data for uss euro pools (tips) - part ii"
 task :load_uss_euro_tips => [:environment] do |t|
   
