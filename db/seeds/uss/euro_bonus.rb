@@ -2,7 +2,7 @@
 puts "*** loading seed data in seeds/uss/euro_bonus.rb"
 
 
-behrooz = User.find_by_key!( 'behrooz' )
+behrooz = User.find_by_key!( 'behroozs' )
 
 euro  = Event.find_by_key!( 'euro')
 
