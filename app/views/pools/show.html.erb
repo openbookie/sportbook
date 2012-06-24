@@ -43,7 +43,10 @@
 
 <!-- todo/fix: use better lookup for rounds (e.g. use round.over? round.past? or similar??) -->
 <!-- note: need to use reorder (to override default ordering!) -->
-<% @pool.event.rounds.where( :calc => false ).reorder( 'pos desc').each do |round| %>
+<%
+   rounds = @pool.flex? ? @pool.event.flex_rounds.reorder('pos desc') : @pool.event.fix_rounds.reorder('pos desc')
+   rounds.each do |round|
+ %>
 
 <tr>
   <td colspan='2' style='background-color: lightgrey;'><%= round.title %></td>

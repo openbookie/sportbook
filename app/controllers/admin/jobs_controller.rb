@@ -54,7 +54,8 @@ class Admin::JobsController < Admin::BaseController
         play_pts = 0
         
         # note: for adding to work start with pos 1 and work your way up (that is, use order clause)
-        pool.event.rounds.order( 'pos' ).each do |round|
+        rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')
+        rounds.order( 'pos' ).each do |round|
           txt << "[#{round.pos}] #{round.title}: "
           
           round_pts = 0
@@ -103,8 +104,9 @@ class Admin::JobsController < Admin::BaseController
 
     Pool.all.each do |pool|
       txt << "\r\n=== #{pool.full_title} (#{pool.key}) ===\r\n"
-      
-      pool.event.rounds.each do |round|
+
+      rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')      
+      rounds.each do |round|
         txt << "[#{round.pos}] #{round.title}:\r\n"
         
         rankings = Point.where( :pool_id => pool.id, :round_id => round.id ).order( 'round_pts desc' ).all
