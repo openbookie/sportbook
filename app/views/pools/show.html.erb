@@ -38,6 +38,24 @@
 <p><%= raw( @pool.welcome_html ) %></p>
 
 
+<table width='100%' cellspacing=0>
+ <% @pool.bonus_rounds.each do |round| %>
+   <% round.questions.each do |question| %>
+     <tr>
+      <td colspan='2' style='background-color: lightgrey;'>Bonuspunkte: <%= question.title %></td>
+     </tr>
+     <% question.tips.order('pts desc').each do |tip| %>
+      <% if tip.pts > 0 %>
+      <tr>
+        <td><%= tip.user.name %></td>
+        <td>+<%= tip.pts %> Punkte</td>
+      </tr>
+      <% end %>
+     <% end %><!-- each tip -->
+   <% end %><!-- each question -->
+ <% end %><!-- each round -->
+</table>
+
 
 <table width='100%' cellspacing=0>
 
