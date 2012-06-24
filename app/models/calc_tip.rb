@@ -24,21 +24,15 @@
 
 class CalcTip < Tip
 
-  after_initialize :do_after_initialize
+  after_initialize :on_after_initialize
 
   belongs_to :calc_team1, :class_name => 'Team', :foreign_key => 'calc_team1_id'
   belongs_to :calc_team2, :class_name => 'Team', :foreign_key => 'calc_team2_id'
 
-private
-
-  def do_after_initialize
-    self.calc = true    # make sure calc flag is true
-  end
-  
   ## note: use different calc forumula
   #  check for matching teams first
   #    before checking scoring
-  
+
   def calc_points
     pts = 0
 
@@ -67,6 +61,13 @@ private
     end
     pts
   end
-  
 
+
+
+private
+
+  def on_after_initialize
+    self.calc = true    # make sure calc flag is true
+  end
+  
 end  # class CalcTip

@@ -8,7 +8,11 @@ def update_import_export_keys
   puts "## Games"
   
     Game.all.each do |game|
-      game.key = "#{game.round.event.key}+#{game.round.pos}+#{game.team1.key}+#{game.team2.key}"
+      if game.calc?
+        game.key = "#{game.round.event.key}+#{game.round.pos}+calc+#{game.team1.key}+#{game.team2.key}"
+      else
+        game.key = "#{game.round.event.key}+#{game.round.pos}+#{game.team1.key}+#{game.team2.key}"
+      end
       game.job_running!
       game.save!
       game.job_done!
