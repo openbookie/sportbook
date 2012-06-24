@@ -62,6 +62,7 @@ Wettpool::Application.routes.draw do
   scope :module => 'db' do
     resources :rounds
     resources :games
+    resources :calc_games
     resources :teams
 
     resources :events do

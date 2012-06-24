@@ -164,7 +164,12 @@ class Tip < ActiveRecord::Base
     else
       pts = calc_points()
       if pts == 0
-        "× Leider, nein. Richtiger Tipp #{game.toto12x}."  # return 1,2,X from game
+        if game.calc? && (game.team1_id != calc_team1_id || game.team2_id != calc_team2_id )
+          ## sorry, wrong teams - show team1 n team2 tags
+          "× Leider, nein. Richtige Spielpaarung (#{game.team1.tag}) - (#{game.team2.tag})."
+        else
+          "× Leider, nein. Richtiger Tipp #{game.toto12x}."  # return 1,2,X from game
+        end
       elsif pts == 1
         '♣ 1 Pkt - Ja!'
       elsif pts == 2

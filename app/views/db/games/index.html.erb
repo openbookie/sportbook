@@ -33,7 +33,7 @@
   </td>
   <td><%= game.play_at %></td>
   <td><%= game.play_at.utc %></td>
-  <td><%= link_to 'Bearbeiten', edit_game_path( game ), :class => 'btn' %></td>
+  <td><%= link_to 'Bearbeiten', game.calc? ? edit_calc_game_path(game) : edit_game_path( game ), :class => 'btn' %></td>
  </tr>
   <% end %><!-- games.each -->
  <% end %><!-- rounds.each -->
