@@ -38,24 +38,93 @@
 <p><%= raw( @pool.welcome_html ) %></p>
 
 
+
+
 <table width='100%' cellspacing=0>
- <% @pool.bonus_rounds.each do |round| %>
-   <% round.questions.each do |question| %>
-     <tr>
-      <td colspan='2' style='background-color: lightgrey;'>Bonuspunkte: <%= question.title %></td>
-     </tr>
-     <% question.tips.order('pts desc').each do |tip| %>
-      <% if tip.pts > 0 %>
-      <tr>
-        <td><%= tip.user.name %></td>
-        <td>+<%= tip.pts %> Punkte</td>
+
+<% @pool.bonus_rounds.reorder('pos').each do |round| %>
+
+<tr>
+  <td colspan='2' style='background-color: lightgrey;'><%= round.title %></td>
+</tr>
+
+  <tr>
+    <!-- left -->
+    <td>
+  <!-- runden ergebnis -->
+
+    <table>
+  <%
+     last_pts=-1
+     BonusPoint.where( :pool_id => @pool.id, :round_id => round.id ).order( 'round_pts desc').each do |ranking|
+   %>
+      
+     <!-- don't add css class (ranking, that is, bigger) if all scores are 0 -->
+     <% if ranking.round_pos == 1 && ranking.round_pts == 0 %>
+       <tr><!-- everyone is a winner #1 - all points 0 -->
+     <% else %>
+       <tr class='<%= "ranking#{ranking.round_pos}" %>'>
+     <% end %>
+        <td>
+          <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
+          <%#= "#{ranking.round_pos}." if ranking.round_pts != last_pts %>
+        </td>
+        <td>
+          <span class='<%= hl_style_for_user(ranking.user) %>'>
+            <%= link_to ranking.user.name, pool_player_path( @pool.id, ranking.user ) %>
+          </span>
+        </td>
+        <td><%= ranking.round_pts %> Punkte</td>
       </tr>
-      <% end %>
-     <% end %><!-- each tip -->
-   <% end %><!-- each question -->
- <% end %><!-- each round -->
+  <%
+    last_pts = ranking.round_pts
+    end
+   %>
+     </table>
+     
+    </td>
+    <!-- right -->
+    <td>
+  <!-- gesamt ergebnis -->
+
+    <table>
+  <%  last_pts=-1
+      BonusPoint.where( :pool_id => @pool.id, :round_id => round.id ).order( 'total_pts desc').each do |ranking|
+   %>
+     <!-- don't add css class (ranking, that is, bigger) if all scores are 0 -->
+     <% if ranking.total_pos == 1 && ranking.total_pts == 0 %>
+       <tr><!-- everyone is a winner #1 - all points 0 -->
+     <% else %>
+       <tr class='<%= "ranking#{ranking.total_pos}" %>'>
+     <% end %>
+        <td>
+          <!-- add ranking e.g. 1., 2. etc.; check for same scores (don't display if ex equo for followers)-->
+          <%#= "#{ranking.total_pos}." if ranking.total_pts != last_pts %>
+        </td>
+        <td>
+          <!-- add diff pos? -->
+        </td>
+        <td>
+          <span class='<%= hl_style_for_user(ranking.user) %>'>
+            <%= link_to ranking.user.name, pool_player_path( @pool.id, ranking.user ) %>
+          </span>
+        </td>
+        <td><%= ranking.total_pts %> Punkte</td>
+      </tr>
+  <%
+      last_pts = ranking.total_pts
+      end
+  %>
+     </table>
+      
+    </td>
+  </tr>
+
+<% end %><!-- each rounds -->
 </table>
 
+<!-------
+  ----->
 
 <table width='100%' cellspacing=0>
 

@@ -9,3 +9,4 @@ Wettpool::Application.initialize!
 require "#{Rails.root}/lib/utils.rb"
 require "#{Rails.root}/lib/lookups.rb"
 require "#{Rails.root}/lib/backup.rb"
+require "#{Rails.root}/lib/recalc.rb"

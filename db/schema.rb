@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621074414) do
+ActiveRecord::Schema.define(:version => 20120626073816) do
 
   create_table "actions", :force => true do |t|
     t.text     "text"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(:version => 20120621074414) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "bonus_points", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.integer  "pool_id",                       :null => false
+    t.integer  "round_id",                      :null => false
+    t.integer  "round_pts",      :default => 0, :null => false
+    t.integer  "round_pos",      :default => 0, :null => false
+    t.integer  "total_pts",      :default => 0, :null => false
+    t.integer  "total_pos",      :default => 0, :null => false
+    t.integer  "diff_total_pos", :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "bonus_points", ["user_id", "pool_id", "round_id"], :name => "index_bonus_points_on_user_id_and_pool_id_and_round_id", :unique => true
 
   create_table "bonus_questions", :force => true do |t|
     t.integer  "round_id",   :null => false

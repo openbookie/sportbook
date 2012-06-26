@@ -1,5 +1,5 @@
 
-desc "load seed data for uss other pools"
+desc "wettpool: load seed data for uss other pools"
 task :load_uss_others => [:environment] do |t|
   
   ['services', 'austria', 'cl', 'el', 'uss/users', 'uss/others_pools' ].each do |seed|
@@ -8,7 +8,7 @@ task :load_uss_others => [:environment] do |t|
   
 end
 
-desc "load data for uss other pools (others_data.txt)"
+desc "wettpool: load data for uss other pools (others_data.txt)"
 task :load_uss_others_data => [:environment] do |t|
   
   update_import_export_keys()

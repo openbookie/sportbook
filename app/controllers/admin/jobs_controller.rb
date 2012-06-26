@@ -31,6 +31,21 @@ class Admin::JobsController < Admin::BaseController
     render :text => "<pre>#{txt}</pre>"
   end
   
+
+  def wipe_out_points
+    # delete/clear points n bonus_points
+
+    txt = ">> Delete #{Point.count} points, #{BonusPoint.count} bonus points (#{Time.now}):\r\n"
+
+    Point.delete_all
+    BonusPoint.delete_all
+
+    txt << "\r\n<< DONE"
+    
+    render :text => "<pre>#{txt}</pre>"
+  end
+  
+  
   def keys
     txt = ">> Update Keys (#{Time.now}):\r\n"
 
@@ -41,7 +56,18 @@ class Admin::JobsController < Admin::BaseController
     render :text => "<pre>#{txt}</pre>"
   end
   
+
   def calc
+    start = Time.now
+    
+    recalc()
+    
+    txt = "Recalc points done (in #{Time.now-start} s) - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips, #{BonusTip.count} Bonus Tips."
+    
+    render :text => "<pre>#{txt}</pre>"
+  end
+  
+  def debug_calc
     txt = ">> Recalc Points (#{Time.now}):\r\n"
 
     # 1. pass - calc points per play and per round

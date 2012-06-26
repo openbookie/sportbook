@@ -1,5 +1,5 @@
 
-desc "load seed data for uss euro pools"
+desc "wettpool: load seed data for uss euro pools"
 task :load_uss_euro => [:environment] do |t|
   
   ['services', 'euro', 'uss/users', 'uss/euro_pools' ].each do |seed|
@@ -8,7 +8,7 @@ task :load_uss_euro => [:environment] do |t|
   
 end
 
-desc "load seed data for uss euro bonus questions"
+desc "wettpool: load seed data for uss euro bonus questions"
 task :load_uss_euro_bonus => [:environment] do |t|
   
   ['uss/euro_bonus' ].each do |seed|
@@ -19,7 +19,7 @@ end
 
 
 
-desc "load seed data for uss euro pools (tips) - part ii"
+desc "wettpool: load seed data for uss euro pools (tips) - part ii"
 task :load_uss_euro_tips => [:environment] do |t|
   
   ['uss/euro_tips' ].each do |seed|
@@ -28,7 +28,7 @@ task :load_uss_euro_tips => [:environment] do |t|
   
 end
 
-desc "load data for uss euro pools (euro_data.txt)"
+desc "wettpool: load data for uss euro pools (euro_data.txt)"
 task :load_uss_euro_data => [:environment] do |t|
   
   update_import_export_keys()

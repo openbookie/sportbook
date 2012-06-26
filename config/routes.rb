@@ -44,11 +44,13 @@ Wettpool::Application.routes.draw do
     match 'update/update',  :to => 'update#update' # , :via => :get
 
     resources :jobs do
-      get 'calc',          :on => :collection
-      get 'export',        :on => :collection
-      get 'keys',          :on => :collection
-      get 'wipe_out_time', :on => :collection
-      get 'wipe_out',      :on => :collection
+      get 'calc',            :on => :collection
+      get 'debug_calc',      :on => :collection
+      get 'export',          :on => :collection
+      get 'keys',            :on => :collection
+      get 'wipe_out_time',   :on => :collection
+      get 'wipe_out',        :on => :collection
+      get 'wipe_out_points', :on => :collection
     end
   
     resource :import, :only => [:create]

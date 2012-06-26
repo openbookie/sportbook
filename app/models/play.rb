@@ -93,7 +93,7 @@ class Play < ActiveRecord::Base
 
   ## todo/fix: can it be done w/ a has_many macro and a condition?
   def complete_rankings  # fix rename to points and remove points column from play table??
-    recs = Point.where( :pool_id => pool_id, :user_id => user_id ).joins( :round ).where('rounds.calc=?', false).order('rounds.pos').all
+    recs = Point.where( :pool_id => pool_id, :user_id => user_id ).joins( :round ).order('rounds.pos').all
     recs
   end
 

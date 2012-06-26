@@ -1,6 +1,17 @@
 <h1>Jobs</h1>
 
-<p><%= link_to 'Punkte Neu Berechnen', calc_jobs_path(), :class => 'btn-primary' %></p>
+<p><%= link_to 'Punkte Neu Berechnen', calc_jobs_path(), :class => 'btn-primary' %>
+</p>
+
+<h2>Debug</h2>
+
+<p>
+<%= link_to 'Punkte Neu Berechnen (DEBUG)', debug_calc_jobs_path(), :class => 'btn' %>
+</p>
+
+<p>
+<%= link_to 'Delete All Points & Bonus Points (DEBUG)', wipe_out_points_jobs_path(), :class => 'btn' %>
+</p>
 
 <h2>Import/Export</h2>
 
