@@ -9,11 +9,11 @@ euro  = Event.find_by_key!( 'euro')
 poolfix  = Pool.find_by_event_id_and_user_id_and_fix!( euro.id, behrooz.id, true )
 poolflex = Pool.find_by_event_id_and_user_id_and_fix!( euro.id, behrooz.id, false )
 
-rfix1 = BonusRound.create!( :pool_id => poolfix.id, :pos => 1, :title => 'Bonuspunkte -  Europa- und Vizemeister' )
-rfix2 = BonusRound.create!( :pool_id => poolfix.id, :pos => 2, :title => 'Bonuspunkte  - Gruppenplazierung' )
+rfix1 = BonusRound.create!( :pool_id => poolfix.id, :pos => 1, :title => 'Bonuspunkte  - Gruppenplazierung' )
+rfix2 = BonusRound.create!( :pool_id => poolfix.id, :pos => 2, :title => 'Bonuspunkte -  Europa- und Vizemeister' )
 
-qfix1 = BonusQuestion.create!( :round_id => rfix1.id, :pos => 1, :title => 'Europameister? Vizemeister?' )
-qfix2 = BonusQuestion.create!( :round_id => rfix2.id, :pos => 1, :title => 'Gruppenerster? Gruppenzweiter? Grupperdritter? Gruppenvierter?' )
+qfix1 = BonusQuestion.create!( :round_id => rfix1.id, :pos => 1, :title => 'Gruppenerster? Gruppenzweiter? Grupperdritter? Gruppenvierter?' )
+qfix2 = BonusQuestion.create!( :round_id => rfix2.id, :pos => 1, :title => 'Europameister? Vizemeister?' )
 
 
 rflex1 = BonusRound.create!( :pool_id => poolflex.id, :pos => 1, :title => 'Bonuspunkte - Europa- und Vizemeister' )

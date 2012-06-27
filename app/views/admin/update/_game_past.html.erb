@@ -15,6 +15,18 @@
      <%= ff.text_field :score1, :size => 1 %>
        :
      <%= ff.text_field :score2, :size => 1 %>
+     
+     <% if game.knockout? %>
+        /
+       <%= ff.text_field :score3, :size => 1 %>
+         :
+       <%= ff.text_field :score4, :size => 1 %>
+        n.V.
+       <%= ff.text_field :score5, :size => 1 %>
+         :
+       <%= ff.text_field :score6, :size => 1 %>
+        i.E.
+     <% end %>  
   <% end %><!-- fields_for games -->
    </td>
 

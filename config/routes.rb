@@ -72,6 +72,13 @@ Wettpool::Application.routes.draw do
     end
   end
   
+  ##############################
+  ## routes for setup via module (setup not in url -- todo/fix??)
+
+  scope :module => 'setup' do
+    resources :bonus_rounds
+  end
+
   
   #######################
   ## home route

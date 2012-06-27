@@ -129,9 +129,9 @@ class Game < ActiveRecord::Base
   
   def score_str
     if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
-      "#{score5} : #{score6} i.E."
+      "#{score1_str} : #{score2_str} / #{score3} : #{score4} n.V. / #{score5} : #{score6} i.E."
     elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
-      "#{score3} : #{score4} n.V."
+      "#{score1_str} : #{score2_str} / #{score3} : #{score4} n.V."
     else
       "#{score1_str} : #{score2_str}"
     end

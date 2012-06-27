@@ -141,14 +141,25 @@
 </table>
 
 
-<p>Punkte / Runde:</p>
+
 <!-- add scoring/ranking block/data -->
 <table>
+  <tr>
+    <td>
+    <td colspan='3'>Runde</td>
+    <td></td>
+    <td colspan='3'>Gesamt</td>
+  </tr>
 <% @play.complete_rankings.each do |ranking| %>
  <tr>
-  <td><%= ranking.round_pts %> => #<%= ranking.round_pos %></td>
-  <td><%= ranking.total_pts %> => #<%= ranking.total_pos %> <%= ranking.diff_total_pos_str %></td>
   <td>(<%= ranking.round.pos %>) <%= ranking.round.title %></td>
+  <td><%= ranking.round_pts %> Pkte</td>
+  <td>=></td>
+  <td>#<%= ranking.round_pos %></td>
+  <td>/</td>
+  <td><%= ranking.total_pts %> Pkte</td>
+  <td>=></td>
+  <td>#<%= ranking.total_pos %> <%= ranking.diff_total_pos_str %></td>
  </tr>
 <% end %>
 </table>

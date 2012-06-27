@@ -81,9 +81,25 @@ class Tip < ActiveRecord::Base
         ### pts +=1
       end
 
-      # ergebnis richtig?      
+      # ergebnis richtig?
       if game.score1 == score1 && game.score2 == score2
         pts += 2
+      end
+      
+      ## check n.V.
+      
+      if (game.score3.present? && game.score4.present? &&
+          score3.present? && score4.present? &&
+          game.score3 == score3 && game.score4 == score4)
+            pts +=1
+      end
+      
+      ## check i.E.
+
+      if (game.score5.present? && game.score6.present? &&
+          score5.present? && score6.present? &&
+          game.score5 == score3 && game.score6 == score4)
+            pts +=1
       end
     end
     pts
@@ -237,9 +253,9 @@ class Tip < ActiveRecord::Base
     else
       str = ''
       if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
-        str = "#{score5} : #{score6} i.E."
+        str = "#{score1_str} : #{score2_str} / #{score3} : #{score4} n.V. / #{score5} : #{score6} i.E."
       elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
-        str = "#{score3} : #{score4} n.V."
+        str = "#{score1_str} : #{score2_str} / #{score3} : #{score4} n.V."
       else
         str = "#{score1_str} : #{score2_str}"
       end

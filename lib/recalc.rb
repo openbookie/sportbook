@@ -1,14 +1,20 @@
 
   def recalc
+    Pool.all.each do |pool|
+      recalc_pool( pool )
+    end
+  end
+
+  def recalc_pool( pool )
     start = Time.now
 
-    puts "1. pass - calc points per play and per round"
+    puts "recalc >#{pool.full_title}<"
+    puts "  1. pass - calc points per play and per round"
     
     #################################################
     # 1. pass - calc points per play and per round
     #################################################
 
-    Pool.all.each do |pool|
       pool.plays.each do |play|
 
         play_pts = 0
@@ -80,16 +86,13 @@
         play.job_done!
       
       end # each play (that is, user)
-    end # each pool
 
 
-    puts "2. pass - calc rankings/positions"
+    puts "  2. pass - calc rankings/positions"
 
     ##############################################
     ## 2. pass - calc rankings/positions 
     ##############################################
-
-    Pool.all.each do |pool|
 
       rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')      
       rounds.each do |round|
@@ -123,15 +126,14 @@
         end
 
       end  # each round
-    end # each pool
+    
 
-    puts "3. pass - calc diffs for totals"
+    puts "  3. pass - calc diffs for totals"
 
     #######################################################
     ## 3. pass - calc diffs for totals
     #######################################################
 
-    Pool.all.each do |pool|
       pool.plays.each do |play|
       
         last_pos = 0
@@ -152,12 +154,11 @@
           last_pos = ranking.total_pos
         end  # each ranking
       end # each play
-    end # each pool
     
     a = Action.new
     a.tmpl = 'recalc'
-    a.text = "*** NEWS - Punkte Neu Berechnet (in #{Time.now-start} s)!"
+    a.text = "*** NEWS - #{pool.full_title} Punkte Neu Berechnet (in #{Time.now-start} s)!"
     a.save!
 
-    puts "Recalc points done (in #{Time.now-start} s) - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips, #{BonusTip.count} Bonus Tips."
+    puts "Recalc points done (in #{Time.now-start} s)."
   end

@@ -6,13 +6,15 @@
 <body>
 
 
+<!-- fix:/todo: use own color scheme for setup section -->
+
 <div class='navbar db'>
 <table width='100%' cellspacing=0>
   <tr>
     <!-- left -->
     <td>
       <span class='logo'><%= link_to '[Logo]', pools_path() %></span>
-      <span> - DB - </span>
+      <span> - Setup - </span>
       &nbsp;&nbsp;&nbsp;
       <% if content_for? :breadcrumb  %>
         <span class='breadcrumb-inline'>
@@ -41,10 +43,7 @@
 
  
  <div>
-  <%= link_to 'Events', events_path() %>  &bull;
-  <%= link_to 'Teams', teams_path() %>  &bull;
-  <%= link_to 'Rounds', rounds_path() %>  &bull;
-  <%= link_to 'Games', games_path() %>
+  <%= link_to 'Bonus Rounds', bonus_rounds_path() %>
   <!-- todo: add some more links -->
  </div>
 
