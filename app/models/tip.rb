@@ -65,10 +65,11 @@ class Tip < ActiveRecord::Base
     
     (score1.blank? && score2.blank? && score3.blank? && score4.blank? && score5.blank? && score6.blank?)==false
   end
-    
-  def calc_points
+
+  
+  def calc_points_worker
     pts = 0
-    if complete?
+
       if(((game.score1 == game.score2) && (score1 == score2)) ||
          ((game.score1 >  game.score2) && (score1 >  score2)) ||
          ((game.score1 <  game.score2) && (score1 <  score2)))
@@ -88,20 +89,31 @@ class Tip < ActiveRecord::Base
       
       ## check n.V.
       
-      if (game.score3.present? && game.score4.present? &&
-          score3.present? && score4.present? &&
-          game.score3 == score3 && game.score4 == score4)
-            pts +=1
+      if (game.score3.present? && game.score4.present? && score3.present? && score4.present?)
+        
+         if(((game.score3 == game.score4) && (score3 == score4)) ||
+            ((game.score3 >  game.score4) && (score3 >  score4)) ||
+            ((game.score3 <  game.score4) && (score3 <  score4)))
+                pts += 1
+         end
       end
       
       ## check i.E.
 
-      if (game.score5.present? && game.score6.present? &&
-          score5.present? && score6.present? &&
-          game.score5 == score3 && game.score6 == score4)
-            pts +=1
+      if (game.score5.present? && game.score6.present? && score5.present? && score6.present?)
+            
+         if(((game.score5 >  game.score6) && (score5 >  score6)) ||
+            ((game.score5 <  game.score6) && (score5 <  score6)))
+                pts += 1
+         end
       end
-    end
+    
+    pts
+  end
+    
+  def calc_points
+    pts = 0
+    pts = calc_points_worker()  if complete?
     pts
   end
 

@@ -36,32 +36,18 @@ class CalcTip < Tip
   def calc_points
     pts = 0
 
-    ## step 1: teams must match for any points (scoring)
+    ## note: teams must match for any points (scoring)
     
-    if (complete? && 
+    if (complete? &&
         game.team1_id == calc_team1_id &&
         game.team2_id == calc_team2_id)
       
-      if(((game.score1 == game.score2) && (score1 == score2)) ||
-         ((game.score1 >  game.score2) && (score1 >  score2)) ||
-         ((game.score1 <  game.score2) && (score1 <  score2)))
-          pts += 1
-      end
-
-      # tordifferenz richtig? todo: auch fuer unentschieden???
-      if((game.score1-game.score2) == (score1-score2))
-        ## nb: for now now points for tordifferenz
-        ### pts +=1
-      end
-
-      # ergebnis richtig?      
-      if game.score1 == score1 && game.score2 == score2
-        pts += 2
-      end
+      pts = calc_points_worker()
+    
     end
+    
     pts
   end
-
 
 
 private
