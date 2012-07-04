@@ -17,6 +17,15 @@ task :load_uss_euro_bonus => [:environment] do |t|
   
 end
 
+desc "wettpool: calc points for uss euro bonus questions"
+task :load_uss_euro_bonus2 => [:environment] do |t|
+  
+  ['uss/euro_bonus2' ].each do |seed|
+    require "#{Rails.root}/db/seeds/#{seed}.rb"
+  end
+  
+end
+
 
 
 desc "wettpool: load seed data for uss euro pools (tips) - part ii"
