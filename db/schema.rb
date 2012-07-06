@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626073816) do
+ActiveRecord::Schema.define(:version => 20120305214015) do
 
   create_table "actions", :force => true do |t|
     t.text     "text"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20120626073816) do
     t.datetime "play_at",                         :null => false
     t.boolean  "knockout",     :default => false, :null => false
     t.boolean  "home",         :default => true,  :null => false
+    t.boolean  "locked",       :default => false, :null => false
     t.integer  "score1"
     t.integer  "score2"
     t.integer  "score3"
@@ -123,7 +124,6 @@ ActiveRecord::Schema.define(:version => 20120626073816) do
     t.boolean  "calc",         :default => false, :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.boolean  "locked",       :default => false, :null => false
   end
 
   add_index "games", ["group_id"], :name => "index_games_on_group_id"
@@ -199,12 +199,12 @@ ActiveRecord::Schema.define(:version => 20120626073816) do
     t.integer  "user_id",                         :null => false
     t.boolean  "fix",          :default => false, :null => false
     t.boolean  "public",       :default => true,  :null => false
+    t.boolean  "locked",       :default => false, :null => false
     t.text     "welcome"
     t.text     "welcome_html"
     t.string   "key"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.boolean  "locked",       :default => false, :null => false
   end
 
   add_index "pools", ["event_id"], :name => "index_pools_on_event_id"
@@ -298,9 +298,10 @@ ActiveRecord::Schema.define(:version => 20120626073816) do
     t.string   "password_digest"
     t.string   "key",                                :null => false
     t.boolean  "admin",           :default => false, :null => false
+    t.boolean  "guest",           :default => false, :null => false
+    t.boolean  "active",          :default => true,  :null => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.boolean  "active",          :default => true,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
