@@ -10,18 +10,18 @@ puts "*** loading seed data in seeds/austria2013.rb"
 ##
 ## more info => http://bundesliga.at
 
-bl = Event.create!( :title => 'Österr. Bundesliga 2013', :key => 'bl' )
+bl = Event.create!( :title => 'Österr. Bundesliga 2013', :key => 'bl', :start_at => Time.cet('2012-07-21 16:00'))
 
-salzburg    = Team.create!( :title => 'FC RB Salzburg',      :tag => 'RBS',  :key => 'salzburg',    :img => 'salzburg.png' )
-rapid       = Team.create!( :title => 'SK Rapid Wien',       :tag => 'RAP',  :key => 'rapid',       :img => 'rapid.png' )
-admira      = Team.create!( :title => 'FC Admira',           :tag => 'ADM',  :key => 'admira',      :img => 'admira.png' )
-austria     = Team.create!( :title => 'FK Austria Wien',     :tag => 'FAK',  :key => 'austria',     :img => 'austria.png' )
-sturm       = Team.create!( :title => 'SK Sturm Graz',       :tag => 'STU',  :key => 'sturm',       :img => 'sturm.png' )
-ried        = Team.create!( :title => 'SV Ried',             :tag => 'RIED', :key => 'ried',        :img => 'ried.png' )
-wacker      = Team.create!( :title => 'FC Wacker Innsbruck', :tag => 'IBK',  :key => 'wacker',      :img => 'wacker.png' )
-mattersburg = Team.create!( :title => 'SV Mattersburg',      :tag => 'SVM',  :key => 'mattersburg', :img => 'mattersburg.png' )
-neustadt    = Team.create!( :title => 'SC Wiener Neustadt',  :tag => 'WRN',  :key => 'neustadt',    :img => 'neustadt.png' )
-wac         = Team.create!( :title => 'WAC',                 :tag => 'WAC',  :key => 'wac',         :img => 'wac.png' )
+salzburg    = Team.create!( :title => 'FC RB Salzburg',      :tag => 'RBS',  :key => 'salzburg',    :img => 'at/salzburg.png' )
+rapid       = Team.create!( :title => 'SK Rapid Wien',       :tag => 'RAP',  :key => 'rapid',       :img => 'at/rapid.png' )
+admira      = Team.create!( :title => 'FC Admira',           :tag => 'ADM',  :key => 'admira',      :img => 'at/admira.png' )
+austria     = Team.create!( :title => 'FK Austria Wien',     :tag => 'FAK',  :key => 'austria',     :img => 'at/austria.png' )
+sturm       = Team.create!( :title => 'SK Sturm Graz',       :tag => 'STU',  :key => 'sturm',       :img => 'at/sturm.png' )
+ried        = Team.create!( :title => 'SV Ried',             :tag => 'RIED', :key => 'ried',        :img => 'at/ried.png' )
+wacker      = Team.create!( :title => 'FC Wacker Innsbruck', :tag => 'IBK',  :key => 'wacker',      :img => 'at/wacker.png' )
+mattersburg = Team.create!( :title => 'SV Mattersburg',      :tag => 'SVM',  :key => 'mattersburg', :img => 'at/mattersburg.png' )
+neustadt    = Team.create!( :title => 'SC Wiener Neustadt',  :tag => 'WRN',  :key => 'neustadt',    :img => 'at/neustadt.png' )
+wac         = Team.create!( :title => 'WAC',                 :tag => 'WAC',  :key => 'wac',         :img => 'at/wac.png' )
 
 ## absteiger 2011/2012
 # ksv         = Team.create!( :title => 'KSV 1919',            :tag => 'KSV',  :key => 'ksv',         :img => 'ksv.png' )

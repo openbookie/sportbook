@@ -82,6 +82,7 @@ create_table :games do |t|
   t.datetime   :play_at,  :null => false
   t.boolean    :knockout, :null => false, :default => false
   t.boolean    :home,     :null => false, :default => true    # is team1 play at home (that is, at its home stadium)
+  t.boolean    :locked,   :null => false, :default => false
   t.integer    :score1
   t.integer    :score2
   t.integer    :score3    # verlaengerung (opt)
@@ -112,6 +113,8 @@ create_table :users do |t|
   t.string  :password_digest
   t.string  :key,             :null => false   # import/export key
   t.boolean :admin,           :null => false, :default => false
+  t.boolean :guest,           :null => false, :default => false  # read-only access (cannot add tips,join pools,etc.)
+  t.boolean :active,          :null => false, :default => true
   t.timestamps
 end
 
@@ -125,9 +128,10 @@ create_table :pools do |t|
   t.references  :user,   :null => false  # owner/manager/admin of pool
   t.boolean     :fix,    :null => false, :default => false
   t.boolean     :public, :null => false, :default => true   # make all tips public (not private/secret)
+  t.boolean     :locked, :null => false, :default => false
   t.text        :welcome
   t.text        :welcome_html
-  t.string      :key   # import/export key
+  t.string      :key   # import/export key  
   t.timestamps
 end
 
@@ -256,6 +260,51 @@ create_table :group_quotes do |t|
   t.timestamps
 end
 
+
+
+create_table :bonus_rounds do |t|
+  t.references :pool,   :null => false
+  t.string     :title,  :null => false
+  t.integer    :pos,     :null => false
+  t.timestamps
+end
+
+create_table :bonus_questions do |t|
+  t.references :round,  :null => false
+  t.string     :title,  :null => false
+  t.integer    :pos,    :null => false
+  t.timestamps
+end
+    
+create_table :bonus_answers do |t|
+  # to be done
+  t.timestamps
+end
+    
+create_table :bonus_tips do |t|
+  t.references :user,     :null => false
+  t.references :question, :null => false
+  t.integer    :pts     , :null => false, :default => 0
+  t.timestamps
+end
+
+create_table :bonus_points do |t|
+  t.references :user,  :null => false
+  t.references :pool,  :null => false  ## todo: check if we keep reference to pool (because round_id depends itself on pool)
+  t.references :round, :null => false   # nb: is bonus_round_id
+  
+  t.integer    :round_pts, :null => false, :default => 0   # points for this round
+  t.integer    :round_pos, :null => false, :default => 0   # ranking/position for this round
+
+  t.integer    :total_pts, :null => false, :default => 0   # total points up to(*) this round (including)  (* rounds sorted by pos)
+  t.integer    :total_pos, :null => false, :default => 0   # ranking/position for points up to this round
+
+  t.integer    :diff_total_pos, :null => false, :default => 0
+  
+  t.timestamps
+end
+
+add_index :bonus_points, [:user_id,:pool_id,:round_id], :unique => true
 
 
 ## todo: use polymorphic assoc?? for actions??
