@@ -1,19 +1,17 @@
 <h1><%= Team.count %> Teams</h1>
 
-<%= link_to 'Neues Team', new_team_path(), :class => 'btn-primary' %>
-
 <table>
  <% @teams.each do |team| %>
    <tr>
-     <td>(<%= team.id %>)</td>
      <td>
          <%= image_tag( team.img ) if team.img.present? %>
      </td>
-     <td><%= team.title %> (<%= team.key %>)</td>
-     <td><%= link_to 'Bearbeiten', edit_team_path( team.id ), :class => 'btn' %></td>
+     <td>
+       <%= link_to team.title, db_team_path( team ) %>
+     </td>
+     <td>
+       <%= "(#{team.title2})" if team.title2.present? %>
+     </td>
    </tr>
  <% end %><!-- teams.each -->
 </table>
-
-
-<%= link_to 'Neues Team', new_team_path(), :class => 'btn-primary' %>

@@ -27,6 +27,8 @@ Wettpool::Application.routes.draw do
 
   #############
   ## routes for admin
+
+  match 'admin',  :to => 'admin/pools#index'
   
   namespace :admin do
     resources :pools
@@ -61,6 +63,8 @@ Wettpool::Application.routes.draw do
   ##############################
   ## routes for db
 
+  match 'db',  :to => 'db/games#index'
+
   namespace :db do
     resources :rounds
     resources :games
@@ -75,6 +79,8 @@ Wettpool::Application.routes.draw do
   
   ##############################
   ## routes for setup via module (setup not in url -- todo/fix??)
+
+  match 'setup',  :to => 'setup/teams#index'
 
   scope :module => 'setup' do
     resources :bonus_rounds

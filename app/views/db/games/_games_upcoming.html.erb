@@ -20,7 +20,7 @@
     <%= game.play_at.strftime('%H:%M') %>
   </td>
   <td style='text-align: right;'>
-    <%= game.team1.title %>
+    <%= link_to game.team1.title, db_team_path( game.team1 ) %>
     <%= "(#{game.team1.title2})" if game.team1.title2.present? %>
   </td>
   <td>
@@ -32,11 +32,11 @@
     <%= image_tag( game.team2.img ) if game.team2.img.present? %>
   </td>
   <td>
-    <%= game.team2.title %>
+    <%= link_to game.team2.title, db_team_path( game.team2 ) %>
     <%= "(#{game.team2.title2})" if game.team2.title2.present? %>
   </td>
   <td>
-    (<%= game.round.event.title %> / <%= game.round.title %>)
+    (<%= link_to game.round.event.title, db_event_path( game.round.event ) %> / <%= game.round.title %>)
   </td>
   
  </tr> 
