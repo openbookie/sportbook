@@ -3,7 +3,7 @@
 # note: timezone for games (play_at) is *always* CET (central european time)
 
 
-puts "*** loading seed data in seeds/austria2013.rb"
+puts "*** loading seed data in seeds/austria/austria2013.rb"
 
 ######################################
 ## Oesterreichische Bundesliga 2012

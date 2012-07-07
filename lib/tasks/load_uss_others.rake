@@ -2,7 +2,7 @@
 desc "wettpool: load seed data for uss other pools"
 task :load_uss_others => [:environment] do |t|
   
-  ['services', 'austria/austria2013', 'uss/users' ].each do |seed|
+  ['services', 'austria/austria2013', 'world/quali', 'uss/users' ].each do |seed|
     require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
   
