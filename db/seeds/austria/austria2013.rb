@@ -10,21 +10,20 @@ puts "*** loading seed data in seeds/austria2013.rb"
 ##
 ## more info => http://bundesliga.at
 
-bl = Event.create!( :title => 'Österr. Bundesliga 2012/13', :key => 'bl', :start_at => Time.cet('2012-07-21 00:00'))
+
+bl = Event.create!( :title => 'Österr. Bundesliga 2012/13', :key => 'at1', :start_at => Time.cet('2012-07-21 00:00'))
 
 salzburg    = Team.create!( :title => 'FC RB Salzburg',      :tag => 'RBS',  :key => 'salzburg',    :img => 'at/salzburg.png' )
 rapid       = Team.create!( :title => 'SK Rapid Wien',       :tag => 'RAP',  :key => 'rapid',       :img => 'at/rapid.png' )
-admira      = Team.create!( :title => 'FC Admira',           :tag => 'ADM',  :key => 'admira',      :img => 'at/admira.png' )
+admira      = Team.create!( :title => 'FC Admira Wacker',    :tag => 'ADM',  :key => 'admira',      :img => 'at/admira.png' )
 austria     = Team.create!( :title => 'FK Austria Wien',     :tag => 'FAK',  :key => 'austria',     :img => 'at/austria.png' )
 sturm       = Team.create!( :title => 'SK Sturm Graz',       :tag => 'STU',  :key => 'sturm',       :img => 'at/sturm.png' )
 ried        = Team.create!( :title => 'SV Ried',             :tag => 'RIED', :key => 'ried',        :img => 'at/ried.png' )
 wacker      = Team.create!( :title => 'FC Wacker Innsbruck', :tag => 'IBK',  :key => 'wacker',      :img => 'at/wacker.png' )
 mattersburg = Team.create!( :title => 'SV Mattersburg',      :tag => 'SVM',  :key => 'mattersburg', :img => 'at/mattersburg.png' )
 neustadt    = Team.create!( :title => 'SC Wiener Neustadt',  :tag => 'WRN',  :key => 'neustadt',    :img => 'at/neustadt.png' )
-wac         = Team.create!( :title => 'Wolfsburger AC',      :tag => 'WAC',  :key => 'wac',         :img => 'at/wac.png' )
+wac         = Team.create!( :title => 'Wolfsberger AC',      :tag => 'WAC',  :key => 'wac',         :img => 'at/wac.png' )
 
-## absteiger 2011/2012
-# ksv         = Team.create!( :title => 'KSV 1919',            :tag => 'KSV',  :key => 'ksv',         :img => 'ksv.png' )
 
 bl.teams << salzburg
 bl.teams << rapid
@@ -248,77 +247,77 @@ Game.create_from_ary!( games_bl20, bl20 )
 ##################################
 ### ÖFB Cup 2012/13
 
-cup = Event.create!( :title => 'ÖFB Cup 2012/13', :key => 'cup', :team3 => false, :start_at => Time.cet( '2012-07-13 00:00' ) )
+cup = Event.create!( :title => 'ÖFB Cup 2012/13', :key => 'atcup', :team3 => false, :start_at => Time.cet( '2012-07-13 00:00' ) )
 
-cuprunde1  = Round.create!( :event => cup, :pos => 1, :title => '1. Runde', :title2 => '13.-15. Juli 2012' )
-cuprunde2  = Round.create!( :event => cup, :pos => 2, :title => '2. Runde', :title2 => '25.+26. Sep 2012' )
-cup16      = Round.create!( :event => cup, :pos => 3, :title => 'Achtelfinale', :title2 => '30.+31. Okt 2012' )
+cuprunde1  = Round.create!( :event => cup, :pos => 1, :title => '1. Runde',      :title2 => '13.-15. Juli 2012' )
+cuprunde2  = Round.create!( :event => cup, :pos => 2, :title => '2. Runde',      :title2 => '25.+26. Sep 2012' )
+cup16      = Round.create!( :event => cup, :pos => 3, :title => 'Achtelfinale',  :title2 => '30.+31. Okt 2012' )
 cup8       = Round.create!( :event => cup, :pos => 4, :title => 'Viertelfinale', :title2 => '16.+17. April 2013' )
 cup4       = Round.create!( :event => cup, :pos => 5, :title => 'Halbfinale',    :title2 => '7.+8. Mai 2013' )
 cup1       = Round.create!( :event => cup, :pos => 6, :title => 'Finale',        :title2 => '30. Mai 2013' )
 
 
-ksv           = Team.create!( :title => 'KSV 1919 (Erste Liga/Steiermark)',              :tag => 'KSV', :key => 'ksv' )
-altach        = Team.create!( :title => 'SCR Altach (Erste Liga/Vorarlberg)',            :tag => 'ALT', :key => 'altach' )
-austrial      = Team.create!( :title => 'SC Austria Lustenau (Erste Liga/Vorarlberg)',   :tag => 'LUS', :key => 'austrial' )
-stpoelten     = Team.create!( :title => 'SKN St. Pölten (Erste Liga/Niederösterreich)',  :tag => 'POE', :key => 'stpoelten' )
-linz          = Team.create!( :title => 'FC Blau-Weiß Linz (Erste Liga/Oberösterreich)', :tag => 'BWL', :key => 'linz' )
-groedig       = Team.create!( :title => 'SV Grödig (Erste Liga/Salzburg)',               :tag => 'GRO', :key => 'groedig' )
-lustenau      = Team.create!( :title => 'FC Lustenau 1907 (Erste Liga/Vorarlberg)',      :tag => 'LUS', :key => 'lustenau' )
-vienna        = Team.create!( :title => 'Vienna FC 1894 (Erste Liga/Wien)',              :tag => 'VIE', :key => 'vienna' )
-hartberg      = Team.create!( :title => 'TSV Hartberg (Erste Liga/Steiermark)',          :tag => 'HAR', :key => 'hartberg' )
-horn          = Team.create!( :title => 'SV Horn (Erste Liga/Niederösterreich)',         :tag => 'HOR', :key => 'horn' )
+ksv           = Team.create!( :title => 'Kapfenberger SV 1919', :title2 => 'Erste Liga/Stmk.',  :tag => 'KSV', :key => 'ksv',       :img => 'at/ksv.png' )
+altach        = Team.create!( :title => 'SCR Altach'          , :title2 => 'Erste Liga/Vbg.',   :tag => 'ALT', :key => 'altach',    :img => 'at/altach.png' )
+austrial      = Team.create!( :title => 'SC Austria Lustenau' , :title2 => 'Erste Liga/Vbg.',   :tag => 'LUS', :key => 'austrial',  :img => 'at/austrial.png' )
+stpoelten     = Team.create!( :title => 'SKN St. Pölten',       :title2 => 'Erste Liga/NÖ',     :tag => 'POE', :key => 'stpoelten', :img => 'at/stpoelten.png' )
+linz          = Team.create!( :title => 'FC Blau-Weiß Linz',    :title2 => 'Erste Liga/OÖ',     :tag => 'BWL', :key => 'linz',      :img => 'at/linz.png' )
+groedig       = Team.create!( :title => 'SV Grödig',            :title2 => 'Erste Liga/Sbg.',   :tag => 'GRO', :key => 'groedig',   :img => 'at/groedig.png' )
+lustenau      = Team.create!( :title => 'FC Lustenau 1907',     :title2 => 'Erste Liga/Vbg.',   :tag => 'LUS', :key => 'lustenau',  :img => 'at/lustenau.png' )
+vienna        = Team.create!( :title => 'Vienna FC 1894',       :title2 => 'Erste Liga/Wien',   :tag => 'VIE', :key => 'vienna',    :img => 'at/vienna.png' )
+hartberg      = Team.create!( :title => 'TSV Hartberg',         :title2 => 'Erste Liga/Stmk.',  :tag => 'HAR', :key => 'hartberg',  :img => 'at/hartberg.png' )
+horn          = Team.create!( :title => 'SV Horn',              :title2 => 'Erste Liga/NÖ',     :tag => 'HOR', :key => 'horn',      :img => 'at/horn.png' )
 
 
 
-hard          = Team.create!( :title => 'FC Hard (West/Vorarlberg)', :tag => 'HAR',  :key => 'hard' )
-bregenz       = Team.create!( :title => 'SC Bregenz (West/Vorarlberg)',  :tag => 'BRE', :key => 'bregenz' )
-dornbirn      = Team.create!( :title => 'FC Dornbirn 1913 (West/Vorarlberg)',  :tag => 'DOR', :key => 'dornbirn' )
-kufstein      = Team.create!( :title => 'FC Kufstein (West/Tirol)',  :tag => 'KUF', :key => 'kufstein' )
-wattens       = Team.create!( :title => 'Wattens (West/Tirol)', :tag => 'WAT', :key => 'wattens' )
-austrias      = Team.create!( :title => 'SV Austria Salzburg (West/Salzburg)', :tag => 'AUS', :key => 'austrias')
-pinzgau       = Team.create!( :title => 'FC Pinzgau Saalfelden (West/Salzburg)', :tag => 'PIN', :key => 'pinzgau' )
-stjohann      = Team.create!( :title => 'TSV St. Johann (West/Salzburg)',         :tag => 'STJ', :key => 'stjohann' )
+hard          = Team.create!( :title => 'FC Hard',               :title2 => 'Regionalliga West/Vbg.', :tag => 'HAR',  :key => 'hard' )
+bregenz       = Team.create!( :title => 'SC Bregenz',            :title2 => 'Regionalliga West/Vbg.',  :tag => 'BRE', :key => 'bregenz' )
+dornbirn      = Team.create!( :title => 'FC Dornbirn 1913',      :title2 => 'Regionalliga West/Vbg.',  :tag => 'DOR', :key => 'dornbirn' )
+kufstein      = Team.create!( :title => 'FC Kufstein',           :title2 => 'Regionalliga West/Tirol',  :tag => 'KUF', :key => 'kufstein' )
+wattens       = Team.create!( :title => 'WSG Wattens',           :title2 => 'Regionalliga West/Tirol', :tag => 'WAT', :key => 'wattens' )
+austrias      = Team.create!( :title => 'SV Austria Salzburg',   :title2 => 'Regionalliga West/Sbg.', :tag => 'AUS', :key => 'austrias')
+pinzgau       = Team.create!( :title => 'FC Pinzgau Saalfelden', :title2 => 'Regionalliga West/Sbg.', :tag => 'PIN', :key => 'pinzgau' )
+stjohann      = Team.create!( :title => 'TSV St. Johann',        :title2 => 'Regionalliga West/Sbg.', :tag => 'STJ', :key => 'stjohann' )
 
-vsv           = Team.create!( :title => 'Villacher SV (Mitte/Kärnten)', :tag => 'VSV', :key => 'vsv' )
-celovec       = Team.create!( :title => 'SAK Celovec/Klagenfurt (Mitte/Kärnten)', :tag => 'CEL', :key => 'celovec' )
-klagenfurt    = Team.create!( :title => 'SK Austria Klagenfurt (Mitte/Kärnten)',  :tag => 'KLA', :key => 'klagenfurt' )
-kalsdorf      = Team.create!( :title => 'SC Kalsdorf (Mitte/Steiermark)', :tag => 'KAL', :key => 'kalsdorf' )
-gratkorn      = Team.create!( :title => 'FC Gratkorn (Mitte/Steiermark)', :tag => 'GRA',  :key => 'gratkorn' )
-allerheiligen = Team.create!( :title => 'SV Allerheiligen (Mitte/Steiermark)',    :tag => 'ALL', :key => 'allerheiligen' )
-leoben        = Team.create!( :title => 'DSV Leoben (Mitte/Steiermark)',  :tag => 'LEO', :key => 'leoben' )
-gak           = Team.create!( :title => 'GAK (Mitte/Steiermark)',                 :tag => 'GAK', :key => 'gak' )
-pasching      = Team.create!( :title => 'FC Pasching (Mitte/Oberösterreich)', :tag => 'PAS',  :key => 'pasching' )
-voecklamarkt  = Team.create!( :title => 'Vöcklamarkt (Mitte/Oberösterreich)', :tag => 'VOE', :key => 'voecklamarkt' )
-stflorian     = Team.create!( :title => 'St. Florian (Mitte/Oberösterreich)', :tag => 'STF', :key => 'stflorian' )
-wallern       = Team.create!( :title => 'Wallern (Mitte/Oberösterreich)', :tag => 'WAL', :key => 'wallern' )
-lask          = Team.create!( :title => 'LASK Linz (Mitte/Oberösterreich)',       :tag => 'LAS', :key => 'lask' )
+vsv           = Team.create!( :title => 'Villacher SV',           :title2 => 'Regionalliga Mitte/Ktn.', :tag => 'VSV', :key => 'vsv' )
+klagenfurt    = Team.create!( :title => 'SAK Celovec/Klagenfurt', :title2 => 'Regionalliga Mitte/Ktn.', :tag => 'CEL', :key => 'klagenfurt' )
+austriak      = Team.create!( :title => 'SK Austria Klagenfurt',  :title2 => 'Regionalliga Mitte/Ktn.',  :tag => 'KLA', :key => 'austriak' )
+kalsdorf      = Team.create!( :title => 'SC Kalsdorf',            :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'KAL', :key => 'kalsdorf' )
+gratkorn      = Team.create!( :title => 'FC Gratkorn',            :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'GRA',  :key => 'gratkorn' )
+allerheiligen = Team.create!( :title => 'SV Allerheiligen',       :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'ALL', :key => 'allerheiligen' )
+leoben        = Team.create!( :title => 'DSV Leoben',             :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'LEO', :key => 'leoben' )
+gak           = Team.create!( :title => 'Grazer AK',              :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'GAK', :key => 'gak' )
+pasching      = Team.create!( :title => 'FC Pasching',            :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'PAS',  :key => 'pasching' )
+voecklamarkt  = Team.create!( :title => 'Vöcklamarkt',            :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'VOE', :key => 'voecklamarkt' )
+stflorian     = Team.create!( :title => 'St. Florian',            :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'STF', :key => 'stflorian' )
+wallern       = Team.create!( :title => 'Wallern',                :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'WAL', :key => 'wallern' )
+lask          = Team.create!( :title => 'LASK Linz',              :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'LAS', :key => 'lask' )
 
-sollenau      = Team.create!( :title => '1. SC Sollenau (Ost/Oberösterreich)',  :tag => 'SOL', :key => 'sollenau' )
-amstetten     = Team.create!( :title => 'SKU Amstetten (Ost/Niederösterreich)', :tag => 'AMS', :key => 'amstetten' )
-retz          = Team.create!( :title => 'SV Retz (Ost/Niederösterreich)',  :tag => 'RET', :key => 'retz' )
-fac           = Team.create!( :title => 'FAC Team für Wien (Ost/Wien)',   :tag => 'FAC',  :key => 'fac' )
-schwechat     = Team.create!( :title => 'SV Schwechat (Ost/Wien)', :tag => 'SCH', :key => 'schwechat' )
-wienersk      = Team.create!( :title => 'Wiener SK (Ost/Wien)',                   :tag => 'WIE', :key => 'wienersk' )
-oberwart      = Team.create!( :title => 'SV Oberwart (Ost/Burgenland)',  :tag => 'OBE', :key => 'oberwart' )
-parndorf      = Team.create!( :title => 'SC/ESV Parndorf 1919 (Ost/Burgenland)', :tag => 'PAR', :key => 'parndorf' )
-stegersbach   = Team.create!( :title => 'SV Stegersbach (Ost/Burgenland)',        :tag => 'STE', :key => 'stegersbach' )
+sollenau      = Team.create!( :title => '1. SC Sollenau',         :title2 => 'Regionalliga Ost/OÖ',    :tag => 'SOL', :key => 'sollenau' )
+amstetten     = Team.create!( :title => 'SKU Amstetten',          :title2 => 'Regionalliga Ost/NÖ',    :tag => 'AMS', :key => 'amstetten' )
+retz          = Team.create!( :title => 'SV Retz',                :title2 => 'Regionalliga Ost/NÖ',    :tag => 'RET', :key => 'retz' )
+fac           = Team.create!( :title => 'FAC Team für Wien',      :title2 => 'Regionalliga Ost/Wien',  :tag => 'FAC',  :key => 'fac' )
+schwechat     = Team.create!( :title => 'SV Schwechat',           :title2 => 'Regionalliga Ost/Wien',  :tag => 'SCH', :key => 'schwechat' )
+wienersk      = Team.create!( :title => 'Wiener SK',              :title2 => 'Regionalliga Ost/Wien',  :tag => 'WIE', :key => 'wienersk' )
+ostbahn       = Team.create!( :title => 'SC Ostbahn XI',          :title2 => 'Regionalliga Ost/Wien',  :tag => 'OST', :key => 'ostbahn' )
+oberwart      = Team.create!( :title => 'SV Oberwart',            :title2 => 'Regionalliga Ost/Bgld.', :tag => 'OBE', :key => 'oberwart' )
+parndorf      = Team.create!( :title => 'SC/ESV Parndorf 1919',   :title2 => 'Regionalliga Ost/Bgld.', :tag => 'PAR', :key => 'parndorf' )
+stegersbach   = Team.create!( :title => 'SV Stegersbach',         :title2 => 'Regionalliga Ost/Bgld.', :tag => 'STE', :key => 'stegersbach' )
 
 
-wolfurt       = Team.create!( :title => 'FC Wolfurt (Vorarlberg Liga)',  :tag => 'WOL', :key => 'wolfurt' )
-schwaz        = Team.create!( :title => 'SC Schwaz (Tirol Liga)',                 :tag => 'SCH',  :key => 'schwaz' )
-reutte        = Team.create!( :title => 'SV Reutte (Tirol Liga)',                 :tag => 'REU', :key => 'reutte' )
-spittal       = Team.create!( :title => 'SV Spittal/Drau (Kärntner Liga)',        :tag => 'SPI', :key => 'spittal' )
-sak           = Team.create!( :title => 'SAK 1914 (Salzburger Liga)',             :tag => 'SAK', :key => 'sak' )
-dsc           = Team.create!( :title => 'Deutschlandsberger SC (Landesliga/Steiermark)', :tag => 'DSC',  :key => 'dsc' )
-micheldorf    = Team.create!( :title => 'SV Micheldorf (OÖ Liga)',                :tag => 'MIC', :key => 'micheldorf' )
-badvoeslau    = Team.create!( :title => 'ASK Bad Vöslau (Landesliga/Niederösterreich)', :tag => 'VOE', :key => 'badvoeslau' )
-gaflenz       = Team.create!( :title => 'SV Gaflenz (Landesliga/Niederösterreich)',  :tag => 'GAF', :key => 'gaflenz' )
-ardagger      = Team.create!( :title => 'Ardagger SCU (Landesliga/Niederösterreich)',  :tag => 'ARD', :key => 'ardagger' )
-rohrendorf    = Team.create!( :title => 'SC Rohrendorf (2. Landesliga West/Niederösterreich)', :tag => 'ROH', :key => 'rohrendorf' )
-heiligenkreuz = Team.create!( :title => 'SV Heiligenkreuz (2. Liga Süd/Niederösttereich)',  :tag => 'HEI', :key => 'heiligenkreuz' )
-ostbahn       = Team.create!( :title => 'SC Ostbahn XI (Wien)',                   :tag => 'OST', :key => 'ostbahn' )
-viktoria      = Team.create!( :title => 'Wiener Viktoria (Wiener Stadtliga)',     :tag => 'VIK', :key => 'viktoria' )
+wolfurt       = Team.create!( :title => 'FC Wolfurt',             :title2 => 'Vorarlberg Liga',  :tag => 'WOL', :key => 'wolfurt' )
+schwaz        = Team.create!( :title => 'SC Schwaz',              :title2 => 'Tirol Liga',       :tag => 'SCH',  :key => 'schwaz' )
+reutte        = Team.create!( :title => 'SV Reutte',              :title2 => 'Tirol Liga',       :tag => 'REU', :key => 'reutte' )
+spittal       = Team.create!( :title => 'SV Spittal/Drau',        :title2 => 'Kärntner Liga',    :tag => 'SPI', :key => 'spittal' )
+sak           = Team.create!( :title => 'SAK 1914',               :title2 => 'Salzburger Liga',  :tag => 'SAK', :key => 'sak' )
+dsc           = Team.create!( :title => 'Deutschlandsberger SC',  :title2 => 'Landesliga/Stmk.', :tag => 'DSC',  :key => 'dsc' )
+micheldorf    = Team.create!( :title => 'SV Micheldorf',          :title2 => 'OÖ Liga',          :tag => 'MIC', :key => 'micheldorf' )
+badvoeslau    = Team.create!( :title => 'ASK Bad Vöslau',         :title2 => 'Landesliga/NÖ',    :tag => 'VOE', :key => 'badvoeslau' )
+gaflenz       = Team.create!( :title => 'SV Gaflenz',             :title2 => 'Landesliga/NÖ',    :tag => 'GAF', :key => 'gaflenz' )
+ardagger      = Team.create!( :title => 'Ardagger SCU',           :title2 => 'Landesliga/NÖ',    :tag => 'ARD', :key => 'ardagger' )
+rohrendorf    = Team.create!( :title => 'SC Rohrendorf',          :title2 => '2. Landesliga West/NÖ', :tag => 'ROH', :key => 'rohrendorf' )
+heiligenkreuz = Team.create!( :title => 'SV Heiligenkreuz',       :title2 => '2. Liga Süd/NÖ',   :tag => 'HEI', :key => 'heiligenkreuz' )
+viktoria      = Team.create!( :title => 'Wiener Viktoria',        :title2 => 'Wiener Stadtliga', :tag => 'VIK', :key => 'viktoria' )
 
 
 ## 10 Bundeliga Teams
@@ -363,14 +362,14 @@ games_cuprunde1 = [
   [ 11, pinzgau,      [], groedig,       Time.cet('2012-07-13 19:15') ],
   [ 12, amstetten,    [], schwechat,     Time.cet('2012-07-13 19:30') ],
   [ 13, stflorian,    [], linz,          Time.cet('2012-07-13 19:30') ],
-  [ 14, klagenfurt,   [], horn,          Time.cet('2012-07-13 19:30') ],
+  [ 14, austriak,     [], horn,          Time.cet('2012-07-13 19:30') ],
   [ 15, sak,          [], allerheiligen, Time.cet('2012-07-13 19:30') ],
   [ 16, gak,          [], vienna,        Time.cet('2012-07-13 20:00') ],
   [ 17, wienersk,     [], salzburg,      Time.cet('2012-07-13 20:30') ],
   [ 18, stegersbach,  [], reutte,        Time.cet('2012-07-14 17:00') ],
   [ 19, badvoeslau,   [], stpoelten,     Time.cet('2012-07-14 17:00') ],
   [ 20, micheldorf,   [], viktoria,      Time.cet('2012-07-14 17:00') ],
-  [ 21, celovec,      [], stjohann,      Time.cet('2012-07-14 18:00') ],
+  [ 21, klagenfurt,   [], stjohann,      Time.cet('2012-07-14 18:00') ],
   [ 22, lask,         [], spittal,       Time.cet('2012-07-14 18:00') ],
   [ 23, ostbahn,      [], wac,           Time.cet('2012-07-14 18:00') ],
   [ 24, gaflenz,      [], sollenau,      Time.cet('2012-07-14 18:00') ],

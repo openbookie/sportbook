@@ -254,6 +254,7 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
 
   create_table "teams", :force => true do |t|
     t.string   "title",                           :null => false
+    t.string   "title2"
     t.string   "key",                             :null => false
     t.string   "img"
     t.string   "tag"

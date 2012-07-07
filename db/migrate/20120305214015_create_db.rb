@@ -10,6 +10,7 @@ end
     
 create_table :teams do |t|
   t.string  :title, :null => false
+  t.string  :title2
   t.string  :key,   :null => false   # import/export key
   t.string  :img
   t.string  :tag     # make it not null?  - three letter tag (short title)
