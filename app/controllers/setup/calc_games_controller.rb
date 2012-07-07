@@ -1,4 +1,4 @@
-class Db::CalcGamesController < Db::BaseController
+class Setup::CalcGamesController < Setup::BaseController
 
   # GET /calc_games/new
   def new

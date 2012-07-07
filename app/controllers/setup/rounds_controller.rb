@@ -1,4 +1,4 @@
-class Db::RoundsController < Db::BaseController
+class Setup::RoundsController < Setup::BaseController
 
   # GET /rounds
   def index
