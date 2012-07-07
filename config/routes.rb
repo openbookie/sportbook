@@ -59,17 +59,18 @@ Wettpool::Application.routes.draw do
   end
   
   ##############################
-  ## routes for db via module (db not in url -- todo/fix)
+  ## routes for db
 
-  scope :module => 'db' do
+  namespace :db do
     resources :rounds
     resources :games
     resources :calc_games
     resources :teams
-
-    resources :events do
-      post 'add_team_to', :on => :member
-    end
+    resources :events
+    
+    # events do
+    #  post 'add_team_to', :on => :member
+    #end
   end
   
   ##############################

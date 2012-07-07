@@ -1,0 +1,37 @@
+<%= form_for(@event) do |f| %>
+
+<table>
+  <tr>
+    <td><%= f.label :title, 'Titel' %></td>    
+    <td><%= f.text_field :title %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :key, 'Key' %></td>    
+    <td><%= f.text_field :key %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :start_at, 'Start (Datum)' %></td>
+    <td><%= f.text_field :start_at %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :team3, '3. Platz Flag' %></td>
+    <td>
+      <%= f.radio_button :team3, 'true'  %><%= f.label :team3_true, 'Ja' %>
+      <%= f.radio_button :team3, 'false' %><%= f.label :team3_false, 'Nein' %>
+    </td>
+  </tr>
+
+
+  
+  
+</table>
+
+<div class="actions">
+    <%= f.submit 'Speichern', :class => 'btn-primary' %>
+    <%= link_to 'Zurück', events_path(), :class => 'btn' %>
+  </div>
+
+<% end %><!-- form_for event -->

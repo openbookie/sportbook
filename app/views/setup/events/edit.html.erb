@@ -1,0 +1,29 @@
+<h1>Veranstaltung Bearbeiten</h1>
+
+<%= render 'form' %>
+
+<h3>Teams</h3>
+
+<%= form_for :event, :url => add_team_to_event_path(@event) do |f| %>
+  
+    <!-- todo/fix: remove teams already added to event -->
+    <%= select_tag 'team_id', options_from_collection_for_select( Team.where( :calc => false ).all, :id, :title) %>
+    <%= f.submit 'Hinzufügen', :class => 'btn-primary' %>
+
+<% end %><!-- form_for event_team -->
+
+<table>
+  <% @event.teams.each do |team| %>
+   <tr>
+     <td>(<%= team.id %>)</td>
+     <td>
+       <% if team.img.present? %>
+         <%= image_tag( team.img ) %>
+       <% end %>
+     </td>
+     <td><%= team.title %></td>
+   </tr>
+ <% end %><!-- teams.each -->
+</table>
+
+<!-- todo/fix: add loeschen button -->

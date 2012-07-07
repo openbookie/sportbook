@@ -1,0 +1,49 @@
+<h1><%= Game.count %> Spiele</h1>
+
+<%= link_to 'Neues Spiel', new_game_path(), :class => 'btn-primary' %>
+
+<table>
+<% @events.each do |event| %> 
+  <tr style='background-color: black; color: white; font-weight: bold; font-size: 140%;'>
+     <td>(<%= event.id %>)</td>
+     <td colspan='7'><%= event.title %></td>
+  </tr>
+ <% event.rounds.each do |round| %>
+   <tr style='font-size: 120%; font-weight: bold;'>
+     <td>(<%= round.id %>)</td>
+     <td><%= round.pos %></td>
+     <td colspan='6'><%= round.title %></td>
+   </tr>
+   <% round.games.each do |game| %>
+
+ <tr>
+  <td>(<%= game.id %>) <%= game.key %></td>
+  <td><%= game.pos %></td>
+  <td><%= game.team1.title %></td>
+  <td><%= game.team2.title %></td>
+  <td>
+    (
+      <%= if game.score1.present? then game.score1 else '-' end %>
+       :
+      <%= if game.score2.present? then game.score2 else '-' end %>
+    )
+  </td>
+  <td><%= game.knockout? ? '(Knockout Flag)' : '' %>
+      <%= game.locked?   ? '(Locked Flag)' : '' %>
+  </td>
+  <td><%= game.play_at %></td>
+  <td><%= game.play_at.utc %></td>
+  <td><%= link_to 'Bearbeiten', game.calc? ? edit_calc_game_path(game) : edit_game_path( game ), :class => 'btn' %></td>
+ </tr>
+  <% end %><!-- games.each -->
+ <% end %><!-- rounds.each -->
+<% end %><!-- events.each -->
+ 
+
+
+</table>
+
+<p></p>
+
+<%= link_to 'Neues Spiel', new_game_path(), :class => 'btn-primary' %>
+
