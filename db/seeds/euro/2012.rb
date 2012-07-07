@@ -2,7 +2,7 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
-puts "*** loading seed data in seeds/euro.rb"
+puts "*** loading seed data in seeds/euro/2012.rb"
 
 #################################
 ##  Euro 2012
@@ -11,66 +11,27 @@ puts "*** loading seed data in seeds/euro.rb"
 # or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
 
 
-euro = Event.create!( :title => 'Euro 2012', :key => 'euro', :team3 => false, :start_at => Time.cet( '2012-06-07 17:00' ))
+euro = Event.create!( :key => 'euro', :title => 'Euro 2012', :team3 => false, :start_at => Time.cet( '2012-06-07 17:00' ))
 
-euroa = Group.create!( :event => euro, :pos => 1, :title => 'Gruppe A' )
-eurob = Group.create!( :event => euro, :pos => 2, :title => 'Gruppe B' )
-euroc = Group.create!( :event => euro, :pos => 3, :title => 'Gruppe C' )
-eurod = Group.create!( :event => euro, :pos => 4, :title => 'Gruppe D' )
+pol = Team.find_by_key!( 'pol' )
+gre = Team.find_by_key!( 'gre' )
+rus = Team.find_by_key!( 'rus' )
+cze = Team.find_by_key!( 'cze' )
 
-#################################
-# Gruppe A
+ned = Team.find_by_key!( 'ned' )
+den = Team.find_by_key!( 'den' )
+ger = Team.find_by_key!( 'ger' )
+por = Team.find_by_key!( 'por' )
 
-pol = Team.create!( :title => 'Polen',        :tag => 'POL', :key => 'poland', :img => 'poland2.png' )
-gre = Team.create!( :title => 'Griechenland', :tag => 'GRE', :key => 'greece', :img => 'greece2.png' )
-rus = Team.create!( :title => 'Russland',     :tag => 'RUS', :key => 'russia', :img => 'russia2.png' )
-cze = Team.create!( :title => 'Tschechien',   :tag => 'CZE', :key => 'czech',  :img => 'czech_republic2.png' )
+esp = Team.find_by_key!( 'esp' )
+ita = Team.find_by_key!( 'ita' )
+irl = Team.find_by_key!( 'irl' )
+cro = Team.find_by_key!( 'cro' )
 
-euroa.teams << pol
-euroa.teams << gre
-euroa.teams << rus
-euroa.teams << cze
-
-
-#################################
-# Gruppe B
-
-ned = Team.create!( :title => 'Niederlande', :tag => 'NED', :key => 'netherlands', :img => 'netherlands2.png' )
-den = Team.create!( :title => 'Dänemark',    :tag => 'DEN', :key => 'denmark',     :img => 'denmark2.png' )
-ger = Team.create!( :title => 'Deutschland', :tag => 'GER', :key => 'germany',     :img => 'germany2.png' )
-por = Team.create!( :title => 'Portugal',    :tag => 'POR', :key => 'portugal',    :img => 'portugal2.png' )
-
-eurob.teams << ned
-eurob.teams << den
-eurob.teams << ger
-eurob.teams << por
-
-
-#################################3
-# Gruppe C
-
-esp = Team.create!( :title => 'Spanien',  :tag => 'ESP', :key => 'spain',   :img => 'spain2.png' )
-ita = Team.create!( :title => 'Italien',  :tag => 'ITA', :key => 'italy',   :img => 'italy2.png' )
-irl = Team.create!( :title => 'Irland',   :tag => 'IRL', :key => 'ireland', :img => 'ireland2.png' )
-cro = Team.create!( :title => 'Kroatien', :tag => 'CRO', :key => 'croatia', :img => 'croatia2.png' )
-
-euroc.teams << esp
-euroc.teams << ita
-euroc.teams << irl
-euroc.teams << cro
-
-#################################3
-# Gruppe D
-
-ukr = Team.create!( :title => 'Ukraine',    :tag => 'UKR', :key => 'ukraine', :img => 'ukraine2.png' )
-swe = Team.create!( :title => 'Schweden',   :tag => 'SWE', :key => 'sweden',  :img => 'sweden2.png' )
-fra = Team.create!( :title => 'Frankreich', :tag => 'FRA', :key => 'france',  :img => 'france2.png' )
-eng = Team.create!( :title => 'England',    :tag => 'ENG', :key => 'england', :img => 'england2.png' )
-
-eurod.teams << ukr
-eurod.teams << swe
-eurod.teams << fra
-eurod.teams << eng
+ukr = Team.find_by_key!( 'ukr' )
+swe = Team.find_by_key!( 'swe' )
+fra = Team.find_by_key!( 'fra' )
+eng = Team.find_by_key!( 'eng' )
 
 
 euro.teams << pol
@@ -90,42 +51,84 @@ euro.teams << swe
 euro.teams << fra
 euro.teams << eng
 
+
+
+euroa = Group.create!( :event => euro, :pos => 1, :title => 'Gruppe A' )
+eurob = Group.create!( :event => euro, :pos => 2, :title => 'Gruppe B' )
+euroc = Group.create!( :event => euro, :pos => 3, :title => 'Gruppe C' )
+eurod = Group.create!( :event => euro, :pos => 4, :title => 'Gruppe D' )
+
+#################################
+# Gruppe A
+
+euroa.teams << pol
+euroa.teams << gre
+euroa.teams << rus
+euroa.teams << cze
+
+
+#################################
+# Gruppe B
+
+eurob.teams << ned
+eurob.teams << den
+eurob.teams << ger
+eurob.teams << por
+
+
+#################################3
+# Gruppe C
+
+euroc.teams << esp
+euroc.teams << ita
+euroc.teams << irl
+euroc.teams << cro
+
+#################################3
+# Gruppe D
+
+eurod.teams << ukr
+eurod.teams << swe
+eurod.teams << fra
+eurod.teams << eng
+
+
 euro_round1 = Round.create!( :event => euro, :pos => 1, :title => 'Vorrunde 1. Spieltag', :title2 => '8.-11. Juni' )
 euro_round2 = Round.create!( :event => euro, :pos => 2, :title => 'Vorrunde 2. Spieltag', :title2 => '12.-15. Juni' )
 euro_round3 = Round.create!( :event => euro, :pos => 3, :title => 'Vorrunde 3. Spieltag', :title2 => '16.-19. Juni' )
 
 
 games_euro_round1 = [
-  [  1, pol, [], gre, Time.cet('2012-06-08 18:00'), euroa ],
-  [  2, rus, [], cze, Time.cet('2012-06-08 20:45'), euroa ],
-  [  3, ned, [], den, Time.cet('2012-06-09 18:00'), eurob ],
-  [  4, ger, [], por, Time.cet('2012-06-09 20:45'), eurob ],
-  [  5, esp, [], ita, Time.cet('2012-06-10 18:00'), euroc ],
-  [  6, irl, [], cro, Time.cet('2012-06-10 20:45'), euroc ],
-  [  7, fra, [], eng, Time.cet('2012-06-11 18:00'), eurod ],
-  [  8, ukr, [], swe, Time.cet('2012-06-11 20:45'), eurod ]
+  [  1, pol, [1,1], gre, Time.cet('2012-06-08 18:00'), euroa ],
+  [  2, rus, [4,1], cze, Time.cet('2012-06-08 20:45'), euroa ],
+  [  3, ned, [0,1], den, Time.cet('2012-06-09 18:00'), eurob ],
+  [  4, ger, [1,0], por, Time.cet('2012-06-09 20:45'), eurob ],
+  [  5, esp, [1,1], ita, Time.cet('2012-06-10 18:00'), euroc ],
+  [  6, irl, [1,3], cro, Time.cet('2012-06-10 20:45'), euroc ],
+  [  7, fra, [1,1], eng, Time.cet('2012-06-11 18:00'), eurod ],
+  [  8, ukr, [2,1], swe, Time.cet('2012-06-11 20:45'), eurod ]
 ]
 
 games_euro_round2 = [
-  [  9, gre, [], cze, Time.cet('2012-06-12 18:00'), euroa ],
-  [ 10, pol, [], rus, Time.cet('2012-06-12 20:45'), euroa ],
-  [ 11, den, [], por, Time.cet('2012-06-13 18:00'), eurob ],
-  [ 12, ned, [], ger, Time.cet('2012-06-13 20:45'), eurob ],
-  [ 13, ita, [], cro, Time.cet('2012-06-14 18:00'), euroc ],
-  [ 14, esp, [], irl, Time.cet('2012-06-14 20:45'), euroc ],
-  [ 15, swe, [], eng, Time.cet('2012-06-15 20:45'), eurod ],
-  [ 16, ukr, [], fra, Time.cet('2012-06-15 18:00'), eurod ]
+  [  9, gre, [1,2], cze, Time.cet('2012-06-12 18:00'), euroa ],
+  [ 10, pol, [1,1], rus, Time.cet('2012-06-12 20:45'), euroa ],
+  [ 11, den, [2,3], por, Time.cet('2012-06-13 18:00'), eurob ],
+  [ 12, ned, [1,2], ger, Time.cet('2012-06-13 20:45'), eurob ],
+  [ 13, ita, [1,1], cro, Time.cet('2012-06-14 18:00'), euroc ],
+  [ 14, esp, [4,0], irl, Time.cet('2012-06-14 20:45'), euroc ],
+  [ 15, swe, [2,3], eng, Time.cet('2012-06-15 20:45'), eurod ],
+  [ 16, ukr, [0,2], fra, Time.cet('2012-06-15 18:00'), eurod ]
 ]
 
 games_euro_round3 = [
-  [ 17, cze, [], pol, Time.cet('2012-06-16 20:45'), euroa ],
-  [ 18, gre, [], rus, Time.cet('2012-06-16 20:45'), euroa ],
-  [ 19, por, [], ned, Time.cet('2012-06-17 20:45'), eurob ],
-  [ 20, den, [], ger, Time.cet('2012-06-17 20:45'), eurob ],
-  [ 21, cro, [], esp, Time.cet('2012-06-18 20:45'), euroc ],
-  [ 22, ita, [], irl, Time.cet('2012-06-18 20:45'), euroc ],
-  [ 23, eng, [], ukr, Time.cet('2012-06-19 20:45'), eurod ],
-  [ 24, swe, [], fra, Time.cet('2012-06-19 20:45'), eurod ]
+  [ 17, cze, [1,0], pol, Time.cet('2012-06-16 20:45'), euroa ],
+  [ 18, gre, [1,0], rus, Time.cet('2012-06-16 20:45'), euroa ],
+  [ 19, por, [2,1], ned, Time.cet('2012-06-17 20:45'), eurob ],
+  [ 20, den, [1,2], ger, Time.cet('2012-06-17 20:45'), eurob ],
+  [ 21, cro, [0,1], esp, Time.cet('2012-06-18 20:45'), euroc ],
+  [ 22, ita, [2,0], irl, Time.cet('2012-06-18 20:45'), euroc ],
+  [ 23, eng, [1,0], ukr, Time.cet('2012-06-19 20:45'), eurod ],
+  [ 24, swe, [2,0], fra, Time.cet('2012-06-19 20:45'), eurod ]
 ]
 
 Game.create_from_ary!( games_euro_round1, euro_round1 )
@@ -141,68 +144,29 @@ euro4 = Round.create!( :event => euro, :pos => 5, :title => 'Halbfinale',    :fi
 euro1 = Round.create!( :event => euro, :pos => 6, :title => 'Finale',        :fix => false )
 
 
-##############################################
-## Fix (Calc) Rounds for **Fix** Style Pool
+games_euro8 = [
+  [ 25, cze, [0,1], por, Time.cet('2012-06-21 20:45') ],
+  [ 26, ger, [4,2], gre, Time.cet('2012-06-22 20:45') ],
+  [ 27, esp, [2,0], fra, Time.cet('2012-06-23 20:45') ],
+  [ 28, eng, [0,0,0,0,2,4], ita, Time.cet('2012-06-24 20:45') ]]
 
+Game.create_knockouts_from_ary!( games_euro8, euro8 )
 
-################################################################
-# Viertelfinale (Calc) 
+games_euro4 = [
+  [ 29, por, [0,0,0,0,2,4], esp, Time.cet('2012-06-27 20:45') ],
+  [ 30, ger, [1,2], ita, Time.cet('2012-06-28 20:45') ]]
 
-c1a = CalcTeam.create!( :title => '1. Gruppe A', :key => 'euro1a', :calc_rule => 'group-winner', :calc_value => euroa.id )
-c2a = CalcTeam.create!( :title => '2. Gruppe A', :key => 'euro2a', :calc_rule => 'group-2nd',    :calc_value => euroa.id )
+Game.create_knockouts_from_ary!( games_euro4, euro4 )
 
-c1b = CalcTeam.create!( :title => '1. Gruppe B', :key => 'euro1b', :calc_rule => 'group-winner', :calc_value => eurob.id )
-c2b = CalcTeam.create!( :title => '2. Gruppe B', :key => 'euro2b', :calc_rule => 'group-2nd'   , :calc_value => eurob.id )
+games_euro1 = [
+  [ 31, esp, [4,0], ita, Time.cet('2012-07-01 20:45') ]]
 
-c1c = CalcTeam.create!( :title => '1. Gruppe C', :key => 'euro1c', :calc_rule => 'group-winner', :calc_value => euroc.id )
-c2c = CalcTeam.create!( :title => '2. Gruppe C', :key => 'euro2c', :calc_rule => 'group-2nd',    :calc_value => euroc.id )
+Game.create_knockouts_from_ary!( games_euro1, euro1 )
 
-c1d = CalcTeam.create!( :title => '1. Gruppe D', :key => 'euro1d', :calc_rule => 'group-winner', :calc_value => eurod.id )
-c2d = CalcTeam.create!( :title => '2. Gruppe D', :key => 'euro2d', :calc_rule => 'group-2nd',    :calc_value => eurod.id )
-
-
-calc_euro8 = CalcRound.create!( :event => euro, :pos => 4, :title => 'Viertelfinale', :playoff => true )
-
-calc_games_euro8 = [
-  [ 25, c1a, [], c2b, Time.cet('2012-06-21 20:45') ],
-  [ 26, c1b, [], c2a, Time.cet('2012-06-22 20:45') ],
-  [ 27, c1c, [], c2d, Time.cet('2012-06-23 20:45') ],
-  [ 28, c1d, [], c2c, Time.cet('2012-06-24 20:45') ]]
-
-CalcGame.create_knockouts_from_ary!( calc_games_euro8, calc_euro8 )
-
-
-##############################################
-# Halbfinale (Calc)
-
-cv1 = CalcTeam.create!( :title => 'Sieger Viertelfinale 1', :key => 'euro25', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 25 ).id )  # Sieger Spiel 25
-cv2 = CalcTeam.create!( :title => 'Sieger Viertelfinale 2', :key => 'euro26', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 26 ).id )  # Sieger Spiel 26
-cv3 = CalcTeam.create!( :title => 'Sieger Viertelfinale 3', :key => 'euro27', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 27 ).id )  # Sieger Spiel 27
-cv4 = CalcTeam.create!( :title => 'Sieger Viertelfinale 4', :key => 'euro28', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro8.id, 28 ).id )  # Sieger Spiel 28
-
-calc_euro4 = CalcRound.create!( :event => euro, :pos => 5, :title => 'Halbfinale', :playoff => true )
-
-calc_games_euro4 = [
-  [ 29, cv1, [], cv3, Time.cet('2012-06-27 20:45') ],
-  [ 30, cv2, [], cv4, Time.cet('2012-06-28 20:45') ]]
-
-CalcGame.create_knockouts_from_ary!( calc_games_euro4, calc_euro4 )
-
-
-################################################
-# Finale (Calc)
-
-ch1 = CalcTeam.create!( :title => 'Sieger Halbfinale 1', :key => 'euro29', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro4.id, 29 ).id )  # Sieger Spiel 29
-ch2 = CalcTeam.create!( :title => 'Sieger Halbfinale 2', :key => 'euro30', :calc_rule => 'game-winner', :calc_value => Game.find_by_round_id_and_pos!( calc_euro4.id, 30 ).id )  # Sieger Spiel 30
-
-calc_euro1 = CalcRound.create!( :event => euro, :pos => 6, :title => 'Finale', :playoff => true )
-
-calc_games_euro1 = [[ 31, ch1, [], ch2, Time.cet('2012-07-01 20:45') ]]
-
-CalcGame.create_knockouts_from_ary!( calc_games_euro1, calc_euro1 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.euro.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.euro.2012.version', :value => '1' )
+
 
 
 ########################

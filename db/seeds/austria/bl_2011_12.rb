@@ -3,25 +3,25 @@
 # note: timezone for games (play_at) is *always* CET (central european time)
 
 
-puts "*** loading seed data in seeds/austria.rb"
+puts "*** loading seed data in seeds/austria/bl_2011_12.rb"
 
 ######################################
-## Oesterreichische Bundesliga 2012
+## Oesterreichische Bundesliga 2011/12
 ##
 ## more info => http://bundesliga.at
 
-bl = Event.create!( :title => 'Österr. Bundesliga 2012', :key => 'bl' )
+bl = Event.create!( :key => 'at_bl_2011_12', :title => 'Österr. Bundesliga 2011/12' )
 
-sturm       = Team.create!( :title => 'SK Sturm Graz',       :tag => 'STU',  :key => 'sturm',       :img => 'sturm.png' )
-ried        = Team.create!( :title => 'SV Ried',             :tag => 'RIED', :key => 'ried',        :img => 'ried.png' )
-salzburg    = Team.create!( :title => 'FC RB Salzburg',      :tag => 'RBS',  :key => 'salzburg',    :img => 'salzburg.png' )
-austria     = Team.create!( :title => 'FK Austria Wien',     :tag => 'FAK',  :key => 'austria',     :img => 'austria.png' )
-rapid       = Team.create!( :title => 'SK Rapid Wien',       :tag => 'RAP',  :key => 'rapid',       :img => 'rapid.png' )
-wacker      = Team.create!( :title => 'FC Wacker Innsbruck', :tag => 'IBK',  :key => 'wacker',      :img => 'wacker.png' )
-neustadt    = Team.create!( :title => 'SC Wiener Neustadt',  :tag => 'WRN',  :key => 'neustadt',    :img => 'neustadt.png' )
-ksv         = Team.create!( :title => 'KSV 1919',            :tag => 'KSV',  :key => 'ksv',         :img => 'ksv.png' )
-mattersburg = Team.create!( :title => 'SV Mattersburg',      :tag => 'SVM',  :key => 'mattersburg', :img => 'mattersburg.png' )
-admira      = Team.create!( :title => 'FC Admira',           :tag => 'ADM',  :key => 'admira',      :img => 'admira.png' )
+sturm       = Team.find_by_key!( 'sturm' )
+ried        = Team.find_by_key!( 'ried' )
+salzburg    = Team.find_by_key!( 'salzburg' )
+austria     = Team.find_by_key!( 'austria' )
+rapid       = Team.find_by_key!( 'rapid' )
+wacker      = Team.find_by_key!( 'wacker' )
+neustadt    = Team.find_by_key!( 'neustadt')
+ksv         = Team.find_by_key!( 'ksv' )
+mattersburg = Team.find_by_key!( 'mattersburg' )
+admira      = Team.find_by_key!( 'admira' )
 
 bl.teams << sturm
 bl.teams << salzburg
@@ -118,51 +118,6 @@ Game.create_from_ary!( games_bl34, bl34 )
 Game.create_from_ary!( games_bl35, bl35 )
 Game.create_from_ary!( games_bl36, bl36 )
 
-
-
-##################################
-### ÖFB Cup 2012
-
-ofb = Event.create!( :title => 'ÖFB Cup 2012', :key => 'ofb', :team3 => false, :start_at => Time.cet( '2011-10-10 17:00' ) )
-
-hartberg =  Team.create!( :title => 'TSV Hartberg',           :key => 'hartberg', :img => 'hartberg.png' )
-groedig  =  Team.create!( :title => 'SV Grödig',              :key => 'groedig',  :img => 'groedig.png' )
-juniors  =  Team.create!( :title => 'FC RB Juniors Salzburg', :key => 'juniors',  :img => 'salzburg.png' )
-lustenau =  Team.create!( :title => 'SC Austria Lustenau',    :key => 'lustenau', :img => 'lustenau.png' )
-
-ofb.teams << sturm
-ofb.teams << hartberg
-ofb.teams << groedig
-ofb.teams << ried
-ofb.teams << salzburg
-ofb.teams << juniors
-ofb.teams << lustenau
-ofb.teams << austria
-
-ofb8    = Round.create!( :event => ofb, :pos => 1, :title => 'Viertelfinale', :title2 => '10.+11. April 2012' )
-ofb4    = Round.create!( :event => ofb, :pos => 2, :title => 'Halbfinale',    :title2 => '1.+2. Mai 2012' )
-ofb1    = Round.create!( :event => ofb, :pos => 3, :title => 'Finale',        :title2 => '20. Mai 2012' )
-
-games_ofb8 = [
-  [ 1, groedig,  [2, 3],       ried,     Time.cet('2012-04-10 18:00') ],
-  [ 2, lustenau, [1, 2],       austria,  Time.cet('2012-04-11 18:00') ],
-  [ 3, sturm,    [2, 2, 2, 4], hartberg, Time.cet('2012-04-11 19:00') ], 
-  [ 4, salzburg, [4, 1],       juniors,  Time.cet('2012-04-11 19:00') ]
-]
-
-games_ofb4 = [
-  [ 1, hartberg,  [0, 1], salzburg, Time.cet('2012-05-01 18:00') ],
-  [ 2, ried,      [2, 0], austria,  Time.cet('2012-05-02 20:30') ]
-]
-
-games_ofb1 = [
-  [ 1, salzburg, [3,0], ried, Time.cet('2012-05-20 16:00') ]
-]
-
-Game.create_knockouts_from_ary!( games_ofb8, ofb8 )
-Game.create_knockouts_from_ary!( games_ofb4, ofb4 )
-Game.create_knockouts_from_ary!( games_ofb1, ofb1 )
-
-
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.austria.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.austria.bl.2011_12.version', :value => '1' )
+

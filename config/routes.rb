@@ -66,15 +66,11 @@ Wettpool::Application.routes.draw do
   match 'db',  :to => 'db/games#index'
 
   namespace :db do
-    resources :rounds
-    resources :games
-    resources :calc_games
-    resources :teams
     resources :events
-    
-    # events do
-    #  post 'add_team_to', :on => :member
-    #end
+    resources :teams
+    resources :games do
+      get 'past',   :on => :collection
+    end
   end
   
   ##############################

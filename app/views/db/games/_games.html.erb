@@ -1,4 +1,3 @@
-<h3>Nächsten Spiele</h3>
 
 <table>
 <% last_play_at = Time.local( 1999, 1, 1 )
@@ -26,7 +25,8 @@
   <td>
     <%= image_tag( game.team1.img ) if game.team1.img.present? %>
   </td>
-  <td> -  <%#= game.score_str %>
+  <td>
+    <%= game.score_str %>
   </td>
   <td>
     <%= image_tag( game.team2.img ) if game.team2.img.present? %>
@@ -43,12 +43,3 @@
 <% last_play_at = game.play_at
    end %><!-- each game -->
 </table>
-
-
-<% if games.count > 0 %>
-<p><%= link_to 'Mehr Spiele »', db_games_path(:limit => 100) %>
-</p>
-<% else %>
-<p>Noch keine Spiele bekannt.
-</p>
-<% end %>

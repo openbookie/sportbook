@@ -17,14 +17,14 @@ worldc = Group.create!( :event => world, :pos => 1, :title => 'Gruppe C' )
 # Gruppe C
 
 ger = Team.create!( :title => 'Deutschland', :tag => 'GER', :key => 'ger', :img => 'euro/germany2.png' )
-far = Team.create!( :title => 'Färöer',      :tag => 'FAR', :key => 'far', :img => 'euro/faroer2.png' )
+fro = Team.create!( :title => 'Färöer',      :tag => 'FRO', :key => 'fro', :img => 'euro/faroer2.png' )
 irl = Team.create!( :title => 'Irland',      :tag => 'IRL', :key => 'irl', :img => 'euro/ireland2.png' )
 kaz = Team.create!( :title => 'Kasachstan',  :tag => 'KAZ', :key => 'kaz', :img => 'euro/kaz2.png' )
 aut = Team.create!( :title => 'Österreich',  :tag => 'AUT', :key => 'aut', :img => 'euro/austria2.png' )
 swe = Team.create!( :title => 'Schweden',    :tag => 'SWE', :key => 'swe', :img => 'euro/sweden2.png' )
 
 worldc.teams << ger
-worldc.teams << far
+worldc.teams << fro
 worldc.teams << irl
 worldc.teams << kaz
 worldc.teams << aut
@@ -32,7 +32,7 @@ worldc.teams << swe
 
 
 world.teams << ger
-world.teams << far
+world.teams << fro
 world.teams << irl
 world.teams << kaz
 world.teams << aut
@@ -47,45 +47,45 @@ world5 = Round.create!( :event => world, :pos => 5, :title => 'Quali - 6..+10. S
 world6 = Round.create!( :event => world, :pos => 6, :title => 'Quali - 11..+15. Okt 2013' )
 
 games_world1 = [
- [ 1,  ger, [], far, Time.cet( '2012-09-07 00:00' ) ],
+ [ 1,  ger, [], fro, Time.cet( '2012-09-07 00:00' ) ],
  [ 2,  kaz, [], irl, Time.cet( '2012-09-07 00:00' ) ],
  [ 3,  aut, [], ger, Time.cet( '2012-09-11 00:00' ) ],
  [ 4,  swe, [], kaz, Time.cet( '2012-09-11 00:00' ) ]]
 
 games_world2 = [
  [  5,  irl, [], ger, Time.cet( '2012-10-12 00:00' ) ],
- [  6,  far, [], swe, Time.cet( '2012-10-12 00:00' ) ],
+ [  6,  fro, [], swe, Time.cet( '2012-10-12 00:00' ) ],
  [  7,  kaz, [], aut, Time.cet( '2012-10-12 00:00' ) ],
  [  8,  ger, [], swe, Time.cet( '2012-10-16 00:00' ) ],
- [  9,  far, [], irl, Time.cet( '2012-10-16 00:00' ) ],
+ [  9,  fro, [], irl, Time.cet( '2012-10-16 00:00' ) ],
  [ 10,  aut, [], kaz, Time.cet( '2012-10-16 00:00' ) ]]
 
 games_world3 = [
  [ 11,  kaz, [], ger, Time.cet( '2013-03-22 00:00' ) ],
- [ 12,  aut, [], far, Time.cet( '2013-03-22 00:00' ) ],
+ [ 12,  aut, [], fro, Time.cet( '2013-03-22 00:00' ) ],
  [ 13,  swe, [], irl, Time.cet( '2013-03-22 00:00' ) ],
  [ 14,  ger, [], kaz, Time.cet( '2013-03-26 00:00' ) ],
  [ 15,  irl, [], aut, Time.cet( '2013-03-26 00:00' ) ]]
 
 games_world4 = [
- [ 16,  irl, [], far, Time.cet( '2013-06-07 00:00' ) ],
+ [ 16,  irl, [], fro, Time.cet( '2013-06-07 00:00' ) ],
  [ 17,  aut, [], swe, Time.cet( '2013-06-07 00:00' ) ],
- [ 18,  swe, [], far, Time.cet( '2013-06-11 00:00' ) ]]
+ [ 18,  swe, [], fro, Time.cet( '2013-06-11 00:00' ) ]]
 
 games_world5 = [
  [ 19,  ger, [], aut, Time.cet( '2013-09-06 00:00' ) ],
- [ 20,  kaz, [], far, Time.cet( '2013-09-06 00:00' ) ],
+ [ 20,  kaz, [], fro, Time.cet( '2013-09-06 00:00' ) ],
  [ 21,  irl, [], swe, Time.cet( '2013-09-06 00:00' ) ],
- [ 22,  far, [], ger, Time.cet( '2013-09-10 00:00' ) ],
+ [ 22,  fro, [], ger, Time.cet( '2013-09-10 00:00' ) ],
  [ 23,  aut, [], irl, Time.cet( '2013-09-10 00:00' ) ],
  [ 24,  kaz, [], swe, Time.cet( '2013-09-10 00:00' ) ]]
 
 games_world6 = [
  [ 25,  ger, [], irl, Time.cet( '2013-10-11 00:00' ) ],
- [ 26,  far, [], kaz, Time.cet( '2013-10-11 00:00' ) ],
+ [ 26,  fro, [], kaz, Time.cet( '2013-10-11 00:00' ) ],
  [ 27,  swe, [], aut, Time.cet( '2013-10-11 00:00' ) ],
  [ 28,  swe, [], ger, Time.cet( '2013-10-15 00:00' ) ],
- [ 29,  far, [], aut, Time.cet( '2013-10-15 00:00' ) ],
+ [ 29,  fro, [], aut, Time.cet( '2013-10-15 00:00' ) ],
  [ 30,  irl, [], kaz, Time.cet( '2013-10-15 00:00' ) ]]
 
 

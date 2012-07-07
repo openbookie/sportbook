@@ -5,15 +5,15 @@
 puts "*** loading seed data in seeds/cl.rb"
 
 #################################
-## Champions League 2012
+## Champions League 2011/12
 
 ## note :team3 => false   CL has no 3rd place (only final game)
 cl = Event.create!( :title => 'Champions League 2012', :key => 'cl', :team3 => false, :start_at => Time.cet( '2011-10-10 17:00' ) )
 
-inter     = Team.create!( :title => 'FC Internazionale Milano', :key => 'inter',     :img => 'internazionale.png' )
-marseille = Team.create!( :title => 'Olympique Marseille',      :key => 'marseille', :img => 'marseille.png' )
-bayern    = Team.create!( :title => 'FC Bayern München',        :key => 'bayern',    :img => 'bayern.png' )
-basel     = Team.create!( :title => 'FC Basel 1893',            :key => 'basel',     :img => 'basel.png' )
+inter     = Team.create!( :key => 'inter',     :title => 'FC Internazionale Milano',  :img => 'internazionale.png' )
+marseille = Team.create!( :key => 'marseille', :title => 'Olympique Marseille',       :img => 'marseille.png' )
+bayern    = Team.create!( :key => 'bayern',    :title => 'FC Bayern München',         :img => 'bayern.png' )
+basel     = Team.create!( :key => 'basel',     :title => 'FC Basel 1893',             :img => 'basel.png' )
 
 chelsea   = Team.create!( :title => 'Chelsea FC',       :key => 'chelsea', :img => 'chelsea.png' )
 napoli    = Team.create!( :title => 'SSC Napoli',       :key => 'napoli',  :img => 'napoli.png')

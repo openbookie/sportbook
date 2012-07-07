@@ -1,3 +1,22 @@
 
+<!-- note: switch for past / upcoming games view -->
 
-<%= render :partial => 'games_upcoming',  :locals => { :games  => @games } %>
+<% if @show_upcoming %>
+<h3>Upcoming Games</h3>
+<% else %>
+<h3>Past Games</h3>
+<% end %>
+
+<%= render :partial => 'games',  :locals => { :games  => @games } %>
+
+<% if @games.count > 0 %>
+<p>
+  <% if @show_upcoming %>
+     <%= link_to 'Mehr Spiele »', db_games_path(:limit => 100) %>
+  <% else %>
+     <%= link_to 'Mehr Spiele »', past_db_games_path(:limit => 100) %>
+  <% end %>
+</p>
+<% else %>
+<p>Keine Spiele gefunden.</p>
+<% end %>

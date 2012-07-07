@@ -1,0 +1,33 @@
+
+
+<h3>Nächste Spiele</h3>
+
+<%= form_for 'update', :url => 'update/update', :html => { :method => 'put' } do |f| %>
+
+<table>
+<% last_play_at = Time.local( 1999, 1, 1 )
+   games.each do |game|
+ %>
+
+  <% unless last_play_at.year   == game.play_at.year  &&
+            last_play_at.month  == game.play_at.month &&
+            last_play_at.day    == game.play_at.day %>
+        
+    <tr style='background-color: silver;'>
+      <td colspan='6'><%= game.play_at.strftime('%A, %d. %B %Y') %></td>
+    </tr> 
+        
+  <% end %>
+ 
+  <%= render :partial => 'game_upcoming',  :locals => { :game  => game } %>
+    
+<%   last_play_at = game.play_at
+   end
+ %><!-- each game -->
+</table>
+
+<p>
+  <%= f.submit "Update Nächste Spiele", :class => 'btn-primary' %>
+</p>
+
+<% end %>
