@@ -77,6 +77,14 @@ Wettpool::Application.routes.draw do
 
   scope :module => 'setup' do
     resources :bonus_rounds
+    resources :rounds
+    resources :games
+    resources :calc_games
+    resources :teams
+
+    resources :events do
+      post 'add_team_to', :on => :member
+    end
   end
 
   
