@@ -1,0 +1,31 @@
+
+<h3> <%= @user.name %></h3>
+
+<h3>Plays (<%= @user.plays.count %>)</h3>
+
+<ul>
+  <% @user.plays.each do |play| %>
+    <li><%= play.pool.full_title %></li>
+  <% end %>
+</ul>
+
+<h3>Actions (<%= @user.actions.count %>)</h3>
+
+<ul>
+<% @user.actions.order( 'created_at desc' ).each do |action| %>
+ <li><%= action.text %>  - <%= time_ago_in_words( action.created_at ) %> ago</li>
+<% end %>
+</ul>
+
+
+<h3>Tips (<%= @user.tips.count %>)</h3>
+
+<ul>
+<% @user.tips.order( 'updated_at desc' ).each do |tip| %>
+  <li>[<%= tip.toto12x %>]
+        <%= tip.game.team1.title %>
+        <%= tip.score_str %>
+        <%= tip.game.team2.title %> 
+  </li>
+<% end %>
+</ul>

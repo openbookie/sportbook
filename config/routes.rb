@@ -18,6 +18,8 @@ Wettpool::Application.routes.draw do
   
   resource :password, :only => [:new, :create, :destroy]
 
+  resources :profiles, :only => [:index, :show]
+
   resources :plays  
   
   resources :pools do

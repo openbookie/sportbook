@@ -1,0 +1,21 @@
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Key</th>
+    <th>Flags</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.name, profile_path(user) %></td>
+    <td><%= user.email %></td>
+    <td><%= user.key %></td>
+    <td>
+      <%= user.active? ? '(Active Flag)' : '' %>
+      <%= user.admin? ? '(Admin Flag)' : '' %>
+    </td>
+  </tr>
+<% end %>
+</table>
