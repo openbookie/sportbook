@@ -2,13 +2,15 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
-puts "*** loading seed data in seeds/world/quali.rb"
+puts "*** loading seed data in seeds/world/quali_2012_13.rb"
 
 #################################
 ##  WM 2014 - Qualification Europe
 
 
-world = Event.create!( :title => 'WM Quali. Europa 2012/13', :key => 'wmql', :start_at => Time.cet( '2012-09-07 00:00' ))
+world = Event.create!( :title => 'WM Quali. Europa 2012/13',
+                       :key => 'wmql',
+                       :start_at => Time.cet( '2012-09-07 00:00' ))
 
 worldc = Group.create!( :event => world, :pos => 1, :title => 'Gruppe C' )
 
@@ -16,12 +18,14 @@ worldc = Group.create!( :event => world, :pos => 1, :title => 'Gruppe C' )
 #################################3
 # Gruppe C
 
-ger = Team.create!( :title => 'Deutschland', :tag => 'GER', :key => 'ger', :img => 'euro/germany2.png' )
-fro = Team.create!( :title => 'Färöer',      :tag => 'FRO', :key => 'fro', :img => 'euro/faroer2.png' )
-irl = Team.create!( :title => 'Irland',      :tag => 'IRL', :key => 'irl', :img => 'euro/ireland2.png' )
-kaz = Team.create!( :title => 'Kasachstan',  :tag => 'KAZ', :key => 'kaz', :img => 'euro/kaz2.png' )
-aut = Team.create!( :title => 'Österreich',  :tag => 'AUT', :key => 'aut', :img => 'euro/austria2.png' )
-swe = Team.create!( :title => 'Schweden',    :tag => 'SWE', :key => 'swe', :img => 'euro/sweden2.png' )
+# note: for teams see seeds/euro/teams.rb
+
+ger = Team.find_by_key!( 'ger' )
+fro = Team.find_by_key!( 'fro' )
+irl = Team.find_by_key!( 'irl' )
+kaz = Team.find_by_key!( 'kaz' )
+aut = Team.find_by_key!( 'aut' )
+swe = Team.find_by_key!( 'swe' )
 
 worldc.teams << ger
 worldc.teams << fro
@@ -97,4 +101,4 @@ Game.create_from_ary!( games_world5, world5 )
 Game.create_from_ary!( games_world6, world6 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.world.quali.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.world.quali.2012/13.version', :value => '1' )

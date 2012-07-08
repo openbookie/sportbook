@@ -11,7 +11,10 @@ puts "*** loading seed data in seeds/euro/2012.rb"
 # or  http://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2012
 
 
-euro = Event.create!( :key => 'euro', :title => 'Euro 2012', :team3 => false, :start_at => Time.cet( '2012-06-07 17:00' ))
+euro = Event.create!( :key => 'euro',
+                      :title => 'Euro 2012',
+                      :team3 => false,
+                      :start_at => Time.cet( '2012-06-07 17:00' ))
 
 pol = Team.find_by_key!( 'pol' )
 gre = Team.find_by_key!( 'gre' )
