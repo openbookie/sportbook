@@ -94,13 +94,70 @@ games_j3 = [
   [8, toluca,      [], leon,      Time.cst('2012-08-05 12:00') ],
   [9, atlante,     [], america,   Time.cst('2012-08-05 18:00') ]]
 
+games_j4 = [
+  [1, jaguares,    [], atlante,  Time.cst('2012-08-10 19:30') ],
+  [2, leon,        [], slaguna,   Time.cst('2012-08-10 21:30') ],
+  [3, america,     [], atlas,     Time.cst('2012-08-11 17:00') ],
+  [4, pachuca,     [], tijuana,   Time.cst('2012-08-11 19:00') ],
+  [5, tigres,      [], queretaro, Time.cst('2012-08-11 19:00') ],
+  [6, sanluis,     [], monterrey, Time.cst('2012-08-11 21:00') ],
+  [7, puebla,      [], cruzazul,  Time.cst('2012-08-12 12:00') ],
+  [8, pumas,       [], toluca,    Time.cst('2012-08-12 12:00') ],
+  [9, chivas,      [], monarcas,  Time.cst('2012-08-12 17:00') ]]
 
+games_j5 = [
+  [1, tijuana,     [], tigres,    Time.cst('2012-08-17 19:30') ],
+  [2, monarcas,    [], puebla,    Time.cst('2012-08-17 21:30') ],
+  [3, cruzazul,    [], leon,      Time.cst('2012-08-17 21:30') ],
+  [4, queretaro,   [], america,   Time.cst('2012-08-18 17:00') ],
+  [5, slaguna,     [], pumas,     Time.cst('2012-08-18 19:00') ],
+  [6, monterrey,   [], atlante,   Time.cst('2012-08-18 19:00') ],
+  [7, sanluis,     [], chivas,    Time.cst('2012-08-18 21:00') ],
+  [8, atlas,       [], jaguares,  Time.cst('2012-08-18 21:00') ],
+  [9, toluca,      [], pachuca,   Time.cst('2012-08-19 12:00') ]]
 
+games_j6 = [
+  [1, jaguares,    [], queretaro, Time.cst('2012-08-24 19:30') ],
+  [2, leon,        [], monarcas,  Time.cst('2012-08-24 21:30') ],
+  [3, america,     [], tijuana,   Time.cst('2012-08-25 17:00') ],
+  [4, pachuca,     [], slaguna,   Time.cst('2012-08-25 19:00') ],
+  [5, tigres,      [], toluca,    Time.cst('2012-08-25 19:00') ],
+  [6, puebla,      [], sanluis,   Time.cst('2012-08-26 12:00') ],
+  [7, pumas,       [], cruzazul,  Time.cst('2012-08-26 12:00') ],
+  [8, chivas,      [], monterrey, Time.cst('2012-08-26 17:00') ],
+  [9, atlante,     [], atlas,     Time.cst('2012-08-26 18:00') ]]
+
+games_j7 = [
+  [1, tijuana,      [], jaguares,  Time.cst('2012-08-31 19:30') ],
+  [2, monarcas,     [], pumas,     Time.cst('2012-08-31 21:30') ],
+  [3, cruzazul,     [], pachuca,   Time.cst('2012-09-01 17:00') ],
+  [4, queretaro,    [], atlante,   Time.cst('2012-09-01 17:00') ],
+  [5, slaguna,      [], tigres,    Time.cst('2012-09-01 19:00') ],
+  [6, monterrey,    [], atlas,     Time.cst('2012-09-01 19:00') ],
+  [7, sanluis,      [], leon,      Time.cst('2012-09-01 21:00') ],
+  [8, toluca,       [], america,   Time.cst('2012-09-02 12:00') ],
+  [9, chivas,       [], puebla,    Time.cst('2012-09-02 17:00') ]]
+
+games_j8 = [
+  [1, jaguares,     [], toluca,    Time.cst('2012-09-14 19:30') ],
+  [2, pachuca,      [], monarcas,  Time.cst('2012-09-14 19:30') ],
+  [3, leon,         [], chivas,    Time.cst('2012-09-14 21:30') ],
+  [4, america,      [], slaguna,   Time.cst('2012-09-15 17:00') ],
+  [5, tigres,       [], cruzazul,  Time.cst('2012-09-15 19:00') ],
+  [6, atlas,        [], queretaro, Time.cst('2012-09-15 21:00') ],
+  [7, puebla,       [], monterrey, Time.cst('2012-09-16 12:00') ],
+  [8, pumas,        [], sanluis,   Time.cst('2012-09-16 12:00') ],
+  [9, atlante,      [], tijuana,   Time.cst('2012-09-16 18:00') ]]
 
 
 Game.create_from_ary!( games_j1, j1 )
 Game.create_from_ary!( games_j2, j2 )
 Game.create_from_ary!( games_j3, j3 )
+Game.create_from_ary!( games_j4, j4 )
+Game.create_from_ary!( games_j5, j5 )
+Game.create_from_ary!( games_j6, j6 )
+Game.create_from_ary!( games_j7, j7 )
+Game.create_from_ary!( games_j8, j8 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( :key => 'db.seeds.mexico.apertura.2012.version', :value => '1' )

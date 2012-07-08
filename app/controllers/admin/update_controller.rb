@@ -3,7 +3,7 @@
 class Admin::UpdateController < Admin::BaseController
 
   def index
-    limit = params[:limit] || '6'
+    limit = params[:limit] || '30'
     
 =begin
     if params[:all].present? && ['0','f','false','no', 'off'].include?( params[:all] )
