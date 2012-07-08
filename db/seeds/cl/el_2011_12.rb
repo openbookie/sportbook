@@ -2,21 +2,24 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
-puts "*** loading seed data in seeds/el.rb"
+puts "*** loading seed data in seeds/cl/el_2011_12.rb"
 
 #################################
 ##  Europa League 2012
 
-el = Event.create!( :title => 'Europa League 2012', :key => 'el', :team3 => false, :start_at => Time.cet( '2011-10-10 17:00' ))
+el = Event.create!( :key => 'el',
+                    :title => 'Europa League 2011/12',
+                    :team3 => false,
+                    :start_at => Time.cet( '2011-10-10 17:00' ))
 
-az       = Team.create!( :title => 'AZ Alkmaar',          :key => 'az',       :img => 'az.png' )
-valencia = Team.create!( :title => 'Valencia CF',         :key => 'valencia', :img => 'valencia.png' )
-schalke  = Team.create!( :title => 'FC Schalke 04',       :key => 'schalke',  :img => 'schalke.png' )
-athletic = Team.create!( :title => 'Athletic Bilbao',     :key => 'athletic', :img => 'athletic.png' )
-sporting = Team.create!( :title => 'Sporting Lisboa',     :key => 'sporting', :img => 'sporting.png' )
-metalist = Team.create!( :title => 'FC Metalist Kharkiv', :key => 'metalist', :img => 'metalist.png' )
-atletico = Team.create!( :title => 'Atlético Madrid',     :key => 'atletico', :img => 'atletico.png' )
-hannover = Team.create!( :title => 'Hannover 96',         :key => 'hannover', :img => 'hannover.png' )
+az       = Team.find_by_key!( 'az' )
+valencia = Team.find_by_key!( 'valencia' )
+schalke  = Team.find_by_key!( 'schalke' )
+athletic = Team.find_by_key!( 'athletic' )
+sporting = Team.find_by_key!( 'sporting' )
+metalist = Team.find_by_key!( 'metalist' )
+atletico = Team.find_by_key!( 'atletico' )
+hannover = Team.find_by_key!( 'hannover' )
 
 el.teams << az
 el.teams << valencia
@@ -61,4 +64,4 @@ Game.create_knockout_pairs_from_ary!( games_el4, el4, el4_2 )
 Game.create_knockouts_from_ary!( games_el1,  el1 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.el.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.el.2011/12.version', :value => '1' )

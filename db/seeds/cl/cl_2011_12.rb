@@ -2,28 +2,31 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
-puts "*** loading seed data in seeds/cl.rb"
+puts "*** loading seed data in seeds/cl/cl_2011_12.rb"
 
 #################################
 ## Champions League 2011/12
 
 ## note :team3 => false   CL has no 3rd place (only final game)
-cl = Event.create!( :title => 'Champions League 2012', :key => 'cl', :team3 => false, :start_at => Time.cet( '2011-10-10 17:00' ) )
+cl = Event.create!( :key => 'cl',
+                    :title => 'Champions League 2011/12',
+                    :team3 => false,
+                    :start_at => Time.cet( '2011-10-10 17:00' ) )
 
-inter     = Team.create!( :key => 'inter',     :title => 'FC Internazionale Milano',  :img => 'internazionale.png' )
-marseille = Team.create!( :key => 'marseille', :title => 'Olympique Marseille',       :img => 'marseille.png' )
-bayern    = Team.create!( :key => 'bayern',    :title => 'FC Bayern München',         :img => 'bayern.png' )
-basel     = Team.create!( :key => 'basel',     :title => 'FC Basel 1893',             :img => 'basel.png' )
+inter     = Team.find_by_key!( 'inter' )
+marseille = Team.find_by_key!( 'marseille' )
+bayern    = Team.find_by_key!( 'bayern' )
+basel     = Team.find_by_key!( 'basel' )
 
-chelsea   = Team.create!( :title => 'Chelsea FC',       :key => 'chelsea', :img => 'chelsea.png' )
-napoli    = Team.create!( :title => 'SSC Napoli',       :key => 'napoli',  :img => 'napoli.png')
-madrid    = Team.create!( :title => 'Real Madrid CF',   :key => 'madrid',  :img => 'madrid.png' )
-moskva    = Team.create!( :title => 'PFC CSKA Moskva',  :key => 'moskva',  :img => 'moskva.png' )
+chelsea   = Team.find_by_key!( 'chelsea' )
+napoli    = Team.find_by_key!( 'napoli' )
+madrid    = Team.find_by_key!( 'madrid' )
+moskva    = Team.find_by_key!( 'moskva' )
 
-milan     = Team.create!( :title => 'AC Milan',         :key => 'milan',     :img => 'milan.png' )
-benfica   = Team.create!( :title => 'Benfica Lissabon', :key => 'benfica',   :img => 'benfica.png' )
-barcelona = Team.create!( :title => 'FC Barcelona',     :key => 'barcelona', :img => 'barcelona.png' )
-apoel     = Team.create!( :title => 'APOEL Nikosia',    :key => 'apoel',     :img => 'apoel.png' )
+milan     = Team.find_by_key!( 'milan' )
+benfica   = Team.find_by_key!( 'benfica' )
+barcelona = Team.find_by_key!( 'barcelona' )
+apoel     = Team.find_by_key!( 'apoel' )
 
 cl.teams << milan
 cl.teams << benfica
@@ -84,4 +87,4 @@ Game.create_knockout_pairs_from_ary!( games_cl4,  cl4,  cl4_2  )
 Game.create_knockouts_from_ary!( games_cl1,  cl1 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.cl.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.cl.2011/12.version', :value => '1' )
