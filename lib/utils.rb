@@ -5,6 +5,10 @@ class Time
     ActiveSupport::TimeZone['Vienna'].parse( str )
   end
   
+  def self.cst( str )  # central standard time (cst) - 6 hours 
+    ActiveSupport::TimeZone['Mexico City'].parse( str )
+  end
+  
 end # class Time
 
 

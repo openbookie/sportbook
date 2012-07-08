@@ -2,6 +2,7 @@
 
 ['services',
  'euro/teams', 'world/quali_2012_13',
+ 'mexico/teams', 'mexico/apertura_2012',
  'demo/users', 'demo/pools'].each do |seed|
   require "#{Rails.root}/db/seeds/#{seed}.rb"
 end
