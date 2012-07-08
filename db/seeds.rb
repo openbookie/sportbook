@@ -1,6 +1,8 @@
 
 
-['services', 'cl', 'euro', 'users', 'pools'].each do |seed|
+['services',
+ 'euro/teams', 'world/quali_2012_13',
+ 'demo/users', 'demo/pools'].each do |seed|
   require "#{Rails.root}/db/seeds/#{seed}.rb"
 end
 
