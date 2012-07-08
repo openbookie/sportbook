@@ -3,81 +3,97 @@
 puts "*** loading seed data in seeds/austria/teams.rb"
 
 
-Team.create!( :key => 'salzburg',    :title => 'FC RB Salzburg',      :tag => 'RBS',  :img => 'at/salzburg.png' )
-Team.create!( :key => 'rapid',       :title => 'SK Rapid Wien',       :tag => 'RAP',  :img => 'at/rapid.png' )
-Team.create!( :key => 'admira',      :title => 'FC Admira Wacker',    :tag => 'ADM',  :img => 'at/admira.png' )
-Team.create!( :key => 'austria',     :title => 'FK Austria Wien',     :tag => 'FAK',  :img => 'at/austria.png' )
-Team.create!( :key => 'sturm',       :title => 'SK Sturm Graz',       :tag => 'STU',  :img => 'at/sturm.png' )
-Team.create!( :key => 'ried',        :title => 'SV Ried',             :tag => 'RIED', :img => 'at/ried.png' )
-Team.create!( :key => 'wacker',      :title => 'FC Wacker Innsbruck', :tag => 'IBK',  :img => 'at/wacker.png' )
-Team.create!( :key => 'mattersburg', :title => 'SV Mattersburg',      :tag => 'SVM',  :img => 'at/mattersburg.png' )
-Team.create!( :key => 'neustadt',    :title => 'SC Wiener Neustadt',  :tag => 'WRN',  :img => 'at/neustadt.png' )
-Team.create!( :key => 'wac',         :title => 'Wolfsberger AC',      :tag => 'WAC',  :img => 'at/wac.png' )
+bl = [
+  [ 'salzburg',    'FC RB Salzburg',      'RBS',  'at/salzburg.png' ],
+  [ 'rapid',       'SK Rapid Wien',       'RAP',  'at/rapid.png' ],
+  [ 'admira',      'FC Admira Wacker',    'ADM',  'at/admira.png' ],
+  [ 'austria',     'FK Austria Wien',     'FAK',  'at/austria.png' ],
+  [ 'sturm',       'SK Sturm Graz',       'STU',  'at/sturm.png' ],
+  [ 'ried',        'SV Ried',             'RIE',  'at/ried.png' ],
+  [ 'wacker',      'FC Wacker Innsbruck', 'IBK',  'at/wacker.png' ],
+  [ 'mattersburg', 'SV Mattersburg',      'SVM',  'at/mattersburg.png' ],
+  [ 'neustadt',    'SC Wiener Neustadt',  'WRN',  'at/neustadt.png' ],
+  [ 'wac',         'Wolfsberger AC',      'WAC',  'at/wac.png' ]
+]
+
+ersteliga = [
+  [ 'ksv',       'Kapfenberger SV 1919', 'Erste Liga/Stmk.', 'KSV',  'at/ksv.png' ],
+  [ 'altach',    'SCR Altach',           'Erste Liga/Vbg.',  'ALT',  'at/altach.png' ],
+  [ 'austrial',  'SC Austria Lustenau',  'Erste Liga/Vbg.',  'LUS',  'at/austrial.png' ],
+  [ 'stpoelten', 'SKN St. Pölten',       'Erste Liga/NÖ',    'POE',  'at/stpoelten.png' ],
+  [ 'linz',      'FC Blau-Weiß Linz',    'Erste Liga/OÖ',    'BWL',  'at/linz.png' ],
+  [ 'groedig',   'SV Grödig',            'Erste Liga/Sbg.',  'GRO',  'at/groedig.png' ],
+  [ 'lustenau',  'FC Lustenau 1907',     'Erste Liga/Vbg.',  'LUS',  'at/lustenau.png' ],
+  [ 'vienna',    'Vienna FC 1894',       'Erste Liga/Wien',  'VIE',  'at/vienna.png' ],
+  [ 'hartberg',  'TSV Hartberg',         'Erste Liga/Stmk.', 'HAR',  'at/hartberg.png' ],
+  [ 'horn',      'SV Horn',              'Erste Liga/NÖ',    'HOR',  'at/horn.png' ]
+]
+
+rlwest = [
+  [ 'hard',     'FC Hard',               'Regionalliga West/Vbg.',  'HAR' ],
+  [ 'bregenz',  'SC Bregenz',            'Regionalliga West/Vbg.',  'BRE' ],
+  [ 'dornbirn', 'FC Dornbirn 1913',      'Regionalliga West/Vbg.',  'DOR' ],
+  [ 'kufstein', 'FC Kufstein',           'Regionalliga West/Tirol', 'KUF' ],
+  [ 'wattens',  'WSG Wattens',           'Regionalliga West/Tirol', 'WAT' ],
+  [ 'austrias', 'SV Austria Salzburg',   'Regionalliga West/Sbg.',  'AUS' ],
+  [ 'pinzgau',  'FC Pinzgau Saalfelden', 'Regionalliga West/Sbg.',  'PIN' ],
+  [ 'stjohann', 'TSV St. Johann',        'Regionalliga West/Sbg.',  'STJ' ]
+]
+
+rlmitte = [
+  [ 'vsv' ,          'Villacher SV',           'Regionalliga Mitte/Ktn.', 'VSV' ],
+  [ 'klagenfurt',    'SAK Celovec/Klagenfurt', 'Regionalliga Mitte/Ktn.', 'CEL' ],
+  [ 'austriak',      'SK Austria Klagenfurt',  'Regionalliga Mitte/Ktn.', 'KLA' ],
+  [ 'kalsdorf',      'SC Kalsdorf',            'Regionalliga Mitte/Stmk.', 'KAL' ],
+  [ 'gratkorn',      'FC Gratkorn',            'Regionalliga Mitte/Stmk.', 'GRA' ],
+  [ 'allerheiligen', 'SV Allerheiligen',       'Regionalliga Mitte/Stmk.', 'ALL' ],
+  [ 'leoben',        'DSV Leoben',             'Regionalliga Mitte/Stmk.', 'LEO' ],
+  [ 'gak',           'Grazer AK',              'Regionalliga Mitte/Stmk.', 'GAK' ],
+  [ 'pasching',      'FC Pasching',            'Regionalliga Mitte/OÖ',   'PAS' ],
+  [ 'voecklamarkt',  'Vöcklamarkt',            'Regionalliga Mitte/OÖ',  'VOE'  ],
+  [ 'stflorian',     'St. Florian',            'Regionalliga Mitte/OÖ',  'STF'  ],
+  [ 'wallern',       'Wallern',                'Regionalliga Mitte/OÖ',  'WAL'  ],
+  [ 'lask',          'LASK Linz',              'Regionalliga Mitte/OÖ',  'LAS'  ]
+]
+
+rlost = [
+  [ 'sollenau',    '1. SC Sollenau',       'Regionalliga Ost/OÖ',    'SOL' ],
+  [ 'amstetten',   'SKU Amstetten',        'Regionalliga Ost/NÖ',    'AMS' ],
+  [ 'retz',        'SV Retz',              'Regionalliga Ost/NÖ',    'RET' ],
+  [ 'fac' ,        'FAC Team für Wien',    'Regionalliga Ost/Wien',  'FAC' ],
+  [ 'schwechat',   'SV Schwechat',         'Regionalliga Ost/Wien',  'SCH' ],
+  [ 'wienersk',    'Wiener SK',            'Regionalliga Ost/Wien',  'WIE' ],
+  [ 'ostbahn',     'SC Ostbahn XI',        'Regionalliga Ost/Wien',  'OST' ],
+  [ 'oberwart',    'SV Oberwart',          'Regionalliga Ost/Bgld.', 'OBE' ],
+  [ 'parndorf',    'SC/ESV Parndorf 1919', 'Regionalliga Ost/Bgld.', 'PAR' ],
+  [ 'stegersbach', 'SV Stegersbach',       'Regionalliga Ost/Bgld.', 'STE' ]
+]
+
+misc = [
+  [ 'wolfurt',       'FC Wolfurt',            'Vorarlberg Liga',  'WOL' ],
+  [ 'schwaz',        'SC Schwaz',             'Tirol Liga',       'SCH' ],
+  [ 'reutte',        'SV Reutte',             'Tirol Liga',       'REU' ],
+  [ 'spittal',       'SV Spittal/Drau',       'Kärntner Liga',    'SPI' ],
+  [ 'sak',           'SAK 1914',              'Salzburger Liga',  'SAK' ],
+  [ 'dsc',           'Deutschlandsberger SC', 'Landesliga/Stmk.', 'DSC' ],
+  [ 'micheldorf',    'SV Micheldorf',         'OÖ Liga',          'MIC' ],
+  [ 'badvoeslau',    'ASK Bad Vöslau',        'Landesliga/NÖ',    'VOE' ],
+  [ 'gaflenz',       'SV Gaflenz',            'Landesliga/NÖ',    'GAF' ],
+  [ 'ardagger',      'Ardagger SCU',          'Landesliga/NÖ',    'ARD' ],
+  [ 'rohrendorf',    'SC Rohrendorf',         '2. Landesliga West/NÖ', 'ROH' ],
+  [ 'heiligenkreuz', 'SV Heiligenkreuz',      '2. Liga Süd/NÖ',   'HEI' ],
+  [ 'viktoria',      'Wiener Viktoria',       'Wiener Stadtliga', 'VIK' ],
+  [ 'juniors',       'FC RB Juniors Salzburg' ]
+]
 
 
-Team.create!( :key => 'juniors',    :title => 'FC RB Juniors Salzburg', :img => 'at/salzburg.png' )
-
-Team.create!( :key => 'ksv',       :title => 'Kapfenberger SV 1919', :title2 => 'Erste Liga/Stmk.',  :tag => 'KSV',        :img => 'at/ksv.png' )
-Team.create!( :key => 'altach',    :title => 'SCR Altach'          , :title2 => 'Erste Liga/Vbg.',   :tag => 'ALT',     :img => 'at/altach.png' )
-Team.create!( :key => 'austrial',  :title => 'SC Austria Lustenau' , :title2 => 'Erste Liga/Vbg.',   :tag => 'LUS',  :img => 'at/austrial.png' )
-Team.create!( :key => 'stpoelten', :title => 'SKN St. Pölten',       :title2 => 'Erste Liga/NÖ',     :tag => 'POE',  :img => 'at/stpoelten.png' )
-Team.create!( :key => 'linz',      :title => 'FC Blau-Weiß Linz',    :title2 => 'Erste Liga/OÖ',     :tag => 'BWL',       :img => 'at/linz.png' )
-Team.create!( :key => 'groedig',   :title => 'SV Grödig',            :title2 => 'Erste Liga/Sbg.',   :tag => 'GRO',   :img => 'at/groedig.png' )
-Team.create!( :key => 'lustenau',  :title => 'FC Lustenau 1907',     :title2 => 'Erste Liga/Vbg.',   :tag => 'LUS',   :img => 'at/lustenau.png' )
-Team.create!( :key => 'vienna',    :title => 'Vienna FC 1894',       :title2 => 'Erste Liga/Wien',   :tag => 'VIE',    :img => 'at/vienna.png' )
-Team.create!( :key => 'hartberg',  :title => 'TSV Hartberg',         :title2 => 'Erste Liga/Stmk.',  :tag => 'HAR', :img => 'at/hartberg.png' )
-Team.create!( :key => 'horn',      :title => 'SV Horn',              :title2 => 'Erste Liga/NÖ',     :tag => 'HOR',     :img => 'at/horn.png' )
+Team.create_from_ary!( bl )
+Team.create_from_ary!( ersteliga )
+Team.create_from_ary!( rlwest )
+Team.create_from_ary!( rlmitte )
+Team.create_from_ary!( rlost )
+Team.create_from_ary!( misc )
 
 
-
-Team.create!( :key => 'hard',     :title => 'FC Hard',               :title2 => 'Regionalliga West/Vbg.', :tag => 'HAR' )
-Team.create!( :key => 'bregenz',  :title => 'SC Bregenz',            :title2 => 'Regionalliga West/Vbg.',  :tag => 'BRE' )
-Team.create!( :key => 'dornbirn', :title => 'FC Dornbirn 1913',      :title2 => 'Regionalliga West/Vbg.',  :tag => 'DOR' )
-Team.create!( :key => 'kufstein', :title => 'FC Kufstein',           :title2 => 'Regionalliga West/Tirol',  :tag => 'KUF' )
-Team.create!( :key => 'wattens',  :title => 'WSG Wattens',           :title2 => 'Regionalliga West/Tirol', :tag => 'WAT' )
-Team.create!( :key => 'austrias', :title => 'SV Austria Salzburg',   :title2 => 'Regionalliga West/Sbg.', :tag => 'AUS' )
-Team.create!( :key => 'pinzgau',  :title => 'FC Pinzgau Saalfelden', :title2 => 'Regionalliga West/Sbg.', :tag => 'PIN' )
-Team.create!( :key => 'stjohann', :title => 'TSV St. Johann',        :title2 => 'Regionalliga West/Sbg.', :tag => 'STJ' )
-
-Team.create!( :title => 'Villacher SV',           :title2 => 'Regionalliga Mitte/Ktn.', :tag => 'VSV', :key => 'vsv' )
-Team.create!( :title => 'SAK Celovec/Klagenfurt', :title2 => 'Regionalliga Mitte/Ktn.', :tag => 'CEL', :key => 'klagenfurt' )
-Team.create!( :title => 'SK Austria Klagenfurt',  :title2 => 'Regionalliga Mitte/Ktn.',  :tag => 'KLA', :key => 'austriak' )
-Team.create!( :title => 'SC Kalsdorf',            :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'KAL', :key => 'kalsdorf' )
-Team.create!( :title => 'FC Gratkorn',            :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'GRA',  :key => 'gratkorn' )
-Team.create!( :title => 'SV Allerheiligen',       :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'ALL', :key => 'allerheiligen' )
-Team.create!( :title => 'DSV Leoben',             :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'LEO', :key => 'leoben' )
-Team.create!( :title => 'Grazer AK',              :title2 => 'Regionalliga Mitte/Stmk.', :tag => 'GAK', :key => 'gak' )
-Team.create!( :title => 'FC Pasching',            :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'PAS',  :key => 'pasching' )
-Team.create!( :title => 'Vöcklamarkt',            :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'VOE', :key => 'voecklamarkt' )
-Team.create!( :title => 'St. Florian',            :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'STF', :key => 'stflorian' )
-Team.create!( :title => 'Wallern',                :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'WAL', :key => 'wallern' )
-Team.create!( :title => 'LASK Linz',              :title2 => 'Regionalliga Mitte/OÖ',    :tag => 'LAS', :key => 'lask' )
-
-Team.create!( :title => '1. SC Sollenau',         :title2 => 'Regionalliga Ost/OÖ',    :tag => 'SOL', :key => 'sollenau' )
-Team.create!( :title => 'SKU Amstetten',          :title2 => 'Regionalliga Ost/NÖ',    :tag => 'AMS', :key => 'amstetten' )
-Team.create!( :title => 'SV Retz',                :title2 => 'Regionalliga Ost/NÖ',    :tag => 'RET', :key => 'retz' )
-Team.create!( :title => 'FAC Team für Wien',      :title2 => 'Regionalliga Ost/Wien',  :tag => 'FAC',  :key => 'fac' )
-Team.create!( :title => 'SV Schwechat',           :title2 => 'Regionalliga Ost/Wien',  :tag => 'SCH', :key => 'schwechat' )
-Team.create!( :title => 'Wiener SK',              :title2 => 'Regionalliga Ost/Wien',  :tag => 'WIE', :key => 'wienersk' )
-Team.create!( :title => 'SC Ostbahn XI',          :title2 => 'Regionalliga Ost/Wien',  :tag => 'OST', :key => 'ostbahn' )
-Team.create!( :title => 'SV Oberwart',            :title2 => 'Regionalliga Ost/Bgld.', :tag => 'OBE', :key => 'oberwart' )
-Team.create!( :title => 'SC/ESV Parndorf 1919',   :title2 => 'Regionalliga Ost/Bgld.', :tag => 'PAR', :key => 'parndorf' )
-Team.create!( :title => 'SV Stegersbach',         :title2 => 'Regionalliga Ost/Bgld.', :tag => 'STE', :key => 'stegersbach' )
-
-
-Team.create!( :title => 'FC Wolfurt',             :title2 => 'Vorarlberg Liga',  :tag => 'WOL', :key => 'wolfurt' )
-Team.create!( :title => 'SC Schwaz',              :title2 => 'Tirol Liga',       :tag => 'SCH',  :key => 'schwaz' )
-Team.create!( :title => 'SV Reutte',              :title2 => 'Tirol Liga',       :tag => 'REU', :key => 'reutte' )
-Team.create!( :title => 'SV Spittal/Drau',        :title2 => 'Kärntner Liga',    :tag => 'SPI', :key => 'spittal' )
-Team.create!( :title => 'SAK 1914',               :title2 => 'Salzburger Liga',  :tag => 'SAK', :key => 'sak' )
-Team.create!( :title => 'Deutschlandsberger SC',  :title2 => 'Landesliga/Stmk.', :tag => 'DSC',  :key => 'dsc' )
-Team.create!( :title => 'SV Micheldorf',          :title2 => 'OÖ Liga',          :tag => 'MIC', :key => 'micheldorf' )
-Team.create!( :title => 'ASK Bad Vöslau',         :title2 => 'Landesliga/NÖ',    :tag => 'VOE', :key => 'badvoeslau' )
-Team.create!( :title => 'SV Gaflenz',             :title2 => 'Landesliga/NÖ',    :tag => 'GAF', :key => 'gaflenz' )
-Team.create!( :title => 'Ardagger SCU',           :title2 => 'Landesliga/NÖ',    :tag => 'ARD', :key => 'ardagger' )
-Team.create!( :title => 'SC Rohrendorf',          :title2 => '2. Landesliga West/NÖ', :tag => 'ROH', :key => 'rohrendorf' )
-Team.create!( :title => 'SV Heiligenkreuz',       :title2 => '2. Liga Süd/NÖ',   :tag => 'HEI', :key => 'heiligenkreuz' )
-Team.create!( :title => 'Wiener Viktoria',        :title2 => 'Wiener Stadtliga', :tag => 'VIK', :key => 'viktoria' )
-
-
-
+## todo: use new version constant for app module e.g. Wettpool::VERSION ??
+Prop.create!( :key => 'db.seeds.austria.teams.version', :value => '1' )

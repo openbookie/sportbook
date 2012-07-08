@@ -1,7 +1,12 @@
+# encoding: utf-8
+
 ##################################
 ### ÖFB Cup 2012/13
 
-cup = Event.create!( :key => 'at_cup_2012_13', :title => 'ÖFB Cup 2012/13', :team3 => false, :start_at => Time.cet( '2012-07-13 00:00' ) )
+cup = Event.create!( :key => 'at_cup_2012_13',
+                     :title => 'ÖFB Cup 2012/13',
+                     :team3 => false,
+                     :start_at => Time.cet( '2012-07-13 00:00' ) )
 
 cuprunde1  = Round.create!( :event => cup, :pos => 1, :title => '1. Runde',      :title2 => '13.-15. Juli 2012' )
 cuprunde2  = Round.create!( :event => cup, :pos => 2, :title => '2. Runde',      :title2 => '25.+26. Sep 2012' )
@@ -161,4 +166,4 @@ games_cuprunde1 = [
 Game.create_knockouts_from_ary!( games_cuprunde1, cuprunde1 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.austria.cup.2012_13.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.austria.cup.2012/13.version', :value => '1' )

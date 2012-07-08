@@ -10,29 +10,31 @@ puts "*** loading seed data in seeds/austria/bl_2011_12.rb"
 ##
 ## more info => http://bundesliga.at
 
-bl = Event.create!( :key => 'at_bl_2011_12', :title => 'Österr. Bundesliga 2011/12' )
+bl = Event.create!( :key => 'at_bl_2011_12',
+                    :title => 'Österr. Bundesliga 2011/12',
+                    :start_at => Time.cet('2012-04-07 00:00')  )
 
+salzburg    = Team.find_by_key!( 'salzburg' )
+rapid       = Team.find_by_key!( 'rapid' )
+admira      = Team.find_by_key!( 'admira' )
+austria     = Team.find_by_key!( 'austria' )
 sturm       = Team.find_by_key!( 'sturm' )
 ried        = Team.find_by_key!( 'ried' )
-salzburg    = Team.find_by_key!( 'salzburg' )
-austria     = Team.find_by_key!( 'austria' )
-rapid       = Team.find_by_key!( 'rapid' )
 wacker      = Team.find_by_key!( 'wacker' )
-neustadt    = Team.find_by_key!( 'neustadt')
-ksv         = Team.find_by_key!( 'ksv' )
 mattersburg = Team.find_by_key!( 'mattersburg' )
-admira      = Team.find_by_key!( 'admira' )
+neustadt    = Team.find_by_key!( 'neustadt' )
+ksv         = Team.find_by_key!( 'ksv' )
 
-bl.teams << sturm
 bl.teams << salzburg
-bl.teams << austria
-bl.teams << ried
 bl.teams << rapid
+bl.teams << admira
+bl.teams << austria
+bl.teams << sturm
+bl.teams << ried
 bl.teams << wacker
+bl.teams << mattersburg
 bl.teams << neustadt
 bl.teams << ksv
-bl.teams << mattersburg
-bl.teams << admira
 
 
 bl29 = Round.create!( :event => bl, :pos => 29, :title => '29. Runde', :title2 => '7.+8. April 2012' )
@@ -119,5 +121,5 @@ Game.create_from_ary!( games_bl35, bl35 )
 Game.create_from_ary!( games_bl36, bl36 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.austria.bl.2011_12.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.austria.bl.2011/12.version', :value => '1' )
 

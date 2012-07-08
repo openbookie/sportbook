@@ -11,7 +11,9 @@ puts "*** loading seed data in seeds/austria/bl_2012_13.rb"
 ## more info => http://bundesliga.at
 
 
-bl = Event.create!( :key => 'at_bl_2012_13', :title => 'Österr. Bundesliga 2012/13', :start_at => Time.cet('2012-07-21 00:00'))
+bl = Event.create!( :key      => 'at_bl_2012_13',
+                    :title    => 'Österr. Bundesliga 2012/13',
+                    :start_at => Time.cet('2012-07-21 00:00') )
 
 salzburg    = Team.find_by_key!( 'salzburg' )
 rapid       = Team.find_by_key!( 'rapid' )
@@ -244,4 +246,4 @@ Game.create_from_ary!( games_bl20, bl20 )
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.austria.bl.2012_13.version', :value => '1' )
+Prop.create!( :key => 'db.seeds.austria.bl.2012/13.version', :value => '1' )
