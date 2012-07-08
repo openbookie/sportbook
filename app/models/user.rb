@@ -30,5 +30,25 @@ class User < ActiveRecord::Base
       self.key = email.gsub( /[\s\.\-+_]/, '' ).downcase
     end
   end
+  
+  def self.create_from_ary!( users )
+    users.each do |values|
+      
+      attr = {
+        :name     => values[0],
+        :email    => values[1],
+        :password => 'tipp'
+      }
+
+      ## check for optional values
+      opts = values[2] 
+      if opts
+        attr[ :admin ] = opts[ :admin ]  if opts.has_key?( :admin )
+        attr[ :guest ] = opts[ :guest ]  if opts.has_key?( :guest )
+      end
+      
+      User.create!( attr )
+    end # each user
+  end
 
 end  # class User

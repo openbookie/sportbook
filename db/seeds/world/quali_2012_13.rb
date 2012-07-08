@@ -8,8 +8,8 @@ puts "*** loading seed data in seeds/world/quali_2012_13.rb"
 ##  WM 2014 - Qualification Europe
 
 
-world = Event.create!( :title => 'World Cup Quali. Europe 2012/13',
-                       :key => 'wmql',
+world = Event.create!( :key => 'wmql',
+                       :title => 'World Cup Quali. Europe 2012/13',
                        :start_at => Time.cet( '2012-09-07 00:00' ))
 
 worldc = Group.create!( :event => world, :pos => 1, :title => 'Gruppe C' )

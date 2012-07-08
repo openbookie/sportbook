@@ -21,6 +21,7 @@
   </td>
   <td style='text-align: right;'>
     <%= link_to game.team1.title, live_game_path( game.id ) %>
+    <%= "(#{game.team1.title2})" if game.team1.title2.present? %>
   </td>
   <td>
     <%= image_tag( game.team1.img ) if game.team1.img.present? %>
@@ -32,6 +33,7 @@
   </td>
   <td>
     <%= link_to game.team2.title, live_game_path( game.id ) %>
+    <%= "(#{game.team2.title2})" if game.team2.title2.present? %>
   </td>
   <td>
     (<%= game.round.event.title %> / <%= game.round.title %>)

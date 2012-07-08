@@ -51,7 +51,7 @@ class Team < ActiveRecord::Base
       end
 
       Team.create!( attr )
-    end # each teams
+    end # each team
   end
 
 

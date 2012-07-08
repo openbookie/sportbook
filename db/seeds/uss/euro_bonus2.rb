@@ -1,12 +1,12 @@
 
 puts "*** loading seed data in seeds/uss/euro_bonus2.rb"
 
-behrooz = User.find_by_key!( 'behroozs' )
+nn = User.find_by_key!( 'nn' )
 
 euro  = Event.find_by_key!( 'euro')
 
-poolfix  = Pool.find_by_event_id_and_user_id_and_fix!( euro.id, behrooz.id, true )
-poolflex = Pool.find_by_event_id_and_user_id_and_fix!( euro.id, behrooz.id, false )
+poolfix  = Pool.find_by_event_id_and_user_id_and_fix!( euro.id, nn.id, true )
+poolflex = Pool.find_by_event_id_and_user_id_and_fix!( euro.id, nn.id, false )
 
 rfix = BonusRound.find_by_pool_id_and_pos!( poolfix.id, 2 )
 qfix = BonusQuestion.find_by_round_id_and_pos!( rfix.id, 1 )

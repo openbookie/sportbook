@@ -2,5 +2,8 @@
   <span class='<%= game.team1_style_class %>'>
     <%= link_to game.team1.title, live_game_path(game.id) %>
   </span>
+  <span>
+    <%= "(#{game.team1.title2})" if game.team1.title2.present? %>
+  </span>
   <%= image_tag( game.team1.img ) if game.team1.img.present? %>
 </td>

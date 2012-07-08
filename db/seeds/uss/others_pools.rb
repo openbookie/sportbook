@@ -5,19 +5,15 @@ puts "*** loading seed data in seeds/uss/pools_others.rb"
 ##############
 ##  Pools
 
-cl  = Event.find_by_key!( 'cl' )
-el  = Event.find_by_key!( 'el' )
-bl  = Event.find_by_key!( 'bl' )
-ofb = Event.find_by_key!( 'ofb' )
+at_bl    = Event.find_by_key!( 'at_bl_2012_13' )
+at_cup   = Event.find_by_key!( 'at_cup_2012_13' )
+wm_quali = Event.find_by_key!( 'wmql' )
 
-behrooz =  User.find_by_key!( 'behrooz' )
-ande    =  User.find_by_key!( 'ande' )
-manfred =  User.find_by_key!( 'manfred' )
+nn =  User.find_by_key!( 'nn' )
 
-Pool.create!( :event => cl,  :title => 'USS EF', :user => behrooz, :welcome => '' )
-Pool.create!( :event => el,  :title => 'USS EF', :user => ande,    :welcome => '' )
-Pool.create!( :event => bl,  :title => 'USS EF', :user => manfred, :welcome => '' )
-Pool.create!( :event => ofb, :title => 'USS EF', :user => manfred, :welcome => '' )
+Pool.create!( :event => at_bl,     :title => 'USS EF', :user => nn, :welcome => '' )
+Pool.create!( :event => at_cup,    :title => 'USS EF', :user => nn, :welcome => '' )
+Pool.create!( :event => wm_quali,  :title => 'USS EF', :user => nn, :welcome => '' )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( :key => 'db.seeds.uss.pools.others.version', :value => '1' )

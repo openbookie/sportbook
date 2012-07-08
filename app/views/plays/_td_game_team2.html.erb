@@ -3,4 +3,7 @@
   <span class='<%= game.team2_style_class %>'>
     <%= link_to game.team2.title, live_game_path(game.id) %>
   </span>
+  <span>
+    <%= "(#{game.team2.title2})" if game.team2.title2.present? %>
+  </span>
 </td>

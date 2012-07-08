@@ -2,7 +2,9 @@
 desc "wettpool: load seed data for uss euro pools"
 task :load_uss_euro => [:environment] do |t|
   
-  ['services', 'euro', 'uss/users', 'uss/euro_pools' ].each do |seed|
+  ['services',
+   'euro/teams', 'euro/2012', 'euro/2012_calc',
+   'uss/users', 'uss/euro_pools' ].each do |seed|
     require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
   
@@ -26,16 +28,6 @@ task :load_uss_euro_bonus2 => [:environment] do |t|
   
 end
 
-
-
-desc "wettpool: load seed data for uss euro pools (tips) - part ii"
-task :load_uss_euro_tips => [:environment] do |t|
-  
-  ['uss/euro_tips' ].each do |seed|
-    require "#{Rails.root}/db/seeds/#{seed}.rb"
-  end
-  
-end
 
 desc "wettpool: load data for uss euro pools (euro_data.txt)"
 task :load_uss_euro_data => [:environment] do |t|
