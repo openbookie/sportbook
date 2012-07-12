@@ -43,7 +43,7 @@ class Team < ActiveRecord::Base
         if value.length == 3   ## assume its a tag (three latters)
           attr[ :tag ] = value
         ## fix: use a regex pattern?  
-        elsif value.include?( '.png' ) || value.include?( '.jpg' )  ## assume its a img
+        elsif value.include?( '.png' ) || value.include?( '.jpg' ) || value.include?( '.gif' ) ## assume its a img
           attr[ :img ] = value
         else
           attr[ :title2 ] = value
