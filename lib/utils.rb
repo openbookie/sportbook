@@ -6,9 +6,8 @@ class Time
   end
 
   def self.eet( str )  # eastern european time (eet)  + 2 hours
-    ActiveSupport::TimeZone['Mexico City'].parse( str )
+    ActiveSupport::TimeZone['Bucharest'].parse( str )
   end
-
   
   def self.cst( str )  # central standard time (cst) - 6 hours 
     ActiveSupport::TimeZone['Mexico City'].parse( str )

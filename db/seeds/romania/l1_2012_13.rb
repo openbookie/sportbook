@@ -55,26 +55,11 @@ l1.teams << u_cluj
 l1.teams << viitorul_constanta
 
 
-l101 = Round.create!( :event => l1, :pos =>  1, :title => '1. Runda', :title2 => '21.+22. Jul 2012' )
-l102 = Round.create!( :event => l1, :pos =>  2, :title => '2. Runda', :title2 => '28.+29. Jul 2012' )
-l103 = Round.create!( :event => l1, :pos =>  3, :title => '3. Runda', :title2 => '4.+5. Aug 2012' )
-l104 = Round.create!( :event => l1, :pos =>  4, :title => '4. Runda', :title2 => '11. Aug 2012' )
-l105 = Round.create!( :event => l1, :pos =>  5, :title => '5. Runda', :title2 => '18. Aug 2012' )
-l106 = Round.create!( :event => l1, :pos =>  6, :title => '6. Runda', :title2 => '25. Aug 2012' )
-l107 = Round.create!( :event => l1, :pos =>  7, :title => '7. Runda', :title2 => '1. Sep 2012' )
-l108 = Round.create!( :event => l1, :pos =>  8, :title => '8. Runda', :title2 => '15. Sep 2012' )
-l109 = Round.create!( :event => l1, :pos =>  9, :title => '9. Runda', :title2 => '22. Sep 2012' )
-l110 = Round.create!( :event => l1, :pos => 10, :title => '10. Runda', :title2 => '29. Sep 2012' )
-l111 = Round.create!( :event => l1, :pos => 11, :title => '11. Runda', :title2 => '6. Okt 2012' )
-l112 = Round.create!( :event => l1, :pos => 12, :title => '12. Runda', :title2 => '20. Okt 2012' )
-l113 = Round.create!( :event => l1, :pos => 13, :title => '13. Runda', :title2 => '27. Okt 2012' )
-l114 = Round.create!( :event => l1, :pos => 14, :title => '14. Runda', :title2 => '3. Nov 2012' )
-l115 = Round.create!( :event => l1, :pos => 15, :title => '15. Runda', :title2 => '10. Nov 2012' )
-l116 = Round.create!( :event => l1, :pos => 16, :title => '16. Runda', :title2 => '17. Nov 2012' )
-l117 = Round.create!( :event => l1, :pos => 17, :title => '17. Runda', :title2 => '24. Nov 2012' )
-l118 = Round.create!( :event => l1, :pos => 18, :title => '18. Runda', :title2 => '1. Dez 2012' )
-l119 = Round.create!( :event => l1, :pos => 19, :title => '19. Runda', :title2 => '8. Dez 2012' )
-l120 = Round.create!( :event => l1, :pos => 20, :title => '20. Runda', :title2 => '15. Dez 2012' )
+l101 = Round.create!( :event => l1, :pos =>  1, :title => '1. Runda' )
+l102 = Round.create!( :event => l1, :pos =>  2, :title => '2. Runda' )
+l103 = Round.create!( :event => l1, :pos =>  3, :title => '3. Runda' )
+l104 = Round.create!( :event => l1, :pos =>  4, :title => '4. Runda' )
+l105 = Round.create!( :event => l1, :pos =>  5, :title => '5. Runda' )
 
 
 games_l101 = [
