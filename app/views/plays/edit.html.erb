@@ -65,7 +65,7 @@
     </td>
     <!-- right -->
     <td style='text-align: right;'>
-        <%= link_to 'Quicktipp', '#', :class => 'btn', :onclick => 'autofillPlayTips();' %>
+        <%= link_to t(:quickbets), '#', :class => 'btn', :onclick => 'autofillPlayTips();' %>
     </td>
   </tr>
 </table>
@@ -171,8 +171,8 @@
 
 
 <p>
-  <%= f.submit "Tipps speichern", :class => 'btn-primary' %>
-  <%= link_to 'Zurück', play_path( @play ), :class => 'btn' %>
+  <%= f.submit t(:edit_bets), :class => 'btn-primary' %>
+  <%= link_to t(:back), play_path( @play ), :class => 'btn' %>
 </p>  
 <% end %>
 

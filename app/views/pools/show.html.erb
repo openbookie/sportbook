@@ -21,9 +21,9 @@
     <!-- right -->
     <td style='text-align: right;'>
 <% if machmit %>
-  <%= link_to 'Mach mit! Mittippen!', add_player_to_pool_path( @pool ), :class => 'btn-primary' %>
+  <%= link_to t(:join_pool), add_player_to_pool_path( @pool ), :class => 'btn-primary' %>
 <% else %>
-  <%= link_to 'Meine Tipps bearbeiten', edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
+  <%= link_to t(:edit_bets), edit_pool_player_path( @pool, current_user() ), :class => 'btn-primary' %>
 <% end %>
     </td>
   </tr>

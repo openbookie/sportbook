@@ -15,7 +15,7 @@
     <!-- right -->
     <td style='text-align: right;'>
       <% if current_user?( @user ) %> 
-        <%= link_to 'Meine Tipps bearbeiten', edit_play_path( @play ), :class => 'btn-primary' %>
+        <%= link_to t(:edit_bets), edit_play_path( @play ), :class => 'btn-primary' %>
       <% end %>
     </td>
   </tr>

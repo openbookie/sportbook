@@ -1,4 +1,4 @@
-<h3>Nächsten Spiele</h3>
+<h3><%= t(:upcoming_games)%></h3>
 
 <table>
 <% last_play_at = Time.local( 1999, 1, 1 )
@@ -56,7 +56,7 @@
       </span>
      </td>
      <td>
-        <%= link_to 'Bearbeiten', edit_pool_player_path( tip.pool_id, tip.user.id), :class => 'btn' %>
+        <%= link_to t(:edit), edit_pool_player_path( tip.pool_id, tip.user.id), :class => 'btn' %>
       </td>
      <% end %><!-- each tip -->
   </td>
@@ -67,7 +67,7 @@
 
 
 <% if games.count > 0 %>
-<p><%= link_to 'Mehr Spiele »', live_path(:limit => 10, :tips=>true) %>
+<p><%= link_to "#{t(:more_games)} »", live_path(:limit => 10, :tips=>true) %>
 </p>
 <% else %>
 <p>Noch keine Spiele bekannt.

@@ -1,4 +1,4 @@
-<h3>Vergangene Spiele</h3>
+<h3><%= t(:past_games) %></h3>
 
 <!-- use partial for upcoming and past games?? -->
 <table class='live'>
@@ -63,7 +63,7 @@
 </table>
 
 <% if games.count > 0 %>
-<p><%= link_to 'Mehr Spiele »', live_path(:limit => 10, :tips=>true, :past=>true) %>
+<p><%= link_to "#{t(:more_games)} »", live_path(:limit => 10, :tips=>true, :past=>true) %>
 </p>
 <% else %>
 <p>Noch keine Spiele bekannt.</p>

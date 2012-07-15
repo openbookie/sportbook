@@ -1,7 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
-en:
+ro:
   signin: "Sign In"
   signout: "Sign Out"
   upcoming_games: "Upcoming Games"
@@ -13,4 +10,3 @@ en:
   edit_bets: "Edit Bets"
   save_bets: "Save Bets"
   quickbets: "Quickbets"
-  join_pool: "Let's Play! Join Pool"
