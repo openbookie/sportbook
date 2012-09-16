@@ -5,10 +5,10 @@ puts "*** loading seed data in seeds/cl/teams.rb"
 teams = [
   [ 'porto',        'FC Porto',             'cl/porto.png' ],
   [ 'kiew',         'Dynamo Kiew',          'cl/kiew.png' ],
-  [ 'paris',        'Paris St-Germain',     'cl/paris.png' ],
+  [ 'paris',        'Paris St. Germain',    'cl/paris.png' ],
   [ 'zagreb',       'Dinamo Zagreb',        'cl/zagreb.png' ],
 
-  [ 'arsenal',      'FC Arsenal London',    'cl/arsenal.png' ],
+  [ 'arsenal',      'FC Arsenal',    'cl/arsenal.png' ],
   [ 'schalke',      'FC Schalke 04',        'cl/schalke.png' ],
   [ 'olympiacos',   'Olympiakos Piräus',    'cl/olympiacos.png' ],
   [ 'montpellier',  'HSC Montpellier',      'cl/montpellier.png' ],

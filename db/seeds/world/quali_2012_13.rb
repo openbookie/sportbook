@@ -46,15 +46,15 @@ world.teams << swe
 world1 = Round.create!( :event => world, :pos => 1, :title => 'Quali - 7.+11. Sep 2012' )
 world2 = Round.create!( :event => world, :pos => 2, :title => 'Quali - 12.+16. Okt 2012' )
 world3 = Round.create!( :event => world, :pos => 3, :title => 'Quali - 22.+26. Mär 2013' )
-world4 = Round.create!( :event => world, :pos => 4, :title => 'Quali - 7..+11. Jun 2013' )
-world5 = Round.create!( :event => world, :pos => 5, :title => 'Quali - 6..+10. Sep 2013' )
-world6 = Round.create!( :event => world, :pos => 6, :title => 'Quali - 11..+15. Okt 2013' )
+world4 = Round.create!( :event => world, :pos => 4, :title => 'Quali - 7.+11. Jun 2013' )
+world5 = Round.create!( :event => world, :pos => 5, :title => 'Quali - 6.+10. Sep 2013' )
+world6 = Round.create!( :event => world, :pos => 6, :title => 'Quali - 11.+15. Okt 2013' )
 
 games_world1 = [
- [ 1,  ger, [], fro, Time.cet( '2012-09-07 00:00' ) ],
- [ 2,  kaz, [], irl, Time.cet( '2012-09-07 00:00' ) ],
- [ 3,  aut, [], ger, Time.cet( '2012-09-11 00:00' ) ],
- [ 4,  swe, [], kaz, Time.cet( '2012-09-11 00:00' ) ]]
+ [ 1,  ger, [3,0], fro, Time.cet( '2012-09-07 00:00' ) ],
+ [ 2,  kaz, [1,2], irl, Time.cet( '2012-09-07 00:00' ) ],
+ [ 3,  aut, [1,2], ger, Time.cet( '2012-09-11 00:00' ) ],
+ [ 4,  swe, [2,0], kaz, Time.cet( '2012-09-11 00:00' ) ]]
 
 games_world2 = [
  [  5,  irl, [], ger, Time.cet( '2012-10-12 00:00' ) ],

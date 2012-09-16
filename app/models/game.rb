@@ -77,6 +77,43 @@ class Game < ActiveRecord::Base
     end # each games
   end
 
+
+  def self.create_pairs_from_ary_for_group!( pairs, group )
+    
+    pairs.each do |pair|
+      game1_attribs = {
+        :round     =>pair[0][5],
+        :pos       =>pair[0][0],
+        :team1     =>pair[0][1],
+        :score1    =>pair[0][2][0],
+        :score2    =>pair[0][2][1],
+        :team2     =>pair[0][3],
+        :play_at   =>pair[0][4],
+        :group     =>group }
+
+      game2_attribs = {
+        :round     =>pair[1][5],
+        :pos       =>pair[1][0],
+        :team1     =>pair[1][1],
+        :score1    =>pair[1][2][0],
+        :score2    =>pair[1][2][1],
+        :team2     =>pair[1][3],
+        :play_at   =>pair[1][4],
+        :group     =>group }
+  
+      game1 = Game.create!( game1_attribs )
+      game2 = Game.create!( game2_attribs )
+
+      # linkup games
+      game1.next_game_id = game2.id
+      game1.save!
+  
+      game2.prev_game_id = game1.id
+      game2.save!
+    end # each pair
+  end
+
+
   def self.create_knockout_pairs_from_ary!( pairs, round1, round2 )
     
     pairs.each do |pair|

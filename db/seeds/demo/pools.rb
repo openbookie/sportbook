@@ -17,9 +17,9 @@ pool1.players << demo
 
 
 
-mx = Event.find_by_key!( 'mx_ap_2012' )
+cl = Event.find_by_key!( 'cl.2012/13' )
 
-pool2 = Pool.create!( :event => mx, :title => 'Demo', :user => cristiano, :welcome => '' )
+pool2 = Pool.create!( :event => cl, :title => 'Demo', :user => cristiano, :welcome => '' )
 
 pool2.players << cristiano
 pool2.players << demo
