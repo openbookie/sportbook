@@ -8,7 +8,7 @@ teams = [
   [ 'paris',        'Paris St. Germain',    'cl/paris.png' ],
   [ 'zagreb',       'Dinamo Zagreb',        'cl/zagreb.png' ],
 
-  [ 'arsenal',      'FC Arsenal',    'cl/arsenal.png' ],
+  [ 'arsenal',      'FC Arsenal',           'cl/arsenal.png' ],
   [ 'schalke',      'FC Schalke 04',        'cl/schalke.png' ],
   [ 'olympiacos',   'Olympiakos Piräus',    'cl/olympiacos.png' ],
   [ 'montpellier',  'HSC Montpellier',      'cl/montpellier.png' ],
@@ -28,7 +28,7 @@ teams = [
   [ 'juventus',     'Juventus Turin',       'cl/juventus.png' ],
   [ 'nordsjalland', 'FC Nordsjælland',      'cl/nordsjalland.png' ],
 
-  [ 'bayern',    'FC Bayern München',       'cl/bayern.png' ],
+  [ 'bayern',    'Bayern München',          'cl/bayern.png' ],
   [ 'valencia',  'FC Valencia',             'cl/valencia.png' ],
   [ 'lille',     'OSC Lille',               'cl/lille.png' ],
   [ 'borissow',  'BATE Borissow',           'cl/borissow.png' ],

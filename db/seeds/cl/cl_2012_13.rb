@@ -229,12 +229,12 @@ games_clc = [
    [ 6, anderlecht, [], milan,      Time.cet('2012-11-21 20:45'), clr5 ]],
   [[ 5, zenit,      [], milan,      Time.cet('2012-10-03 18:00'), clr2 ],
    [ 5, milan,      [], zenit,      Time.cet('2012-12-04 20:45'), clr6 ]],
-  [[ 6, anderlecht, [], malaga,     Time.cet('2012-10-03 20:45'), crl2 ],
+  [[ 6, anderlecht, [], malaga,     Time.cet('2012-10-03 20:45'), clr2 ],
    [ 6, malaga,     [], anderlecht, Time.cet('2012-12-04 20:45'), clr6 ]],
-  [[ 5, zenit,      [], anderlecht, Time.cet('2012-10-24 18:00'), crl3 ],
-   [ 5, anderlecht, [], zenit,      Time.cet('2012-11-06 20:45'), crl4 ]],
-  [[ 6, malaga,     [], milan,      Time.cet('2012-10-24 20:45'), crl3 ],
-   [ 6, milan,      [], malaga,     Time.cet('2012-11-06 20:45'), crl4 ]]
+  [[ 5, zenit,      [], anderlecht, Time.cet('2012-10-24 18:00'), clr3 ],
+   [ 5, anderlecht, [], zenit,      Time.cet('2012-11-06 20:45'), clr4 ]],
+  [[ 6, malaga,     [], milan,      Time.cet('2012-10-24 20:45'), clr3 ],
+   [ 6, milan,      [], malaga,     Time.cet('2012-11-06 20:45'), clr4 ]]
 ]
 
 games_cld = [
@@ -253,8 +253,74 @@ games_cld = [
 ]
 
 
+games_cle = [
+  [[ 9,  chelsea,      [], juventus,     Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 9,  juventus,     [], chelsea,      Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 10, donezk,       [], nordsjalland, Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 10, nordsjalland, [], donezk,       Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 9,  nordsjalland, [], chelsea,      Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 9,  chelsea,      [], nordsjalland, Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 10, juventus,     [], donezk,       Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 10, donezk,       [], juventus,     Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 9,  donezk,       [], chelsea,      Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 9,  chelsea,      [], donezk,       Time.cet('2012-11-07 20:45'), clr4 ]],
+  [[ 10, nordsjalland, [], juventus,     Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 10, juventus,     [], nordsjalland, Time.cet('2012-11-07 20:45'), clr4 ]]
+]
+
+games_clf = [
+  [[ 11, bayern,   [], valencia, Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 11, valencia, [], bayern,   Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 12, lille,    [], borissow, Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 12, borissow, [], lille,    Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 11, borissow, [], bayern,   Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 12, bayern,   [], borissow, Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 12, valencia, [], lille,    Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 11, lille,    [], valencia, Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 11, lille,    [], bayern,   Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 11, bayern,   [], lille,    Time.cet('2012-11-07 20:45'), clr4 ]],
+  [[ 12, borissow, [], valencia, Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 12, valencia, [], borissow, Time.cet('2012-11-07 20:45'), clr4 ]]
+]
+
+games_clg = [
+  [[ 13, celtic,    [], benfica,   Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 14, benfica,   [], celtic,    Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 14, barcelona, [], spartak,   Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 13, spartak,   [], barcelona, Time.cet('2012-11-20 18:00'), clr5 ]],
+  [[ 13, spartak,   [], celtic,    Time.cet('2012-10-02 18:00'), clr2 ],
+   [ 14, celtic,    [], spartak,   Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 14, benfica,   [], barcelona, Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 13, barcelona, [], benfica,   Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 13, spartak,   [], benfica,   Time.cet('2012-10-23 18:00'), clr3 ],
+   [ 14, benfica,   [], spartak,   Time.cet('2012-11-07 20:45'), clr4 ]],
+  [[ 14, barcelona, [], celtic,    Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 13, celtic,    [], barcelona, Time.cet('2012-11-07 20:45'), clr4 ]]
+]
+
+games_clh = [
+  [[ 15, manunited,   [], galatasaray, Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 15, galatasaray, [], manunited,   Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 16, braga,       [], cluj,        Time.cet('2012-09-19 20:45'), clr1 ],
+   [ 16, cluj,        [], braga,       Time.cet('2012-11-20 20:45'), clr5 ]],
+  [[ 15, cluj,        [], manunited,   Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 16, manunited,   [], cluj,        Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 16, galatasaray, [], braga,       Time.cet('2012-10-02 20:45'), clr2 ],
+   [ 15, braga,       [], galatasaray, Time.cet('2012-12-05 20:45'), clr6 ]],
+  [[ 15, manunited,   [], braga,       Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 15, braga,       [], manunited,   Time.cet('2012-11-07 20:45'), clr4 ]],
+  [[ 16, galatasaray, [], cluj,        Time.cet('2012-10-23 20:45'), clr3 ],
+   [ 16, cluj,        [], galatasaray, Time.cet('2012-11-07 20:45'), clr4 ]]
+]
+
 Game.create_pairs_from_ary_for_group!( games_cla, cla )
 Game.create_pairs_from_ary_for_group!( games_clb, clb )
+Game.create_pairs_from_ary_for_group!( games_clc, clc )
+Game.create_pairs_from_ary_for_group!( games_cld, cld )
+Game.create_pairs_from_ary_for_group!( games_cle, cle )
+Game.create_pairs_from_ary_for_group!( games_clf, clf )
+Game.create_pairs_from_ary_for_group!( games_clg, clg )
+Game.create_pairs_from_ary_for_group!( games_clh, clh )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( :key => 'db.seeds.cl.2012/13.version', :value => '1' )
