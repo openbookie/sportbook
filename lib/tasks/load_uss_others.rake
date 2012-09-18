@@ -21,6 +21,15 @@ task :load_uss_cl => [:environment] do |t|
   
 end
 
+desc "wettpool: load more seed data for uss bl cup 2 pool"
+task :load_uss_cup2 => [:environment] do |t|
+  
+  [ 'austria/cup_2012_13_2' ].each do |seed|
+     require "#{Rails.root}/db/seeds/#{seed}.rb"
+  end
+  
+end
+
 
 desc "wettpool: load data for uss other pools (others_data.txt)"
 task :load_uss_others_data => [:environment] do |t|
