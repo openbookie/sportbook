@@ -48,6 +48,7 @@ clr1   = Round.find_by_event_id_and_pos!( cl.id, 1 )
 
 tipp3     = Service.find_by_key!( 'tipp3' )
 
+
 clr1_tipp3_odds = [
  [ paris,       kiew,         1.55, 3.3, 4.5  ],
  [ zagreb,      porto,        3.2,  3,   1.8  ],
@@ -69,6 +70,18 @@ clr1_tipp3_odds = [
 
 Quote.create_from_ary_for_round!( clr1_tipp3_odds, tipp3, clr1 )
 
+=begin
+clr2   = Round.find_by_event_id_and_pos!( cl.id, 2 )
+
+clr2_tipp3_odds = [
+ [ spartak, celtic, 1, 0, 2 ],
+ [ juventus, donezk, 1.2, 0.2, 2.2 ],
+ [ valencia, lille,  1.3, 0.3, 2.3 ],
+ [ benfica, barcelona, 1.4, 0.4, 2.4 ]
+]
+
+Quote.create_from_ary_for_round!( clr2_tipp3_odds, tipp3, clr2 )
+=end
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( :key => 'db.seeds.cl.2012/13.2.version', :value => '1' )

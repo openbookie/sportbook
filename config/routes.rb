@@ -34,6 +34,9 @@ Wettpool::Application.routes.draw do
   
   namespace :admin do
     resources :pools
+    resources :games do
+      put 'batch_update', :on => :collection    # batch update 
+    end
     
     match 'bonus',         :to => 'bonus#index'
     match 'bonus/update',  :to => 'bonus#update'

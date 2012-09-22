@@ -151,7 +151,7 @@ class Game < ActiveRecord::Base
       game2.save!
     end # each pair
   end
-   
+      
   def over?   # game over?
     play_at <= Time.now
   end
@@ -226,6 +226,13 @@ class Game < ActiveRecord::Base
   def play_at_str
     play_at.strftime( "%a. %d. %b. / %H:%M" )
   end
+
+  def play_at_str_db
+    # todo: find a better attrib name?? 
+    # play_at.to_s(:db)  # not working: use implied utc timezone?
+    play_at.strftime( '%Y-%m-%d %H:%M %z' )  # NB: removed seconds (:%S)
+  end
+
   
   ############ some methods for stats
   

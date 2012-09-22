@@ -1,0 +1,74 @@
+<tr>
+  <td><%= game.play_at.strftime('%H:%M') %></td>
+  
+  <td style='text-align: right;'>
+     <span class='<%= game.team1_style_class %>'>
+      <%= game.team1.title %>
+     </span>
+     <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+   </td>
+
+   <td>
+     - 
+   </td>
+
+   <td>
+    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+    <span class='<%= game.team2_style_class %>'>
+      <%= game.team2.title %>
+    </span>
+   </td>
+
+
+  <td>
+    <table class='odds'>
+      <tr>
+        <td class='center'>1</td>
+        <td class='center'>X</td>
+        <td class='center'>2</td>
+        <td></td>
+      </tr>
+<% game.quotes.each do |quote| %>
+<%= fields_for 'quotes[]', quote do |ff| %>
+  <%= ff.hidden_field :game_id %>
+<tr>
+  <td><%= ff.text_field :odds1, :size => 3 %></td>
+  <td><%= ff.text_field :oddsx, :size => 3 %></td>
+  <td><%= ff.text_field :odds2, :size => 3 %></td>
+  <td><%= ff.text_field :service_id, :size => 2 %> (<%= quote.service.title %>)</td>
+    <!-- add last updated? -->
+</tr>
+<% end %><!-- fields_for quotes -->
+<% end %><!-- each quote -->
+
+<%= fields_for "new_quotes[#{game.id}]", (Quote.new) do |ff| %>
+<% ff.object.game_id = game.id %><!--NB: preset game.id -->
+  <%= ff.hidden_field :game_id %>
+<tr>
+  <td><%= ff.text_field :odds1, :size => 3 %></td>
+  <td><%= ff.text_field :oddsx, :size => 3 %></td>
+  <td><%= ff.text_field :odds2, :size => 3 %></td>
+  <td><%= ff.text_field :service_id, :size => 2 %></td>
+  <td></td>
+</tr>
+<% end %><!-- fields_for quotes -->
+
+     </table>
+  </td>
+
+
+
+  <%= fields_for 'games[]', game do |ff| %>
+    <td>
+     <%= ff.text_field :play_at_str_db, :size => 18 %>
+    </td>
+  <% end %><!-- fields_for games -->
+
+   <td>
+    <%= game.locked?   ? '(Locked Flag)' : '' %>
+   </td>
+  
+   <td>
+     (<%= game.round.event.title %> / <%= game.round.title %>)
+   </td>
+</tr>
