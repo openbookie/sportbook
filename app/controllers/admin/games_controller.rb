@@ -68,14 +68,8 @@ class Admin::GamesController < Admin::BaseController
       end
     end
 
- 
-     limit = params[:limit] || '20'
-
-     # find next upcoming games 
-    
-     @upcoming_games = Game.where( 'play_at > ?', Time.now ).order( 'play_at').limit(limit)
- 
-     render :index
+    flash[:success] = 'Spiele erfolgreich gespeichert.'
+    redirect_to admin_games_path()
   end
 
 

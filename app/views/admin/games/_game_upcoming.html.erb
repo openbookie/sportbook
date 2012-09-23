@@ -35,7 +35,8 @@
   <td><%= ff.text_field :odds1, :size => 3 %></td>
   <td><%= ff.text_field :oddsx, :size => 3 %></td>
   <td><%= ff.text_field :odds2, :size => 3 %></td>
-  <td><%= ff.text_field :service_id, :size => 2 %> (<%= quote.service.title %>)</td>
+  <!-- fix: use lookup -- add to service model? or lookup module?? -->
+  <td><%= ff.select :service_id, ([[ '- Quote Service -', nil ]] + Service.all.map { |rec| [ rec.title, rec.id ] }) %></td>
     <!-- add last updated? -->
 </tr>
 <% end %><!-- fields_for quotes -->
@@ -48,7 +49,9 @@
   <td><%= ff.text_field :odds1, :size => 3 %></td>
   <td><%= ff.text_field :oddsx, :size => 3 %></td>
   <td><%= ff.text_field :odds2, :size => 3 %></td>
-  <td><%= ff.text_field :service_id, :size => 2 %></td>
+  <!-- fix: use lookup -- add to service model? or lookup module?? -->
+  <td><%= ff.select :service_id, ([[ '- Quote Service -', nil ]] + Service.all.map { |rec| [ rec.title, rec.id ] }) %></td>
+
   <td></td>
 </tr>
 <% end %><!-- fields_for quotes -->
