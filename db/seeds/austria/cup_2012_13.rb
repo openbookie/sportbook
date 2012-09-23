@@ -162,8 +162,27 @@ games_cuprunde1 = [
   [ 32, heiligenkreuz,[0,5], rapid,         Time.cet('2012-07-15 18:00') ]
 ]
 
+games_cuprunde2 = [
+  [ 1,  kalsdorf,      [], hartberg,    Time.cet('2012-09-24 19:00') ],
+  [ 2,  viktoria,      [], ksv,         Time.cet('2012-09-25 16:00') ],
+  [ 3,  hard,          [], altach,      Time.cet('2012-09-25 16:30') ],
+  [ 4,  stegersbach,   [], salzburg,    Time.cet('2012-09-25 18:00') ],
+  [ 5,  pasching,      [], austrial,    Time.cet('2012-09-25 19:00') ],
+  [ 6,  austriak,      [], admira,      Time.cet('2012-09-25 19:00') ],
+  [ 7,  schwechat,     [], sturm,       Time.cet('2012-09-25 19:00') ],
+  [ 8,  lask,          [], groedig,     Time.cet('2012-09-25 19:00') ],
+  [ 9,  stjohann,      [], lustenau,    Time.cet('2012-09-25 19:00') ],
+  [ 10, sollenau,      [], wacker,      Time.cet('2012-09-25 19:00') ],
+  [ 11, vsv,           [], neustadt,    Time.cet('2012-09-25 19:00') ],
+  [ 12, dornbirn,      [], austria,     Time.cet('2012-09-25 20:30') ],
+  [ 13, badvoeslau,    [], mattersburg, Time.cet('2012-09-26 16:00') ],
+  [ 14, stflorian,     [], ried,        Time.cet('2012-09-26 19:00') ],
+  [ 15, allerheiligen, [], rapid,       Time.cet('2012-09-26 19:00') ],
+  [ 16, gak,           [], wac,         Time.cet('2012-09-26 20:20') ]
+]
 
 Game.create_knockouts_from_ary!( games_cuprunde1, cuprunde1 )
+Game.create_knockouts_from_ary!( games_cuprunde2, cuprunde2 )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( :key => 'db.seeds.austria.cup.2012/13.version', :value => '1' )

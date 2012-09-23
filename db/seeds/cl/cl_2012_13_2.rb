@@ -126,7 +126,7 @@ clr2_betathome_odds = [
   [ mancity,      dortmund,     1.7,  3.85, 4.45 ]]
 
 
-clr2_tipp3_odds = []
+## clr2_tipp3_odds = []
 
 Quote.create_from_ary_for_round!( clr1_tipp3_odds, tipp3, clr1 )
 ## Quote.create_from_ary_for_round!( clr2_tipp3_odds, tipp3, clr2 )
