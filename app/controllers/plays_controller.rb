@@ -28,7 +28,7 @@ class PlaysController < ApplicationController
     @pool = @play.pool
     @user = @play.user
 
-    # do NOT show odds by default
+    # show odds by default
     @show_odds  = param_show_odds?
 
 
@@ -141,8 +141,8 @@ class PlaysController < ApplicationController
   end
 
   def param_show_odds?
-    # do NOT show odds (quotes) by default
-    params[:odds].present? && ['1','t','true','yes', 'on'].include?( params[:odds])
+    # show odds (quotes) by default
+    params[:odds].nil? || (params[:odds].present? && ['1','t','true','yes', 'on'].include?( params[:odds]))
   end  
 
 end  # class PlaysController

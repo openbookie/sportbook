@@ -11,11 +11,15 @@
         8    => date
   -->
 
+
+
 <% rounds.each do |round| %>
+
+<a name="<%= round.id %>"></a>
 <table class='play keep-together' cellspacing=0>
 <tr class='game-round'>
   <td colspan='3'></td>
-  <td colspan='6' class='game-round-title'><%= round.title %></td>
+  <td colspan='6' class='game-round-title'><%= round.title %> / <%= round.title2 %></td>
 </tr>
   <% if round.games.count == 0 %>
      <tr>

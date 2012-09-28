@@ -193,9 +193,9 @@ cl1    = Round.create!( :event => cl, :pos => 13, :title => 'Finale',           
 
 
 games_cla = [
-  [[ 1, zagreb, [], porto,  Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 1, zagreb, [0,2], porto,  Time.cet('2012-09-18 20:45'), clr1 ],
    [ 2, porto,  [], zagreb, Time.cet('2012-11-21 20:45'), clr5 ]],
-  [[ 2, paris,  [], kiew,   Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 2, paris,  [4,1], kiew,   Time.cet('2012-09-18 20:45'), clr1 ],
    [ 1, kiew,   [], paris,  Time.cet('2012-11-21 20:45'), clr5 ]],
   [[ 1, kiew,   [], zagreb, Time.cet('2012-10-03 20:45'), clr2 ],
    [ 2, zagreb, [], kiew,   Time.cet('2012-12-04 20:45'), clr6 ]],
@@ -208,9 +208,9 @@ games_cla = [
 ]
 
 games_clb = [
-  [[ 3, montpellier, [], arsenal,     Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 3, montpellier, [1,2], arsenal,     Time.cet('2012-09-18 20:45'), clr1 ],
    [ 4, arsenal,     [], montpellier, Time.cet('2012-11-21 20:45'), clr5 ]],
-  [[ 4, olympiacos,  [], schalke,     Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 4, olympiacos,  [1,2], schalke,     Time.cet('2012-09-18 20:45'), clr1 ],
    [ 3, schalke,     [], olympiacos,  Time.cet('2012-11-21 20:45'), clr5 ]],
   [[ 3, arsenal,     [], olympiacos,  Time.cet('2012-10-03 20:45'), clr2 ],
    [ 3, olympiacos,  [], arsenal,     Time.cet('2012-12-04 20:45'), clr6 ]],
@@ -223,9 +223,9 @@ games_clb = [
 ]
 
 games_clc = [
-  [[ 5, malaga,     [], zenit,      Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 5, malaga,     [3,0], zenit,      Time.cet('2012-09-18 20:45'), clr1 ],
    [ 5, zenit,      [], malaga,     Time.cet('2012-11-21 18:00'), clr5 ]],
-  [[ 6, milan,      [], anderlecht, Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 6, milan,      [0,0], anderlecht, Time.cet('2012-09-18 20:45'), clr1 ],
    [ 6, anderlecht, [], milan,      Time.cet('2012-11-21 20:45'), clr5 ]],
   [[ 5, zenit,      [], milan,      Time.cet('2012-10-03 18:00'), clr2 ],
    [ 5, milan,      [], zenit,      Time.cet('2012-12-04 20:45'), clr6 ]],
@@ -238,9 +238,9 @@ games_clc = [
 ]
 
 games_cld = [
-  [[ 7, madrid,   [], mancity,  Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 7, madrid,   [3,2], mancity,  Time.cet('2012-09-18 20:45'), clr1 ],
    [ 7, mancity,  [], madrid,   Time.cet('2012-11-21 20:45'), clr5 ]],
-  [[ 8, dortmund, [], ajax,     Time.cet('2012-09-18 20:45'), clr1 ],
+  [[ 8, dortmund, [1,0], ajax,     Time.cet('2012-09-18 20:45'), clr1 ],
    [ 8, ajax,     [], dortmund, Time.cet('2012-11-21 20:45'), clr5 ]],
   [[ 7, ajax,     [], madrid,   Time.cet('2012-10-03 20:45'), clr2 ],
    [ 8, madrid,   [], ajax,     Time.cet('2012-12-04 20:45'), clr6 ]],
@@ -254,9 +254,9 @@ games_cld = [
 
 
 games_cle = [
-  [[ 9,  chelsea,      [], juventus,     Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 9,  chelsea,      [2,2], juventus,     Time.cet('2012-09-19 20:45'), clr1 ],
    [ 9,  juventus,     [], chelsea,      Time.cet('2012-11-20 20:45'), clr5 ]],
-  [[ 10, donezk,       [], nordsjalland, Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 10, donezk,       [2,0], nordsjalland, Time.cet('2012-09-19 20:45'), clr1 ],
    [ 10, nordsjalland, [], donezk,       Time.cet('2012-11-20 20:45'), clr5 ]],
   [[ 9,  nordsjalland, [], chelsea,      Time.cet('2012-10-02 20:45'), clr2 ],
    [ 9,  chelsea,      [], nordsjalland, Time.cet('2012-12-05 20:45'), clr6 ]],
@@ -269,9 +269,9 @@ games_cle = [
 ]
 
 games_clf = [
-  [[ 11, bayern,   [], valencia, Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 11, bayern,   [2,1], valencia, Time.cet('2012-09-19 20:45'), clr1 ],
    [ 11, valencia, [], bayern,   Time.cet('2012-11-20 20:45'), clr5 ]],
-  [[ 12, lille,    [], borissow, Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 12, lille,    [1,3], borissow, Time.cet('2012-09-19 20:45'), clr1 ],
    [ 12, borissow, [], lille,    Time.cet('2012-11-20 20:45'), clr5 ]],
   [[ 11, borissow, [], bayern,   Time.cet('2012-10-02 20:45'), clr2 ],
    [ 12, bayern,   [], borissow, Time.cet('2012-12-05 20:45'), clr6 ]],
@@ -284,9 +284,9 @@ games_clf = [
 ]
 
 games_clg = [
-  [[ 13, celtic,    [], benfica,   Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 13, celtic,    [0,0], benfica,   Time.cet('2012-09-19 20:45'), clr1 ],
    [ 14, benfica,   [], celtic,    Time.cet('2012-11-20 20:45'), clr5 ]],
-  [[ 14, barcelona, [], spartak,   Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 14, barcelona, [3,2], spartak,   Time.cet('2012-09-19 20:45'), clr1 ],
    [ 13, spartak,   [], barcelona, Time.cet('2012-11-20 18:00'), clr5 ]],
   [[ 13, spartak,   [], celtic,    Time.cet('2012-10-02 18:00'), clr2 ],
    [ 14, celtic,    [], spartak,   Time.cet('2012-12-05 20:45'), clr6 ]],
@@ -299,9 +299,9 @@ games_clg = [
 ]
 
 games_clh = [
-  [[ 15, manunited,   [], galatasaray, Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 15, manunited,   [1,0], galatasaray, Time.cet('2012-09-19 20:45'), clr1 ],
    [ 15, galatasaray, [], manunited,   Time.cet('2012-11-20 20:45'), clr5 ]],
-  [[ 16, braga,       [], cluj,        Time.cet('2012-09-19 20:45'), clr1 ],
+  [[ 16, braga,       [0,2], cluj,        Time.cet('2012-09-19 20:45'), clr1 ],
    [ 16, cluj,        [], braga,       Time.cet('2012-11-20 20:45'), clr5 ]],
   [[ 15, cluj,        [], manunited,   Time.cet('2012-10-02 20:45'), clr2 ],
    [ 16, manunited,   [], cluj,        Time.cet('2012-12-05 20:45'), clr6 ]],

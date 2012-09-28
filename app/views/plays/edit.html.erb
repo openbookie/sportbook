@@ -3,7 +3,8 @@
 <% content_for :breadcrumb do %>
  <%= link_to 'Wettpools', pools_path() %> ›
  <%= link_to @pool.full_title, pool_path(@pool) %> ›
- <%= link_to @user.name, edit_play_path( @play ) %>
+ <%= link_to @user.name, play_path( @play ) %> ›
+ <%= link_to 'Edit', edit_play_path( @play ) %>
 <% end %>
 
 <p class='view'>
@@ -13,8 +14,45 @@
 </p>
 
 
-<!-- add hotkey handler for quick tip autofill -->
+<style>
+ /* styling for table_expander */
+
+  tr.game-round {
+    cursor: pointer;
+  }
+  
+  tr.game-round.expander-hide {
+   background-color: navy;
+   color: white;
+  }
+  tr.game-round.expander-hide td {
+   background-color: navy;
+   color: white;
+  }
+
+  
+  tr.game-round.expander-hide td.first,
+  tr.game-round.expander-show td.first {
+    padding-left: 17px;   /* 2+15 */
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+      
+  tr.game-round.expander-hide td.first  {
+    background-image: url(<%= asset_path('down-arrow.png') %>);
+  }
+
+  tr.game-round.expander-show td.first {
+    background-image: url(<%= asset_path('right-arrow.png') %>);
+  }
+ 
+ 
+</style>
+
+
+
 <script>
+  // add hotkey handler for quick tip autofill
 
  // function testTimer()
  // {
@@ -22,6 +60,8 @@
  // }
 
  $(document).ready( function() {  
+  
+  table_expander( 'table.play', 'game-round' );
   
   recalcPlayTips();
   
@@ -161,6 +201,19 @@
 
 
 <% if @pool.flex? %>
+ 
+ <p>
+  <% @pool.event.flex_rounds.each_with_index do |round,i| %>
+    <% if i > 0 %>
+      &bull;
+    <% end %>
+    <!-- todo: use prettified cleaned url
+         add ready only attr to model      
+      -->
+    <%= link_to round.title, "##{round.id}" %>
+  <% end %>
+ </p>
+ 
   <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.flex_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 1000, :show_odds => @show_odds } %>
   <!-- todo: include group tables if groups exist -->
 <% else %>
@@ -171,7 +224,7 @@
 
 
 <p>
-  <%= f.submit t(:edit_bets), :class => 'btn-primary' %>
+  <%= f.submit t(:save_bets), :class => 'btn-primary' %>
   <%= link_to t(:back), play_path( @play ), :class => 'btn' %>
 </p>  
 <% end %>
