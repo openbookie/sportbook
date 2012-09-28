@@ -163,26 +163,74 @@ games_cuprunde1 = [
 ]
 
 games_cuprunde2 = [
-  [ 1,  kalsdorf,      [], hartberg,    Time.cet('2012-09-24 19:00') ],
-  [ 2,  viktoria,      [], ksv,         Time.cet('2012-09-25 16:00') ],
-  [ 3,  hard,          [], altach,      Time.cet('2012-09-25 16:30') ],
-  [ 4,  stegersbach,   [], salzburg,    Time.cet('2012-09-25 18:00') ],
-  [ 5,  pasching,      [], austrial,    Time.cet('2012-09-25 19:00') ],
-  [ 6,  austriak,      [], admira,      Time.cet('2012-09-25 19:00') ],
-  [ 7,  schwechat,     [], sturm,       Time.cet('2012-09-25 19:00') ],
-  [ 8,  lask,          [], groedig,     Time.cet('2012-09-25 19:00') ],
-  [ 9,  stjohann,      [], lustenau,    Time.cet('2012-09-25 19:00') ],
-  [ 10, sollenau,      [], wacker,      Time.cet('2012-09-25 19:00') ],
-  [ 11, vsv,           [], neustadt,    Time.cet('2012-09-25 19:00') ],
-  [ 12, dornbirn,      [], austria,     Time.cet('2012-09-25 20:30') ],
-  [ 13, badvoeslau,    [], mattersburg, Time.cet('2012-09-26 16:00') ],
-  [ 14, stflorian,     [], ried,        Time.cet('2012-09-26 19:00') ],
-  [ 15, allerheiligen, [], rapid,       Time.cet('2012-09-26 19:00') ],
-  [ 16, gak,           [], wac,         Time.cet('2012-09-26 20:20') ]
+  [ 1,  kalsdorf,      [3,0],         hartberg,    Time.cet('2012-09-24 19:00') ],
+  [ 2,  viktoria,      [2,2,3,3,7,4], ksv,         Time.cet('2012-09-25 16:00') ],
+  [ 3,  hard,          [0,3],         altach,      Time.cet('2012-09-25 16:30') ],
+  [ 4,  stegersbach,   [1,3],         salzburg,    Time.cet('2012-09-25 18:00') ],
+  [ 5,  pasching,      [1,1,3,2],     austrial,    Time.cet('2012-09-25 19:00') ],
+  [ 6,  austriak,      [0,0,2,0],     admira,      Time.cet('2012-09-25 19:00') ],
+  [ 7,  schwechat,     [0,5],         sturm,       Time.cet('2012-09-25 19:00') ],
+  [ 8,  lask,          [2,0],         groedig,     Time.cet('2012-09-25 19:00') ],
+  [ 9,  stjohann,      [0,3],         lustenau,    Time.cet('2012-09-25 19:00') ],
+  [ 10, sollenau,      [1,1,1,5],     wacker,      Time.cet('2012-09-25 19:00') ],
+  [ 11, vsv,           [3,1],         neustadt,    Time.cet('2012-09-25 19:00') ],
+  [ 12, dornbirn,      [2,3],         austria,     Time.cet('2012-09-25 20:30') ],
+  [ 13, badvoeslau,    [2,3],         mattersburg, Time.cet('2012-09-26 16:00') ],
+  [ 14, stflorian,     [1,1,1,1,5,6], ried,        Time.cet('2012-09-26 19:00') ],
+  [ 15, allerheiligen, [1,4],         rapid,       Time.cet('2012-09-26 19:00') ],
+  [ 16, gak,           [0,6],         wac,         Time.cet('2012-09-26 20:20') ]
 ]
 
 Game.create_knockouts_from_ary!( games_cuprunde1, cuprunde1 )
 Game.create_knockouts_from_ary!( games_cuprunde2, cuprunde2 )
+
+
+
+
+tipp3     = Service.find_by_key!( 'tipp3' )
+betathome = Service.find_by_key!( 'betathome' )
+
+cuprunde2_tipp3_odds = [
+  [ kalsdorf,      hartberg,    2.7, 2.9, 2.1  ],
+  [ viktoria,      ksv,         6.8, 4.5, 1.2  ],
+  [ hard,          altach,      6.8, 4.5, 1.2  ],
+  [ stegersbach,   salzburg,    12,  6,   1.05 ],
+  [ pasching,      austrial,    3.8, 3.4, 1.55 ],
+  [ austriak,      admira,      6.8, 4.5, 1.2  ],
+  [ schwechat,     sturm,       9,   5.5, 1.1  ],
+  [ lask,          groedig,     3.1, 3,   1.85 ],
+  [ stjohann,      lustenau,    4.6, 3.4, 1.45 ],
+  [ sollenau,      wacker,      6.5, 4,   1.25 ],
+  [ vsv,           neustadt,    5.8, 3.8, 1.3  ],
+  [ dornbirn,      austria,     9,   5.5, 1.1  ],
+  [ badvoeslau,    mattersburg, 7.5, 5,   1.15 ],
+  [ stflorian,     ried,        6.8, 4.5, 1.2  ],
+  [ allerheiligen, rapid,       12,  6,   1.05 ],
+  [ gak,           wac,         5.8, 3.8, 1.3  ]
+]
+
+cuprunde2_betathome_odds = [
+  [ kalsdorf,      hartberg,    3.1,  3.2,  2.05 ],
+  [ viktoria,      ksv,         7.5,  5.2,  1.25 ],
+  [ hard,          altach,      8.5,  5.8,  1.2  ],
+  [ stegersbach,   salzburg,    13,   11,   1.05 ],
+  [ pasching,      austrial,    4.3,  3.75, 1.6  ],
+  [ austriak,      admira,      7,    5.5,  1.25 ],
+  [ schwechat,     sturm,       13,   7.2,  1.1  ],
+  [ lask,          groedig,     3.6,  3.3,  1.85 ],
+  [ stjohann,      lustenau,    4.75, 3.75, 1.55 ],
+  [ sollenau,      wacker,      9,    5.5,  1.2  ],
+  [ vsv,           neustadt,    6.5,  5,    1.3  ],
+  [ dornbirn,      austria,     13,   7.2,  1.1  ],
+  [ badvoeslau,    mattersburg, 13,   7.2,  1.1  ],
+  [ stflorian,     ried,        11,   6.2,  1.15 ],
+  [ allerheiligen, rapid,       13,   11,   1.05 ],
+  [ gak,           wac,         7.2,  4.5,  1.3  ]
+]
+
+Quote.create_from_ary_for_round!( cuprunde2_tipp3_odds, tipp3, cuprunde2 )
+Quote.create_from_ary_for_round!( cuprunde2_betathome_odds, betathome, cuprunde2 )
+
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( :key => 'db.seeds.austria.cup.2012/13.version', :value => '1' )
