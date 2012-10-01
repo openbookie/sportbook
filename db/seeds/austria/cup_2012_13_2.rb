@@ -3,44 +3,42 @@
 ##################################
 ### ÖFB Cup 2012/13 Part II
 
+puts "*** loading seed data in seeds/austria/cup_2012_13_2.rb"
 
-kalsdorf      = Team.find_by_key!( 'kalsdorf' )
-hartberg      = Team.find_by_key!( 'hartberg' )
-viktoria      = Team.find_by_key!( 'viktoria' )
-ksv           = Team.find_by_key!( 'ksv' )
-hard          = Team.find_by_key!( 'hard' )
-altach        = Team.find_by_key!( 'altach' )
-stegersbach   = Team.find_by_key!( 'stegersbach' )
-salzburg      = Team.find_by_key!( 'salzburg' )
-pasching      = Team.find_by_key!( 'pasching' )
-austrial      = Team.find_by_key!( 'austrial' )
-austriak      = Team.find_by_key!( 'austriak' )
-admira        = Team.find_by_key!( 'admira' )
-schwechat     = Team.find_by_key!( 'schwechat' )
-sturm         = Team.find_by_key!( 'sturm' )
+
 lask          = Team.find_by_key!( 'lask' )
-groedig       = Team.find_by_key!( 'groedig' )
-stjohann      = Team.find_by_key!( 'stjohann' )
-lustenau      = Team.find_by_key!( 'lustenau' )
-sollenau      = Team.find_by_key!( 'sollenau' )
-wacker        = Team.find_by_key!( 'wacker' )
-vsv           = Team.find_by_key!( 'vsv' )
-neustadt      = Team.find_by_key!( 'neustadt' )
-dornbirn      = Team.find_by_key!( 'dornbirn' )
-austria       = Team.find_by_key!( 'austria' )
-badvoeslau    = Team.find_by_key!( 'badvoeslau' )
 mattersburg   = Team.find_by_key!( 'mattersburg' )
-stflorian     = Team.find_by_key!( 'stflorian' )
-ried          = Team.find_by_key!( 'ried' )
-allerheiligen = Team.find_by_key!( 'allerheiligen' )
 rapid         = Team.find_by_key!( 'rapid' )
-gak           = Team.find_by_key!( 'gak' )
+altach        = Team.find_by_key!( 'altach' )
+viktoria      = Team.find_by_key!( 'viktoria' )
+ried          = Team.find_by_key!( 'ried' )
+sturm         = Team.find_by_key!( 'sturm' )
+wacker        = Team.find_by_key!( 'wacker' )
+pasching      = Team.find_by_key!( 'pasching' )
+austriak      = Team.find_by_key!( 'austriak' )
+lustenau      = Team.find_by_key!( 'lustenau' )
 wac           = Team.find_by_key!( 'wac' )
+kalsdorf      = Team.find_by_key!( 'kalsdorf' )
+salzburg      = Team.find_by_key!( 'salzburg' )
+vsv           = Team.find_by_key!( 'vsv' )
+austria       = Team.find_by_key!( 'austria' )
 
 
 cup = Event.find_by_key!( 'at_cup_2012_13' )
 
-# cuprunde2  = Round.find_by_event_id_and_pos( cup.id, 2 )
+cup16 = Round.find_by_event_id_and_pos!( cup.id, 3 )
+
+games_cup16 = [
+  [ 1, lask,     [], mattersburg, Time.cet('2012-10-30 00:00') ],
+  [ 2, rapid,    [], altach,      Time.cet('2012-10-30 00:00') ],
+  [ 3, viktoria, [], ried,        Time.cet('2012-10-30 00:00') ],
+  [ 4, sturm,    [], wacker,      Time.cet('2012-10-30 00:00') ],
+  [ 5, pasching, [], austriak,    Time.cet('2012-10-30 00:00') ],
+  [ 6, lustenau, [], wac,         Time.cet('2012-10-30 00:00') ],
+  [ 7, kalsdorf, [], salzburg,    Time.cet('2012-10-30 00:00') ],
+  [ 8, vsv,      [], austria,     Time.cet('2012-10-30 00:00') ]]
+
+Game.create_knockouts_from_ary!( games_cup16, cup16 )
 
 
 

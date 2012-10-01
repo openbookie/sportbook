@@ -44,11 +44,33 @@ cluj          = Team.find_by_key!( 'cluj' )
 
 
 cl = Event.find_by_key!( 'cl.2012/13' )
-clr1   = Round.find_by_event_id_and_pos!( cl.id, 1 )
 clr2   = Round.find_by_event_id_and_pos!( cl.id, 2 )
 
 tipp3     = Service.find_by_key!( 'tipp3' )
 betathome = Service.find_by_key!( 'betathome' )
+
+clr2_tipp3_odds = [
+  [ spartak,      celtic,      1.45, 3.4, 4.6  ],
+  [ nordsjalland, chelsea,     7,    4.5, 1.25 ],
+  [ juventus,     donezk,      1.45, 3.4, 5.5  ],
+  [ borissow,     bayern,      6.6,  4,   1.3  ],
+  [ valencia,     lille,       1.45, 3.4, 4.6  ],
+  [ benfica,      barcelona,   6,    4,   1.45 ],
+  [ cluj,         manunited,   5,    3.5, 1.45 ],
+  [ galatasaray,  braga,       1.7,  3.3, 3.6  ],
+  [ zenit,        milan,       2,    3,   3    ],
+  [ kiew,         zagreb,      1.3,  3.8, 5.8  ],
+  [ porto,        paris,       2.1,  2.9, 2.9  ],
+  [ arsenal,      olympiacos,  1.3,  4,   6.6  ],
+  [ schalke,      montpellier, 1.45, 3.4, 5.5  ],
+  [ anderlecht,   malaga,      2.4,  2.9, 2.3  ],
+  [ ajax,         madrid,      6.6,  4,   1.3  ],
+  [ mancity,      dortmund,    1.75, 3.6, 3.9  ]]
+
+Quote.create_from_ary_for_round!( clr2_tipp3_odds, tipp3, clr2 )
+
+
+
 
 =begin
 betathome_winner_odds = [
