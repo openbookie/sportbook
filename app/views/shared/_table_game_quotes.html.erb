@@ -1,0 +1,24 @@
+
+<% if game.quotes.count > 0 %>
+
+<table class='odds'>
+  <tr>
+    <td class='center'>1</td>
+    <td class='center'>X</td>
+    <td class='center'>2</td>
+    <td><!-- service --></td>
+  </tr>
+<% game.quotes.each do |quote| %>
+<tr>
+  <td><%= fmt_quote( quote.odds1 ) %></td>
+  <td><%= fmt_quote( quote.oddsx ) %></td>
+  <td><%= fmt_quote( quote.odds2 ) %></td>
+  <td>(<%= quote.service.title %>)</td>
+    <!-- add last updated? -->
+</tr>
+<% end %><!-- each quote -->
+</table>
+
+<% else %>
+  <!-- no quotes -->
+<% end %>

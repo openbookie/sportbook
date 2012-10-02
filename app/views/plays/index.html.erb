@@ -151,7 +151,7 @@
         <% end %>
        </td>
 
-       <%= render :partial => 'shared/td_game_team1',   :locals => { :game => game } %>
+       <%= render_game_team1( game ) %>
        
       <% @users.each do |user| %>
         <% tip = Tip.find_by_user_and_pool_and_game( user, @pool, game ) %>
@@ -186,9 +186,9 @@
 
       <% end %><!-- users.each --> 
 
-       <%= render :partial => 'shared/td_game_score',   :locals => { :game => game } %>
-       <%= render :partial => 'shared/td_game_team2',   :locals => { :game => game } %>
-       <%= render :partial => 'shared/td_game_date',    :locals => { :game => game } %>
+       <%= render_game_score( game ) %>
+       <%= render_game_team2( game ) %>
+       <%= render_game_date( game ) %>
      </tr>
   <% end %> <!-- games.each -->
  <% end %> <!-- if pool.flex? && round.calc? -->  

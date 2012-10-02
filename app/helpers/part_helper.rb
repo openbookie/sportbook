@@ -8,6 +8,29 @@ module PartHelper
   # by convention all start w/ render_
 
 
+  def render_event_quotes( event, opts={} )
+    render :partial => 'shared/table_event_quotes', :locals => { :event => event }
+  end
+
+
+  def render_play_teams( play, opts={} )
+    render :partial => 'shared/table_play_teams',
+           :locals => { :play => play,
+                        :pool => play.pool
+                      }
+  end
+
+  def render_play_teams_for_form( play, form, opts={} )
+    
+    render :partial => 'shared/table_play_teams_input',
+           :locals => { :play  => play,
+                        :f     => form,
+                        :event => play.pool.event,
+                        :pool  => play.pool
+                      }
+  end
+
+
   def render_game_date( game, opts={} )
     render :partial => 'shared/td_game_date', :locals => { :game => game }
   end
@@ -22,6 +45,10 @@ module PartHelper
 
   def render_game_team2( game, opts={} )
     render :partial => 'shared/td_game_team2', :locals => { :game => game }
+  end
+  
+  def render_game_quotes( game, opts={} )
+    render :partial => 'shared/table_game_quotes', :locals => { :game => game }
   end
 
 

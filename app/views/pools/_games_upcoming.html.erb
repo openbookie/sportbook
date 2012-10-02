@@ -59,7 +59,11 @@
         <%= link_to t(:edit), edit_pool_player_path( tip.pool_id, tip.user.id), :class => 'btn' %>
       </td>
      <% end %><!-- each tip -->
-  </td>
+  
+    <td>
+       <%= render_game_quotes( game ) %>
+    </td>
+  
  </tr> 
 <% last_play_at = game.play_at
    end %><!-- each game -->

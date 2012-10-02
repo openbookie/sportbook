@@ -116,6 +116,14 @@
 
 <%= form_for @play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
 
+
+<!-- todo/fix:
+
+   break into two partials
+   - _edit_flex.html.erb
+   - _edit_fix.html.erb
+  -->
+
 <% if @pool.locked? %>
   <% if @pool.flex? %>
     <p class='flash notice'><b>Hinweis.</b> Team Abgabefrist abgelaufen. Team Bonustipps gesperrt.</p>
@@ -125,54 +133,15 @@
   
   <%= f.hidden_field :team1_id %>
   <%= f.hidden_field :team2_id %>
-<table>
- <tr>
-   <td>1. Platz</td>
-       <!-- fix: use helper or partial -->
-     <% if @play.team1.present? %>
-         <td>
-            <%= image_tag( @play.team1.img ) if @play.team1.img.present? %>
-            <%= @play.team1.title %>
-         </td>
-       <% else %>
-         <td style='text-align: center;'>
-           <span class='missing'>?</span>
-         </td>
-       <% end %>
- </tr>
- <tr>
-   <td>2. Platz</td>
-       <% if @play.team2.present? %>
-        <td>
-            <%= image_tag( @play.team2.img ) if @play.team2.img.present? %>
-            <%= @play.team2.title %>
-        </td>
-       <% else %>
-         <td style='text-align: center;'>
-           <span class='missing'>?</span>
-          </td>
-       <% end %>
- </tr>
-</table>
+
+  <%= render_play_teams( @play ) %>
+
+  
 <% else %><!-- pool.locked? clause -->
 <% if @pool.flex? %>
  <!-- NB: only needed for flex - in fixed winner gets calculated automatically -->
-<table>
- <tr>
-   <td><%= f.label :team1_id, '1. Platz' %></td>
-   <td><%= f.select :team1_id, Lookup.team_options_for_event( @pool.event ) %></td>
- </tr>
- <tr>
-   <td><%= f.label :team2_id, '2. Platz' %></td>
-   <td><%= f.select :team2_id, Lookup.team_options_for_event( @pool.event ) %></td>
- </tr>
- <% if @pool.team3? %>
- <tr>
-   <td><%= f.label :team3_id, '3. Platz' %></td>
-   <td><%= f.select :team3_id, Lookup.team_options_for_event( @pool.event ) %></td>
- </tr>
-  <% end %><!-- if pool.team3? -->
-</table>
+
+  <%= render_play_teams_for_form( @play, f ) %>
 
 <% else %><!-- pool fix clause -->
   <%= f.hidden_field :team1_id %>
@@ -182,21 +151,7 @@
 
 
 
-<% if @show_odds %>
-<table class='odds'>
- <tr>
-<% Service.all.each do |srv| %>
-   <td>
-    <%= srv.title %><br>
-  <% srv.event_quotes.where( :event_id => @pool.event.id ).each do |quote| %>
-     <%= quote.team.tag %> <%= fmt_quote( quote.odds ) %><br>
-  <% end %><!-- each qoute -->
-  </td>
-<% end %><!-- each service -->
-</tr>
-</table>
-<% end %><!-- show odds? -->
-
+  <%= render_event_quotes( @pool.event ) if @show_odds %>
 
 
 

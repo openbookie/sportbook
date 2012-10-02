@@ -1,0 +1,22 @@
+<!-- paras: required play, form
+      calculated (from play) -> event, pool
+  -->
+
+<!-- todo: rename _input to _form or use subfolder form or similar -->
+
+<table>
+ <tr>
+   <td><%= f.label :team1_id, '1. Platz' %></td>
+   <td><%= f.select :team1_id, Lookup.team_options_for_event( event ) %></td>
+ </tr>
+ <tr>
+   <td><%= f.label :team2_id, '2. Platz' %></td>
+   <td><%= f.select :team2_id, Lookup.team_options_for_event( event ) %></td>
+ </tr>
+ <% if pool.team3? %>
+ <tr>
+   <td><%= f.label :team3_id, '3. Platz' %></td>
+   <td><%= f.select :team3_id, Lookup.team_options_for_event( event ) %></td>
+ </tr>
+  <% end %><!-- if pool.team3? -->
+</table>

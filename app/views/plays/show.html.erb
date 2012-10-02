@@ -22,62 +22,8 @@
 </table>
 
 
-<table>
- <tr>
-   <td>1. Platz</td>
-       <!-- fix: use helper or partial -->
-     <% if @play.team1.present? %>
-         <td>
-          <% if @play.public? %>
-            <%= image_tag( @play.team1.img ) if @play.team1.img.present? %>
-            <%= @play.team1.title %>
-          <% else %>
-             Team Anonym
-          <% end %>
-         </td>
-       <% else %>
-         <td style='text-align: center;'>
-           <span class='missing'>?</span>
-         </td>
-       <% end %>
- </tr>
- <tr>
-   <td>2. Platz</td>
-       <% if @play.team2.present? %>
-        <td>
-          <% if @play.public? %>
-            <%= image_tag( @play.team2.img ) if @play.team2.img.present? %>
-            <%= @play.team2.title %>
-          <% else %>
-             Team Anonym
-          <% end %>
-        </td>
-       <% else %>
-         <td style='text-align: center;'>
-           <span class='missing'>?</span>
-          </td>
-       <% end %>
- </tr>
- <% if @pool.team3? %>
- <tr>
-   <td>3. Platz</td>
-   <% if @play.team3.present? %>
-      <td>
-        <% if @play.public? %>
-          <%= image_tag( @play.team3.img ) if @play.team3.img.present? %>
-          <%= @play.team3.title %>
-        <% else %>
-           Team Anonym
-        <% end %>
-       </td>
-       <% else %>
-         <td style='text-align: center;'>
-           <span class='missing'>?</span>
-          </td>
-       <% end %>
- </tr>
-<% end %>
-</table>
+  <%= render_play_teams( @play ) %>
+
 
 
 <!-- table columns:
@@ -111,13 +57,13 @@
     %>
     <tr>
         
-       <%= render :partial => 'shared/td_tip_toto12x',  :locals => { :tip  => tip }  %>
-       <%= render :partial => 'shared/td_tip_bingo',    :locals => { :tip  => tip }  %>
-       <%= render :partial => 'shared/td_game_team1',   :locals => { :game => game } %>
-       <%= render :partial => 'shared/td_tip_score',    :locals => { :tip  => tip }  %>
-       <%= render :partial => 'shared/td_game_score',   :locals => { :game => game } %>
-       <%= render :partial => 'shared/td_game_team2',   :locals => { :game => game } %>
-       <%= render :partial => 'shared/td_game_date',    :locals => { :game => game } %>
+       <%= render_tip_toto12x( tip )  %>
+       <%= render_tip_bingo( tip )  %>
+       <%= render_game_team1( game ) %>
+       <%= render_tip_score( tip )  %>
+       <%= render_game_score( game ) %>
+       <%= render_game_team2( game ) %>
+       <%= render_game_date( game ) %>
 
      </tr>
   <% end %> <!-- games -->

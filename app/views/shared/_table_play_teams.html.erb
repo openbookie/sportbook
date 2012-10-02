@@ -1,0 +1,60 @@
+<!-- paras: required play
+     calculated: pool from play
+  -->
+ 
+<table>
+ <tr>
+   <td>1. Platz</td>
+       <!-- fix: use helper or partial -->
+     <% if play.team1.present? %>
+         <td>
+          <% if play.public? %>
+            <%= image_tag( play.team1.img ) if play.team1.img.present? %>
+            <%= play.team1.title %>
+          <% else %>
+             Team Anonym
+          <% end %>
+         </td>
+       <% else %>
+         <td style='text-align: center;'>
+           <span class='missing'>?</span>
+         </td>
+       <% end %>
+ </tr>
+ <tr>
+   <td>2. Platz</td>
+       <% if play.team2.present? %>
+        <td>
+          <% if play.public? %>
+            <%= image_tag( play.team2.img ) if play.team2.img.present? %>
+            <%= play.team2.title %>
+          <% else %>
+             Team Anonym
+          <% end %>
+        </td>
+       <% else %>
+         <td style='text-align: center;'>
+           <span class='missing'>?</span>
+          </td>
+       <% end %>
+ </tr>
+ <% if pool.team3? %>
+ <tr>
+   <td>3. Platz</td>
+   <% if play.team3.present? %>
+      <td>
+        <% if play.public? %>
+          <%= image_tag( play.team3.img ) if play.team3.img.present? %>
+          <%= play.team3.title %>
+        <% else %>
+           Team Anonym
+        <% end %>
+       </td>
+       <% else %>
+         <td style='text-align: center;'>
+           <span class='missing'>?</span>
+          </td>
+       <% end %>
+ </tr>
+<% end %>
+</table>

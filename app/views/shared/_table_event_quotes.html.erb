@@ -1,0 +1,14 @@
+<!-- paras: requires event -->
+
+<table class='odds'>
+ <tr>
+<% Service.all.each do |srv| %>
+   <td>
+    <%= srv.title %><br>
+    <% srv.event_quotes.where( event.id ).each do |quote| %>
+     <%= quote.team.tag %> <%= fmt_quote( quote.odds ) %><br>
+  <% end %><!-- each qoute -->
+  </td>
+<% end %><!-- each service -->
+</tr>
+</table>
