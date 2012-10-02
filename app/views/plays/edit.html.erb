@@ -17,32 +17,43 @@
 <style>
  /* styling for table_expander */
 
-  tr.game-round {
+  tr.bonus-round {
+    background-color: silver;
+  }
+
+  tr.game-round,
+  tr.bonus-round {
     cursor: pointer;
   }
   
-  tr.game-round.expander-hide {
+  tr.game-round.expander-hide,
+  tr.bonus-round.expander-hide {
    background-color: navy;
    color: white;
   }
-  tr.game-round.expander-hide td {
+  tr.game-round.expander-hide td,
+  tr.bonus-round.expander-hide td {
    background-color: navy;
    color: white;
   }
 
   
   tr.game-round.expander-hide td.first,
-  tr.game-round.expander-show td.first {
+  tr.game-round.expander-show td.first,
+  tr.bonus-round.expander-hide td.first,
+  tr.bonus-round.expander-show td.first {
     padding-left: 17px;   /* 2+15 */
     background-repeat: no-repeat;
     background-position: left center;
   }
       
-  tr.game-round.expander-hide td.first  {
+  tr.game-round.expander-hide td.first,
+  tr.bonus-round.expander-hide td.first {
     background-image: url(<%= asset_path('down-arrow.png') %>);
   }
 
-  tr.game-round.expander-show td.first {
+  tr.game-round.expander-show td.first,
+  tr.bonus-round.expander-show td.first {
     background-image: url(<%= asset_path('right-arrow.png') %>);
   }
  
@@ -62,6 +73,7 @@
  $(document).ready( function() {  
   
   table_expander( 'table.play', 'game-round' );
+  table_expander( 'table.bonus', 'bonus-round' );
   
   recalcPlayTips();
   
@@ -124,24 +136,41 @@
    - _edit_fix.html.erb
   -->
 
+
 <% if @pool.locked? %>
   <% if @pool.flex? %>
     <p class='flash notice'><b>Hinweis.</b> Team Abgabefrist abgelaufen. Team Bonustipps gesperrt.</p>
   <% else %>
     <p class='flash notice'><b>Hinweis.</b> Abgabefrist abgelaufen. Tippabgabe gesperrt.</p>
   <% end %>
+<% end %>
+
+
+  
+  
+
+
+<table class='bonus'>
+  <tr class='bonus-round'>
+    <td class='bonus-round-title'>Bonus Tipp - 1. Platz, 2. Platz</td>
+  </tr>
+  
+<% if @pool.locked? %>
   
   <%= f.hidden_field :team1_id %>
   <%= f.hidden_field :team2_id %>
 
-  <%= render_play_teams( @play ) %>
-
+  <tr><td>
+    <%= render_play_teams( @play ) %>
+  </td></tr>
   
 <% else %><!-- pool.locked? clause -->
 <% if @pool.flex? %>
  <!-- NB: only needed for flex - in fixed winner gets calculated automatically -->
 
+  <tr><td>
   <%= render_play_teams_for_form( @play, f ) %>
+  </td></tr>
 
 <% else %><!-- pool fix clause -->
   <%= f.hidden_field :team1_id %>
@@ -150,8 +179,12 @@
 <% end %><!-- pool.locked? -->
 
 
-
+  <tr><td>
   <%= render_event_quotes( @pool.event ) if @show_odds %>
+  </td></tr>
+
+</table>
+
 
 
 

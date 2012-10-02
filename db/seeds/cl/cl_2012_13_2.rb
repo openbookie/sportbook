@@ -70,9 +70,6 @@ clr2_tipp3_odds = [
 Quote.create_from_ary_for_round!( clr2_tipp3_odds, tipp3, clr2 )
 
 
-
-
-=begin
 betathome_winner_odds = [
  [ barcelona,   3.4 ],
  [ madrid,      4.2 ],
@@ -108,7 +105,6 @@ betathome_winner_odds = [
  [ nordsjalland, 1000 ]]
 
 EventQuote.create_from_ary!( betathome_winner_odds, betathome, cl )
-=end
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
