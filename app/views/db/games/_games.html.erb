@@ -18,25 +18,17 @@
   <td>
     <%= game.play_at.strftime('%H:%M') %>
   </td>
-  <td style='text-align: right;'>
-    <%= link_to game.team1.title, db_team_path( game.team1 ) %>
-    <%= "(#{game.team1.title2})" if game.team1.title2.present? %>
-  </td>
-  <td>
-    <%= image_tag( game.team1.img ) if game.team1.img.present? %>
-  </td>
-  <td>
-    <%= game.score_str %>
-  </td>
-  <td>
-    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
-  </td>
-  <td>
-    <%= link_to game.team2.title, db_team_path( game.team2 ) %>
-    <%= "(#{game.team2.title2})" if game.team2.title2.present? %>
-  </td>
+ 
+  <%= render_game_team1_v2( game, :link => :db ) %>
+  <%= render_game_score( game ) %>
+  <%= render_game_team2_v2( game, :link => :db ) %>
+
   <td>
     (<%= link_to game.round.event.title, db_event_path( game.round.event ) %> / <%= game.round.title %>)
+  </td>
+  
+  <td>
+    <%= render_game_quotes( game ) %>
   </td>
   
  </tr> 

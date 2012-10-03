@@ -1,0 +1,17 @@
+<!-- paras: game
+  NB: v2 uses two tds (table cells)
+  -->
+
+<!-- todo/fix:
+  check for :link options (:db|:live)
+  -->
+
+<td>
+  <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+</td>
+<td class='game-team2'>
+  <span class='<%= game.team2_style_class %>'>
+    <%= link_to game.team2.title, db_team_path( game.team2 ) %>
+  </span>
+  <%= "(#{game.team2.title2})" if game.team2.title2.present? %>
+</td>

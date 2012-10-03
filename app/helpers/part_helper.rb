@@ -59,8 +59,18 @@ module PartHelper
     render :partial => 'shared/td_game_team1', :locals => { :game => game }
   end
 
+  def render_game_team1_v2( game, opts={} )
+    ### fix/todo: add check for :link opt
+    render :partial => 'shared/td_game_team1_v2', :locals => { :game => game }
+  end
+
   def render_game_team2( game, opts={} )
     render :partial => 'shared/td_game_team2', :locals => { :game => game }
+  end
+
+  def render_game_team2_v2( game, opts={} )
+    ### fix/todo: add check for :link opt
+    render :partial => 'shared/td_game_team2_v2', :locals => { :game => game }
   end
   
   def render_game_quotes( game, opts={} )
