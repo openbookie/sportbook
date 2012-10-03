@@ -3,10 +3,13 @@ desc "wettpool: load seed data for uss other pools"
 task :load_uss_others => [:environment] do |t|
   
   ['services',
-   'austria/teams', 'austria/bl_2012_13', 'austria/cup_2012_13',
+   'austria/teams',
+   'austria/bl_2012_13', 'austria/bl_2012_13_quotes',
+   'austria/cup_2012_13', 'austria/cup_2012_13_quotes',
    'euro/teams', 'world/quali_2012_13',
    'cl/teams', 'cl/cl_2012_13',
    'uss/users', 'uss/others_pools' ].each do |seed|
+     puts "*** loading seed data in '#{seed}'..."
      require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
   
