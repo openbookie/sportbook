@@ -1,0 +1,16 @@
+<!-- paras: requires play -->
+
+<% if play.team2.present? %>
+  <td>
+    <% if play.public? %>
+      <%= image_tag( play.team2.img ) if play.team2.img.present? %>
+      <%= play.team2.title %>
+    <% else %>
+      Team Anonym
+    <% end %>
+  </td>
+<% else %>
+  <td style='text-align: center;'>
+    <span class='missing'>?</span>
+  </td>
+<% end %>

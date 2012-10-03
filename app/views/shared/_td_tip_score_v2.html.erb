@@ -1,0 +1,30 @@
+<!-- paras requires tip;
+     calculated: game -> tip.game
+  -->
+
+<% if tip.present? %>
+  <td class='tip-score'>
+
+    <% if show_tips %>
+      <span class='<%= tip.bingo_style_class %>'>
+        <%= tip.public_score_str %>
+      </span>
+    <% end %>
+    
+    <% if show_pts %>
+       <% if tip.calc_points > 0 %>
+         <span class='<%= tip.bingo_style_class %>'>
+          <%= tip.calc_points_str %> <%= tip.calc_points %> 
+         </span>
+       <% elsif game.toto12x.present? %>
+          ×
+       <% else %>
+         <!-- no game results (toto12x) yet available -->
+       <% end %>
+    <% end %>
+  </td>
+<% else %>
+  <td class='tip-score'>
+    ♦<!-- fehler: datensatz fehlt! -->
+  </td>
+<% end %>
