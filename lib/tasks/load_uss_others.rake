@@ -7,7 +7,7 @@ task :load_uss_others => [:environment] do |t|
    'austria/2012_13/bl', 'austria/2012_13/bl_quotes',
    'austria/2012_13/cup', 'austria/2012_13/cup_quotes',
    'euro/teams', 'world/quali_2012_13',
-   'cl/teams', 'cl/cl_2012_13',
+   'cl/teams', 'cl/2012_13/cl', 'cl/2012_13/cl_quotes',
    'uss/users', 'uss/others_pools' ].each do |seed|
      puts "*** loading seed data in '#{seed}'..."
      require "#{Rails.root}/db/seeds/#{seed}.rb"
@@ -20,6 +20,7 @@ desc "wettpool: load more seed data for bl cup 2 pool"
 task :load_cup_ii => [:environment] do |t|
   
   [ 'austria/2012_13/cup_2' ].each do |seed|
+     puts "*** loading seed data in '#{seed}'..."
      require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
   
@@ -29,7 +30,8 @@ end
 desc "wettpool: load cl 2012/13 quotes for round 1"
 task :load_cl_ii => [:environment] do |t|
   
-  [ 'cl/cl_2012_13_2' ].each do |seed|
+  [ 'cl/2012_13/cl_2' ].each do |seed|
+     puts "*** loading seed data in '#{seed}'..."
      require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
   

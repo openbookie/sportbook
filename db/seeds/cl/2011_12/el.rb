@@ -2,8 +2,6 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
-puts "*** loading seed data in seeds/cl/el_2011_12.rb"
-
 #################################
 ##  Europa League 2012
 

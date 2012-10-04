@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-puts "*** loading seed data in seeds/cl/teams.rb"
 
 teams = [
   [ 'porto',        'FC Porto',             'cl/porto.png' ],
