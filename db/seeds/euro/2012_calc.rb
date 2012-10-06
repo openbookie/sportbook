@@ -2,8 +2,6 @@
 
 # note: timezone for games (play_at) is *always* CET (central european time)
 
-puts "*** loading seed data in seeds/euro/2012_calc.rb"
-
 
 euro = Event.find_by_key!( 'euro' )
 

@@ -27,7 +27,19 @@ class Team < ActiveRecord::Base
     Game.where( 'team1_id = ? or team2_id = ?', id, id ).order( 'play_at' ).all
   end
 
+  def self.update_image_from_ary!( teams )
+    teams.each do |values|
 
+      team = Team.find_by_key!( values[0])
+      
+      attr = {
+        :img   => values[1]
+      }
+
+      team.update_attributes!( attr )
+      
+    end # each team
+  end
 
   def self.create_from_ary!( teams )
     teams.each do |values|
