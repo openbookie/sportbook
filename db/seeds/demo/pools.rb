@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-puts "*** loading seed data in seeds/demo/pools.rb"
-
 
 lionel    =  User.find_by_key!( 'lionel' )
 cristiano =  User.find_by_key!( 'cristiano' )

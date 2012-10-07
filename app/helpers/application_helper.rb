@@ -5,7 +5,8 @@ module ApplicationHelper
   def powered_by
     ## todo/fix: use version from wettpool module
     content_tag :div do
-      link_to( 'Wettpool/1', 'http://geraldb.github.com/wettpool' )                       + ' - ' +
+      link_to( 'Sportbook/1', 'https://github.com/geraldb/sportbook' ) + ', ' +
+      link_to( "sport.db/#{SportDB::VERSION}", 'https://github.com/geraldb/sport.db' ) + ' - ' +
       content_tag( :span, "Ruby/#{RUBY_VERSION} (#{RUBY_RELEASE_DATE}/#{RUBY_PLATFORM}) on") + ' ' +
       content_tag( :span, "Rails/#{Rails.version} (#{Rails.env})" )
       ## content_tag( :span, "#{request.headers['SERVER_SOFTWARE'] || request.headers['SERVER']}" )
@@ -15,7 +16,7 @@ module ApplicationHelper
   def title(*parts)
     unless parts.empty?
       content_for :title do
-        (parts << 'Wettpool').join( ' ‹ ' )
+        (parts << 'Sportbook').join( ' ‹ ' )
       end
     end
   end

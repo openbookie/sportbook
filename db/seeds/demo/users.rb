@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-puts "*** loading seed data in seeds/demo/users.rb"
-
 ##############
 ##  Users
 

@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-puts "*** loading seed data in seeds/world/quali_2012_13_2.rb"
-
 #################################3
 # Gruppe C
 

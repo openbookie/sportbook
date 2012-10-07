@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-puts "*** loading seed data in seeds/uss/pools_others.rb"
-
 ##############
 ##  Pools
 

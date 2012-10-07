@@ -1,5 +1,12 @@
 
 
+SportDB.load([
+   'cl/teams',
+   'cl/2012_13/cl',
+   'euro/teams',
+   'world/quali_2012_13'
+   ])
+
 ['services',
  'cl/teams', 'cl/2012_13/cl', 'cl/2012_13/cl_quotes',
  'euro/teams', 'world/quali_2012_13',

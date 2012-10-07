@@ -1,12 +1,9 @@
 # encoding: utf-8
 
-### fix/todo:
-##   team3 => false
 
-#euro = Event.create!( :key => 'euro',
-#                      :title => 'Euro 2012',
-#                      :team3 => false,
-#                      :start_at => Time.cet( '2012-06-07 17:00' ))
+
+euro = Event.find_by_key!( 'euro' )
+euro.update_attributes!( :team3 => false )
 
 
 

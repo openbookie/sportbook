@@ -6,6 +6,7 @@ gem 'kramdown'     # all ruby markdown processor/engine
 gem 'rails', '3.2.1'
 gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
+gem 'sportdb', '0.3.0'  # see https://github.com/geraldb/sport.db
 
 group :production do
   gem 'pg'

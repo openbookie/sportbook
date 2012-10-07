@@ -2,7 +2,7 @@
 
 
 teams = [
-  [ 'porto'   'cl/porto.png' ],
+  [ 'porto',   'cl/porto.png' ],
   [ 'kiew',   'cl/kiew.png' ],
   [ 'paris',  'cl/paris.png' ],
   [ 'zagreb', 'cl/zagreb.png' ],
