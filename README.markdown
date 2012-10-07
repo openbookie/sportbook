@@ -1,23 +1,24 @@
-# Welcome to Wettpool.
+# Welcome to Sportbook.
 
 A free, open source sports betting pool in Ruby on Rails (version 3.2 and up).
 
 Example events include:
 
-* [UEFA Champions League 2012](https://github.com/geraldb/wettpool/tree/master/db/seeds/cl)
-* [UEFA Europa League 2012](https://github.com/geraldb/wettpool/tree/master/db/seeds/cl)
-* [Österreichische Bundesliga 2011/12, 2012/13](https://github.com/geraldb/wettpool/tree/master/db/seeds/austria)
-* [ÖFB Cup 2011/12, 2012/13](https://github.com/geraldb/wettpool/tree/master/db/seeds/austria)
-* [UEFA European Football Championship aka Euro 2012](https://github.com/geraldb/wettpool/tree/master/db/seeds/euro)
-* [Romania Liga 1 2012/13](https://github.com/geraldb/wettpool/tree/master/db/seeds/romania)
-* [México Primera División Apertura 2012](https://github.com/geraldb/wettpool/tree/master/db/seeds/mexico)
-* [World Cup Quali 2012/13](https://github.com/geraldb/wettpool/tree/master/db/seeds/world)
-* [National Hockey League (NHL) 2012](https://github.com/geraldb/wettpool/tree/master/db/seeds/nhl)
+* UEFA Champions League 2012/13
+* UEFA Europa League 2011/12
+* Österreichische Bundesliga 2011/12, 2012/13
+* ÖFB Cup 2011/12, 2012/13
+* UEFA European Football Championship aka Euro 2012
+* Romania Liga 1 2012/13
+* México Primera División Apertura 2012
+* World Cup Quali 2012/13
+* National Hockey League (NHL) 2012
 
+For more events or leagues, see the [`sport.db`](http://geraldb.github.com/sport.db) site.
 
 ## Demo
 
-Try the demo install running on Heroku [`wettpool.herokuapp.com`](http://wettpool.herokuapp.com).
+Try the demo install running on Heroku [`sportbook.herokuapp.com`](http://sportbook.herokuapp.com).
 
 Use the login credentials `demo`/`demo`. 
 
@@ -26,13 +27,13 @@ Use the login credentials `demo`/`demo`.
 
 ### Setup on your local machine
 
-Clone the Wettpol git repo:
+Clone the Sportbook git repo:
 
-    git clone git://github.com/geraldb/wettpool.git
+    git clone git://github.com/geraldb/sportbook.git
 
 Get all your Ruby libraries (gems) installed using the bundler tool:
 
-    cd wettpool
+    cd sportbook
     bundle install --without production
 
 Note, use the `--without production` option for local development
@@ -52,13 +53,13 @@ That's it.
 
 ### Setup on Heroku 
 
-Clone the Wettpool git repo:
+Clone the Sportbook git repo:
 
-    git clone git://github.com/geraldb/wettpool.git
+    git clone git://github.com/geraldb/sportbook.git
 
 Create app on Heroku e.g.
 
-    cd wettpool
+    cd sportbook
     heroku create <your_app_name_here>
 
 Upload via
@@ -74,9 +75,9 @@ Showtime! Sign in using the  `demo`/`demo` credentials. That's it.
 
 ## License
 
-The wettpool scripts and templates are dedicated to the public domain.
+The sportbook scripts and templates are dedicated to the public domain.
 Use it as you please with no restrictions whatsoever.
 
 ## Questions? Comments?
 
-Send them along to the [Wettpool Forum/Mailing List](http://groups.google.com/group/wettpool). Thanks!
+Send them along to the [Open Sports Database & Friends Forum/Mailing List](http://groups.google.com/group/opensport). Thanks!
