@@ -32,6 +32,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'bourbon'   # scss mixins (see http://thoughtbot.com/bourbon)
+gem 'bourbon', '1.4.0'   # scss mixins (see http://thoughtbot.com/bourbon)
 
 gem 'ri_cal'
