@@ -1,4 +1,4 @@
-# Wettpool Dev Tips
+# Sportbook Dev Tips
 
 
 ## Tips for Ruby Version Manager
@@ -23,7 +23,14 @@ Annotate models via
 
 Drop and recreate DB on later uploads via
 
-    heroku pg:reset SHARED_DATABASE --confirm wettpool
+Option 1a) Old command (before migration to postgres.heroku.com dev plan) using shared db
+
+    heroku pg:reset SHARED_DATABASE --confirm sportbook
+
+Option 1b) New command (using postgres.heroku.com dev plan)
+
+    heroku pg:reset DATABASE_URL --confirm sportbook
+
     heroku run rake db:migrate db:seed
     heroku restart
 
