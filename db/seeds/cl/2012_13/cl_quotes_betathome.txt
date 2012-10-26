@@ -20,5 +20,23 @@ ajax           madrid         7      4.6    1.4
 mancity        dortmund       1.7    3.85   4.45
 
 
+4. Spieltag
 
+Dynamo Kiev - FC Porto                  06.11.12 20:45  2,65  3,30  2,55
+Paris Saint Germain - NK Dinamo Zagreb  06.11.12 20:45  1,15  7,00  16,00
+FC Schalke 04 - Arsenal FC              06.11.12 20:45  1,95  3,35  3,80
+Olympiakos Piraeus - HSC Montpellier    06.11.12 20:45  2,00  3,20  3,85
+AC Milan - CF Malaga                    06.11.12 20:45  2,15  3,20  3,40
+RSC Anderlecht - FC Zenit St Petersburg 06.11.12 20:45  2,85  3,30  2,40
+Manchester City - Ajax Amsterdam        06.11.12 20:45  1,30  5,50  8,20
+Real Madrid - Borussia Dortmund         06.11.12 20:45  1,40  4,50  7,40
+
+Chelsea FC - Shakhtar Donetsk           07.11.12 20:45  1,85  3,55  4,00
+Juventus Turin - FC Nordsjaelland       07.11.12 20:45  1,15  7,00  16,00
+CF Valencia - Bate Borisov              07.11.12 20:45  1,25  6,00  9,25
+FC Bayern München - OSC Lille           07.11.12 20:45  1,20  6,35  12,00
+Benfica Lissabon - Spartak Moscow       07.11.12 20:45  1,60  3,65  5,75
+Celtic Glasgow - FC Barcelona           07.11.12 20:45  7,50  5,00  1,35
+CFR Cluj - Galatasaray                  07.11.12 20:45  2,60  3,30  2,60
+Sporting Braga - Manchester United      07.11.12 20:45  3,80  3,35  1,95
 
