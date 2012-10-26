@@ -1,0 +1,24 @@
+
+
+2. Spieltag
+
+spartak        celtic         1.65   3.5    5.5
+nordsjalland   chelsea        8.2    4.75   1.35
+juventus       donezk         1.6    3.75   5.5
+borissow       bayern         8.5    5.4    1.3
+valencia       lille          1.5    3.9    6.6
+benfica        barcelona      6.1    3.8    1.55
+cluj           manunited      5.5    3.75   1.6
+galatasaray    braga          1.85   3.5    4
+zenit          milan          2.25   3.3    3.1
+kiew           zagreb         1.4    4.15   8.5
+porto          paris          2.35   3.1    3.1
+arsenal        olympiacos     1.3    4.95   10
+schalke        montpellier    1.65   3.75   5
+anderlecht     malaga         3.05   3.25   2.3
+ajax           madrid         7      4.6    1.4
+mancity        dortmund       1.7    3.85   4.45
+
+
+
+

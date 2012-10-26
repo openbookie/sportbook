@@ -2,8 +2,8 @@
 # Tipp3 Quotes
 #   more info -> tipp3.at
 #
-# 1 X 2  // Home=1 / Draw=0,X / Away=2
-# 1 O 2
+# 1 X/0 2  // Home=1 / Draw=0,X / Away=2
+
 
 
 ### todo:
@@ -11,7 +11,7 @@
 #         wacker   -> innsbruck
 
 
-11. Runde   - 6/7 Okt
+11. Runde   - 6/7 Okt   || Wettprogramm 40B
 
 wac          ried        2.2    3  2.6
 rapid        neustadt    1.2  4.7  8.6
@@ -20,9 +20,13 @@ sturm        austria     2.4  2.9  2.5
 admira       wacker      1.4  3.7  5.7
 
 
-12. Runde   - 20/21 Okt
+12. Runde   - 20/21 Okt  || Wettprogramm 42B
 
-
+20.10. 16:00  Red Bull Salzburg  Wolfsberger AC  1,30  4,50  8,00
+20.10. 18:30  Wacker Innsbruck  SV Josko Ried    2,60  2,90  2,30
+20.10. 18:30  SK Sturm Graz  SV Mattersburg      1,45  3,50  5,00
+20.10. 18:30  SC Wiener Neustadt  Admira Wacker  3,00  3,00  2,00
+21.10. 16:00  FK Austria Wien  SK Rapid Wien     2,40  3,30  2,80
 
 
 13. Runde   - 27/28 Okt   || Wettprogramm 43B

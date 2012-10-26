@@ -50,11 +50,6 @@ cluj          = Team.find_by_key!( 'cluj' )
 
 
 
-
-clr1 = Round.find_by_event_id_and_pos!( cl.id, 1 )
-clr2 = Round.find_by_event_id_and_pos!( cl.id, 2 )
-
-
 tipp3     = Service.find_by_key!( 'tipp3' )
 betathome = Service.find_by_key!( 'betathome' )
 
@@ -95,69 +90,6 @@ betathome_winner_odds = [
 
 EventQuote.create_from_ary!( betathome_winner_odds, betathome, cl )
 
-
-
-clr1_tipp3_odds = [
- [ paris,       kiew,         1.55, 3.3, 4.5  ],
- [ zagreb,      porto,        3.2,  3,   1.8  ],
- [ milan,       anderlecht,   1.4,  3.5, 6    ],
- [ malaga,      zenit,        2.3,  3,   2.3  ],
- [ olympiacos,  schalke,      2.4,  3,   2.4  ],
- [ montpellier, arsenal,      2.7,  3.1, 2.1  ],
- [ dortmund,    ajax,         1.35, 3.8, 6    ],
- [ madrid,      mancity,      1.65, 3.4, 4.8  ],
- [ donezk,      nordsjalland, 1.2,  4.5, 6.8  ],
- [ chelsea,     juventus,     1.9,  3,   3.2  ],
- [ bayern,      valencia,     1.4,  4,   7    ],
- [ lille,       borissow,     1.35, 3.5, 5.6  ],
- [ celtic,      benfica,      3,    3,   2    ],
- [ barcelona,   spartak,      1.05, 6,   12   ],
- [ braga,       cluj,         1.45, 3.4, 4.6  ],
- [ manunited,   galatasaray,  1.25, 4.5, 7.0  ]]
-
-clr2_betathome_odds = [
-  [ spartak,      celtic,       1.65, 3.5,  5.5  ],
-  [ nordsjalland, chelsea,      8.2,  4.75, 1.35 ],
-  [ juventus,     donezk,       1.6,  3.75, 5.5  ],
-  [ borissow,     bayern,       8.5,  5.4,  1.3  ],
-  [ valencia,     lille,        1.5,  3.9,  6.6  ],
-  [ benfica,      barcelona,    6.1,  3.8,  1.55 ],
-  [ cluj,         manunited,    5.5,  3.75, 1.6  ],
-  [ galatasaray,  braga,        1.85, 3.5,  4    ],
-  [ zenit,        milan,        2.25, 3.3,  3.1  ],
-  [ kiew,         zagreb,       1.4,  4.15, 8.5  ],
-  [ porto,        paris,        2.35, 3.1,  3.1  ],
-  [ arsenal,      olympiacos,   1.3,  4.95, 10   ],
-  [ schalke,      montpellier,  1.65, 3.75, 5    ],
-  [ anderlecht,   malaga,       3.05, 3.25, 2.3  ],
-  [ ajax,         madrid,       7,    4.6,  1.4  ],
-  [ mancity,      dortmund,     1.7,  3.85, 4.45 ]]
-
-
-clr2_tipp3_odds = [
-  [ spartak,      celtic,      1.45, 3.4, 4.6  ],
-  [ nordsjalland, chelsea,     7,    4.5, 1.25 ],
-  [ juventus,     donezk,      1.45, 3.4, 5.5  ],
-  [ borissow,     bayern,      6.6,  4,   1.3  ],
-  [ valencia,     lille,       1.45, 3.4, 4.6  ],
-  [ benfica,      barcelona,   6,    4,   1.45 ],
-  [ cluj,         manunited,   5,    3.5, 1.45 ],
-  [ galatasaray,  braga,       1.7,  3.3, 3.6  ],
-  [ zenit,        milan,       2,    3,   3    ],
-  [ kiew,         zagreb,      1.3,  3.8, 5.8  ],
-  [ porto,        paris,       2.1,  2.9, 2.9  ],
-  [ arsenal,      olympiacos,  1.3,  4,   6.6  ],
-  [ schalke,      montpellier, 1.45, 3.4, 5.5  ],
-  [ anderlecht,   malaga,      2.4,  2.9, 2.3  ],
-  [ ajax,         madrid,      6.6,  4,   1.3  ],
-  [ mancity,      dortmund,    1.75, 3.6, 3.9  ]]
-
-
-
-Quote.create_from_ary_for_round!( clr1_tipp3_odds, tipp3, clr1 )
-
-Quote.create_from_ary_for_round!( clr2_betathome_odds, betathome, clr2 )
-Quote.create_from_ary_for_round!( clr2_tipp3_odds, tipp3, clr2 )
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
