@@ -4,12 +4,16 @@ task :load_uss_others => [:environment] do |t|
 
 
   SportDB.load([
+   'countries',
    'at/teams',
    'at/2012_13/bl',
    'at/2012_13/cup',
    'euro/teams',
    'world/quali_2012_13',
+   'world/quali_2012_13_c',
    'cl/teams',
+   'en/teams',
+   'de/teams',
    'cl/2012_13/cl'
    ])
   

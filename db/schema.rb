@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "countries", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "tag",        :null => false
+    t.string   "key",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "event_quotes", :force => true do |t|
     t.integer  "service_id", :null => false
     t.integer  "event_id",   :null => false
@@ -235,6 +243,8 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "title2"
     t.integer  "pos",                           :null => false
     t.boolean  "playoff",    :default => false, :null => false
+    t.datetime "start_at",                      :null => false
+    t.datetime "end_at"
     t.boolean  "flex",       :default => true,  :null => false
     t.boolean  "fix",        :default => true,  :null => false
     t.string   "type"
@@ -258,6 +268,10 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "key",                             :null => false
     t.string   "img"
     t.string   "tag"
+    t.string   "synonyms"
+    t.integer  "country_id",                      :null => false
+    t.boolean  "club",         :default => false, :null => false
+    t.boolean  "national",     :default => false, :null => false
     t.string   "type"
     t.boolean  "calc",         :default => false, :null => false
     t.string   "calc_rule"

@@ -7,13 +7,24 @@ create_table :props do |t|
   t.string :value, :null => false
   t.timestamps
 end
-    
+
+create_table :countries do |t|
+  t.string :title, :null => false
+  t.string :tag,   :null => false  # short three letter tag
+  t.string :key,   :null => false
+  t.timestamps
+end
+
 create_table :teams do |t|
   t.string  :title, :null => false
   t.string  :title2
   t.string  :key,   :null => false   # import/export key
   t.string  :img
   t.string  :tag     # make it not null?  - three letter tag (short title)
+  t.string  :synonyms  # comma separated list of synonyms
+  t.references :country,   :null => false
+  t.boolean  :club,     :null => false, :default => false  # is it a club (not a national team)?
+  t.boolean  :national, :null => false, :default => false  # is it a national selection team (not a club)?
 
   t.string  :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
   
@@ -46,6 +57,9 @@ create_table :rounds do |t|
   t.integer    :pos,     :null => false
   t.boolean    :playoff, :null => false, :default => false  # "regular" season (group) games or post-season (playoff) knockouts (k.o's)
 
+  t.datetime   :start_at, :null => false
+  t.datetime   :end_at    # todo: make it required e.g. :null => false 
+  
   # to avoid duplicates allow (re)use of rounds for fix/flex pools by default
   #  use :flex => true,  :fix => false   for flex only rounds
   #  use :flex => false, :fix => true    for fix only rounds

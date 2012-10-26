@@ -5,7 +5,7 @@
 
 at_bl      = Event.find_by_key!( 'at_bl_2012_13' )
 at_cup     = Event.find_by_key!( 'at_cup_2012_13' )
-wm_quali   = Event.find_by_key!( 'wmql' )
+wm_quali   = Event.find_by_key!( 'wmq' )
 cl_2012_13 = Event.find_by_key!( 'cl.2012/13' )
 
 nn =  User.find_by_key!( 'nn' )
