@@ -13,12 +13,11 @@
 
 11. Runde   - 6/7 Okt   || Wettprogramm 40B
 
-wac          ried        2.2    3  2.6
-rapid        neustadt    1.2  4.7  8.6
-mattersburg  salzburg    3.7  3.1  1.75
-sturm        austria     2.4  2.9  2.5
-admira       wacker      1.4  3.7  5.7
-
+06.10. 16:00  Wolfsberger AC  SV Josko Ried      2,20  3,00  2,60
+06.10. 18:30  SV Mattersburg  Red Bull Salzburg  4,00  3,30  1,80
+06.10. 18:30  Admira Wacker  Wacker Innsbruck    1,45  3,60  5,20
+07.10. 16:00  SK Sturm Graz  FK Austria Wien     2,40  3,10  2,70
+07.10. 18:30  SK Rapid Wien  SC Wiener Neustadt  1,20  5,00  7,50
 
 12. Runde   - 20/21 Okt  || Wettprogramm 42B
 
