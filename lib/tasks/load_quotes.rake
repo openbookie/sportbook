@@ -4,9 +4,14 @@ task :load_quotes => [:environment] do |t|
   
   quotes = [
     [ 'tipp3',     'at_bl_2012_13', 'at/2012_13/bl_quotes_tipp3' ],
-    [ 'betathome', 'at_bl_2012_13', 'at/2012_13/bl_quotes_betathome' ]
+    [ 'betathome', 'at_bl_2012_13', 'at/2012_13/bl_quotes_betathome' ],
+    #[ 'tipp3',     'at_cup_2012_13', 'at/2012_13/cup_quotes_tipp3' ],
+    #[ 'betathome', 'at_cup_2012_13', 'at/2012_13/cup_quotes_betathome' ],
+    [ 'tipp3',     'cl.2012/13', 'cl/2012_13/cl_quotes_tipp3' ],
+    [ 'betathome', 'cl.2012/13', 'cl/2012_13/cl_quotes_betathome' ],
+    [ 'tipp3',     'wmq',        'world/quali_quotes_tipp3' ]
   ]
-  
+
   quotes.each do |rec|
     
     puts "loading quotes in '#{rec[2]}'.txt..."

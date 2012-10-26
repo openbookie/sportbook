@@ -18,8 +18,10 @@ class QuotesReader
     ## assume active activerecord connection
     ##
     
-    @event = Event.find_by_key!( event_key )
+    @service = Service.find_by_key!( service_key )
+    @event   = Event.find_by_key!( event_key )
     
+    puts "Quote Service #{@service.key} >#{@service.title}<"
     puts "Event #{@event.key} >#{@event.title}<"
 
 
@@ -29,6 +31,9 @@ class QuotesReader
     # [[ 'wolfsbrug', [ 'VfL Wolfsburg' ]],
     #  [ 'augsburg',  [ 'FC Augsburg', 'Augi2', 'Augi3' ]],
     #  [ 'stuttgart', [ 'VfB Stuttgart' ]] ]
+    
+    ### todo/fix: move known_teams code to model and reuse in readers!!
+    ##    do NOT duplicate
     
     @known_teams = []
  
@@ -77,49 +82,43 @@ class QuotesReader
     end    
   end
   
-  def find_date!( line )
-    # extract date from line
+  def find_quotes!( line )
+    # extract quotes triplet from line
     # and return it
-    # NB: side effect - removes date from line string
+    # NB: side effect - removes quotes triplet from line string
     
-    # e.g. 14.09. 20:30
-    regex = /\b(\d{2})\.(\d{2})\.\s+(\d{2}):(\d{2})\b/
+    # e.g. 1,55  3,55  6,44
     
-    if line =~ regex
-      value = "2012-#{$2}-#{$1} #{$3}:#{$4}"
-      puts "   date: >#{value}<"
+    # NB: (?:)  is used for non-capturing grouping
+    
+    ## regex1 uses point., e.g. 1.55 for separator
+    ## regex2 uses comma-, e.g. 1,55 for separator
 
-      ## todo: lets you configure year
-      ##  and time zone (e.g. cet, eet, utc, etc.)
+    
+    regex1 = /[ \t]+(\d{1,3}(?:\.\d{1,3})?)[ \t]+(\d{1,3}(?:\.\d{1,3})?)[ \t]+(\d{1,3}(?:\.\d{1,3})?)/
+    regex2 = /[ \t]+(\d{1,3}(?:,\d{1,3})?)[ \t]+(\d{1,3}(?:,\d{1,3})?)[ \t]+(\d{1,3}(?:,\d{1,3})?)/
+    
+    if line =~ regex1
+      values = [$1.to_f, $2.to_f, $3.to_f]
+      puts "   quotes: >#{values.join('|')}<"
       
-      line.sub!( regex, '[DATE]' )
+      line.sub!( regex1, ' [QUOTES.EN]' )
 
-      return DateTime.strptime( value, '%Y-%m-%d %H:%M' )
+      return values
+    elsif line =~ regex2
+      values = [$1.tr(',','.').to_f,
+                $2.tr(',','.').to_f,
+                $3.tr(',','.').to_f]
+      puts "   quotes: >#{values.join('|')}<"
+      
+      line.sub!( regex2, ' [QUOTES.DE]' )
+
+      return values
     else
       return nil
     end
   end
 
-  def find_score!( line )
-    # extract score from line
-    # and return it
-    # NB: side effect - removes date from line string
-    
-    # e.g. 1:2 or 0:2 or 3:3
-    regex = /\b(\d):(\d)\b/
-    
-    if line =~ regex
-      value = "#{$1}-#{$2}"
-      puts "   score: >#{value}<"
-      
-      line.sub!( regex, '[SCORE]' )
-
-      return [$1.to_i,$2.to_i]
-    else
-      return []
-    end
-  end
-  
 
   def find_team_worker!( line, index )
     regex = /@@oo([^@]+?)oo@@/     # e.g. everything in @@ .... @@ (use non-greedy +? plus all chars but not @, that is [^@])
@@ -197,30 +196,52 @@ class QuotesReader
       else
         puts "parsing game (fixture) line: >#{line}<"
         
-        ## date  = find_date!( line )
-        ## score = find_score!( line )
-        
         match_teams!( line )
-        team1 = find_team1!( line )
-        team2 = find_team2!( line )
+        team1_key = find_team1!( line )
+        team2_key = find_team2!( line )
+
+        quotes = find_quotes!( line )
 
         puts "  line: >#{line}<"
 
 
         ### todo: cache team lookups in hash?
 
-        team1_id = Team.find_by_key!( team1 ).id
-        team2_id = Team.find_by_key!( team2 ).id
+        team1 = Team.find_by_key!( team1_key )
+        team2 = Team.find_by_key!( team2_key )
 
         ### check if games exists
         ##  with this teams in this round if yes only update
-        @game = Game.find_by_round_id_and_team1_id_and_team2_id!(
-                         @round.id, team1_id, team2_id
+        game = Game.find_by_round_id_and_team1_id_and_team2_id!(
+                         @round.id, team1.id, team2.id
         )
+        
+        quote_attribs = {
+          odds1: quotes[0],
+          oddsx: quotes[1],
+          odds2: quotes[2]
+        }
+        
+        quote = Quote.find_by_service_id_and_game_id( @service.id, game.id )
 
+        if quote.present?
+          puts "*** update quote #{quote.id}:"
+        else
+          puts "*** create quote:"
+          quote = Quote.new
+          
+          more_quote_attribs = {
+            service_id:  @service.id,
+            game_id:     game.id
+          }
+          quote_attribs = quote_attribs.merge( more_quote_attribs )
+        end
+
+        puts quote_attribs.to_json
+
+        quote.update_attributes!( quote_attribs )
       end
     end # oldlines.each
-    
     
   end # method parse_quotes
 
