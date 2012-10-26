@@ -89,9 +89,6 @@ heiligenkreuz = Team.find_by_key!( 'heiligenkreuz' )
 viktoria      = Team.find_by_key!( 'viktoria' )
 
 
-cuprunde2 = Round.find_by_event_id_and_pos!( cup.id, 2 )
-
-
 tipp3     = Service.find_by_key!( 'tipp3' )
 betathome = Service.find_by_key!( 'betathome' )
 
@@ -114,50 +111,6 @@ tipp3_cup_winner_odds = [
   [ lustenau,    50 ]]
 
 EventQuote.create_from_ary!( tipp3_cup_winner_odds, tipp3, cup )
-
-
-
-cuprunde2_tipp3_odds = [
-  [ kalsdorf,      hartberg,    2.7, 2.9, 2.1  ],
-  [ viktoria,      ksv,         6.8, 4.5, 1.2  ],
-  [ hard,          altach,      6.8, 4.5, 1.2  ],
-  [ stegersbach,   salzburg,    12,  6,   1.05 ],
-  [ pasching,      austrial,    3.8, 3.4, 1.55 ],
-  [ austriak,      admira,      6.8, 4.5, 1.2  ],
-  [ schwechat,     sturm,       9,   5.5, 1.1  ],
-  [ lask,          groedig,     3.1, 3,   1.85 ],
-  [ stjohann,      lustenau,    4.6, 3.4, 1.45 ],
-  [ sollenau,      wacker,      6.5, 4,   1.25 ],
-  [ vsv,           neustadt,    5.8, 3.8, 1.3  ],
-  [ dornbirn,      austria,     9,   5.5, 1.1  ],
-  [ badvoeslau,    mattersburg, 7.5, 5,   1.15 ],
-  [ stflorian,     ried,        6.8, 4.5, 1.2  ],
-  [ allerheiligen, rapid,       12,  6,   1.05 ],
-  [ gak,           wac,         5.8, 3.8, 1.3  ]
-]
-
-cuprunde2_betathome_odds = [
-  [ kalsdorf,      hartberg,    3.1,  3.2,  2.05 ],
-  [ viktoria,      ksv,         7.5,  5.2,  1.25 ],
-  [ hard,          altach,      8.5,  5.8,  1.2  ],
-  [ stegersbach,   salzburg,    13,   11,   1.05 ],
-  [ pasching,      austrial,    4.3,  3.75, 1.6  ],
-  [ austriak,      admira,      7,    5.5,  1.25 ],
-  [ schwechat,     sturm,       13,   7.2,  1.1  ],
-  [ lask,          groedig,     3.6,  3.3,  1.85 ],
-  [ stjohann,      lustenau,    4.75, 3.75, 1.55 ],
-  [ sollenau,      wacker,      9,    5.5,  1.2  ],
-  [ vsv,           neustadt,    6.5,  5,    1.3  ],
-  [ dornbirn,      austria,     13,   7.2,  1.1  ],
-  [ badvoeslau,    mattersburg, 13,   7.2,  1.1  ],
-  [ stflorian,     ried,        11,   6.2,  1.15 ],
-  [ allerheiligen, rapid,       13,   11,   1.05 ],
-  [ gak,           wac,         7.2,  4.5,  1.3  ]
-]
-
-Quote.create_from_ary_for_round!( cuprunde2_tipp3_odds, tipp3, cuprunde2 )
-Quote.create_from_ary_for_round!( cuprunde2_betathome_odds, betathome, cuprunde2 )
-
 
 
 

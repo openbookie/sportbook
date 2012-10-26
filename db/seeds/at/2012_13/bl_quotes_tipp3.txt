@@ -1,0 +1,37 @@
+############################
+# Tipp3 Quotes
+#   more info -> tipp3.at
+#
+# 1 X 2  // Home=1 / Draw=0,X / Away=2
+# 1 O 2
+
+
+### todo:
+# rename  neustadt -> wrneustadt
+#         wacker   -> innsbruck
+
+
+11. Runde   - 6/7 Okt
+
+wac          ried        2.2    3  2.6
+rapid        neustadt    1.2  4.7  8.6
+mattersburg  salzburg    3.7  3.1  1.75
+sturm        austria     2.4  2.9  2.5
+admira       wacker      1.4  3.7  5.7
+
+
+12. Runde   - 20/21 Okt
+
+
+
+
+13. Runde   - 27/28 Okt   || Wettprogramm 43B
+
+SV Josko Ried      SC Wiener Neustadt  1,50  3,40  4,80
+Wolfsberger AC     SK Sturm Graz       2,60  3,00  2,20
+Admira Wacker      FK Austria Wien     2,70  3,20  2,30
+SV Mattersburg     Wacker Innsbruck    1,75  3,20  3,50
+SK Rapid Wien      Red Bull Salzburg   2,80  3,30  2,40
+
+
+
