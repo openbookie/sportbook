@@ -1,5 +1,5 @@
 
-1. Spieltag
+1. Spieltag  -  Di./Mi., 18.+19. Sep 2012  ||  Wettprogramm 38A
 
 paris        kiew          1.55   3.3   4.5
 zagreb       porto         3.2    3     1.8
@@ -9,6 +9,7 @@ olympiacos   schalke       2.4    3     2.4
 montpellier  arsenal       2.7    3.1   2.1
 dortmund     ajax          1.35   3.8   6
 madrid       mancity       1.65   3.4   4.8
+
 donezk       nordsjalland  1.2    4.5   6.8
 chelsea      juventus      1.9    3     3.2
 bayern       valencia      1.4    4     7
@@ -19,7 +20,7 @@ braga        cluj          1.45   3.4   4.6
 manunited    galatasaray   1.25   4.5   7.0
 
 
-2. Spieltag
+2. Spieltag  -  Di./Mi., 2.+3. Okt 2012  ||  Wettprogramm 40A
 
 spartak      celtic        1.45   3.4   4.6
 nordsjalland chelsea       7      4.5   1.25
@@ -29,6 +30,7 @@ valencia     lille         1.45   3.4   4.6
 benfica      barcelona     6      4     1.45
 cluj         manunited     5      3.5   1.45
 galatasaray  braga         1.7    3.3   3.6
+
 zenit        milan         2      3     3
 kiew         zagreb        1.3    3.8   5.8
 porto        paris         2.1    2.9   2.9
@@ -39,7 +41,7 @@ ajax         madrid        6.6    4     1.3
 mancity      dortmund      1.75   3.6   3.9
 
 
-3. Spieltag   || Wettprogramm 43A
+3. Spieltag  - Di./Mi., 23.+24. Okt 2012   ||  Wettprogramm 43A
 
 23.10. 18:00  Spartak Moskau RUS  Benfica Lis. POR   2,50  3,00  2,30
 23.10. 20:45  Nordsjaelland DEN  Juventus Turin ITA  5,80  3,80  1,30
@@ -58,4 +60,16 @@ mancity      dortmund      1.75   3.6   3.9
 24.10. 20:45  Malaga CF ESP  AC Milan ITA            1,90  3,10  3,10
 24.10. 20:45  Bor. Dortmund GER  Real Madrid ESP     3,30  3,20  2,00
 24.10. 20:45  Ajax Amsterdam NED  Man. City ENG      3,90  3,20  1,65
+
+
+4. Spieltag  -  Di./Mi., 6.+7. Nov 2012  || Wettprogramm
+
+
+5. Spieltag  -  Di./Mi., 20.+21. Nov 2012  || Wettprogramm
+
+
+6. Spieltag  -  Di./Mi., 4.+5. Dez 2012  || Wettprogramm
+
+
+
 
