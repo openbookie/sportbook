@@ -2,18 +2,11 @@ class CreateDb < ActiveRecord::Migration
 
   def up
 
-create_table :props do |t|
-  t.string :key,   :null => false
-  t.string :value, :null => false
-  t.timestamps
-end
+    SportDB::CreateDB.up
+    SportDB::Market::CreateDB.up
 
-create_table :countries do |t|
-  t.string :title, :null => false
-  t.string :tag,   :null => false  # short three letter tag
-  t.string :key,   :null => false
-  t.timestamps
-end
+
+=begin
 
 create_table :teams do |t|
   t.string  :title, :null => false
@@ -122,6 +115,33 @@ add_index :games, :next_game_id  # fk next_game_id index
 add_index :games, :prev_game_id  # fk next_game_id index
 
 
+
+
+# todo: remove id from join table (without extra fields)? why?? why not??
+create_table :events_teams do |t|
+  t.references :event, :null => false
+  t.references :team,  :null => false
+  t.timestamps
+end
+
+add_index :events_teams, [:event_id,:team_id], :unique => true 
+add_index :events_teams, :event_id
+
+
+create_table :groups_teams do |t|
+  t.references :group, :null => false
+  t.references :team,  :null => false
+  t.timestamps
+end
+
+add_index :groups_teams, [:group_id,:team_id], :unique => true 
+add_index :groups_teams, :group_id
+
+
+=end
+
+
+
 create_table :users do |t|
   t.string  :name,            :null => false
   t.string  :email,           :null => false
@@ -199,27 +219,6 @@ add_index :tips, :pool_id
 add_index :tips, :game_id
 
 
-# todo: remove id from join table (without extra fields)? why?? why not??
-create_table :events_teams do |t|
-  t.references :event, :null => false
-  t.references :team,  :null => false
-  t.timestamps
-end
-
-add_index :events_teams, [:event_id,:team_id], :unique => true 
-add_index :events_teams, :event_id
-
-
-create_table :groups_teams do |t|
-  t.references :group, :null => false
-  t.references :team,  :null => false
-  t.timestamps
-end
-
-add_index :groups_teams, [:group_id,:team_id], :unique => true 
-add_index :groups_teams, :group_id
-
-
 
 create_table :points do |t|
   t.references :user,  :null => false
@@ -238,42 +237,6 @@ create_table :points do |t|
 end
 
 add_index :points, [:user_id,:pool_id,:round_id], :unique => true 
-
-
-create_table :services do |t|  # quote service (e.g. tipp3,tipico,etc.)
-  t.string     :title,  :null => false
-  t.string     :key,    :null => false
-  t.timestamps
-end
-
-
-create_table :quotes do |t|
-  t.references :service, :null => false   # quote service (e.g. tipp3,tipico,etc.)
-  t.references :game,    :null => false
-  t.decimal    :odds1,   :null => false
-  t.decimal    :oddsx,   :null => false
-  t.decimal    :odds2,   :null => false
-  t.string     :comments
-  t.timestamps
-end
-
-create_table :event_quotes do |t|
-  t.references  :service, :null => false   # quote service (e.g. tipp3,tipico,etc.)
-  t.references  :event,   :null => false
-  t.references  :team,    :null => false
-  t.decimal     :odds,    :null => false   # winner odds (e.g. 3,5 or 90 etc.)
-  t.string      :comments
-  t.timestamps
-end
-
-create_table :group_quotes do |t|
-  t.references  :service, :null => false   # quote service (e.g. tipp3,tipico,etc.)
-  t.references  :group,   :null => false
-  t.references  :team,    :null => false
-  t.decimal     :odds,    :null => false   # winner odds (e.g. 3,5 or 90 etc.)
-  t.string      :comments
-  t.timestamps
-end
 
 
 

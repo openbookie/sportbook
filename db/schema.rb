@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "badges", :force => true do |t|
+    t.integer  "team_id",    :null => false
+    t.integer  "league_id",  :null => false
+    t.integer  "season_id",  :null => false
+    t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "bonus_answers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -69,10 +78,26 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "cities", :force => true do |t|
+    t.string   "title",                         :null => false
+    t.string   "key",                           :null => false
+    t.string   "synonyms"
+    t.integer  "country_id",                    :null => false
+    t.integer  "region_id"
+    t.integer  "pop"
+    t.integer  "area"
+    t.boolean  "capital",    :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "countries", :force => true do |t|
     t.string   "title",      :null => false
-    t.string   "tag",        :null => false
     t.string   "key",        :null => false
+    t.string   "tag",        :null => false
+    t.string   "synonyms"
+    t.integer  "pop"
+    t.integer  "area"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -88,12 +113,14 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "title",                        :null => false
-    t.string   "key",                          :null => false
-    t.boolean  "team3",      :default => true, :null => false
-    t.datetime "start_at",                     :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.string   "title",      :null => false
+    t.string   "key",        :null => false
+    t.integer  "league_id",  :null => false
+    t.integer  "season_id",  :null => false
+    t.datetime "start_at",   :null => false
+    t.datetime "end_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "events", ["key"], :name => "index_events_on_key", :unique => true
@@ -117,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "play_at",                         :null => false
     t.boolean  "knockout",     :default => false, :null => false
     t.boolean  "home",         :default => true,  :null => false
-    t.boolean  "locked",       :default => false, :null => false
     t.integer  "score1"
     t.integer  "score2"
     t.integer  "score3"
@@ -128,8 +154,6 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.integer  "prev_game_id"
     t.string   "toto12x"
     t.string   "key"
-    t.string   "type"
-    t.boolean  "calc",         :default => false, :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -169,6 +193,15 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
 
   add_index "groups_teams", ["group_id", "team_id"], :name => "index_groups_teams_on_group_id_and_team_id", :unique => true
   add_index "groups_teams", ["group_id"], :name => "index_groups_teams_on_group_id"
+
+  create_table "leagues", :force => true do |t|
+    t.string   "key",                           :null => false
+    t.string   "title",                         :null => false
+    t.integer  "country_id"
+    t.boolean  "club",       :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "plays", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -237,23 +270,37 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "regions", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "key",        :null => false
+    t.string   "synonyms"
+    t.integer  "country_id", :null => false
+    t.integer  "pop"
+    t.integer  "area"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rounds", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
     t.string   "title2"
     t.integer  "pos",                           :null => false
-    t.boolean  "playoff",    :default => false, :null => false
+    t.boolean  "knockout",   :default => false, :null => false
     t.datetime "start_at",                      :null => false
     t.datetime "end_at"
-    t.boolean  "flex",       :default => true,  :null => false
-    t.boolean  "fix",        :default => true,  :null => false
-    t.string   "type"
-    t.boolean  "calc",       :default => false, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
 
   add_index "rounds", ["event_id"], :name => "index_rounds_on_event_id"
+
+  create_table "seasons", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "services", :force => true do |t|
     t.string   "title",      :null => false
@@ -263,22 +310,17 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   end
 
   create_table "teams", :force => true do |t|
-    t.string   "title",                           :null => false
+    t.string   "title",                         :null => false
     t.string   "title2"
-    t.string   "key",                             :null => false
-    t.string   "img"
+    t.string   "key",                           :null => false
     t.string   "tag"
     t.string   "synonyms"
-    t.integer  "country_id",                      :null => false
-    t.boolean  "club",         :default => false, :null => false
-    t.boolean  "national",     :default => false, :null => false
-    t.string   "type"
-    t.boolean  "calc",         :default => false, :null => false
-    t.string   "calc_rule"
-    t.string   "calc_value"
-    t.integer  "calc_team_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.integer  "country_id",                    :null => false
+    t.integer  "city_id"
+    t.boolean  "club",       :default => false, :null => false
+    t.boolean  "national",   :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "teams", ["key"], :name => "index_teams_on_key", :unique => true
