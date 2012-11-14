@@ -16,14 +16,16 @@
 #  updated_at :datetime        not null
 #
 
+module SportDB::Models
 
-class Round < ActiveRecord::Base
+class Round
     
-  has_many :games, :order => 'pos'
-  belongs_to :event
-  
   def calc?    # todo/fix: already supported by default by framework? check
     calc == true
   end
   
 end # class Round
+
+end # module SportDB::Models
+
+Round = SportDB::Models::Round
