@@ -1,3 +1,9 @@
+##
+##  NB: Lets use old numbering scheme
+##  - add to this line to config/application.rb.
+##       config.active_record.timestamped_migrations = false
+##
+
 class CreateDb < ActiveRecord::Migration
 
   def up
