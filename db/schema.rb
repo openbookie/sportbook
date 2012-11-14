@@ -113,14 +113,15 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "key",        :null => false
-    t.integer  "league_id",  :null => false
-    t.integer  "season_id",  :null => false
-    t.datetime "start_at",   :null => false
+    t.string   "title",                        :null => false
+    t.string   "key",                          :null => false
+    t.integer  "league_id",                    :null => false
+    t.integer  "season_id",                    :null => false
+    t.datetime "start_at",                     :null => false
     t.datetime "end_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "team3",      :default => true, :null => false
   end
 
   add_index "events", ["key"], :name => "index_events_on_key", :unique => true
@@ -156,6 +157,8 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.string   "key"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.string   "type"
+    t.boolean  "calc",         :default => false, :null => false
   end
 
   add_index "games", ["group_id"], :name => "index_games_on_group_id"
@@ -291,6 +294,10 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
     t.datetime "end_at"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.boolean  "flex",       :default => true,  :null => false
+    t.boolean  "fix",        :default => true,  :null => false
+    t.string   "type"
+    t.boolean  "calc",       :default => false, :null => false
   end
 
   add_index "rounds", ["event_id"], :name => "index_rounds_on_event_id"
@@ -310,17 +317,23 @@ ActiveRecord::Schema.define(:version => 20120305214015) do
   end
 
   create_table "teams", :force => true do |t|
-    t.string   "title",                         :null => false
+    t.string   "title",                           :null => false
     t.string   "title2"
-    t.string   "key",                           :null => false
+    t.string   "key",                             :null => false
     t.string   "tag"
     t.string   "synonyms"
-    t.integer  "country_id",                    :null => false
+    t.integer  "country_id",                      :null => false
     t.integer  "city_id"
-    t.boolean  "club",       :default => false, :null => false
-    t.boolean  "national",   :default => false, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "club",         :default => false, :null => false
+    t.boolean  "national",     :default => false, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "img"
+    t.string   "type"
+    t.boolean  "calc",         :default => false, :null => false
+    t.string   "calc_rule"
+    t.string   "calc_value"
+    t.integer  "calc_team_id"
   end
 
   add_index "teams", ["key"], :name => "index_teams_on_key", :unique => true
