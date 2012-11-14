@@ -2,15 +2,18 @@
 #
 # Table name: pools
 #
-#  id         :integer         not null, primary key
-#  event_id   :integer         not null
-#  title      :string(255)     not null
-#  user_id    :integer         not null
-#  fix        :boolean         default(FALSE), not null
-#  welcome    :text
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  key        :string(255)
+#  id           :integer         not null, primary key
+#  event_id     :integer         not null
+#  title        :string(255)     not null
+#  user_id      :integer         not null
+#  fix          :boolean         default(FALSE), not null
+#  public       :boolean         default(TRUE), not null
+#  locked       :boolean         default(FALSE), not null
+#  welcome      :text
+#  welcome_html :text
+#  key          :string(255)
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
 #
 
 class Pool < ActiveRecord::Base

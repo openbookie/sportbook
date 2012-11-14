@@ -4,11 +4,14 @@
 #
 #  id         :integer         not null, primary key
 #  title      :string(255)     not null
-#  start_at   :datetime
-#  team3      :boolean         default(TRUE)
+#  key        :string(255)     not null
+#  league_id  :integer         not null
+#  season_id  :integer         not null
+#  start_at   :datetime        not null
+#  end_at     :datetime
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  key        :string(255)
+#  team3      :boolean         default(TRUE), not null
 #
 
 

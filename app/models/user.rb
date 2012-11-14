@@ -6,7 +6,10 @@
 #  name            :string(255)     not null
 #  email           :string(255)     not null
 #  password_digest :string(255)
-#  key             :string(255)
+#  key             :string(255)     not null
+#  admin           :boolean         default(FALSE), not null
+#  guest           :boolean         default(FALSE), not null
+#  active          :boolean         default(TRUE), not null
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #
