@@ -9,7 +9,5 @@
 #  updated_at :datetime        not null
 #
 
+Prop = SportDB::Models::Prop
 
-class Prop < ActiveRecord::Base
-    
-end  # class Prop

@@ -12,18 +12,17 @@
 #
 
 
-class Event < ActiveRecord::Base
+module SportDB::Models
   
-  has_many :rounds, :order => 'pos'  # all (fix and flex) rounds
+class Event
   
   has_many :fix_rounds,  :conditions => { :fix => true },  :order => 'pos', :class_name => 'Round', :foreign_key => 'event_id'
   has_many :fix_playoff_rounds, :conditions => { :fix => true , :playoff => true }, :order => 'pos', :class_name => 'Round', :foreign_key => 'event_id'
 
   has_many :flex_rounds, :conditions => { :flex => true }, :order => 'pos', :class_name => 'Round', :foreign_key => 'event_id'
-  
-  has_many :groups, :order => 'pos'
-  
-  has_many :event_teams, :class_name => 'EventTeam'
-  has_many :teams, :through => :event_teams
 
-end # class Event
+end  # class Event
+
+end # module SportDB::Models
+
+Event = SportDB::Models::Event

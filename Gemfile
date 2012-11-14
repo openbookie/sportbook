@@ -9,7 +9,7 @@ gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 gem 'sportdb', '0.7.1'  # see https://github.com/geraldb/sport.db
 
 ### todo/fix: make it work w/ autoload - will sportdb/market work?
-gem 'sportdb-market', '0.0.7', require: 'sportdb/market/market'
+gem 'sportdb-market', '0.0.9', require: 'sportdb/market/market'
 
 group :production do
   gem 'pg'
