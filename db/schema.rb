@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table "cities", :force => true do |t|
     t.string   "title",                         :null => false
     t.string   "key",                           :null => false
+    t.string   "code"
     t.string   "synonyms"
     t.integer  "country_id",                    :null => false
     t.integer  "region_id"
@@ -94,8 +95,9 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table "countries", :force => true do |t|
     t.string   "title",      :null => false
     t.string   "key",        :null => false
-    t.string   "tag",        :null => false
+    t.string   "code",       :null => false
     t.string   "synonyms"
+    t.string   "motor"
     t.integer  "pop"
     t.integer  "area"
     t.datetime "created_at", :null => false
@@ -119,9 +121,9 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "season_id",                    :null => false
     t.datetime "start_at",                     :null => false
     t.datetime "end_at"
+    t.boolean  "team3",      :default => true, :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.boolean  "team3",      :default => true, :null => false
   end
 
   add_index "events", ["key"], :name => "index_events_on_key", :unique => true
@@ -316,11 +318,29 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id",        :null => false
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "title",                           :null => false
     t.string   "title2"
     t.string   "key",                             :null => false
-    t.string   "tag"
+    t.string   "code"
     t.string   "synonyms"
     t.integer  "country_id",                      :null => false
     t.integer  "city_id"

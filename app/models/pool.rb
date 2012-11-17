@@ -27,7 +27,7 @@ class Pool < ActiveRecord::Base
   ## rename to users from players??
   has_many :players, :through => :plays, :source => :user
 
-  belongs_to :event
+  belongs_to :event, :class_name => 'SportDB::Models::Event'
   
   after_create :log_action_create
   
