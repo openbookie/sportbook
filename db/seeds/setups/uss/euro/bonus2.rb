@@ -36,4 +36,4 @@ poolflex.plays.each do |play|
   tip.save!
 end
 
-Prop.create!( :key => 'db.seeds.uss.euro.bonus2.version', :value => '1' )
+Prop.create!( key: 'db.uss.euro.bonus2.version', value: '1' )

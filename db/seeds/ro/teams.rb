@@ -24,4 +24,4 @@ l1 = [
 
 Team.update_image_from_ary!( l1 )
 
-Prop.create!( :key => 'db.ro.teams.2.version', :value => '1' )
+Prop.create!( key: 'db.ro.teams.2.version', value: '1' )

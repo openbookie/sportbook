@@ -10,9 +10,9 @@ bl = [
   [ 'austria',     'at/austria.png' ],
   [ 'sturm',       'at/sturm.png' ],
   [ 'ried',        'at/ried.png' ],
-  [ 'wacker',      'at/wacker.png' ],
+  [ 'innsbruck',   'at/wacker.png' ],    ## todo: update image to new key
   [ 'mattersburg', 'at/mattersburg.png' ],
-  [ 'neustadt',    'at/neustadt.png' ],
+  [ 'wrneustadt',  'at/neustadt.png' ],  ## todo: update iamge to new key
   [ 'wac',         'at/wac.png' ]
 ]
 
@@ -31,9 +31,8 @@ ersteliga = [
 
 
 
-Team.update_image_from_ary!( bl )
-Team.update_image_from_ary!( ersteliga )
+Team.update_image_from_ary!( bl + ersteliga )
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.at.teams.2.version', :value => '1' )
+Prop.create!( key: 'db.at.teams.2.version', value: '1' )

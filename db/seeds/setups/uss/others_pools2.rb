@@ -7,4 +7,4 @@ puts "*** loading seed data in seeds/uss/pools_others2.rb"
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.uss.pools.others.2.version', :value => '1' )
+Prop.create!( key: 'db.uss.pools.others.2.version', value: '1' )

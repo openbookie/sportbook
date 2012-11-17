@@ -1,7 +1,6 @@
 # encoding: utf-8
 
-cl = Event.find_by_key!( 'cl.2012/13' )
-
+cl = Event.find_by_cl_2012_13!
 
 porto         = Team.find_by_key!( 'porto' )
 kiew          = Team.find_by_key!( 'kiew' )
@@ -46,9 +45,7 @@ cluj          = Team.find_by_key!( 'cluj' )
 
 clr2   = Round.find_by_event_id_and_pos!( cl.id, 2 )
 
-tipp3     = Service.find_by_key!( 'tipp3' )
-betathome = Service.find_by_key!( 'betathome' )
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.cl.2012/13.2.version', :value => '1' )
+Prop.create!( key: 'db.cl.2012/13.2.version', value: '1' )

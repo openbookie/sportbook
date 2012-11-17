@@ -43,4 +43,4 @@ teams = [
 
 Team.update_image_from_ary!( teams )
 
-Prop.create!( :key => 'db.nhl.teams.2.version', :value => '1' )
+Prop.create!( key: 'db.nhl.teams.2.version', value: '1' )

@@ -27,4 +27,4 @@ users = [
 User.create_from_ary!( users )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.ussr.users.version', :value => '1' )
+Prop.create!( key: 'db.seeds.ussr.users.version', value: '1' )

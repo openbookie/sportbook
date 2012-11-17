@@ -9,7 +9,7 @@ ro_l1    = Event.find_by_key!( 'ro_l1_2012_13' )
 
 aurel = User.find_by_key!( 'aurel' )
 
-Pool.create!( :event => ro_l1,   :title => 'USS', :user => aurel, :welcome => '' )
+Pool.create!( event: ro_l1,  title: 'USSR', user: aurel, welcome: '' )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( :key => 'db.seeds.ussr.pools.others.version', :value => '1' )
+Prop.create!( key: 'db.ussr.pools.others.version', value: '1' )

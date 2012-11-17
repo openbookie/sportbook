@@ -3,7 +3,7 @@
 # note: timezone for games (play_at) is *always* CET (central european time)
 
 
-euro = Event.find_by_key!( 'euro' )
+euro = Event.find_euro_2012!
 
 ##############################################
 ## Fix (Calc) Rounds for **Fix** Style Pool

@@ -8,9 +8,9 @@ class CreateDb < ActiveRecord::Migration
 
   def up
 
-    ## fix/todo: add WorldDB::CreateDB.up  - (now called in SportDB::CreateDB.up; remove it there)
-    SportDB::CreateDB.up
-    SportDB::Market::CreateDB.up
+    WorldDB.create
+    SportDB.create
+    SportDB::Market::CreateDB.up ### fix: rename to SportDB::Market.create
 
 #####################################
 ## add columns / change tables
@@ -25,11 +25,6 @@ change_table :teams do |t|
   t.string      :calc_rule     # e.g. group-winner, group-2nd, game-winner, etc.
   t.string      :calc_value    # e.g. <group_id>, <game_id>, etc.
   t.references  :calc_team     # e.g. optional team_id of "real" team when known
-end
-
-
-change_table :events do |t|
-  t.boolean     :team3,    :null => false, :default => true   ## e.g. Champions League has no 3rd place (only 1st and 2nd/final)
 end
 
 
