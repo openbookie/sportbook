@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "key"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.boolean  "locked",       :default => false, :null => false
     t.string   "type"
     t.boolean  "calc",         :default => false, :null => false
   end

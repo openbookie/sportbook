@@ -21,7 +21,7 @@ class Point < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :pool
-  belongs_to :round
+  belongs_to :round, :class_name => 'SportDB::Models::Round'
   
   def round_pts_str
     buf = ''
