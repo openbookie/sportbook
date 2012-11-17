@@ -35,6 +35,9 @@ module SportDB::Models
 
 class Game
 
+  has_many :tips
+
+
   after_save :log_action
 
   def job_running!
@@ -49,18 +52,6 @@ class Game
     (@job_running ||= false) == true
   end
 
-     
-  def over?   # game over?
-    play_at <= Time.now
-  end
-  
-  def knockout?
-    knockout == true
-  end
-  
-  def complete?
-    score1.present? && score2.present?
-  end
   
   def score_str
     if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?

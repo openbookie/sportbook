@@ -27,7 +27,7 @@ class Tip < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :pool
-  belongs_to :game
+  belongs_to :game, :class_name => 'SportDB::Models::Game'
 
   before_save :calc_toto12x
   after_save  :log_action

@@ -39,13 +39,14 @@ change_table :rounds do |t|
   t.boolean    :fix,   :null => false, :default => true 
 
   t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
-
   t.boolean    :calc,  :null => false, :default => false
 end
 
 change_table :games do |t|
+  t.boolean    :locked, :null => false, :default => false
+  
   t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
-  t.boolean    :calc,  :null => false, :default => false
+  t.boolean    :calc,   :null => false, :default => false
 end
 
 

@@ -66,19 +66,6 @@ Wettpool::Application.routes.draw do
   end
   
   ##############################
-  ## routes for db
-
-  match 'db',  :to => 'db/games#index'
-
-  namespace :db do
-    resources :events
-    resources :teams
-    resources :games do
-      get 'past',   :on => :collection
-    end
-  end
-  
-  ##############################
   ## routes for setup via module (setup not in url -- todo/fix??)
 
   match 'setup',  :to => 'setup/teams#index'
