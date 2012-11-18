@@ -2,28 +2,56 @@
 desc "wettpool: load seed data for uss other pools"
 task :load_uss_others => [:environment] do |t|
 
+  WorldDB.delete!          # danger zone! deletes all records
+  SportDB.delete!          # danger zone! deletes all records
+  SportDB::Market.delete!  # danger zone! deletes all records
+
+
+  WorldDB.read_all
+
 
   SportDB.load([
-   'countries',
+   'leagues',
+   'seasons',
    'at/teams',
    'at/2012_13/bl',
    'at/2012_13/cup',
    'euro/teams',
-   'world/quali_2012_13',
-   'world/quali_2012_13_c',
+   'world/quali_2012_13_europe',
+   'world/quali_2012_13_europe_c',
    'cl/teams',
    'en/teams',
    'de/teams',
+   'es/teams',
    'cl/2012_13/cl'
    ])
+
+  SportDB.read([
+     ['at.2012/13',     'at/2012_13/bl'],
+     ['at.cup.2012/13', 'at/2012_13/cup'],
+     ['wmq.euro',       'world/quali_2012_13_europe_c']
+  ])
+
+  SportDB::Market.load( [
+    'services',
+    'cl/2012_13/cl',
+    'at/2012_13/bl',
+    'at/2012_13/cup'
+   ])
   
-  ['services',
-   'at/teams',
-   'at/2012_13/bl', 'at/2012_13/bl_quotes',
-   'at/2012_13/cup', 'at/2012_13/cup_quotes',
-   'euro/teams', 'world/quali_2012_13',
-   'cl/teams', 'cl/2012_13/cl', 'cl/2012_13/cl_quotes',
-   'uss/users', 'uss/others_pools' ].each do |seed|
+  SportDB::Market.read( [
+    [ 'tipp3',     'at.2012/13',     'at/2012_13/bl_tipp3' ],
+    [ 'betathome', 'at.2012/13',     'at/2012_13/bl_betathome' ],
+    [ 'tipp3',     'at.cup.2012/13', 'at/2012_13/cup_tipp3' ],
+    [ 'betathome', 'at.cup.2012/13', 'at/2012_13/cup_betathome' ],
+    [ 'tipp3',     'cl.2012/13',     'cl/2012_13/cl_tipp3' ],
+    [ 'betathome', 'cl.2012/13',     'cl/2012_13/cl_betathome' ],
+    [ 'tipp3',     'wmq.euro',       'world/quali_tipp3' ]
+  ])
+
+  
+  ['at/teams', 'cl/teams', 'euro/teams',
+   'setups/uss/users', 'setups/uss/others_pools' ].each do |seed|
      puts "*** loading seed data in '#{seed}'..."
      require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
