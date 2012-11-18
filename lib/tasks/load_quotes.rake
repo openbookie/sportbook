@@ -1,13 +1,18 @@
 
 desc "sportbook: stats/debug"
 task :sportbook_stats => [:environment] do |t|
-  puts "SportDB.banner: >>#{SportDB.banner}<<"
-  puts "SportDB.root: >>#{SportDB.root}<<"
+  puts "[debug] SportDB.banner: >>#{SportDB.banner}<<"
+  puts "[debug] SportDB.root: >>#{SportDB.root}<<"
+
+  puts "[debug] SportDB::Market.banner: >>#{SportDB::Market.banner}<<"
+  puts "[debug] SportDB::Market.root: >>#{SportDB::Market.root}<<"
 end
 
 
 desc "sportbook: load quotes (e.g. bl_quotes_tipp3.txt)"
 task :load_quotes => [:environment] do |t|
+  
+  SportDB::Market.delete!  ## danger zone!! delete all market tables (quotes,etc.)
   
   SportDB::Market.load( [
     'services',
@@ -23,7 +28,7 @@ task :load_quotes => [:environment] do |t|
     #[ 'betathome', 'at_cup_2012_13', 'at/2012_13/cup_betathome' ],
     [ 'tipp3',     'cl.2012/13', 'cl/2012_13/cl_tipp3' ],
     [ 'betathome', 'cl.2012/13', 'cl/2012_13/cl_betathome' ],
-    # [ 'tipp3',     'wmq',        'world/quali_tipp3' ]
+    [ 'tipp3',     'wmq.euro',   'world/quali_tipp3' ]
   ])
 
 end

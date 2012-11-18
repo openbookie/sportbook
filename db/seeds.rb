@@ -24,7 +24,17 @@
     ['wmq.euro', 'world/quali_2012_13_europe_c']
   ])
 
-
+  SportDB::Market.load( [
+    'services',
+    'cl/2012_13/cl'
+   ])
+  
+  SportDB::Market.read( [
+    [ 'tipp3',     'cl.2012/13', 'cl/2012_13/cl_tipp3' ],
+    [ 'betathome', 'cl.2012/13', 'cl/2012_13/cl_betathome' ],
+    [ 'tipp3',     'wmq.euro',   'world/quali_tipp3' ]
+  ])
+  
   ['cl/teams', 'euro/teams',
    'setups/demo/users', 'setups/demo/pools'].each do |seed|
       puts "*** loading seed data in '#{seed}'..."

@@ -100,7 +100,7 @@ GEM
     sportdb (0.8.1)
       activerecord (~> 3.2)
       worlddb (~> 0.3.2)
-    sportdb-market (0.0.9)
+    sportdb-market (0.1.1)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -140,7 +140,7 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sportdb (= 0.8.1)
-  sportdb-market (= 0.0.9)
+  sportdb-market (= 0.1.1)
   sqlite3
   thin
   uglifier (>= 1.0.3)
