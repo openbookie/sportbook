@@ -1,6 +1,4 @@
-<h1><%= Round.count %> Runden</h1>
-
-<%= link_to 'Neue Runde', new_round_path(), :class => 'btn-primary' %>
+<h1><%= Round.count %> Rounds</h1>
 
 <table>
 <% @events.each do |event| %> 
@@ -14,12 +12,7 @@
      <td><%= round.pos %></td>
      <td><%= round.title %></td>
      <td><%= '(Calc Flag)' if round.calc == true %></td>
-     <td><%= link_to 'Bearbeiten', edit_round_path( round ), :class => 'btn' %></td>
    </tr>
  <% end %><!-- rounds.each -->
 <% end %><!-- events.each -->
 </table>
-
-<p></p>
-
-<%= link_to 'Neue Runde', new_round_path(), :class => 'btn-primary' %>

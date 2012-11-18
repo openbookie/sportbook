@@ -1,6 +1,4 @@
-<h1><%= Game.count %> Spiele</h1>
-
-<%= link_to 'Neues Spiel', new_game_path(), :class => 'btn-primary' %>
+<h1><%= Game.count %> Games</h1>
 
 <table>
 <% @events.each do |event| %> 
@@ -33,17 +31,10 @@
   </td>
   <td><%= game.play_at %></td>
   <td><%= game.play_at.utc %></td>
-  <td><%= link_to 'Bearbeiten', game.calc? ? edit_calc_game_path(game) : edit_game_path( game ), :class => 'btn' %></td>
  </tr>
   <% end %><!-- games.each -->
  <% end %><!-- rounds.each -->
 <% end %><!-- events.each -->
  
 
-
 </table>
-
-<p></p>
-
-<%= link_to 'Neues Spiel', new_game_path(), :class => 'btn-primary' %>
-
