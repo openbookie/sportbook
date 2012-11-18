@@ -1,6 +1,6 @@
 <h1><%= BonusRound.count %> Bonus Rounds</h1>
 
-<%= link_to 'New Bonus Round', new_bonus_round_path(), :class => 'btn-primary' %>
+<%= link_to 'New Bonus Round', new_setup_bonus_round_path(), :class => 'btn-primary' %>
 
 <!-- todo: stack by pool -->
 
@@ -11,11 +11,11 @@
      <td>(<%= round.id %>)</td>
      <td>#<%= round.pos %></td>
      <td><%= round.title %></td>
-     <td><%= link_to 'Edit', edit_bonus_round_path( round ), :class => 'btn' %></td>
+     <td><%= link_to 'Edit', edit_setup_bonus_round_path( round ), :class => 'btn' %></td>
    </tr>
 <% end %><!-- rounds.each -->
 </table>
 
 <p>
-<%= link_to 'New Bonus Round', new_bonus_round_path(), :class => 'btn-primary' %>
+<%= link_to 'New Bonus Round', new_setup_bonus_round_path(), :class => 'btn-primary' %>
 </p>

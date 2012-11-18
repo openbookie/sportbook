@@ -64,25 +64,22 @@ Wettpool::Application.routes.draw do
   
     resources :users
   end
+
   
   ##############################
-  ## routes for setup via module (setup not in url -- todo/fix??)
+  ## routes for setup
 
   match 'setup',  :to => 'setup/teams#index'
 
-  scope :module => 'setup' do
-    resources :bonus_rounds
-    resources :rounds
-    resources :games
-    resources :calc_games
+  namespace :setup do
+    resources :events
     resources :teams
-
-    resources :events do
-      post 'add_team_to', :on => :member
-    end
+    resources :rounds
+    resources :bonus_rounds
+    resources :games
   end
 
-  
+
   #######################
   ## home route
   
