@@ -10,8 +10,26 @@ class CreateDb < ActiveRecord::Migration
 
     WorldDB.create
     SportDB.create
-    SportDB::Market::create  #  market quotes
-    SportDB::Play::create    #  pools, plays, tips, etc. 
+    SportDB::Market.create  #  market quotes
+
+    ## NB: SportDB::Play requires/assumes a table users with col key exists
+    
+create_table :users do |t|
+  t.string  :key,             :null => false   # import/export key
+  t.string  :name,            :null => false
+  t.string  :email,           :null => false
+  t.string  :password_digest
+  t.boolean :admin,           :null => false, :default => false
+  t.boolean :guest,           :null => false, :default => false  # read-only access (cannot add tips,join pools,etc.)
+  t.boolean :active,          :null => false, :default => true
+  t.timestamps
+end
+
+add_index :users, :key,   :unique => true 
+add_index :users, :email, :unique => true   # make email unique
+    
+
+    SportDB::Play.create    #  pools, plays, tips, etc. 
     
 #####################################
 ## add columns / change tables
@@ -47,18 +65,6 @@ change_table :games do |t|
   t.string     :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
   t.boolean    :calc,   :null => false, :default => false
 end
-
-
-change_table :users do |t|
-  t.string  :name,            :null => false
-  t.string  :email,           :null => false
-  t.string  :password_digest
-  t.boolean :admin,           :null => false, :default => false
-  t.boolean :guest,           :null => false, :default => false  # read-only access (cannot add tips,join pools,etc.)
-  t.boolean :active,          :null => false, :default => true
-end
-
-add_index :users, :email, :unique => true   # make email unique
 
 
 change_table :pools do |t|
