@@ -35,23 +35,10 @@ module SportDB::Models
 
 class Game
 
-  has_many :tips
-
-
   after_save :log_action
 
-  def job_running!
-    @job_running = true
-  end
-  
-  def job_done!
-    @job_running = false
-  end
-
-  def job_running?
-    (@job_running ||= false) == true
-  end
-
+  ################
+  #### todo: move to sportdb.gem for reuse
   
   def score_str
     if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
@@ -71,6 +58,9 @@ class Game
     if score2.blank? then '-' else score2.to_s end
   end
 
+  ## end move
+  ###################  
+
   def team1_style_class
     buf = ''
     buf << 'game-team-calc '    if team1.calc? 
@@ -87,20 +77,7 @@ class Game
     buf
   end
 
-  
-  def tip_1_style_class
-    toto12x == '1' ? ' bingo ' : ' '
-  end
-  
-  def tip_2_style_class
-    toto12x == '2' ? ' bingo ' : ' '
-  end
-  
-  def tip_x_style_class
-    toto12x == 'X' ? ' bingo ' : ' '
-  end
-  
-  
+    
   def play_at_str
     play_at.strftime( "%a. %d. %b. / %H:%M" )
   end
@@ -111,45 +88,6 @@ class Game
     play_at.strftime( '%Y-%m-%d %H:%M %z' )  # NB: removed seconds (:%S)
   end
 
-  
-  ############ some methods for stats
-  
-  def complete_tips
-    tips.where( 'toto12x is not null' )
-  end
-
-  def complete_tips_1
-    tips.where( 'toto12x is not null' ).where( :toto12x => '1' ).order( 'score1 desc,score2 desc')
-  end
-
-  def complete_tips_2
-    tips.where( 'toto12x is not null' ).where( :toto12x => '2' ).order( 'score2 desc,score1 desc')
-  end
-  
-  def complete_tips_x
-    tips.where( 'toto12x is not null' ).where( :toto12x => 'X' ).order( 'score1 desc,score2 desc')
-  end
-  
-  
-  def incomplete_tips
-    tips.where( 'toto12x is null' )
-  end
-  
-  def tip_1_count
-    complete_tips.where( :toto12x => '1' ).count()
-  end
-  
-  def tip_2_count
-    complete_tips.where( :toto12x => '2' ).count()
-  end
-  
-  def tip_x_count
-    complete_tips.where( :toto12x => 'X' ).count()
-  end
-  
-  def tip_12x_count
-    complete_tips.count()
-  end
 
   def log_action
     # add news feed item after save

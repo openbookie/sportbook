@@ -11,10 +11,5 @@
 #
 
 
-class BonusTip < ActiveRecord::Base
-  
-  self.table_name = 'bonus_tips'
+BonusTip = SportDB::Models::BonusTip
 
-  belongs_to :user
-
-end # class BonusTip

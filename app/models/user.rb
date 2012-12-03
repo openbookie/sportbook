@@ -14,11 +14,12 @@
 #  updated_at      :datetime        not null
 #
 
-class User < ActiveRecord::Base
+module SportDB::Models
+
+## NB: extend from sport.db-play gem
+
+class User
   
-  has_many :pools
-  has_many :tips
-  has_many :plays
   has_many :actions
   
   has_secure_password   # use built-in rails macro for password to password_digest machinery
@@ -55,3 +56,8 @@ class User < ActiveRecord::Base
   end
 
 end  # class User
+
+
+end  # module SportDB::Models
+
+User = SportDB::Models::User

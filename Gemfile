@@ -10,6 +10,7 @@ gem 'sportdb', '0.8.1'  # see https://github.com/geraldb/sport.db
 
 ### todo/fix: make it work w/ autoload - will sportdb/market work?
 gem 'sportdb-market', '0.1.3', require: 'sportdb/market/market'
+gem 'sportdb-play', '0.1.0'
 
 group :production do
   gem 'pg'

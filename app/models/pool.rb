@@ -16,18 +16,13 @@
 #  updated_at   :datetime        not null
 #
 
-class Pool < ActiveRecord::Base
-  
-  belongs_to :user   # is owner/admin/manager  
-  
-  has_many :bonus_rounds
-  
-  has_many :plays   # pools_users join table
-    
-  ## rename to users from players??
-  has_many :players, :through => :plays, :source => :user
+module SportDB::Models
 
-  belongs_to :event, :class_name => 'SportDB::Models::Event'
+## NB: extend from sport.db-play gem
+
+
+class Pool
+  
   
   after_create :log_action_create
   
@@ -65,9 +60,9 @@ class Pool < ActiveRecord::Base
     a.save!
   end
     
-  def full_title
-    "#{title} #{event.title}#{fix? ? ' Fix' : ''}"
-  end
+##  def full_title
+##    "#{title} #{event.title}#{fix? ? ' Fix' : ''}"
+##  end
   
   def fix?
     fix == true
@@ -77,8 +72,9 @@ class Pool < ActiveRecord::Base
     fix != true
   end
   
-  def team3?    # tip for 3rd place?
-    event.team3 == true
-  end
   
-end
+end # class Pool
+
+end  # module SportDB::Models
+
+Pool = SportDB::Models::Pool
