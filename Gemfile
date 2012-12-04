@@ -6,11 +6,10 @@ gem 'kramdown'     # all ruby markdown processor/engine
 gem 'rails', '3.2.1'
 gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
-gem 'sportdb', '0.8.1'  # see https://github.com/geraldb/sport.db
+gem 'sportdb', '0.9.2'  # see https://github.com/geraldb/sport.db.ruby
 
-### todo/fix: make it work w/ autoload - will sportdb/market work?
-gem 'sportdb-market', '0.1.3', require: 'sportdb/market/market'
-gem 'sportdb-play', '0.1.0'
+gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-market
+gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
 
 group :production do
   gem 'pg'

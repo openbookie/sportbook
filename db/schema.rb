@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "title",                        :null => false
     t.string   "key",                          :null => false
     t.integer  "league_id",                    :null => false
     t.integer  "season_id",                    :null => false
@@ -244,14 +243,14 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "event_id",                        :null => false
     t.string   "title",                           :null => false
     t.integer  "user_id",                         :null => false
-    t.boolean  "fix",          :default => false, :null => false
     t.boolean  "public",       :default => true,  :null => false
     t.boolean  "locked",       :default => false, :null => false
-    t.text     "welcome"
-    t.text     "welcome_html"
     t.string   "key"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.boolean  "fix",          :default => false, :null => false
+    t.text     "welcome"
+    t.text     "welcome_html"
   end
 
   add_index "pools", ["event_id"], :name => "index_pools_on_event_id"
@@ -370,12 +369,12 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "score5"
     t.integer  "score6"
     t.string   "toto12x"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "type"
     t.boolean  "calc",          :default => false, :null => false
     t.integer  "calc_team1_id"
     t.integer  "calc_team2_id"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
   end
 
   add_index "tips", ["game_id"], :name => "index_tips_on_game_id"
@@ -384,10 +383,10 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
 
   create_table "users", :force => true do |t|
+    t.string   "key",                                :null => false
     t.string   "name",                               :null => false
     t.string   "email",                              :null => false
     t.string   "password_digest"
-    t.string   "key",                                :null => false
     t.boolean  "admin",           :default => false, :null => false
     t.boolean  "guest",           :default => false, :null => false
     t.boolean  "active",          :default => true,  :null => false
