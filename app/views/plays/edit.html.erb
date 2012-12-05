@@ -125,8 +125,8 @@
 
 
 
-
-<%= form_for @play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
+ <!-- NB: namespaced model gets converted to sportsdb_models_play but only want user in params, thus, use as: option -->
+<%= form_for @play, :as => :play, :url => play_path( @play ), :html => { :method => 'put' } do |f| %>  
 
 
 <!-- todo/fix:

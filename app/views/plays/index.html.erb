@@ -102,8 +102,8 @@
        <%= render_game_team1( game ) %>
        
       <% @users.each do |user| %>
-        <!-- fix: use  _and_game!  - to raise excep if find fails -->
-        <% tip = Tip.find_by_user_and_pool_and_game( user, @pool, game ) %>
+        <!-- NB: allow missing tip, that is, tip.nil? true !!! -->
+        <% tip = Tip.find_by_user_id_and_pool_id_and_game_id( user.id, @pool.id, game.id ) %>
         
         <%= render_tip_score_v2( tip, :show_tips => @show_tips, :show_pts => @show_pts ) %>
       <% end %><!-- users.each --> 

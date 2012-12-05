@@ -17,7 +17,8 @@
   
   <td><!-- begin 2nd column -->
 
-<%= form_for @user, :url => session_path() do |f| %>
+  <!-- NB: namespaced model gets converted to sportsdb_models_user but only want user in params, thus, use as: option -->
+<%= form_for @user, :as => :user, :url => session_path() do |f| %>
 
 <div style='padding: 20px; background-color: #F1F1F1;'>
  <div>

@@ -6,9 +6,9 @@ cristiano =  User.find_by_key!( 'cristiano' )
 demo      =  User.find_by_key!( 'demo' )
 
 
-wmq   = Event.find_by_key!( 'wmq.euro' )
+worldq   = Event.find_by_key!( 'world.quali.euro.2012/13' )
 
-pool1 = Pool.create!( event: wmq, title: 'Demo', user: lionel, welcome: '' )
+pool1 = Pool.create!( event: worldq, title: 'Demo', user: lionel, welcome: '' )
 
 pool1.players << lionel   # also auto add admin as first player
 pool1.players << demo

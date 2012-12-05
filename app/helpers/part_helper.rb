@@ -91,9 +91,11 @@ module PartHelper
     show_tips = opts[:show_tips].present? ? opts[:show_tips] : true  # default true
     show_pts  = opts[:show_pts].present? ? opts[:show_pts] : false  # default false
 
+    ## todo/fix: how to deal w/ missing tip - tip.nil?    
+    
     render :partial => 'shared/td_tip_score_v2',
            :locals => { :tip       => tip,
-                        :game      => tip.game,
+                        :game      => (tip.present? ? tip.game : nil),
                         :show_tips => show_tips,
                         :show_pts  => show_pts }
   end
