@@ -216,6 +216,11 @@ class Admin::JobsController < Admin::BaseController
     
     txt = ">> Export (#{Time.now}):\r\n\r\n"
 
+    ## export users first
+    User.all.each do |user|
+      txt << "user-#{user.id},#{user.key},#{user.name},#{user.email},#{user.password_digest},#{user.admin},#{user.guest},#{user.active}"
+      txt << "\r\n"
+    end
 
     Play.all.each do |play|
       ## always export all plays for now 

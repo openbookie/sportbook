@@ -40,7 +40,9 @@ users = [
   [ 'Stefan N',    'stefan' ],
   [ 'Mike K',      'mike' ],
   [ 'Harry P',     'harry' ],
-  [ 'Christian Z', 'christian.z' ]
+  [ 'Christian Z', 'christian.z' ],
+  [ 'Gerd B',      'gerd' ],
+  [ 'Aurel D',     'aurel']
 ]
 
 User.create_from_ary!( users )
