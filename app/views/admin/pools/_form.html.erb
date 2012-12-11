@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td><%= f.label :event_id, 'Veranstaltung:' %></td>
-      <td><%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :title) %></td>
+      <td><%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :full_title) %></td>
     </tr>
     <tr>
       <td><%= f.label :public, 'Public Flag:' %></td>

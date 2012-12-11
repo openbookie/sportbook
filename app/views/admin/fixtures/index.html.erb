@@ -1,0 +1,18 @@
+
+<h3>Load Fixtures (in Plain Text)</h3>
+
+<!-- post back -->
+<%= form_tag do %>
+
+<div>
+  <%= text_area_tag 'text', '', :rows => 16, :cols => 100 %>
+</div>
+<div>
+  Event:
+  <%= select_tag :event_id, options_from_collection_for_select(Event.all, :id, :full_title) %>
+
+  <%= submit_tag 'Load Fixtures (in Plain Text)', :class => 'btn-primary' %>
+</div>
+
+<% end %>
+

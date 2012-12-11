@@ -37,6 +37,10 @@ Wettpool::Application.routes.draw do
     resources :games do
       put 'batch_update', :on => :collection    # batch update 
     end
+
+    # add plain text import forms for fixtures n quotes  
+    resources :fixtures
+    resources :quotes    
     
     match 'bonus',         :to => 'bonus#index'
     match 'bonus/update',  :to => 'bonus#update'
