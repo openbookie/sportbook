@@ -1,4 +1,19 @@
 
+def export_users
+  
+  ## NB: use rake export_users (see lib/tasks or rake -T)
+  
+  puts "## Users"
+  puts ""
+
+  User.all.each do |user|
+    puts "user-#{user.id},#{user.key},#{user.name},#{user.email},#{user.password_digest},#{user.admin},#{user.guest},#{user.active}"
+  end
+
+  puts "DONE - - #{User.count} Users."  
+  
+end
+
 
 def update_import_export_keys
   
@@ -35,9 +50,9 @@ def update_import_export_keys
   puts "<< DONE - #{User.count} Users, #{Game.count} Games, #{Pool.count} Pools."
 end
 
-
 def import_backup_data( data )   # data as all-in-one string
 
+  user_count = 0
   tip_count  = 0
   play_count = 0
 
@@ -58,7 +73,15 @@ def import_backup_data( data )   # data as all-in-one string
       puts "#{i+1}: $#{line}$"
       puts "   $#{fields.join('|')}$"
     
-      if fields[0].starts_with?( 'play' )
+      if fields[0].starts_with?( 'user' ) 
+        user = User.find_by_key!( fields[1] )
+        # 2 - name
+        # 3 - email
+        user.password_digest = fields[4]
+        user.save!
+
+        user_count += 1
+      elsif fields[0].starts_with?( 'play' )
         user = User.find_by_key!( fields[1] )
         pool = Pool.find_by_key!( fields[2] )
    
@@ -80,7 +103,15 @@ def import_backup_data( data )   # data as all-in-one string
       elsif fields[0].starts_with?( 'tip' )
         user = User.find_by_key!( fields[1] )
         pool = Pool.find_by_key!( fields[2] )
-        game = Game.find_by_key!( fields[3] )
+
+        ## nb: import hack for world.quali.euro.2012/13  - ignore round; just use teams for lookup
+        if fields[3] =~ /world.quali.euro.2012\/13.+\+([a-z]{3})\+([a-z]{3})/
+          team1 = Team.find_by_key!( $1 )
+          team2 = Team.find_by_key!( $2 )
+          game = Game.find_by_team1_id_and_team2_id!( team1.id, team2.id )
+        else
+          game = Game.find_by_key!( fields[3] )
+        end
         
         tip = Tip.find_by_user_id_and_pool_id_and_game_id( user.id, pool.id, game.id )
         if tip.nil?
@@ -113,6 +144,6 @@ def import_backup_data( data )   # data as all-in-one string
   end  # each lines
 
   puts ""
-  puts "<< DONE - #{play_count} Plays, #{tip_count} Tips."
+  puts "<< DONE - #{play_count} Plays, #{tip_count} Tips, #{user_count} Users."
 
 end # method import_backup_data

@@ -103,3 +103,4 @@ task :load_uss_others_data => [:environment] do |t|
   Prop.create!( :key => 'db.data.uss.others.version', :value => '1' )
   
 end
+
