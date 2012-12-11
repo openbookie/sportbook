@@ -14,7 +14,7 @@ class Admin::GamesController < Admin::BaseController
   def batch_update
      # mass update of games plus optional quotes
  
-    games_hash = params[ :games ]
+    games_hash = params[ :games ] || []
     games_hash.each do |game_key, game_hash|
       game = Game.find( game_key )
 
@@ -33,7 +33,7 @@ class Admin::GamesController < Admin::BaseController
       end
     end
 
-    quotes_hash = params[ :quotes ]
+    quotes_hash = params[ :quotes ] || []
     quotes_hash.each do |quote_key, quote_hash|
       quote = Quote.find( quote_key )
       
@@ -54,7 +54,7 @@ class Admin::GamesController < Admin::BaseController
       end
     end
 
-    new_quotes_hash = params[ :new_quotes ]
+    new_quotes_hash = params[ :new_quotes ] || []
     new_quotes_hash.each do |quote_key, quote_hash|
       if( quote_hash[ :service_id ].present? &&
           (quote_hash[ :odds1 ].present? || quote_hash[ :odds2 ].present? || quote_hash[ :odds3 ].present? ))

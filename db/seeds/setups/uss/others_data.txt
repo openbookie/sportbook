@@ -7,7 +7,6 @@
 
 
 play-32,gerd,cl.2012/13+flex+ande,madrid,galatasaray,
-play-21,behroozs,at.cup.2012/13+flex+manfredk,austria,sturm,
 play-14,franzr,at.cup.2012/13+flex+manfredk,rapid,salzburg,
 play-5,franzr,world.quali.euro.2012/13+flex+behroozs,ger,swe,aut
 play-8,ande,world.quali.euro.2012/13+flex+behroozs,ger,aut,swe
