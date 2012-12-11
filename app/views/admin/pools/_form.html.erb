@@ -1,4 +1,4 @@
-<%= form_for [:admin, @pool] do |f| %>
+<%= form_for( @pool, :as => :pool, :url => @pool.new_record? ? admin_pools_path() : admin_pool_path(@pool)  ) do |f| %>
   <% if @pool.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pool.errors.count, "error") %> prohibited this pool from being saved:</h2>

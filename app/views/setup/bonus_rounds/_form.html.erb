@@ -1,4 +1,4 @@
-<%= form_for(@round, :url => setup_bonus_rounds_path()) do |f| %>
+<%= form_for(@round, :as => :round, :url => @round.new_record? ? setup_bonus_rounds_path() : setup_bonus_round_path(@round) ) do |f| %>
   <% if @round.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
