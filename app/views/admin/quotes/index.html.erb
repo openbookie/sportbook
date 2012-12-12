@@ -5,9 +5,11 @@
 <%= form_tag do %>
 
 <div>
-  <%= text_area_tag 'text', '', :rows => 16, :cols => 100 %>
+  <%= text_area_tag 'text', '', :rows => 16, :cols => 80 %>
 </div>
 <div>
+ Service:
+   TBD - add select tag
  Event:
   <%= select_tag :event_id, options_from_collection_for_select(Event.all, :id, :full_title) %>  
   
