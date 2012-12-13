@@ -136,9 +136,10 @@ DEPENDENCIES
   rails-i18n
   ri_cal
   sass-rails (~> 3.2.3)
-  sportdb (>= 0.9.5)
+  sportdb (= 0.9.6)
   sportdb-market (= 0.3.0)
   sportdb-play (= 0.2.0)
   sqlite3
   thin
   uglifier (>= 1.0.3)
+  worlddb (= 0.6.8)
