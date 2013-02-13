@@ -6,7 +6,7 @@ cristiano =  User.find_by_key!( 'cristiano' )
 demo      =  User.find_by_key!( 'demo' )
 
 
-worldq   = Event.find_by_key!( 'world.quali.euro.2012/13' )
+worldq   = Event.find_by_key!( 'world.quali.europe.2014' )
 
 pool1 = Pool.create!( event: worldq, title: 'Demo', user: lionel, welcome: '' )
 
