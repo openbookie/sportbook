@@ -37,5 +37,33 @@ Option 1b) New command (using postgres.heroku.com dev plan)
 Debugging. Get latest logs via
 
     heroku logs
+
+
+Check remotes for git repo
+
+    git remote -v
+
+Add heroku remote to git reop
+
+    git remote add heroku git@heroku.com:sportbook.git
+
+### Troubleshooting
+
+    $ git push heroku
     
+    Permission denied (publickey).
+    fatal: The remote end hung up unexpectedly
+
+Add new public key to heroku. E.g. issue the command:
+
+    $ heroku keys:add
+
+Will result in:
+
+    Found existing public key: C:/Users/gerald/.ssh/id_rsa.pub
+    Uploading SSH public key C:/Users/gerald/.ssh/id_rsa.pub... done
+
+
+
+
 
