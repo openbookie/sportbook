@@ -40,7 +40,7 @@ teams = [
   [ 'manunited',    'cl/manunited.png' ],
   [ 'braga',        'cl/braga.png' ],
   [ 'galatasaray',  'cl/galatasaray.png' ],
-  [ 'cluj',         'cl/cluj.png' ],
+  [ 'cfr',          'cl/cluj.png' ],
 
 ###################
 # more teams from cl/el 2011-12

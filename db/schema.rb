@@ -217,6 +217,13 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "groups_teams", ["group_id", "team_id"], :name => "index_groups_teams_on_group_id_and_team_id", :unique => true
   add_index "groups_teams", ["group_id"], :name => "index_groups_teams_on_group_id"
 
+  create_table "langs", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "leagues", :force => true do |t|
     t.string   "key",                           :null => false
     t.string   "title",                         :null => false
@@ -224,6 +231,18 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean  "club",       :default => false, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "logs", :force => true do |t|
+    t.string   "msg",        :null => false
+    t.string   "level",      :null => false
+    t.string   "app"
+    t.string   "tag"
+    t.integer  "pid"
+    t.string   "tid"
+    t.string   "ts"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "plays", :force => true do |t|
@@ -351,11 +370,12 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", :force => true do |t|
-    t.string   "key",        :null => false
-    t.string   "slug",       :null => false
+    t.string   "key",                       :null => false
+    t.string   "slug",                      :null => false
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "grade",      :default => 1, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "tags", ["key"], :name => "index_tags_on_key", :unique => true
@@ -405,6 +425,16 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "tips", ["pool_id"], :name => "index_tips_on_pool_id"
   add_index "tips", ["user_id", "pool_id", "game_id"], :name => "index_tips_on_user_id_and_pool_id_and_game_id", :unique => true
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
+
+  create_table "usages", :force => true do |t|
+    t.integer  "country_id",                    :null => false
+    t.integer  "lang_id",                       :null => false
+    t.boolean  "official",   :default => true,  :null => false
+    t.boolean  "minor",      :default => false, :null => false
+    t.float    "percent"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "key",                                :null => false

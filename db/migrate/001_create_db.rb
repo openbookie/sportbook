@@ -8,6 +8,7 @@ class CreateDb < ActiveRecord::Migration
 
   def up
 
+    LogDB.create
     WorldDB.create
     SportDB.create
     SportDB::Market.create  #  market quotes
