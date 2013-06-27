@@ -14,7 +14,7 @@ Example events include:
 * World Cup Quali 2012/13
 * National Hockey League (NHL) 2012
 
-For more events or leagues, see the [`sport.db`](http://geraldb.github.com/sport.db) site.
+For more events or leagues, see the [`sport.db`](https://github.com/geraldb/sport.db) site.
 
 ## Demo
 
