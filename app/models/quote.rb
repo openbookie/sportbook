@@ -14,4 +14,4 @@
 #
 
 
-Quote = SportDB::Models::Quote
+Quote = SportDb::Models::Quote

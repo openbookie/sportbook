@@ -9,5 +9,5 @@
 #  updated_at :datetime        not null
 #
 
-Prop = SportDB::Models::Prop
+Prop = SportDb::Models::Prop
 

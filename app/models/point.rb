@@ -17,4 +17,4 @@
 #  updated_at     :datetime        not null
 #
 
-Point = SportDB::Models::Point
+Point = SportDb::Models::Point

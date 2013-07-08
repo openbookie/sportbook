@@ -9,5 +9,5 @@
 #  updated_at :datetime        not null
 #
 
-EventTeam = SportDB::Models::EventTeam
+EventTeam = SportDb::Models::EventTeam
 

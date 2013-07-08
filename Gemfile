@@ -7,8 +7,9 @@ gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'worlddb-data',       '9.9.9', :git => 'https://github.com/geraldb/world.db.git'    ## :path => '../world.db'
-gem 'sportdb-data-world', '9.9.9', :git => 'https://github.com/openfootball/world.git'  ## :path => '../openfootball/world'
+gem 'worlddb-data',       '9.9.9', :git => 'https://github.com/geraldb/world.db.git'         ## :path => '../world.db'
+gem 'sportdb-data-world', '9.9.9', :git => 'https://github.com/openfootball/world.git'       ## :path => '../openfootball/world'
+gem 'sportdb-data-at',    '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'  ## :path => '../openfootball/at-austria'
 
 gem 'logutils',  '0.6.0'  # see https://github.com/geraldb/logutils
 gem 'textutils', '0.6.6'  # see https://github.com/geraldb/textutils

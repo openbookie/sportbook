@@ -14,5 +14,5 @@
 
 
 
-GroupQuote = SportDB::Models::GroupQuote
+GroupQuote = SportDb::Models::GroupQuote
 

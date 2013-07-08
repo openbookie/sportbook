@@ -11,5 +11,5 @@
 #
 
 
-BonusTip = SportDB::Models::BonusTip
+BonusTip = SportDb::Models::BonusTip
 

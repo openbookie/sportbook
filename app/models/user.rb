@@ -14,7 +14,7 @@
 #  updated_at      :datetime        not null
 #
 
-module SportDB::Models
+module SportDb::Models
 
 ## NB: extend from sport.db-play gem
 
@@ -58,6 +58,6 @@ class User
 end  # class User
 
 
-end  # module SportDB::Models
+end  # module SportDb::Models
 
-User = SportDB::Models::User
+User = SportDb::Models::User

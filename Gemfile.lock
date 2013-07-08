@@ -5,8 +5,14 @@ GIT
     worlddb-data (9.9.9)
 
 GIT
+  remote: https://github.com/openfootball/at-austria.git
+  revision: e8622bbe72c0ef854335c314784853d28ac208d1
+  specs:
+    sportdb-data-at (9.9.9)
+
+GIT
   remote: https://github.com/openfootball/world.git
-  revision: 3d409e62c6b19c49ad7467226c2daec4bc6b6e01
+  revision: 15624e61ed302a304bbdb4240be3e1cfd94481e7
   specs:
     sportdb-data-world (9.9.9)
 
@@ -160,6 +166,7 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sportdb (= 1.6.18)
+  sportdb-data-at (= 9.9.9)!
   sportdb-data-world (= 9.9.9)!
   sportdb-market (= 0.3.0)
   sportdb-play (= 0.2.0)

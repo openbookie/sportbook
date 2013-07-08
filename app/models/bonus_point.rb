@@ -15,4 +15,4 @@
 #  updated_at     :datetime        not null
 #
 
-BonusPoint = SportDB::Models::BonusPoint
+BonusPoint = SportDb::Models::BonusPoint

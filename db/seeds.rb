@@ -34,8 +34,10 @@ end
   WorldDb.read_setup( 'setups/sport.db.admin', find_data_path_from_gemfile_gitref('world.db'), { skip_tags: true } )
   
   # national teams - world cup quali
-  SportDb.read_setup( 'setups/all', find_data_path_from_gemfile_gitref( 'world') )
-  
+  SportDb.read_setup( 'setups/2014_quali_europe_c', find_data_path_from_gemfile_gitref( 'world') )
+  # austrian league n cup
+  SportDb.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref( 'at-austria') )
+
 =begin  
   ## todo: fix - enable - check event keys etc.
 
@@ -51,13 +53,14 @@ end
   ])
 =end
 
-=begin
-  ['cl/teams', 'euro/teams',
-   'setups/demo/users', 'setups/demo/pools'].each do |seed|
+## 'cl/teams',
+## 'euro/teams',
+
+  [ 'setups/uss/users', 'setups/uss/others_pools'].each do |seed|
+  # [ 'setups/demo/users', 'setups/demo/pools'].each do |seed|
       puts "*** loading seed data in '#{seed}'..."
       require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
-=end
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( key: 'db.seeds.version', value: '1' )

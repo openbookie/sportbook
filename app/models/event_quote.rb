@@ -13,5 +13,5 @@
 #
 
 
-EventQuote = SportDB::Models::EventQuote
+EventQuote = SportDb::Models::EventQuote
 

@@ -26,8 +26,8 @@ class CalcTip < Tip
 
   after_initialize :on_after_initialize
 
-  belongs_to :calc_team1, :class_name => 'SportDB::Models::Team', :foreign_key => 'calc_team1_id'
-  belongs_to :calc_team2, :class_name => 'SportDB::Models::Team', :foreign_key => 'calc_team2_id'
+  belongs_to :calc_team1, :class_name => 'SportDb::Models::Team', :foreign_key => 'calc_team1_id'
+  belongs_to :calc_team2, :class_name => 'SportDb::Models::Team', :foreign_key => 'calc_team2_id'
 
   ## note: use different calc forumula
   #  check for matching teams first
