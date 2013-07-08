@@ -1,13 +1,40 @@
+###
+# todo/fix: move to textutils / worlddb ??
 
-  LogDB.delete!
-  WorldDB.delete!          # danger zone! deletes all records
-  SportDB.delete!          # danger zone! deletes all records
-  SportDB::Market.delete!  # danger zone! deletes all records
+def find_data_path_from_gemfile_gitref( name )
+  puts "[debug] find_data_path( name='#{name}' )..."
+  puts "load path:"
+  pp $LOAD_PATH
+
+  # escape chars for regex e.g. . becomes \.
+  name_esc = name.gsub( '.', '\.' )
+  name_regex = /\/(#{name_esc}-[a-z0-9]+)|(#{name_esc})\/lib$/  # e.g. /\/(beer\.db-[a-z0-9]+)|(beer\.db)\//
+
+  candidates = []
+  $LOAD_PATH.each do |path|
+    if path =~ name_regex
+      # cutoff trailing /lib
+      candidates << path[0..-5]
+    end
+  end
+
+  puts 'found candidates:'
+  pp candidates
+
+  ## use first candidate
+  candidates[0]
+end
 
 
-  WorldDB.read_all( find_world_db_path_from_gemfile_gitref! )
+  LogDb.delete!
+  WorldDb.delete!          # danger zone! deletes all records
+  SportDb.delete!          # danger zone! deletes all records
+  SportDb::Market.delete!  # danger zone! deletes all records
+
+  WorldDb.read_setup( 'setups/sport.db.admin', find_data_path_from_gemfile_gitref('world.db'), { skip_tags: true } )
   
-  SportDB.read_setup( 'setups/demo', find_football_db_path_from_gemfile_gitref! )
+  # national teams - world cup quali
+  SportDb.read_setup( 'setups/all', find_data_path_from_gemfile_gitref( 'world') )
   
 =begin  
   ## todo: fix - enable - check event keys etc.
@@ -24,11 +51,13 @@
   ])
 =end
 
+=begin
   ['cl/teams', 'euro/teams',
    'setups/demo/users', 'setups/demo/pools'].each do |seed|
       puts "*** loading seed data in '#{seed}'..."
       require "#{Rails.root}/db/seeds/#{seed}.rb"
   end
+=end
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
 Prop.create!( key: 'db.seeds.version', value: '1' )

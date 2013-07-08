@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 ##
 ##  NB: Lets use old numbering scheme
 ##  - add to this line to config/application.rb.
@@ -8,10 +10,10 @@ class CreateDb < ActiveRecord::Migration
 
   def up
 
-    LogDB.create
-    WorldDB.create
-    SportDB.create
-    SportDB::Market.create  #  market quotes
+    LogDb.create
+    WorldDb.create
+    SportDb.create
+    SportDb::Market.create  #  market quotes
 
     ## NB: SportDB::Play requires/assumes a table users with col key exists
     
@@ -30,7 +32,7 @@ add_index :users, :key,   :unique => true
 add_index :users, :email, :unique => true   # make email unique
     
 
-    SportDB::Play.create    #  pools, plays, tips, etc. 
+    SportDb::Play.create    #  pools, plays, tips, etc. 
     
 #####################################
 ## add columns / change tables
@@ -106,7 +108,7 @@ end
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-   Prop.create!( :key => 'db.schema.sportbook.version', :value => '1' )
+   Prop.create!( key: 'db.schema.sportbook.version', value: '1' )
 
   end
 

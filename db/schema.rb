@@ -98,25 +98,36 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "countries", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.string   "key",                           :null => false
-    t.string   "code",                          :null => false
+  create_table "continents", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "key",        :null => false
     t.string   "synonyms"
-    t.integer  "pop",                           :null => false
-    t.integer  "area",                          :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "continents", ["key"], :name => "index_continents_on_key", :unique => true
+
+  create_table "countries", :force => true do |t|
+    t.string   "title",                           :null => false
+    t.string   "key",                             :null => false
+    t.string   "code",                            :null => false
+    t.string   "synonyms"
+    t.integer  "pop",                             :null => false
+    t.integer  "area",                            :null => false
+    t.integer  "continent_id"
     t.integer  "country_id"
-    t.boolean  "s",          :default => false, :null => false
-    t.boolean  "c",          :default => false, :null => false
-    t.boolean  "d",          :default => false, :null => false
+    t.boolean  "s",            :default => false, :null => false
+    t.boolean  "c",            :default => false, :null => false
+    t.boolean  "d",            :default => false, :null => false
     t.string   "motor"
     t.string   "iso2"
     t.string   "iso3"
     t.string   "fifa"
     t.string   "net"
     t.string   "wikipedia"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true
@@ -136,8 +147,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "key",                          :null => false
     t.integer  "league_id",                    :null => false
     t.integer  "season_id",                    :null => false
-    t.datetime "start_at",                     :null => false
-    t.datetime "end_at"
+    t.date     "start_at",                     :null => false
+    t.date     "end_at"
     t.boolean  "team3",      :default => true, :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
@@ -156,24 +167,31 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "events_teams", ["event_id"], :name => "index_events_teams_on_event_id"
 
   create_table "games", :force => true do |t|
+    t.string   "key"
     t.integer  "round_id",                        :null => false
     t.integer  "pos",                             :null => false
     t.integer  "group_id"
     t.integer  "team1_id",                        :null => false
     t.integer  "team2_id",                        :null => false
     t.datetime "play_at",                         :null => false
+    t.boolean  "postponed",    :default => false, :null => false
+    t.datetime "play_at_v2"
+    t.datetime "play_at_v3"
     t.boolean  "knockout",     :default => false, :null => false
     t.boolean  "home",         :default => true,  :null => false
     t.integer  "score1"
     t.integer  "score2"
-    t.integer  "score3"
-    t.integer  "score4"
-    t.integer  "score5"
-    t.integer  "score6"
+    t.integer  "score1ot"
+    t.integer  "score2ot"
+    t.integer  "score1p"
+    t.integer  "score2p"
+    t.integer  "score1i"
+    t.integer  "score2i"
+    t.integer  "score1ii"
+    t.integer  "score2ii"
     t.integer  "next_game_id"
     t.integer  "prev_game_id"
     t.string   "toto12x"
-    t.string   "key"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "locked",       :default => false, :null => false
@@ -186,6 +204,19 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "games", ["next_game_id"], :name => "index_games_on_next_game_id"
   add_index "games", ["prev_game_id"], :name => "index_games_on_prev_game_id"
   add_index "games", ["round_id"], :name => "index_games_on_round_id"
+
+  create_table "goals", :force => true do |t|
+    t.integer  "person_id",                     :null => false
+    t.integer  "game_id",                       :null => false
+    t.integer  "minute"
+    t.integer  "offset"
+    t.integer  "score1"
+    t.integer  "score2"
+    t.boolean  "penalty",    :default => false, :null => false
+    t.boolean  "owngoal",    :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "group_quotes", :force => true do |t|
     t.integer  "service_id", :null => false
@@ -239,10 +270,24 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "app"
     t.string   "tag"
     t.integer  "pid"
-    t.string   "tid"
+    t.integer  "tid"
     t.string   "ts"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "persons", :force => true do |t|
+    t.string   "key",            :null => false
+    t.string   "name",           :null => false
+    t.string   "synonyms"
+    t.string   "code"
+    t.date     "born_at"
+    t.integer  "city_id"
+    t.integer  "region_id"
+    t.integer  "country_id",     :null => false
+    t.integer  "nationality_id", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "plays", :force => true do |t|
@@ -312,10 +357,37 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "races", :force => true do |t|
+    t.integer  "track_id",   :null => false
+    t.integer  "event_id",   :null => false
+    t.integer  "pos",        :null => false
+    t.datetime "start_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "records", :force => true do |t|
+    t.integer  "race_id"
+    t.integer  "run_id"
+    t.integer  "person_id",                    :null => false
+    t.integer  "pos"
+    t.boolean  "completed",  :default => true, :null => false
+    t.string   "state"
+    t.string   "comment"
+    t.time     "time"
+    t.string   "timeline"
+    t.integer  "laps"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "regions", :force => true do |t|
     t.string   "title",      :null => false
     t.string   "key",        :null => false
     t.string   "code"
+    t.string   "abbr"
+    t.string   "iso"
+    t.string   "nuts"
     t.string   "synonyms"
     t.integer  "country_id", :null => false
     t.integer  "pop"
@@ -326,14 +398,23 @@ ActiveRecord::Schema.define(:version => 1) do
 
   add_index "regions", ["key", "country_id"], :name => "index_regions_on_key_and_country_id", :unique => true
 
+  create_table "rosters", :force => true do |t|
+    t.integer  "person_id",  :null => false
+    t.integer  "team_id",    :null => false
+    t.integer  "event_id"
+    t.integer  "pos",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rounds", :force => true do |t|
     t.integer  "event_id",                      :null => false
     t.string   "title",                         :null => false
     t.string   "title2"
     t.integer  "pos",                           :null => false
     t.boolean  "knockout",   :default => false, :null => false
-    t.datetime "start_at",                      :null => false
-    t.datetime "end_at"
+    t.date     "start_at",                      :null => false
+    t.date     "end_at"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "flex",       :default => true,  :null => false
@@ -343,6 +424,14 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   add_index "rounds", ["event_id"], :name => "index_rounds_on_event_id"
+
+  create_table "runs", :force => true do |t|
+    t.integer  "race_id",    :null => false
+    t.integer  "pos",        :null => false
+    t.datetime "start_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "seasons", :force => true do |t|
     t.string   "key",        :null => false
@@ -381,9 +470,9 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "tags", ["key"], :name => "index_tags_on_key", :unique => true
 
   create_table "teams", :force => true do |t|
+    t.string   "key",                             :null => false
     t.string   "title",                           :null => false
     t.string   "title2"
-    t.string   "key",                             :null => false
     t.string   "code"
     t.string   "synonyms"
     t.integer  "country_id",                      :null => false
@@ -425,6 +514,18 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "tips", ["pool_id"], :name => "index_tips_on_pool_id"
   add_index "tips", ["user_id", "pool_id", "game_id"], :name => "index_tips_on_user_id_and_pool_id_and_game_id", :unique => true
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
+
+  create_table "tracks", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title",      :null => false
+    t.string   "synonyms"
+    t.string   "code"
+    t.integer  "city_id"
+    t.integer  "region_id"
+    t.integer  "country_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "usages", :force => true do |t|
     t.integer  "country_id",                    :null => false

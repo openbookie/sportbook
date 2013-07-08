@@ -1,28 +1,24 @@
 source 'https://rubygems.org'
 
-gem 'bcrypt-ruby'
 gem 'kramdown'     # all ruby markdown processor/engine
 
 gem 'rails', '3.2.12'
 gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
+gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem "worlddb-data", "999", :git => "git://github.com/geraldb/world.db.git"  ## :path => "../world.db"
-gem "sportdb-data", "999", :git => "git://github.com/geraldb/football.db.git"  ## :path => "../football.db"
+gem 'worlddb-data',       '9.9.9', :git => 'https://github.com/geraldb/world.db.git'    ## :path => '../world.db'
+gem 'sportdb-data-world', '9.9.9', :git => 'https://github.com/openfootball/world.git'  ## :path => '../openfootball/world'
 
-gem "logutils", "0.1.0",  :git => "git://github.com/geraldb/logutils" ## :path => "../logutils"
-gem "textutils", "0.3.0", :git => "git://github.com/geraldb/textutils"  ## :path => "../textutils"
+gem 'logutils',  '0.6.0'  # see https://github.com/geraldb/logutils
+gem 'textutils', '0.6.6'  # see https://github.com/geraldb/textutils
 
-gem "worlddb", "0.10.0", :git => "git://github.com/geraldb/world.db.ruby.git"   ## :path => "../world.db.ruby"
-gem "sportdb", "0.10.0", :git => "git://github.com/geraldb/sport.db.ruby.git" ## :path => "../sport.db.ruby"
-
-
-## gem 'worlddb',  '0.6.8'
-## gem 'sportdb',  '0.9.7'  # see https://github.com/geraldb/sport.db.ruby
-
+gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
+gem 'sportdb', '1.6.18'  # see https://github.com/geraldb/sport.db.ruby
 
 gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-market
 gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
+
 
 group :production do
   gem 'pg'
