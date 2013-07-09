@@ -5,6 +5,37 @@ require File.expand_path('../application', __FILE__)
 puts "[boot] environment.rb - after require 'application'"
 
 
+####
+#
+
+###
+# todo/fix: move to textutils / worlddb ??
+
+def find_data_path_from_gemfile_gitref( name )
+  puts "[debug] find_data_path( name='#{name}' )..."
+  puts "load path:"
+  pp $LOAD_PATH
+
+  # escape chars for regex e.g. . becomes \.
+  name_esc = name.gsub( '.', '\.' )
+  name_regex = /\/(#{name_esc}-[a-z0-9]+)|(#{name_esc})\/lib$/  # e.g. /\/(beer\.db-[a-z0-9]+)|(beer\.db)\//
+
+  candidates = []
+  $LOAD_PATH.each do |path|
+    if path =~ name_regex
+      # cutoff trailing /lib
+      candidates << path[0..-5]
+    end
+  end
+
+  puts 'found candidates:'
+  pp candidates
+
+  ## use first candidate
+  candidates[0]
+end
+
+
 
 ######################
 # logging config

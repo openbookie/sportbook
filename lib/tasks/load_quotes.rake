@@ -1,15 +1,15 @@
 
-desc "sportbook: stats/debug"
+desc 'sportbook: stats/debug'
 task :sportbook_stats => [:environment] do |t|
-  puts "[debug] SportDB.banner: >>#{SportDB.banner}<<"
-  puts "[debug] SportDB.root: >>#{SportDB.root}<<"
+  puts "[debug] SportDb.banner: >>#{SportDb.banner}<<"
+  puts "[debug] SportDb.root: >>#{SportDb.root}<<"
 
-  puts "[debug] SportDB::Market.banner: >>#{SportDB::Market.banner}<<"
-  puts "[debug] SportDB::Market.root: >>#{SportDB::Market.root}<<"
+  puts "[debug] SportDb::Market.banner: >>#{SportDb::Market.banner}<<"
+  puts "[debug] SportDb::Market.root: >>#{SportDb::Market.root}<<"
 end
 
 
-desc "sportbook: load quotes (e.g. bl_quotes_tipp3.txt)"
+desc 'sportbook: load quotes (e.g. bl_quotes_tipp3.txt)'
 task :load_quotes => [:environment] do |t|
   
   SportDB::Market.delete!  ## danger zone!! delete all market tables (quotes,etc.)
