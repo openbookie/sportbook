@@ -6,10 +6,15 @@
 
   WorldDb.read_setup( 'setups/sport.db.admin', find_data_path_from_gemfile_gitref('world.db'), { skip_tags: true } )
   
-  # national teams - world cup quali
-  SportDb.read_setup( 'setups/2014_quali_europe_c', find_data_path_from_gemfile_gitref( 'world') )
-  # austrian league n cup
-  SportDb.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref( 'at-austria') )
+  # national teams
+  # - world cup quali
+  
+  SportDb.read_setup( 'setups/2014_quali_europe', find_data_path_from_gemfile_gitref('world'))
+  
+  # clubs
+  # - deutsche bundesliga
+
+  SportDb.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref('de-deutschland'))
 
 =begin  
   ## todo: fix - enable - check event keys etc.
@@ -26,11 +31,7 @@
   ])
 =end
 
-## 'cl/teams',
-## 'euro/teams',
-
-  [ 'setups/uss/users', 'setups/uss/others_pools'].each do |seed|
-  # [ 'setups/demo/users', 'setups/demo/pools'].each do |seed|
+  [ 'setups/demo/users', 'setups/demo/pools'].each do |seed|
       puts "*** loading seed data in '#{seed}'..."
       require "#{Rails.root}/db/seeds/#{seed}.rb"
   end

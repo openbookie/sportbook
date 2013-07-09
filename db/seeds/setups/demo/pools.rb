@@ -15,9 +15,9 @@ pool1.players << demo
 
 
 
-cl = Event.find_cl_2012_13!
+bl = Event.find_by_key!( 'de.2013/14' )
 
-pool2 = Pool.create!( event: cl, title: 'Demo', user: cristiano, welcome: '' )
+pool2 = Pool.create!( event: bl, title: 'Demo', user: cristiano, welcome: '' )
 
 pool2.players << cristiano
 pool2.players << demo

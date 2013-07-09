@@ -11,8 +11,14 @@ GIT
     sportdb-data-at (9.9.9)
 
 GIT
+  remote: https://github.com/openfootball/de-deutschland.git
+  revision: 981adf29a2526ce892d8f605909422939182d1ee
+  specs:
+    sportdb-data-de (9.9.9)
+
+GIT
   remote: https://github.com/openfootball/world.git
-  revision: 15624e61ed302a304bbdb4240be3e1cfd94481e7
+  revision: 3d35009fcf44a366bc4514d9974c1fdf6716ba95
   specs:
     sportdb-data-world (9.9.9)
 
@@ -167,6 +173,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sportdb (= 1.6.18)
   sportdb-data-at (= 9.9.9)!
+  sportdb-data-de (= 9.9.9)!
   sportdb-data-world (= 9.9.9)!
   sportdb-market (= 0.3.0)
   sportdb-play (= 0.2.0)
