@@ -22,6 +22,11 @@ gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-m
 gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
 
 
+## add logos
+
+gem 'sportdb-logos', '0.0.1',  :git => 'https://github.com/geraldb/sport.db.logos'
+
+
 group :production do
   gem 'pg'
   gem 'thin'    # use faster multiplexed (w/ eventmachine) web server 

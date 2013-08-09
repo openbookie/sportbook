@@ -13,6 +13,7 @@
   </span>
   <%= "(#{game.team1.title2})" if game.team1.title2.present? %>
 </td>
+
 <td>
-  <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+  <%= image_tag( "logos/24x24/#{game.team1.key}.png" ) if Rails.application.assets.find_asset( "logos/24x24/#{game.team1.key}.png" ).present? %>  
 </td>
