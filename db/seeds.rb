@@ -5,12 +5,13 @@
   SportDb::Market.delete!  # danger zone! deletes all records
 
   WorldDb.read_setup( 'setups/sport.db.admin', find_data_path_from_gemfile_gitref('world.db'), { skip_tags: true } )
-  
+ 
   # national teams
   # - world cup quali
-  
-  SportDb.read_setup( 'setups/2014_quali_europe', find_data_path_from_gemfile_gitref('world'))
-  
+
+  SportDb.read_builtin
+  SportDb.read_setup( 'setups/2014_quali_europe', find_data_path_from_gemfile_gitref('world-cup'))
+
   # clubs
   # - deutsche bundesliga
 

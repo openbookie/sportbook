@@ -7,16 +7,16 @@ gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'worlddb-data',       '9.9.9', :git => 'https://github.com/geraldb/world.db.git'             ## :path => '../world.db'
-gem 'sportdb-data-world', '9.9.9', :git => 'https://github.com/openfootball/world.git'           ## :path => '../openfootball/world'
-gem 'sportdb-data-de',    '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'  ## :path => '../openfootball/de-deutschland'
-gem 'sportdb-data-at',    '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'      ## :path => '../openfootball/at-austria'
+gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/geraldb/world.db.git'             ## :path => '../world.db'
+gem 'sportdb-data-world-cup', '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'       ## :path => '../openfootball/world-cup'
+gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'  ## :path => '../openfootball/de-deutschland'
+gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'      ## :path => '../openfootball/at-austria'
 
 gem 'logutils',  '0.6.0'  # see https://github.com/geraldb/logutils
 gem 'textutils', '0.6.6'  # see https://github.com/geraldb/textutils
 
 gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.6.18'  # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.7.0'  # see https://github.com/geraldb/sport.db.ruby
 
 gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-market
 gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
