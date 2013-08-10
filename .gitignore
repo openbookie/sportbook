@@ -14,5 +14,3 @@
 /log/*.log
 /tmp
 
-# Ignore komodo project files
-*.kpf

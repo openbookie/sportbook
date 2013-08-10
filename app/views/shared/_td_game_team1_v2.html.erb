@@ -15,5 +15,5 @@
 </td>
 
 <td>
-  <%= image_tag( "logos/24x24/#{game.team1.key}.png" ) if Rails.application.assets.find_asset( "logos/24x24/#{game.team1.key}.png" ).present? %>  
+  <%= logo_for_team( game.team1 ) %>
 </td>

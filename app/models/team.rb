@@ -27,20 +27,6 @@ module SportDb::Models
 
 class Team
 
-  def self.update_image_from_ary!( teams )
-    teams.each do |values|
-
-      team = Team.find_by_key!( values[0])
-      
-      attr = {
-        :img   => values[1]
-      }
-
-      team.update_attributes!( attr )
-      
-    end # each team
-  end
-
   def calc?
     calc == true
   end

@@ -1,5 +1,5 @@
 <td class='game-team2'>
-  <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+  <%= logo_for_team( game.team2 ) %>  
   <span class='<%= game.team2_style_class %>'>
     <%= link_to game.team2.title, live_game_path(game.id) %>
   </span>

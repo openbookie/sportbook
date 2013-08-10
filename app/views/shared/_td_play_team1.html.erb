@@ -4,7 +4,7 @@
 <% if play.team1.present? %>
   <td>
     <% if play.public? %>
-      <%= image_tag( play.team1.img ) if play.team1.img.present? %>
+      <%= logo_for_team( play.team1 ) %>
       <%= play.team1.title %>
     <% else %>
       Team Anonym
