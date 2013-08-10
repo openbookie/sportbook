@@ -39,10 +39,8 @@ add_index :users, :email, :unique => true   # make email unique
 ####################################
 
 change_table :teams do |t|
-  t.string  :img    # relative path for pic e.g. at/20x20/rapid.png
-
   t.string  :type   # NOTE: Rails System Attribute Required for Single-Table Inheritance (STI)
-  
+
   t.boolean     :calc,  :null => false, :default => false    # placeholder team?/needs to get calculated
   t.string      :calc_rule     # e.g. group-winner, group-2nd, game-winner, etc.
   t.string      :calc_value    # e.g. <group_id>, <game_id>, etc.

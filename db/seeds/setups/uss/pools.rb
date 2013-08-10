@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 ##############
-##  Pools
+#  Pools
 
 world_quali_c  = Event.find_by_key!( 'world.quali.europe.c.2014' )
 
@@ -61,4 +61,4 @@ Pool.create!( event: world_quali_c,  title: 'USS', user: behrooz, welcome: '' )
 
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( key: 'db.uss.pools.others.version', value: '1' )
+Prop.create!( key: 'db.uss.pools.version', value: '1' )

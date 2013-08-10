@@ -10,13 +10,14 @@ users = [
   [ 'Manfred K',   'manfred.k', { :admin => true } ],
   [ 'Ande S',      'ande',      { :admin => true } ],
   [ 'Richard H',   'richard.h', { :admin => true } ],
-  [ 'Markus B',    'markus.b' ],
+  [ 'Franz R',     'franz.r',   { :admin => true } ],
+  [ 'Markus B',    'markus.b'  ],
   [ 'Dietmar B',   'dietmar.b' ],
-  [ 'Franz R',     'franz.r' ],
-  [ 'Martina R',   'martina.r' ]
- 
+  [ 'Martina R',   'martina.r' ],
+  [ 'Gerhard W',   'gerhard.w' ],
+  [ 'Clemens H',   'clemens' ]
+
 #  [ 'Helmut S',    'helmut.s' ],
-#  [ 'Clemens H',   'clemens' ],
 #  [ 'Manuela K',   'manuela.k' ],
 #  [ 'Dietmar P',   'dietmar.p' ],
 #  [ 'Lorenz P',    'lorenz.p' ],

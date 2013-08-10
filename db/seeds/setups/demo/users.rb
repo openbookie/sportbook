@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 ##############
-##  Users
+#  Users
 
 User.create!( name: 'Lionel MESSI',      email: 'lionel',    password: 'lionel' )
 User.create!( name: 'Cristiano RONALDO', email: 'cristiano', password: 'cristiano' )
