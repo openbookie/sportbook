@@ -24,7 +24,7 @@ gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
 
 ## add logos
 
-gem 'sportdb-logos', '0.0.1',  :git => 'https://github.com/geraldb/sport.db.logos'
+gem 'sportdb-logos', '0.1.0',  :git => 'https://github.com/geraldb/sport.db.logos'
 
 
 group :production do

@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/geraldb/sport.db.logos
-  revision: 590a84f6e755664ca9bccb653e9e8135a85ae085
+  revision: c41520229b0d126610763c59ce6dbd6bf25ee168
   specs:
-    sportdb-logos (0.0.1)
+    sportdb-logos (0.1.0)
 
 GIT
   remote: https://github.com/geraldb/world.db.git
@@ -181,7 +181,7 @@ DEPENDENCIES
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
-  sportdb-logos (= 0.0.1)!
+  sportdb-logos (= 0.1.0)!
   sportdb-market (= 0.3.0)
   sportdb-play (= 0.2.0)
   sqlite3
