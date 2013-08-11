@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/geraldb/sport.db.logos
-  revision: c41520229b0d126610763c59ce6dbd6bf25ee168
+  revision: 59bcd8fdb963a31d66498a26544f63991195aca0
   specs:
     sportdb-logos (0.1.0)
 
