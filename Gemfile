@@ -11,6 +11,8 @@ gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/geraldb/world
 gem 'sportdb-data-world-cup', '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'       ## :path => '../openfootball/world-cup'
 gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'  ## :path => '../openfootball/de-deutschland'
 gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'      ## :path => '../openfootball/at-austria'
+gem 'sportdb-data-europe',    '9.9.9', :git => 'https://github.com/openfootball/europe.git'
+
 
 gem 'logutils',  '0.6.0'  # see https://github.com/geraldb/logutils
 gem 'textutils', '0.6.6'  # see https://github.com/geraldb/textutils
@@ -24,7 +26,7 @@ gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
 
 ## add logos
 
-gem 'sportdb-logos', '0.1.0',  :git => 'https://github.com/geraldb/sport.db.logos'
+gem 'sportdb-logos', '0.1.1',  :git => 'https://github.com/geraldb/sport.db.logos.ruby'
 
 
 group :production do

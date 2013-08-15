@@ -6,7 +6,7 @@
      <span class='<%= game.team1_style_class %>'>
       <%= game.team1.title %>
      </span>
-     <%= image_tag( game.team1.img ) if game.team1.img.present? %>
+     <%= logo_for_team( game.team1 ) %>
    </td>
 
    <td style='white-space: nowrap;'>
@@ -31,7 +31,7 @@
    </td>
 
    <td>
-    <%= image_tag( game.team2.img ) if game.team2.img.present? %>
+    <%= logo_for_team( game.team2 ) %>
     <span class='<%= game.team2_style_class %>'>
       <%= game.team2.title %>
     </span>

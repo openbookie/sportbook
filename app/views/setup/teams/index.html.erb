@@ -5,7 +5,7 @@
    <tr>
      <td>(<%= team.id %>)</td>
      <td>
-         <%= image_tag( team.img ) if team.img.present? %>
+         <%= logo_for_team( team ) %>
      </td>
      <td><%= team.title %> (<%= team.key %>)</td>
    </tr>

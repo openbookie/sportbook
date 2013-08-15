@@ -1,8 +1,8 @@
 GIT
-  remote: https://github.com/geraldb/sport.db.logos
-  revision: 59bcd8fdb963a31d66498a26544f63991195aca0
+  remote: https://github.com/geraldb/sport.db.logos.ruby
+  revision: 0357b88c283dac0ba88d64eeabac406184c2670d
   specs:
-    sportdb-logos (0.1.0)
+    sportdb-logos (0.1.1)
 
 GIT
   remote: https://github.com/geraldb/world.db.git
@@ -21,6 +21,12 @@ GIT
   revision: 91b673aee1e15ad1d4bb026ef8ca5ad5e10a83d3
   specs:
     sportdb-data-de (9.9.9)
+
+GIT
+  remote: https://github.com/openfootball/europe.git
+  revision: 1756bab321294aaaca1fa69db982b6fb675791fb
+  specs:
+    sportdb-data-europe (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/world-cup.git
@@ -71,7 +77,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    commander (4.1.4)
+    commander (4.1.5)
       highline (~> 1.6.11)
     daemons (1.1.9)
     erubis (2.7.0)
@@ -81,7 +87,7 @@ GEM
     gli (2.7.0)
     highline (1.6.19)
     hike (1.2.3)
-    i18n (0.6.4)
+    i18n (0.6.5)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -93,8 +99,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.23)
-    multi_json (1.7.8)
+    mime-types (1.24)
+    multi_json (1.7.9)
     pg (0.16.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -180,8 +186,9 @@ DEPENDENCIES
   sportdb (= 1.7.0)
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
+  sportdb-data-europe (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
-  sportdb-logos (= 0.1.0)!
+  sportdb-logos (= 0.1.1)!
   sportdb-market (= 0.3.0)
   sportdb-play (= 0.2.0)
   sqlite3

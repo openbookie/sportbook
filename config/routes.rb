@@ -34,9 +34,6 @@ Wettpool::Application.routes.draw do
   
   namespace :admin do
     resources :pools
-    resources :games do
-      put 'batch_update', :on => :collection    # batch update 
-    end
 
     # add plain text import forms for fixtures n quotes  
     resources :fixtures

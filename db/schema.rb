@@ -481,7 +481,6 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean  "national",     :default => false, :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.string   "img"
     t.string   "type"
     t.boolean  "calc",         :default => false, :null => false
     t.string   "calc_rule"
