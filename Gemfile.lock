@@ -139,7 +139,7 @@ GEM
     sportdb (1.7.0)
       gli (>= 2.5.6)
       worlddb (~> 1.7)
-    sportdb-admin (0.1.0)
+    sportdb-admin (0.1.1)
     sportdb-market (0.3.0)
     sportdb-play (0.2.0)
     sprockets (2.2.2)
@@ -186,7 +186,7 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sportdb (= 1.7.0)
-  sportdb-admin (= 0.1.0)
+  sportdb-admin (= 0.1.1)
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-europe (= 9.9.9)!

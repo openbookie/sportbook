@@ -31,7 +31,7 @@ gem 'sportdb-logos', '0.1.1',  :git => 'https://github.com/geraldb/sport.db.logo
 
 ## add rails engines
 
-gem 'sportdb-admin', '0.1.0'
+gem 'sportdb-admin', '0.1.1'
 
 
 group :production do
