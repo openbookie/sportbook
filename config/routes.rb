@@ -70,15 +70,14 @@ Wettpool::Application.routes.draw do
   ##############################
   ## routes for setup
 
-  match 'setup',  :to => 'setup/teams#index'
+  ## todo: move to admin - why? why not?
+
+  match 'setup',  :to => 'setup/bonus_rounds#index'
 
   namespace :setup do
-    resources :events
-    resources :teams
-    resources :rounds
     resources :bonus_rounds
-    resources :games
   end
+
 
   ####################
   # routs for db (using sportdb-admin rails engine)

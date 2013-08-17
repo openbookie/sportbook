@@ -1,3 +1,6 @@
+
+## todo: move to admin ??? why - why not?
+
 class Setup::BonusRoundsController < Setup::BaseController
 
   # GET /bonus_rounds
