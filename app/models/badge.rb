@@ -1,0 +1,2 @@
+
+Badge = SportDb::Models::Badge

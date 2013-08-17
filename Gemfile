@@ -23,10 +23,15 @@ gem 'sportdb', '1.7.0'  # see https://github.com/geraldb/sport.db.ruby
 gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-market
 gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
 
+gem 'worlddb-flags', '0.1.0'  # use bundled country flags
 
 ## add logos
 
 gem 'sportdb-logos', '0.1.1',  :git => 'https://github.com/geraldb/sport.db.logos.ruby'
+
+## add rails engines
+
+gem 'sportdb-admin', '0.1.0'
 
 
 group :production do

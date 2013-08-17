@@ -66,7 +66,7 @@ Wettpool::Application.routes.draw do
     resources :users
   end
 
-  
+
   ##############################
   ## routes for setup
 
@@ -79,6 +79,11 @@ Wettpool::Application.routes.draw do
     resources :bonus_rounds
     resources :games
   end
+
+  ####################
+  # routs for db (using sportdb-admin rails engine)
+
+  mount SportDbAdmin::Engine, :at => '/db'
 
 
   #######################
