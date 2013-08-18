@@ -82,7 +82,14 @@ Wettpool::Application.routes.draw do
   ####################
   # routs for db (using sportdb-admin rails engine)
 
+  puts '[boot] routes.rb - before mount SportDbAdmin::Engine'
   mount SportDbAdmin::Engine, :at => '/db'
+  puts '[boot] routes.rb - after mount SportDbAdmin::Engine'
+
+
+  puts '[boot] routes.rb - before mount WorldDbAdmin::Engine'
+  mount WorldDbAdmin::Engine, :at => '/worlddb'
+  puts '[boot] routes.rb - after mount WorldDbAdmin::Engine'
 
 
   #######################

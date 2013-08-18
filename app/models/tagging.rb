@@ -1,0 +1,3 @@
+
+
+Tagging = WorldDb::Models::Tagging
