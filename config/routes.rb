@@ -1,36 +1,40 @@
+####
+## fix: rename Wettpool namespace/module to Sportbook
+
+
 Wettpool::Application.routes.draw do
 
-  match 'signin',   :to => 'sessions#new'
-  match 'signout',  :to => 'sessions#destroy'
-  
-  match 'about',    :to => 'pages#about'
-  match 'home',     :to => 'pages#home'
-  match 'style',    :to => 'pages#style'     # testpage for styles (css)
+  get 'signin',   :to => 'sessions#new'
+  get 'signout',  :to => 'sessions#destroy'
 
-  match 'live',          :to => 'live#index'
-  match 'live/:game_id', :to => 'live#show', :as => :live_game
-    
-  match 'time',            :to => 'time#index'
-  
-  match 'ical/:play_id',   :to => 'ical#index'
-  
+  get 'about',    :to => 'pages#about'
+  get 'home',     :to => 'pages#home'
+  get 'style',    :to => 'pages#style'     # testpage for styles (css)
+
+  get 'live',          :to => 'live#index'
+  get 'live/:game_id', :to => 'live#show', :as => :live_game
+
+  get 'time',            :to => 'time#index'
+
+  get 'ical/:play_id',   :to => 'ical#index'
+
   resource :session, :only => [:new, :create, :destroy]
-  
+
   resource :password, :only => [:new, :create, :destroy]
 
   resources :profiles, :only => [:index, :show]
 
-  resources :plays  
-  
+  resources :plays
+
   resources :pools do
     get 'add_player_to', :on => :member
     resources :players, :only => [:show, :edit]
   end
 
   #############
-  ## routes for admin
+  # routes for admin
 
-  match 'admin',  :to => 'admin/pools#index'
+  get 'admin',  :to => 'admin/pools#index'
   
   namespace :admin do
     resources :pools
@@ -39,17 +43,21 @@ Wettpool::Application.routes.draw do
     resources :fixtures
     resources :quotes    
     
-    match 'bonus',         :to => 'bonus#index'
-    match 'bonus/update',  :to => 'bonus#update'
+    get 'bonus',         :to => 'bonus#index'
+    ## fix: post required?? double check!!
+    get 'bonus/update',  :to => 'bonus#update'
   end
 
   ##############################
-  ## routes for admin via module (admin not in url -- todo/fix)
+  # routes for admin via module (admin not in url -- todo/fix)
   
   scope :module => 'admin' do
 
-    match 'update',         :to => 'update#index'
-    match 'update/update',  :to => 'update#update' # , :via => :get
+    
+    get 'update',         :to => 'update#index'
+    
+    ## fix: post required??? double check!!!!
+    get 'update/update',  :to => 'update#update' # , :via => :get
 
     resources :jobs do
       get 'calc',            :on => :collection
@@ -60,19 +68,19 @@ Wettpool::Application.routes.draw do
       get 'wipe_out',        :on => :collection
       get 'wipe_out_points', :on => :collection
     end
-  
+
     resource :import, :only => [:create]
-  
+
     resources :users
   end
 
 
   ##############################
-  ## routes for setup
+  # routes for setup
 
   ## todo: move to admin - why? why not?
 
-  match 'setup',  :to => 'setup/bonus_rounds#index'
+  get 'setup',  :to => 'setup/bonus_rounds#index'
 
   namespace :setup do
     resources :bonus_rounds
@@ -93,7 +101,7 @@ Wettpool::Application.routes.draw do
 
 
   #######################
-  ## home route
+  # home route
   
   root :to => 'pages#home'
 end
