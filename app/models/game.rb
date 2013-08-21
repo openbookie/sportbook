@@ -37,56 +37,29 @@ class Game
 
   after_save :log_action
 
-  ################
-  #### todo: move to sportdb.gem for reuse
-  
-  def score_str
-    if score5.present? && score6.present?    # im Elfmeterschiessen i.E.?
-      "#{score1_str} : #{score2_str} / #{score3} : #{score4} n.V. / #{score5} : #{score6} i.E."
-    elsif score3.present? && score4.present?  # nach Verlaengerung n.V.?
-      "#{score1_str} : #{score2_str} / #{score3} : #{score4} n.V."
-    else
-      "#{score1_str} : #{score2_str}"
-    end
-  end
-  
-  def score1_str
-    if score1.blank? then '-' else score1.to_s end
-  end
 
-  def score2_str
-    if score2.blank? then '-' else score2.to_s end
-  end
+### todo/fix:  use new name - team1_style_class_w_calc in views
 
-  ## end move
-  ###################  
-
-  def team1_style_class
+  def team1_style_class_w_calc
     buf = ''
-    buf << 'game-team-calc '    if team1.calc? 
-    buf << 'game-team-winner '  if complete? && (score1 >  score2)
-    buf << 'game-team-draw '    if complete? && (score1 == score2)
-    buf
-  end
-  
-  def team2_style_class
-    buf = ''
-    buf << 'game-team-calc '    if team2.calc? 
-    buf << 'game-team-winner '  if complete? && (score2 >  score1)
-    buf << 'game-team-draw '    if complete? && (score2 == score1)
+    buf << team1_style_class
+    buf << ' game-team-calc '    if team1.calc?     ## fix:todo: move calc flag to "standard/core" model 
     buf
   end
 
-    
-  def play_at_str
-    play_at.strftime( "%a. %d. %b. / %H:%M" )
+  def team2_style_class_w_calc
+    buf = ''
+    buf << team2_style_class
+    buf << ' game-team-calc '    if team2.calc?      ## fix:todo: move calc flag to "standard/core" model 
+    buf
   end
+
 
   def play_at_str_db
-    # todo: find a better attrib name?? 
-    # play_at.to_s(:db)  # not working: use implied utc timezone?
-    play_at.strftime( '%Y-%m-%d %H:%M %z' )  # NB: removed seconds (:%S)
+    puts "*** depreciated - use play_at_str( :db )"
+    play_at_str( :db )
   end
+
 
 
   def log_action

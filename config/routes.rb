@@ -1,8 +1,5 @@
-####
-## fix: rename Wettpool namespace/module to Sportbook
 
-
-Wettpool::Application.routes.draw do
+Sportbook::Application.routes.draw do
 
   get 'signin',   :to => 'sessions#new'
   get 'signout',  :to => 'sessions#destroy'

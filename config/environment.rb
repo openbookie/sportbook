@@ -19,7 +19,7 @@ LogUtils::Logger.root.level = :info    # do not output debug msgs
 
 
 puts "[boot] environment.rb - before Application.initialize!"
-Wettpool::Application.initialize!  # Initialize the rails application
+Sportbook::Application.initialize!  # Initialize the rails application
 puts "[boot] environment.rb - after Application.initialize!"
 
 

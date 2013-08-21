@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Wettpool::Application.load_tasks
+Sportbook::Application.load_tasks

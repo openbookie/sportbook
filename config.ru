@@ -7,5 +7,5 @@ puts "[boot] config.ru - after require 'environment'"
 
 
 puts "[boot] config.ru - before run Application"
-run Wettpool::Application
+run Sportbook::Application
 puts "[boot] config.ru - after run Application"
