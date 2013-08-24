@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean  "home",         :default => true,  :null => false
     t.integer  "score1"
     t.integer  "score2"
-    t.integer  "score1ot"
-    t.integer  "score2ot"
+    t.integer  "score1et"
+    t.integer  "score2et"
     t.integer  "score1p"
     t.integer  "score2p"
     t.integer  "score1i"

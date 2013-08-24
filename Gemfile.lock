@@ -82,8 +82,7 @@ GEM
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3-x86-mingw32)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
+    execjs (2.0.0)
     gli (2.7.0)
     highline (1.6.19)
     hike (1.2.3)
@@ -136,10 +135,10 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sportdb (1.7.0)
+    sportdb (1.7.1)
       gli (>= 2.5.6)
       worlddb (~> 1.7)
-    sportdb-admin (0.1.1)
+    sportdb-admin (0.2.0)
     sportdb-market (0.3.0)
     sportdb-play (0.2.0)
     sprockets (2.2.2)
@@ -185,8 +184,8 @@ DEPENDENCIES
   rails-i18n
   ri_cal
   sass-rails (~> 3.2.3)
-  sportdb (= 1.7.0)
-  sportdb-admin (= 0.1.1)
+  sportdb (= 1.7.1)
+  sportdb-admin (= 0.2.0)
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-europe (= 9.9.9)!

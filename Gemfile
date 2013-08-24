@@ -14,25 +14,22 @@ gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/
 gem 'sportdb-data-europe',    '9.9.9', :git => 'https://github.com/openfootball/europe.git'
 
 
-# gem 'logutils',  '0.6.0'  # see https://github.com/geraldb/logutils
-# gem 'textutils', '0.6.6'  # see https://github.com/geraldb/textutils
-
 gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.7.0'  # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.7.1'  # see https://github.com/geraldb/sport.db.ruby
 
 gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-market
 gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
 
+
+## add logos n flags
+
 gem 'worlddb-flags', '0.1.0'  # use bundled country flags
-
-## add logos
-
 gem 'sportdb-logos', '0.1.1',  :git => 'https://github.com/geraldb/sport.db.logos.ruby'
 
 ## add rails engines
 
 gem 'worlddb-admin', '0.1.1'
-gem 'sportdb-admin', '0.1.1'
+gem 'sportdb-admin', '0.2.0'
 
 
 group :production do

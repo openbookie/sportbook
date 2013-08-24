@@ -6,7 +6,7 @@
 
   <h2><%= @game.play_at.strftime('%A, %d. %B %Y') %></h2>
 
-<%= render :partial => 'game',     :locals => { :game  => @game } %>
+<%= render partial: 'game', locals: { game: @game } %>
   
-<%= render :partial => 'game_tips', :locals => { :game  => @game } %>
+<%= render partial: 'game_tips', locals: { game: @game } %>
 

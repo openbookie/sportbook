@@ -15,10 +15,10 @@
   <% end %>
   
 
-  <%= render :partial => 'game',     :locals => { :game  => game } %>
+  <%= render partial: 'game', locals: { game: game } %>
   
   <% if @show_tips %>
-    <%= render :partial => 'game_tips', :locals => { :game  => game } %>
+    <%= render partial: 'game_tips', locals: { game: game } %>
   <% end %>
   
 <% last_play_at = game.play_at

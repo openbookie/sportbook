@@ -4,7 +4,7 @@
 
 
 
-<%= render :partial => 'games_upcoming',  :locals => { :games  => @upcoming_games } %>
+<%= render partial: 'games_upcoming', locals: { games: @upcoming_games } %>
 
 <h3>Wettpools</h3>
 
@@ -21,5 +21,5 @@
 <% end %>
 </ul>
 
-<%= render :partial => 'games_past',  :locals => { :games  => @past_games } %>
+<%= render partial: 'games_past', locals: { games: @past_games } %>
 
