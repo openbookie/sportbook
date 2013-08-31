@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.date     "start_at",                     :null => false
     t.date     "end_at"
     t.boolean  "team3",      :default => true, :null => false
+    t.string   "sources"
+    t.string   "config"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end

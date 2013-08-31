@@ -15,7 +15,7 @@ gem 'sportdb-data-europe',    '9.9.9', :git => 'https://github.com/openfootball/
 
 
 gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.7.1'  # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.7.2'  # see https://github.com/geraldb/sport.db.ruby
 
 gem 'sportdb-market', '0.3.0'   # see https://github.com/geraldb/sport.db.ruby-market
 gem 'sportdb-play', '0.2.0'     # see https://github.com/geraldb/sport.db-play
