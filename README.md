@@ -1,20 +1,22 @@
 # Welcome to Sportbook.
 
-A free, open source sports betting pool in Ruby on Rails (version 3.2 and up).
+A free, open source sports betting (or predication) pool web app in Ruby on Rails (version 3.2 and up).
 
-Example events include:
+Example tournaments and leagues include:
 
-* UEFA Champions League 2012/13
-* UEFA Europa League 2011/12
-* Österreichische Bundesliga 2011/12, 2012/13
-* ÖFB Cup 2011/12, 2012/13
-* UEFA European Football Championship aka Euro 2012
-* Romania Liga 1 2012/13
-* México Primera División Apertura 2012
-* World Cup Quali 2012/13
-* National Hockey League (NHL) 2012
+* UEFA Champions League
+* UEFA Europa League
+* Deutsche Bundesliga
+* English Premier League
+* México Primera División
+ 
+* FIFA World Cup & Quali 
+* UEFA Euro Cup
 
-For more events or leagues, see the [`sport.db`](https://github.com/geraldb/sport.db) site.
+* National Hockey League (NHL)
+* National Football League (NFL)
+
+For more tournaments or leagues, see the [`sport.db`](https://github.com/geraldb/sport.db) site.
 
 ## Demo
 
@@ -29,7 +31,7 @@ Use the login credentials `demo`/`demo`.
 
 Clone the Sportbook git repo:
 
-    git clone git://github.com/geraldb/sportbook.git
+    git clone git://github.com/openbookie/sportbook.git
 
 Get all your Ruby libraries (gems) installed using the bundler tool:
 
@@ -55,7 +57,7 @@ That's it.
 
 Clone the Sportbook git repo:
 
-    git clone git://github.com/geraldb/sportbook.git
+    git clone git://github.com/openbookie/sportbook.git
 
 Create app on Heroku e.g.
 
@@ -80,4 +82,5 @@ Use it as you please with no restrictions whatsoever.
 
 ## Questions? Comments?
 
-Send them along to the [Open Sports Database & Friends Forum/Mailing List](http://groups.google.com/group/opensport). Thanks!
+Send them along to the [Open Sports Database & Friends Forum/Mailing List](http://groups.google.com/group/opensport).
+Thanks!
