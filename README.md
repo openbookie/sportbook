@@ -1,20 +1,29 @@
 # Welcome to Sportbook.
 
-A free, open source sports betting (or predication) pool web app in Ruby on Rails (version 3.2 and up).
+A free open source web app for sports betting (or prediction) pools in Ruby on Rails (version 3.2 and up).
 
 Example tournaments and leagues include:
+
+<!-- clubs -->
 
 * UEFA Champions League
 * UEFA Europa League
 * Deutsche Bundesliga
 * English Premier League
 * México Primera División
- 
+
+
+<!-- national teams -->
+
 * FIFA World Cup & Quali 
 * UEFA Euro Cup
 
+
+<!-- more sports -->
+
 * National Hockey League (NHL)
 * National Football League (NFL)
+
 
 For more tournaments or leagues, see the [`sport.db`](https://github.com/geraldb/sport.db) site.
 
