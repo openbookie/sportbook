@@ -16,35 +16,6 @@ users = [
   [ 'Martina R',   'martina.r' ],
   [ 'Gerhard W',   'gerhard.w' ],
   [ 'Clemens H',   'clemens' ]
-
-#  [ 'Helmut S',    'helmut.s' ],
-#  [ 'Manuela K',   'manuela.k' ],
-#  [ 'Dietmar P',   'dietmar.p' ],
-#  [ 'Lorenz P',    'lorenz.p' ],
-#  [ 'Elias P',     'elias.p' ],
-#  [ 'Andreas K',   'andreas.k' ],
-#  [ 'Mathilde F',  'mathilde.f' ],
-#  [ 'Bettina W',   'bettina.w' ],
-#  [ 'Werner F',    'werner.f' ], 
-#  [ 'Wilhelm B',   'wilhelm.b' ],
-#  [ 'Behdad S',    'behdad.s' ],
-#  [ 'Christian S', 'christian.s' ],
-#  [ 'Dimy M',      'dimy' ],
-#  [ 'Johannes S',  'johannes.s' ],
-#  [ 'Andreas V',   'andy.v' ],
-#  [ 'Mohammad K',  'mohammad.k' ],
-#  [ 'Claudia K',   'claudia.k' ],
-#  [ 'Michael S',   'micheal.s' ],
-#  [ 'Miroslaw S',  'miroslaw.s' ],
-#  [ 'Thomas S',    'thomas.s' ],
-#  [ 'Richard T',   'richard.t' ],
-#  [ 'Wolfgang S',  'wolfgang.s' ],
-#  [ 'Stefan N',    'stefan' ],
-#  [ 'Mike K',      'mike' ],
-#  [ 'Harry P',     'harry' ],
-#  [ 'Christian Z', 'christian.z' ],
-#  [ 'Gerd B',      'gerd' ],
-#  [ 'Aurel D',     'aurel']
 ]
 
 User.create_from_ary!( users )

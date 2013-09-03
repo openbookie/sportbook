@@ -8,7 +8,8 @@ world_quali_c  = Event.find_by_key!( 'world.quali.europe.c.2014' )
 at_bl          = Event.find_by_key!( 'at.2013/14' )
 at_cup         = Event.find_by_key!( 'at.cup.2013/14' )
 
-# cl            = Event.find_cl_2012_13!
+cl             = Event.find_by_key!( 'cl.2013/14' )
+
 
 nn =  User.find_by_key!( 'nn' )
 
@@ -56,7 +57,7 @@ EOS
 Pool.create!( event: at_bl,          title: 'USS', user: manfred, welcome: at_bl_txt )
 Pool.create!( event: at_cup,         title: 'USS', user: manfred, welcome: at_cup_txt )
 Pool.create!( event: world_quali_c,  title: 'USS', user: behrooz, welcome: '' )
-# Pool.create!( event: cl,             title: 'USS', user: ande,    welcome: '' )
+Pool.create!( event: cl,             title: 'USS', user: ande,    welcome: '' )
 
 
 

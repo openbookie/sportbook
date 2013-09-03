@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/geraldb/sport.db.logos.ruby
+  remote: https://github.com/geraldb/sport.db.logos.ruby.git
   revision: 0357b88c283dac0ba88d64eeabac406184c2670d
   specs:
     sportdb-logos (0.1.1)
@@ -18,13 +18,13 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: 2d29c1503cab716da671b47e9fe5d66e48e04d2d
+  revision: f867330abb8f6df61fd0e05d078414d4fd879639
   specs:
     sportdb-data-de (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/europe.git
-  revision: 5ce501e854a2fcd24b382ab624fa17e831e10c94
+  revision: c58e3d1993622d6798ef9011640c84bccc000160
   specs:
     sportdb-data-europe (9.9.9)
 
@@ -140,12 +140,12 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sportdb (1.7.2)
+    sportdb (1.7.3)
       fetcher (>= 0.3)
       gli (>= 2.5.6)
       worlddb (>= 1.7)
     sportdb-admin (0.2.0)
-    sportdb-market (0.3.0)
+    sportdb-market (0.4.1)
     sportdb-play (0.2.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -192,14 +192,14 @@ DEPENDENCIES
   rails-i18n
   ri_cal
   sass-rails (~> 3.2.3)
-  sportdb (= 1.7.2)
+  sportdb (= 1.7.3)
   sportdb-admin (= 0.2.0)
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-europe (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
   sportdb-logos (= 0.1.1)!
-  sportdb-market (= 0.3.0)
+  sportdb-market (= 0.4.1)
   sportdb-play (= 0.2.0)
   sqlite3
   thin
