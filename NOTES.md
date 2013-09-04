@@ -7,14 +7,44 @@ Use Ruby 1.9+ (required by Rails 3.2+)
 
     rvm use 1.9.3
 
-## Tips for Bundler
-
-Setup without production env (needs PostgreSQL)
-
-    bundle install --without production
-
 ## Tips for Annotate
 
 Annotate models via
 
     bundle exec annotate --position before
+
+
+
+## Installation Upgrade Steps / Checklist
+
+
+backup/save tips; move to `db/seeds/setup/uss/data.txt` and commit to git
+
+backup/save users
+
+    heroku run rake export_users --app tipp
+
+update app on heroku
+
+    $ git push heroku tipp
+
+reset db on heroku
+
+    $ heroku pg:reset DATABASE_URL --confirm tipp
+
+rebuild db on heroku
+
+    $ heroku run rake db:migrate --app tipp
+
+run db seed on heroku
+
+    $ heroku run rake load_uss --app tipp
+
+restore tips on heroku
+
+    $ heroku run rake load_uss_data --app tipp
+
+restore users on heroku; paste backup data into /jobs
+
+restart. done.
+

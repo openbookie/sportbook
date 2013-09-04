@@ -10,7 +10,7 @@ users = [
   [ 'Manfred K',   'manfred.k', { :admin => true } ],
   [ 'Ande S',      'ande',      { :admin => true } ],
   [ 'Richard H',   'richard.h', { :admin => true } ],
-  [ 'Franz R',     'franz.r',   { :admin => true } ],
+  [ 'Franz R',     'franz',     { :admin => true } ],
   [ 'Markus B',    'markus.b'  ],
   [ 'Dietmar B',   'dietmar.b' ],
   [ 'Martina R',   'martina.r' ],
