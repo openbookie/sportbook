@@ -22,6 +22,12 @@ SportDb.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref( 'europ
 SportDb.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref( 'at-austria') )
 
 
+# load quotes/odds
+
+SportDb::Market.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref( 'football.db.market' ) )
+
+
+
 [ 'setups/uss/users', 'setups/uss/pools' ].each do |seed|
     puts "*** loading seed data in '#{seed}'..."
     require "#{Rails.root}/db/seeds/#{seed}.rb"

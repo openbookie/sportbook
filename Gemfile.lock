@@ -11,6 +11,12 @@ GIT
     worlddb-data (9.9.9)
 
 GIT
+  remote: https://github.com/openbookie/football.db.market.git
+  revision: 09d7ec7bb9272763dd06920bd2c2428d1cbef250
+  specs:
+    sportdb-data-market (9.9.9)
+
+GIT
   remote: https://github.com/openfootball/at-austria.git
   revision: 6ecb9f9f5fe2748a831453b4e4247e9e907cae8d
   specs:
@@ -24,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/europe.git
-  revision: c58e3d1993622d6798ef9011640c84bccc000160
+  revision: df9d4397bd1744cba14eba54eca6015d8399bfb9
   specs:
     sportdb-data-europe (9.9.9)
 
@@ -103,7 +109,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     pg (0.16.0)
     pg (0.16.0-x86-mingw32)
     polyglot (0.3.3)
@@ -144,8 +150,8 @@ GEM
       fetcher (>= 0.3)
       gli (>= 2.5.6)
       worlddb (>= 1.7)
-    sportdb-admin (0.2.0)
-    sportdb-market (0.4.1)
+    sportdb-admin (0.3.0)
+    sportdb-market (0.5.0)
     sportdb-play (0.2.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -193,13 +199,14 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sportdb (= 1.7.3)
-  sportdb-admin (= 0.2.0)
+  sportdb-admin (= 0.3.0)
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-europe (= 9.9.9)!
+  sportdb-data-market (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
   sportdb-logos (= 0.1.1)!
-  sportdb-market (= 0.4.1)
+  sportdb-market (= 0.5.0)
   sportdb-play (= 0.2.0)
   sqlite3
   thin

@@ -12,23 +12,10 @@ end
 desc 'sportbook: load quotes (e.g. bl_quotes_tipp3.txt)'
 task :load_quotes => [:environment] do |t|
   
-  SportDB::Market.delete!  ## danger zone!! delete all market tables (quotes,etc.)
-  
-  SportDB::Market.load( [
-    'services',
-    'cl/2012_13/cl',
-    'at/2012_13/bl',
-    'at/2012_13/cup'
-   ])
-  
-  SportDB::Market.read( [
-    [ 'tipp3',     'at.2012/13',     'at/2012_13/bl_tipp3' ],
-    [ 'betathome', 'at.2012/13',     'at/2012_13/bl_betathome' ],
-    [ 'tipp3',     'at.cup.2012/13', 'at/2012_13/cup_tipp3' ],
-    [ 'betathome', 'at.cup.2012/13', 'at/2012_13/cup_betathome' ],
-    [ 'tipp3',     'cl.2012/13',     'cl/2012_13/cl_tipp3' ],
-    [ 'betathome', 'cl.2012/13',     'cl/2012_13/cl_betathome' ],
-    [ 'tipp3',     'wmq.euro',       'world/quali_tipp3' ]
-  ])
+  SportDb::Market.delete!  ## danger zone!! delete all market tables (quotes,etc.)
 
+
+  LogUtils::Logger.root.level = :debug
+
+  SportDb::Market.read_setup( 'setups/2013_14', find_data_path_from_gemfile_gitref( 'football.db.market' ) )
 end

@@ -7,29 +7,39 @@ gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/geraldb/world.db.git'
-gem 'sportdb-data-world-cup', '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'
-gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'
-gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'
-gem 'sportdb-data-europe',    '9.9.9', :git => 'https://github.com/openfootball/europe.git'
-
 
 gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
 gem 'sportdb', '1.7.3'   # see https://github.com/geraldb/sport.db.ruby
 
-gem 'sportdb-market', '0.4.1'   # see https://github.com/openbookie/sport.db.market
+## add sportdb addons/plugins
+
+gem 'sportdb-market', '0.5.0'   # see https://github.com/openbookie/sport.db.market
 gem 'sportdb-play',   '0.2.0'   # see https://github.com/openbookie/sport.db.play
 
+## add rails engines
+
+gem 'worlddb-admin', '0.1.1'
+gem 'sportdb-admin', '0.3.0'
 
 ## add logos n flags
 
 gem 'worlddb-flags', '0.1.0'  # use bundled country flags
 gem 'sportdb-logos', '0.1.1',  :git => 'https://github.com/geraldb/sport.db.logos.ruby.git'
 
-## add rails engines
+## add data
 
-gem 'worlddb-admin', '0.1.1'
-gem 'sportdb-admin', '0.2.0'
+gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/geraldb/world.db.git'
+
+gem 'sportdb-data-world-cup', '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'
+gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'
+gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'
+
+# gem 'sportdb-data-europe',    '9.9.9',  :path => '~/github/openfootball/europe'
+gem 'sportdb-data-europe', '9.9.9',    :git => 'https://github.com/openfootball/europe.git'
+
+
+gem 'sportdb-data-market',    '9.9.9', :git => 'https://github.com/openbookie/football.db.market.git'
+
 
 
 group :production do
