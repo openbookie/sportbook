@@ -9,7 +9,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.7.3'   # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.7.5'   # see https://github.com/geraldb/sport.db.ruby
 
 ## add sportdb addons/plugins
 
@@ -24,11 +24,14 @@ gem 'sportdb-admin', '0.3.0'
 ## add logos n flags
 
 gem 'worlddb-flags', '0.1.0'  # use bundled country flags
-gem 'sportdb-logos', '0.1.1',  :git => 'https://github.com/geraldb/sport.db.logos.ruby.git'
+
+gem 'sportdb-logos',    '0.1.0',  :git => 'https://github.com/sportlogos/sport.db.logos.ruby.git'
+gem 'footballdb-logos', '0.1.0',  :git => 'https://github.com/sportlogos/football.db.logos.ruby.git'
+
 
 ## add data
 
-gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/geraldb/world.db.git'
+gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/openmundi/world.db.git'
 
 gem 'sportdb-data-world-cup', '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'
 gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'
