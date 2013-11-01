@@ -5,16 +5,22 @@ gem 'kramdown'     # all ruby markdown processor/engine
 gem 'rails', '3.2.12'
 gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
+gem 'sinatra', :require => 'sinatra/base'
+
+
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.7.5'   # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.7.7'   # see https://github.com/geraldb/sport.db.ruby
+
+gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
+
 
 ## add sportdb addons/plugins
 
 gem 'sportdb-market', '0.5.0'   # see https://github.com/openbookie/sport.db.market
-gem 'sportdb-play',   '0.2.0'   # see https://github.com/openbookie/sport.db.play
+gem 'sportdb-play',   '0.2.1'   # see https://github.com/openbookie/sport.db.play
 
 ## add rails engines
 
@@ -42,6 +48,13 @@ gem 'sportdb-data-europe', '9.9.9',    :git => 'https://github.com/openfootball/
 
 
 gem 'sportdb-data-market',    '9.9.9', :git => 'https://github.com/openbookie/football.db.market.git'
+
+
+####### add mountable apps
+
+gem 'about'      # mountable app - about - sys info pages
+gem 'dbbrowser'  # mountable app
+
 
 
 

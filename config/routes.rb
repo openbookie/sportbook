@@ -1,6 +1,25 @@
 
 Sportbook::Application.routes.draw do
 
+  ####################
+  # routs for db (using sportdb-admin rails engine)
+
+  puts '[boot] routes.rb - before mount SportDbAdmin::Engine'
+  mount SportDbAdmin::Engine, :at => '/db'
+  puts '[boot] routes.rb - after mount SportDbAdmin::Engine'
+
+
+  puts '[boot] routes.rb - before mount WorldDbAdmin::Engine'
+  mount WorldDbAdmin::Engine, :at => '/worlddb'
+  puts '[boot] routes.rb - after mount WorldDbAdmin::Engine'
+
+
+  mount About::Server,     :at => '/sys'
+  mount DbBrowser::Server, :at => '/browse'
+
+  ## todo: add ActivityDb::Server too
+
+
   get 'signin',   :to => 'sessions#new'
   get 'signout',  :to => 'sessions#destroy'
 
@@ -82,19 +101,6 @@ Sportbook::Application.routes.draw do
   namespace :setup do
     resources :bonus_rounds
   end
-
-
-  ####################
-  # routs for db (using sportdb-admin rails engine)
-
-  puts '[boot] routes.rb - before mount SportDbAdmin::Engine'
-  mount SportDbAdmin::Engine, :at => '/db'
-  puts '[boot] routes.rb - after mount SportDbAdmin::Engine'
-
-
-  puts '[boot] routes.rb - before mount WorldDbAdmin::Engine'
-  mount WorldDbAdmin::Engine, :at => '/worlddb'
-  puts '[boot] routes.rb - after mount WorldDbAdmin::Engine'
 
 
   #######################

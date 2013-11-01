@@ -15,8 +15,11 @@ Example tournaments and leagues include:
 
 <!-- national teams -->
 
-* FIFA World Cup & Quali 
+* FIFA World Cup & Quali
 * UEFA Euro Cup
+
+For more football tournaments or leagues,
+see the [`football.db`](https://github.com/openfootball) site.
 
 
 <!-- more sports -->
@@ -24,8 +27,9 @@ Example tournaments and leagues include:
 * National Hockey League (NHL)
 * National Football League (NFL)
 
+For more tournaments or leagues,
+see the [`sport.db`](https://github.com/opensport) site.
 
-For more tournaments or leagues, see the [`sport.db`](https://github.com/geraldb/sport.db) site.
 
 ## Demo
 

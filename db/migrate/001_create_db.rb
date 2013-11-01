@@ -11,6 +11,7 @@ class CreateDb < ActiveRecord::Migration
   def up
 
     LogDb.create
+    ActivityDb.create
     WorldDb.create
     SportDb.create
     SportDb::Market.create  #  market quotes
@@ -86,6 +87,9 @@ end
 ## new tables / create tables
 ####################################
 
+
+###############
+# fix: remove actions table - replaces by activites from ActivityDb 
 
 ## todo: use polymorphic assoc?? for actions??
 ##  what references to include?
