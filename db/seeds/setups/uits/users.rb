@@ -14,11 +14,18 @@ users = [
   [ 'Markus B',    'markus.b'  ],
   [ 'Dietmar B',   'dietmar.b' ],
   [ 'Martina R',   'martina.r' ],
+  [ 'Clemens H',   'clemens' ],
   [ 'Gerhard W',   'gerhard.w' ],
-  [ 'Clemens H',   'clemens' ]
+  [ 'Michael T',   'michael.t' ],
+  [ 'Karl E',      'karl.e' ],
+  [ 'Gerold M',    'gerold.m' ],
+  [ 'Werner F',    'werner.f' ],
+  [ 'Dietmar P',   'dietmar.p' ],
+  [ 'Johannes S',  'johannes' ]
 ]
+
 
 User.create_from_ary!( users )
 
 ## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( key: 'db.uss.users.version', value: '1' )
+Prop.create!( key: 'db.uits.users.version', value: '1' )
