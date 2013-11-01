@@ -26,7 +26,7 @@ backup/save users
 
 update app on heroku
 
-    $ git push heroku tipp
+    $ git push tipp
 
 reset db on heroku
 
@@ -38,11 +38,11 @@ rebuild db on heroku
 
 run db seed on heroku
 
-    $ heroku run rake load_uss --app tipp
+    $ heroku run rake load_uits --app tipp
 
 restore tips on heroku
 
-    $ heroku run rake load_uss_data --app tipp
+    $ heroku run rake load_uits_data --app tipp
 
 restore users on heroku; paste backup data into /jobs
 
