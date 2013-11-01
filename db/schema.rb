@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.string   "action"
+    t.text     "text"
+    t.string   "tmpl"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "badges", :force => true do |t|
     t.integer  "team_id",    :null => false
     t.integer  "league_id",  :null => false
@@ -193,7 +204,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "score2ii"
     t.integer  "next_game_id"
     t.integer  "prev_game_id"
-    t.string   "toto12x"
+    t.integer  "winner"
+    t.integer  "winner90"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "locked",       :default => false, :null => false
@@ -498,11 +510,12 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "game_id",                          :null => false
     t.integer  "score1"
     t.integer  "score2"
-    t.integer  "score3"
-    t.integer  "score4"
-    t.integer  "score5"
-    t.integer  "score6"
-    t.string   "toto12x"
+    t.integer  "score1et"
+    t.integer  "score2et"
+    t.integer  "score1p"
+    t.integer  "score2p"
+    t.integer  "winner90"
+    t.integer  "winner"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.string   "type"

@@ -11,7 +11,7 @@ class CreateDb < ActiveRecord::Migration
   def up
 
     LogDb.create
-    ActivityDb.create
+    ActivityDb::CreateDb.new.up   # todo/fix: change to ActivityDb.create
     WorldDb.create
     SportDb.create
     SportDb::Market.create  #  market quotes

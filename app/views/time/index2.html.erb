@@ -1,0 +1,8 @@
+
+<% @items.each do |item| %>
+
+<p>
+  <%= item.text %> - <%= time_ago_in_words(item.created_at) %> (<%= item.created_at %>)
+</p>
+
+<% end %>

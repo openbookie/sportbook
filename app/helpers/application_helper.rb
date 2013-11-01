@@ -6,9 +6,12 @@ module ApplicationHelper
     ## todo/fix: use version from wettpool module
     content_tag :div do
       link_to( 'Sportbook/1', 'https://github.com/openbookie/sportbook' ) + ', ' +
+      link_to( "sport.db.play/#{SportDb::Play::VERSION}", 'https://github.com/openbookie/sport.db.play' ) + ', ' +
       link_to( "sport.db.market/#{SportDb::Market::VERSION}", 'https://github.com/openbookie/sport.db.market' ) + ', ' +
       link_to( "sport.db/#{SportDb::VERSION}", 'https://github.com/geraldb/sport.db.ruby' ) + ', ' +
-      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/geraldb/world.db.ruby' ) + ' - ' +
+      link_to( "sport.db.admin/#{SportDbAdmin::VERSION}", 'https://github.com/geraldb/sport.db.admin' ) + ', ' +
+      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/geraldb/world.db.ruby' ) + ', ' +
+      link_to( "world.db.admin/#{WorldDbAdmin::VERSION}", 'https://github.com/geraldb/world.db.admin' ) + ' - ' +
       content_tag( :span, "Ruby/#{RUBY_VERSION} (#{RUBY_RELEASE_DATE}/#{RUBY_PLATFORM}) on") + ' ' +
       content_tag( :span, "Rails/#{Rails.version} (#{Rails.env})" )
       ## content_tag( :span, "#{request.headers['SERVER_SOFTWARE'] || request.headers['SERVER']}" )

@@ -30,7 +30,8 @@ Sportbook::Application.routes.draw do
   get 'live',          :to => 'live#index'
   get 'live/:game_id', :to => 'live#show', :as => :live_game
 
-  get 'time',            :to => 'time#index'
+  get 'time',             :to => 'time#index'
+  get 'time2',            :to => 'time#index2'   # old action timeline - obsolete remove/delete after cleanup!!
 
   get 'ical/:play_id',   :to => 'ical#index'
 
