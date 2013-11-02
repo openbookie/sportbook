@@ -155,7 +155,7 @@
         end  # each ranking
       end # each play
     
-    a = Action.new
+    a = Activity.new
     a.tmpl = 'recalc'
     a.text = "*** NEWS - #{pool.full_title} Punkte Neu Berechnet (in #{Time.now-start} s)!"
     a.save!

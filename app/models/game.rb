@@ -35,7 +35,7 @@ module SportDb::Models
 
 class Game
 
-  after_save :log_action
+  before_save :log_activity
 
 
 ### todo/fix:  use new name - team1_style_class_w_calc in views
@@ -61,23 +61,29 @@ class Game
   end
 
 
-
-  def log_action
+  def log_activity
     # add news feed item after save
     
-    # only log if user action (not background job)
+    # for now only log if user action (not background job)
     return if job_running?
-    
 
-    a = Action.new
-    a.game_id = id
+    ## check if any changes
+    
+    return unless changed?
+
+
+    a = Activity.new
+    a.trackable_type = self.class.name
+    a.trackable_id   = id
     a.tmpl    = 'game'
 
-    if toto12x.nil?
-      a.text = "*** NEWS - Spiel #{team1.title} - #{team2.title} #{locked? ? '(Locked Flag)':''}"
+    a.action  = new_record?  ? 'create' : 'update'
+
+    if winner90.nil?
+      a.text = "*** NEWS - #{team1.title} - #{team2.title} #{locked? ? '(Locked Flag)':''}"
     else
       ## todo: add locked flag?
-      a.text = "*** NEWS - Spiel [#{toto12x}] #{team1.title} #{score_str} #{team2.title}"
+      a.text = "*** NEWS - [#{winner90}] #{team1.title} #{score_str} #{team2.title}"
     end
 
     a.save!

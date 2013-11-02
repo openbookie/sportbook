@@ -28,39 +28,39 @@ module SportDb::Models
 ## NB: extend from sport.db-play gem
 
 class Tip 
-  
-  after_save  :log_action
 
-  def log_action
+  before_save  :log_activity
+
+
+  def log_activity
     # add news feed item after save
-    
-    # only log complete tips
-    return if toto12x.nil?
-    
-    a = Action.new
 
-    ## todo: add pool_id
+    # only log if any changes  - redundant ?? e.g. callback gets anyway only called if any changes present in the first place?? check
+    return unless changed?
+
+    # only log complete tips
+    return if winner90.nil?
+
+    a = Activity.new
     a.user_id = user_id
-    a.tip_id  = id
+    a.trackable_type = self.class.name
+    a.trackable_id   = id
     a.tmpl    = 'tip'
+
+    a.action  = new_record?  ? 'create' : 'update'
+
     a.text    = "#{user.name} tippt [#{toto12x}] #{game.team1.title} #{score_str} #{game.team2.title} (#{game.round.title}) im Wettpool >#{pool.full_title}<."
 
     a.save!
   end
 
 
-  def public_user_name_str
-    public? ? user.name : 'Anonymous'
-  end
+  def public_user_name_str()   public? ? user.name : 'Anonymous';  end
+  def public_score_str()       public? ? score_str : '# : #';      end
+  def public_toto1x2_str()     public? ? toto12x : '#';            end
+  def public_toto12x_str()     public_toto1x2_str;    end    # alias for public_toto1x2_str
 
-  def public_score_str
-    public? ? score_str : '# : #'
-  end
-  
-  def public_toto12x_str
-    public? ? toto12x : '#'
-  end
-  
+
 end # class Tip
 
 end  # module SportDb::Models

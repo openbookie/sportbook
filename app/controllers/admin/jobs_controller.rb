@@ -18,13 +18,15 @@ class Admin::JobsController < Admin::BaseController
     
     render :text => "<pre>#{txt}</pre>"
   end
-  
+
   def wipe_out_time
     # delete/clear timeline (that is, all action items in news feed)
 
     txt = ">> Delete #{Action.count} Actions (#{Time.now}):\r\n"
+    txt = ">> Delete #{Activity.count} Activities (#{Time.now}):\r\n"
 
     Action.delete_all
+    Activity.delete_all
 
     txt << "\r\n<< DONE"
     
@@ -68,6 +70,12 @@ class Admin::JobsController < Admin::BaseController
   end
   
   def debug_calc
+    
+   ####
+   ### fix: use recalc method and pass along string buf
+   ##   - how? do NOT duplicate calc method - let it fill up string buffer (as an option)
+   #  instead of stdout w/ puts
+    
     txt = ">> Recalc Points (#{Time.now}):\r\n"
 
     # 1. pass - calc points per play and per round
@@ -202,9 +210,9 @@ class Admin::JobsController < Admin::BaseController
 
     txt << "\r\n<< DONE - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips."
     
-    a = Action.new
+    a = Activity.new
     a.tmpl = 'recalc'
-    a.text = "*** NEWS - Punkte Neu Berechnet!"
+    a.text = "*** NEWS - Punkte Neu Berechnet! (Debug)"
     a.save!
     
     render :text => "<pre>#{txt}</pre>"

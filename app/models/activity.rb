@@ -1,0 +1,4 @@
+
+
+Activity = ActivityDb::Models::Activity
+

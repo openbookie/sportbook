@@ -20,7 +20,7 @@ gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
 ## add sportdb addons/plugins
 
 gem 'sportdb-market', '0.5.0'   # see https://github.com/openbookie/sport.db.market
-gem 'sportdb-play',   '0.2.1'   # see https://github.com/openbookie/sport.db.play
+gem 'sportdb-play',   '0.2.2'   # see https://github.com/openbookie/sport.db.play
 
 ## add rails engines
 

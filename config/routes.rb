@@ -31,7 +31,9 @@ Sportbook::Application.routes.draw do
   get 'live/:game_id', :to => 'live#show', :as => :live_game
 
   get 'time',             :to => 'time#index'
-  get 'time2',            :to => 'time#index2'   # old action timeline - obsolete remove/delete after cleanup!!
+  get 'time2',            :to => 'time#index2'
+  get 'time3',            :to => 'time#index3'   # old action timeline - obsolete remove/delete after cleanup!!
+  get 'time4',            :to => 'time#index4'   # old action timeline - obsolete remove/delete after cleanup!!
 
   get 'ical/:play_id',   :to => 'ical#index'
 
@@ -61,6 +63,7 @@ Sportbook::Application.routes.draw do
     resources :quotes    
     
     get 'bonus',         :to => 'bonus#index'
+
     ## fix: post required?? double check!!
     get 'bonus/update',  :to => 'bonus#update'
   end
@@ -70,11 +73,8 @@ Sportbook::Application.routes.draw do
   
   scope :module => 'admin' do
 
-    
     get 'update',         :to => 'update#index'
-    
-    ## fix: post required??? double check!!!!
-    get 'update/update',  :to => 'update#update' # , :via => :get
+    put 'update/update',  :to => 'update#update'
 
     resources :jobs do
       get 'calc',            :on => :collection

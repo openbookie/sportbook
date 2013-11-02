@@ -6,13 +6,13 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/at-austria.git
-  revision: b70725548de7ad5adcee54320ffc2eaed5d9280b
+  revision: 16f153b35bf13df645f7fb77e8ac538891f50cbe
   specs:
     sportdb-data-at (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: 6d61ea298c124673c13ddfe9cbb9fa1a4edf706b
+  revision: f9b42b5ef3b317865164d35f61da2c25d6a6a076
   specs:
     sportdb-data-de (9.9.9)
 
@@ -98,13 +98,13 @@ GEM
     commander (4.1.5)
       highline (~> 1.6.11)
     daemons (1.1.9)
-    dbbrowser (0.1.2)
+    dbbrowser (0.1.3)
       logutils (>= 0.5)
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
-    fetcher (0.4.1)
+    fetcher (0.4.2)
       logutils (>= 0.6)
     gli (2.8.1)
     highline (1.6.20)
@@ -172,7 +172,7 @@ GEM
       worlddb (>= 1.7)
     sportdb-admin (0.3.0)
     sportdb-market (0.5.0)
-    sportdb-play (0.2.1)
+    sportdb-play (0.2.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -232,7 +232,7 @@ DEPENDENCIES
   sportdb-data-world-cup (= 9.9.9)!
   sportdb-logos (= 0.1.0)!
   sportdb-market (= 0.5.0)
-  sportdb-play (= 0.2.1)
+  sportdb-play (= 0.2.2)
   sqlite3
   thin
   uglifier (>= 1.0.3)
