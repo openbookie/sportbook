@@ -22,8 +22,8 @@ class Admin::JobsController < Admin::BaseController
   def wipe_out_time
     # delete/clear timeline (that is, all action items in news feed)
 
-    txt = ">> Delete #{Action.count} Actions (#{Time.now}):\r\n"
-    txt = ">> Delete #{Activity.count} Activities (#{Time.now}):\r\n"
+    txt = ""
+    txt << ">> Delete #{Action.count} Actions, #{Activity.count} Activities - (#{Time.now}):\r\n"
 
     Action.delete_all
     Activity.delete_all
@@ -68,157 +68,24 @@ class Admin::JobsController < Admin::BaseController
     
     render :text => "<pre>#{txt}</pre>"
   end
-  
+
+
   def debug_calc
+    start = Time.now
     
-   ####
-   ### fix: use recalc method and pass along string buf
-   ##   - how? do NOT duplicate calc method - let it fill up string buffer (as an option)
-   #  instead of stdout w/ puts
-    
-    txt = ">> Recalc Points (#{Time.now}):\r\n"
+    o = StringIO.new
+    o.puts ">> Recalc Points (#{start}):"
 
-    # 1. pass - calc points per play and per round
+    # 1) turn on debugging / details
+    # 2) redirect out(put) to string buffer, that is, buf
+    recalc( out: o, debug: true )
 
-    Pool.all.each do |pool|
-      txt << "\r\n=== #{pool.full_title} (#{pool.key}) ===\r\n"
-      pool.plays.each do |play|
-        txt << "\r\n#{play.user.name} (#{play.user.key}):\r\n"
+    o.puts "\r\n<< DONE (in #{Time.now-start} s) - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips, #{BonusTip.count} Bonus Tips."
 
-        play_pts = 0
-        
-        # note: for adding to work start with pos 1 and work your way up (that is, use order clause)
-        rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')
-        rounds.order( 'pos' ).each do |round|
-          txt << "[#{round.pos}] #{round.title}: "
-          
-          round_pts = 0
-          
-          round.games.each do |game|
-            # fix: use play.tips.where()
-            tip =  Tip.where( :user_id => play.user_id,
-                              :pool_id => play.pool.id,
-                              :game_id => game.id ).first
-            
-            if tip.present?
-              tip_pts = tip.calc_points
-              round_pts += tip_pts
-              txt << "#{tip_pts} "
-            end
-                        
-          end # each game
-        
-          play_pts += round_pts
-          txt << " => #{round_pts} (#{play_pts}) pts\r\n"
-          
-          pts = Point.find_by_user_id_and_pool_id_and_round_id( play.user_id, play.pool_id, round.id )
-          if pts.nil?
-            pts = Point.new 
-            pts.user_id  = play.user_id
-            pts.pool_id  = play.pool_id
-            pts.round_id = round.id
-          end
-          pts.round_pts  = round_pts
-          pts.total_pts  = play_pts
-          pts.save!
-          
-        end # each round
-      
-        play.total_pts = play_pts
-        play.job_running!
-        play.save!
-        play.job_done!
-      
-      end # each play (that is, user)
-    end # each pool
-
-    txt << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\r\n"
-    txt << ">> 2. pass - calc rankings/positions  \r\n"
-    txt << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\r\n"
-
-    Pool.all.each do |pool|
-      txt << "\r\n=== #{pool.full_title} (#{pool.key}) ===\r\n"
-
-      rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')      
-      rounds.each do |round|
-        txt << "[#{round.pos}] #{round.title}:\r\n"
-        
-        rankings = Point.where( :pool_id => pool.id, :round_id => round.id ).order( 'round_pts desc' ).all
-        
-        pos     =-1
-        last_pts=-1
-
-        rankings.each_with_index do |ranking,i|
-          pos=i+1 if ranking.round_pts != last_pts
-
-          ranking.round_pos = pos
-          ranking.save!
-          
-          last_pts = ranking.round_pts
-        end
-
-        rankings = Point.where( :pool_id => pool.id, :round_id => round.id ).order( 'total_pts desc' ).all
-
-        pos     =-1
-        last_pts=-1
-
-        rankings.each_with_index do |ranking,i|
-          pos=i+1 if ranking.total_pts != last_pts
-
-          ranking.total_pos = pos
-          ranking.save!
-          
-          last_pts = ranking.total_pts
-        end
-
-      end  # each round
-    end # each pool
-
-    txt << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\r\n"
-    txt << ">> 3. pass - calc diffs for totals    \r\n"
-    txt << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\r\n"
-
-    Pool.all.each do |pool|
-      txt << "\r\n=== #{pool.full_title} (#{pool.key}) ===\r\n\r\n"
-
-      pool.plays.each do |play|
-        txt << "#{play.user.name} (#{play.user.key}): "
-      
-        last_pos = 0
-        
-        play.complete_rankings.each_with_index do |ranking,i|
-          if i > 0
-            ranking.diff_total_pos = last_pos - ranking.total_pos  # lower rank/pos is better
-          else  # no diff for first record
-            ranking.diff_total_pos = 0
-          end
-          
-          ## hack: can't update record found with joins clause
-          ## get new ranking  --- find a better (simpler) way
-          ranking2 = Point.find( ranking.id )
-          ranking2.diff_total_pos = ranking.diff_total_pos
-          ranking2.save!
-
-          txt << "[#{i+1}] #{ranking.round_pts} #{ranking.diff_total_pos_str} "
-          
-          last_pos = ranking.total_pos
-        end  # each ranking
-        
-        txt << "\r\n"
-      end # each play
-    end # each pool
-
-    txt << "\r\n<< DONE - #{Pool.count} Pools, #{Play.count} Plays, #{Tip.count} Tips."
-    
-    a = Activity.new
-    a.tmpl = 'recalc'
-    a.text = "*** NEWS - Punkte Neu Berechnet! (Debug)"
-    a.save!
-    
-    render :text => "<pre>#{txt}</pre>"
+    render :text => "<pre>#{o.string}</pre>"
   end
-  
-  
+
+
   def export
     ## todo/use csv for export ???
     

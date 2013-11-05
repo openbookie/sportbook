@@ -6,6 +6,15 @@ task :recalc => [:environment] do |t|
   
 end
 
+desc 'sportbook: recalc points for all pools (debug)'
+task :recalcd => [:environment] do |t|
+  
+  recalc( debug: true )
+  
+end
+
+
+
 desc 'sportbook: export all users'
 task :export_users => [:environment] do |t|
   

@@ -1,4 +1,34 @@
 
+
+## simple wrapper; add output to StringIO plus outputs to STDOUT too
+##   fix: move to text utils to utils ??
+##   fix: find a better name? already exists anything similar ???
+
+class StringIOWithEcho  
+
+  def initialize
+    @buf = StringIO.new
+  end
+
+  def puts( msg )
+    STDOUT.puts( msg )
+    @buf.puts( msg )
+  end
+
+  def print( msg )
+    STDOUT.print( msg )
+    @buf.print( msg )
+  end
+
+  def string  # returns underlying StringIO string
+    @buf.string  
+  end
+    
+end
+
+
+
+
 class Time
   
   def self.cet( str )   # central european time (cet) + central european summer time (cest)  

@@ -1,27 +1,36 @@
 
-  def recalc
+
+  def recalc( opts={} )
     Pool.all.each do |pool|
-      recalc_pool( pool )
+      recalc_pool( pool, opts )
     end
   end
 
-  def recalc_pool( pool )
+
+  def recalc_pool( pool, opts={} )
     start = Time.now
 
-    puts "recalc >#{pool.full_title}<"
-    puts "  1. pass - calc points per play and per round"
+    # note: by default use STDOUT; option out lets you pass in StringIO buffer (lets you capture output)
+    o     = opts[:out] || STDOUT
+    debug = opts[:debug].present?   # check debug/detail flag
+
+    o.puts "recalc >#{pool.full_title}< - key: #{pool.key}"
+    o.puts "  1. pass - calc points per play and per round"
     
     #################################################
     # 1. pass - calc points per play and per round
     #################################################
 
       pool.plays.each do |play|
+        o.puts "\r\n#{play.user.name} (#{play.user.key}):"   if debug
 
         play_pts = 0
         
         # note: for adding to work start with pos 1 and work your way up (that is, use order clause)
         rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')
         rounds.order( 'pos' ).each do |round|
+          o.print "[#{round.pos}] #{round.title}: "   if debug
+          
           round_pts = 0
           
           round.games.each do |game|
@@ -34,10 +43,12 @@
             if tip.present?
               tip_pts = tip.calc_points
               round_pts += tip_pts
+              o.print "#{tip_pts} "  if debug
             end
           end # each game
         
           play_pts += round_pts
+          o.puts " => #{round_pts} (#{play_pts}) pts"   if debug
           
           pts = Point.find_by_user_id_and_pool_id_and_round_id( play.user_id, play.pool_id, round.id )
           if pts.nil?
@@ -88,7 +99,7 @@
       end # each play (that is, user)
 
 
-    puts "  2. pass - calc rankings/positions"
+    o.puts "  2. pass - calc rankings/positions"
 
     ##############################################
     ## 2. pass - calc rankings/positions 
@@ -96,6 +107,7 @@
 
       rounds = pool.flex? ? pool.event.flex_rounds.order('pos') : pool.event.fix_rounds.order('pos')      
       rounds.each do |round|
+         o.puts "[#{round.pos}] #{round.title}:"   if debug
         
         rankings = Point.where( :pool_id => pool.id, :round_id => round.id ).order( 'round_pts desc' ).all
         
@@ -128,14 +140,15 @@
       end  # each round
     
 
-    puts "  3. pass - calc diffs for totals"
+    o.puts "  3. pass - calc diffs for totals"
 
     #######################################################
     ## 3. pass - calc diffs for totals
     #######################################################
 
       pool.plays.each do |play|
-      
+        o.print "#{play.user.name} (#{play.user.key}): "   if debug
+        
         last_pos = 0
         
         play.complete_rankings.each_with_index do |ranking,i|
@@ -151,8 +164,11 @@
           ranking2.diff_total_pos = ranking.diff_total_pos
           ranking2.save!
           
+          o.print "[#{i+1}] #{ranking.round_pts} #{ranking.diff_total_pos_str} "   if debug
+          
           last_pos = ranking.total_pos
         end  # each ranking
+        o.puts ""    if debug
       end # each play
     
     a = Activity.new
@@ -160,5 +176,6 @@
     a.text = "*** NEWS - #{pool.full_title} Punkte Neu Berechnet (in #{Time.now-start} s)!"
     a.save!
 
-    puts "Recalc points done (in #{Time.now-start} s)."
+    o.puts "Recalc points done (in #{Time.now-start} s)."
   end
+  
