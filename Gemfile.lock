@@ -1,38 +1,62 @@
 GIT
-  remote: https://github.com/openbookie/football.db.market.git
-  revision: 979313ded9af876f329d391d6a7ed0091cc89a3c
+  remote: https://github.com/openfootball/africa-cup.git
+  revision: 85dd47e412880aeb605ae0d13c12d1e55e4a9571
   specs:
-    sportdb-data-market (9.9.9)
+    sportdb-data-africa-cup (9.9.9)
+
+GIT
+  remote: https://github.com/openfootball/america-cup.git
+  revision: 6958a8fbd7b64a8afcc7816ae3447a35daaf1790
+  specs:
+    sportdb-data-america-cup (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/at-austria.git
-  revision: 16f153b35bf13df645f7fb77e8ac538891f50cbe
+  revision: fd87efa40524a77d9f9e5b54ea1115517f74466a
   specs:
     sportdb-data-at (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: f9b42b5ef3b317865164d35f61da2c25d6a6a076
+  revision: 622ef030d721f5e3e4b005e8c321938836ba7bda
   specs:
     sportdb-data-de (9.9.9)
 
 GIT
+  remote: https://github.com/openfootball/euro-cup.git
+  revision: 017b257f59c506dbe03afedf391480a9c08c1fb9
+  specs:
+    sportdb-data-euro-cup (9.9.9)
+
+GIT
+  remote: https://github.com/openfootball/europe-champions-league.git
+  revision: 7a1438ae8aaca4d300847d30ec35ebe2c5e2ac54
+  specs:
+    sportdb-data-europe-champions-league (9.9.9)
+
+GIT
   remote: https://github.com/openfootball/europe.git
-  revision: 300db3c7cdc2c3f5adf1f09e5b6bd841a54db466
+  revision: d57af20063213e510ab668002bedb546fc9442c5
   specs:
     sportdb-data-europe (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/world-cup.git
-  revision: 83c92d4f5f61ee0e96d681d8f9a145d679880719
+  revision: a9d38a9db5ac436b29ea31ada6156a5324a15c31
   specs:
     sportdb-data-world-cup (9.9.9)
 
 GIT
   remote: https://github.com/openmundi/world.db.git
-  revision: d11d8ce0b32185882f8744cac081b444edd626ff
+  revision: 821b0253418bf6e497eb4da3f1c6f93f23009eb6
   specs:
     worlddb-data (9.9.9)
+
+GIT
+  remote: https://github.com/opensport/american-football.db.git
+  revision: 79baf732dc04989c8e0387897d8a12aa75dd74b6
+  specs:
+    sportdb-data-american-football (9.9.9)
 
 GIT
   remote: https://github.com/sportlogos/football.db.logos.ruby.git
@@ -82,7 +106,7 @@ GEM
     activityutils (0.1.0)
       logutils (>= 0.5)
     annotate (2.4.1.beta1)
-    arel (3.0.2)
+    arel (3.0.3)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     bourbon (1.4.0)
@@ -109,22 +133,22 @@ GEM
     gli (2.8.1)
     highline (1.6.20)
     hike (1.2.3)
-    i18n (0.6.5)
+    i18n (0.6.9)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kramdown (1.2.0)
+    kramdown (1.3.0)
     logutils (0.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.25)
+    mime-types (1.25.1)
     multi_json (1.8.2)
-    pg (0.17.0)
-    pg (0.17.0-x86-mingw32)
+    pg (0.17.1)
+    pg (0.17.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -153,11 +177,11 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.1.0)
+    rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
     ri_cal (0.8.8)
-    sass (3.2.12)
+    sass (3.2.13)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -166,7 +190,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sportdb (1.7.7)
+    sportdb (1.7.9)
       fetcher (>= 0.3)
       gli (>= 2.5.6)
       worlddb (>= 1.7)
@@ -192,7 +216,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.3.0)
+    uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     worlddb (1.7.2)
@@ -223,12 +247,16 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sinatra
-  sportdb (= 1.7.7)
+  sportdb (= 1.7.9)
   sportdb-admin (= 0.3.0)
+  sportdb-data-africa-cup (= 9.9.9)!
+  sportdb-data-america-cup (= 9.9.9)!
+  sportdb-data-american-football (= 9.9.9)!
   sportdb-data-at (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
+  sportdb-data-euro-cup (= 9.9.9)!
   sportdb-data-europe (= 9.9.9)!
-  sportdb-data-market (= 9.9.9)!
+  sportdb-data-europe-champions-league (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
   sportdb-logos (= 0.1.0)!
   sportdb-market (= 0.5.0)
