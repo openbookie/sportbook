@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-
 lionel    =  User.find_by_key!( 'lionel' )
 cristiano =  User.find_by_key!( 'cristiano' )
 wayne     =  User.find_by_key!( 'wayne' )
@@ -30,7 +29,3 @@ pool3 = Pool.create!( event: cl, title: 'Demo', user: wayne, welcome: '' )
 pool3.players << wayne
 pool3.players << demo
 
-
-
-## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( key: 'db.demo.pools.version', value: '1' )
