@@ -10,5 +10,3 @@ users = [
 ]
 
 User.create_from_ary!( users )
-
-Prop.create!( key: 'db.neufang13.users.version', value: '1' )

@@ -56,5 +56,3 @@ Pool.create!( event: at_cup,         title: 'UITS', user: behrooz, welcome: at_c
 Pool.create!( event: cl,             title: 'UITS', user: behrooz, welcome: '' )
 
 
-## todo: use new version constant for app module e.g. Wettpool::VERSION ??
-Prop.create!( key: 'db.uits.pools.version', value: '1' )

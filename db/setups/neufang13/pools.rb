@@ -34,6 +34,3 @@ pool_de.players << gerald
 pool_cl.players << franz   # also auto add admin as first player
 pool_cl.players << franzsr
 pool_cl.players << gerald
-
-
-Prop.create!( key: 'db.neufang13.pools.version', value: '1' )
