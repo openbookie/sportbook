@@ -6,13 +6,14 @@ wayne     =  User.find_by_key!( 'wayne' )
 demo      =  User.find_by_key!( 'demo' )
 
 
+=begin
 worldq   = Event.find_by_key!( 'world.quali.europe.2014' )
 
 pool1 = Pool.create!( event: worldq, title: 'Demo', user: lionel, welcome: '' )
 
 pool1.players << lionel   # also auto add admin as first player
 pool1.players << demo
-
+=end
 
 bl = Event.find_by_key!( 'de.2013/14' )
 

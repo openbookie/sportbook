@@ -1,6 +1,6 @@
 
-skip_worlddb = true
-# skip_worlddb = false
+# skip_worlddb = true
+skip_worlddb = false
 
 ### todo: use SETUP or differnt key eg. SEED= or SEEDS=
 ##   or something else???
@@ -9,7 +9,7 @@ if ENV['SETUP'].present?
     key = ENV['SETUP']
     puts "try setup for key >#{key}<"
 else
-    key = 'demo'
+    key = 'brazil2014'
     puts "no SETUP=key passed along; try default (that is, #{key})"
 end
 
