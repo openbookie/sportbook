@@ -1,12 +1,31 @@
 
-# skip_worlddb = true
-skip_worlddb = false
+####
+# e.g. use like
+#   rake db:seed WORLD=f   or
+#   rake db:seed WORLDDB=skip
+
+skip_worlddb_str =  ENV['WORLD'] || ENV['WORLDDB']
+
+if skip_worlddb_str.present? && ['f', 'false', 'skip'].include?( skip_worlddb_str )
+  skip_worlddb = true
+  puts 'skipping setup for world.db'
+else
+  skip_worlddb = false
+end
+
+
+##########
+# e.g. use like
+#   rake db:seed SETUP=brazil2014  or
+#   rake db:seed SETUP=superbowl   etc.
 
 ### todo: use SETUP or differnt key eg. SEED= or SEEDS=
 ##   or something else???
 
-if ENV['SETUP'].present?
-    key = ENV['SETUP']
+key_str = ENV['SETUP']
+
+if key_str.present?
+    key = key_str
     puts "try setup for key >#{key}<"
 else
     key = 'brazil2014'
