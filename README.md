@@ -1,4 +1,4 @@
-# Welcome to Sportbook.
+# Welcome to Sportbook
 
 A free open source web app for sports betting (or prediction) pools in Ruby on Rails (version 3.2 and up).
 
