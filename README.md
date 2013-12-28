@@ -24,18 +24,31 @@ see the [`football.db`](https://github.com/openfootball) site.
 
 <!-- more sports -->
 
-* National Hockey League (NHL)
 * National Football League (NFL)
+* National Hockey League (NHL)
 
 For more tournaments or leagues,
 see the [`sport.db`](https://github.com/opensport) site.
 
 
-## Demo
+## Demos
 
-Try the demo install running on Heroku [`sportbook.herokuapp.com`](http://sportbook.herokuapp.com).
+Try the demo installs running on Heroku. Use the login credentials `demo`/`demo`. 
 
-Use the login credentials `demo`/`demo`. 
+### FIFA World Cup Brazil 2014
+
+- [`brazil2014.herokuapp.com`](http://brazil2014.herokuapp.com), [(Database)](http://brazil2014.herokuapp.com/db).
+
+
+### UEFA Champions League
+
+- [`sportbook.herokuapp.com`](http://sportbook.herokuapp.com), [(Database)](http://sportbook.herokuapp.com/db).
+
+
+### Super Bowl XLVIII - American Football
+
+- [`superbowl.herokuapp.com`](http://superbowl.herokuapp.com), [(Database)](http://superbowl.herokuapp.com/db).
+
 
 
 ## Setup
