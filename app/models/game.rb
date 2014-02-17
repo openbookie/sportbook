@@ -28,7 +28,7 @@
 #
 
 
-module SportDb::Models
+module SportDb::Model
 
 ### todo/fix: move more methods to sport.db for reuse
 
@@ -91,6 +91,6 @@ class Game
 
 end # class Game
 
-end # module SportDb::Models
+end # module SportDb::Model
 
-Game = SportDb::Models::Game
+Game = SportDb::Model::Game

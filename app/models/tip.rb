@@ -23,7 +23,8 @@
 #  updated_at    :datetime        not null
 #
 
-module SportDb::Models
+module SportDb
+  module Model
 
 ## NB: extend from sport.db-play gem
 
@@ -63,6 +64,7 @@ class Tip
 
 end # class Tip
 
-end  # module SportDb::Models
+  end # module Model
+end  # module SportDb
 
-Tip = SportDb::Models::Tip
+Tip = SportDb::Model::Tip

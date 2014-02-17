@@ -11,4 +11,4 @@
 #
 
 
-BonusRound = SportDb::Models::BonusRound
+BonusRound = SportDb::Model::BonusRound

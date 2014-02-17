@@ -169,6 +169,16 @@ ActiveRecord::Schema.define(:version => 1) do
 
   add_index "events", ["key"], :name => "index_events_on_key", :unique => true
 
+  create_table "events_grounds", :force => true do |t|
+    t.integer  "event_id",   :null => false
+    t.integer  "ground_id",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "events_grounds", ["event_id", "ground_id"], :name => "index_events_grounds_on_event_id_and_ground_id", :unique => true
+  add_index "events_grounds", ["event_id"], :name => "index_events_grounds_on_event_id"
+
   create_table "events_teams", :force => true do |t|
     t.integer  "event_id",   :null => false
     t.integer  "team_id",    :null => false
@@ -190,6 +200,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean  "postponed",    :default => false, :null => false
     t.datetime "play_at_v2"
     t.datetime "play_at_v3"
+    t.integer  "ground_id"
+    t.integer  "city_id"
     t.boolean  "knockout",     :default => false, :null => false
     t.boolean  "home",         :default => true,  :null => false
     t.integer  "score1"
@@ -231,6 +243,21 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
+
+  create_table "grounds", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title",      :null => false
+    t.string   "synonyms"
+    t.integer  "country_id", :null => false
+    t.integer  "city_id"
+    t.integer  "since"
+    t.integer  "capacity"
+    t.string   "address"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "grounds", ["key"], :name => "index_grounds_on_key", :unique => true
 
   create_table "group_quotes", :force => true do |t|
     t.integer  "service_id", :null => false
@@ -492,6 +519,9 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "country_id",                      :null => false
     t.integer  "city_id"
     t.boolean  "club",         :default => false, :null => false
+    t.integer  "since"
+    t.string   "address"
+    t.string   "web"
     t.boolean  "national",     :default => false, :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false

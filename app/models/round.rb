@@ -18,7 +18,8 @@
 #  calc       :boolean         default(FALSE), not null
 #
 
-module SportDb::Models
+module SportDb
+  module Model
 
 class Round
     
@@ -28,6 +29,8 @@ class Round
   
 end # class Round
 
-end # module SportDb::Models
+  end # module Model
+end # module SportDb
 
-Round = SportDb::Models::Round
+Round = SportDb::Model::Round
+

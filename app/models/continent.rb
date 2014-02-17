@@ -1,2 +1,2 @@
 
-Continent = WorldDb::Models::Continent
+Continent = WorldDb::Model::Continent

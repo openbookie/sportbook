@@ -10,5 +10,4 @@
 #
 
 
-
-Service = SportDb::Models::Service
+Service = SportDb::Model::Service

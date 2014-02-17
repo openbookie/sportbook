@@ -23,7 +23,8 @@
 #
 
 
-module SportDb::Models
+module SportDb
+  module Model
 
 class Team
 
@@ -33,7 +34,8 @@ class Team
   
 end  # class Team
 
-end # module SportDb::Models
+  end # module Model
+end # module SportDb
 
-Team = SportDb::Models::Team
+Team = SportDb::Model::Team
 

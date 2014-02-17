@@ -1,3 +1,3 @@
 
 
-Usage = WorldDb::Models::Usage
+Usage = WorldDb::Model::Usage

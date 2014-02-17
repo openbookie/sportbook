@@ -16,7 +16,7 @@
 #  updated_at   :datetime        not null
 #
 
-module SportDb::Models
+module SportDb::Model
 
 ## NB: extend from sport.db-play gem
 
@@ -75,6 +75,6 @@ class Pool
   
 end # class Pool
 
-end  # module SportDb::Models
+end  # module SportDb::Model
 
-Pool = SportDb::Models::Pool
+Pool = SportDb::Model::Pool

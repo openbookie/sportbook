@@ -1,2 +1,3 @@
 
-Badge = SportDb::Models::Badge
+Badge = SportDb::Model::Badge
+

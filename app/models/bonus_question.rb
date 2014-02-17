@@ -10,5 +10,5 @@
 #  updated_at :datetime        not null
 #
 
-BonusQuestion = SportDb::Models::BonusQuestion
+BonusQuestion = SportDb::Model::BonusQuestion
 

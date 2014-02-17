@@ -11,4 +11,4 @@
 #
 
 
-Group = SportDb::Models::Group
+Group = SportDb::Model::Group
