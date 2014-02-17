@@ -12,10 +12,16 @@ class Admin::FixturesController < Admin::BaseController
     puts "[FixturesController] event_id=#{params[:event_id]}, event.key=#{event.key}"
     puts "   text=#{text}"
 
-    reader = SportDB::Reader.new
-    reader.load_fixtures_from_string( event.key, text )
+    puts "   before SportDb::Reader.new"
+    reader = SportDb::Reader.new( './dummy/path' )   ### fix: no path required for string reader ??
     
+    puts "   after SportDb::Reader.new"
+    puts "   before load_from_string"
+    reader.load_fixtures_from_string( event.key, text )
+    puts "   after load_from_string"
+
     render :text => "done; hello fixtures for event #{event.key}  >>#{text}<<"
   end
   
 end
+
