@@ -11,8 +11,8 @@ gem 'sinatra', :require => 'sinatra/base'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 
-gem 'worlddb', '1.7.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.7.9'   # see https://github.com/geraldb/sport.db.ruby
+gem 'worlddb', '1.8.2'   # see https://github.com/geraldb/world.db.ruby
+gem 'sportdb', '1.8.5'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
 
@@ -45,17 +45,20 @@ gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/openmundi/wor
 
 gem 'sportdb-data-world-cup',   '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'
 gem 'sportdb-data-africa-cup',  '9.9.9', :git => 'https://github.com/openfootball/africa-cup.git'
-gem 'sportdb-data-america-cup', '9.9.9', :git => 'https://github.com/openfootball/america-cup.git'
-gem 'sportdb-data-euro-cup',    '9.9.9', :git => 'https://github.com/openfootball/euro-cup.git'
+gem 'sportdb-data-north-america-gold-cup', '9.9.9', :git => 'https://github.com/openfootball/north-america-gold-cup.git'
+gem 'sportdb-data-copa-america',           '9.9.9', :git => 'https://github.com/openfootball/copa-america.git'
+gem 'sportdb-data-euro-cup',               '9.9.9', :git => 'https://github.com/openfootball/euro-cup.git'
 
 
 ## -- football clubs
 
 gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'
 gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'
+gem 'sportdb-data-en',        '9.9.9', :git => 'https://github.com/openfootball/en-england.git'
+gem 'sportdb-data-es',        '9.9.9', :git => 'https://github.com/openfootball/es-espana.git'
+gem 'sportdb-data-it',        '9.9.9', :git => 'https://github.com/openfootball/it-italy.git'
+gem 'sportdb-data-europe',    '9.9.9', :git => 'https://github.com/openfootball/europe.git'
 
-#  :path => '~/github/openfootball/europe'
-gem 'sportdb-data-europe', '9.9.9',    :git => 'https://github.com/openfootball/europe.git'
 gem 'sportdb-data-europe-champions-league', '9.9.9',    :git => 'https://github.com/openfootball/europe-champions-league.git'
 
 
