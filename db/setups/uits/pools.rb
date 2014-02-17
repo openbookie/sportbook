@@ -8,6 +8,9 @@ at_cup         = Event.find_by_key!( 'at.cup.2013/14' )
 
 cl             = Event.find_by_key!( 'cl.2013/14' )
 
+world_cup      = Event.find_by_key!( 'world.2014' )
+
+
 
 nn =  User.find_by_key!( 'nn' )
 
@@ -54,5 +57,4 @@ EOS
 Pool.create!( event: at_bl,          title: 'UITS', user: behrooz, welcome: at_bl_txt )
 Pool.create!( event: at_cup,         title: 'UITS', user: behrooz, welcome: at_cup_txt )
 Pool.create!( event: cl,             title: 'UITS', user: behrooz, welcome: '' )
-
-
+Pool.create!( event: world_cup,      title: 'UITS', user: behrooz, welcome: '' )
