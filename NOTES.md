@@ -18,7 +18,7 @@ Annotate models via
 ## Installation Upgrade Steps / Checklist
 
 
-backup/save tips; move to `db/seeds/setup/uss/data.txt` and commit to git
+backup/save tips; move to `db/setup/uits/data.txt` and commit to git
 
 backup/save users
 
@@ -38,7 +38,7 @@ rebuild db on heroku
 
 run db seed on heroku
 
-    $ heroku run rake load_uits --app tipp
+    $ heroku run rake db:seed SETUP=uits --app tipp
 
 restore tips on heroku
 

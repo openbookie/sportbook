@@ -12,15 +12,15 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'worlddb', '1.8.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.8.5'   # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.8.6'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
 
 ####################################
 ## add sportdb addons/plugins
 
-gem 'sportdb-market', '0.5.0'   # see https://github.com/openbookie/sport.db.market
-gem 'sportdb-play',   '0.2.2'   # see https://github.com/openbookie/sport.db.play
+gem 'sportdb-market', '0.5.1'   # see https://github.com/openbookie/sport.db.market
+gem 'sportdb-play',   '0.2.3'   # see https://github.com/openbookie/sport.db.play
 
 ##########################
 ## add rails engines
@@ -40,6 +40,9 @@ gem 'footballdb-logos', '0.1.0',  :git => 'https://github.com/sportlogos/footbal
 ## add data
 
 gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/openmundi/world.db.git'
+
+## -- stadiums/grounds
+gem 'sportdb-data-stadiums',    '9.9.9', :git => 'https://github.com/openfootball/stadiums.git'
 
 ## -- national football teams
 

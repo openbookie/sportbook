@@ -1,6 +1,27 @@
 ######################################
 # backup data - Export (Feb/17 2014)
 
+
+user-1,nn,N.N.,nn,$2a$10$BxI1fx71x/Oq7rYqY7l6Cu0WVV.kZ2jrRihgpFfQoZAYZvs6DMr4i,false,false,true
+user-5,ande,Ande S,ande,$2a$10$Mu22kJc8r0mVbBOwDZpSsO/I1lQAxusDVpSW8Mjx7FEDrGfl73FHO,true,false,true
+user-10,martinar,Martina R,martina.r,$2a$10$V36gf8iEgcOIezHbX9hsTea79Xt1.8C63P822DiamJ29VpGLD2C4a,false,false,true
+user-6,richardh,Richard H,richard.h,$2a$10$D1bD33JfyFP04YShg8Y91uoFIMnvR3xwoxMMZbb6CdoKSgi8cJ9XC,true,false,true
+user-4,manfredk,Manfred K,manfred.k,$2a$10$KhxGusuSwdZ9iUlPpQBNo.32G5RZo2ArlTHULcxsqIHABRt/ax5Ri,true,false,true
+user-8,markusb,Markus B,markus.b,$2a$10$32Gu/1CXV3RkgH1nXq6i0uUW7u/d0PkLNEV/S3eaUkjxnJn8vk8pW,false,false,true
+user-3,behroozs,Behrooz S,behrooz.s,$2a$10$c8qqpq7H8ZaU3FWv8ycV1uDLctsZqYNv4aTOxXjIA3RghM.4h/sHa,true,false,true
+user-9,dietmarb,Dietmar B,dietmar.b,$2a$10$2ptbY/rTJkR0V8U0d9Jy0e0esN6ac3UxQ0HjAMpV/PbRzVZNkcpPK,false,false,true
+user-2,gerald,Gerald B,gerald,$2a$10$bCQwRfgHLdY7lLDf5R4TDuw6pPBvrgcpYttx/S3VCpoULXuAVjkNC,true,false,true
+user-7,franz,Franz R,franz,$2a$10$LBzyXGz04sLtUIjCAJlEbOHDuGM.Jqr2k4izhwnQOGDpOBBcRwoue,true,false,true
+user-11,clemens,Clemens H,clemens,$2a$10$nueBEl.YeUhGHeAlNSiC8OmcSKLGFVjQgE9we2Y88b8fDKgo4lqCi,false,false,true
+user-12,gerhardw,Gerhard W,gerhard.w,$2a$10$W9esOhqvgvKfoH.bLO1DzOb8O4Y6OQdG04.RgshgGDBUPD7chC59O,false,false,true
+user-13,michaelt,Michael T,michael.t,$2a$10$cXubE.C/VgfpYgTNBDwxT.xWS9iQWtW2AvD1ayxJYUn1u7QLSnzVC,false,false,true
+user-14,karle,Karl E,karl.e,$2a$10$bBstaUtaUs4/aCp3.6O0.uqXfQJAY7k3GHisOlJWKcwJ2BPGp3kSa,false,false,true
+user-15,geroldm,Gerold M,gerold.m,$2a$10$kLQhl39.FFRflvmJjG96uuARrAHbKLfYeNXb3LUPJD7PqzOYbOcKK,false,false,true
+user-16,wernerf,Werner F,werner.f,$2a$10$aOfPx5Xb..LU6WGvpJiUmei9yxyatzHOD56tsfjEASldbl3AO6ury,false,false,true
+user-17,dietmarp,Dietmar P,dietmar.p,$2a$10$jRTP4bCrv9lujia5fgWi/.iTDfCI58Ix8B9wGOBQUqaDDQIvzu/gq,false,false,true
+user-18,johannes,Johannes S,johannes,$2a$10$BnWexMsr7zRIc/8emprz../CNU..Pro2IHRaMddIiJwxYAP.j8rDa,false,false,true
+
+
 play-1,markusb,at.2013/14+flex+behroozs,salzburg,austria,rapid
 play-10,richardh,at.2013/14+flex+behroozs,salzburg,sturm,austria
 play-11,franz,at.2013/14+flex+behroozs,salzburg,rapid,austria
