@@ -2,14 +2,7 @@
 # national teams
 # - world cup
 
-sportdb_setups = [
-  ['euro-cup',               'teams'],
-  ['africa-cup',             'teams'],
-  ['north-america-gold-cup', 'teams'],
-  ['copa-america',           'teams'],
-  ['world-cup',              '2014']
-]
-
+sportdb_setups = []
 
 # clubs
 # - champions league
