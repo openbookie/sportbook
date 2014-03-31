@@ -11,7 +11,7 @@ gem 'sinatra', :require => 'sinatra/base'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 
-gem 'worlddb', '1.8.2'   # see https://github.com/geraldb/world.db.ruby
+gem 'worlddb', '2.0.2'   # see https://github.com/geraldb/world.db.ruby
 gem 'sportdb', '1.8.6'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils

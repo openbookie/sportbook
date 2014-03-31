@@ -36,13 +36,13 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/euro-cup.git
-  revision: 75db2a7890cc496d5b7a4033a890c3a046c4a6ee
+  revision: e8f76f79b8d0668164235f3915a9da8cc1338cfc
   specs:
     sportdb-data-euro-cup (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/europe-champions-league.git
-  revision: 2e0b787c72a9feb8f35e169c8ef74583c116065f
+  revision: 31dce01dc3a653a2c24d3b617a3ce7a01e36c7ae
   specs:
     sportdb-data-europe-champions-league (9.9.9)
 
@@ -66,19 +66,19 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/stadiums.git
-  revision: 0a9f5d517c2c26697d8a94f34af07cdbd122c959
+  revision: 765074676ea723550f10e70cfd230ad2bee1f801
   specs:
     sportdb-data-stadiums (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/world-cup.git
-  revision: 06e69e01856e5c96b4ee80bd35167ed5f7153146
+  revision: 3b2c49c481b0c6dfce46d8ef2ea1fdb5ef636f85
   specs:
     sportdb-data-world-cup (9.9.9)
 
 GIT
   remote: https://github.com/openmundi/world.db.git
-  revision: 64d8d587a2e279fb08b6528e98a0f10db30dc6ce
+  revision: 8d6e540afa023bf2d9f840a8f51bb5524e7aa45e
   specs:
     worlddb-data (9.9.9)
 
@@ -149,8 +149,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    commander (4.1.6)
-      highline (~> 1.6.11)
     daemons (1.1.9)
     dbbrowser (0.1.3)
       logutils (>= 0.5)
@@ -158,10 +156,9 @@ GEM
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
-    fetcher (0.4.2)
+    fetcher (0.4.3)
       logutils (>= 0.6)
     gli (2.9.0)
-    highline (1.6.20)
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
@@ -169,23 +166,24 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kramdown (1.3.2)
+    kramdown (1.3.3)
     logutils (0.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    multi_json (1.8.4)
+    multi_json (1.9.2)
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
-    polyglot (0.3.3)
+    polyglot (0.3.4)
+    props (1.1.1)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-protection (1.5.2)
       rack
-    rack-ssl (1.3.3)
+    rack-ssl (1.3.4)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -197,7 +195,7 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
-    rails-i18n (3.0.0)
+    rails-i18n (3.0.1)
       i18n (~> 0.5)
       rails (>= 3.0.0, < 4.0.0)
     railties (3.2.12)
@@ -207,11 +205,11 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.1.1)
+    rake (10.2.2)
     rdoc (3.12.2)
       json (~> 1.4)
     ri_cal (0.8.8)
-    sass (3.2.14)
+    sass (3.3.4)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -232,27 +230,35 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.8)
-    sqlite3 (1.3.8-x86-mingw32)
-    textutils (0.8.6)
+    sqlite3 (1.3.9)
+    sqlite3 (1.3.9-x86-mingw32)
+    tagutils (0.2.1)
+      activerecord
+      logutils (>= 0.6)
+    textutils (0.9.4)
+      activesupport
       logutils (~> 0.5)
-    thin (1.6.1)
+      props
+    thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
-    thor (0.18.1)
+    thor (0.19.1)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.38)
-    uglifier (2.4.0)
+    tzinfo (0.3.39)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    worlddb (1.8.2)
-      activerecord (~> 3.2)
-      commander (~> 4.1.3)
-      textutils (~> 0.6)
+    worlddb (2.0.2)
+      activerecord
+      gli (>= 2.9)
+      logutils
+      props
+      tagutils
+      textutils (>= 0.9.4)
     worlddb-admin (0.1.1)
     worlddb-flags (0.1.0)
 
@@ -299,7 +305,7 @@ DEPENDENCIES
   sqlite3
   thin
   uglifier (>= 1.0.3)
-  worlddb (= 1.8.2)
+  worlddb (= 2.0.2)
   worlddb-admin (= 0.1.1)
   worlddb-data (= 9.9.9)!
   worlddb-flags (= 0.1.0)
