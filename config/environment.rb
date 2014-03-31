@@ -13,6 +13,8 @@ puts "[boot] environment.rb - after require 'application'"
 #  use just an initializer??
 
 require 'logutils/db'      # LogDb n LogDb::Models
+require 'props/db'         # add ConfDb n Props model too
+
 ## require 'logutils/server'  # LogDb::Server
 
 LogUtils::Logger.root.level = :info    # do not output debug msgs

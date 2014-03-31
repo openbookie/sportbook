@@ -15,6 +15,9 @@ gem 'worlddb', '2.0.2'   # see https://github.com/geraldb/world.db.ruby
 gem 'sportdb', '1.8.6'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
+gem 'props', '1.1.1'
+gem 'tagutils', '0.2.1'
+
 
 ####################################
 ## add sportdb addons/plugins

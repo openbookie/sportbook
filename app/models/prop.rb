@@ -9,5 +9,5 @@
 #  updated_at :datetime        not null
 #
 
-Prop = WorldDb::Model::Prop
+Prop = ConfDb::Model::Prop
 

@@ -1,3 +1,3 @@
 
 
-Tagging = WorldDb::Model::Tagging
+Tagging = TagDb::Model::Tagging

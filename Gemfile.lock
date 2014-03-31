@@ -278,6 +278,7 @@ DEPENDENCIES
   jquery-rails
   kramdown
   pg
+  props (= 1.1.1)
   rails (= 3.2.12)
   rails-i18n
   ri_cal
@@ -303,6 +304,7 @@ DEPENDENCIES
   sportdb-market (= 0.5.1)
   sportdb-play (= 0.2.3)
   sqlite3
+  tagutils (= 0.2.1)
   thin
   uglifier (>= 1.0.3)
   worlddb (= 2.0.2)

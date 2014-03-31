@@ -10,7 +10,9 @@ class CreateDb < ActiveRecord::Migration
 
   def up
 
-    LogDb.create
+    LogDb.create    # logs table
+    ConfDb.create   # props table
+    TagDb.create    # tags n taggings table
     ActivityDb::CreateDb.new.up   # todo/fix: change to ActivityDb.create
     WorldDb.create
     SportDb.create
