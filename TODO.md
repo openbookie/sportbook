@@ -1,4 +1,9 @@
 
+- clean up activity for winning teams
+ shows up in /time3  (timeline)
+Gery tippt 1. Platz => FC Bayern München 2. Platz => Chelsea im Wettpool >UITS Champions League (Europe) 2013/14<. - 13 Tage (2014-04-08 19:10:45 +0200) 
+
+
 ## Major
 
 * add styles for print for bingo classes
