@@ -5,18 +5,18 @@ gem 'kramdown'     # all ruby markdown processor/engine
 gem 'rails', '3.2.12'
 gem 'rails-i18n'   # see https://github.com/svenfuchs/rails-i18n
 
-gem 'sinatra', :require => 'sinatra/base'
+gem 'sinatra', require: 'sinatra/base'
 
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 
-gem 'worlddb', '2.0.2'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.8.6'   # see https://github.com/geraldb/sport.db.ruby
+gem 'worlddb', '2.0.4'   # see https://github.com/geraldb/world.db.ruby
+gem 'sportdb', '1.8.15'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
 gem 'props', '1.1.1'
-gem 'tagutils', '0.2.1'
+gem 'tagutils', '0.2.2'
 
 
 ####################################
@@ -36,41 +36,42 @@ gem 'sportdb-admin', '0.3.0'
 
 gem 'worlddb-flags', '0.1.0'  # use bundled country flags
 
-gem 'sportdb-logos',    '0.1.0',  :git => 'https://github.com/sportlogos/sport.db.logos.ruby.git'
-gem 'footballdb-logos', '0.1.0',  :git => 'https://github.com/sportlogos/football.db.logos.ruby.git'
+gem 'sportdb-logos',    '0.1.0',  git: 'https://github.com/sportlogos/sport.db.logos.ruby.git', branch: 'gh-pages'
+gem 'footballdb-logos', '0.1.0',  git: 'https://github.com/sportlogos/football.db.logos.ruby.git', branch: 'gh-pages'
 
 ###################
 ## add data
 
-gem 'worlddb-data',           '9.9.9', :git => 'https://github.com/openmundi/world.db.git'
+gem 'worlddb-data',           '9.9.9', git: 'https://github.com/openmundi/world.db.git'
 
 ## -- stadiums/grounds
-gem 'sportdb-data-stadiums',    '9.9.9', :git => 'https://github.com/openfootball/stadiums.git'
+gem 'sportdb-data-stadiums',    '9.9.9', git: 'https://github.com/openfootball/stadiums.git'
 
 ## -- national football teams
 
-gem 'sportdb-data-world-cup',   '9.9.9', :git => 'https://github.com/openfootball/world-cup.git'
-gem 'sportdb-data-africa-cup',  '9.9.9', :git => 'https://github.com/openfootball/africa-cup.git'
-gem 'sportdb-data-north-america-gold-cup', '9.9.9', :git => 'https://github.com/openfootball/north-america-gold-cup.git'
-gem 'sportdb-data-copa-america',           '9.9.9', :git => 'https://github.com/openfootball/copa-america.git'
-gem 'sportdb-data-euro-cup',               '9.9.9', :git => 'https://github.com/openfootball/euro-cup.git'
+gem 'sportdb-data-national-teams',         '9.9.9', git: 'https://github.com/openfootball/national-teams.git'
+gem 'sportdb-data-world-cup',              '9.9.9', git: 'https://github.com/openfootball/world-cup.git'
+gem 'sportdb-data-africa-cup',             '9.9.9', git: 'https://github.com/openfootball/africa-cup.git'
+gem 'sportdb-data-north-america-gold-cup', '9.9.9', git: 'https://github.com/openfootball/north-america-gold-cup.git'
+gem 'sportdb-data-copa-america',           '9.9.9', git: 'https://github.com/openfootball/copa-america.git'
+gem 'sportdb-data-euro-cup',               '9.9.9', git: 'https://github.com/openfootball/euro-cup.git'
 
 
 ## -- football clubs
 
-gem 'sportdb-data-de',        '9.9.9', :git => 'https://github.com/openfootball/de-deutschland.git'
-gem 'sportdb-data-at',        '9.9.9', :git => 'https://github.com/openfootball/at-austria.git'
-gem 'sportdb-data-en',        '9.9.9', :git => 'https://github.com/openfootball/en-england.git'
-gem 'sportdb-data-es',        '9.9.9', :git => 'https://github.com/openfootball/es-espana.git'
-gem 'sportdb-data-it',        '9.9.9', :git => 'https://github.com/openfootball/it-italy.git'
-gem 'sportdb-data-europe',    '9.9.9', :git => 'https://github.com/openfootball/europe.git'
+gem 'sportdb-data-de',        '9.9.9', git: 'https://github.com/openfootball/de-deutschland.git'
+gem 'sportdb-data-at',        '9.9.9', git: 'https://github.com/openfootball/at-austria.git'
+gem 'sportdb-data-en',        '9.9.9', git: 'https://github.com/openfootball/en-england.git'
+gem 'sportdb-data-es',        '9.9.9', git: 'https://github.com/openfootball/es-espana.git'
+gem 'sportdb-data-it',        '9.9.9', git: 'https://github.com/openfootball/it-italy.git'
+gem 'sportdb-data-world',     '9.9.9', git: 'https://github.com/openfootball/world.git'
 
-gem 'sportdb-data-europe-champions-league', '9.9.9',    :git => 'https://github.com/openfootball/europe-champions-league.git'
+gem 'sportdb-data-europe-champions-league', '9.9.9', git: 'https://github.com/openfootball/europe-champions-league.git'
 
 
 ## american football (nfl teams)
 
-gem 'sportdb-data-american-football', '9.9.9', :git => 'https://github.com/opensport/american-football.db.git'
+gem 'sportdb-data-american-football', '9.9.9', git: 'https://github.com/opensport/american-football.db.git'
 
 
 ## gem 'sportdb-data-market',    '9.9.9', :git => 'https://github.com/openbookie/football.db.market.git'

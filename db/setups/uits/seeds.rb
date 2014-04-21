@@ -9,7 +9,7 @@ sportdb_setups = []
 # - austrian league n cup
 
 sportdb_setups += [
-  ['europe',                  'teams'],
+  ['world',                   'teams'],
   ['de-deutschland',          'teams'],
   ['en-england',              'teams'],
   ['es-espana',               'teams'],

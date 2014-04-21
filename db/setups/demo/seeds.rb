@@ -14,7 +14,7 @@ sportdb_setups=[]
 # - deutsche bundesliga
 
 sportdb_setups += [
-  ['europe',                  'teams'],
+  ['world',                   'teams'],
   ['at-austria',              'teams'],
   ['en-england',              'teams'],
   ['es-espana',               'teams'],
