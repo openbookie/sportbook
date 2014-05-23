@@ -1,0 +1,65 @@
+#################################
+# Champions League 2013/14
+
+league: cl
+season: 2013/14
+start_at: 2013-08-20
+team3: false
+
+
+fixtures:
+- cl
+
+
+# note: timezone for games (play_at) is *always* CET (central european time)
+
+###############
+# Teams
+
+teams:
+#### pre-qualified
+- manunited      # ENG
+- mancity
+- chelsea
+- bayern         # GER
+- dortmund
+- leverkusen
+- barcelona      # ESP
+- madrid
+- atletico
+- paris          # FRA
+- marseille
+- juventus       # ITA
+- napoli
+- benfica        # POR
+- porto
+- moskva         # RUS
+- donezk         # UKR
+- olympiacos     # GRE
+- anderlecht     # BEL
+- ajax           # NEL
+- galatasaray    # TUR
+- kobenhavn      # DEN
+#### 10 playoff winners
+- arsenal        # ENG
+- austria        # AUT
+- basel          # SUI
+- celtic         # SCO
+- milan          # ITA
+- plzen          # CZE
+- realsociedad   # ESP
+- schalke        # GER
+- steaua         # ROU
+- zenit          # RUS
+#### playoff
+- zagreb         # CRO
+- fenerbahce     # TUR
+- legiawarszawa  # POL
+- razgrad        # BUL
+- lyon           # FRA
+- maribor        # SVN
+- paok           # GRE
+- ferreira       # POR
+- psv            # NED
+- karagandy      # KAZ
+
