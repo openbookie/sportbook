@@ -3,7 +3,7 @@
 # - world cup
 
 sportdb_setups = [
-  ['national-teams',         'teams'],
+  ['national-teams',         'all'],
   ['world-cup',              '2014']
 ]
 

@@ -8,7 +8,12 @@ sportdb_setups=[]
 #  ['world-cup', '2014_quali_europe']
 # ]
 
+sportdb_setups += [
+  ['national-teams',         'all'],
+  ['world-cup',              '2014']
+]
 
+=begin
 # clubs
 # - champions league (europe/uefa)
 # - deutsche bundesliga
@@ -22,6 +27,7 @@ sportdb_setups += [
   ['de-deutschland',          '2013_14'],
   ['europe-champions-league', '2013_14']
 ]
+=end
 
 
 sportdb_setups.each do |setup|
