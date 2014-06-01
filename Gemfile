@@ -12,7 +12,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'worlddb', '2.0.4'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.8.15'   # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.8.28'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
 gem 'props', '1.1.1'
@@ -51,10 +51,11 @@ gem 'sportdb-data-stadiums',    '9.9.9', git: 'https://github.com/openfootball/s
 
 gem 'sportdb-data-national-teams',         '9.9.9', git: 'https://github.com/openfootball/national-teams.git'
 gem 'sportdb-data-world-cup',              '9.9.9', git: 'https://github.com/openfootball/world-cup.git'
-gem 'sportdb-data-africa-cup',             '9.9.9', git: 'https://github.com/openfootball/africa-cup.git'
-gem 'sportdb-data-north-america-gold-cup', '9.9.9', git: 'https://github.com/openfootball/north-america-gold-cup.git'
-gem 'sportdb-data-copa-america',           '9.9.9', git: 'https://github.com/openfootball/copa-america.git'
-gem 'sportdb-data-euro-cup',               '9.9.9', git: 'https://github.com/openfootball/euro-cup.git'
+
+# gem 'sportdb-data-africa-cup',             '9.9.9', git: 'https://github.com/openfootball/africa-cup.git'
+# gem 'sportdb-data-north-america-gold-cup', '9.9.9', git: 'https://github.com/openfootball/north-america-gold-cup.git'
+# gem 'sportdb-data-copa-america',           '9.9.9', git: 'https://github.com/openfootball/copa-america.git'
+# gem 'sportdb-data-euro-cup',               '9.9.9', git: 'https://github.com/openfootball/euro-cup.git'
 
 
 ## -- football clubs

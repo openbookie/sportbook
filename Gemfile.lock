@@ -1,68 +1,44 @@
 GIT
-  remote: https://github.com/openfootball/africa-cup.git
-  revision: ad848dc95c8fe5e888269a437ffe9f6ebe96b6f6
-  specs:
-    sportdb-data-africa-cup (9.9.9)
-
-GIT
   remote: https://github.com/openfootball/at-austria.git
-  revision: 5481e312023753d0148eaffebfea242f7c6e705b
+  revision: e8c6d8bed6f6a5937d44e74b5fbb953157538e91
   specs:
     sportdb-data-at (9.9.9)
 
 GIT
-  remote: https://github.com/openfootball/copa-america.git
-  revision: 6ec762eb2d8912471ff97fa2487258ba03491cc6
-  specs:
-    sportdb-data-copa-america (9.9.9)
-
-GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: 01e170d4dd7f766fe0f9c0b14610936135850ed5
+  revision: 57c084e708c6f25db24d7fb971fef03e15a45978
   specs:
     sportdb-data-de (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/en-england.git
-  revision: b060655d4c5f21400fd64c8934fc537d8e460b7c
+  revision: 61a9dc8a284462896047c18a80b5f72b9423779a
   specs:
     sportdb-data-en (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/es-espana.git
-  revision: 118570c677f28c364e0273379e5bd39e57507cbb
+  revision: d57b4dcc18d9457d2fc7ef844d5a9aa0c2d9600b
   specs:
     sportdb-data-es (9.9.9)
 
 GIT
-  remote: https://github.com/openfootball/euro-cup.git
-  revision: a6d776aa86845da743f594719a766d20685490a1
-  specs:
-    sportdb-data-euro-cup (9.9.9)
-
-GIT
   remote: https://github.com/openfootball/europe-champions-league.git
-  revision: d3ca562cfe83caa14619ec7796f2815c4c40592e
+  revision: eb4b98d41d60e9b7272a5af3fcd6089359b10352
   specs:
     sportdb-data-europe-champions-league (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/it-italy.git
-  revision: 1a1262da4dbfc78cef5a70f82eaaac98a249ff2f
+  revision: 8bff6c8f782f24f2e35de22136ca97f994fcefcc
   specs:
     sportdb-data-it (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/national-teams.git
-  revision: 0528e4a56a3fa11ac7d0be1930f7d7e536c5bbde
+  revision: 712f18018711ade22a51638b4a1ed93068122bbb
   specs:
     sportdb-data-national-teams (9.9.9)
-
-GIT
-  remote: https://github.com/openfootball/north-america-gold-cup.git
-  revision: 51b34cfc420573e48775c9594ad09c92319311d6
-  specs:
-    sportdb-data-north-america-gold-cup (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/stadiums.git
@@ -72,13 +48,13 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/world-cup.git
-  revision: 9e33d5e0a84f2c86ccabff238135126308cf6c91
+  revision: 727ff71e7a3042b0d3022b3d89256b727795a3e3
   specs:
     sportdb-data-world-cup (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/world.git
-  revision: 4bdb5800ea320e95d78df53c24962fb71e62ec5f
+  revision: 575b8bc8fe1ebfa6cf91d9d050bb018d1a0eb1bd
   specs:
     sportdb-data-world (9.9.9)
 
@@ -103,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/sportlogos/sport.db.logos.ruby.git
-  revision: b6c0d7196ccbefb1cc248e4ed64ad54dc6aef01d
+  revision: dcef9a88c6a36539d24243b6ebef63fb804c5b9b
   branch: gh-pages
   specs:
     sportdb-logos (0.1.0)
@@ -135,6 +111,8 @@ GEM
       activesupport (= 3.2.12)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-utils (0.2.0)
+      logutils
     activeresource (3.2.12)
       activemodel (= 3.2.12)
       activesupport (= 3.2.12)
@@ -163,10 +141,10 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
-    execjs (2.0.2)
+    execjs (2.1.0)
     fetcher (0.4.3)
       logutils (>= 0.6)
-    gli (2.9.0)
+    gli (2.10.0)
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
@@ -181,10 +159,18 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    multi_json (1.9.2)
+    multi_json (1.10.1)
+    persondb (0.3.1)
+      activerecord
+      activerecord-utils
+      logutils
+      props
+      tagutils
+      textutils
+      worlddb
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
-    polyglot (0.3.4)
+    polyglot (0.3.5)
     props (1.1.1)
     rack (1.4.5)
     rack-cache (1.2)
@@ -213,11 +199,11 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.3.1)
+    rake (10.3.2)
     rdoc (3.12.2)
       json (~> 1.4)
     ri_cal (0.8.8)
-    sass (3.3.5)
+    sass (3.3.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -226,11 +212,13 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sportdb (1.8.15)
+    sportdb (1.8.28)
       activerecord
+      activerecord-utils
       fetcher (>= 0.3)
       gli (>= 2.5.6)
       logutils
+      persondb
       props
       tagutils
       textutils
@@ -297,20 +285,16 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sinatra
-  sportdb (= 1.8.15)
+  sportdb (= 1.8.28)
   sportdb-admin (= 0.3.0)
-  sportdb-data-africa-cup (= 9.9.9)!
   sportdb-data-american-football (= 9.9.9)!
   sportdb-data-at (= 9.9.9)!
-  sportdb-data-copa-america (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-en (= 9.9.9)!
   sportdb-data-es (= 9.9.9)!
-  sportdb-data-euro-cup (= 9.9.9)!
   sportdb-data-europe-champions-league (= 9.9.9)!
   sportdb-data-it (= 9.9.9)!
   sportdb-data-national-teams (= 9.9.9)!
-  sportdb-data-north-america-gold-cup (= 9.9.9)!
   sportdb-data-stadiums (= 9.9.9)!
   sportdb-data-world (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
