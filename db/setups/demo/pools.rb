@@ -38,7 +38,7 @@ world          = Event.find_by_key!( 'world.2014' )
 pool4 = Pool.create!( event: world,  title: 'Demo', user: lionel, welcome: '' )
 
 pool4.players << lionel   # also auto add admin as first player
-pool4.players << cirstiano
+pool4.players << cristiano
 pool4.players << wayne
 pool4.players << demo
 
