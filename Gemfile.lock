@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: 57c084e708c6f25db24d7fb971fef03e15a45978
+  revision: 81d69e62bfc8a8992fc47f08e1c11614345d0e40
   specs:
     sportdb-data-de (9.9.9)
 
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/national-teams.git
-  revision: 712f18018711ade22a51638b4a1ed93068122bbb
+  revision: 3d53688059461c4cdf5c3a8eee8698123988abe6
   specs:
     sportdb-data-national-teams (9.9.9)
 
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/world-cup.git
-  revision: 727ff71e7a3042b0d3022b3d89256b727795a3e3
+  revision: 7b7cbf54fdabaeb4e7c5c36d6284ca9d2321c8ba
   specs:
     sportdb-data-world-cup (9.9.9)
 
@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://github.com/openmundi/world.db.git
-  revision: 8d6e540afa023bf2d9f840a8f51bb5524e7aa45e
+  revision: d5a1be17877d58bfe41c416f2c4da1c29da54a6f
   specs:
     worlddb-data (9.9.9)
 
@@ -141,10 +141,10 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
-    execjs (2.1.0)
+    execjs (2.2.0)
     fetcher (0.4.3)
       logutils (>= 0.6)
-    gli (2.10.0)
+    gli (2.11.0)
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
@@ -212,7 +212,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sportdb (1.8.28)
+    sportdb (1.8.29)
       activerecord
       activerecord-utils
       fetcher (>= 0.3)
@@ -285,7 +285,7 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sinatra
-  sportdb (= 1.8.28)
+  sportdb (= 1.8.29)
   sportdb-admin (= 0.3.0)
   sportdb-data-american-football (= 9.9.9)!
   sportdb-data-at (= 9.9.9)!

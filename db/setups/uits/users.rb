@@ -21,7 +21,11 @@ users = [
   [ 'Gerold M',    'gerold.m' ],
   [ 'Werner F',    'werner.f' ],
   [ 'Dietmar P',   'dietmar.p' ],
-  [ 'Johannes S',  'johannes' ]
+  [ 'Johannes S',  'johannes' ],
+  [ 'Andreas K',   'aklaar' ],
+  [ 'Mathilde K',  'mathilde' ],
+  [ 'Andreas P',   'andreas.p' ], # promi tipp 1 (Andreas Polster)
+  [ 'Hans K',      'hans.k'    ]  # promi tipp 2 (Hans Krankl)
 ]
 
 

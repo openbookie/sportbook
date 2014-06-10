@@ -1,24 +1,229 @@
 ######################################
-# backup data - Export (Apr/21 2014)
+# backup data - Export (Jun/10 2014)
 
 # -- 18 Users
 
-user-1,nn,N.N.,nn,$2a$10$BxI1fx71x/Oq7rYqY7l6Cu0WVV.kZ2jrRihgpFfQoZAYZvs6DMr4i,false,false,true
-user-5,ande,Ande S,ande,$2a$10$Mu22kJc8r0mVbBOwDZpSsO/I1lQAxusDVpSW8Mjx7FEDrGfl73FHO,true,false,true
-user-10,martinar,Martina R,martina.r,$2a$10$V36gf8iEgcOIezHbX9hsTea79Xt1.8C63P822DiamJ29VpGLD2C4a,false,false,true
-user-6,richardh,Richard H,richard.h,$2a$10$D1bD33JfyFP04YShg8Y91uoFIMnvR3xwoxMMZbb6CdoKSgi8cJ9XC,true,false,true
-user-4,manfredk,Manfred K,manfred.k,$2a$10$KhxGusuSwdZ9iUlPpQBNo.32G5RZo2ArlTHULcxsqIHABRt/ax5Ri,true,false,true
-user-8,markusb,Markus B,markus.b,$2a$10$32Gu/1CXV3RkgH1nXq6i0uUW7u/d0PkLNEV/S3eaUkjxnJn8vk8pW,false,false,true
-user-3,behroozs,Behrooz S,behrooz.s,$2a$10$c8qqpq7H8ZaU3FWv8ycV1uDLctsZqYNv4aTOxXjIA3RghM.4h/sHa,true,false,true
-user-9,dietmarb,Dietmar B,dietmar.b,$2a$10$2ptbY/rTJkR0V8U0d9Jy0e0esN6ac3UxQ0HjAMpV/PbRzVZNkcpPK,false,false,true
-user-2,gerald,Gerald B,gerald,$2a$10$bCQwRfgHLdY7lLDf5R4TDuw6pPBvrgcpYttx/S3VCpoULXuAVjkNC,true,false,true
-user-7,franz,Franz R,franz,$2a$10$LBzyXGz04sLtUIjCAJlEbOHDuGM.Jqr2k4izhwnQOGDpOBBcRwoue,true,false,true
-user-11,clemens,Clemens H,clemens,$2a$10$nueBEl.YeUhGHeAlNSiC8OmcSKLGFVjQgE9we2Y88b8fDKgo4lqCi,false,false,true
-user-12,gerhardw,Gerhard W,gerhard.w,$2a$10$W9esOhqvgvKfoH.bLO1DzOb8O4Y6OQdG04.RgshgGDBUPD7chC59O,false,false,true
-user-13,michaelt,Michael T,michael.t,$2a$10$cXubE.C/VgfpYgTNBDwxT.xWS9iQWtW2AvD1ayxJYUn1u7QLSnzVC,false,false,true
-user-14,karle,Karl E,karl.e,$2a$10$bBstaUtaUs4/aCp3.6O0.uqXfQJAY7k3GHisOlJWKcwJ2BPGp3kSa,false,false,true
-user-15,geroldm,Gerold M,gerold.m,$2a$10$kLQhl39.FFRflvmJjG96uuARrAHbKLfYeNXb3LUPJD7PqzOYbOcKK,false,false,true
-user-16,wernerf,Werner F,werner.f,$2a$10$aOfPx5Xb..LU6WGvpJiUmei9yxyatzHOD56tsfjEASldbl3AO6ury,false,false,true
-user-17,dietmarp,Dietmar P,dietmar.p,$2a$10$jRTP4bCrv9lujia5fgWi/.iTDfCI58Ix8B9wGOBQUqaDDQIvzu/gq,false,false,true
-user-18,johannes,Johannes S,johannes,$2a$10$BnWexMsr7zRIc/8emprz../CNU..Pro2IHRaMddIiJwxYAP.j8rDa,false,false,true
+# user-1,nn,N.N.,nn,$2a$10$BxI1fx71x/Oq7rYqY7l6Cu0WVV.kZ2jrRihgpFfQoZAYZvs6DMr4i,false,false,true
+# user-5,ande,Ande S,ande,$2a$10$Mu22kJc8r0mVbBOwDZpSsO/I1lQAxusDVpSW8Mjx7FEDrGfl73FHO,true,false,true
+# user-10,martinar,Martina R,martina.r,$2a$10$V36gf8iEgcOIezHbX9hsTea79Xt1.8C63P822DiamJ29VpGLD2C4a,false,false,true
+# user-6,richardh,Richard H,richard.h,$2a$10$D1bD33JfyFP04YShg8Y91uoFIMnvR3xwoxMMZbb6CdoKSgi8cJ9XC,true,false,true
+# user-4,manfredk,Manfred K,manfred.k,$2a$10$KhxGusuSwdZ9iUlPpQBNo.32G5RZo2ArlTHULcxsqIHABRt/ax5Ri,true,false,true
+# user-8,markusb,Markus B,markus.b,$2a$10$32Gu/1CXV3RkgH1nXq6i0uUW7u/d0PkLNEV/S3eaUkjxnJn8vk8pW,false,false,true
+# user-3,behroozs,Behrooz S,behrooz.s,$2a$10$c8qqpq7H8ZaU3FWv8ycV1uDLctsZqYNv4aTOxXjIA3RghM.4h/sHa,true,false,true
+# user-9,dietmarb,Dietmar B,dietmar.b,$2a$10$2ptbY/rTJkR0V8U0d9Jy0e0esN6ac3UxQ0HjAMpV/PbRzVZNkcpPK,false,false,true
+# user-2,gerald,Gerald B,gerald,$2a$10$bCQwRfgHLdY7lLDf5R4TDuw6pPBvrgcpYttx/S3VCpoULXuAVjkNC,true,false,true
+# user-7,franz,Franz R,franz,$2a$10$LBzyXGz04sLtUIjCAJlEbOHDuGM.Jqr2k4izhwnQOGDpOBBcRwoue,true,false,true
+# user-11,clemens,Clemens H,clemens,$2a$10$nueBEl.YeUhGHeAlNSiC8OmcSKLGFVjQgE9we2Y88b8fDKgo4lqCi,false,false,true
+# user-12,gerhardw,Gerhard W,gerhard.w,$2a$10$W9esOhqvgvKfoH.bLO1DzOb8O4Y6OQdG04.RgshgGDBUPD7chC59O,false,false,true
+# user-13,michaelt,Michael T,michael.t,$2a$10$cXubE.C/VgfpYgTNBDwxT.xWS9iQWtW2AvD1ayxJYUn1u7QLSnzVC,false,false,true
+# user-14,karle,Karl E,karl.e,$2a$10$bBstaUtaUs4/aCp3.6O0.uqXfQJAY7k3GHisOlJWKcwJ2BPGp3kSa,false,false,true
+# user-15,geroldm,Gerold M,gerold.m,$2a$10$kLQhl39.FFRflvmJjG96uuARrAHbKLfYeNXb3LUPJD7PqzOYbOcKK,false,false,true
+# user-16,wernerf,Werner F,werner.f,$2a$10$aOfPx5Xb..LU6WGvpJiUmei9yxyatzHOD56tsfjEASldbl3AO6ury,false,false,true
+# user-17,dietmarp,Dietmar P,dietmar.p,$2a$10$jRTP4bCrv9lujia5fgWi/.iTDfCI58Ix8B9wGOBQUqaDDQIvzu/gq,false,false,true
+# user-18,johannes,Johannes S,johannes,$2a$10$BnWexMsr7zRIc/8emprz../CNU..Pro2IHRaMddIiJwxYAP.j8rDa,false,false,true
+
+
+play-3,manfredk,world.2014+flex+behroozs,ger,bra,ita
+play-4,aklaar,world.2014+flex+behroozs,usa,rus,fra
+play-5,mathilde,world.2014+flex+behroozs,esp,ger,bra
+play-6,franz,world.2014+flex+behroozs,ger,bra,fra
+play-7,michaelt,world.2014+flex+behroozs,bra,esp,ger
+
+
+tip-50,manfredk,world.2014+flex+behroozs,world.2014+2+mex+cmr,2,1,,,,
+tip-51,manfredk,world.2014+flex+behroozs,world.2014+2+esp+ned,1,1,,,,
+tip-52,manfredk,world.2014+flex+behroozs,world.2014+2+chi+aus,2,2,,,,
+tip-54,manfredk,world.2014+flex+behroozs,world.2014+3+civ+jpn,1,1,,,,
+tip-55,manfredk,world.2014+flex+behroozs,world.2014+3+uru+crc,2,1,,,,
+tip-56,manfredk,world.2014+flex+behroozs,world.2014+3+eng+ita,1,1,,,,
+tip-58,manfredk,world.2014+flex+behroozs,world.2014+4+fra+hon,2,1,,,,
+tip-59,manfredk,world.2014+flex+behroozs,world.2014+4+arg+bih,2,0,,,,
+tip-60,manfredk,world.2014+flex+behroozs,world.2014+5+irn+nga,1,1,,,,
+tip-63,manfredk,world.2014+flex+behroozs,world.2014+6+bel+alg,2,1,,,,
+tip-64,manfredk,world.2014+flex+behroozs,world.2014+6+rus+kor,2,2,,,,
+tip-65,manfredk,world.2014+flex+behroozs,world.2014+6+bra+mex,3,1,,,,
+tip-66,manfredk,world.2014+flex+behroozs,world.2014+7+cmr+cro,1,2,,,,
+tip-68,manfredk,world.2014+flex+behroozs,world.2014+7+aus+ned,2,2,,,,
+tip-69,manfredk,world.2014+flex+behroozs,world.2014+8+col+civ,1,2,,,,
+tip-70,manfredk,world.2014+flex+behroozs,world.2014+8+jpn+gre,1,0,,,,
+tip-72,manfredk,world.2014+flex+behroozs,world.2014+9+ita+crc,3,2,,,,
+tip-73,manfredk,world.2014+flex+behroozs,world.2014+9+sui+fra,2,2,,,,
+tip-74,manfredk,world.2014+flex+behroozs,world.2014+9+hon+ecu,1,2,,,,
+tip-75,manfredk,world.2014+flex+behroozs,world.2014+10+arg+irn,3,0,,,,
+tip-77,manfredk,world.2014+flex+behroozs,world.2014+10+ger+gha,2,2,,,,
+tip-78,manfredk,world.2014+flex+behroozs,world.2014+11+usa+por,2,2,,,,
+tip-79,manfredk,world.2014+flex+behroozs,world.2014+11+bel+rus,1,0,,,,
+tip-81,manfredk,world.2014+flex+behroozs,world.2014+12+cmr+bra,1,2,,,,
+tip-82,manfredk,world.2014+flex+behroozs,world.2014+12+cro+mex,2,1,,,,
+tip-83,manfredk,world.2014+flex+behroozs,world.2014+12+aus+esp,0,2,,,,
+tip-84,manfredk,world.2014+flex+behroozs,world.2014+12+ned+chi,1,1,,,,
+tip-86,manfredk,world.2014+flex+behroozs,world.2014+13+civ+gre,0,1,,,,
+tip-87,manfredk,world.2014+flex+behroozs,world.2014+13+ita+uru,2,2,,,,
+tip-88,manfredk,world.2014+flex+behroozs,world.2014+13+crc+eng,0,1,,,,
+tip-89,manfredk,world.2014+flex+behroozs,world.2014+14+hon+sui,2,3,,,,
+tip-91,manfredk,world.2014+flex+behroozs,world.2014+14+nga+arg,1,3,,,,
+tip-92,manfredk,world.2014+flex+behroozs,world.2014+14+bih+irn,3,2,,,,
+tip-93,manfredk,world.2014+flex+behroozs,world.2014+15+usa+ger,2,2,,,,
+tip-61,manfredk,world.2014+flex+behroozs,world.2014+5+ger+por,2,1,,,,
+tip-49,manfredk,world.2014+flex+behroozs,world.2014+1+bra+cro,3,1,,,,
+tip-53,manfredk,world.2014+flex+behroozs,world.2014+3+col+gre,1,1,,,,
+tip-57,manfredk,world.2014+flex+behroozs,world.2014+4+sui+ecu,2,2,,,,
+tip-62,manfredk,world.2014+flex+behroozs,world.2014+5+gha+usa,1,1,,,,
+tip-67,manfredk,world.2014+flex+behroozs,world.2014+7+esp+chi,2,0,,,,
+tip-71,manfredk,world.2014+flex+behroozs,world.2014+8+uru+eng,1,1,,,,
+tip-76,manfredk,world.2014+flex+behroozs,world.2014+10+nga+bih,1,2,,,,
+tip-80,manfredk,world.2014+flex+behroozs,world.2014+11+kor+alg,1,1,,,,
+tip-85,manfredk,world.2014+flex+behroozs,world.2014+13+jpn+col,1,1,,,,
+tip-90,manfredk,world.2014+flex+behroozs,world.2014+14+ecu+fra,1,2,,,,
+tip-94,manfredk,world.2014+flex+behroozs,world.2014+15+por+gha,3,2,,,,
+tip-95,manfredk,world.2014+flex+behroozs,world.2014+15+kor+bel,1,1,,,,
+tip-96,manfredk,world.2014+flex+behroozs,world.2014+15+alg+rus,2,2,,,,
+tip-98,aklaar,world.2014+flex+behroozs,world.2014+2+mex+cmr,3,2,,,,
+tip-99,aklaar,world.2014+flex+behroozs,world.2014+2+esp+ned,4,3,,,,
+tip-101,aklaar,world.2014+flex+behroozs,world.2014+3+col+gre,1,3,,,,
+tip-102,aklaar,world.2014+flex+behroozs,world.2014+3+civ+jpn,4,3,,,,
+tip-103,aklaar,world.2014+flex+behroozs,world.2014+3+uru+crc,3,4,,,,
+tip-104,aklaar,world.2014+flex+behroozs,world.2014+3+eng+ita,3,4,,,,
+tip-106,aklaar,world.2014+flex+behroozs,world.2014+4+fra+hon,2,1,,,,
+tip-107,aklaar,world.2014+flex+behroozs,world.2014+4+arg+bih,5,3,,,,
+tip-108,aklaar,world.2014+flex+behroozs,world.2014+5+irn+nga,3,2,,,,
+tip-110,aklaar,world.2014+flex+behroozs,world.2014+5+gha+usa,3,5,,,,
+tip-111,aklaar,world.2014+flex+behroozs,world.2014+6+bel+alg,4,3,,,,
+tip-112,aklaar,world.2014+flex+behroozs,world.2014+6+rus+kor,3,1,,,,
+tip-113,aklaar,world.2014+flex+behroozs,world.2014+6+bra+mex,1,2,,,,
+tip-115,aklaar,world.2014+flex+behroozs,world.2014+7+esp+chi,1,1,,,,
+tip-116,aklaar,world.2014+flex+behroozs,world.2014+7+aus+ned,4,3,,,,
+tip-117,aklaar,world.2014+flex+behroozs,world.2014+8+col+civ,1,2,,,,
+tip-119,aklaar,world.2014+flex+behroozs,world.2014+8+uru+eng,0,0,,,,
+tip-120,aklaar,world.2014+flex+behroozs,world.2014+9+ita+crc,4,2,,,,
+tip-121,aklaar,world.2014+flex+behroozs,world.2014+9+sui+fra,2,0,,,,
+tip-122,aklaar,world.2014+flex+behroozs,world.2014+9+hon+ecu,0,1,,,,
+tip-124,aklaar,world.2014+flex+behroozs,world.2014+10+nga+bih,4,2,,,,
+tip-125,aklaar,world.2014+flex+behroozs,world.2014+10+ger+gha,2,0,,,,
+tip-126,aklaar,world.2014+flex+behroozs,world.2014+11+usa+por,1,0,,,,
+tip-127,aklaar,world.2014+flex+behroozs,world.2014+11+bel+rus,2,1,,,,
+tip-129,aklaar,world.2014+flex+behroozs,world.2014+12+cmr+bra,2,2,,,,
+tip-130,aklaar,world.2014+flex+behroozs,world.2014+12+cro+mex,2,1,,,,
+tip-131,aklaar,world.2014+flex+behroozs,world.2014+12+aus+esp,2,1,,,,
+tip-133,aklaar,world.2014+flex+behroozs,world.2014+13+jpn+col,4,5,,,,
+tip-134,aklaar,world.2014+flex+behroozs,world.2014+13+civ+gre,1,0,,,,
+tip-135,aklaar,world.2014+flex+behroozs,world.2014+13+ita+uru,3,4,,,,
+tip-136,aklaar,world.2014+flex+behroozs,world.2014+13+crc+eng,1,2,,,,
+tip-138,aklaar,world.2014+flex+behroozs,world.2014+14+ecu+fra,2,2,,,,
+tip-139,aklaar,world.2014+flex+behroozs,world.2014+14+nga+arg,1,2,,,,
+tip-140,aklaar,world.2014+flex+behroozs,world.2014+14+bih+irn,2,1,,,,
+tip-142,aklaar,world.2014+flex+behroozs,world.2014+15+por+gha,2,0,,,,
+tip-143,aklaar,world.2014+flex+behroozs,world.2014+15+kor+bel,3,2,,,,
+tip-144,aklaar,world.2014+flex+behroozs,world.2014+15+alg+rus,1,3,,,,
+tip-145,mathilde,world.2014+flex+behroozs,world.2014+1+bra+cro,3,2,,,,
+tip-147,mathilde,world.2014+flex+behroozs,world.2014+2+esp+ned,2,1,,,,
+tip-148,mathilde,world.2014+flex+behroozs,world.2014+2+chi+aus,4,0,,,,
+tip-149,mathilde,world.2014+flex+behroozs,world.2014+3+col+gre,2,1,,,,
+tip-150,mathilde,world.2014+flex+behroozs,world.2014+3+civ+jpn,2,0,,,,
+tip-152,mathilde,world.2014+flex+behroozs,world.2014+3+eng+ita,1,1,,,,
+tip-153,mathilde,world.2014+flex+behroozs,world.2014+4+sui+ecu,2,0,,,,
+tip-154,mathilde,world.2014+flex+behroozs,world.2014+4+fra+hon,2,0,,,,
+tip-156,mathilde,world.2014+flex+behroozs,world.2014+5+irn+nga,1,1,,,,
+tip-157,mathilde,world.2014+flex+behroozs,world.2014+5+ger+por,2,1,,,,
+tip-158,mathilde,world.2014+flex+behroozs,world.2014+5+gha+usa,0,2,,,,
+tip-159,mathilde,world.2014+flex+behroozs,world.2014+6+bel+alg,2,1,,,,
+tip-161,mathilde,world.2014+flex+behroozs,world.2014+6+bra+mex,3,2,,,,
+tip-162,mathilde,world.2014+flex+behroozs,world.2014+7+cmr+cro,0,3,,,,
+tip-163,mathilde,world.2014+flex+behroozs,world.2014+7+esp+chi,2,1,,,,
+tip-165,mathilde,world.2014+flex+behroozs,world.2014+8+col+civ,2,1,,,,
+tip-166,mathilde,world.2014+flex+behroozs,world.2014+8+jpn+gre,0,3,,,,
+tip-167,mathilde,world.2014+flex+behroozs,world.2014+8+uru+eng,2,1,,,,
+tip-171,mathilde,world.2014+flex+behroozs,world.2014+10+arg+irn,3,0,,,,
+tip-172,mathilde,world.2014+flex+behroozs,world.2014+10+nga+bih,0,2,,,,
+tip-173,mathilde,world.2014+flex+behroozs,world.2014+10+ger+gha,3,0,,,,
+tip-174,mathilde,world.2014+flex+behroozs,world.2014+11+usa+por,1,0,,,,
+tip-176,mathilde,world.2014+flex+behroozs,world.2014+11+kor+alg,0,3,,,,
+tip-177,mathilde,world.2014+flex+behroozs,world.2014+12+cmr+bra,0,5,,,,
+tip-178,mathilde,world.2014+flex+behroozs,world.2014+12+cro+mex,3,2,,,,
+tip-180,mathilde,world.2014+flex+behroozs,world.2014+12+ned+chi,3,3,,,,
+tip-181,mathilde,world.2014+flex+behroozs,world.2014+13+jpn+col,0,3,,,,
+tip-182,mathilde,world.2014+flex+behroozs,world.2014+13+civ+gre,1,2,,,,
+tip-183,mathilde,world.2014+flex+behroozs,world.2014+13+ita+uru,1,2,,,,
+tip-185,mathilde,world.2014+flex+behroozs,world.2014+14+hon+sui,0,2,,,,
+tip-186,mathilde,world.2014+flex+behroozs,world.2014+14+ecu+fra,1,2,,,,
+tip-187,mathilde,world.2014+flex+behroozs,world.2014+14+nga+arg,0,3,,,,
+tip-169,mathilde,world.2014+flex+behroozs,world.2014+9+sui+fra,2,1,,,,
+tip-97,aklaar,world.2014+flex+behroozs,world.2014+1+bra+cro,2,1,,,,
+tip-100,aklaar,world.2014+flex+behroozs,world.2014+2+chi+aus,4,3,,,,
+tip-105,aklaar,world.2014+flex+behroozs,world.2014+4+sui+ecu,2,1,,,,
+tip-109,aklaar,world.2014+flex+behroozs,world.2014+5+ger+por,0,1,,,,
+tip-114,aklaar,world.2014+flex+behroozs,world.2014+7+cmr+cro,2,0,,,,
+tip-118,aklaar,world.2014+flex+behroozs,world.2014+8+jpn+gre,1,1,,,,
+tip-123,aklaar,world.2014+flex+behroozs,world.2014+10+arg+irn,3,3,,,,
+tip-128,aklaar,world.2014+flex+behroozs,world.2014+11+kor+alg,0,1,,,,
+tip-132,aklaar,world.2014+flex+behroozs,world.2014+12+ned+chi,4,2,,,,
+tip-137,aklaar,world.2014+flex+behroozs,world.2014+14+hon+sui,1,3,,,,
+tip-141,aklaar,world.2014+flex+behroozs,world.2014+15+usa+ger,3,2,,,,
+tip-146,mathilde,world.2014+flex+behroozs,world.2014+2+mex+cmr,3,0,,,,
+tip-151,mathilde,world.2014+flex+behroozs,world.2014+3+uru+crc,2,0,,,,
+tip-155,mathilde,world.2014+flex+behroozs,world.2014+4+arg+bih,3,2,,,,
+tip-160,mathilde,world.2014+flex+behroozs,world.2014+6+rus+kor,3,0,,,,
+tip-164,mathilde,world.2014+flex+behroozs,world.2014+7+aus+ned,0,4,,,,
+tip-195,franz,world.2014+flex+behroozs,world.2014+2+esp+ned,1,1,,,,
+tip-196,franz,world.2014+flex+behroozs,world.2014+2+chi+aus,2,0,,,,
+tip-197,franz,world.2014+flex+behroozs,world.2014+3+col+gre,2,0,,,,
+tip-198,franz,world.2014+flex+behroozs,world.2014+3+civ+jpn,1,0,,,,
+tip-199,franz,world.2014+flex+behroozs,world.2014+3+uru+crc,3,0,,,,
+tip-168,mathilde,world.2014+flex+behroozs,world.2014+9+ita+crc,1,0,,,,
+tip-170,mathilde,world.2014+flex+behroozs,world.2014+9+hon+ecu,0,1,,,,
+tip-175,mathilde,world.2014+flex+behroozs,world.2014+11+bel+rus,2,1,,,,
+tip-179,mathilde,world.2014+flex+behroozs,world.2014+12+aus+esp,0,6,,,,
+tip-184,mathilde,world.2014+flex+behroozs,world.2014+13+crc+eng,0,1,,,,
+tip-188,mathilde,world.2014+flex+behroozs,world.2014+14+bih+irn,2,0,,,,
+tip-189,mathilde,world.2014+flex+behroozs,world.2014+15+usa+ger,2,3,,,,
+tip-190,mathilde,world.2014+flex+behroozs,world.2014+15+por+gha,3,0,,,,
+tip-191,mathilde,world.2014+flex+behroozs,world.2014+15+kor+bel,0,4,,,,
+tip-192,mathilde,world.2014+flex+behroozs,world.2014+15+alg+rus,1,2,,,,
+tip-193,franz,world.2014+flex+behroozs,world.2014+1+bra+cro,3,1,,,,
+tip-194,franz,world.2014+flex+behroozs,world.2014+2+mex+cmr,2,1,,,,
+tip-200,franz,world.2014+flex+behroozs,world.2014+3+eng+ita,0,1,,,,
+tip-201,franz,world.2014+flex+behroozs,world.2014+4+sui+ecu,1,0,,,,
+tip-202,franz,world.2014+flex+behroozs,world.2014+4+fra+hon,2,0,,,,
+tip-203,franz,world.2014+flex+behroozs,world.2014+4+arg+bih,3,0,,,,
+tip-204,franz,world.2014+flex+behroozs,world.2014+5+irn+nga,0,1,,,,
+tip-205,franz,world.2014+flex+behroozs,world.2014+5+ger+por,2,1,,,,
+tip-206,franz,world.2014+flex+behroozs,world.2014+5+gha+usa,2,1,,,,
+tip-207,franz,world.2014+flex+behroozs,world.2014+6+bel+alg,2,0,,,,
+tip-208,franz,world.2014+flex+behroozs,world.2014+6+rus+kor,1,1,,,,
+tip-209,franz,world.2014+flex+behroozs,world.2014+6+bra+mex,3,0,,,,
+tip-210,franz,world.2014+flex+behroozs,world.2014+7+cmr+cro,1,1,,,,
+tip-211,franz,world.2014+flex+behroozs,world.2014+7+esp+chi,2,0,,,,
+tip-212,franz,world.2014+flex+behroozs,world.2014+7+aus+ned,0,3,,,,
+tip-213,franz,world.2014+flex+behroozs,world.2014+8+col+civ,1,0,,,,
+tip-214,franz,world.2014+flex+behroozs,world.2014+8+jpn+gre,1,0,,,,
+tip-215,franz,world.2014+flex+behroozs,world.2014+8+uru+eng,1,0,,,,
+tip-216,franz,world.2014+flex+behroozs,world.2014+9+ita+crc,2,0,,,,
+tip-217,franz,world.2014+flex+behroozs,world.2014+9+sui+fra,0,1,,,,
+tip-218,franz,world.2014+flex+behroozs,world.2014+9+hon+ecu,0,1,,,,
+tip-219,franz,world.2014+flex+behroozs,world.2014+10+arg+irn,3,0,,,,
+tip-220,franz,world.2014+flex+behroozs,world.2014+10+nga+bih,2,0,,,,
+tip-221,franz,world.2014+flex+behroozs,world.2014+10+ger+gha,2,0,,,,
+tip-222,franz,world.2014+flex+behroozs,world.2014+11+usa+por,1,2,,,,
+tip-223,franz,world.2014+flex+behroozs,world.2014+11+bel+rus,2,1,,,,
+tip-224,franz,world.2014+flex+behroozs,world.2014+11+kor+alg,0,1,,,,
+tip-225,franz,world.2014+flex+behroozs,world.2014+12+cmr+bra,1,3,,,,
+tip-226,franz,world.2014+flex+behroozs,world.2014+12+cro+mex,1,1,,,,
+tip-227,franz,world.2014+flex+behroozs,world.2014+12+aus+esp,1,2,,,,
+tip-228,franz,world.2014+flex+behroozs,world.2014+12+ned+chi,2,1,,,,
+tip-229,franz,world.2014+flex+behroozs,world.2014+13+jpn+col,1,1,,,,
+tip-230,franz,world.2014+flex+behroozs,world.2014+13+civ+gre,0,1,,,,
+tip-231,franz,world.2014+flex+behroozs,world.2014+13+ita+uru,1,0,,,,
+tip-232,franz,world.2014+flex+behroozs,world.2014+13+crc+eng,0,1,,,,
+tip-233,franz,world.2014+flex+behroozs,world.2014+14+hon+sui,0,1,,,,
+tip-234,franz,world.2014+flex+behroozs,world.2014+14+ecu+fra,0,2,,,,
+tip-235,franz,world.2014+flex+behroozs,world.2014+14+nga+arg,1,2,,,,
+tip-236,franz,world.2014+flex+behroozs,world.2014+14+bih+irn,0,1,,,,
+tip-237,franz,world.2014+flex+behroozs,world.2014+15+usa+ger,0,2,,,,
+tip-238,franz,world.2014+flex+behroozs,world.2014+15+por+gha,1,2,,,,
+tip-239,franz,world.2014+flex+behroozs,world.2014+15+kor+bel,0,1,,,,
+tip-240,franz,world.2014+flex+behroozs,world.2014+15+alg+rus,0,1,,,,
+tip-241,michaelt,world.2014+flex+behroozs,world.2014+1+bra+cro,2,0,,,,
+tip-242,michaelt,world.2014+flex+behroozs,world.2014+2+mex+cmr,2,2,,,,
+tip-243,michaelt,world.2014+flex+behroozs,world.2014+2+esp+ned,1,1,,,,
+tip-244,michaelt,world.2014+flex+behroozs,world.2014+2+chi+aus,1,0,,,,
 

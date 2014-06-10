@@ -36,6 +36,56 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "alltime_standing_entries", :force => true do |t|
+    t.integer  "alltime_standing_id", :null => false
+    t.integer  "team_id",             :null => false
+    t.integer  "pos"
+    t.integer  "played"
+    t.integer  "won"
+    t.integer  "lost"
+    t.integer  "drawn"
+    t.integer  "goals_for"
+    t.integer  "goals_against"
+    t.integer  "pts"
+    t.integer  "recs"
+    t.string   "comments"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "alltime_standings", :force => true do |t|
+    t.string   "key",        :null => false
+    t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "assocs", :force => true do |t|
+    t.string   "key",                                 :null => false
+    t.string   "title",                               :null => false
+    t.integer  "since"
+    t.string   "web"
+    t.integer  "country_id"
+    t.boolean  "national",         :default => false, :null => false
+    t.boolean  "continental",      :default => false, :null => false
+    t.boolean  "intercontinental", :default => false, :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "assocs", ["key"], :name => "index_assocs_on_key", :unique => true
+
+  create_table "assocs_assocs", :force => true do |t|
+    t.integer  "assoc1_id",  :null => false
+    t.integer  "assoc2_id",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "assocs_assocs", ["assoc1_id", "assoc2_id"], :name => "index_assocs_assocs_on_assoc1_id_and_assoc2_id", :unique => true
+  add_index "assocs_assocs", ["assoc1_id"], :name => "index_assocs_assocs_on_assoc1_id"
+  add_index "assocs_assocs", ["assoc2_id"], :name => "index_assocs_assocs_on_assoc2_id"
+
   create_table "badges", :force => true do |t|
     t.integer  "team_id",    :null => false
     t.integer  "league_id",  :null => false
@@ -157,6 +207,28 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "event_standing_entries", :force => true do |t|
+    t.integer  "event_standing_id", :null => false
+    t.integer  "team_id",           :null => false
+    t.integer  "pos"
+    t.integer  "played"
+    t.integer  "won"
+    t.integer  "lost"
+    t.integer  "drawn"
+    t.integer  "goals_for"
+    t.integer  "goals_against"
+    t.integer  "pts"
+    t.string   "comments"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "event_standings", :force => true do |t|
+    t.integer  "event_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "key",                          :null => false
     t.integer  "league_id",                    :null => false
@@ -233,6 +305,8 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "games", ["next_game_id"], :name => "index_games_on_next_game_id"
   add_index "games", ["prev_game_id"], :name => "index_games_on_prev_game_id"
   add_index "games", ["round_id"], :name => "index_games_on_round_id"
+  add_index "games", ["team1_id"], :name => "index_games_on_team1_id"
+  add_index "games", ["team2_id"], :name => "index_games_on_team2_id"
 
   create_table "goals", :force => true do |t|
     t.integer  "person_id",                     :null => false
@@ -268,6 +342,28 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "team_id",    :null => false
     t.decimal  "odds",       :null => false
     t.string   "comments"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "group_standing_entries", :force => true do |t|
+    t.integer  "group_standing_id", :null => false
+    t.integer  "team_id",           :null => false
+    t.integer  "pos"
+    t.integer  "played"
+    t.integer  "won"
+    t.integer  "lost"
+    t.integer  "drawn"
+    t.integer  "goals_for"
+    t.integer  "goals_against"
+    t.integer  "pts"
+    t.string   "comments"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "group_standings", :force => true do |t|
+    t.integer  "group_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -326,20 +422,6 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "lang",       :default => "en", :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-  end
-
-  create_table "persons", :force => true do |t|
-    t.string   "key",            :null => false
-    t.string   "name",           :null => false
-    t.string   "synonyms"
-    t.string   "code"
-    t.date     "born_at"
-    t.integer  "city_id"
-    t.integer  "region_id"
-    t.integer  "country_id",     :null => false
-    t.integer  "nationality_id", :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "places", :force => true do |t|
@@ -478,6 +560,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean  "knockout",   :default => false, :null => false
     t.date     "start_at",                      :null => false
     t.date     "end_at"
+    t.boolean  "auto",       :default => true,  :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "flex",       :default => true,  :null => false
@@ -546,6 +629,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "since"
     t.string   "address"
     t.string   "web"
+    t.integer  "assoc_id"
     t.boolean  "national",     :default => false, :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
