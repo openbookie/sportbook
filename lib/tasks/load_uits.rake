@@ -62,10 +62,28 @@ task :check => :environment do |t|
     else
       ### user_id invalid!!!!
       puts "invalid tip w/ user_id #{user_id}"
+      tip.delete  # try delete
     end
-    puts 'Done check'  
   end
 
-end
+  ## check play w/o valid user_id
+  SportDb::Model::Play.order(:id).each do |play|
+    user_id = play.user_id
+    
+    next if user_ids[ user_id ]    ## already verified/checked    
 
+    user = SportDb::Model::User.find_by_id( user_id )
+    if user
+      user_ids[ user_id ] = true
+      print '.'
+    else
+      ### user_id invalid!!!!
+      puts "invalid play w/ user_id #{user_id}"
+      play.delete  # try delete
+    end
+  end
+
+  puts 'Done check'
+
+end
 
