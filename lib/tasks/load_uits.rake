@@ -42,3 +42,30 @@ task :cleanup => :environment do |t|
   puts 'Done cleanup'
 end
 
+
+task :check => :environment do |t|
+
+  LogUtils::Logger.root.level = :debug
+
+  user_ids = {}
+
+  ## check tips w/o valid user_id
+  SportDb::Model::Tip.order(:id).each do |tip|
+    user_id = tip.user_id
+    
+    continue  if user_ids[ user_id ]    ## already verified/checked    
+
+    user = SportDb::Model::User.find_by_id( user_id )
+    if user
+      user_ids[ user_id ] = true
+      print '.'
+    else
+      ### user_id invalid!!!!
+      puts "invalid tip w/ user_id #{user_id}"
+    end
+    puts 'Done check'  
+  end
+
+end
+
+
