@@ -53,7 +53,7 @@ task :check => :environment do |t|
   SportDb::Model::Tip.order(:id).each do |tip|
     user_id = tip.user_id
     
-    continue  if user_ids[ user_id ]    ## already verified/checked    
+    next if user_ids[ user_id ]    ## already verified/checked    
 
     user = SportDb::Model::User.find_by_id( user_id )
     if user
