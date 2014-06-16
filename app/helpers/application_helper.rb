@@ -8,10 +8,10 @@ module ApplicationHelper
       link_to( 'Sportbook/1', 'https://github.com/openbookie/sportbook' ) + ', ' +
       link_to( "sport.db.play/#{SportDb::Play::VERSION}", 'https://github.com/openbookie/sport.db.play' ) + ', ' +
       link_to( "sport.db.market/#{SportDb::Market::VERSION}", 'https://github.com/openbookie/sport.db.market' ) + ', ' +
-      link_to( "sport.db/#{SportDb::VERSION}", 'https://github.com/geraldb/sport.db.ruby' ) + ', ' +
-      link_to( "sport.db.admin/#{SportDbAdmin::VERSION}", 'https://github.com/geraldb/sport.db.admin' ) + ', ' +
-      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/geraldb/world.db.ruby' ) + ', ' +
-      link_to( "world.db.admin/#{WorldDbAdmin::VERSION}", 'https://github.com/geraldb/world.db.admin' ) + ' - ' +
+      link_to( "sport.db/#{SportDb::VERSION}", 'https://github.com/sportdb/sport.db.ruby' ) + ', ' +
+      link_to( "sport.db.admin/#{SportDbAdmin::VERSION}", 'https://github.com/sportdb/sport.db.admin' ) + ', ' +
+      link_to( "world.db/#{WorldDb::VERSION}", 'https://github.com/worlddb/world.db.ruby' ) + ', ' +
+      link_to( "world.db.admin/#{WorldDbAdmin::VERSION}", 'https://github.com/worlddb/world.db.admin' ) + ' - ' +
       content_tag( :span, "Ruby/#{RUBY_VERSION} (#{RUBY_RELEASE_DATE}/#{RUBY_PLATFORM}) on") + ' ' +
       content_tag( :span, "Rails/#{Rails.version} (#{Rails.env})" )
       ## content_tag( :span, "#{request.headers['SERVER_SOFTWARE'] || request.headers['SERVER']}" )
@@ -33,24 +33,37 @@ module ApplicationHelper
     end
   end
 
+
+  ### move to helpers session_helper  or auth_helper or login_helper ??
+
   def signed_in?
     session[:user_id].nil? == false
   end
-  
+
   def current_user
+    ### fix: return a "guest" user if not signed in - do NOT return nil!!
+    ## cache current_user lookup result  e.g. current_user_cache ||=   why? why not?
     User.find( session[:user_id] )
   end
-  
+
   def current_user_id
     session[:user_id]
   end
-  
+
   def current_user?( user )
-    session[:user_id] == user.id
+    ## check for nil user
+    if user.nil?
+      # no user passed in (passed in nil - issue/log warning ??)
+      false
+    else
+      session[:user_id] == user.id
+    end
   end
-  
+
   def hl_style_for_user( user )  # css style to highlight current user
-    if current_user?( user )
+    if user.nil?   # note: check for valid user passed in (not nil)
+      ''  # no user passed in (passed in nil - issue/log warning ??) 
+    elsif current_user?( user )   
       ' highlight-me '
     else
       ''
