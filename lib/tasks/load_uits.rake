@@ -52,7 +52,7 @@ task :check => :environment do |t|
   ## check tips w/o valid user_id
   SportDb::Model::Tip.order(:id).each do |tip|
     user_id = tip.user_id
-    
+
     next if user_ids[ user_id ]    ## already verified/checked    
 
     user = SportDb::Model::User.find_by_id( user_id )
@@ -69,7 +69,7 @@ task :check => :environment do |t|
   ## check play w/o valid user_id
   SportDb::Model::Play.order(:id).each do |play|
     user_id = play.user_id
-    
+
     next if user_ids[ user_id ]    ## already verified/checked    
 
     user = SportDb::Model::User.find_by_id( user_id )
@@ -83,7 +83,24 @@ task :check => :environment do |t|
     end
   end
 
+  ## check point w/o/ valid user_id
+  SportDb::Model::Point.order(:id).each do |point|
+    user_id = point.user_id
+
+    next if user_ids[ user_id ]    ## already verified/checked    
+
+    user = SportDb::Model::User.find_by_id( user_id )
+    if user
+      user_ids[ user_id ] = true
+      print '.'
+    else
+      ### user_id invalid!!!!
+      puts "invalid point w/ user_id #{user_id}"
+      point.delete  # try delete
+    end
+  end
+
+
   puts 'Done check'
 
 end
-
