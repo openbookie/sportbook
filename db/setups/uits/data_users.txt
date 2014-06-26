@@ -1,0 +1,39 @@
+#######################################
+# backup data - Export (Jun/26 2014)
+#
+# - 34 Users
+
+user-1,nn,N.N.,nn,$2a$10$C3Hq4zr9h3ealZgNwpplUetwjI3yFzOS0gYow13/BeYeTtLdUVAQ.,false,false,true
+user-2,gerald,Gerald B,gerald,$2a$10$cgFVZHdPKQEHa2fq77O33OSHpGepw01Wmkgu/bvGENcNvfOqMgjTG,true,false,true
+user-6,manfredk,Manfred K,manfred.k,$2a$10$3IlAf6Vuv8KBjM2eK.au1u05D.2PgPT1uSeJdDb3Gsl.qnhnVfzQW,false,false,true
+user-9,markusb,Markus B,markus.b,$2a$10$pxljcztPAHtBY9eJyri/R.VGl9mCPTpcUcA7UXHe/cdJkwgF7Rx1a,false,false,true
+user-12,gerhardw,Gerhard W,gerhard.w,$2a$10$UsU5wLORUhW7rVWledubleAqtfe5v7dB/zUKBBMzBou3blITFo1v2,false,false,true
+user-15,geroldm,Gerold M,gerold.m,$2a$10$VSUTf/tWHZu4v0f0s7OVWejx3h.pyWG8vK4YCv3W6g8JAnyTQGXyW,false,false,true
+user-21,andreasp,Andreas P,andreas.p,$2a$10$3koMn2WtsnTVX19tCrQLxeaURGqdBXwE9xuP0HcAaMzT2bEZz/ITm,false,false,true
+user-22,hansk,Hans K,hans.k,$2a$10$3SNcKh7k2cZjamBl2H6prejqUWZIWrJFA7N0zdcpznr8CRWST2P02,false,false,true
+user-4,richardh,Richard H,richard.h,$2a$10$ghDYLFC3DSyJr.mn8MmknuwG1YVHKbIMWsb1P.Jl/3DuWzESupiUS,true,false,true
+user-5,dietmarb,Dietmar B,dietmar.b,$2a$10$0W4BZPo50e.fGb7Ie7EJ7..TTeNpZ6EzzQjq0JFPLD94JtfTfiqNq,true,false,true
+user-3,behroozs,Behrooz S,behrooz.s,$2a$10$1pAZBkIIf.hyUXWtVW6/iOhTB9bQhv1w/jhwuEw.EgEaJuwv4k5OK,true,false,true
+user-8,franzr,Franz R,franzr,$2a$10$NpV9ZbbelipcE4it.q1Vo.0xA.qCqRtlZhvA.7HCneM5GcaFIa4de,false,false,true
+user-11,clemensh,Clemens H,clemensh,$2a$10$F.cPLH1MNyg8O/j2PxD/hOUugULkhXTKVpEv/OWsmB2sCfSb/F/NO,false,false,true
+user-18,johanness,Johannes S,johanness,$2a$10$BbQx6VkqIg0lNiw2bLkWAOxRKUbtUWhu37/EgSJvrfupQIb6RoMGi,false,false,true
+user-25,thomass,Thomas S,thomass,$2a$10$IUqm.wajdPwytTbYGwrTtuFeoB.cERQk/Q96Jzf9/etvIdRqAL7AK,false,false,true
+user-27,bettinaw,Bettina W,bettinaw,$2a$10$rV2J.coogQ3Y8tCM3mowSean4f3U7w7UJxC8q6AVxdKC/tJuIjxRy,false,false,true
+user-28,johannk,Johann K,johannk,$2a$10$JGMC2UPHz90ZpBb8Y4velOnd4HoAjSFN60n3R/OU5SZgg/QFYV8Fq,false,false,true
+user-23,eliasp,Elias P,eliasp,$2a$10$J9wdlTyQOCpL8aAH65cLNuajLNQB/uD.J0JAttFD/8uYIk0qF/rBe,false,false,true
+user-29,lorenzp,Lorenz P,lorenzp,$2a$10$zlaPZu7AfgXSJ/SQ15386urhgSi1JnL.xRvZc/juqcK6ILanNo/s6,false,false,true
+user-17,dietmarp,Dietmar P,dietmar.p,$2a$10$wQHN9iTB3kQmcJde7snxnu6IeCJPq4pNDb.iNz4O4lNmpjlh4CABW,false,false,true
+user-16,wernerf,Werner F,werner.f,$2a$10$5ciAehc4JDeTmyoryBGXKeCN9ikeQgdZ.G4uJ/M3uJlaCEFSQmOEO,false,false,true
+user-14,karle,Karl E,karl.e,$2a$10$frnnkow1kPjPclIBoh5amOzwUpQCUtBe1aZeV9GdxGh9CPvUQOhWC,false,false,true
+user-7,andreass,Ande S,andreass,$2a$10$Qf9OA4Vjh67bAzg1GJEZ6O/ngvYgskyr5elxS0XoSmSdrA84j8bEK,false,false,true
+user-33,klausr,Klaus R,klausr,$2a$10$G5kd3oO6RDmhkgahACs4V.AJ09NWhElvjG.LT0zg4ptXx3da3w.6a,false,false,true
+user-35,manuelak,Manuela K,manuelak,$2a$10$Rltug0Pgw8/0sPsoskWstO3u4iyHn2PhIO4cPcC/b0o88mVaM3J9S,false,false,true
+user-31,claudiak,Claudia K,claudiak,$2a$10$YhldO/L7qn9KzU41IhMif.w0O/Qq3wh7vFRXU8wasyFJwR.l7neEu,false,false,true
+user-34,behdads,Behdad S,behdads,$2a$10$Xax3IZ1tYw1t9m9mTLeE5e8P0g1.7TiPkL9Q/pAXn41QaYcibG/M6,false,false,true
+user-24,mohammadk,Mohammad K,mohammadk,$2a$10$XqvP5RzVvVFLopc0/CLjYeTa0jC8uVr9VdpBnKq6n1KdDH1q45nM2,false,false,true
+user-10,martinar,Martina R,martina.r,$2a$10$90b1lB4kJmCMwVKpIEE/7.2i7UnSFhsRUhvaIaGyOhwhOAgObBOTm,false,false,true
+user-30,daliborj,Dalibor J,daliborj,$2a$10$Q8mFC2GlylHXDYOBAzRreuvXw1JHNbvKuFLisKdfMT.3HcJ.ggYCK,false,false,true
+user-32,michaels,Michael Schwabl,michaels,$2a$10$F/U3nN0NiHS3dbainMoK8.v702e5bIYwOuaUynyhlj0SYlpoh.e2i,false,false,true
+user-20,mathildek,Mathilde K,mathildek,$2a$10$NBY74o0FRuKuFCUjIm2lX.i0CYsJ9AwEIKQGD6QlLNkbU84cC.Pcm,false,false,true
+user-26,michaelaw,Michaela W,michaelaw,$2a$10$DYKm/Ca9kMsXkvF0U53e8u46ofP2rJ6Ce4ecQiZ8F56Aa5a4ZlS4G,false,false,false
+user-19,aklaar,Andreas K,aklaar,$2a$10$cgFVZHdPKQEHa2fq77O33OSHpGepw01Wmkgu/bvGENcNvfOqMgjTG,false,false,true
