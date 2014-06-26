@@ -23,7 +23,7 @@ gem 'tagutils', '0.2.2'
 ## add sportdb addons/plugins
 
 gem 'sportdb-market', '0.5.1'   # see https://github.com/openbookie/sport.db.market
-gem 'sportdb-play',   '0.2.3'   # see https://github.com/openbookie/sport.db.play
+gem 'sportdb-play',   '0.2.4'   # see https://github.com/openbookie/sport.db.play
 
 ##########################
 ## add rails engines
