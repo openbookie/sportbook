@@ -208,12 +208,12 @@
 
    <% if @pool.event.league.key == 'world' %>
      <%= render :partial => 'games_by_group',  :locals => { :groups => @pool.event.groups, :user => @user, :pool => @pool, :f => f, :tabindex => 1000, :show_odds => @show_odds } %>
-      <!-- todo/fix: need to add knockout rounds!!!!! too -->
+     <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.rounds.where(:knockout => true), :user => @user, :pool => @pool, :f => f, :tabindex => 2000, :show_odds => @show_odds } %>
    <% else %>
      <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.flex_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 1000, :show_odds => @show_odds } %>
      <!-- todo: include group tables if groups exist -->
    <% end %>
- 
+
 <% else %>
   <%= render :partial => 'games_by_group',  :locals => { :groups => @pool.event.groups, :user => @user, :pool => @pool, :f => f, :tabindex => 1000, :show_odds => @show_odds } %>
   <%= render :partial => 'games_by_round',  :locals => { :rounds => @pool.event.fix_playoff_rounds, :user => @user, :pool => @pool, :f => f, :tabindex => 2000, :show_odds => @show_odds } %>
