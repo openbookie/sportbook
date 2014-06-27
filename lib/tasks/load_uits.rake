@@ -19,9 +19,9 @@ task :patch_uits_data => :environment do |t|
   LogUtils::Logger.root.level = :debug
 
   reader = SportDb::GameReader.new( "#{Rails.root}/db/setups" )
-  reader.read( 'uits/2013_14/cl' )
+  reader.read( 'uits/cup' )
 
-  puts 'Done w/ patch cl'
+  puts 'Done w/ patch world cup'
 
 end
 
