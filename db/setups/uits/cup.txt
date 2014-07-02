@@ -2,17 +2,26 @@
 ######################
 # Finals
 
-(16) Round of 16
+# (16) Round of 16
+#
+# (49) 2014-06-28 18:00 Brazil   - Chile
+# (50) 2014-06-28 22:00 Colombia - Uruguay
+#
+# (51) 2014-06-29 18:00 Netherlands - Mexico
+# (52) 2014-06-29 22:00 Costa Rica - Greece
+#
+# (53) 2014-06-30 18:00 France - Nigeria
+# (54) 2014-06-30 22:00 Germany - Algeria
+#
+# (55) 2014-07-01 18:00 Argentina - Switzerland
+# (56) 2014-07-01 22:00 Belgium - United States
 
-(49) 2014-06-28 18:00 Brazil   - Chile
-(50) 2014-06-28 22:00 Colombia - Uruguay
 
-(51) 2014-06-29 18:00 Netherlands - Mexico
-(52) 2014-06-29 22:00 Costa Rica - Greece
+(17) Quarter-finals
 
-(53) 2014-06-30 18:00 France - Nigeria
-(54) 2014-06-30 22:00 Germany - Algeria
+(57) 2014-07-04 21:00  Brazil  -  Colombia
+(58) 2014-07-04 17:00  France  -  Germany
 
-(55) 2014-07-01 18:00 Argentina - Switzerland
-(56) 2014-07-01 22:00 Belgium - United States
+(59) 2014-07-05 21:00  Netherlands  -   Costa Rica
+(60) 2014-07-05 21:00  Argentina    -   Belgium
 
