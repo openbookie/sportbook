@@ -17,11 +17,17 @@
 # (56) 2014-07-01 22:00 Belgium - United States
 
 
-(17) Quarter-finals
+# (17) Quarter-finals
+#
+# (57) 2014-07-04 21:00  Brazil  -  Colombia
+# (58) 2014-07-04 17:00  France  -  Germany
+#
+# (59) 2014-07-05 21:00  Netherlands  -   Costa Rica
+# (60) 2014-07-05 21:00  Argentina    -   Belgium
 
-(57) 2014-07-04 21:00  Brazil  -  Colombia
-(58) 2014-07-04 17:00  France  -  Germany
 
-(59) 2014-07-05 21:00  Netherlands  -   Costa Rica
-(60) 2014-07-05 21:00  Argentina    -   Belgium
+(18) Semi-finals
+
+(61) 2014-07-08 21:00  Brazil        - Germany
+(62) 2014-07-09 21:00  Netherlands   - Argentina
 
