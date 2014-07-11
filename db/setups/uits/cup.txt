@@ -26,8 +26,18 @@
 # (60) 2014-07-05 21:00  Argentina    -   Belgium
 
 
-(18) Semi-finals
+# (18) Semi-finals
 
-(61) 2014-07-08 21:00  Brazil        - Germany
-(62) 2014-07-09 21:00  Netherlands   - Argentina
+# (61) 2014-07-08 21:00  Brazil        - Germany
+# (62) 2014-07-09 21:00  Netherlands   - Argentina
+
+
+(19) Match for third place
+
+(63) 2014-07-12 19:00   Brazil - Netherlands
+
+
+(20) Final
+
+(64) 2014-07-13 18:00   Germany - Argentina
 
