@@ -47,6 +47,15 @@
          data_hash_team1[ :autofocus ] = true   if tabindex == 1010  # (1000+=10) NB: needs to add +10
         %> 
 
+<!-- hack: wrap in span w/ display none if local option hidden is true
+      lets us recalc results (even if match is over)
+  -->
+
+<% if hidden %>
+  <span style='display: none;'>
+  <!-- <span style='display: inline-block; background-color: red;'> -->
+<% end %>
+
        <%= ff.text_field :score1, :size => 1, :tabindex => (tabindex+=1), :data => data_hash_team1 %>
        :
        <%= ff.text_field :score2, :size => 1, :tabindex => (tabindex+=1), :data => data_hash_team2 %>
@@ -61,6 +70,11 @@
           :
          <%= ff.text_field :score6, :size => 1, :tabindex => (tabindex+=1), :data => { :autofill => 'score6' } %> i.E.
        <% end %>
-       
+
+<% if hidden %>
+  </span>
+<% end %>
+
+
   <% end %><!-- fields_for tips -->
 </td>

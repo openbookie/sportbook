@@ -15,6 +15,11 @@
       <%= render_game_team1( game ) %>
       <%= render_tip_score( tip )  %>
       <%= render_game_score( game ) %>
+      
+      <!-- hack: for group calc add hidden input text field!!! use display: none; NOT type hidden
+        -->
+      <%= render_tip_score_input_for_form( tip, f, :hidden => true ) %>
+
     <% else %>
       <td><!-- no tip.toto12x yet --></td>
       <td><!-- no tip.bingo yet --></td>

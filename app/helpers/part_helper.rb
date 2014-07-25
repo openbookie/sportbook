@@ -105,13 +105,18 @@ module PartHelper
     render partial: 'shared/td_tip_toto12x', locals: { tip: tip }
   end
 
+
   def render_tip_score_input_for_form( tip, form, opts={} )
      tabindex = opts[:tabindex] || 1000
      
+     ### hack: for recalc groups (add "hidden" inputs using display none)
+     hidden   = opts[:hidden].nil? ? false : opts[:hidden]   # defaults to NOT hidden 
+
      render partial: 'shared/td_tip_score_input',
             locals: { tip:      tip,
                       f:        form,
-                      tabindex: tabindex
+                      tabindex: tabindex,
+                      hidden:   hidden
                     }
   end
 
