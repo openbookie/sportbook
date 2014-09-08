@@ -3,7 +3,7 @@
 ##############
 #  Pools
 
-world          = Event.find_by_key!( 'world.2014' )
+cl   = Event.find_by_key!( 'cl.2014/15' )
 
 
 ## nn =  User.find_by_key!( 'nn' )

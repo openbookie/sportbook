@@ -12,7 +12,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'worlddb', '2.0.4'   # see https://github.com/geraldb/world.db.ruby
-gem 'sportdb', '1.8.29'   # see https://github.com/geraldb/sport.db.ruby
+gem 'sportdb', '1.9.7'   # see https://github.com/geraldb/sport.db.ruby
 
 gem 'activityutils', '0.1.0'   # see https://github.com/rubylibs/activityutils
 gem 'props', '1.1.1'
@@ -65,7 +65,9 @@ gem 'sportdb-data-at',        '9.9.9', git: 'https://github.com/openfootball/at-
 gem 'sportdb-data-en',        '9.9.9', git: 'https://github.com/openfootball/en-england.git'
 gem 'sportdb-data-es',        '9.9.9', git: 'https://github.com/openfootball/es-espana.git'
 gem 'sportdb-data-it',        '9.9.9', git: 'https://github.com/openfootball/it-italy.git'
-gem 'sportdb-data-world',     '9.9.9', git: 'https://github.com/openfootball/world.git'
+gem 'sportdb-data-fr',        '9.9.9', git: 'https://github.com/openfootball/fr-france.git'
+gem 'sportdb-data-ch',        '9.9.9', git: 'https://github.com/openfootball/ch-confoederatio-helvetica.git'
+gem 'sportdb-data-clubs',     '9.9.9', git: 'https://github.com/openfootball/clubs.git'
 
 gem 'sportdb-data-europe-champions-league', '9.9.9', git: 'https://github.com/openfootball/europe-champions-league.git'
 

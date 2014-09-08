@@ -1,10 +1,17 @@
 
-# national teams
-# - world cup
+# football clubs
+#   - champions league (europe)
 
 sportdb_setups = [
-  ['national-teams',         'all'],
-  ['world-cup',              '2014']
+  ['clubs',          'clubs'],
+  ['at-austria',     'clubs'],
+  ['de-deutschland', 'clubs'],
+  ['en-england',     'clubs'],
+  ['es-espana',      'clubs'],
+  ['it-italy',       'clubs'],
+  ['fr-france',      'clubs'],
+  ['ch-confoederatio-helvetica',  'clubs'],
+  ['europe-champions-league',  '2014-15'],
 ]
 
 sportdb_setups.each do |setup|

@@ -1,36 +1,54 @@
 GIT
   remote: https://github.com/openfootball/at-austria.git
-  revision: 01e7a13f9f39868561e861d4637c231b8f73819b
+  revision: ac194ba1a3ed8ec3bb414312e2d6a24894fb4831
   specs:
     sportdb-data-at (9.9.9)
 
 GIT
+  remote: https://github.com/openfootball/ch-confoederatio-helvetica.git
+  revision: 276af874aacdea0283633f86e87ed739dd7adb0f
+  specs:
+    sportdb-data-ch (9.9.9)
+
+GIT
+  remote: https://github.com/openfootball/clubs.git
+  revision: 4524ef40d1fd1051bb5a727ed5789bf4cdcf3d4c
+  specs:
+    sportdb-data-clubs (9.9.9)
+
+GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: b238014e02fb09f3f5d03e97708724c283101803
+  revision: ee12914999fa8c718e453c62c73d6fc1bd8648e1
   specs:
     sportdb-data-de (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/en-england.git
-  revision: a54111dd19b81dc01b01d412a233eff55638ff4f
+  revision: eb44fa6b8fc10062069887681983441c15f082c0
   specs:
     sportdb-data-en (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/es-espana.git
-  revision: d57b4dcc18d9457d2fc7ef844d5a9aa0c2d9600b
+  revision: 1191bb959f3f40f13f69024c9b01b92cdffbc0da
   specs:
     sportdb-data-es (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/europe-champions-league.git
-  revision: eb4b98d41d60e9b7272a5af3fcd6089359b10352
+  revision: 7f30295e4bcdce7714f2d651c7e36d3ff77b7f69
   specs:
     sportdb-data-europe-champions-league (9.9.9)
 
 GIT
+  remote: https://github.com/openfootball/fr-france.git
+  revision: d004df6606e9040db77cdbbdcba4deb30c711695
+  specs:
+    sportdb-data-fr (9.9.9)
+
+GIT
   remote: https://github.com/openfootball/it-italy.git
-  revision: 8bff6c8f782f24f2e35de22136ca97f994fcefcc
+  revision: 48e2a445897ee081924dc94b8dc4cab31ab84523
   specs:
     sportdb-data-it (9.9.9)
 
@@ -48,19 +66,13 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/world-cup.git
-  revision: c3dc288a4022c2e04c253c5ecec3fe33ca43e4e7
+  revision: deb1459734a7de97b97b7ca14cac4ae29116ed58
   specs:
     sportdb-data-world-cup (9.9.9)
 
 GIT
-  remote: https://github.com/openfootball/world.git
-  revision: d3c766e4ab739c4122cadb5ec5f08f5fd793d8e9
-  specs:
-    sportdb-data-world (9.9.9)
-
-GIT
   remote: https://github.com/openmundi/world.db.git
-  revision: d5a1be17877d58bfe41c416f2c4da1c29da54a6f
+  revision: fa67418028e8a9df7ae2bcab3ea6a7a9b89a9f65
   specs:
     worlddb-data (9.9.9)
 
@@ -134,7 +146,7 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.1)
+    coffee-script-source (1.8.0)
     daemons (1.1.9)
     dbbrowser (0.1.3)
       logutils (>= 0.5)
@@ -144,15 +156,15 @@ GEM
     execjs (2.2.1)
     fetcher (0.4.3)
       logutils (>= 0.6)
-    gli (2.11.0)
+    gli (2.12.1)
     hike (1.2.3)
     i18n (0.6.11)
     journey (1.0.4)
-    jquery-rails (3.1.1)
+    jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kramdown (1.4.0)
+    kramdown (1.4.1)
     logutils (0.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -203,7 +215,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ri_cal (0.8.8)
-    sass (3.3.10)
+    sass (3.4.3)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -212,7 +224,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sportdb (1.8.29)
+    sportdb (1.9.7)
       activerecord
       activerecord-utils
       fetcher (>= 0.3)
@@ -220,12 +232,20 @@ GEM
       logutils
       persondb
       props
+      sportdb-console
+      sportdb-keys
+      sportdb-service
+      sportdb-update
       tagutils
       textutils
       worlddb (>= 2.0.2)
     sportdb-admin (0.3.0)
+    sportdb-console (0.0.1)
+    sportdb-keys (0.0.1)
     sportdb-market (0.5.1)
     sportdb-play (0.2.5)
+    sportdb-service (0.4.0)
+    sportdb-update (0.0.1)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -249,8 +269,8 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.40)
-    uglifier (2.5.1)
+    tzinfo (0.3.41)
+    uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     worlddb (2.0.4)
@@ -285,18 +305,20 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sinatra
-  sportdb (= 1.8.29)
+  sportdb (= 1.9.7)
   sportdb-admin (= 0.3.0)
   sportdb-data-american-football (= 9.9.9)!
   sportdb-data-at (= 9.9.9)!
+  sportdb-data-ch (= 9.9.9)!
+  sportdb-data-clubs (= 9.9.9)!
   sportdb-data-de (= 9.9.9)!
   sportdb-data-en (= 9.9.9)!
   sportdb-data-es (= 9.9.9)!
   sportdb-data-europe-champions-league (= 9.9.9)!
+  sportdb-data-fr (= 9.9.9)!
   sportdb-data-it (= 9.9.9)!
   sportdb-data-national-teams (= 9.9.9)!
   sportdb-data-stadiums (= 9.9.9)!
-  sportdb-data-world (= 9.9.9)!
   sportdb-data-world-cup (= 9.9.9)!
   sportdb-logos (= 0.1.0)!
   sportdb-market (= 0.5.1)
