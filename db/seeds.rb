@@ -39,7 +39,8 @@ WorldDb.delete!  unless skip_worlddb       # danger zone! deletes all records
 ## add TagDb.delete! ??
 
 SportDb.delete!          # danger zone! deletes all records
-SportDb::Market.delete!  # danger zone! deletes all records
+
+### SportDb::Market.delete!  # danger zone! deletes all records
 
 
 if key == 'superbowl'
