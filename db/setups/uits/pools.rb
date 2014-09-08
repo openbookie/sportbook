@@ -10,6 +10,6 @@ cl   = Event.find_by_key!( 'cl.2014/15' )
 
 behrooz = User.find_by_key!( 'behroozs' )
 
-pool = Pool.create!( event: world,  title: 'UITS', user: behrooz, welcome: '' )
+pool = Pool.create!( event: cl,  title: 'UITS', user: behrooz, welcome: '' )
 pool.players << behrooz
 
