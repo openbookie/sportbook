@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/openfootball/at-austria.git
-  revision: ac194ba1a3ed8ec3bb414312e2d6a24894fb4831
+  revision: c5a616f450a276906eb9543f97d4dbd0dab49ecb
   specs:
     sportdb-data-at (9.9.9)
 
@@ -18,25 +18,25 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/de-deutschland.git
-  revision: ee12914999fa8c718e453c62c73d6fc1bd8648e1
+  revision: 064f94e75fbb44e9f526c8b7914162b8888fd860
   specs:
     sportdb-data-de (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/en-england.git
-  revision: eb44fa6b8fc10062069887681983441c15f082c0
+  revision: 51bf7f01e52c599ca01b8ea39e4dca5a29341d88
   specs:
     sportdb-data-en (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/es-espana.git
-  revision: 1191bb959f3f40f13f69024c9b01b92cdffbc0da
+  revision: 75405dc04168b143880f4030857c957cd04d9772
   specs:
     sportdb-data-es (9.9.9)
 
 GIT
   remote: https://github.com/openfootball/europe-champions-league.git
-  revision: 7f30295e4bcdce7714f2d651c7e36d3ff77b7f69
+  revision: 408ea23fa97919f58376023fb56214e10d35fc15
   specs:
     sportdb-data-europe-champions-league (9.9.9)
 
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/openfootball/it-italy.git
-  revision: 48e2a445897ee081924dc94b8dc4cab31ab84523
+  revision: d31dbe502f2d4a3ffb8f860f5d4746bdca2e5a19
   specs:
     sportdb-data-it (9.9.9)
 
@@ -164,7 +164,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kramdown (1.4.1)
+    kramdown (1.4.2)
     logutils (0.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -215,7 +215,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ri_cal (0.8.8)
-    sass (3.4.3)
+    sass (3.4.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -224,7 +224,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sportdb (1.9.7)
+    sportdb (1.9.8)
       activerecord
       activerecord-utils
       fetcher (>= 0.3)
@@ -305,7 +305,7 @@ DEPENDENCIES
   ri_cal
   sass-rails (~> 3.2.3)
   sinatra
-  sportdb (= 1.9.7)
+  sportdb (= 1.9.8)
   sportdb-admin (= 0.3.0)
   sportdb-data-american-football (= 9.9.9)!
   sportdb-data-at (= 9.9.9)!
